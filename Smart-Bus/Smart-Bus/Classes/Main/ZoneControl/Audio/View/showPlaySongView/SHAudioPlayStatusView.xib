@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SHAudioPlayStatusView" customModule="Smart_Bus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaB-n7-Isv">
+                    <rect key="frame" x="15" y="0.0" width="206.5" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="1" green="0.74509803921568629" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCM-w3-D68">
+                    <rect key="frame" x="236.5" y="0.0" width="123.5" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88f-3u-z6y">
+                    <rect key="frame" x="15" y="41.5" width="345" height="33.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="88f-3u-z6y" firstAttribute="height" secondItem="ZaB-n7-Isv" secondAttribute="height" id="2yV-D5-XaD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="88f-3u-z6y" secondAttribute="bottom" id="8JV-SF-ejM"/>
+                <constraint firstItem="yCM-w3-D68" firstAttribute="centerY" secondItem="ZaB-n7-Isv" secondAttribute="centerY" id="BdS-a8-ncy"/>
+                <constraint firstItem="ZaB-n7-Isv" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.45" id="GhS-E1-5X5"/>
+                <constraint firstItem="ZaB-n7-Isv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="NaY-ju-X7k"/>
+                <constraint firstItem="ZaB-n7-Isv" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.55" id="Rdr-C8-umX"/>
+                <constraint firstItem="yCM-w3-D68" firstAttribute="leading" secondItem="ZaB-n7-Isv" secondAttribute="trailing" constant="15" id="eHe-PT-eia"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yCM-w3-D68" secondAttribute="trailing" constant="15" id="efb-u0-LwQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="88f-3u-z6y" secondAttribute="trailing" constant="15" id="gXg-YP-aJh"/>
+                <constraint firstItem="yCM-w3-D68" firstAttribute="height" secondItem="ZaB-n7-Isv" secondAttribute="height" id="m2L-AI-dFc"/>
+                <constraint firstItem="88f-3u-z6y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="naB-6w-4yB"/>
+                <constraint firstItem="ZaB-n7-Isv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="pLe-h8-fbP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="albumNameLabel" destination="ZaB-n7-Isv" id="KKX-gQ-Dh1"/>
+                <outlet property="songNameLabel" destination="88f-3u-z6y" id="Wv0-te-azk"/>
+                <outlet property="timeLabel" destination="yCM-w3-D68" id="JOt-8L-crF"/>
+            </connections>
+            <point key="canvasLocation" x="92" y="-116.49175412293854"/>
+        </view>
+    </objects>
+</document>

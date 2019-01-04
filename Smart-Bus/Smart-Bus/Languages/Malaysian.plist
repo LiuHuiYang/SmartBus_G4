@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>YA</string>
+		<key>NO</key>
+		<string>TIADA</string>
+		<key>OK</key>
+		<string>OK</string>
+		<key>CANCEL</key>
+		<string>Batal</string>
+		<key>SAVED</key>
+		<string>Disimpan</string>
+		<key>SAVE</key>
+		<string>Simpan</string>
+		<key>EDIT</key>
+		<string>Mengedit</string>
+		<key>DONE</key>
+		<string>Siap</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>Sistem Mesej</string>
+		<key>ON</key>
+		<string>BUKA</string>
+		<key>OFF</key>
+		<string>TUTUP</string>
+		<key>NO_DATA</key>
+		<string>Tiada data!</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>Lampu</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>Muzik</string>
+		<key>dshades</key>
+		<string>Shades</string>
+		<key>emedia</key>
+		<string>Media</string>
+		<key>fmoods</key>
+		<string>Angin</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>Zon/Kawasan Kawalan</string>
+			<string>Pusat Kawalan</string>
+			<string>Perkhidmatan Bersama</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>MarcoBtg</string>
+		<key>LIGHTS</key>
+		<string>Lampu</string>
+		<key>MUSIC</key>
+		<string>Muzik</string>
+		<key>SECURITY</key>
+		<string>Keselamatan</string>
+		<key>CLIMATE</key>
+		<string>Iklim</string>
+		<key>SCHEDULE</key>
+		<string>Jadual</string>
+		<key>CAMERA</key>
+		<string>Kamera</string>
+		<key>APPLIANCES</key>
+		<string>Perkakas</string>
+		<key>INTERCOM</key>
+		<string>Interkom</string>
+		<key>COMMUNITY</key>
+		<string>Komuniti</string>
+		<key>HOME_STATUS</key>
+		<string>Taraf Rumah</string>
+		<key>METERS</key>
+		<string>Meter</string>
+		<key>WEATHER</key>
+		<string>Cuaca</string>
+		<key>PHOTO</key>
+		<string>Foto</string>
+		<key>ALARM</key>
+		<string>Alarm</string>
+		<key>SMS_CONTROL</key>
+		<string>Alarm</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>Tetapan</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>Rangkaian Tetapan</string>
+		<key>DATABASE</key>
+		<string>Pangkalan Data Muat Naik &amp; Turun</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>Bahasa Tetapan</string>
+		<key>VERSION</key>
+		<string>Versi</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>Tetapan Ragkaian</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>Tempatan</string>
+		<key>INTERNET</key>
+		<string>Internet</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/Alamat IP</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Data yang anda telah masukkan tidak boleh bata!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Gagal untuk mendapatkan alamat IP dengan nama domain; pastikan ia disambungkan ke internet</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Alamat IP adalah salah, Sila pastikan!</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>FTP Server Tetapan</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>FTP tetapan pelayan</string>
+		<key>USER_NAME</key>
+		<string> Nama pengguna</string>
+		<key>PASSWORD</key>
+		<string>Kata laluan</string>
+		<key>UPLOAD</key>
+		<string>Muat naik</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>Muat naik pangkalan data</string>
+		<key>DOWNLOAD</key>
+		<string>Muat turun</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>Muat turun pangkalan data</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Muat naik pangkalan data dari IPHONE/IPAD ini ke FTP pelayan; Nama pangkalan data “Database.sqlite3”</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Muat turun pangkalan data dari FTP pelayan ke IPHONE/IPAD ini; Nama pangkalan data mestilah “Database.sqlite3”, dan direktori pangkalan data mesti di akar direktori FTP pelayan. </string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Menghubungkan</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Sila memeriksa alamat FTP</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Sila isi semua kandungan</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Muat turun pangkalan data “mesej:@” Pangkalan data di app kini akan digantikan oleh pangkalan data di FTP, adakah anda hendak muat turun?</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Muat naik siap</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Sambungan gagal!</string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>A/C DITUTUP</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>Rendah</string>
+			<string>Sederhana</string>
+			<string>Tinggi</string>
+			<string>Auto</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>Sejuk</string>
+			<string>Haba</string>
+			<string>Kipas</string>
+			<string>Auto</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>Sejuk</string>
+			<string>Dingin</string>
+			<string>Hangat</string>
+			<string>Panas</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>Buka</string>
+		<key>SHADE_CLOSE</key>
+		<string>Menutup</string>
+		<key>SHADE_STOP</key>
+		<string>Berhenti</string>
+		<key>SENDING</key>
+		<string>Data di-hantar </string>
+		<key>EXECUTED</key>
+		<string>Melaksanakan</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>Tekan butang di bawah untuk menamban angin baru</string>
+		<key>RECORD_MOOD</key>
+		<string>Rakam Angin</string>
+		<key>MOOD_NAME</key>
+		<string>Nama Angin:</string>
+		<key>SELECT_ICON</key>
+		<string>Pilih Ikon</string>
+		<key>EDIT_MOOD</key>
+		<string>Tukar Angin</string>
+		<key>RECORD</key>
+		<string>Rakam</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>Pilih ikon untuk angina</string>
+		<key>SHADE_BYPASS</key>
+		<string>Memintas</string>
+		<key>SHADE_OPEN</key>
+		<string>Buka</string>
+		<key>SHADE_CLOSE</key>
+		<string>Menutup</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Angin lain sedang dilaksanakan, jika melaksanakan angin semasa, angin lain akan dibatalkan. Terns melaksanakan angin semasa</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Gagal untuk merakam angin!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- Periksa sambungan rangkaian anda.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- Periksa konfigurasi pangkalan data anda.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Mesej Salah</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1- Satu peranti harus dipilih sekurang kurangnya</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- Nama angin tidak boleh kosong dan mestilah unik.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Sedang merakam angin, sila tunggu untuk seketika...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Gagal untuk merakam! Sebab: tiada data!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>Membisukan</string>
+		<key>MENU</key>
+		<string>Menu</string>
+		<key>SOURCE</key>
+		<string>Sumber</string>
+		<key>CONTROL</key>
+		<string>Mengawal</string>
+		<key>NUM_PAD</key>
+		<string>Pad Nombor</string>
+		<key>CHANNEL</key>
+		<string>Saluran</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>SAT. Saluran Tetapan</string>
+		<key>DELAY_FOR_IR</key>
+		<string>Kelewatan untuk IR</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>Tiada Saluran</string>
+		<key>CATEGORY</key>
+		<string>Kategori</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>SAT. Kategori Tetapan</string>
+		<key>LABEL_CATEGORY</key>
+		<string>Nama Kategori:</string>
+		<key>ADD</key>
+		<string>Tambah</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Nama dibatalkan atau telah wujud!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Kelewatan bagi IR(50ms~5000ms) </string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Kuantiti saluran mestilah kurang daripada 4, dan saluran mestilah unik.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Nama saluran mestilah unik dan tidak boleh bata!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Mengedit bidang, tidak membenarkan mempunyai nama saluran yang sama atau batal !</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Marco Butang Tindakan</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Lampu Tengah</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>SEMUA BUKA</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>SEMUA TUTUP</string>
+		<key>SELECTED_ITEM</key>
+		<string>Item dipilih</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Satu lagi butang makro melaksanakan, jika melaksanakan butang makro semasa, satu lagi butang makro akan dibatalkan. Teruskan untuk melaksanakan butang makro semasa?
+
+</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Keselamatan</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>Pilih Mod keselamatan</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>Berpergian</string>
+			<string>Malam</string>
+			<string>Waktu malam dengan tetamu</string>
+			<string>Hari</string>
+			<string>Percutian</string>
+			<string>Melucutkan senjata</string>
+			<string>Panik Polis</string>
+			<string>Ambulans</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>Taip katalaluan</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Melaksanakan!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Sila pilah mod dahulu!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Gagal </string>
+		<key>OLD_PASSWORD</key>
+		<string>Kata laluan Lama</string>
+		<key>NEW_PASSWORD</key>
+		<string>Kata laluan Baru</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>Kata laluan Lalai:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Untuk mod aktif “Panik Polis” dan “Ambulans”, sila terus menekan butang selama 2 saat</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Kata laluan lama adalah salah!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Kata laluan baru</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Adakah anda pasti anda mahu menukar kata laluan?</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Iklim</string>
+		<key>SELECTED_ITEM</key>
+		<string>Item terpilih:</string>
+		<key>ALL_AC_ON</key>
+		<string>Semua AC Buka</string>
+		<key>ALL_AC_OFF</key>
+		<string>Semua AC tutup</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>Sejuk</string>
+			<string>Dingin</string>
+			<string>Panas</string>
+			<string>Hangat</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Kamera</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Rekod Suara</string>
+		<key>RECORD</key>
+		<string>REKOD</string>
+		<key>PREVIEW</key>
+		<string>Pratonton</string>
+		<key>STOP1</key>
+		<string>Berhenti</string>
+		<key>STOP</key>
+		<string>BERHENTI</string>
+		<key>DELETE</key>
+		<string>Memadam</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>Muat Naik Kepada FTP</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP Server IP:</string>
+		<key>USER_NAME</key>
+		<string>Nama pengguna:</string>
+		<key>PASSWORD</key>
+		<string>Kata Laluan:</string>
+		<key>UPLOADING</key>
+		<string>Memuat naik...</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Sila memilih file rekod!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Pastikan ada file yang bernama “Record” di FTP server, dimana file-file yang direkod akan simpan di file “Record” di FTP Server.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Data yang anda isi adalah salah, sila memeriksa!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Berjaya! Untuk memainkan file yang direkod, sumber FTP di Z-Audio perlulah dikemaskini secara manual.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Sila memeriksa rangkaian anda dan Tetapan FTP Server, dan memastikan FTP Server adalah melaksanakan.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>File sudah ada!</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Jadual</string>
+		<key>SCHEDULE_NAME</key>
+		<string>Nama Jadual</string>
+		<key>FREQUENCY</key>
+		<string>Frequency</string>
+		<key>DATE_TIME</key>
+		<string>Waktu Haribulan</string>
+		<key>VALIDITY</key>
+		<string>Sahih</string>
+		<key>ONE_TIME</key>
+		<string>Sekali</string>
+		<key>DAILY</key>
+		<string>Harian</string>
+		<key>WEEKLY</key>
+		<string>Tiap minggu</string>
+		<key>ADD_NEW</key>
+		<string>Tambah Baru</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>Tukar Jadual</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>Tambah Jadual Baru</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>Benda Terkawal</string>
+		<key>MACRO_BUTTONS</key>
+		<string>Butang Marco</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>Loceng Jam Alarm</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>Katogori Senarai Lagu</string>
+		<key>ALBUMS_LIST</key>
+		<string>Senarai Album</string>
+		<key>ADD_TO_QUE</key>
+		<string>Tambah Ke QUE</string>
+		<key>PLAY_QUE</key>
+		<string>Main QUE</string>
+		<key>STOP_QUE</key>
+		<string>Berhenti QUE</string>
+		<key>QUE_START</key>
+		<string>QUE bermula!</string>
+		<key>ZONE_LIST</key>
+		<string>Senarai Zon</string>
+		<key>CHOOSE_ZONE</key>
+		<string>Pilih Zon</string>
+		<key>ADD_SUCCEED</key>
+		<string>Berjaya</string>
+		<key>UPDATE_FTP</key>
+		<string>FTP Terkini</string>
+		<key>REPEAT_OFF</key>
+		<string>Off Ulang</string>
+		<key>REPEAT_ONE</key>
+		<string>Ulang satu</string>
+		<key>CONTINUED</key>
+		<string>Sambung</string>
+		<key>REPEAT_ALL</key>
+		<string>Ulang semua</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Maaf! Gagal membaca senarai, sila periksa rangkaian dan zon tetapan, atau baca lagi!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audio sedang kemaskini senarai FTP untuk album dan lagu-lagu; ini akan mengambil beberapa minit, sila tunggu  sebentar</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Senarai album dan lagu-lagu belum dibaca, musik akan di hentikan kalau meneruskan, Meneruskan Sekarang
+
+</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Sila Pilih Zon!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Tidak ada zon sekarang, sila tambah zon-zon ke pangkalan data.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Sekurang-kurangnya satu zon mesti dipilih!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Gagal untuk sambungan pada Z-Audio, sila periksa rangkaian dan tetapan.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Gagal, sila cuba sebentar lagi.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Berjaya!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Tiada lagu di QUE, sila tambah lagu ke senarai QUE. (Jika goyang IPHONE, pilihan satu akan banyak akan  menukar!)</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Tekan selama dua saat untuk pergi ke halaman untuk buang data sementara dan melakukan FTP</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Buangkan data TEMP untuk kad  SD</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>Kalau ada perubahan pada lagu-lagu di kad SD, data sementara untuk kad SD haruslah dibuang dan baca semula.</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>Buang data TEMP untuk FTP</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>Kalau lagu-lagu di pangkalan FTP server ada sebarang perubahan, data sementara untuk FTP haruslah dibuang dan baca  semula.</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>Suruh Z-Audio kemaskini album dan lagu-lagu dari pangkalan FTP server.</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>Muat turun! Sila tutup &amp; amp; mulai semula app</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>Berjaya!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>PROJECTOR</string>
+		<key>eMed_SAT</key>
+		<string>SAT./CABLE</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>Berjaya</string>
+		<key>B_NETWORK</key>
+		<string>RANGKAIAN</string>
+		<key>C_IPHONE</key>
+		<string>IPHONE</string>
+		<key>D_RADIO</key>
+		<string>RADIO</string>
+		<key>E_AUDIO_IN</key>
+		<string>AUDIO MASUK</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>Butang Makro</string>
+			<string>Angin</string>
+			<string>Lampu</string>
+			<string>HVAC</string>
+			<string>Musik</string>
+			<string>Warna</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>Logo dari perpustakaan</string>
+		<key>FROM_PHOTOS</key>
+		<string>Dari gambar-gambar</string>
+		<key>EDIT_LOGO</key>
+		<string>Mengedit logo</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>Pilih logo untuk saluran</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>Melepaskan jari anda untuk memula cari</string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>Jatuh turun untuk mencari dan melompat ke lagu yang sedang bermain</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>Mencari</string>
+		<key>New item - 3</key>
+		<string></string>
+		<key>New item - 4</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

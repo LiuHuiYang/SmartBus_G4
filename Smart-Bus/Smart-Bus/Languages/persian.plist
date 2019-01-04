@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>بله</string>
+		<key>NO</key>
+		<string>خیر</string>
+		<key>OK</key>
+		<string>قبول</string>
+		<key>CANCEL</key>
+		<string>لغو</string>
+		<key>SAVED</key>
+		<string>ذخیره</string>
+		<key>SAVE</key>
+		<string>ذخیره</string>
+		<key>EDIT</key>
+		<string>ویرایش</string>
+		<key>DONE</key>
+		<string>انجام</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>پیغام سیستم</string>
+		<key>ON</key>
+		<string>خیر</string>
+		<key>OFF</key>
+		<string>خاموش</string>
+		<key>NO_DATA</key>
+		<string>داده یافت نشد!</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>روشنایی</string>
+		<key>bhvac</key>
+		<string>سیستم سرمایش/ گرمایش</string>
+		<key>czaudio</key>
+		<string>Z-Audio</string>
+		<key>dshades</key>
+		<string>چراغ خواب</string>
+		<key>emedia</key>
+		<string>رسانه</string>
+		<key>fmoods</key>
+		<string>وضعیت</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>کنترل ناحیه ای</string>
+			<string>کنترل مرکزی</string>
+			<string>سرویس مشترک </string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>کلید پرکاربرد</string>
+		<key>LIGHTS</key>
+		<string>روشنایی</string>
+		<key>MUSIC</key>
+		<string>آهنگ</string>
+		<key>SECURITY</key>
+		<string>امنیتی</string>
+		<key>CLIMATE</key>
+		<string>دما</string>
+		<key>SCHEDULE</key>
+		<string>فهرست</string>
+		<key>CAMERA</key>
+		<string>دوربین</string>
+		<key>APPLIANCES</key>
+		<string>وسایل</string>
+		<key>INTERCOM</key>
+		<string>اینترکام(آیفون داخلی)</string>
+		<key>COMMUNITY</key>
+		<string>اجتماع</string>
+		<key>HOME_STATUS</key>
+		<string>وضعیت خانه</string>
+		<key>METERS</key>
+		<string>متراژ</string>
+		<key>WEATHER</key>
+		<string>هوا</string>
+		<key>PHOTO</key>
+		<string>عکس</string>
+		<key>ALARM</key>
+		<string>هشدار</string>
+		<key>SMS_CONTROL</key>
+		<string>SMSکنترل</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>اعمال تغییرات</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>تغییر شبکه</string>
+		<key>DATABASE</key>
+		<string>ارسال و دریافت ِData Base</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>تغییر زبان</string>
+		<key>VERSION</key>
+		<string>وِرژن</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>تغییرات شبکه</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>محلی</string>
+		<key>INTERNET</key>
+		<string>اینترنت</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/IPدرسآ</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>!این داده نمی تواند صفر باشد</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string> با مشکل روبرو شد. آیا از اتصال سیستم به اینترنت IP Address دریافت مطمئنید؟</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>  .اشتباه است IP address</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string> FTP Server تغییرات</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>FTP Server Address</string>
+		<key>USER_NAME</key>
+		<string>نام کاربری</string>
+		<key>PASSWORD</key>
+		<string>رمز عبور</string>
+		<key>UPLOAD</key>
+		<string>ارسال</string>
+		<key>DATABASE_UPLOAD</key>
+		<string> Database ارسال</string>
+		<key>DOWNLOAD</key>
+		<string>دریافت</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>Databaseدریافت</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>    FTP Serverبه IPHONE/IPAD از این &quot;Database.sqlite3&quot; نام یک پایگاه داده با ارسال شد</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>نام پایگاه داده;IPHONE/IPAD بوسیله این FTP Server زا database جهت دریافت  FTP Server باشد و مسیر آن بر روی دایرکتوری اصلی &quot;Database.sqlite3&quot;باید بصورت شدقرار گرفته با</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>در حال برقراری ارتباط...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>لطفاًFTP address را چک کنید!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>لطفا تمام موارد را تکمیل کنید!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>پایگاه داده دریافتی &quot; message:@&quot; از FTP بر روی پایگاه داده فعلی قرار می گیرد. آیا مطمئن هستید؟</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>ارسال تمام شد</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>اتصال برقرار نگردید!</string>
+		<key>New item - 3</key>
+		<string></string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>خاموش</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>کم</string>
+			<string>متوسط</string>
+			<string>زیاد</string>
+			<string>اتوماتیک</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>سرد</string>
+			<string>گرم</string>
+			<string>بادزن</string>
+			<string>اتوماتیک</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>بسیار سرد</string>
+			<string>سرد</string>
+			<string>گرم</string>
+			<string>بسیار گرم</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>باز</string>
+		<key>SHADE_CLOSE</key>
+		<string>بسته</string>
+		<key>SHADE_STOP</key>
+		<string>توقف</string>
+		<key>SENDING</key>
+		<string>در حال ارسال داده!...</string>
+		<key>EXECUTED</key>
+		<string>اجرا</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>جهت افزودن وضعیت جدید، کلید زیر را فشار دهید!</string>
+		<key>RECORD_MOOD</key>
+		<string>حالت ثبت</string>
+		<key>MOOD_NAME</key>
+		<string>نام وضعیت:</string>
+		<key>SELECT_ICON</key>
+		<string>انتخاب تصویر</string>
+		<key>EDIT_MOOD</key>
+		<string>ویرایش وضعیت</string>
+		<key>RECORD</key>
+		<string>ثبت</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>برای این &quot;وضعیت&quot; تصویر انتخاب کنید</string>
+		<key>SHADE_BYPASS</key>
+		<string>Bypass</string>
+		<key>SHADE_OPEN</key>
+		<string>باز</string>
+		<key>SHADE_CLOSE</key>
+		<string>بستن</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>یک &quot;وضعیت&quot; دیگر در حال اجراست که با اجرای &quot;وضعیت&quot; جدید کنسل می گردد، آیا از اجرای &quot;وضعیت&quot; جدید مطمئن هستید؟</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>ثبت وضعیت جدید با مشکل مواجه شد!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>اتصال به شبکه را چک کنید.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2-پیکر بندی Data Base را چک کنید.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>پیغام خطا:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1-حداقل باید یک انتخاب داشته باشید.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- نام &quot;وضعیت&quot; نمی تواند خالی و یا تکراری باشد.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>در حال ثبت &quot;وضعیت&quot; است. لطفاً منتظر بمانید...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>به علت عدم وجود داده ثبت کردن لغو گردید!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>بی صدا</string>
+		<key>MENU</key>
+		<string>فهرست</string>
+		<key>SOURCE</key>
+		<string>منبع</string>
+		<key>CONTROL</key>
+		<string>کنترل</string>
+		<key>NUM_PAD</key>
+		<string>صفحه کلید</string>
+		<key>CHANNEL</key>
+		<string>کانال</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>تنظیمات کانال ماهواره</string>
+		<key>DELAY_FOR_IR</key>
+		<string>تاخیر در ارسال سیگنال IR</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>کانال موجود نمی باشد!</string>
+		<key>CATEGORY</key>
+		<string> گروه بندی</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>تنظیم گروه بندی کانالهای ماهواره</string>
+		<key>LABEL_CATEGORY</key>
+		<string>نام گروه</string>
+		<key>ADD</key>
+		<string>افزودن</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>این نام یا خالی است یا قبلا استفاده شده</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>تاخیر در ارسال (بین 5میلی ثانیه تا 5ثانیه)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>تعداد کانالها باید کمتر از 4بوده وتکراری نباشند.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>نام کانال نباید خالی و یا تکراری باشد!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>ویرایش لغو شد! این نام یا خالی است و یا تکراری.</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>کلیدهای پُرکاربرد</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>روشنایی مرکزی</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>روشن کردن همه روشنایی ها</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>خاموش کردن همه روشنایی ها</string>
+		<key>SELECTED_ITEM</key>
+		<string>قسمت انتخاب شده:</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>کلید پرکاربرد دیگری در حال اجراست که با انتخاب این کلید، غیر فعال می شود؛ آیا از انتخاب کلید پرکاربرد جدید مطمئن هستید؟</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>امنیتی</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>انتخاب وضعیت امنیتی:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>خارج از خانه</string>
+			<string>شب</string>
+			<string>شب با مهمان</string>
+			<string>روز</string>
+			<string>تعطیلات</string>
+			<string>غیر فعال</string>
+			<string>پلیس</string>
+			<string>آمبولانس</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>رمز عبور را وارد کنید</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>اجرا شد!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>لطفا ابتدا &quot;حالت&quot; را انتخاب نمائید!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>عملیات نا موفق!</string>
+		<key>OLD_PASSWORD</key>
+		<string>رمز عبور قبلی</string>
+		<key>NEW_PASSWORD</key>
+		<string>رمز عبور جدید</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>رمز عبور پیش فرض:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>برای فعال نمودن حالت &quot;پلیس&quot; و &quot;آمبولانس&quot; کلید را به مدت 2ثانیه نگه دارید</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>رمز عبور قبلی اشتباه است!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>رمز عبور حداقل باید چهار حرف باشد!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>آیا از تغییر رمز مطمئن می باشید؟</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>دما</string>
+		<key>SELECTED_ITEM</key>
+		<string>انتخاب حالت:</string>
+		<key>ALL_AC_ON</key>
+		<string>روشن کردن تمام سیستمهای سرمایش/گرمایش</string>
+		<key>ALL_AC_OFF</key>
+		<string>خاموش کردن تمام سیستمهای سرمایش/گرمایش</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>بسیار سرد</string>
+			<string>سرد</string>
+			<string>بسیار گرم</string>
+			<string>گرم</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>دوربین</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ضبط صدا</string>
+		<key>RECORD</key>
+		<string>ضبط</string>
+		<key>PREVIEW</key>
+		<string>قبلی</string>
+		<key>STOP1</key>
+		<string>توقف1</string>
+		<key>STOP</key>
+		<string>توقف</string>
+		<key>DELETE</key>
+		<string>پاک کردن</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>ارسال به FTP</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP Server IP:</string>
+		<key>USER_NAME</key>
+		<string>نام کاربری:</string>
+		<key>PASSWORD</key>
+		<string>رمز عبور:</string>
+		<key>UPLOADING</key>
+		<string>ارسال...</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>لطفا فایل ضبط شده را انتخاب کنید!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>مطمئن باشید که یک فولدر با نام “Record”در FTP دارید که فایل ضبط شده در آن قرار بگیرد!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>داده پر شده اشتباه است. لطفا چک کنید!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>با موفقیت انجام شد! برای استفاده از فایل، باید بصورت دستی بروز رسانی شود!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>لطفا شبکه و تنظیمات FTP Server کنید و از فعال بودن بودن FTP Server اطمینان حاصل کنید!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>این فایل از قبل موجود است</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>زمان بندی</string>
+		<key>SCHEDULE_NAME</key>
+		<string>نام زمان بندی</string>
+		<key>FREQUENCY</key>
+		<string>تعداد تکرار</string>
+		<key>DATE_TIME</key>
+		<string>ساعت روز</string>
+		<key>VALIDITY</key>
+		<string>معتبر است</string>
+		<key>ONE_TIME</key>
+		<string>یکبار</string>
+		<key>DAILY</key>
+		<string>روزانه</string>
+		<key>WEEKLY</key>
+		<string>هفته ای</string>
+		<key>ADD_NEW</key>
+		<string>افزودن جدید</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>ویرایش زمان بندی</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>افزودن زمان بندی جدید</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>آیتم های کنترل شده</string>
+		<key>MACRO_BUTTONS</key>
+		<string>کلیدهای پُرکاربرد</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>آلارم زنگ ساعت</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>لیست آهنگ</string>
+		<key>ALBUMS_LIST</key>
+		<string>لیست آلبوم</string>
+		<key>ADD_TO_QUE</key>
+		<string>افزودن به صف</string>
+		<key>PLAY_QUE</key>
+		<string>شروع صف</string>
+		<key>STOP_QUE</key>
+		<string>توقف صف</string>
+		<key>QUE_START</key>
+		<string>صف شروع شد!</string>
+		<key>ZONE_LIST</key>
+		<string>لیست منطقه</string>
+		<key>CHOOSE_ZONE</key>
+		<string>انتخاب منطقه:</string>
+		<key>ADD_SUCCEED</key>
+		<string>با موفقیت انجام شد!</string>
+		<key>UPDATE_FTP</key>
+		<string>به روز رسانیFTP</string>
+		<key>REPEAT_OFF</key>
+		<string>بدون تکرار</string>
+		<key>REPEAT_ONE</key>
+		<string> تکرار یک</string>
+		<key>CONTINUED</key>
+		<string>ادامه یابد</string>
+		<key>REPEAT_ALL</key>
+		<string>همه تکرار شود</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>متاسفم! خواندن لیست امکان پذیر نمی باشد، لطفا شبکه، تنظیمات منطقه را چک کنید و مجدداً اقدام کنید!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audioدر حال بروز رسانی لیست آلبوم ها و آهنگ ها از  FTP است. لطفاً چند دقیقه منتظر بمانید...</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>خواندن آلبوم و آهنگ هنوز تمام نشده، اگر ادامه دهید ممکن است آهنگ متوقف شود. آیا ادامه می دهید؟</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>لطفا منطقه را انتخاب کنید!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>منطقه ای تعریف نشده است. لطفا منطقه جدید را به Data Base اضافه کنید.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>حداقل یک منطقه باید انتخاب گردد!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>اتصال Z-Audio ناموفق بود. لطفا شبکه و تنظیمات را چک کنید. </string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>عملیات ناموفق! لطفا دوباره تلاش کنید.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>با موفقیت انجام شد!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>آهنگی در صف موجود نیست، لطفا به لیست آهنگ اضافه کنید. (No any song in QUE, please add song to QUE list. (If Shake the IPHONE, single choose &amp; multiple choose will be exchanged!)</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>برای ورود به صفحه مربوطه جهت پاک کردن داده های موقتی و بروز رسانی FTP، کلید را به مدت 2ثانیه نگه دارید.</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>داده های موقتی SD کارت پاک شود</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>اگر آهنگهای موجود در SDکارت تغییر کرده باشد، داده های موقتی نیز باید پاک شده و مجدداً خوانده شوند.</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>داده های موقتی  FTPپاک شود</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>اگر آهنگهای موجود در FTP تغییر کرده باشد، داده های موقتی نیز باید پاک شده و مجدداً خوانده شوند.</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>تماس با Z-Audioجهت بروز رسانی لیست آلبوم و آهنگ از FTP Server</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>Downloaded!   Kindly close &amp; restart app!</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>Succeed!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>PROJECTOR</string>
+		<key>eMed_SAT</key>
+		<string>SAT./CABLE</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>SD CARD</string>
+		<key>B_NETWORK</key>
+		<string>NETWORK</string>
+		<key>C_IPHONE</key>
+		<string>IPHONE</string>
+		<key>D_RADIO</key>
+		<string>RADIO</string>
+		<key>E_AUDIO_IN</key>
+		<string>AUDIO IN</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>Macro buttons</string>
+			<string>Moods</string>
+			<string>Lights</string>
+			<string>HVAC</string>
+			<string>Music</string>
+			<string>Shades</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>From Logo Library</string>
+		<key>FROM_PHOTOS</key>
+		<string>From Photos</string>
+		<key>EDIT_LOGO</key>
+		<string>Edit Logo</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>Choose logo for channel</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>Release your finger to start to search</string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>Drop down to search and jump to the song that is playing now</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>Searching</string>
+		<key>New item - 3</key>
+		<string></string>
+		<key>New item - 4</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

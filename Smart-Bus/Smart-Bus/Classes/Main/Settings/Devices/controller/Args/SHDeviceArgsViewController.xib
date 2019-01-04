@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHDeviceArgsViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="detailListView" destination="Z8f-bn-EsL" id="FJR-dT-mO6"/>
+                <outlet property="view" destination="t7x-fp-Dsb" id="5aW-Tn-nDo"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="t7x-fp-Dsb">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Vxm-l1-iCK">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z8f-bn-EsL">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="OVp-Va-101"/>
+                        <outlet property="delegate" destination="-1" id="BiL-jq-JZ4"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Vxm-l1-iCK" secondAttribute="trailing" id="1UG-Ye-vcT"/>
+                <constraint firstAttribute="bottom" secondItem="Vxm-l1-iCK" secondAttribute="bottom" id="50Q-MR-82g"/>
+                <constraint firstItem="Vxm-l1-iCK" firstAttribute="leading" secondItem="t7x-fp-Dsb" secondAttribute="leading" id="6NG-9k-zBZ"/>
+                <constraint firstItem="Z8f-bn-EsL" firstAttribute="top" secondItem="t7x-fp-Dsb" secondAttribute="top" id="ApY-jV-YjY"/>
+                <constraint firstItem="Z8f-bn-EsL" firstAttribute="leading" secondItem="t7x-fp-Dsb" secondAttribute="leading" id="Hha-aZ-Mgd"/>
+                <constraint firstAttribute="trailing" secondItem="Z8f-bn-EsL" secondAttribute="trailing" id="g8K-Yt-rtw"/>
+                <constraint firstItem="Vxm-l1-iCK" firstAttribute="top" secondItem="t7x-fp-Dsb" secondAttribute="top" id="wjC-lI-jGE"/>
+                <constraint firstAttribute="bottom" secondItem="Z8f-bn-EsL" secondAttribute="bottom" id="xOd-IV-gV7"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

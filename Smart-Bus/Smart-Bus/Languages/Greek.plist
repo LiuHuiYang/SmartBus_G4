@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>ΝΑΙ</string>
+		<key>NO</key>
+		<string>ΟΧΙ</string>
+		<key>OK</key>
+		<string>ΕΝΤΑΞΕΙ </string>
+		<key>CANCEL</key>
+		<string>ΑΚΥΡΟ</string>
+		<key>SAVED</key>
+		<string>ΑΠΟΘΗΚΕΥΤΗΚΕ </string>
+		<key>SAVE</key>
+		<string>ΑΠΟΘΗΚΕΥΣΗ</string>
+		<key>EDIT</key>
+		<string>ΑΛΛΑΓΕΣ</string>
+		<key>DONE</key>
+		<string>ΤΕΛΟΣ</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>Μήνυμα Συστήματος</string>
+		<key>ON</key>
+		<string>ΑΝΑΜΜΕΝΟ</string>
+		<key>OFF</key>
+		<string>ΚΛΕΙΣΤΟ</string>
+		<key>NO_DATA</key>
+		<string>ΔΕΝ ΥΠΑΡΧΟΥΝ ΔΕΔΟΜΕΝΑ!</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>Φωτισμός</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>Z-Audio</string>
+		<key>dshades</key>
+		<string>Σκίαστρα</string>
+		<key>emedia</key>
+		<string>Media</string>
+		<key>fmoods</key>
+		<string>Διαθέσεις</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>Ζώνη/ Περιοχή Έλεγχου</string>
+			<string>Κεντρικός Έλεγχος</string>
+			<string>Κοινοτικές Υπηρεσίες</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>ΚΟΥΜΠΙ MACRO</string>
+		<key>LIGHTS</key>
+		<string>Φωτισμός</string>
+		<key>MUSIC</key>
+		<string>Μουσική</string>
+		<key>SECURITY</key>
+		<string>Ασφάλεια</string>
+		<key>CLIMATE</key>
+		<string>Κλιματισμός</string>
+		<key>SCHEDULE</key>
+		<string>Πρόγραμμα</string>
+		<key>CAMERA</key>
+		<string>Κάμερα</string>
+		<key>APPLIANCES</key>
+		<string>Συσκευές</string>
+		<key>INTERCOM</key>
+		<string>Ενδοεπικοινωνία</string>
+		<key>COMMUNITY</key>
+		<string>Κοινότητα</string>
+		<key>HOME_STATUS</key>
+		<string>Κατάσταση Οικίας</string>
+		<key>METERS</key>
+		<string>Μετρητές</string>
+		<key>WEATHER</key>
+		<string>Καιρός</string>
+		<key>PHOTO</key>
+		<string>Φωτογραφία</string>
+		<key>ALARM</key>
+		<string>Συναγερμός</string>
+		<key>SMS_CONTROL</key>
+		<string>Έλεγχος μέσω SMS</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>Ρυθμίσεις</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>Ρυθμίσεις Δικτύου</string>
+		<key>DATABASE</key>
+		<string>Ανέβασμα &amp; Κατέβασμα Βάσης Δεδομένων</string>
+		<key>FIXED_ADDRESS_LIST</key>
+		<string>Σταθερή λίστα διευθύνσεων για δοκιμαστική έκδοση</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>Ρυθμίσεις Γλώσσας</string>
+		<key>VERSION</key>
+		<string>Έκδοση</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>Ρυθμίσεις Δικτύου</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>Τοπικό</string>
+		<key>INTERNET</key>
+		<string>Διαδίκτυο</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/Διεύθυνση IP</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Τα δεδομένα που έχετε καταχωρίσει δεν μπορούν να είναι μηδενικά!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Αποτυχία στη ανάκτηση της διεύθυνσης  IP από το  domain, βεβαιωθείτε ότι είναι ενωμένο με το διαδίκτυο.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Η διεύθυνση ΙΡ είναι λανθασμένη. Παρακαλούμε όπως ξαναδοκιμάσετε!</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>Ρυθμίσεις FTP Server </string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>Διεύθυνση FTP Server</string>
+		<key>USER_NAME</key>
+		<string>Όνομα Χρήστη</string>
+		<key>PASSWORD</key>
+		<string>Κωδικός</string>
+		<key>UPLOAD</key>
+		<string>Ανέβασμα</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>Ανέβασμα Βάσης Δεδομένων</string>
+		<key>DOWNLOAD</key>
+		<string>Κατέβασμα</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>Κατέβασμα βάσης Δεδομένων</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Ανέβασμα βάσης Δεδομένων από IPHONE/IPAD στοFTP Server;Βάση Δεδομένων είναι το  &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Κατέβασμα βάσης Δεδομένων από FTP Server στο IPHONE/IPAD; Η Βάση Δεδομένων πρέπει να έχει όνομα &quot;Database.sqlite3&quot;,και η διεύθυνση της βάσης Δεδομένων πρέπει να είναι στη διεύθυνση root του  FTP Server</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Συνδέετε...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Παρακαλούμε όπως ελέγξετε τη διεύθυνση FTP!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Παρακαλούμε όπως συμπληρώσετε όλες τις πληροφορίες</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Κατέβασμα Βάσης Δεδομένων &quot; Μήνυμα: @&quot;Η τρέχουσα βάση Δεδομένων στο πρόγραμμα θα αντικατασταθεί με τη νέα βάση δεδομένων στο FTP, θέλετε να συνεχίσετε?</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Ανέβασμα Ολοκληρώθηκε</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Αποτυχημένη Σύνδεση!</string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>A/C ΑΝΑΜΜΕΝΟ</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>Χαμηλό</string>
+			<string>Μεσαίο</string>
+			<string>Δυνατό</string>
+			<string>Αυτόματο</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>Δροσερό</string>
+			<string>Ζεστό</string>
+			<string>Ανεμιστήρας</string>
+			<string>Αυτόματο</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>Κρύο</string>
+			<string>Δροσερό</string>
+			<string>Θερμό</string>
+			<string>Ζεστό</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>Ανοίξτε</string>
+		<key>SHADE_CLOSE</key>
+		<string>Κλείστε</string>
+		<key>SHADE_STOP</key>
+		<string>Σταμάτα</string>
+		<key>SENDING</key>
+		<string>Στέλλονται Δεδομένα</string>
+		<key>EXECUTED</key>
+		<string>Εκτελέστηκε</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>Πατήστε το από κάτω κουμπί για να προσθέσετε νέα διάθεση</string>
+		<key>RECORD_MOOD</key>
+		<string>Αναγράψτε τη διάθεση</string>
+		<key>MOOD_NAME</key>
+		<string>Διάθεση:</string>
+		<key>SELECT_ICON</key>
+		<string>Επιλέξατε εικονίδιο</string>
+		<key>EDIT_MOOD</key>
+		<string>Αλλαγή στη διάθεση</string>
+		<key>RECORD</key>
+		<string>Αναγραφή</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>Επιλέξατε Εικονίδιο για διάθεση</string>
+		<key>SHADE_BYPASS</key>
+		<string>Παρακάμψτε</string>
+		<key>SHADE_OPEN</key>
+		<string>Ανοίξτε</string>
+		<key>SHADE_CLOSE</key>
+		<string>Κλείστε</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Άλλη διάθεση είναι σε λειτουργία, αν εκτελέσετε τη συγκεκριμένη διάθεση, τότε το άλλο θα ακυρωθεί. Θέλετε να προχωρήσετε στην εκτέλεση της συγκεκριμένης Διάθεσης?</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Η διάθεσή σας δεν έχει αναγραφεί!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- Ελέγξτε το δίκτυο σας.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- Ελέγξτε τις ρυθμίσεις της βάσης των δεδομένων σας.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Μήνυμα Σφάλματος:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1- Τουλάχιστον μια συσκευή θα πρέπει να έχει επιλεγεί.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- Η διάθεση δεν μπορεί να είναι κενή και πρέπει να είναι μοναδική.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Το σύστημα αναγράφει, παρακαλούμε περιμένετε…</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Δεν υπάρχουν δεδομένα για αναγραφή!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>ON</key>
+		<string>Αναμμένο</string>
+		<key>OFF</key>
+		<string>Σβηστό</string>
+		<key>MUTE</key>
+		<string>Βουβό</string>
+		<key>MENU</key>
+		<string>Κατάλογος Επιλογής</string>
+		<key>SOURCE</key>
+		<string>Πηγή</string>
+		<key>CONTROL</key>
+		<string>Έλεγχος</string>
+		<key>NUM_PAD</key>
+		<string>Num Pad</string>
+		<key>CHANNEL</key>
+		<string>Κανάλι</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>Ρυθμίσεις Δορυφορικού καναλιού</string>
+		<key>DELAY_FOR_IR</key>
+		<string>Καθυστέρηση για  IR</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>Δεν υπάρχει κανάλι</string>
+		<key>DONE</key>
+		<string>Τέλος!</string>
+		<key>CATEGORY</key>
+		<string>Κατηγορίες</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>Ρυθμίσεις Δορυφορικών Κατηγοριών</string>
+		<key>LABEL_CATEGORY</key>
+		<string>Επικεφαλίδα κατηγορίας:</string>
+		<key>ADD</key>
+		<string>Πρόσθεση</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Δεν υπάρχουν δεδομένα!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Δεν υπάρχει επικεφαλίδα ή χρησιμοποιείται!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Καθυστέρηση για IR (50ms～5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Η ποσότητα των CH πρέπει να είναι λιγότερη των 4 και μοναδική.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Το όνομα του καναλιού πρέπει να είναι συμπληρωμένο και μοναδικό!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Δεν μπορείτε να έχετε το ίδιο όνομα καναλιού!</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Κουμπιά Marco</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Κεντρικός Φωτισμός</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>Όλα Αναμμένα</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>Όλα Σβηστά</string>
+		<key>SELECTED_ITEM</key>
+		<string>Επιλέξτε Αντικείμενο</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Άλλο Macro είναι σε λειτουργία, αν εκτελέσετε τη συγκεκριμένη διάθεση τότε η άλλη θα ακυρωθεί. Θέλετε να προχωρήσετε στην εκτέλεση του συγκεκριμένου Marco?</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Συναγερμός</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>Επιλέξτε τρόπο ασφάλειας:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>Μακριά</string>
+			<string>Νύχτα</string>
+			<string>Νύχτα με καλεσμένους</string>
+			<string>Ημέρα</string>
+			<string>Διακοπές</string>
+			<string>Αφόπλιση</string>
+			<string>Αστυνομία</string>
+			<string>Ασθενοφόρο</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>Πληκτρολογήστε κωδικό</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Εκτελέστε!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Παρακαλούμε επιλέξτε διάθεση πρώτα!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Αποτυχία</string>
+		<key>OLD_PASSWORD</key>
+		<string>Παλιός κωδικός:</string>
+		<key>NEW_PASSWORD</key>
+		<string>Νέος κωδικός:</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>Καθορισμένος κωδικός:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Παρακαλούμε όπως κρατάτε για 2 δευτερόλεπτα το κουμπί πατημένο για να ενεργοποιήσετε την ‘Αστυνομία’ και ‘Ασθενοφόρο’ .</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Ο παλιός κωδικός είναι λανθασμένος!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Ο κωδικός πρέπει να είναι τετραψήφιος.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Νέος Κωδικός:</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Θέλετε να αλλάξετε κωδικό?</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Κλιματισμός</string>
+		<key>SELECTED_ITEM</key>
+		<string>Επιλέξτε Αντικείμενο:</string>
+		<key>ALL_AC_ON</key>
+		<string>ΟΛΑ AC ΑΝΑΜΜΕΝΑ</string>
+		<key>ALL_AC_OFF</key>
+		<string>ΟΛΑ AC ΣΒΗΣΤΑ</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>Κρύο</string>
+			<string>Δροσερό</string>
+			<string>Ζεστό</string>
+			<string>Θερμό</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Κάμερα</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Ηχογράφηση</string>
+		<key>RECORD</key>
+		<string>ΑΝΑΓΡΑΦΗΣΗ</string>
+		<key>PREVIEW</key>
+		<string>Προεπισκόπηση</string>
+		<key>STOP1</key>
+		<string>Σταμάτα</string>
+		<key>STOP</key>
+		<string>ΣΤΑΜΑΤΑ</string>
+		<key>DELETE</key>
+		<string>Διαγραφή</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>Ανέβασμα στο FTP</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP Server IP:</string>
+		<key>USER_NAME</key>
+		<string>Όνομα Χρήστη:</string>
+		<key>PASSWORD</key>
+		<string>Κωδικός:</string>
+		<key>UPLOADING</key>
+		<string>Ανέβασμα</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Παρακαλούμε επιλέξτε αρχείο!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Βεβαιωθείτε ότι υπάρχει ένα αρχείο  “Record” στο FTP server, για να μπορέσουν να αποθηκευτούν στο αρχείο “Record” στο FTP Server.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Τα δεδομένα που έχετε συμπληρώσει είναι λανθασμένα παρακαλούμε ξαναδοκιμάστε!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Επιτυχία! Για να αναπαραχθεί το αναγραμμένο αρχείο, η πηγή FTP στο Z-Audio χρειάζεται να ενημερωθεί από το χρήστη.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Παρακαλώ όπως ελέγξετε το δίκτυό σας και τις ρυθμίσεις του FTP Server και σιγουρευτείτε ότι το FTP Server τρέχει σωστά. </string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Το αρχείο υπάρχει ήδη. </string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Πρόγραμμα</string>
+		<key>SCHEDULE_NAME</key>
+		<string>Όνομα Προγράμματος</string>
+		<key>FREQUENCY</key>
+		<string>Συχνότητα</string>
+		<key>DATA_TIME</key>
+		<string>Ημερομηνία και ώρα</string>
+		<key>VALIDITY</key>
+		<string>Εγγυρότητα</string>
+		<key>ONE_TIME</key>
+		<string>Μία φορά</string>
+		<key>DAILY</key>
+		<string>Καθημερινά</string>
+		<key>WEEKLY</key>
+		<string>Εβδομαδιαία</string>
+		<key>ADD_NEW</key>
+		<string>Νέα Προσθήκη</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>Αλλαγές Προγράμματος</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>Προσθήκη Νέου Προγράμματος</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>Ελεγχόμενο Αντικείμενο</string>
+		<key>MACRO_BUTTONS</key>
+		<string>Κουμπιά Macro </string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>Κουδούνισμα Ξυπνητηριού </string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>Κατηγορίες Τραγουδιών</string>
+		<key>ALBUMS_LIST</key>
+		<string>Λίστα Album</string>
+		<key>ADD_TO_QUE</key>
+		<string>Προσθήκη στη σειρά</string>
+		<key>PLAY_QUE</key>
+		<string>Αναπαραγωγή σειράς</string>
+		<key>STOP_QUE</key>
+		<string>Σταμάτημα σειράς</string>
+		<key>QUE_START</key>
+		<string>Η σειρά έχει ξεκινήσει!</string>
+		<key>ZONE_LIST</key>
+		<string>Λίστα ζώνων</string>
+		<key>CHOOSE_ZONE</key>
+		<string>Επιλέξτε ζώνη</string>
+		<key>ADD_SUCCEED</key>
+		<string>Επιτυχία</string>
+		<key>UPDATE_FTP</key>
+		<string>Ενημέρωση FTP</string>
+		<key>REPEAT_OFF</key>
+		<string>Επανάληψη OFF</string>
+		<key>REPEAT_ONE</key>
+		<string>Επανάληψη ενός</string>
+		<key>CONTINUED</key>
+		<string>Συνεχόμενο</string>
+		<key>REPEAT_ALL</key>
+		<string>Επανάληψη όλων</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Αποτυχία ανάγνωσης λίστας, παρακαλούμε όπως ελέγξετε το δίκτυο και τις ρυθμίσεις της ζώνης, και ξαναδοκιμάστε</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Ενημερώνεται η λίστα τραγουδιών από FTP στο Z-Audio, παρακαλώ περιμένετε. </string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Η λίστα τραγουδιών δεν έχει διαβαστεί, η μουσική θα σταματήσει αν η λίστα δεν διαβαστεί. Θέλετε να συνεχίσετε; </string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Παρακαλούμε επιλέξτε ζώνη!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Δεν υπάρχει καταχωρημένη ζώνη, παρακαλούμε όπως προσθέσετε ζώνες στη βάση δεδομένων. </string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Πρέπει να επιλεχθεί τουλάχιστον μία ζώνη. </string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Αποτυχία σύνδεσης στο Z-Audio, παρακαλούμε ελέγξτε τις ρυθμίσεις και το δίκτυο. </string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Αποτυχία, παρακαλούμε όπως δοκιμάσετε ξανά αργότερα. </string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Επιτυχία!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Δεν υπάρχει τραγούδι στη σειρά, παρακαλούμε όπως προσθέσετε τραγούδι στη σειρά</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Πιέστε παρατεταμένα για 2 δευτερόλεπτα για να μεταφερθείτε στη σελίδα για προσωρινό καθάρισμα δεδομένων και για ενημέρωση του FTP</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Διαγράψτε προσωρινά δεδομένα της κάρτας μνήμης</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>Αν τα τραγούδια της κάρτας μνήμης έχουν αλλαγή, τα προσωρινά δεδομένα της κάρτας μνήμης θα πρέπει να διαγραφούν και να ξαναδιαβαστούν</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>Διαγραφή προσωρινών δεδομένων για το FTP</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>Αν τα τραγούδια του FTP έχουν αλλαγή, τα προσωρινά δεδομένα του FTP θα πρέπει να διαγραφούν και να ξαναδιαβαστούν</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>Ενημερώστε albums και λίστα τραγουδιών από το FTP server.</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>Κατέβηκε! Παρακαλείσθε όπως επανεκκινήσετε το πρόγραμμα!</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>Επιτυχία!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>Μηχανή Προβολής</string>
+		<key>eMed_SAT</key>
+		<string>ΔΟΡΥΦ./ΚΑΛΩΔΙΑΚΗ</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>SD ΚΑΡΤΑ ΜΝΗΜΗΣ</string>
+		<key>B_NETWORK</key>
+		<string>ΔΙΚΤΥΟ</string>
+		<key>C_IPHONE</key>
+		<string>IPHONE</string>
+		<key>D_RADIO</key>
+		<string>ΡΑΔΙΟ</string>
+		<key>E_AUDIO_IN</key>
+		<string>AUDIO IN</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>Κουμπί Macro</string>
+			<string>Moods</string>
+			<string>Φωτισμός</string>
+			<string>HVAC</string>
+			<string>Μουσική</string>
+			<string>Σκίαστρα</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>Λογότυπο  από αρχείο</string>
+		<key>FROM_PHOTOS</key>
+		<string>Από Φωτογραφία</string>
+		<key>EDIT_LOGO</key>
+		<string>Ρύθμιση Λογότυπου</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>Επιλέξτε Λογότυπο για Κανάλι</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>Απελευθερώστε το κουμπί για να ξεκινήσει η εύρεση </string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>‘Ελξατε τη σελίδα για να σας δείξει το τραγούδι που παίζει</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>Αναζήτηση </string>
+		<key>New item - 3</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

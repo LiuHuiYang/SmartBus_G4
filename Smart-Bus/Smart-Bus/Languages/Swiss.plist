@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>JA</string>
+		<key>NO</key>
+		<string>NEIN</string>
+		<key>OK</key>
+		<string>OK</string>
+		<key>CANCEL</key>
+		<string>Abbrechen</string>
+		<key>SAVED</key>
+		<string>Gespeichert</string>
+		<key>SAVE</key>
+		<string>Speichern</string>
+		<key>EDIT</key>
+		<string>Bearbeiten</string>
+		<key>DONE</key>
+		<string>Fertig</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>System Meldung</string>
+		<key>ON</key>
+		<string>EIN</string>
+		<key>OFF</key>
+		<string>AUS</string>
+		<key>NO_DATA</key>
+		<string>Keine Daten!</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>Light</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>Z-Audio</string>
+		<key>dshades</key>
+		<string>Shades</string>
+		<key>emedia</key>
+		<string>Media</string>
+		<key>fmoods</key>
+		<string>Moods</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABLE</key>
+		<array>
+			<string>Zonen- / Bereichssteuerung</string>
+			<string>Zentralsteuerung</string>
+			<string>Allgemeine Dienste</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>Makro Buttons</string>
+		<key>LIGHTS</key>
+		<string>Licht</string>
+		<key>MUSIC</key>
+		<string>Musik</string>
+		<key>SECURITY</key>
+		<string>Sicherheit</string>
+		<key>CLIMATE</key>
+		<string>Klima</string>
+		<key>SCHEDULE</key>
+		<string>Zeitplan</string>
+		<key>CAMERA</key>
+		<string>Kamera</string>
+		<key>APPLIANCES</key>
+		<string>Geräte</string>
+		<key>INTERCOM</key>
+		<string>Gegensprechanlage</string>
+		<key>COMMUNITY</key>
+		<string>Allgemein</string>
+		<key>HOME_STATUS</key>
+		<string>Zustand Haus</string>
+		<key>METERS</key>
+		<string>Instrumente / Zähler</string>
+		<key>WEATHER</key>
+		<string>Wetter</string>
+		<key>PHOTO</key>
+		<string>Foto</string>
+		<key>ALARM</key>
+		<string>Alarm</string>
+		<key>SMS_CONTROL</key>
+		<string>SMS Steuerung</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>Einstellungen</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>Netzwerk Einstellungen</string>
+		<key>DATABASE</key>
+		<string>Datenbank Sichern &amp; Rückspielen</string>
+		<key>FIXED_ADDRESS_LIST</key>
+		<string>Fixe Adressliste für Demo Version</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>Einstellung Sprache</string>
+		<key>VERSION</key>
+		<string>Version</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>Netzwerk Einstellungen</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>Lokal</string>
+		<key>INTERNET</key>
+		<string>Internet</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/IP Adresse</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Die eingegebenen Daten dürfen nicht null sein!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Fehler beim Bezug der IP Adresse über den Domain Namen; stellen Sie sicher dass eine Internetverbindung besteht.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Falsche IP Adresse, bitte überprüfen!</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>FTP Server settings</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>FTP Server Address</string>
+		<key>USER_NAME</key>
+		<string>Username</string>
+		<key>PASSWORD</key>
+		<string>Password</string>
+		<key>UPLOAD</key>
+		<string>Upload</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>Database Upload</string>
+		<key>DOWNLOAD</key>
+		<string>Download</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>Database Download</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Upload database from this IPHONE/IPAD to FTP Serser;Database name is  &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Download database from FTP Server to this IPHONE/IPAD; The database name must be &quot;Database.sqlite3&quot;,and the directory of the database must be on the root directory of FTP Server</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Connectting...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Please inspect FTP address!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Please fill in all content</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Database Download&quot; message:@&quot;Current database on app will be replaced by the database on FTP,are you sure you want to download? </string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Uploaded Completed</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Connection failed!</string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>KLIMATISIERUNG EIN</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>Niedrig</string>
+			<string>Mittel</string>
+			<string>Hoch</string>
+			<string>Auto</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>Kühlen</string>
+			<string>Heizen</string>
+			<string>Ventilator</string>
+			<string>Auto</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>Kalt</string>
+			<string>Kühl</string>
+			<string>Warm</string>
+			<string>Heiss</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPEN</key>
+		<string>Öffnen</string>
+		<key>SHADE_CLOSE</key>
+		<string>Schliessen</string>
+		<key>SHADE_STOP</key>
+		<string>Stop</string>
+		<key>SENDING</key>
+		<string>Daten werden gesendet.</string>
+		<key>EXECUTED</key>
+		<string>Ausgeführt</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>Drücken Sie den Knopf unten um eine neue Szene hinzu zu fügen</string>
+		<key>RECORD_MOOD</key>
+		<string>Szene aufzeichnen</string>
+		<key>MOOD_NAME</key>
+		<string>Szenen Name:</string>
+		<key>SELECT_ICON</key>
+		<string>Icon auswählen</string>
+		<key>EDIT_MOOD</key>
+		<string>Szene bearbeiten</string>
+		<key>RECORD</key>
+		<string>Aufzeichnen</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>Wählen Sie ein Icon für die Szene</string>
+		<key>SHADE_BYPASS</key>
+		<string>Überbrücken</string>
+		<key>SHADE_OPEN</key>
+		<string>Öffnen</string>
+		<key>SHADE_CLOSE</key>
+		<string>Schliessen</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Eine andere Szene wird gerade ausgeführt. Wenn Sie die aktuelle Szene ausführen, wird die laufende Szene abgebrochen. Trotzdem fortfahren？</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Fehler beim Aufzeichnen der Szene!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- Prüfen Sie die Netzwerkverbindung.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- Prüfen Sie die Datenbank Konfiguration.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Fehlermeldung:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1- Mindestens ein Gerät muss ausgewählt werden</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- Der Szenen Name kann nicht leer sein und muss eindeutig sein.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Szene wird aufgezeichnet, bitte warten...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Fehler beim Aufzeichnen! Grund: Keine Daten!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>ON</key>
+		<string>Ein</string>
+		<key>OFF</key>
+		<string>Aus</string>
+		<key>MUTE</key>
+		<string>Mute</string>
+		<key>MENU</key>
+		<string>Menü</string>
+		<key>SOURCE</key>
+		<string>Source</string>
+		<key>CONTROL</key>
+		<string>Steuerung</string>
+		<key>NUM_PAD</key>
+		<string>Nummerische Tastatur</string>
+		<key>CHANNEL</key>
+		<string>Kanal</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>SAT. Kanaleinstellungen</string>
+		<key>DELAY_FOR_IR</key>
+		<string>Delay für IR</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>Kein Kanal</string>
+		<key>DONE</key>
+		<string>Fertig!</string>
+		<key>CATEGORY</key>
+		<string>Kategorie</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>SAT. Kategorie Einstellungen</string>
+		<key>LABEL_CATEGORY</key>
+		<string>Kategorie Name:</string>
+		<key>ADD</key>
+		<string>Hinzufügen</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Keine Daten!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Der Name ist leer oder existiert bereits!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Delay für IR(50ms～5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>ANZAHL der CH muss kleiner als 4 und CH muss eindeutig sein.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Kanalname muss eindeutig sein und darf nicht leer sein!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Eingabe nicht erlaubt, gleicher Kanalname oder leeres Feld!</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Makro Aktionsknöpfe</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Licht zentral</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>ALLE EIN</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>ALLE AUS</string>
+		<key>SELECTED_ITEM</key>
+		<string>Objekt auswählen</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Ein anderes Makro wird ausgeführt, wenn Sie das aktuelle Makro starten wird das laufende Makro abgebrochen. Trotzdem fortfahren？</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Sicherheit</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>Sicherheitsmode auswählen:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>Abwesend</string>
+			<string>Nacht</string>
+			<string>Nacht mit Gästen</string>
+			<string>Tag</string>
+			<string>Ferien</string>
+			<string>Entschärfen</string>
+			<string>Polizei Notruf</string>
+			<string>Rettung</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>Passwort eingeben</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Ausgeführt!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Bitte zuerst Mode wählen!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Fehlgeschlagen</string>
+		<key>OLD_PASSWORD</key>
+		<string>Altes Passwort:</string>
+		<key>NEW_PASSWORD</key>
+		<string>Neues Passwort:</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>Standard Passwort:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Um den Mode &quot;Polizei Notruf&quot; oder &quot;Rettung&quot; zu aktivieren, halten Sie den Knopf für 2 Sekunden gedrückt.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Altes Passwort ist falsch!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Das Passwort muss 4 stellig sein.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Neues Passwort:</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Klima</string>
+		<key>SELECTED_ITEM</key>
+		<string>Objekt auswählen:</string>
+		<key>ALL_AC_ON</key>
+		<string>ALLE KLIMAANLAGEN EIN</string>
+		<key>ALL_AC_OFF</key>
+		<string>ALLE KLIMAANLAGEN AUS</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>Kalt</string>
+			<string>Kühl</string>
+			<string>Heiss</string>
+			<string>Warm</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Kamera</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Tonaufzeichnung</string>
+		<key>RECORD</key>
+		<string>AUFNAHME</string>
+		<key>PREVIEW</key>
+		<string>Vorschau</string>
+		<key>STOP1</key>
+		<string>Stop</string>
+		<key>STOP</key>
+		<string>STOP</string>
+		<key>DELETE</key>
+		<string>Löschen</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>Auf FTP hochladen</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP Server IP:</string>
+		<key>USER_NAME</key>
+		<string>Benutzername:</string>
+		<key>PASSWORD</key>
+		<string>Passwort:</string>
+		<key>UPLOADING</key>
+		<string>Hochladen...</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Bitte wählen Sie eine Aufzeichnungsdatei!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Stellen Sie sicher das ein Verzeichnis  “Record” am FTP Server vorhanden ist, Da die aufzunehmenden Dateien im Verzeichnis “Record” am FTP Server gespeichert werden.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Die von Ihnen eingegebenen Daten sind falsch, bitte nochmal überprüfen!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Erfolgreich gespeichert! Um die aufgezeichneten Dateien abzuspielen, muss die FTP Source am Z-Audio manuell aktualisiert werden.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Überprüfen Sie Ihre Netzwerk sowie die FTP Server Einstellungen und stellen Sie sicher, dass der FTP Server läuft.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Die Datei existiert bereits!</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Zeitplanung</string>
+		<key>SCHEDULE_NAME</key>
+		<string>Name des Plans</string>
+		<key>FREQUENCY</key>
+		<string>Wiederholung</string>
+		<key>DATA_TIME</key>
+		<string>Datum Zeit</string>
+		<key>VALIDITY</key>
+		<string>Gültigkeit</string>
+		<key>ONE_TIME</key>
+		<string>Einmalig</string>
+		<key>DAILY</key>
+		<string>Täglich</string>
+		<key>WEEKLY</key>
+		<string>Wöchentlich</string>
+		<key>ADD_NEW</key>
+		<string>Neu hinzufügen</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>Planung bearbeiten</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>Neue planung hinzufügen</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>Überwachte Objekte</string>
+		<key>MACRO_BUTTONS</key>
+		<string>Makro Buttons</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>Alarmglocke</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>Kategorien Liste</string>
+		<key>ALBUMS_LIST</key>
+		<string>Albums Liste</string>
+		<key>ADD_TO_QUE</key>
+		<string>Zur Playliste hinzu fügen</string>
+		<key>PLAY_QUE</key>
+		<string>Playliste abspielen</string>
+		<key>STOP_QUE</key>
+		<string>Playliste stoppen</string>
+		<key>QUE_START</key>
+		<string>Playliste ist gestartet!</string>
+		<key>ZONE_LIST</key>
+		<string>Zonen Liste</string>
+		<key>CHOOSE_ZONE</key>
+		<string> Zone auswählen</string>
+		<key>ADD_SUCCEED</key>
+		<string>Erfolgreich angefügt</string>
+		<key>UPDATE_FTP</key>
+		<string> FTP aktualisieren</string>
+		<key>REPEAT_OFF</key>
+		<string>Wiederholung aus</string>
+		<key>REPEAT_ONE</key>
+		<string>Einmal wiederholen</string>
+		<key>CONTINUED</key>
+		<string>Fortlaufend</string>
+		<key>REPEAT_ALL</key>
+		<string>Alle wiederholen</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Sorry! Die Liste kann nicht gelesen werden, bitte prüfen Sie die Netzwerk und Zonen Einstellungen oder versuchen Sie es erneut!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audio aktualisiert die Album &amp; Song Liste vom FTP; dies kann einige Minuten dauern. Bitte warten…</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Album &amp; Song Listewurde noch nicht gelesen, die Musik stoppt wenn Sie jetzt fortfahren. Jetzt Fortfahren?</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Bitte eine Zone wählen!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Es existiert noch keine Zone, bitte fügen Sie eine Zone in die Datenbank hinzu.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Mindestens eine Zone muss ausgewählt sein!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Fehler beim Verbinden des Z-Audio, bitte prüfen Sie die Einstellungen und das Netzwerk.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Fehler, versuchen SIe es später noch mal.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Erfolgreich!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Kein Song in der Playliste, fügen Sie Songs zur Playliste hinzu. (Wenn Sie das IPHONE schütteln, wird die Einzel- und Mehrfachauswahl vertauscht!)</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Bitte 2 Sekunden lang gedrückt halten um auf die Seite zum Löschen von temporären Dateien und der Aktualisierung des FTP zu gelangen</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Temporäre Dateien für SD Karte löschen</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>Wenn die Lieder auf der SD Karte geändert wurden, müssen die temporären Dateien für die SD Karte gelöscht und neu eingelesen werden.</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>Temporäre Daten für FTP löschen</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>Wenn die Lieder am FTP Server geändert wurden, müssen die temporären Dateien für den FTP Server gelöscht und neu eingelesen werden.</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>Z-Audio anweisen die Album &amp; Songs Liste vom FTP Server neu zu lesen.</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>Downloaded!   Kindly close &amp; restart app!</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>Succeed!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>PROJECTOR</string>
+		<key>eMed_SAT</key>
+		<string>SAT./CABLE</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>SD CARD</string>
+		<key>B_NETWORK</key>
+		<string>NETWORK</string>
+		<key>C_IPHONE</key>
+		<string>IPHONE</string>
+		<key>D_RADIO</key>
+		<string>RADIO</string>
+		<key>E_AUDIO_IN</key>
+		<string>AUDIO IN</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>Macro buttons</string>
+			<string>Moods</string>
+			<string>Lights</string>
+			<string>HVAC</string>
+			<string>Music</string>
+			<string>Shades</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>From Logo Library</string>
+		<key>FROM_PHOTOS</key>
+		<string>From Photos</string>
+		<key>EDIT_LOGO</key>
+		<string>Edit Logo</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>Choose logo for channel</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>Release your finger to start to search</string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>Drop down to search and jump to the song that is playing now</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>Searching</string>
+		<key>New item - 3</key>
+		<string></string>
+		<key>New item - 4</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

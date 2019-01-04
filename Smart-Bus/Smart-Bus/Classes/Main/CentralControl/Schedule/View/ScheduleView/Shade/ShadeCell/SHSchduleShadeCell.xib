@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SHSchduleShadeCell" rowHeight="64" id="M1a-AY-yem" customClass="SHSchduleShadeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M1a-AY-yem" id="BaI-BH-1VL">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="88.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVm-Z4-HAX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="88.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shade" translatesAutoresizingMaskIntoConstraints="NO" id="vAR-Ur-tna">
+                                <rect key="frame" x="0.0" y="9" width="80" height="70.5"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6p-xz-3q0" customClass="SHMoodShadeStatusButton">
+                                <rect key="frame" x="210" y="9" width="110" height="70.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <state key="normal" backgroundImage="operatorButtonBackground"/>
+                                <connections>
+                                    <action selector="homeButtonClick" destination="M1a-AY-yem" eventType="touchUpInside" id="jjv-bg-FIV"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djh-dq-NCk">
+                                <rect key="frame" x="85" y="9" width="120" height="71"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellline" translatesAutoresizingMaskIntoConstraints="NO" id="qjr-Zc-eJP">
+                                <rect key="frame" x="0.0" y="87.5" width="640" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ah3-jW-ngO"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vAR-Ur-tna" firstAttribute="width" secondItem="mVm-Z4-HAX" secondAttribute="width" multiplier="0.25" id="2FC-pz-IwU"/>
+                            <constraint firstAttribute="bottom" secondItem="qjr-Zc-eJP" secondAttribute="bottom" id="6bQ-ak-Y52"/>
+                            <constraint firstItem="Djh-dq-NCk" firstAttribute="height" secondItem="vAR-Ur-tna" secondAttribute="height" id="BWx-QY-TQL"/>
+                            <constraint firstItem="f6p-xz-3q0" firstAttribute="height" secondItem="vAR-Ur-tna" secondAttribute="height" id="OQu-MY-kIt"/>
+                            <constraint firstItem="vAR-Ur-tna" firstAttribute="height" secondItem="mVm-Z4-HAX" secondAttribute="height" multiplier="0.8" id="PAU-RL-1xi"/>
+                            <constraint firstItem="vAR-Ur-tna" firstAttribute="centerY" secondItem="mVm-Z4-HAX" secondAttribute="centerY" id="YSe-Qa-yOu"/>
+                            <constraint firstItem="vAR-Ur-tna" firstAttribute="leading" secondItem="mVm-Z4-HAX" secondAttribute="leading" id="bom-Oy-6uO"/>
+                            <constraint firstAttribute="trailing" secondItem="f6p-xz-3q0" secondAttribute="trailing" id="deC-nu-7Lm"/>
+                            <constraint firstItem="f6p-xz-3q0" firstAttribute="leading" secondItem="Djh-dq-NCk" secondAttribute="trailing" constant="5" id="mNg-7c-0Ji"/>
+                            <constraint firstItem="qjr-Zc-eJP" firstAttribute="leading" secondItem="mVm-Z4-HAX" secondAttribute="leading" id="pIV-aY-QLC"/>
+                            <constraint firstItem="Djh-dq-NCk" firstAttribute="centerY" secondItem="vAR-Ur-tna" secondAttribute="centerY" id="rgO-26-n9J"/>
+                            <constraint firstItem="Djh-dq-NCk" firstAttribute="leading" secondItem="vAR-Ur-tna" secondAttribute="trailing" constant="5" id="ru6-t6-H0j"/>
+                            <constraint firstItem="Djh-dq-NCk" firstAttribute="width" secondItem="vAR-Ur-tna" secondAttribute="width" multiplier="1.5" id="xeB-VG-8LM"/>
+                            <constraint firstItem="f6p-xz-3q0" firstAttribute="centerY" secondItem="vAR-Ur-tna" secondAttribute="centerY" id="zYu-Ct-QAe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="mVm-Z4-HAX" secondAttribute="trailing" id="5FO-As-IPP"/>
+                    <constraint firstAttribute="bottom" secondItem="mVm-Z4-HAX" secondAttribute="bottom" id="MUu-jj-8HY"/>
+                    <constraint firstItem="mVm-Z4-HAX" firstAttribute="top" secondItem="BaI-BH-1VL" secondAttribute="top" id="MVy-Dg-jpF"/>
+                    <constraint firstItem="mVm-Z4-HAX" firstAttribute="leading" secondItem="BaI-BH-1VL" secondAttribute="leading" id="Weu-Tj-2Y8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="homeButton" destination="f6p-xz-3q0" id="fvY-xR-tvN"/>
+                <outlet property="nameLabel" destination="Djh-dq-NCk" id="FiJ-Um-Ikl"/>
+            </connections>
+            <point key="canvasLocation" x="-40" y="-41.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cellline" width="640" height="2"/>
+        <image name="operatorButtonBackground" width="1275" height="379"/>
+        <image name="shade" width="128" height="105"/>
+    </resources>
+</document>

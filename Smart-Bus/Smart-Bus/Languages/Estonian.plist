@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>Jah</string>
+		<key>NO</key>
+		<string>Ei</string>
+		<key>OK</key>
+		<string>OK</string>
+		<key>CANCEL</key>
+		<string>Tühista</string>
+		<key>SAVED</key>
+		<string>Salvestatud</string>
+		<key>SAVE</key>
+		<string>Salvesta</string>
+		<key>EDIT</key>
+		<string>Muuda</string>
+		<key>DONE</key>
+		<string>Valmis</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>Süsteemi teade</string>
+		<key>ON</key>
+		<string>Sees</string>
+		<key>OFF</key>
+		<string>Väljas</string>
+		<key>NO_DATA</key>
+		<string>Andmed puuduvad!</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>Valgustus</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>Muusika</string>
+		<key>dshades</key>
+		<string>Kaardinad</string>
+		<key>emedia</key>
+		<string>Media</string>
+		<key>fmoods</key>
+		<string>Miljöö</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>Tsooni/Ala juhtimine</string>
+			<string>Keskjuhtimine</string>
+			<string>Ühiskondlik töö</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>Makro Nupud</string>
+		<key>LIGHTS</key>
+		<string>Valgustus</string>
+		<key>MUSIC</key>
+		<string>Muusika</string>
+		<key>SECURITY</key>
+		<string>Turvalisus</string>
+		<key>CLIMATE</key>
+		<string>Kliima</string>
+		<key>SCHEDULE</key>
+		<string>Plaan</string>
+		<key>CAMERA</key>
+		<string>Kaamera</string>
+		<key>APPLIANCES</key>
+		<string>Seadmed</string>
+		<key>INTERCOM</key>
+		<string>Intercom</string>
+		<key>COMMUNITY</key>
+		<string>Kogukond</string>
+		<key>HOME_STATUS</key>
+		<string>Kodu olek</string>
+		<key>METERS</key>
+		<string>Näidud</string>
+		<key>WEATHER</key>
+		<string>Ilm</string>
+		<key>PHOTO</key>
+		<string>Foto</string>
+		<key>ALARM</key>
+		<string>Häire</string>
+		<key>SMS_CONTROL</key>
+		<string>SMS juhtimine</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>Seaded</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>Võrgu seaded</string>
+		<key>DATABASE</key>
+		<string>Andmebaasi üles- ja allalaadimine</string>
+		<key>FIXED_ADDRESS_LIST</key>
+		<string>Fixed address list for Demo version-?</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>Keele seaded</string>
+		<key>VERSION</key>
+		<string>Versioon</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>Võrgu seaded</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>Kohalik</string>
+		<key>INTERNET</key>
+		<string>Internet</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/IP aadress</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Sisestatud andmed ei või olla null.</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>IP aadressi otsing domeeninime järgi ebaõnnestus. Kontrolli internetiühendust.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Palun kontrolli IP aadressi.</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>-----FTP Server Seaded</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>-----FTP Server Address</string>
+		<key>USER_NAME</key>
+		<string>-----Username</string>
+		<key>PASSWORD</key>
+		<string>-----Password</string>
+		<key>UPLOAD</key>
+		<string>-----Upload</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>-----Database Upload</string>
+		<key>DOWNLOAD</key>
+		<string>-----Download</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>-----Database Download</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>-----Upload database from this IPHONE/IPAD to FTP Serser;Database name is  &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>-----Download database from FTP Server to this IPHONE/IPAD; The database name must be &quot;Database.sqlite3&quot;,and the directory of the database must be on the root directory of FTP Server</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>-----Connectting...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>-----Please inspect FTP address!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>-----Please fill in all content</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>-----Database Download&quot; message:@&quot;Current database on app will be replaced by the database on FTP,are you sure you want to download? </string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>-----Uploaded Completed</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>-----Connection failed!</string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>Kliimaseade on välja lülitatud.</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>Aeglane</string>
+			<string>Mõõdukas</string>
+			<string>Kiire</string>
+			<string>Automaatne</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>Jahe</string>
+			<string>Soe</string>
+			<string>Ventilaator</string>
+			<string>Automaatne</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>Külm</string>
+			<string>Jahe</string>
+			<string>Soe</string>
+			<string>Palav</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPEN</key>
+		<string>Avatud</string>
+		<key>SHADE_CLOSE</key>
+		<string>Suletud</string>
+		<key>SHADE_STOP</key>
+		<string>Peatatud</string>
+		<key>SENDING</key>
+		<string>Andmete saatmine</string>
+		<key>EXECUTED</key>
+		<string>Valmis.</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>Uue miljöö lisamiseks vajuta nuppu allpool</string>
+		<key>RECORD_MOOD</key>
+		<string>Salvesta miljöö</string>
+		<key>MOOD_NAME</key>
+		<string>Miljöö nimi:</string>
+		<key>SELECT_ICON</key>
+		<string>Vali ikoon</string>
+		<key>EDIT_MOOD</key>
+		<string>Muuda miljööd</string>
+		<key>RECORD</key>
+		<string>Salvesta</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>Vali miljöö ikoon</string>
+		<key>SHADE_BYPASS</key>
+		<string>Eira</string>
+		<key>SHADE_OPEN</key>
+		<string>Ava</string>
+		<key>SHADE_CLOSE</key>
+		<string>Sulge</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Soovid sa jätkata aktiivse miljööga?</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Miljöö salvestamine ebaõnnestus!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1-Kontrolli võrguühendust.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2-Kontrolli andmebaasi ühendust.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Veateade:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1-Vähemalt üks seade peab olema valitud.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2-Miljöö nimi ei või olla tühi ning peab olema ainulaadne.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Miljöö salvestamine, palun oota...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Salvestamine ebaõnnestus. Andmed puuduvad.</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>Vaikne</string>
+		<key>MENU</key>
+		<string>Menüü</string>
+		<key>SOURCE</key>
+		<string>Allikas</string>
+		<key>CONTROL</key>
+		<string>Juhtimine</string>
+		<key>NUM_PAD</key>
+		<string>Numbriklahvistik</string>
+		<key>CHANNEL</key>
+		<string>Kanal</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>SAT kanali seaded</string>
+		<key>DELAY_FOR_IR</key>
+		<string>Infrapunase viivitus</string>
+		<key>FAV</key>
+		<string>Lemmikud</string>
+		<key>NO_CHANNEL</key>
+		<string>Kanal puudub</string>
+		<key>DONE</key>
+		<string>Valmis!</string>
+		<key>CATEGORY</key>
+		<string>Kategooria</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>SAT kategooria seaded</string>
+		<key>LABEL_CATEGORY</key>
+		<string>Kategooria nimi:</string>
+		<key>ADD</key>
+		<string>Lisa</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Andmed puuduvad!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Nimi puudub või eksisteerib juba</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Infrapunase viivitus (50ms~5000ms)-?Delay for IR(50ms～5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Kanalite arv peab olema väiksem kui 4 ja kanal peab olema ainulaadne.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Kanali nimi peab olema ainulaadne.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Muutmisväli, ei luba sama kanalinime</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Toimingute makro nupp</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Valgustuse juhtimine</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>Kõik sees</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>Kõik väljas</string>
+		<key>SELECTED_ITEM</key>
+		<string>Valitud komponent</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Teine makro nupp on töös. Soovid jätkata uue makroga?</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Turvalisus</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>Vali valverežiim:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>Ära</string>
+			<string>Öö</string>
+			<string>Öö külalisega</string>
+			<string>Päev</string>
+			<string>Puhkus</string>
+			<string>Valvest maas</string>
+			<string>Politsei häire</string>
+			<string>Kiirabi</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>Sisesta parool</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Valmis!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Palun vali esmalt režiim.</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Ebaõnnestus</string>
+		<key>OLD_PASSWORD</key>
+		<string>Vana parool:</string>
+		<key>NEW_PASSWORD</key>
+		<string>Uus parool:</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>Algparool:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Režiimide &quot;Politsei häire&quot; ja &quot;Kiirabi&quot; rakendamiseks vajuta ja hoia nuppu 2 sekundit.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Sisestatud vana parool on vale.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Parooli peab koosnema 4 numbrist.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Uus parool:</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Kas soovid kindlasti parooli vahetada?</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Kliima</string>
+		<key>SELECTED_ITEM</key>
+		<string>Valitud komponent:</string>
+		<key>ALL_AC_ON</key>
+		<string>Kõik õhukonditsioneerid sees</string>
+		<key>ALL_AC_OFF</key>
+		<string>Kõik õhukonditsioneerid väljas</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>Külm</string>
+			<string>Jahe</string>
+			<string>Kuum</string>
+			<string>Soe</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Kaamera</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Helisalvestus</string>
+		<key>RECORD</key>
+		<string>Salvesta</string>
+		<key>PREVIEW</key>
+		<string>Eelvaade</string>
+		<key>STOP1</key>
+		<string>Stop</string>
+		<key>STOP</key>
+		<string>STOP</string>
+		<key>DELETE</key>
+		<string>Kustuta</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>Salvesta FTP serverisse</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP serveri IP aadress:</string>
+		<key>USER_NAME</key>
+		<string>Kasutajanimi:</string>
+		<key>PASSWORD</key>
+		<string>Parool:</string>
+		<key>UPLOADING</key>
+		<string>Salvestamine serverisse...</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Vali salvestuse fail.</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Salvestised talletatakse &quot;Record&quot; nimeliss kausta FTP serveris, kontrolli üle kausta olemasolu serveris.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Sisestatud andmed on valed, kontrolli andmeid!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Salvestamine õnnestus. Salvesise mängimiseks tuleb Z-Audio FTP allikat käsitsi värskendada.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Kontrolli võrguühendust ja FTP serveri seadeid, veendu et FTP server töötab.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Sellenimeline fail juba eksisteerib.</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Plaan</string>
+		<key>SCHEDULE_NAME</key>
+		<string>Plaani nimi</string>
+		<key>FREQUENCY</key>
+		<string>Sagedus</string>
+		<key>DATE_TIME</key>
+		<string>Kuupäev ja aeg</string>
+		<key>VALIDITY</key>
+		<string>Kehtivus</string>
+		<key>ONE_TIME</key>
+		<string>Üks kord</string>
+		<key>DAILY</key>
+		<string>Päeviti</string>
+		<key>WEEKLY</key>
+		<string>Nädalati</string>
+		<key>ADD_NEW</key>
+		<string>Lisa uus</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>Muuda plaani</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>Lisa uus plaan</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>Juhitav komponent</string>
+		<key>MACRO_BUTTONS</key>
+		<string>Makro nupud</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>Äratuskella helin</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>Laulu kategooria nimekiri</string>
+		<key>ALBUMS_LIST</key>
+		<string>Kogumike nimekiri</string>
+		<key>ADD_TO_QUE</key>
+		<string>Lisa järjekorda</string>
+		<key>PLAY_QUE</key>
+		<string>Mängi järjekord</string>
+		<key>STOP_QUE</key>
+		<string>Peata järjekord</string>
+		<key>QUE_START</key>
+		<string>Järjekord on alustatud</string>
+		<key>ZONE_LIST</key>
+		<string>Tsoonide nimekiri</string>
+		<key>CHOOSE_ZONE</key>
+		<string>Vali tsoon</string>
+		<key>ADD_SUCCEED</key>
+		<string>Õnnestus</string>
+		<key>UPDATE_FTP</key>
+		<string>Värskenda FTP</string>
+		<key>REPEAT_OFF</key>
+		<string>Ilma korduseta</string>
+		<key>REPEAT_ONE</key>
+		<string>Korda ühte</string>
+		<key>CONTINUED</key>
+		<string>Järjestikune</string>
+		<key>REPEAT_ALL</key>
+		<string>Korda kõiki</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Nimekirja lugemine ebaõnnestus, kontrolli võrgu ja tsooni seadeid või proovi hiljem uuesti.</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audio värskendab kogumike ja laulude nimekirja FTP serverist. Palun oota...</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Kogumike ja laulude nimekirja ei ole veel laetud. Jätkamise korral peatub muusika mängimine. Soovid jätkata?</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Palun vali tsoon.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Tsoon puudub. Palun lisa tsoon andmebaasi.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Vähemalt üks tsoon peab olema valitud!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Z-Audio ühendus ebaõnnestus, kontrolli seadeid ja võrguühendust.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Nurjus. Proovi hiljem uuesti.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Õnnestus</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Järjekord ei sisalda laulusid, lisa laulusid. (Üksikvaliku ja hulkvaliku vahel lülitamiseks raputa iPhone&apos;i)</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Ajutiste andmete kustutamiseks ja FTP serveri värskendamiseks vajuta ja hoia 2 sekundit</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Kustuta SD kaardi kohta käivad ajutised andmed</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>SD kaardi kohta käivad ajutisei andmeid tuleb värskendada, kui muusika SD kaardil on muutunud.</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>Kustuta FTP kohta käivad ajutised andmed</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>FTP serveri kohta käivad ajutisi andmeid tuleb värskendada, kui muusika FTP serveris on muutunud.</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>Värskenda Z-Audio kogumike ja laulude nimekiri FTP serverist.</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>Salvestatud. Palun sulge ja käivita rakendus uuesti.</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>Valmis</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>Apple TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>Projektor</string>
+		<key>eMed_SAT</key>
+		<string>SAT kaabel</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>SD kaart</string>
+		<key>B_NETWORK</key>
+		<string>Võrk</string>
+		<key>C_IPHONE</key>
+		<string>iPhone</string>
+		<key>D_RADIO</key>
+		<string>Raadio</string>
+		<key>E_AUDIO_IN</key>
+		<string>Helisisend</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>Makro nupud</string>
+			<string>Miljööd</string>
+			<string>Valgustus</string>
+			<string>HVAC</string>
+			<string>Muusika</string>
+			<string>Kaardinad</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>Logokogumikust</string>
+		<key>FROM_PHOTOS</key>
+		<string>Fotokogumikust</string>
+		<key>EDIT_LOGO</key>
+		<string>Vaheta logo</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>Vali kanalile logo</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>Otsingu alustamiseks vabasta nupp</string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>Tiri allasuunas otsimaks ning näitamaks hetkel mängivat laulu</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>Otsin</string>
+	</dict>
+</dict>
+</plist>

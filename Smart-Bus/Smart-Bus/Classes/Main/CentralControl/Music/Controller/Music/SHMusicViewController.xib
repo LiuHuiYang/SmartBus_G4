@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHMusicViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="listView" destination="Hiw-Ek-46D" id="FQE-xx-pSf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="RzK-d6-IKA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Hiw-Ek-46D">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8vq-e3-eOx">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="zOh-QV-xYw"/>
+                        <outlet property="delegate" destination="-1" id="7vI-CA-5FN"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Hiw-Ek-46D" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4m1-Sm-NbU"/>
+                <constraint firstAttribute="bottom" secondItem="RzK-d6-IKA" secondAttribute="bottom" id="B7y-Xm-ZYO"/>
+                <constraint firstItem="RzK-d6-IKA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Je2-jd-rKJ"/>
+                <constraint firstAttribute="trailing" secondItem="Hiw-Ek-46D" secondAttribute="trailing" id="KJN-tC-0GG"/>
+                <constraint firstAttribute="trailing" secondItem="RzK-d6-IKA" secondAttribute="trailing" id="LYX-Kb-DiI"/>
+                <constraint firstAttribute="bottom" secondItem="Hiw-Ek-46D" secondAttribute="bottom" id="YXr-FF-Dmo"/>
+                <constraint firstItem="RzK-d6-IKA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZAA-bX-Oo6"/>
+                <constraint firstItem="Hiw-Ek-46D" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="g1u-wT-AaU"/>
+            </constraints>
+            <point key="canvasLocation" x="89" y="-293"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

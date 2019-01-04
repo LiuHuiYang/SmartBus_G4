@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHZoneAppleTVControlViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonHeightConstraint" destination="J5L-Cn-GXU" id="rv4-pK-P7j"/>
+                <outlet property="buttonWidthConstraint" destination="L6B-Yx-uFA" id="86P-TY-Fa3"/>
+                <outlet property="menuButton" destination="NHt-33-od6" id="zM4-lj-wBv"/>
+                <outlet property="turnOffButton" destination="s70-WD-7G9" id="dsm-DU-nb6"/>
+                <outlet property="turnOnButton" destination="jKf-Qf-LPq" id="s69-Bb-eVJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewHeightConstraint" destination="DEg-bb-5G9" id="Kb5-FY-pyh"/>
+                <outlet property="viewWidthConstraint" destination="0Cr-BK-mJb" id="jwj-PO-79P"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="K3h-dX-6jq">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n76-B7-BLp" userLabel="bgView">
+                    <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WGY-JQ-KcD">
+                            <rect key="frame" x="10" y="10" width="355" height="578"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKf-Qf-LPq">
+                            <rect key="frame" x="27.5" y="20" width="64" height="64"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <state key="normal" title="开" backgroundImage="mediaMenubuttonbackground">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="turnOnButtonClick" destination="-1" eventType="touchUpInside" id="pLi-PL-9Pg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s70-WD-7G9">
+                            <rect key="frame" x="283.5" y="20" width="64" height="64"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <state key="normal" title="关" backgroundImage="mediaMenubuttonbackground">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="turnOffButtonClick" destination="-1" eventType="touchUpInside" id="MIF-tK-ld2"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHt-33-od6">
+                            <rect key="frame" x="27.5" y="514" width="64" height="64"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <state key="normal" title="菜单" backgroundImage="mediaMenubuttonbackground">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="menuButtonClick" destination="-1" eventType="touchUpInside" id="3y1-ur-gh1"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvi-Vo-8Ko">
+                            <rect key="frame" x="283.5" y="514" width="64" height="64"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <state key="normal" image="mediaplay" backgroundImage="mediaMenubuttonbackground">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pauseButtonClick" destination="-1" eventType="touchUpInside" id="WaX-Al-blF"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mediaCenterControlbuttonbackground" translatesAutoresizingMaskIntoConstraints="NO" id="gNb-N5-gpv">
+                            <rect key="frame" x="27.5" y="139" width="320" height="320"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="0Cr-BK-mJb"/>
+                                <constraint firstAttribute="height" constant="320" id="DEg-bb-5G9"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ez7-nw-pEF">
+                            <rect key="frame" x="155.5" y="139" width="64" height="64"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="tvBtnPointImg"/>
+                            <connections>
+                                <action selector="upButtonClick" destination="-1" eventType="touchUpInside" id="zI2-3E-k5k"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UpA-Pj-Yiw">
+                            <rect key="frame" x="27.5" y="267" width="64" height="64"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="tvBtnPointImg"/>
+                            <connections>
+                                <action selector="leftButtonClick" destination="-1" eventType="touchUpInside" id="ORP-dY-znv"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-Co-Bgu">
+                            <rect key="frame" x="283.5" y="267" width="64" height="64"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="tvBtnPointImg"/>
+                            <connections>
+                                <action selector="rightButtonClick" destination="-1" eventType="touchUpInside" id="ihg-VZ-BHN"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Zw-an-ktx">
+                            <rect key="frame" x="155.5" y="395" width="64" height="64"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="tvBtnPointImg"/>
+                            <connections>
+                                <action selector="downButtonClick" destination="-1" eventType="touchUpInside" id="aBg-eX-cQr"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2C-RI-ZBY">
+                            <rect key="frame" x="155.5" y="267" width="64" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="J5L-Cn-GXU"/>
+                                <constraint firstAttribute="width" constant="64" id="L6B-Yx-uFA"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="mediaAppleTVCenter">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="sureButtonClick" destination="-1" eventType="touchUpInside" id="r6g-ZN-gk7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="gNb-N5-gpv" firstAttribute="trailing" secondItem="Jqd-Co-Bgu" secondAttribute="trailing" id="0uy-RN-Y4S"/>
+                        <constraint firstItem="s70-WD-7G9" firstAttribute="height" secondItem="i2C-RI-ZBY" secondAttribute="height" id="1j4-67-jLg"/>
+                        <constraint firstItem="Jqd-Co-Bgu" firstAttribute="height" secondItem="i2C-RI-ZBY" secondAttribute="height" id="3L9-hw-hOH"/>
+                        <constraint firstItem="kvi-Vo-8Ko" firstAttribute="height" secondItem="i2C-RI-ZBY" secondAttribute="height" id="7bh-5n-Ngd"/>
+                        <constraint firstItem="jKf-Qf-LPq" firstAttribute="height" secondItem="i2C-RI-ZBY" secondAttribute="height" id="7tL-UK-NKY"/>
+                        <constraint firstItem="s70-WD-7G9" firstAttribute="width" secondItem="i2C-RI-ZBY" secondAttribute="width" id="EsB-Yd-2yL"/>
+                        <constraint firstItem="UpA-Pj-Yiw" firstAttribute="leading" secondItem="gNb-N5-gpv" secondAttribute="leading" id="IPa-Oh-Vqz"/>
+                        <constraint firstItem="UpA-Pj-Yiw" firstAttribute="width" secondItem="i2C-RI-ZBY" secondAttribute="width" id="JVQ-Ud-OO4"/>
+                        <constraint firstItem="Jqd-Co-Bgu" firstAttribute="centerY" secondItem="i2C-RI-ZBY" secondAttribute="centerY" id="NtU-us-Vlq"/>
+                        <constraint firstItem="jKf-Qf-LPq" firstAttribute="width" secondItem="i2C-RI-ZBY" secondAttribute="width" id="RKV-UE-L1N"/>
+                        <constraint firstItem="9Zw-an-ktx" firstAttribute="bottom" secondItem="gNb-N5-gpv" secondAttribute="bottom" id="T7X-xD-pAV"/>
+                        <constraint firstItem="gNb-N5-gpv" firstAttribute="centerX" secondItem="WGY-JQ-KcD" secondAttribute="centerX" id="U6L-l0-wN7"/>
+                        <constraint firstItem="UpA-Pj-Yiw" firstAttribute="centerY" secondItem="i2C-RI-ZBY" secondAttribute="centerY" id="UeT-LG-TnI"/>
+                        <constraint firstItem="gNb-N5-gpv" firstAttribute="trailing" secondItem="Jqd-Co-Bgu" secondAttribute="trailing" id="Ur5-LF-XUi"/>
+                        <constraint firstItem="kvi-Vo-8Ko" firstAttribute="width" secondItem="i2C-RI-ZBY" secondAttribute="width" id="W8E-YS-MIi"/>
+                        <constraint firstItem="NHt-33-od6" firstAttribute="centerX" secondItem="jKf-Qf-LPq" secondAttribute="centerX" id="Wnn-TO-Rfh"/>
+                        <constraint firstItem="i2C-RI-ZBY" firstAttribute="centerX" secondItem="gNb-N5-gpv" secondAttribute="centerX" id="XJC-Ng-2I6"/>
+                        <constraint firstItem="gNb-N5-gpv" firstAttribute="centerY" secondItem="WGY-JQ-KcD" secondAttribute="centerY" id="Xwf-3f-b3x"/>
+                        <constraint firstItem="jKf-Qf-LPq" firstAttribute="top" secondItem="WGY-JQ-KcD" secondAttribute="top" constant="10" id="Ykl-Zh-JcI"/>
+                        <constraint firstItem="NHt-33-od6" firstAttribute="bottom" secondItem="WGY-JQ-KcD" secondAttribute="bottom" constant="-10" id="ZLV-fw-PUb"/>
+                        <constraint firstItem="WGY-JQ-KcD" firstAttribute="top" secondItem="n76-B7-BLp" secondAttribute="top" constant="10" id="aKf-Y2-950"/>
+                        <constraint firstAttribute="trailing" secondItem="WGY-JQ-KcD" secondAttribute="trailing" constant="10" id="caj-vX-Dlk"/>
+                        <constraint firstItem="Ez7-nw-pEF" firstAttribute="height" secondItem="i2C-RI-ZBY" secondAttribute="height" id="eEH-Gn-Ktm"/>
+                        <constraint firstItem="jKf-Qf-LPq" firstAttribute="leading" secondItem="UpA-Pj-Yiw" secondAttribute="leading" id="hXV-W4-ZEq"/>
+                        <constraint firstItem="s70-WD-7G9" firstAttribute="trailing" secondItem="Jqd-Co-Bgu" secondAttribute="trailing" id="kAd-5d-HxY"/>
+                        <constraint firstItem="kvi-Vo-8Ko" firstAttribute="centerX" secondItem="s70-WD-7G9" secondAttribute="centerX" id="lcI-rk-WwB"/>
+                        <constraint firstItem="Ez7-nw-pEF" firstAttribute="centerX" secondItem="i2C-RI-ZBY" secondAttribute="centerX" id="miq-zh-0ea"/>
+                        <constraint firstItem="NHt-33-od6" firstAttribute="width" secondItem="i2C-RI-ZBY" secondAttribute="width" id="oOQ-G1-YgG"/>
+                        <constraint firstItem="WGY-JQ-KcD" firstAttribute="leading" secondItem="n76-B7-BLp" secondAttribute="leading" constant="10" id="sDJ-CD-t9P"/>
+                        <constraint firstItem="9Zw-an-ktx" firstAttribute="centerX" secondItem="i2C-RI-ZBY" secondAttribute="centerX" id="sND-K7-pef"/>
+                        <constraint firstItem="s70-WD-7G9" firstAttribute="top" secondItem="jKf-Qf-LPq" secondAttribute="top" id="sOd-O4-Yrb"/>
+                        <constraint firstItem="gNb-N5-gpv" firstAttribute="leading" secondItem="UpA-Pj-Yiw" secondAttribute="leading" id="tTI-D4-49B"/>
+                        <constraint firstItem="Ez7-nw-pEF" firstAttribute="width" secondItem="i2C-RI-ZBY" secondAttribute="width" id="uf2-eE-i82"/>
+                        <constraint firstAttribute="bottom" secondItem="WGY-JQ-KcD" secondAttribute="bottom" constant="10" id="vqT-pr-0BN"/>
+                        <constraint firstItem="kvi-Vo-8Ko" firstAttribute="bottom" secondItem="NHt-33-od6" secondAttribute="bottom" id="w2c-ee-fgU"/>
+                        <constraint firstItem="9Zw-an-ktx" firstAttribute="width" secondItem="i2C-RI-ZBY" secondAttribute="width" id="wHm-zT-rRM"/>
+                        <constraint firstItem="Jqd-Co-Bgu" firstAttribute="trailing" secondItem="gNb-N5-gpv" secondAttribute="trailing" id="wzd-zk-oEU"/>
+                        <constraint firstItem="NHt-33-od6" firstAttribute="height" secondItem="i2C-RI-ZBY" secondAttribute="height" id="x3q-w2-Vve"/>
+                        <constraint firstItem="UpA-Pj-Yiw" firstAttribute="height" secondItem="i2C-RI-ZBY" secondAttribute="height" id="xHM-nh-Ybm"/>
+                        <constraint firstItem="Ez7-nw-pEF" firstAttribute="top" secondItem="gNb-N5-gpv" secondAttribute="top" id="xIT-h6-FHq"/>
+                        <constraint firstItem="9Zw-an-ktx" firstAttribute="height" secondItem="i2C-RI-ZBY" secondAttribute="height" id="xyK-VO-4mO"/>
+                        <constraint firstItem="Jqd-Co-Bgu" firstAttribute="width" secondItem="i2C-RI-ZBY" secondAttribute="width" id="y6c-8X-2MP"/>
+                        <constraint firstItem="i2C-RI-ZBY" firstAttribute="centerY" secondItem="gNb-N5-gpv" secondAttribute="centerY" id="zBE-hc-dcB"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="K3h-dX-6jq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1go-80-Z0T"/>
+                <constraint firstAttribute="bottom" secondItem="n76-B7-BLp" secondAttribute="bottom" constant="49" id="A6b-Sm-TGy"/>
+                <constraint firstAttribute="bottom" secondItem="K3h-dX-6jq" secondAttribute="bottom" id="ACe-Sh-sZx"/>
+                <constraint firstItem="n76-B7-BLp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Git-cL-Vgb"/>
+                <constraint firstItem="n76-B7-BLp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="U4h-n8-ZNl"/>
+                <constraint firstAttribute="trailing" secondItem="K3h-dX-6jq" secondAttribute="trailing" id="aMq-A3-w4D"/>
+                <constraint firstAttribute="trailing" secondItem="n76-B7-BLp" secondAttribute="trailing" id="e8S-ML-F2z"/>
+                <constraint firstItem="K3h-dX-6jq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="g9k-TD-6Ka"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+        <image name="mediaAppleTVCenter" width="64" height="74"/>
+        <image name="mediaCenterControlbuttonbackground" width="256" height="256"/>
+        <image name="mediaMenubuttonbackground" width="64" height="64"/>
+        <image name="mediaplay" width="26" height="21"/>
+        <image name="tvBtnPointImg" width="51" height="51"/>
+    </resources>
+</document>

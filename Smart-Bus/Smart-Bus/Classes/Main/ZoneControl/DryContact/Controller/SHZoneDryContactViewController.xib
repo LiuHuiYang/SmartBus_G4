@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHZoneDryContactViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="dryContactListView" destination="enC-Nv-VkH" id="pYp-55-pfC"/>
+                <outlet property="listViewBottomConstraint" destination="6Ub-Bt-6TA" id="Rzd-Ex-gEM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Lch-th-Lpd">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="enC-Nv-VkH">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ubF-BP-8La"/>
+                        <outlet property="delegate" destination="-1" id="J2C-mC-npM"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="enC-Nv-VkH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2P1-V7-WuI"/>
+                <constraint firstAttribute="bottom" secondItem="enC-Nv-VkH" secondAttribute="bottom" constant="49" id="6Ub-Bt-6TA"/>
+                <constraint firstAttribute="bottom" secondItem="Lch-th-Lpd" secondAttribute="bottom" id="MGB-fn-iMm"/>
+                <constraint firstItem="Lch-th-Lpd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MnD-ls-NyY"/>
+                <constraint firstItem="Lch-th-Lpd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VXR-Li-8UC"/>
+                <constraint firstItem="enC-Nv-VkH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZHc-si-NpA"/>
+                <constraint firstAttribute="trailing" secondItem="enC-Nv-VkH" secondAttribute="trailing" id="b3i-U7-lTw"/>
+                <constraint firstAttribute="trailing" secondItem="Lch-th-Lpd" secondAttribute="trailing" id="l3v-43-aCS"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

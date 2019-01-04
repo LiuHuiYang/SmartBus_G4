@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHPhotosViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="albumsButton" destination="ixj-Is-nIu" id="XMJ-6X-erO"/>
+                <outlet property="buttonHeightConstraint" destination="sdV-Te-UHL" id="BHh-c6-xIq"/>
+                <outlet property="cameraButton" destination="937-bY-5pa" id="Pmh-tY-F8T"/>
+                <outlet property="photosButton" destination="S7f-8c-mQN" id="282-t0-d3n"/>
+                <outlet property="view" destination="i5i-CK-Mcc" id="vec-I7-sll"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5i-CK-Mcc">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="FTn-WR-jmi">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7f-8c-mQN">
+                    <rect key="frame" x="103" y="30" width="169" height="49"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <state key="normal" title="Photos">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="photosClick" destination="-1" eventType="touchUpInside" id="aau-QF-r7w"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixj-Is-nIu">
+                    <rect key="frame" x="103" y="109" width="169" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="sdV-Te-UHL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <state key="normal" title="Albums">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="albumsClick" destination="-1" eventType="touchUpInside" id="Cbo-91-WFy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="937-bY-5pa">
+                    <rect key="frame" x="103" y="188" width="169" height="49"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <state key="normal" title="Camera">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cameraClick:" destination="-1" eventType="touchUpInside" id="aWr-1v-2WR"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="S7f-8c-mQN" firstAttribute="width" secondItem="ixj-Is-nIu" secondAttribute="width" id="1UM-rx-cPa"/>
+                <constraint firstItem="S7f-8c-mQN" firstAttribute="top" secondItem="i5i-CK-Mcc" secondAttribute="top" constant="30" id="2AK-c9-DKu"/>
+                <constraint firstItem="937-bY-5pa" firstAttribute="top" secondItem="ixj-Is-nIu" secondAttribute="bottom" constant="30" id="2ZS-yX-ubM"/>
+                <constraint firstItem="FTn-WR-jmi" firstAttribute="leading" secondItem="i5i-CK-Mcc" secondAttribute="leading" id="4t1-0b-yNZ"/>
+                <constraint firstAttribute="bottom" secondItem="FTn-WR-jmi" secondAttribute="bottom" id="A0p-yf-Bzt"/>
+                <constraint firstItem="937-bY-5pa" firstAttribute="width" secondItem="ixj-Is-nIu" secondAttribute="width" id="BDA-88-L3i"/>
+                <constraint firstItem="S7f-8c-mQN" firstAttribute="centerX" secondItem="ixj-Is-nIu" secondAttribute="centerX" id="DP9-mO-QvN"/>
+                <constraint firstItem="ixj-Is-nIu" firstAttribute="width" secondItem="FTn-WR-jmi" secondAttribute="width" multiplier="0.45" id="EbV-Av-KsF"/>
+                <constraint firstItem="ixj-Is-nIu" firstAttribute="top" secondItem="S7f-8c-mQN" secondAttribute="bottom" constant="30" id="MBV-Ez-Z8E"/>
+                <constraint firstItem="S7f-8c-mQN" firstAttribute="height" secondItem="ixj-Is-nIu" secondAttribute="height" id="NAZ-4F-953"/>
+                <constraint firstItem="FTn-WR-jmi" firstAttribute="top" secondItem="i5i-CK-Mcc" secondAttribute="top" id="NEI-Dm-ad1"/>
+                <constraint firstItem="ixj-Is-nIu" firstAttribute="centerX" secondItem="FTn-WR-jmi" secondAttribute="centerX" id="P7x-ej-gwA"/>
+                <constraint firstItem="937-bY-5pa" firstAttribute="centerX" secondItem="ixj-Is-nIu" secondAttribute="centerX" id="Pie-RX-o60"/>
+                <constraint firstAttribute="trailing" secondItem="FTn-WR-jmi" secondAttribute="trailing" id="XmK-jy-ZCd"/>
+                <constraint firstItem="937-bY-5pa" firstAttribute="height" secondItem="ixj-Is-nIu" secondAttribute="height" id="XpO-Gm-KQ9"/>
+            </constraints>
+            <point key="canvasLocation" x="236" y="-105"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

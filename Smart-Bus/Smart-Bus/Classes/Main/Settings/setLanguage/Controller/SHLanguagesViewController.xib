@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHLanguagesViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonHeightConstraint" destination="P0x-fc-OHB" id="97N-Li-bMz"/>
+                <outlet property="cancelButton" destination="rXs-UN-aXY" id="96j-Me-MzL"/>
+                <outlet property="listView" destination="UHH-Al-iSO" id="UK0-hu-Nx2"/>
+                <outlet property="saveButton" destination="H4m-Sm-2IH" id="xOw-Z5-m0U"/>
+                <outlet property="view" destination="vFG-89-O6C" id="bdH-Kj-Y4Y"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vFG-89-O6C">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="NTh-wS-Xvt">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="49" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UHH-Al-iSO">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="534"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="yWt-KD-hxG"/>
+                        <outlet property="delegate" destination="-1" id="3fK-1V-yan"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4m-Sm-2IH">
+                    <rect key="frame" x="215.5" y="554" width="131.5" height="49"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="saveButtonClick" destination="-1" eventType="touchUpInside" id="Qqh-dp-goH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXs-UN-aXY">
+                    <rect key="frame" x="28" y="554" width="131.5" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="P0x-fc-OHB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonClick" destination="-1" eventType="touchUpInside" id="3rq-d2-lHJ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="UHH-Al-iSO" secondAttribute="trailing" id="2nZ-y7-Fde"/>
+                <constraint firstItem="rXs-UN-aXY" firstAttribute="top" secondItem="UHH-Al-iSO" secondAttribute="bottom" constant="20" id="9uS-1f-Rwu"/>
+                <constraint firstItem="rXs-UN-aXY" firstAttribute="centerX" secondItem="NTh-wS-Xvt" secondAttribute="centerX" multiplier="0.5" id="TxC-vQ-M2e"/>
+                <constraint firstAttribute="trailing" secondItem="NTh-wS-Xvt" secondAttribute="trailing" id="V28-6s-iEe"/>
+                <constraint firstItem="NTh-wS-Xvt" firstAttribute="top" secondItem="vFG-89-O6C" secondAttribute="top" id="YVm-We-e9a"/>
+                <constraint firstItem="UHH-Al-iSO" firstAttribute="top" secondItem="vFG-89-O6C" secondAttribute="top" id="ZNY-4f-iMR"/>
+                <constraint firstAttribute="bottom" secondItem="rXs-UN-aXY" secondAttribute="bottom" constant="64" id="a33-Td-wof"/>
+                <constraint firstItem="H4m-Sm-2IH" firstAttribute="width" secondItem="rXs-UN-aXY" secondAttribute="width" id="bXH-2R-Ykf"/>
+                <constraint firstItem="H4m-Sm-2IH" firstAttribute="height" secondItem="rXs-UN-aXY" secondAttribute="height" id="cQ2-6r-bNT"/>
+                <constraint firstItem="UHH-Al-iSO" firstAttribute="leading" secondItem="vFG-89-O6C" secondAttribute="leading" id="f41-w3-AgF"/>
+                <constraint firstAttribute="bottom" secondItem="NTh-wS-Xvt" secondAttribute="bottom" id="heM-Pc-ffX"/>
+                <constraint firstItem="H4m-Sm-2IH" firstAttribute="top" secondItem="rXs-UN-aXY" secondAttribute="top" id="kwg-Ax-5pY"/>
+                <constraint firstItem="NTh-wS-Xvt" firstAttribute="leading" secondItem="vFG-89-O6C" secondAttribute="leading" id="q3W-fe-C9Z"/>
+                <constraint firstItem="rXs-UN-aXY" firstAttribute="width" secondItem="NTh-wS-Xvt" secondAttribute="width" multiplier="0.35" id="wBc-38-hhj"/>
+                <constraint firstItem="H4m-Sm-2IH" firstAttribute="centerX" secondItem="NTh-wS-Xvt" secondAttribute="centerX" multiplier="1.5" id="wle-1v-4HZ"/>
+            </constraints>
+            <point key="canvasLocation" x="249" y="-109"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

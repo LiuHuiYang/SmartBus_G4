@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SHMoodCell" id="VdV-lT-IcU" customClass="SHMoodCell" customModule="Smart_Bus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="269" height="94"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="269" height="94"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYh-5Z-O56">
+                        <rect key="frame" x="0.0" y="0.0" width="269" height="94"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78y-BG-Id8" customClass="SHCommandButton">
+                                <rect key="frame" x="15" y="10" width="239" height="60"/>
+                                <connections>
+                                    <action selector="commandButtonClick" destination="VdV-lT-IcU" eventType="touchUpInside" id="htG-dr-bus"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ly5-oQ-uFa">
+                                <rect key="frame" x="15" y="75" width="239" height="19"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ly5-oQ-uFa" firstAttribute="centerX" secondItem="uYh-5Z-O56" secondAttribute="centerX" id="29y-Ih-7ip"/>
+                            <constraint firstItem="ly5-oQ-uFa" firstAttribute="width" secondItem="78y-BG-Id8" secondAttribute="width" id="NmW-Xb-K0R"/>
+                            <constraint firstItem="ly5-oQ-uFa" firstAttribute="top" secondItem="78y-BG-Id8" secondAttribute="bottom" constant="5" id="QvH-YU-qv8"/>
+                            <constraint firstAttribute="bottom" secondItem="ly5-oQ-uFa" secondAttribute="bottom" id="UNQ-Vw-rAx"/>
+                            <constraint firstItem="78y-BG-Id8" firstAttribute="top" secondItem="uYh-5Z-O56" secondAttribute="top" constant="10" id="fgv-jL-3Z9"/>
+                            <constraint firstAttribute="trailing" secondItem="78y-BG-Id8" secondAttribute="trailing" constant="15" id="jHc-Nm-NtZ"/>
+                            <constraint firstItem="ly5-oQ-uFa" firstAttribute="height" secondItem="uYh-5Z-O56" secondAttribute="height" multiplier="0.2" id="thJ-pD-PFC"/>
+                            <constraint firstItem="78y-BG-Id8" firstAttribute="leading" secondItem="uYh-5Z-O56" secondAttribute="leading" constant="15" id="vEx-Ha-CMs"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="uYh-5Z-O56" secondAttribute="bottom" id="CYq-Sl-Bj0"/>
+                <constraint firstItem="uYh-5Z-O56" firstAttribute="leading" secondItem="VdV-lT-IcU" secondAttribute="leading" id="KmC-BK-qge"/>
+                <constraint firstItem="uYh-5Z-O56" firstAttribute="top" secondItem="VdV-lT-IcU" secondAttribute="top" id="SiM-K8-g35"/>
+                <constraint firstAttribute="trailing" secondItem="uYh-5Z-O56" secondAttribute="trailing" id="zBd-nM-HCm"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="D5u-f1-EJc"/>
+            <size key="customSize" width="269" height="94"/>
+            <connections>
+                <outlet property="commandButton" destination="78y-BG-Id8" id="jEw-0X-6Xm"/>
+                <outlet property="holdProgressView" destination="ly5-oQ-uFa" id="xWe-kA-ziD"/>
+            </connections>
+            <point key="canvasLocation" x="47" y="29"/>
+        </collectionViewCell>
+    </objects>
+</document>

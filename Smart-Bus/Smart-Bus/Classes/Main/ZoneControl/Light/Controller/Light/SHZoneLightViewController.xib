@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHZoneLightViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="lightListView" destination="FKI-IJ-RGv" id="l0Z-og-iEX"/>
+                <outlet property="listViewBottomConstraint" destination="FoI-L7-YrD" id="pGe-ah-9Dx"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ec4-F8-CFY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FKI-IJ-RGv">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="PlJ-ZG-IHV"/>
+                        <outlet property="delegate" destination="-1" id="iSj-vG-W5j"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="FKI-IJ-RGv" secondAttribute="bottom" constant="49" id="FoI-L7-YrD"/>
+                <constraint firstAttribute="bottom" secondItem="ec4-F8-CFY" secondAttribute="bottom" id="TYa-OO-UsQ"/>
+                <constraint firstItem="ec4-F8-CFY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V4i-sP-Ghz"/>
+                <constraint firstAttribute="trailing" secondItem="FKI-IJ-RGv" secondAttribute="trailing" id="Xg0-bJ-Zao"/>
+                <constraint firstItem="ec4-F8-CFY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="diM-iv-7pR"/>
+                <constraint firstItem="FKI-IJ-RGv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="grq-UO-Uwv"/>
+                <constraint firstAttribute="trailing" secondItem="ec4-F8-CFY" secondAttribute="trailing" id="l1o-s2-aw8"/>
+                <constraint firstItem="FKI-IJ-RGv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="orQ-9Q-8QH"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

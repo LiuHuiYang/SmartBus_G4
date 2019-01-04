@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHMacroCommandsViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="commandsListView" destination="5G8-K7-FmC" id="WUg-iS-cke"/>
+                <outlet property="headerViewHeightConstraint" destination="oLl-gp-pLx" id="Lq5-uq-bpv"/>
+                <outlet property="iconButton" destination="qBF-vq-ana" id="jZN-Eh-Th9"/>
+                <outlet property="iconButtonHeightConstraint" destination="W8F-mf-aWQ" id="v5y-cP-i9i"/>
+                <outlet property="iconButtonWidthConstraint" destination="zln-fD-pTs" id="MjI-hS-SQq"/>
+                <outlet property="nameTextField" destination="OWS-AV-K2l" id="pVZ-2d-wPl"/>
+                <outlet property="view" destination="MLz-is-JcS" id="ZOY-fg-evN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="MLz-is-JcS">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="rq2-6D-yMd">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5G8-K7-FmC">
+                    <rect key="frame" x="0.0" y="84" width="375" height="534"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Ut1-YT-fWm"/>
+                        <outlet property="delegate" destination="-1" id="ip3-Kp-Mk3"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6U-Yv-vZW">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBF-vq-ana">
+                            <rect key="frame" x="20" y="10" width="64" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="W8F-mf-aWQ"/>
+                                <constraint firstAttribute="width" constant="64" id="zln-fD-pTs"/>
+                            </constraints>
+                            <connections>
+                                <action selector="iconButtonClick" destination="-1" eventType="touchUpInside" id="Xz4-mQ-6SL"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OWS-AV-K2l">
+                            <rect key="frame" x="99" y="21" width="256" height="42"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="1sm-jR-iBo"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="qBF-vq-ana" firstAttribute="leading" secondItem="a6U-Yv-vZW" secondAttribute="leading" constant="20" id="271-of-ruA"/>
+                        <constraint firstItem="OWS-AV-K2l" firstAttribute="height" secondItem="qBF-vq-ana" secondAttribute="height" multiplier="0.65" id="OiV-Uc-M2t"/>
+                        <constraint firstItem="OWS-AV-K2l" firstAttribute="centerY" secondItem="qBF-vq-ana" secondAttribute="centerY" id="PYZ-jo-rwZ"/>
+                        <constraint firstItem="OWS-AV-K2l" firstAttribute="leading" secondItem="qBF-vq-ana" secondAttribute="trailing" constant="15" id="VER-jl-l0z"/>
+                        <constraint firstAttribute="height" constant="84" id="oLl-gp-pLx"/>
+                        <constraint firstAttribute="trailing" secondItem="OWS-AV-K2l" secondAttribute="trailing" constant="20" id="s6l-Nd-DY9"/>
+                        <constraint firstItem="qBF-vq-ana" firstAttribute="centerY" secondItem="a6U-Yv-vZW" secondAttribute="centerY" id="tqn-hA-Lla"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="a6U-Yv-vZW" firstAttribute="top" secondItem="MLz-is-JcS" secondAttribute="top" id="5A2-ZE-7zP"/>
+                <constraint firstAttribute="bottom" secondItem="5G8-K7-FmC" secondAttribute="bottom" constant="49" id="74v-tG-LIL"/>
+                <constraint firstItem="5G8-K7-FmC" firstAttribute="top" secondItem="a6U-Yv-vZW" secondAttribute="bottom" id="9AX-HJ-3oM"/>
+                <constraint firstAttribute="trailing" secondItem="a6U-Yv-vZW" secondAttribute="trailing" id="Gtj-Jo-SFW"/>
+                <constraint firstAttribute="bottom" secondItem="rq2-6D-yMd" secondAttribute="bottom" id="PSn-iK-Rp7"/>
+                <constraint firstItem="rq2-6D-yMd" firstAttribute="top" secondItem="MLz-is-JcS" secondAttribute="top" id="Z8n-Uf-TQU"/>
+                <constraint firstItem="5G8-K7-FmC" firstAttribute="leading" secondItem="MLz-is-JcS" secondAttribute="leading" id="ZF5-sP-HWc"/>
+                <constraint firstItem="a6U-Yv-vZW" firstAttribute="leading" secondItem="MLz-is-JcS" secondAttribute="leading" id="bus-7b-mDy"/>
+                <constraint firstAttribute="trailing" secondItem="rq2-6D-yMd" secondAttribute="trailing" id="n8l-uk-TL6"/>
+                <constraint firstAttribute="trailing" secondItem="5G8-K7-FmC" secondAttribute="trailing" id="nHn-Mq-zbb"/>
+                <constraint firstItem="rq2-6D-yMd" firstAttribute="leading" secondItem="MLz-is-JcS" secondAttribute="leading" id="yTI-L1-BZX"/>
+            </constraints>
+            <point key="canvasLocation" x="204" y="-87"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

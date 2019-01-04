@@ -1,0 +1,8 @@
+/* 
+  languages.strings
+    语言适配文件: 英语
+    默认语言: 英语
+*/
+
+// ========== 语音控制部分 ===========
+"specchControl" = "Speech Control";

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSettingViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="listView" destination="6i8-VR-SW6" id="Hwo-jI-BnZ"/>
+                <outlet property="listViewBottomConstraint" destination="IfF-dQ-lMf" id="kk7-Bq-4Qs"/>
+                <outlet property="view" destination="mBq-km-6UN" id="SDM-g2-KDu"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="mBq-km-6UN">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="LxU-F6-znZ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6i8-VR-SW6">
+                    <rect key="frame" x="0.0" y="10" width="375" height="608"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="3jK-Qr-Fft"/>
+                        <outlet property="delegate" destination="-1" id="GMt-Be-nWO"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6i8-VR-SW6" firstAttribute="top" secondItem="mBq-km-6UN" secondAttribute="top" constant="10" id="1vD-Px-bTm"/>
+                <constraint firstItem="LxU-F6-znZ" firstAttribute="leading" secondItem="mBq-km-6UN" secondAttribute="leading" id="22d-dA-BuV"/>
+                <constraint firstAttribute="bottom" secondItem="LxU-F6-znZ" secondAttribute="bottom" id="5mw-Qr-99k"/>
+                <constraint firstAttribute="trailing" secondItem="6i8-VR-SW6" secondAttribute="trailing" id="6Qc-Xd-cyv"/>
+                <constraint firstAttribute="trailing" secondItem="LxU-F6-znZ" secondAttribute="trailing" id="EBW-9f-AtP"/>
+                <constraint firstAttribute="bottom" secondItem="6i8-VR-SW6" secondAttribute="bottom" constant="49" id="IfF-dQ-lMf"/>
+                <constraint firstItem="6i8-VR-SW6" firstAttribute="leading" secondItem="mBq-km-6UN" secondAttribute="leading" id="Wby-ya-Qbf"/>
+                <constraint firstItem="LxU-F6-znZ" firstAttribute="top" secondItem="mBq-km-6UN" secondAttribute="top" id="uK3-Me-Fyy"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="No6-Sz-asW"/>
+            <point key="canvasLocation" x="26" y="52"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

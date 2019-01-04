@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string> ہاں</string>
+		<key>NO</key>
+		<string>نہیں</string>
+		<key>OK</key>
+		<string> ٹھیک  </string>
+		<key>CANCEL</key>
+		<string> منسوخ </string>
+		<key>SAVED</key>
+		<string> محفوظ </string>
+		<key>SAVE</key>
+		<string>محفوظ  </string>
+		<key>EDIT</key>
+		<string> ترمیم کیجئے   </string>
+		<key>DONE</key>
+		<string> ہوگئی  </string>
+		<key>SYSTEM_PROMPT</key>
+		<string> سسٹم کا پیغام  </string>
+		<key>ON</key>
+		<string>آن  </string>
+		<key>OFF</key>
+		<string> آف   </string>
+		<key>NO_DATA</key>
+		<string> ڈیٹا نہیں ملا </string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string> سسٹم کا نام درج زیل </string>
+		<key>alight</key>
+		<string>لائٹ</string>
+		<key> bhvac</key>
+		<string>ائرکنڈیشنر</string>
+		<key> czaudio </key>
+		<string> زیڈآڈیو</string>
+		<key> dshades </key>
+		<string> پردے</string>
+		<key> emedia </key>
+		<string>میڈیا </string>
+		<key> fmoods </key>
+		<string> موڈ</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string> سسٹم کا نام درج بالا</string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>زون/ایریا کنٹرول</string>
+			<string>مرکزی کنٹرول</string>
+			<string>اجتمائی خدمات</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>میکرو بٹن</string>
+		<key>LIGHTS</key>
+		<string>لائٹ</string>
+		<key>MUSIC</key>
+		<string>موسیقی</string>
+		<key>SECURITY</key>
+		<string>سکیورٹی</string>
+		<key>CLIMATE</key>
+		<string>موسم</string>
+		<key>SCHEDULE</key>
+		<string>شیڈول</string>
+		<key>CAMERA</key>
+		<string>کیمرہ</string>
+		<key>APPLIANCES</key>
+		<string>آلات</string>
+		<key>INTERCOM</key>
+		<string>انٹرکام</string>
+		<key>COMMUNITY</key>
+		<string>اجتماعیت</string>
+		<key>HOME_STATUS</key>
+		<string>احوال </string>
+		<key>METERS</key>
+		<string>میٹر</string>
+		<key>WEATHER</key>
+		<string>موسم</string>
+		<key>PHOTO</key>
+		<string>تصویر</string>
+		<key>ALARM</key>
+		<string>الارم</string>
+		<key>SMS_CONTROL</key>
+		<string>ایس ایم ایس کنٹرول</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>ترتیب </string>
+		<key>NETWORK_SETTINGS</key>
+		<string>نیٹ ورک کی ترتیب</string>
+		<key>DATABASE</key>
+		<string>ڈیٹابیس۔اپ لوڈ/ڈاون لوڈ</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string> لسانی ترتیب  </string>
+		<key>VERSION</key>
+		<string>  ورژن</string>
+		<key>ٹائٹل نیٹ ورک کی ترتیب </key>
+		<string>نیٹ ورک کی ترتیب</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string> مقامی </string>
+		<key>INTERNET</key>
+		<string> انٹرنیٹ</string>
+		<key>DDNS_IP</key>
+		<string> کاایڈریس DDNS/IP </string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>آپکا درج کردہ ڈیٹا ختم نہیں کیا جاسکتا</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>  
+ڈومین کے نام سے آئ پی ایڈریس نہیں ملا؛چیک کریں کیاآپ انٹرنیٹ سے منسلک ہیں؟ </string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>آئ پی ایڈریس غلط ہے،ٹھیک کرلیجئے </string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string> سرور کی ترتیب FTP </string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string> سرور کا ایڈریس FTP </string>
+		<key>USER_NAME</key>
+		<string> استعمال کنندہ کا نام  </string>
+		<key>PASSWORD</key>
+		<string>خفیہ الفاظ </string>
+		<key>UPLOAD</key>
+		<string> اپ لوڈ کریں</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>ڈیٹابیس اپ لوڈ کریں </string>
+		<key>DOWNLOAD</key>
+		<string>ڈاون لوڈ کریں </string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>ڈیٹا بیس ڈاون لوڈ کریں</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string> 
+اس آئی فون سے ایف ٹی پی کو اپ لوڈ کریں؛ ڈیٹا بیس کا نام
+ ہونا ضروری ہے Database.sqlite3	
+</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string> 
+آئی فون/آئی پیڈ سے سرور کی روٹ ڈائریکٹری پر ڈیٹابیس میں ایف ٹی پی کو اپ لوڈ کریں؛
+ہوگا۔ Database.sqlite3 ڈیٹا بیس کا نام لازمی  
+</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>منسلک ہورہا ہے۔۔</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>   ایڈریس کو چیک کریں   FTP    </string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>تمام خالی جگہیں پر کریں</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>
+ڈیٹابیس ڈاون لوڈ کریں ؛ پیغام کہ
+پر موجود ڈیٹا بیس کی جگہ لے گا۔کیا آپ اسکو ڈاون لوڈکنا چاہتے ہیں؟ FTP  یہ ڈیٹابیس </string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string> اپ لوڈ مکمل ہوگیا</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string> رابطہ منقطع ہوگیا </string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>ائرکنڈیشنر آف </string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string> آہستہ</string>
+			<string>درمیانی</string>
+			<string>زیادہ</string>
+			<string>خودکار</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string> سرد </string>
+			<string>گرم</string>
+			<string>پنکھا</string>
+			<string>خودکار </string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string> خوب سرد </string>
+			<string> سرد </string>
+			<string>نیم گرم</string>
+			<string>خوب گرم</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>کھولئے </string>
+		<key>SHADE_CLOSE</key>
+		<string>بند کیجئے</string>
+		<key>SHADE_STOP</key>
+		<string>روکئے </string>
+		<key>SENDING</key>
+		<string>یہ ڈیٹا بھیج رہے ہیں.</string>
+		<key>EXECUTED</key>
+		<string>تعمیل ہوگئ</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>نئے موڈ کے اضافہ کیلئے نیچے دئے ہوئے بٹن کو دبائیے</string>
+		<key>RECORD_MOOD</key>
+		<string>موڈ کو ریکارڈ کیجئے </string>
+		<key>MOOD_NAME</key>
+		<string>موڈ کو نام دیجئے </string>
+		<key>SELECT_ICON</key>
+		<string>چنئے  Icon</string>
+		<key>EDIT_MOOD</key>
+		<string>موڈ ترتیب دیجئے </string>
+		<key>RECORD</key>
+		<string>ریکاڈ کریں</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>موڈ کیلئے آئ کون چنئے</string>
+		<key>SHADE_BYPASS</key>
+		<string>بائی پاس</string>
+		<key>SHADE_OPEN</key>
+		<string>کھولیئے</string>
+		<key>SHADE_CLOSE</key>
+		<string>بند کریں</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>
+دوسرے موڈ پر عمل ہورہا ہے،نئے موڈ پرآغاز کرنے سے پہلا منسوخ ہو جائے گا۔کیا نئے موڈ پر عمل جاری رکھا جائے؟ 
+</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>موڈ ریکارڈ کرنے میں ناکام </string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- اپنے نیٹ ورک کنکشن کو چیک کریں</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- اپنے ڈیٹابیس کی ترتیب چیک کریں</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string> غلطی کا پیغام:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1 ۔ کم از کم ایک ڈیوائس کو چنئے </string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>۔ موڈ کا نام خالی نہیں رکھ سکتے اور اسے منفرد نام دیجئے2
+          </string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>انتظار فرمائیے یہ ڈیوائس موڈ ریکارڈ کررہی ہے۔</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>ڈیٹانہیں ملا اسلئے ریکارڈ کرنے میں ناکام! </string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>خاموش </string>
+		<key>MENU</key>
+		<string> مینیو</string>
+		<key>SOURCE</key>
+		<string> منبع </string>
+		<key>CONTROL</key>
+		<string> کنٹرول</string>
+		<key>NUM_PAD</key>
+		<string>نمبر پیڈ</string>
+		<key>CHANNEL</key>
+		<string> چینل۔1</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>سیٹلائٹ چینل کی ترتیب </string>
+		<key>DELAY_FOR_IR</key>
+		<string> آئی آر کیلئے وقفہ</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string> چینل دستیاب نہیں</string>
+		<key>CATEGORY</key>
+		<string> کیٹگری </string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string> سیٹلائٹ کیٹگری کی ترتیب</string>
+		<key>LABEL_CATEGORY</key>
+		<string>کیٹگری کا نام </string>
+		<key>ADD</key>
+		<string> اضافہ کریںAdd</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>نام پہلے ہی موجود ہے یا ضائع ہوگیا  </string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string> آئ آر کیلئے وقفہ(5000ms  سے50ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>چینل کی تعداد 4 سے کم اورمنفرد ہو </string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>  چینل 1 ، نام لازمی منفرد ہو لیکن صفر نہ ہو </string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>
+ چینل کا نام یکساں ہے یاموجود نہ ہونے کیوجہ سے ترمیم نہیں کیجاسکتی       
+</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>میکرو ایکشن بٹن </string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>مرکزی لائٹ </string>
+		<key>ALL_LIGHT_ON</key>
+		<string> تمام لائٹ آن</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string> تمام لائٹ آف </string>
+		<key>SELECTED_ITEM</key>
+		<string> منتخب اجزا</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string> 
+ایک اورمیکرو بٹن کام کررہا ہے ، اس میکرو بٹن کی وجہ سے وہ منسوخ ہو جائیگا۔
+کیا موجودہ مےکرو پر عمل جاری رہے؟
+ 		</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>سکیورٹی</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string> سکیورٹی موڈ چنئے </string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string> دور </string>
+			<string> شب </string>
+			<string> شب مہمان کے ساتھ</string>
+			<string>دن </string>
+			<string> چھٹیوں پر</string>
+			<string> غیر مسلحہ</string>
+			<string> پولیس مداخلت </string>
+			<string> ایمبولنس </string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string> خفیہ الفاظ لکھئے </string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string> تعمیل ہوگئ </string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string> پہلے موڈ کا انتخاب کیجئے</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string> ناکام </string>
+		<key>OLD_PASSWORD</key>
+		<string> پرانا خفیہ لفظ </string>
+		<key>NEW_PASSWORD</key>
+		<string>  نیا خفیہ لفظ</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string> بنیادی خفیہ لفظ </string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>
+ &quot;پولیس مداخلت&quot; اور&quot;ایمبولنس&quot; موڈ کو چالو کرنے کیلئے بٹن کو 2 سیکنڈ تک دبئے رکھیں۔            </string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string> پرانا خفیہ لفظ غلط ہے! </string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string> خفیہ الفاظ لازما 4 عدد ہوں </string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string> کیاآپ لازمی خفیہ الفاظ تبدیل کرنا چاہتے ہیں؟ </string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string> موسم </string>
+		<key>SELECTED_ITEM</key>
+		<string> منتخب شدہ: </string>
+		<key>ALL_AC_ON</key>
+		<string> تمام ائر کنڈیشنر آن </string>
+		<key>ALL_AC_OFF</key>
+		<string> تمام ائر کنڈیشنر آف </string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string> خوب سرد </string>
+			<string> سرد </string>
+			<string> گرم </string>
+			<string> نیم گرم </string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string> کیمرہ </string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string> صوتی ریکارڈنگ </string>
+		<key>RECORD</key>
+		<string> ریکارڈ </string>
+		<key>PREVIEW</key>
+		<string> پیش منظر</string>
+		<key>STOP1</key>
+		<string> روکئے </string>
+		<key>STOP</key>
+		<string> روکئے </string>
+		<key>DELETE</key>
+		<string> حذف کیجئے  </string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>پر اپ لوڈ کریں  FTP </string>
+		<key>FTP_SERVER_IP</key>
+		<string> :IPسرورFTP </string>
+		<key>USER_NAME</key>
+		<string> استعمال کنندہ کا نام:</string>
+		<key>PASSWORD</key>
+		<string> خفیہ الفاظ :</string>
+		<key>UPLOADING</key>
+		<string> اپ لوڈ ہورہا ہے۔۔</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>کسی ریکارڈ فائل کو چنئے </string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>   
+
+ فولڈر کی تصدیق کرلیں کیونکہ ریکارڈ کیجانے والی فائلیں اسیâ€œRecordâ€سرور پرFTP 
+  فولڈر پر محفوظ کی جائینگی  
+</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>  آپ نے ڈیٹاکوغلط فائل کردیا،چیک کرلیجئے!  </string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string> 
+کامیاب! اس ریکارڈ کردہ فائل کو چلانے کیلئے زیڈ آڈیو پر موجود ایف ٹی پی                       سورس کو دستی اپ ڈیٹ کرنا ضروری ہے 
+</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>  
+اپنے نیٹ ورک اور ایف پی ٹی سرور کی ترتیب کو چیک کیجئے ، تصدیق کرلیجئے کہ سرور چل رہا ہے۔
+</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string> یہ فائل پہلے ہی موجود ہے! </string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>شیڈول</string>
+		<key>SCHEDULE_NAME</key>
+		<string> شیڈول کا نام </string>
+		<key>FREQUENCY</key>
+		<string>فریکوینسی  </string>
+		<key>DATE_TIME</key>
+		<string>تاریخ ، وقت  </string>
+		<key>VALIDITY</key>
+		<string> تاریخ صلاحیت </string>
+		<key>ONE_TIME</key>
+		<string>یک مرتبہ</string>
+		<key>DAILY</key>
+		<string>روزآنہ</string>
+		<key>WEEKLY</key>
+		<string>ہفتہ وار</string>
+		<key>ADD_NEW</key>
+		<string>نیا اضافہ کریں</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>شیڈول میں ترمیم </string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>نئے شیڈول کا اضافہ</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>کنٹرول شدہ اشیا</string>
+		<key>MACRO_BUTTONS</key>
+		<string>میکرو بٹن </string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>الارم کلاک کی گھنٹی</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string> گانوں کی درجہ بندی </string>
+		<key>ALBUMS_LIST</key>
+		<string> البم کی فہرست </string>
+		<key>ADD_TO_QUE</key>
+		<string> فہرست میں اضافہ کریں </string>
+		<key>PLAY_QUE</key>
+		<string> فہرست چلائیے</string>
+		<key>STOP_QUE</key>
+		<string> فہرست روکئے </string>
+		<key>QUE_START</key>
+		<string> فہرست شروع!</string>
+		<key>ZONE_LIST</key>
+		<string> زون کی فہرست </string>
+		<key>CHOOSE_ZONE</key>
+		<string> زون منتخب کیجئے</string>
+		<key>ADD_SUCCEED</key>
+		<string> کامیاب </string>
+		<key>UPDATE_FTP</key>
+		<string>اپ دیٹ کریں  FTP </string>
+		<key>REPEAT_OFF</key>
+		<string>  دہرانا بند </string>
+		<key>REPEAT_ONE</key>
+		<string> ایک مرتبہ دہرائیےRepeat one</string>
+		<key>CONTINUED</key>
+		<string>مسلسل </string>
+		<key>REPEAT_ALL</key>
+		<string>  تمام دہرائیے </string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string> 
+ معذرت! فہرست پرناکامی، نیٹ ورک اور زون کی ترتیب چیک کیجئے یا دوبارہ کوشش کیجئے۔ 
+   </string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string> 
+زیڈ آڈیو البم و ایمپلیفائر؛ گانوں کی فہرست کو اپ ڈیٹ کررہا ہے۔ چند منٹ انتظار کیجئے
+ </string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>
+ البم و ایمپلیفائر ؛ گانوں کی فہرست نہیں اٹھائی جاسکی، اسطرح یہ موسیقی بند ہوجائیگی۔ کیا ایسے ہی چلتارہے؟
+</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string> زون منتخب کیجئے!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string> اس وقت کوئی زون نہیں ، ڈیٹابیس میں زون بڑہائیے۔ </string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>  کم از کم ایک زون چنئے! </string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string> زیڈ آڈیو سے ملانے میں ناکامی، نیٹ ورک کی ترتیب چیک کیجئے۔  	</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string> ناکام، تھوڑی دیر بعد دوبارہ کوشش کیجئے </string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>کامیاب!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>
+ گانوں کی قطار میں کوئی گانا نہیں،بڑہالیجئے۔(آئی فون کے ذریعہ ایک مرتبہ کی پسند کئی مرتبہ میں تبدیل ہو جائیگی)  
+</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>
+عارضی ڈیٹا اور ایف ٹی پی اپ ڈیٹ کرنے والے صفحہ پر جانے کےلیئے اس بٹن کو 2 سیکنڈ تک دبائے رکھیں۔
+</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>ایس ڈی کارڈ پر عارضی ڈیٹا کی صفائی کیلئے </string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>
+اگر ایس ڈی کارڈ کے ڈیٹا کو تبدیل کیا ہے تو اس پر موجود عارضی ڈیٹا کی صفائی کرکے دوبارہ پڑہیں
+</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string> ایف ٹی پی کاعارضی ڈیٹا صاف کریں </string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>
+ اگر ایف ٹی پی سرور کو تبدیل کیا ہے تو اس پر موجود عارضی ڈیٹا کی صفائی کرکے دوبارہ پڑہیں۔
+</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>
+زیڈآڈیو سے البم ایمپلیفائر اور گانوں کی فہرست اپ ڈیٹ کرائیں۔
+</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>
+ڈاون لوڈمکمل ہوچکا! ایمپلیفائر کو بند کرکے دوبارہ چلائیے۔
+</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string> کامیاب! </string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string> میڈیا ٹائٹل بٹن درج زیل </string>
+		<key>aMed_TV</key>
+		<string> ٹی وی </string>
+		<key>bMed_AppleTV</key>
+		<string> ایپل ٹی وی </string>
+		<key>cMed_DVD</key>
+		<string> ڈی ٹی وی </string>
+		<key>dMed_Projector</key>
+		<string> پروجیکٹر </string>
+		<key>eMed_SAT</key>
+		<string> سیٹلائٹ / کیبل </string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string> میڈیا ٹائٹل بٹن درج بالا </string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string> زیڈ آڈیو ٹئٹل بٹن درج زیل </string>
+		<key>A_SD_CARD</key>
+		<string> ایس ڈی کارڈ </string>
+		<key>B_NETWORK</key>
+		<string> نیٹ ورک </string>
+		<key>C_IPHONE</key>
+		<string> آئی فون </string>
+		<key>D_RADIO</key>
+		<string> ریڈیو </string>
+		<key>E_AUDIO_IN</key>
+		<string> آڈیوان </string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string> آڈیو ٹائٹل بٹن درج بالا </string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string> میکرو بٹن </string>
+			<string> موڈ </string>
+			<string> لائٹ </string>
+			<string> ائرکنڈیشنر </string>
+			<string> موسیقی </string>
+			<string> پردے </string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string> لوگو لائبریری سے </string>
+		<key>FROM_PHOTOS</key>
+		<string> تصاویر سے </string>
+		<key>EDIT_LOGO</key>
+		<string> لوگو کی ترمیم </string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string> چینل 1 سے لوگو چنئے </string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string> تلاش شروع کرنے کیلئے اپنی انگلی ہٹائیے </string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>
+تلاش کیلئے ڈراپ ڈاون کیجئے اور جو گانا چل رہا ہے اس پر پہنچ جائیے
+</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string> تلاش جاری </string>
+		<key>New item - 4</key>
+		<string> نیا آیٹم- 4 </string>
+	</dict>
+</dict>
+</plist>

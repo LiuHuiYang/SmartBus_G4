@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>TAK</string>
+		<key>NO</key>
+		<string>NIE</string>
+		<key>OK</key>
+		<string>OK</string>
+		<key>CANCEL</key>
+		<string>KASUJ</string>
+		<key>SAVED</key>
+		<string>ZAPISANE</string>
+		<key>SAVE</key>
+		<string>ZAPISZ</string>
+		<key>EDIT</key>
+		<string>EDYTUJ</string>
+		<key>DONE</key>
+		<string>WYKONANE</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>WIDOMOŚĆ SYSTEMOWA</string>
+		<key>ON</key>
+		<string>WŁĄCZONY</string>
+		<key>OFF</key>
+		<string>WYŁĄCZONY</string>
+		<key>NO_DATA</key>
+		<string>BRAK DANYCH</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>OŚWIETLENIE</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>Z-Audio</string>
+		<key>dshades</key>
+		<string>ROLETY</string>
+		<key>emedia</key>
+		<string>Media</string>
+		<key>fmoods</key>
+		<string>NASTROJE</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>STREFA KONTROLI</string>
+			<string>CENTRALNE STEROWANIE</string>
+			<string>WSPÓLNY SERWIS</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>PRZYCISKI MAKRO </string>
+		<key>LIGHTS</key>
+		<string>OŚWIETLENIE</string>
+		<key>MUSIC</key>
+		<string>MUZYKA</string>
+		<key>SECURITY</key>
+		<string>ZABEZPIECZENIE</string>
+		<key>CLIMATE</key>
+		<string>KLIMATYZACJA</string>
+		<key>SCHEDULE</key>
+		<string>GRAFIK</string>
+		<key>CAMERA</key>
+		<string>KAMERA</string>
+		<key>APPLIANCES</key>
+		<string>APLIKACJE</string>
+		<key>INTERCOM</key>
+		<string>Intercom</string>
+		<key>COMMUNITY</key>
+		<string>WSPÓLNE</string>
+		<key>HOME_STATUS</key>
+		<string>STATUS DOM</string>
+		<key>METERS</key>
+		<string>METRY</string>
+		<key>WEATHER</key>
+		<string>POGODA</string>
+		<key>PHOTO</key>
+		<string>ZDJĘCIA</string>
+		<key>ALARM</key>
+		<string>ALARM</string>
+		<key>SMS_CONTROL</key>
+		<string>KONTROLA SMS</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>USTAWIENIA</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>USTAWIENIA SIECIOWE</string>
+		<key>DATABASE</key>
+		<string>UAKTUALNIENIE BAZY DANYCH</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>USTAWIENIA JĘZYKOWE</string>
+		<key>VERSION</key>
+		<string>WERSJA</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>USTAWIENIA SIECIOWE</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>LOKALNE</string>
+		<key>INTERNET</key>
+		<string>Internet</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/IP ADRES</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>WPROWADZONE DANE NIE MOGĘ BYĆ ZEREM</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>BRAK USTAWIEŃ IP; SPRAWDŹ POŁĄCZENIE Z INTERNETEM</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>BŁĘDNY ADRES IP, SPRAWDŹ!</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>USTAWIENIA FTP </string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>ADRES SERWERA FTP </string>
+		<key>USER_NAME</key>
+		<string>NAZWA UŻYTKOWNIKA</string>
+		<key>PASSWORD</key>
+		<string>HASŁO</string>
+		<key>UPLOAD</key>
+		<string>WGRYWANIE</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>WGRYWANIE DANYCH</string>
+		<key>DOWNLOAD</key>
+		<string>POBIERANIE</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>POBIERANIE DANYCH</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>WGRYWANIE BAZY DANYCH Z TEGO IPHONE/IPAD DO SERWERA FTP; NAZWA BAZY DANYCH TO &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>POBIERANIE BAZY DANYCH Z SERWERA FTP DO IPHONE/IPAD; BAZA DANYCH MUSI NAZYWAĆ SIĘ &quot;Database.sqlite3&quot; I KATALOG BAZY DANYCH MUSI BYĆW KATALOGU GŁÓWNYM SERWERA FTP</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>ŁĄCZENIE...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>PROSZE SPRAWDZIĆ ADRES FTP!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>PROSZE WYPEŁNIĆ WSZYSTKIE DANE</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>BAZA DANYCH ŁADOWANIE &quot; message:@&quot; BIEŻĄCA BAZA DANYCH ZOSTANIE ZAMIENIONA BAZĄ DANYCH Z SERWERA FTP, CZY NA PEWNO CHCESZ POBRAĆ?</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>POBIERANIE ZAKOŃCZONE</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>BŁĄD POŁĄCZENIA!</string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>A/C OFF</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>NISKIE</string>
+			<string>ŚREDNIE</string>
+			<string>WYSOKIE</string>
+			<string>Auto</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>ZIMNO</string>
+			<string>CIEPŁO</string>
+			<string>WIATRAK</string>
+			<string>Auto</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>ZIMNO</string>
+			<string>CHŁODNO</string>
+			<string>CIEPŁO</string>
+			<string>GORĄCO</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>OTWARTE</string>
+		<key>SHADE_CLOSE</key>
+		<string>ZAMKNIĘTE</string>
+		<key>SHADE_STOP</key>
+		<string>Stop</string>
+		<key>SENDING</key>
+		<string>WYSYŁANIE DANYCH.</string>
+		<key>EXECUTED</key>
+		<string>WYKONANE</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>NACIŚNIEJ PONIŻSZY PRZYCISK BY DODAĆ NOWY NASTRÓJ </string>
+		<key>RECORD_MOOD</key>
+		<string>NAGRYWANIE NASTROJU</string>
+		<key>MOOD_NAME</key>
+		<string>NAZWA NASTROJU:</string>
+		<key>SELECT_ICON</key>
+		<string>WYBIERZ IKONĘ</string>
+		<key>EDIT_MOOD</key>
+		<string>EDYTUJ NASTRÓJ</string>
+		<key>RECORD</key>
+		<string>NAGRYWANIE</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>WYBÓR IKONY NASTROJU</string>
+		<key>SHADE_BYPASS</key>
+		<string>PRZEJŚCIE</string>
+		<key>SHADE_OPEN</key>
+		<string>OTWARTE</string>
+		<key>SHADE_CLOSE</key>
+		<string>ZAMKNIĘTE</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>WYBIERANY JEST KOLEJNY NASTRÓJ, JEŻLI WYBIERZESZ BIEŻĄCY NASTRÓJ, POPRZEDNI NASTRÓJ ZOSTANIE SKASOWANY. KONTYNUOWAĆ WYBIERANIE BIEŻĄCEGO NASTROJU?</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>BŁĄD NAGRYWANIA NASTROJU!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- SPRAWDŹ POŁĄCZENIE Z SIECIĄ.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- SPRAWDŹ KONFIGURACJE BAZY DANYCH.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>BŁĄD WIADOMOŚCI:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1- PRZYNAJMNIEJ JEDNO URZĄDZENIE POWINNO BYĆ WYBRANE</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- NAZWA NASTOJU NIE MOŻE BYC PUSTA I MUSI BYĆ NIEPOWTARZALNA.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>NAGRYWANIE NASTROJU, CZEKAJ...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>BŁĄD NAGRYWANIA! BRAK BANYCH!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>WYCISZENIE</string>
+		<key>MENU</key>
+		<string>Menu</string>
+		<key>SOURCE</key>
+		<string>ŹRÓDŁO</string>
+		<key>CONTROL</key>
+		<string>KONTOLA</string>
+		<key>NUM_PAD</key>
+		<string>KLAWIATURA</string>
+		<key>CHANNEL</key>
+		<string>KANAŁ</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>USTAWIENIA KANAŁÓW SATELITARNYCH</string>
+		<key>DELAY_FOR_IR</key>
+		<string>OPÓŹNIENIE IR</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>BRAK KANAŁU</string>
+		<key>CATEGORY</key>
+		<string>KATEGORIA</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>USTAWIENIA SAT</string>
+		<key>LABEL_CATEGORY</key>
+		<string>KATEGORIA:</string>
+		<key>ADD</key>
+		<string>DODAWANIE</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>BRAK NAZWY LUB JUZ ISTENIEJE!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>OPÓŹNIENIE IR(50ms～5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>ILOŚĆ KANAŁÓW MUSI BYĆ MNIEJSZA NIŻ 4, I KANAŁ MUSI BYĆ NIEPOWTARZALNY.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>KANAŁ MUSI BYĆ NIEPOWTARZALNY I NIE MOŻE BYĆ ZEREM!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>WYPEŁNIJ POLE, NIE ZOSTAWIAJ ZERA !</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>PRZYCISKI MAKRO</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>OŚWIETLENIE GŁÓWNE</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>WSZYSTKO WŁĄCZONE</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>ALWSZYSTKO WYŁĄCZONE</string>
+		<key>SELECTED_ITEM</key>
+		<string>WYBÓR</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>WYBIERANE JEST KOLEJNE NAMAKRO, JEŻLI WYBIERZESZ BIEŻĄCE MAKRO, POPRZEDNIE MAKRO ZOSTANIE SKASOWANE. KONTYNUOWAĆ WYBIERANIE BIEŻĄCEGO MAKRO？</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ZABEZPIECZENIE</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>WYBIERZ TRYB ZABEZPIECZEŃ:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>WYJŚCIE</string>
+			<string>NOC</string>
+			<string>NOC GOŚĆ</string>
+			<string>DZIEŃ</string>
+			<string>WAKACJE</string>
+			<string>DEZAKTYWACJA</string>
+			<string>POLICJA</string>
+			<string>POGOTOWIE</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>WPISZ HASŁO</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>WYKONANE!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>WYBIERZ SPOSÓB!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>NIEUDANE</string>
+		<key>OLD_PASSWORD</key>
+		<string>STARE HASŁO</string>
+		<key>NEW_PASSWORD</key>
+		<string>NOWE HASŁO</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>HASŁO DOMYŚLNE:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>ABY AKTYWOWAĆ “POLICJA” LUB “POGOTOWIE” NACISKAJ PRZYCISK 2 SEKUNDY</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>BŁĘDNE STARE HASŁO!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>HASŁO MUSI MIEĆ 4 ZNAKI.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>JESTEŚ PEWIEN, ŻE CHCESZ ZMIENIĆ HASŁO?</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>KLIMATYZACJA</string>
+		<key>SELECTED_ITEM</key>
+		<string>WYBÓR:</string>
+		<key>ALL_AC_ON</key>
+		<string>KLIMATYZACJA WŁĄCZONA</string>
+		<key>ALL_AC_OFF</key>
+		<string>KLIMATYZACJA WYŁĄCZONA</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>ZIMNO</string>
+			<string>CHŁODNO</string>
+			<string>GORĄCO</string>
+			<string>CIEPŁO</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>KAMERA</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>NAGRYWANIE GŁOSU</string>
+		<key>RECORD</key>
+		<string>NAGRYWANIE</string>
+		<key>PREVIEW</key>
+		<string>PODGLĄD</string>
+		<key>STOP1</key>
+		<string>Stop</string>
+		<key>STOP</key>
+		<string>STOP</string>
+		<key>DELETE</key>
+		<string>KASOWANIE</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>POBIERANIE DO FTP</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP Server IP:</string>
+		<key>USER_NAME</key>
+		<string>NAZWA UŻYTKOWNIKA:</string>
+		<key>PASSWORD</key>
+		<string>HASŁO:</string>
+		<key>UPLOADING</key>
+		<string>POBIERANIE...</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>WYBÓR NAGRANEGO PLIKU!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>UPEWNIJ SIĘ, ŻE JEST FOLDER ”NAGRYWANIE”.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>BŁĄDNE DANE, SPRAWDŹ!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>SUKCES!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>SPRAWDŹ SIEĆ I SERWER FTP.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>DANE ISTNIEJĄ!</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>GRAFIK</string>
+		<key>SCHEDULE_NAME</key>
+		<string>NAZWA GRAFIKU</string>
+		<key>FREQUENCY</key>
+		<string>CZĘSTOTLIWOŚĆ</string>
+		<key>DATE_TIME</key>
+		<string>CZAS DATA</string>
+		<key>VALIDITY</key>
+		<string>WAŻNOŚĆ</string>
+		<key>ONE_TIME</key>
+		<string>JEDEN CZAS</string>
+		<key>DAILY</key>
+		<string>DZIENNIE</string>
+		<key>WEEKLY</key>
+		<string>TYGODNIOWO</string>
+		<key>ADD_NEW</key>
+		<string>DODAJ NOWY</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>EDYCJA GRAFIKU</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>DODAJ NOWY GRAFIK</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>KONTROLA</string>
+		<key>MACRO_BUTTONS</key>
+		<string>PRZYCISKI MAKRO</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>BUDZIK</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>LISTA UTWORÓW</string>
+		<key>ALBUMS_LIST</key>
+		<string>LISTA ALBUMÓW</string>
+		<key>ADD_TO_QUE</key>
+		<string>DODAJ DO LISTY</string>
+		<key>PLAY_QUE</key>
+		<string>GRAJ Z LISTY</string>
+		<key>STOP_QUE</key>
+		<string>ZATRZYMAJ</string>
+		<key>QUE_START</key>
+		<string>GRANIE Z LISTY ROZPOCZĘTE!</string>
+		<key>ZONE_LIST</key>
+		<string>STREFA LISTY</string>
+		<key>CHOOSE_ZONE</key>
+		<string>WYBIERZ STREFĘ</string>
+		<key>ADD_SUCCEED</key>
+		<string>ZAKOŃCZONE</string>
+		<key>UPDATE_FTP</key>
+		<string>UAKTUALNIJ FTP</string>
+		<key>REPEAT_OFF</key>
+		<string>POWTÓRZ WYŁĄCZENIE</string>
+		<key>REPEAT_ONE</key>
+		<string>POWTÓRZ PONOWNIE</string>
+		<key>CONTINUED</key>
+		<string>KONTYNUACJA</string>
+		<key>REPEAT_ALL</key>
+		<string>POWTÓRZ WSZYSTKIE</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>BŁĄD, SPRAWDŹ USTAWIENIA SIECI!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audio UAKTUALNIA ALBUMY, CZEKAJ…</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>ALBUMY &amp; UTWORY NIE ZOSTAŁY ODCZYTANE. KONTYNUOWAĆ?</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>WYBIERZ STREFY!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>BRAK STREFY, DODAJ NOWĄ.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>WYBIERZ PRZYNAJMNIEJ JEDNĄ SREFĘ!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>BŁĄD POŁĄCZENIA Z Z-Audio, SPRAWDŹ USTAWIENIA SIECI.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>BŁAD, SPRÓBUJ PÓŹNIEJ.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>SUKCES!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>BRAK UTWORÓW NA LIŚCIE, DODAJ UTWÓR</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>PRZYNACISKAJ PRZYCISK PRZEZ 2 SEKUNDY W CELU UAKTUALNIENIA FTP</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>WYCZYŚĆ DANE DLA KARTY SD</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>WYCZYŚĆ DANE PRZED DODANIEM UTWORU NA KARTĘ SD.</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>WYCZYŚĆ DANE DO FTP</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>WYCZYŚĆ DANE PRZED DODANIEM UTWORU NA KARTĘ SD</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>UAKTUALNIENIE Z-Audio.</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>NAGRANE! ZRESTARTUJ!</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>SUKCES!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>PROJEKTOR</string>
+		<key>eMed_SAT</key>
+		<string>SAT./CABLE</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>KARTA SD</string>
+		<key>B_NETWORK</key>
+		<string>SIEĆ</string>
+		<key>C_IPHONE</key>
+		<string>IPHONE</string>
+		<key>D_RADIO</key>
+		<string>RADIO</string>
+		<key>E_AUDIO_IN</key>
+		<string>AUDIO IN</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>PRZYCISKI MAKRO</string>
+			<string>NASTROJE</string>
+			<string>OŚWIETLENIE</string>
+			<string>HVAC</string>
+			<string>MUZYKA</string>
+			<string>ROLETY</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>LOGO BIBLIOTEKI</string>
+		<key>FROM_PHOTOS</key>
+		<string>ZE ZDJĘĆ</string>
+		<key>EDIT_LOGO</key>
+		<string>EDYTUJ Logo</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>WYBÓR LOGO DLA KANAŁU</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>WYSZUKIWANIE</string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>STRONA PONIŻEJ</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>WYSZUKIWANIE</string>
+		<key>New item - 3</key>
+		<string></string>
+		<key>New item - 4</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>SIM</string>
+		<key>NO</key>
+		<string>NAO</string>
+		<key>OK</key>
+		<string>OK</string>
+		<key>CANCEL</key>
+		<string>Cancelar</string>
+		<key>SAVED</key>
+		<string>Salvo</string>
+		<key>SAVE</key>
+		<string>Salvar</string>
+		<key>EDIT</key>
+		<string>Editar</string>
+		<key>DONE</key>
+		<string>Pronto</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>Mensagem do Sistema</string>
+		<key>ON</key>
+		<string>Ligado</string>
+		<key>OFF</key>
+		<string>Desligado</string>
+		<key>NO_DATA</key>
+		<string>Sem informacão</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>Luz</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>Z-Audio</string>
+		<key>dshades</key>
+		<string>Cortinas</string>
+		<key>emedia</key>
+		<string>Midia</string>
+		<key>fmoods</key>
+		<string>Climas</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>Area de Controle</string>
+			<string>Controle Central</string>
+			<string>Servico Comun</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>MarcoBtns</string>
+		<key>LIGHTS</key>
+		<string>Luzes</string>
+		<key>MUSIC</key>
+		<string>Musica</string>
+		<key>SECURITY</key>
+		<string>Seguranca</string>
+		<key>CLIMATE</key>
+		<string>Atmosfera</string>
+		<key>SCHEDULE</key>
+		<string>Agenda</string>
+		<key>CAMERA</key>
+		<string>Camera</string>
+		<key>APPLIANCES</key>
+		<string>Utilitarios</string>
+		<key>INTERCOM</key>
+		<string>Interfone</string>
+		<key>COMMUNITY</key>
+		<string>Comunidade</string>
+		<key>HOME_STATUS</key>
+		<string>Status</string>
+		<key>METERS</key>
+		<string>Medidores</string>
+		<key>WEATHER</key>
+		<string>Clima</string>
+		<key>PHOTO</key>
+		<string>Foto</string>
+		<key>ALARM</key>
+		<string>Alarme</string>
+		<key>SMS_CONTROL</key>
+		<string>SMS Controle</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>Configuracoes</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>Configuracoes de Rede</string>
+		<key>DATABASE</key>
+		<string>Database Upload &amp; Download</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>Configuracao do idioma</string>
+		<key>VERSION</key>
+		<string>Versao</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>Configuracoes de Rede</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>Local</string>
+		<key>INTERNET</key>
+		<string>Internet</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/Endereco de IP</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>A informacao fornecida nao pose see nula</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Falha para captor o endereco IP pelo nome do dominio; certifique-se que esteja conectado a internet.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Endereco de IP errado, por gentileza verifique</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>Configuracao de Servidor FTP</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>Endereco de Servidor FTP</string>
+		<key>USER_NAME</key>
+		<string>Usuario</string>
+		<key>PASSWORD</key>
+		<string>Senha</string>
+		<key>UPLOAD</key>
+		<string>Upload</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>Database Upload</string>
+		<key>DOWNLOAD</key>
+		<string>Download</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>Database Download</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Fazer upload do banco de dados deste IPHONE/IPAD para o servidor FTP; O nome do banco de dados é &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Fazer download do banco de dados deste IPHONE/IPAD para o servidor FTP; O nome do banco de dados dave ser &quot;Database.sqlite3&quot;,e o diretorio do banco de dados deve estar no diretorio raiz do servidor FTP</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Conectando...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Por favor verifique endereco FTP</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Por favor preencha todo o conteudo</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Database Download&quot; mensagem:@&quot;O banco de dados actual no app será substituido pelo banco de dados do FTP. Você ten certeza de sue quer gazer o download?</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Uploaded Finalizado</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Conexão falhou!</string>
+		<key>New item - 3</key>
+		<string></string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>Ar-condicionado desligado</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>Baixo</string>
+			<string>MEdio</string>
+			<string>Alto</string>
+			<string>Automatico</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>Frio</string>
+			<string>Calor</string>
+			<string>Ventilacao</string>
+			<string>Automatico</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>Frio</string>
+			<string>Fresco</string>
+			<string>Quente</string>
+			<string>Muito quente</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>Abrir</string>
+		<key>SHADE_CLOSE</key>
+		<string>Fechar</string>
+		<key>SHADE_STOP</key>
+		<string>Parar</string>
+		<key>SENDING</key>
+		<string>Enviando informacao.</string>
+		<key>EXECUTED</key>
+		<string>Finalizado</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>Aperte botao abaixo para adicionar uma nova cena</string>
+		<key>RECORD_MOOD</key>
+		<string>Gravar Cena</string>
+		<key>MOOD_NAME</key>
+		<string>Nome da Cena:</string>
+		<key>SELECT_ICON</key>
+		<string>Selecione o Icone</string>
+		<key>EDIT_MOOD</key>
+		<string>Editar a cena</string>
+		<key>RECORD</key>
+		<string>Gravar</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>Escolher o icone para a cena</string>
+		<key>SHADE_BYPASS</key>
+		<string>Sobrepassar</string>
+		<key>SHADE_OPEN</key>
+		<string>Abrir</string>
+		<key>SHADE_CLOSE</key>
+		<string>Fechar</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Outra cena esta sendo executada, se executar a cena atual, a outra cena sera cancelada. Voce deseja executar a cena atual?</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Falha ao gravar a cena</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- Verifique a sua conexao de rede.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- Verifique a sua configuracao de banco de dados.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Mensagem de erro:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1- OPelo menos um aparelho deve ser escolhido</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- Nome da cena nao pode ser vazio e deve ser unico.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Gravando a cena, por gentileza aguarde um pouco...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Falha ao gravar. Motivo: sem dados</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>Mudo</string>
+		<key>MENU</key>
+		<string>Menu</string>
+		<key>SOURCE</key>
+		<string>Fonte</string>
+		<key>CONTROL</key>
+		<string>Controle</string>
+		<key>NUM_PAD</key>
+		<string>Numero no Pad</string>
+		<key>CHANNEL</key>
+		<string>Canal</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>Configuracoes Sat.</string>
+		<key>DELAY_FOR_IR</key>
+		<string>Atraso do IR</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>Sem canal</string>
+		<key>CATEGORY</key>
+		<string>Categoria</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>Configuracao da categoria Sat.</string>
+		<key>LABEL_CATEGORY</key>
+		<string>Nome da Categoria:</string>
+		<key>ADD</key>
+		<string>Adicionar</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Nome e nulo ou ja existe</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Atraso do IR (50ms～5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Qtd de canais deeve ser menor que 4 e o canal deve ser unico.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Nome do canal deve ser unico e nao pode ser nulo</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Campo de edicao, nao e permitido ter mesmo nome de canal ou nulo</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Botao de acoes macro</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Luzes Centrais</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>Todas ligadas</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>Todas desligadas</string>
+		<key>SELECTED_ITEM</key>
+		<string>Selecionar item</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Outro botao macro esta sendo executado, se executar o botao macro atual, outro botao macro sera cancelado. Executar este botao macro?</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Seguranca</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>Selecionar modo de seguranca:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>Ausente</string>
+			<string>Noite</string>
+			<string>Noite com convidado</string>
+			<string>Dia</string>
+			<string>Ferias</string>
+			<string>Desarmar</string>
+			<string>Panico</string>
+			<string>Ambulancia</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>Digite a senha</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Executado!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Ppor favor selecione o modo antes!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Falha</string>
+		<key>OLD_PASSWORD</key>
+		<string>Senha antiga</string>
+		<key>NEW_PASSWORD</key>
+		<string>Senha nova</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>Senha Default:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>PAra ativar os modos Panico ou Ambulancia, por favor pressione o botao por 2 segundos</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Senha antiga errada</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>A senha deve ser de 4 digitos.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Esta certo de que quer alterar a senha?</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Clima</string>
+		<key>SELECTED_ITEM</key>
+		<string>Item selecionado:</string>
+		<key>ALL_AC_ON</key>
+		<string>Todos os ar-condicionados ligados</string>
+		<key>ALL_AC_OFF</key>
+		<string>ATodos os ar-condicionados desligados</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>Frio</string>
+			<string>Fresco</string>
+			<string>Muito quente</string>
+			<string>quente</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Camera</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Gavacao de voz</string>
+		<key>RECORD</key>
+		<string>Gravar</string>
+		<key>PREVIEW</key>
+		<string>Preview</string>
+		<key>STOP1</key>
+		<string>Parar</string>
+		<key>STOP</key>
+		<string>PArar</string>
+		<key>DELETE</key>
+		<string>Apagar</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>Upload para a FTP</string>
+		<key>FTP_SERVER_IP</key>
+		<string>IP do Servidor FTP:</string>
+		<key>USER_NAME</key>
+		<string>Usuario:</string>
+		<key>PASSWORD</key>
+		<string>Senha:</string>
+		<key>UPLOADING</key>
+		<string>Uploading...</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Por favor escolha um arquivo para gravacao</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Certifique-se que uha uma pasta &quot;Gravar&quot; no servidor FTP, ja que os arquivos gravados serao salvos na pasta &quot;Gravar&quot;.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>A informacao utilizada esta errada. Por favor verifique</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Executado com sucesso! Para reproduzir o arquivo gravado, a fonte FTP no Z-Audio precisa ser atualizada manualmente.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Por favor verifique a sua rede e as configuracoes FTP, certifique-se que o FTP esta funcionando corretamente.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Este arquivo ja existe</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Agenda</string>
+		<key>SCHEDULE_NAME</key>
+		<string>Nome do agendamento</string>
+		<key>FREQUENCY</key>
+		<string>Frequencia</string>
+		<key>DATE_TIME</key>
+		<string>Dia e hora</string>
+		<key>VALIDITY</key>
+		<string>Validade</string>
+		<key>ONE_TIME</key>
+		<string>Uma vez</string>
+		<key>DAILY</key>
+		<string>Diariamente</string>
+		<key>WEEKLY</key>
+		<string>Semanalmente</string>
+		<key>ADD_NEW</key>
+		<string>Adicionar novo</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>Editar agendamento</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>Adicionar novo agendamento</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>Item controlado</string>
+		<key>MACRO_BUTTONS</key>
+		<string>Botoes macro</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>Alarme soar</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>Lista de categorias de musica</string>
+		<key>ALBUMS_LIST</key>
+		<string>Lista de albums</string>
+		<key>ADD_TO_QUE</key>
+		<string>Adicionar ao QUE</string>
+		<key>PLAY_QUE</key>
+		<string>Tocar QUE</string>
+		<key>STOP_QUE</key>
+		<string>Parar QUE</string>
+		<key>QUE_START</key>
+		<string>QUE comecou</string>
+		<key>ZONE_LIST</key>
+		<string>Lista de zona</string>
+		<key>CHOOSE_ZONE</key>
+		<string>Escolher a zona</string>
+		<key>ADD_SUCCEED</key>
+		<string>Com sucesso</string>
+		<key>UPDATE_FTP</key>
+		<string>Atualizar FTP</string>
+		<key>REPEAT_OFF</key>
+		<string>Parar Repetir</string>
+		<key>REPEAT_ONE</key>
+		<string>Repetir uma</string>
+		<key>CONTINUED</key>
+		<string>Continuar</string>
+		<key>REPEAT_ALL</key>
+		<string>Repetir tudo</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Desculpe! Falha ao ler a lista, favor verificar configuracoes de rede e zona, ou tentar mais tarde!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audio esta atualizando os albuns &amp; musicas da lista FTP; leva alguns minutos, por favor espere um momento</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>A lista de albums &amp; musicas nao foi eecutada ainda, a musica sera interrompida se continuar. Continuar agora?</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Por favor escolha as zonas</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Nao ha nenhuma zona agora, por favor adicione zonas ao banco de dados.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Ao menos uma zona precisa ser escolhida</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Falha ao conectar ao Z-Audio, por favor verifique as configuracoes e a rede</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Falha, por favor tente mais tarde.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Executado com sucesso!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Nao ha nenhuma musica no QUE, por favor adicione musicas na lista QUE. (Se sacudir a opcao simples ou opcao multipla sera escolhida</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Pressione por 2 segundos para ir a pagina de limpeza de dados temporarios e atualizar o FTP</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Limpar dados TEMP para o cartao SD</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>Se as musicas no cartao SD apresentarem alguma mudanca, os dados temporarios para cartao SD devem ser limpos e deve ser feita nova leitura.</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>Limpar os dados TEMP para FTP</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>Se as musicas no FTP apresentarem alguma mudanca, os dados temporarios para o FTP devem ser limpos e deve ser feita nova leitura.</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>Pedir ao atualizar a lista albums &amp; musicas do servidor FTP.</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>Downloaded!   Kindly close &amp; restart app!</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>Succeed!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>PROJECTOR</string>
+		<key>eMed_SAT</key>
+		<string>SAT./CABLE</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>SD CARD</string>
+		<key>B_NETWORK</key>
+		<string>NETWORK</string>
+		<key>C_IPHONE</key>
+		<string>IPHONE</string>
+		<key>D_RADIO</key>
+		<string>RADIO</string>
+		<key>E_AUDIO_IN</key>
+		<string>AUDIO IN</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>Macro buttons</string>
+			<string>Moods</string>
+			<string>Lights</string>
+			<string>HVAC</string>
+			<string>Music</string>
+			<string>Shades</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>From Logo Library</string>
+		<key>FROM_PHOTOS</key>
+		<string>From Photos</string>
+		<key>EDIT_LOGO</key>
+		<string>Edit Logo</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>Choose logo for channel</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>Release your finger to start to search</string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>Drop down to search and jump to the song that is playing now</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>Searching</string>
+		<key>New item - 3</key>
+		<string></string>
+		<key>New item - 4</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

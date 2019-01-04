@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>បាទ</string>
+		<key>NO</key>
+		<string>ទេ</string>
+		<key>OK</key>
+		<string>យល់ព្រម</string>
+		<key>CANCEL</key>
+		<string>បដិសេធ</string>
+		<key>SAVED</key>
+		<string>បានរក្សា</string>
+		<key>SAVE</key>
+		<string>រក្សាទុក</string>
+		<key>EDIT</key>
+		<string>កែ</string>
+		<key>DONE</key>
+		<string>រួចរាល់</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>សារនៃប្រព័ន្ធ</string>
+		<key>ON</key>
+		<string>បើក</string>
+		<key>OFF</key>
+		<string>បិទ</string>
+		<key>NO_DATA</key>
+		<string>គ្មានទិន្ន័យ!</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>បំភ្លឺ</string>
+		<key>bhvac</key>
+		<string>ត្រជាក់ </string>
+		<key>czaudio</key>
+		<string>សំលេង</string>
+		<key>dshades</key>
+		<string>វាំងនន</string>
+		<key>Emedia​​​​​​​​​​​​​​​</key>
+		<string>មេឌា</string>
+		<key>fmoods</key>
+		<string>បរិយាកាស</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>បញ្ជាតាមបន្ទប់ ឬ តំបន់</string>
+			<string>បញ្ជារួម</string>
+			<string>សេវា​ សហគមន៍</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>ប៊ូតុងម៉ាក្រូ</string>
+		<key>LIGHTS</key>
+		<string>បំភ្លឺ</string>
+		<key>MUSIC</key>
+		<string>តន្ត្រី</string>
+		<key>SECURITY</key>
+		<string>សន្តិសុខ</string>
+		<key>CLIMATE</key>
+		<string>សីតុណ្ហភាព</string>
+		<key>SCHEDULE</key>
+		<string>កាលវិភាគ</string>
+		<key>CAMERA</key>
+		<string>កាមេរ៉ា</string>
+		<key>APPLIANCES</key>
+		<string>ឧបករណ៍</string>
+		<key>INTERCOM</key>
+		<string>Intercom</string>
+		<key>COMMUNITY</key>
+		<string>សហគមន៍</string>
+		<key>HOME_STATUS</key>
+		<string>ស្ថានភាពផ្ទះ</string>
+		<key>METERS</key>
+		<string>រង្វាស់</string>
+		<key>WEATHER</key>
+		<string>អាកាសធាតុ</string>
+		<key>PHOTO</key>
+		<string>រួបភាព</string>
+		<key>ALARM</key>
+		<string>រោទ៍</string>
+		<key>SMS_CONTROL</key>
+		<string>បញ្ជាតាមសារ</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>កំណត់</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>កំណត់បណ្តាញ</string>
+		<key>DATABASE</key>
+		<string>ទិន្ន័យ បញ្ជូន &amp; ទាញយក</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>កំណត់ភាសា</string>
+		<key>VERSION</key>
+		<string>វែសិន</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>កំណត់បណ្តាញ</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>ខាងក្នុង</string>
+		<key>INTERNET</key>
+		<string>តាម​ Internet</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/IP Address</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>ទិន្ន័យដែលអ្នកបំពេញមិនអាច ទទេ!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Fail to get IP address by domain name; make sure it’s connected to internet.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>IP address is wrong, Please check it!</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>FTP Server settings</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>FTP Server Address</string>
+		<key>USER_NAME</key>
+		<string>ឈ្មោះអ្នកប្រើ</string>
+		<key>PASSWORD</key>
+		<string>លេខសំងាត់</string>
+		<key>UPLOAD</key>
+		<string>បញ្ជូន</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>បញ្ជូនទិន្ន័យ</string>
+		<key>DOWNLOAD</key>
+		<string>ទាញយក</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>ទាញយកទិន្ន័យ</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Upload database from this IPHONE/IPAD to FTP Serser;Database name is  &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Download database from FTP Server to this IPHONE/IPAD; The database name must be &quot;Database.sqlite3&quot;,and the directory of the database must be on the root directory of FTP Server</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>កំពុងភ្ជាប់...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>សូមពិនិត្យ FTP address!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>សូមបំពេញទាំងអស់</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Database Download&quot; message:@&quot;Current database on app will be replaced by the database on FTP,are you sure you want to download?</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>បញ្ជូនរួចរាល់</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>ភ្ជាប់មិនបាន!</string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>A/C បិទ</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>ទាប</string>
+			<string>មធ្យម.</string>
+			<string>ខ្ពស់</string>
+			<string>ស្វ័យប្រវត្ត</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>ត្រជាក់</string>
+			<string>ក្តៅ</string>
+			<string>កង្ហារ</string>
+			<string>ស្វ័យប្រវត្ត</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>ត្រជាក់</string>
+			<string>ត្រជាក់តិច</string>
+			<string>ក្តៅតិច</string>
+			<string>ក្តៅ</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>បើក</string>
+		<key>SHADE_CLOSE</key>
+		<string>បិទ</string>
+		<key>SHADE_STOP</key>
+		<string>ឈប់</string>
+		<key>SENDING</key>
+		<string>កំពុងបញ្ជូន.</string>
+		<key>EXECUTED</key>
+		<string>បានប្រតិបត្ត</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>ចុចប៊ូតុងខាងក្រោមដើម្បីបន្ថែម បរិយាកាស ថ្មី</string>
+		<key>RECORD_MOOD</key>
+		<string>ថត បរិយាកាស</string>
+		<key>MOOD_NAME</key>
+		<string>ឈ្មោះ បរិយាកាស:</string>
+		<key>SELECT_ICON</key>
+		<string>ជ្រើសរូប</string>
+		<key>EDIT_MOOD</key>
+		<string>កែ​ បរិយាកាស</string>
+		<key>RECORD</key>
+		<string>ថត</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>ជ្រើសរូបតំណាង បរិយាកាស</string>
+		<key>SHADE_BYPASS</key>
+		<string>រំលង</string>
+		<key>SHADE_OPEN</key>
+		<string>បើក</string>
+		<key>SHADE_CLOSE</key>
+		<string>បិទ</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>កំពុងប្រតិបត្ត បរិយាកាស ដ៏ទៃ បើប្រតិបត្ត បរិយាកាស ថ្មី   បរិយាកាស មុននឹងប្តូរចេញ។ ប្រតិបត្ត បរិយាកាស ថ្មីនេះ？</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>បរាជ័យក្នុងការថត បរិយាកាស!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- ពិនិត្យតំណបណ្តាញរបស់អ្នក.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- ពិនិត្យការកំណត់ Database របស់អ្នក</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>សា​ Error​ :</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1- យ៉ាងតិចជ្រើសយកមួយមុខ</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- ឈ្មោះ បរិយាកាសមិនអាចគ្មាន</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>កំពុងថត បរិយាកាស សូមរងចាំបន្តិច...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>បរាជ័យក្នុងកាថត! មូលហេតុ: មិនមានទិន្ន័យ!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>បិទសំលេង</string>
+		<key>MENU</key>
+		<string>ម៉ឺនុយ</string>
+		<key>SOURCE</key>
+		<string>ប្រភព</string>
+		<key>CONTROL</key>
+		<string>បញ្ជា</string>
+		<key>NUM_PAD</key>
+		<string>ផ្ទាំងលេខ</string>
+		<key>CHANNEL</key>
+		<string>ប៉ុស្ត៍</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>កំណត់ប៉ុស្ត៍ SAT. </string>
+		<key>DELAY_FOR_IR</key>
+		<string>ពន្យាពេល IR</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>គ្មានប៉ុស្ត៍</string>
+		<key>CATEGORY</key>
+		<string>ផ្នែក</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>កំណត់ផ្នែក SAT.</string>
+		<key>LABEL_CATEGORY</key>
+		<string>ឈ្មោះផ្នែក:</string>
+		<key>ADD</key>
+		<string>បន្ថែម</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>គ្មានឈ្មោះឬ ជាន់គ្នា!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>ពន្យាពេល IR(50ms～5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>ចំនួយប៉ុស្ត៍ត្រូវតិចជាងបួន និង មិនជាន់គ្នា</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>គ្រាប់ប៉ុស្ត៍ត្រូវមានឈ្មោះ និង មិនជាន់គ្នា!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>កន្លែងកែ, មិនអាចមានប៉ុស្ត៍ ឬ ឈ្មោះដូចគ្នា !</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ប៊ូតុង សកម្មភាពម៉ាក្រូ</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ពន្លឺរួម</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>បិទទាំងអស់</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>បើកទាំងអស់</string>
+		<key>SELECTED_ITEM</key>
+		<string>បានជ្រើស</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>កំពុងប្រតិបត្ត ប៊ូតុងម៉ាក្រូ ដ៏ទៃ បើប្រតិបត្ត ប៊ូតុងម៉ាក្រូ ថ្មី   ប៊ូតុងម៉ាក្រូ មុននឹងប្តូរចេញ។ ប្រតិបត្ត ប៊ូតុងម៉ាក្រូ ថ្មីនេះ？</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>សន្តិសុខ</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>ជ្រើសរកប្រភេទសន្តិសុខ:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>ចេញឆ្ងាយ</string>
+			<string>យប់</string>
+			<string>យប់មានភ្ញៀវ</string>
+			<string>ថ្ងៃ</string>
+			<string>វិសមកាល</string>
+			<string>បិទប្រព័ន្ធសន្តិសុខ</string>
+			<string>Police Panic</string>
+			<string>Ambulance</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>វាយលេខសំងាត់</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>បានប្រតិបត្ត!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>សូមជ្រើសប្រភេទសន្តិសុខ!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>មិនសំរេច</string>
+		<key>OLD_PASSWORD</key>
+		<string>លេខសំងាត់ចាស់</string>
+		<key>NEW_PASSWORD</key>
+		<string>លេខសំងាត់ថ្មី</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>លេខសំងាត់ដើម:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>ដើម្បីជ្រើសប្រភេទ “Police Panic” និង “Ambulance”, សូមចុចប៊ូតុងជាប់ 2 វិនាទី</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>លេខសំងាត់ចាស់មិនត្រឹមត្រូវ!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>លេខសំងាត់ត្រួវតែ 4 ខ្ទង់</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>តើអ្នកពិតជាចង់ប្តូរលេខសំងាត់មែនទេ?</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ធាតុអាកាស</string>
+		<key>SELECTED_ITEM</key>
+		<string>បានជ្រើស:</string>
+		<key>ALL_AC_ON</key>
+		<string>បើកគ្រប់ AC</string>
+		<key>ALL_AC_OFF</key>
+		<string>បិទគ្រប់ AC</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>ត្រជាក់បន្តិច</string>
+			<string>ត្រជាក់</string>
+			<string>ក្តៅ</string>
+			<string>ក្តៅបន្តិច</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>កាមេរ៉ា</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ថតសំលេង</string>
+		<key>RECORD</key>
+		<string>ថត</string>
+		<key>PREVIEW</key>
+		<string>ពិនិត្យឡើងវិញ</string>
+		<key>STOP1</key>
+		<string>ឈប់</string>
+		<key>STOP</key>
+		<string>ឈប់</string>
+		<key>DELETE</key>
+		<string>លប់</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>បញ្ជូនចូល FTP</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP Server IP:</string>
+		<key>USER_NAME</key>
+		<string>ឈ្មោះអ្នកប្រើ:</string>
+		<key>PASSWORD</key>
+		<string>លេខសំងាត់:</string>
+		<key>UPLOADING</key>
+		<string>កំពុងបញ្ជូន...</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>សូមជ្រើសឯកសា!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>សូមប្រាកដថាមាន folder មួយឈ្មោះ “Record” នៅ FTP server, ព្រោះហ្វាលដែលបានថតនិងរក្សានៅក្នុង folder “Record” នៅ FTP Server.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>ទិន្ន័យដែលអ្នកបានបំពេញមិនត្រឹមត្រូវ, សូមពិនិត្យ!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>សំរេច! ដើម្បីចាក់ហ្វាលដែលបានថតត្រូវអាប់ដែត FTP source នៅ Z-Audio សិន</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>សូមពិនិត្យបណ្តាញ និង ការកំណត់ FTP Server និង ប្រាកដថា FTP Server កំពុងដំណើរការ</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>ហ្វាលនេះមានរួចហើយ!</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>កាលវិភាគ</string>
+		<key>SCHEDULE_NAME</key>
+		<string>ឈ្មោះកាលវិភាគ</string>
+		<key>FREQUENCY</key>
+		<string>ភាពញឹកញយ</string>
+		<key>DATE_TIME</key>
+		<string>ថ្ងៃ ពេល</string>
+		<key>VALIDITY</key>
+		<string>អនុញ្ញាតិ</string>
+		<key>ONE_TIME</key>
+		<string>ម្តង</string>
+		<key>DAILY</key>
+		<string>រាល់ថ្ងៃ</string>
+		<key>WEEKLY</key>
+		<string>រាល់សប្តារហ៍</string>
+		<key>ADD_NEW</key>
+		<string>បន្ថែមថ្មី</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>កែកាលវិភាគ</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>បន្ថែមកាលវិភាគថ្មី</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>ឧបករណ៍បញ្ជា</string>
+		<key>MACRO_BUTTONS</key>
+		<string>ម៉ាក្រូប៊ូតុង</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>កន្តឹងម៉ោងរោទ៍</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>តារាងបទចំរៀង</string>
+		<key>ALBUMS_LIST</key>
+		<string>តារាងអាល់ប៊ុម</string>
+		<key>ADD_TO_QUE</key>
+		<string>បន្ថែមចូលតារាងរងចាំ</string>
+		<key>PLAY_QUE</key>
+		<string>ចាក់បទរងចាំ</string>
+		<key>STOP_QUE</key>
+		<string>បញ្ឈប់តារាងរងចាំ</string>
+		<key>QUE_START</key>
+		<string>ចាប់ផ្តើមតារាងរងចាំ!</string>
+		<key>ZONE_LIST</key>
+		<string>តារាងតំបន់</string>
+		<key>CHOOSE_ZONE</key>
+		<string>ជ្រើសតំបន់</string>
+		<key>ADD_SUCCEED</key>
+		<string>សំរេច</string>
+		<key>UPDATE_FTP</key>
+		<string>អាប់ដែត FTP</string>
+		<key>REPEAT_OFF</key>
+		<string>មិនចាក់ឡើងវិញ</string>
+		<key>REPEAT_ONE</key>
+		<string>ចាក់ឡើងវិញម្តង</string>
+		<key>CONTINUED</key>
+		<string>បន្ត</string>
+		<key>REPEAT_ALL</key>
+		<string>ចាក់ឡើងវិញទាំងអស់</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>អភ័យទោស! មិនអាចអានតារាងបាន សូមពិនិត្យបណ្តាញ និង ការកំណត់ផ្នែក ឬ អានម្តងទៀតលើកក្រោយ!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audio កំពុងអាប់ដែតអាល់ប៊ុម និង តារាងចំរៀងពី FTP; សូមរងចាំ ពីរ បីនាទី…</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>អាល់ប៊ុម និង តារាងចំរៀងមិនទាន់បានអាន, បើបន្តតន្ត្រីនឹងត្រូវបញ្ឈប់, តើបន្តទេ?</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>សូមជ្រើសរើសតំបន់!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>មិនមានតំបន់សោះ, សូមបន្ថែតំបន់ចូលក្នុងទិន្ន័យ.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>យ៉ាងតិចណាល់ត្រូវជ្រើសមួយផ្នែក!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>បរាជ័យក្នុងភ្ជាប់ទៅ Z-Audio, សូមពិនិត្យ ការកំណត់ និង បណ្តាញ</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>មិនសំរេច, សូមសាកល្បងនាពេលក្រោយ</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>សំរេច!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>មិនមានចំរៀងក្នុងតារាងរងចាំ, សូមញ្ចូលចំរៀងក្នងតារាងរងចាំ. (បើក្រឡុក iPhone  ការជ្រើសម្តងមួយ និង ការជ្រើសច្រើននឹងត្រូវប្តូគ្នា!)</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>សូមចុចអោយជាប់ពីរវិនាទីដើម្បីលុបទិន្ន័យបណ្តោះអាសន្ន និង អាប់ដែត FTP</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>លុបទិន្ន័យបណ្តោះអាសន្ននៅ SD កាត</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>បើចំរៀងនៅក្នុង SD មានការកែប្រែ, ទិន្ន័យបណ្តោះក្នុង SD កាតត្រូវលុប រួចអានឡើងវិញ</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>លុបទិន្ន័យបណ្តោះអាសន្ននៅ FTP</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>បើចំរៀងនៅក្នុង FTP មានការកែប្រែ, ទិន្ន័យបណ្តោះក្នុង FTP កាតត្រូវលុប រួចអានឡើងវិញ</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>ប្រាប់ Z-Audio អោយអាំប់ដែត អាល់ប៊ុម និង តារាងបទចំរៀងពី FTP server.</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>បានទាញយក!   សូមបិទ &amp; បើកកម្មវិធីវិញ!</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>សំរេច!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>ប្រូជិកទ័រ</string>
+		<key>eMed_SAT</key>
+		<string>SAT./CABLE</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>SD កាត</string>
+		<key>B_NETWORK</key>
+		<string>បណ្តាញ</string>
+		<key>C_IPHONE</key>
+		<string>iPhone</string>
+		<key>D_RADIO</key>
+		<string>វិទ្យុ</string>
+		<key>E_AUDIO_IN</key>
+		<string>សំលេង ចូល</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>ប៊ូតុង ម៉ាក្រូ</string>
+			<string>បរិយាកាស</string>
+			<string>ពន្លឺ</string>
+			<string>សីតុណ្ហាភាព</string>
+			<string>តន្ត្រី</string>
+			<string>វាំងនន</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>ពីបណ្ណាល័យរូបតាង</string>
+		<key>FROM_PHOTOS</key>
+		<string>ពី រូបថត</string>
+		<key>EDIT_LOGO</key>
+		<string>កែរូបតំណាង</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>ជ្រើសរូបតំណាង បុស្ត៍</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>ដកម្រាមដៃអ្នកចេញដើម្បីចាប់ផ្តើមស្វែងរក</string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>ទាញចុះក្រោមដើម្បី​ស្វែងរក​និង​រំលងទៅបទចំរៀងដែលកំពុងលេង</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>កំពុងស្វែងរក</string>
+		<key>New item - 3</key>
+		<string></string>
+		<key>New item - 4</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

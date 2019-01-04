@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SHSetSystemViewCell" rowHeight="55" id="By5-OA-gAg" customClass="SHSetSystemViewCell" customModule="Smart_Bus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="By5-OA-gAg" id="G3z-xu-kbl">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUd-23-xXD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uve-d7-nCS">
+                                <rect key="frame" x="219" y="12" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeSwitchTouch" destination="By5-OA-gAg" eventType="valueChanged" id="sUU-6G-vOO"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsf-bZ-pff">
+                                <rect key="frame" x="20" y="5.5" width="184" height="43.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.97647058819999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arraw" translatesAutoresizingMaskIntoConstraints="NO" id="mus-ta-Ajp">
+                                <rect key="frame" x="283" y="16.5" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="CBH-eK-cD4"/>
+                                    <constraint firstAttribute="width" constant="22" id="uuE-af-IeR"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellline" translatesAutoresizingMaskIntoConstraints="NO" id="yig-HH-Wfj">
+                                <rect key="frame" x="0.0" y="53.5" width="320" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="aeQ-Bf-Vtt"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vsf-bZ-pff" firstAttribute="centerY" secondItem="uve-d7-nCS" secondAttribute="centerY" id="10z-0c-Rmd"/>
+                            <constraint firstItem="mus-ta-Ajp" firstAttribute="centerY" secondItem="bUd-23-xXD" secondAttribute="centerY" id="D73-mS-sdx"/>
+                            <constraint firstItem="vsf-bZ-pff" firstAttribute="height" secondItem="bUd-23-xXD" secondAttribute="height" multiplier="0.8" id="FYs-Xi-kgy"/>
+                            <constraint firstAttribute="trailing" secondItem="yig-HH-Wfj" secondAttribute="trailing" id="Jhe-b2-5iq"/>
+                            <constraint firstItem="vsf-bZ-pff" firstAttribute="centerY" secondItem="bUd-23-xXD" secondAttribute="centerY" id="MvM-F5-Zm1"/>
+                            <constraint firstItem="yig-HH-Wfj" firstAttribute="leading" secondItem="bUd-23-xXD" secondAttribute="leading" id="R1I-iO-w7j"/>
+                            <constraint firstAttribute="bottom" secondItem="yig-HH-Wfj" secondAttribute="bottom" id="WOS-dA-a00"/>
+                            <constraint firstItem="mus-ta-Ajp" firstAttribute="leading" secondItem="uve-d7-nCS" secondAttribute="trailing" constant="15" id="Wn4-rw-njH"/>
+                            <constraint firstItem="vsf-bZ-pff" firstAttribute="leading" secondItem="bUd-23-xXD" secondAttribute="leading" constant="20" id="lbp-x9-YPC"/>
+                            <constraint firstItem="uve-d7-nCS" firstAttribute="centerY" secondItem="bUd-23-xXD" secondAttribute="centerY" id="nVc-PX-zQ2"/>
+                            <constraint firstAttribute="trailing" secondItem="mus-ta-Ajp" secondAttribute="trailing" constant="15" id="ruH-th-xgk"/>
+                            <constraint firstItem="uve-d7-nCS" firstAttribute="leading" secondItem="vsf-bZ-pff" secondAttribute="trailing" constant="15" id="sPd-Jg-7vZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="bUd-23-xXD" firstAttribute="top" secondItem="G3z-xu-kbl" secondAttribute="top" id="9tg-fQ-Q5l"/>
+                    <constraint firstItem="bUd-23-xXD" firstAttribute="leading" secondItem="G3z-xu-kbl" secondAttribute="leading" id="GL0-xA-6f8"/>
+                    <constraint firstAttribute="bottom" secondItem="bUd-23-xXD" secondAttribute="bottom" id="Qwj-Vh-aFc"/>
+                    <constraint firstAttribute="trailing" secondItem="bUd-23-xXD" secondAttribute="trailing" id="d3X-LW-J9w"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="changeSwitch" destination="uve-d7-nCS" id="M9j-PO-0GZ"/>
+                <outlet property="deviceNameLabel" destination="vsf-bZ-pff" id="GEI-5h-nbg"/>
+            </connections>
+            <point key="canvasLocation" x="29" y="64.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arraw" width="20" height="20"/>
+        <image name="cellline" width="640" height="2"/>
+    </resources>
+</document>

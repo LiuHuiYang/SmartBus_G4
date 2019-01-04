@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHZoneAudioPlayControlViewController">
+            <connections>
+                <outlet property="audioSongsShowView" destination="qoF-1U-zyn" id="PbO-xj-MfK"/>
+                <outlet property="audioSourceView" destination="11D-R9-UuB" id="yDM-Uh-NCi"/>
+                <outlet property="bottomHeightConstraint" destination="K2i-wJ-Fdw" id="xzA-Rc-CRd"/>
+                <outlet property="modelButton" destination="QF7-he-Mkv" id="1r6-il-MdA"/>
+                <outlet property="nextButton" destination="xut-YC-PLm" id="i8R-Wc-cGz"/>
+                <outlet property="pauseButton" destination="vYu-Ha-WYQ" id="UuN-76-Qaf"/>
+                <outlet property="playButton" destination="R6q-Pa-gUs" id="ZP9-7P-BzI"/>
+                <outlet property="playControlViewHeightConstraint" destination="iqZ-nK-pb9" id="K6Z-p4-Oa0"/>
+                <outlet property="previousButton" destination="gTg-OB-wGA" id="Ma9-l1-RdR"/>
+                <outlet property="sourceTypeHeightConstraint" destination="EzI-xt-QB2" id="tKd-eD-CoY"/>
+                <outlet property="stopButton" destination="JZw-Tp-XB2" id="d1s-6d-VqJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="voiceButton" destination="vz5-Cs-tth" id="VVH-UL-DPT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="MhA-p5-epR">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11D-R9-UuB" userLabel="topSourceView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="84" id="EzI-xt-QB2"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bca-Q1-OJw" userLabel="bottomPlayView">
+                    <rect key="frame" x="0.0" y="817" width="414" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6q-Pa-gUs" customClass="SHAuioPlayTypeButton">
+                            <rect key="frame" x="178" y="0.0" width="58" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="songPlay_normal"/>
+                            <state key="selected" image="songPlay_highlighted"/>
+                            <state key="highlighted" image="songPlay_highlighted"/>
+                            <connections>
+                                <action selector="playButtonClick" destination="-1" eventType="touchUpInside" id="ZTk-Vy-8Qh"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYu-Ha-WYQ" customClass="SHAuioPlayTypeButton">
+                            <rect key="frame" x="246.00000000000003" y="0.0" width="46.333333333333343" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="songPause_normal"/>
+                            <state key="selected" image="songPause_highlighted"/>
+                            <state key="highlighted" image="songPause_highlighted"/>
+                            <connections>
+                                <action selector="pauseButtonClick" destination="-1" eventType="touchUpInside" id="vKg-xO-a0R"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xut-YC-PLm" customClass="SHAuioPlayTypeButton">
+                            <rect key="frame" x="302.33333333333331" y="0.0" width="46.333333333333314" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="songNext_normal"/>
+                            <state key="selected" image="songNext_highlighted"/>
+                            <state key="highlighted" image="songNext_highlighted"/>
+                            <connections>
+                                <action selector="nextButtonClick" destination="-1" eventType="touchUpInside" id="GLZ-Eg-gvG"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZw-Tp-XB2" customClass="SHAuioPlayTypeButton">
+                            <rect key="frame" x="121.66666666666667" y="0.0" width="46.333333333333329" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="songStop_normal"/>
+                            <state key="selected" image="songStop_highlighted"/>
+                            <state key="highlighted" image="songStop_highlighted"/>
+                            <connections>
+                                <action selector="stopButtonClick" destination="-1" eventType="touchUpInside" id="rbY-l8-mwg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTg-OB-wGA" customClass="SHAuioPlayTypeButton">
+                            <rect key="frame" x="65.333333333333329" y="0.0" width="46.333333333333329" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="songPre_normal"/>
+                            <state key="selected" image="songPre_highlighted"/>
+                            <state key="highlighted" image="songPre_highlighted"/>
+                            <connections>
+                                <action selector="previousButtonClick" destination="-1" eventType="touchUpInside" id="H2Y-81-gmy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QF7-he-Mkv" customClass="SHAuioPlayTypeButton">
+                            <rect key="frame" x="9.0000000000000036" y="0.0" width="46.333333333333343" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="songPlayModel_normal"/>
+                            <state key="selected" image="songPlayModel_highlighted"/>
+                            <state key="highlighted" image="songPlayModel_highlighted"/>
+                            <connections>
+                                <action selector="modelButtonClick" destination="-1" eventType="touchUpInside" id="tpo-eU-Qbi"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vz5-Cs-tth" customClass="SHAuioPlayTypeButton">
+                            <rect key="frame" x="358.66666666666669" y="0.0" width="46.333333333333314" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="audioVoice_normal"/>
+                            <state key="selected" image="audioVoice_highlighted"/>
+                            <state key="highlighted" image="audioVoice_highlighted"/>
+                            <connections>
+                                <action selector="showVolumeView" destination="-1" eventType="touchUpInside" id="MSP-xt-DGY"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="xut-YC-PLm" firstAttribute="leading" secondItem="vYu-Ha-WYQ" secondAttribute="trailing" constant="10" id="6NI-UM-RTQ"/>
+                        <constraint firstItem="xut-YC-PLm" firstAttribute="height" secondItem="vYu-Ha-WYQ" secondAttribute="height" id="6eV-sb-nNB"/>
+                        <constraint firstItem="R6q-Pa-gUs" firstAttribute="centerY" secondItem="bca-Q1-OJw" secondAttribute="centerY" id="71a-rx-1Ai"/>
+                        <constraint firstItem="gTg-OB-wGA" firstAttribute="width" secondItem="JZw-Tp-XB2" secondAttribute="width" id="8je-um-2hh"/>
+                        <constraint firstItem="xut-YC-PLm" firstAttribute="width" secondItem="vYu-Ha-WYQ" secondAttribute="width" id="8zm-hL-hES"/>
+                        <constraint firstItem="vz5-Cs-tth" firstAttribute="height" secondItem="vYu-Ha-WYQ" secondAttribute="height" id="FoO-Gu-vCc"/>
+                        <constraint firstItem="R6q-Pa-gUs" firstAttribute="width" secondItem="bca-Q1-OJw" secondAttribute="width" multiplier="0.14" id="I4N-sK-lq6"/>
+                        <constraint firstItem="R6q-Pa-gUs" firstAttribute="centerX" secondItem="bca-Q1-OJw" secondAttribute="centerX" id="K7g-oR-zuO"/>
+                        <constraint firstItem="vz5-Cs-tth" firstAttribute="width" secondItem="vYu-Ha-WYQ" secondAttribute="width" id="KGQ-Gg-Czs"/>
+                        <constraint firstItem="R6q-Pa-gUs" firstAttribute="leading" secondItem="JZw-Tp-XB2" secondAttribute="trailing" constant="10" id="MPd-0T-bfl"/>
+                        <constraint firstItem="JZw-Tp-XB2" firstAttribute="leading" secondItem="gTg-OB-wGA" secondAttribute="trailing" constant="10" id="Qdy-uY-dP5"/>
+                        <constraint firstItem="xut-YC-PLm" firstAttribute="centerY" secondItem="vYu-Ha-WYQ" secondAttribute="centerY" id="Qh3-Ua-UGD"/>
+                        <constraint firstItem="JZw-Tp-XB2" firstAttribute="height" secondItem="vYu-Ha-WYQ" secondAttribute="height" id="Rcy-T2-IH6"/>
+                        <constraint firstItem="vYu-Ha-WYQ" firstAttribute="centerY" secondItem="R6q-Pa-gUs" secondAttribute="centerY" id="T8C-yn-Ogv"/>
+                        <constraint firstItem="vz5-Cs-tth" firstAttribute="centerY" secondItem="vYu-Ha-WYQ" secondAttribute="centerY" id="Wc9-8a-Ta8"/>
+                        <constraint firstItem="JZw-Tp-XB2" firstAttribute="centerY" secondItem="R6q-Pa-gUs" secondAttribute="centerY" id="acS-LX-e1t"/>
+                        <constraint firstItem="gTg-OB-wGA" firstAttribute="height" secondItem="JZw-Tp-XB2" secondAttribute="height" id="do5-Sj-mWl"/>
+                        <constraint firstItem="vYu-Ha-WYQ" firstAttribute="leading" secondItem="R6q-Pa-gUs" secondAttribute="trailing" constant="10" id="eLz-dx-wkj"/>
+                        <constraint firstItem="R6q-Pa-gUs" firstAttribute="height" secondItem="bca-Q1-OJw" secondAttribute="height" id="go5-7Z-4nl"/>
+                        <constraint firstItem="QF7-he-Mkv" firstAttribute="width" secondItem="JZw-Tp-XB2" secondAttribute="width" id="hrW-sF-HoZ"/>
+                        <constraint firstItem="gTg-OB-wGA" firstAttribute="centerY" secondItem="JZw-Tp-XB2" secondAttribute="centerY" id="ifE-kz-mYx"/>
+                        <constraint firstAttribute="height" constant="64" id="iqZ-nK-pb9"/>
+                        <constraint firstItem="QF7-he-Mkv" firstAttribute="height" secondItem="JZw-Tp-XB2" secondAttribute="height" id="jrZ-Mu-yxr"/>
+                        <constraint firstItem="vYu-Ha-WYQ" firstAttribute="width" secondItem="R6q-Pa-gUs" secondAttribute="width" multiplier="0.8" id="kFQ-WP-Q5v"/>
+                        <constraint firstItem="QF7-he-Mkv" firstAttribute="centerY" secondItem="JZw-Tp-XB2" secondAttribute="centerY" id="pdB-Nv-hIT"/>
+                        <constraint firstItem="gTg-OB-wGA" firstAttribute="leading" secondItem="QF7-he-Mkv" secondAttribute="trailing" constant="10" id="qT7-Mr-gL5"/>
+                        <constraint firstItem="vz5-Cs-tth" firstAttribute="leading" secondItem="xut-YC-PLm" secondAttribute="trailing" constant="10" id="rSg-RQ-DNm"/>
+                        <constraint firstItem="vYu-Ha-WYQ" firstAttribute="height" secondItem="R6q-Pa-gUs" secondAttribute="height" id="sRH-E4-maD"/>
+                        <constraint firstItem="JZw-Tp-XB2" firstAttribute="width" secondItem="vYu-Ha-WYQ" secondAttribute="width" id="yVY-R3-vLR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qoF-1U-zyn" userLabel="middleSongView">
+                    <rect key="frame" x="0.0" y="99" width="414" height="703"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="11D-R9-UuB" secondAttribute="trailing" id="05p-q8-5Kh"/>
+                <constraint firstAttribute="trailing" secondItem="qoF-1U-zyn" secondAttribute="trailing" id="31P-RZ-uP6"/>
+                <constraint firstItem="bca-Q1-OJw" firstAttribute="top" secondItem="qoF-1U-zyn" secondAttribute="bottom" constant="15" id="3dP-6d-Pa7"/>
+                <constraint firstAttribute="bottom" secondItem="bca-Q1-OJw" secondAttribute="bottom" constant="15" id="K2i-wJ-Fdw"/>
+                <constraint firstAttribute="trailing" secondItem="MhA-p5-epR" secondAttribute="trailing" id="Ke3-mL-ac4"/>
+                <constraint firstItem="11D-R9-UuB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Mdt-C2-9dG"/>
+                <constraint firstAttribute="trailing" secondItem="bca-Q1-OJw" secondAttribute="trailing" id="Ts8-d4-G5t"/>
+                <constraint firstItem="11D-R9-UuB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Uyq-7y-BSF"/>
+                <constraint firstAttribute="bottom" secondItem="MhA-p5-epR" secondAttribute="bottom" id="Vk9-DE-zng"/>
+                <constraint firstItem="MhA-p5-epR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wo3-3g-cI5"/>
+                <constraint firstItem="bca-Q1-OJw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZhB-rC-V36"/>
+                <constraint firstItem="MhA-p5-epR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bab-YB-Mie"/>
+                <constraint firstItem="qoF-1U-zyn" firstAttribute="top" secondItem="11D-R9-UuB" secondAttribute="bottom" constant="15" id="edh-wb-zOj"/>
+                <constraint firstItem="qoF-1U-zyn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xxh-Eb-315"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="audioVoice_highlighted" width="53" height="49"/>
+        <image name="audioVoice_normal" width="52" height="49"/>
+        <image name="background" width="320" height="480"/>
+        <image name="songNext_highlighted" width="70" height="49"/>
+        <image name="songNext_normal" width="70" height="49"/>
+        <image name="songPause_highlighted" width="70" height="49"/>
+        <image name="songPause_normal" width="70" height="49"/>
+        <image name="songPlayModel_highlighted" width="52" height="49"/>
+        <image name="songPlayModel_normal" width="52" height="49"/>
+        <image name="songPlay_highlighted" width="52" height="49"/>
+        <image name="songPlay_normal" width="52" height="49"/>
+        <image name="songPre_highlighted" width="70" height="49"/>
+        <image name="songPre_normal" width="70" height="49"/>
+        <image name="songStop_highlighted" width="70" height="49"/>
+        <image name="songStop_normal" width="70" height="49"/>
+    </resources>
+</document>

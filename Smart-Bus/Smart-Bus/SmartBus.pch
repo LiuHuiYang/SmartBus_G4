@@ -1,0 +1,57 @@
+//
+//  SmartBus.pch
+//  Smart-Bus
+//
+//  Created by Mark Liu on 2017/6/5.
+//  Copyright © 2017年 Mark Liu. All rights reserved.
+//
+
+#ifndef SmartBus_pch
+#define SmartBus_pch
+
+#ifdef __OBJC__
+
+// ========导入相关的头文件===========
+
+
+
+#import "Additional.h"  // s
+
+#include "SHConstraint.h"
+
+#import "UIButton+init.h"
+#import "UIBarButtonItem+init.h"
+
+#import "SHLanguageTools.h" // s
+
+#import "UIImage+SaveAndGet.h"
+#import "SHSQLManager.h"
+#import "SHCommandButton.h"
+#import "SoundTools.h"
+
+#import <SVProgressHUD/SVProgressHUD.h>
+
+// ========== 相关的区域 ========
+
+#import "SHLoadProgressView.h"
+#import "SHNetWorkTools.h"
+#import <SAMKeychain/SAMKeychain.h>
+#import "SHAudioTools.h"
+#import "SHSchedual.h"
+#import "SHSchedualExecuteTools.h"
+
+#import "AppDelegate.h"
+
+#import <TYAlertController/TYAlertController.h>
+#import "TYCustomAlertView.h"
+#import "UIView+CustomSetting.h"
+#import <TYAlertController/TYAlertController.h>
+
+#import "SHTabBarController.h"
+
+// 导入 "项目名称-Swift.h" 就可以在OC代码中访问所有的Swift内容
+#import "Smart_Bus-Swift.h"
+
+#endif
+
+#endif /* SmartBus_pch */

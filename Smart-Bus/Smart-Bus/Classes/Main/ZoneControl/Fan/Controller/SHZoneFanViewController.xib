@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHZoneFanViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomHeightConstraint" destination="sxI-e1-UW3" id="lSb-tW-l1a"/>
+                <outlet property="fansListView" destination="dbL-QQ-D8t" id="nzR-i4-T9k"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="LOy-7n-TEF">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dbL-QQ-D8t">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="gls-wJ-oOT"/>
+                        <outlet property="delegate" destination="-1" id="w6O-rS-WNG"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="LOy-7n-TEF" secondAttribute="trailing" id="2ti-Ya-aWz"/>
+                <constraint firstItem="dbL-QQ-D8t" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6Cw-fL-tA7"/>
+                <constraint firstItem="dbL-QQ-D8t" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="D8y-rc-8VD"/>
+                <constraint firstItem="LOy-7n-TEF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NmZ-O6-wsR"/>
+                <constraint firstAttribute="bottom" secondItem="LOy-7n-TEF" secondAttribute="bottom" id="R6N-Fb-6f5"/>
+                <constraint firstItem="LOy-7n-TEF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bfo-My-r7Y"/>
+                <constraint firstAttribute="trailing" secondItem="dbL-QQ-D8t" secondAttribute="trailing" id="iVx-hp-MoA"/>
+                <constraint firstItem="dbL-QQ-D8t" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" constant="-49" id="sxI-e1-UW3"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHAudioRecordViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomHeightConstraint" destination="ddP-et-qKA" id="zTV-Dj-qDg"/>
+                <outlet property="deleteButton" destination="wBh-so-Rey" id="F5R-36-lqV"/>
+                <outlet property="preViewButton" destination="PjW-4S-dgi" id="KcT-gu-B3J"/>
+                <outlet property="recordButton" destination="CWH-7R-beY" id="MdL-ex-t1c"/>
+                <outlet property="uploadButton" destination="H95-4s-gJB" id="bZY-xU-YaK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ZN3-8g-2Ln">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZz-er-9Jc" userLabel="topView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWH-7R-beY" customClass="SHAudioRecordControlButton">
+                            <rect key="frame" x="122" y="7.5" width="131" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="49" id="FBv-l8-z7y"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="Record" image="audio_record" backgroundImage="audioButtonbackground"/>
+                            <connections>
+                                <action selector="recordButtonClick" destination="-1" eventType="touchUpInside" id="G6G-Dl-p47"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="0YK-RF-QgP"/>
+                        <constraint firstItem="CWH-7R-beY" firstAttribute="centerX" secondItem="UZz-er-9Jc" secondAttribute="centerX" id="X3r-Za-eAK"/>
+                        <constraint firstItem="CWH-7R-beY" firstAttribute="width" secondItem="UZz-er-9Jc" secondAttribute="width" multiplier="0.35" id="lqI-VY-gJR"/>
+                        <constraint firstItem="CWH-7R-beY" firstAttribute="centerY" secondItem="UZz-er-9Jc" secondAttribute="centerY" id="uuT-8p-kWM"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ze3-o2-g3k" userLabel="bottomView">
+                    <rect key="frame" x="0.0" y="453" width="375" height="165"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H95-4s-gJB" customClass="SHAudioRecordControlButton">
+                            <rect key="frame" x="97.5" y="101" width="180" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="49" id="15v-V7-1m3"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="Upload To FTP" image="audioRecordUploadFtp" backgroundImage="audioButtonbackground"/>
+                            <connections>
+                                <action selector="uploadButtonClick" destination="-1" eventType="touchUpInside" id="Lxd-i8-eit"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PjW-4S-dgi" customClass="SHAudioRecordControlButton">
+                            <rect key="frame" x="32" y="15" width="123.5" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="49" id="vcl-yO-0Wo"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="Preview" image="audioRecordPreview" backgroundImage="audioButtonbackground"/>
+                            <connections>
+                                <action selector="preViewButtonClick" destination="-1" eventType="touchUpInside" id="sAt-Ch-rZm"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBh-so-Rey" customClass="SHAudioRecordControlButton">
+                            <rect key="frame" x="219.5" y="15" width="123.5" height="49"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="Delete" image="audioRecordDelete" backgroundImage="audioButtonbackground"/>
+                            <connections>
+                                <action selector="deleteButtonClick" destination="-1" eventType="touchUpInside" id="yZX-EG-IWJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="wBh-so-Rey" firstAttribute="width" secondItem="PjW-4S-dgi" secondAttribute="width" id="4Rd-qf-hx7"/>
+                        <constraint firstItem="H95-4s-gJB" firstAttribute="centerX" secondItem="Ze3-o2-g3k" secondAttribute="centerX" id="4Sy-ak-AZc"/>
+                        <constraint firstItem="H95-4s-gJB" firstAttribute="width" secondItem="Ze3-o2-g3k" secondAttribute="width" multiplier="0.48" id="AHq-hG-nFT"/>
+                        <constraint firstItem="wBh-so-Rey" firstAttribute="centerY" secondItem="PjW-4S-dgi" secondAttribute="centerY" id="CDq-ds-m6v"/>
+                        <constraint firstAttribute="bottom" secondItem="H95-4s-gJB" secondAttribute="bottom" constant="15" id="FeX-ee-aa8"/>
+                        <constraint firstItem="PjW-4S-dgi" firstAttribute="width" secondItem="Ze3-o2-g3k" secondAttribute="width" multiplier="0.33" id="Vmf-Ld-8K2"/>
+                        <constraint firstAttribute="height" constant="165" id="cOm-tT-CvC"/>
+                        <constraint firstItem="PjW-4S-dgi" firstAttribute="centerX" secondItem="Ze3-o2-g3k" secondAttribute="centerX" multiplier="0.5" id="dKp-BF-WSR"/>
+                        <constraint firstItem="wBh-so-Rey" firstAttribute="centerX" secondItem="Ze3-o2-g3k" secondAttribute="centerX" multiplier="1.5" id="mrO-rB-id6"/>
+                        <constraint firstItem="PjW-4S-dgi" firstAttribute="top" secondItem="Ze3-o2-g3k" secondAttribute="top" constant="15" id="pe8-S5-Ech"/>
+                        <constraint firstItem="wBh-so-Rey" firstAttribute="height" secondItem="PjW-4S-dgi" secondAttribute="height" id="ztE-90-1Du"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWL-gp-NIH" userLabel="middleView">
+                    <rect key="frame" x="0.0" y="79" width="375" height="359"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="songsBackground" translatesAutoresizingMaskIntoConstraints="NO" id="dTc-db-J8S">
+                            <rect key="frame" x="28" y="0.0" width="319" height="359"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="dTc-db-J8S" firstAttribute="width" secondItem="KWL-gp-NIH" secondAttribute="width" multiplier="0.85" id="BgW-t9-PQW"/>
+                        <constraint firstItem="dTc-db-J8S" firstAttribute="height" secondItem="KWL-gp-NIH" secondAttribute="height" id="Eb0-Yh-Zoi"/>
+                        <constraint firstItem="dTc-db-J8S" firstAttribute="centerY" secondItem="KWL-gp-NIH" secondAttribute="centerY" id="YWn-UA-ihV"/>
+                        <constraint firstItem="dTc-db-J8S" firstAttribute="centerX" secondItem="KWL-gp-NIH" secondAttribute="centerX" id="sYh-yZ-Aur"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ZN3-8g-2Ln" secondAttribute="bottom" id="036-sO-P0M"/>
+                <constraint firstItem="KWL-gp-NIH" firstAttribute="top" secondItem="UZz-er-9Jc" secondAttribute="bottom" constant="15" id="8Kv-Ra-udu"/>
+                <constraint firstItem="UZz-er-9Jc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PDg-PX-zzL"/>
+                <constraint firstAttribute="trailing" secondItem="ZN3-8g-2Ln" secondAttribute="trailing" id="ZSx-Tu-2ri"/>
+                <constraint firstAttribute="bottom" secondItem="Ze3-o2-g3k" secondAttribute="bottom" constant="49" id="ddP-et-qKA"/>
+                <constraint firstItem="UZz-er-9Jc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dlI-Q4-oCS"/>
+                <constraint firstItem="KWL-gp-NIH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fgu-Go-TRo"/>
+                <constraint firstItem="ZN3-8g-2Ln" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gxO-wD-ngq"/>
+                <constraint firstItem="Ze3-o2-g3k" firstAttribute="top" secondItem="KWL-gp-NIH" secondAttribute="bottom" constant="15" id="ikC-4D-i62"/>
+                <constraint firstAttribute="trailing" secondItem="KWL-gp-NIH" secondAttribute="trailing" id="ilF-KU-crS"/>
+                <constraint firstAttribute="trailing" secondItem="Ze3-o2-g3k" secondAttribute="trailing" id="kHY-yP-oSC"/>
+                <constraint firstItem="ZN3-8g-2Ln" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oMA-26-uvP"/>
+                <constraint firstAttribute="trailing" secondItem="UZz-er-9Jc" secondAttribute="trailing" id="rKT-wr-qbo"/>
+                <constraint firstItem="Ze3-o2-g3k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xPT-pK-KAH"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="audioButtonbackground" width="200" height="65"/>
+        <image name="audioRecordDelete" width="22" height="22"/>
+        <image name="audioRecordPreview" width="22" height="22"/>
+        <image name="audioRecordUploadFtp" width="28" height="22"/>
+        <image name="audio_record" width="22" height="22"/>
+        <image name="background" width="320" height="480"/>
+        <image name="songsBackground" width="512" height="369"/>
+    </resources>
+</document>

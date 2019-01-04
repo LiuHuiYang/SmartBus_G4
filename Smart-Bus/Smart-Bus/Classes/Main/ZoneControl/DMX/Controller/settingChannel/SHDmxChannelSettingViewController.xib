@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHDmxChannelSettingViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="channelListView" destination="o9F-cL-dQf" id="CQp-zq-GsS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ItU-q4-ClX">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o9F-cL-dQf">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="tJL-8q-w6h"/>
+                        <outlet property="delegate" destination="-1" id="Zbg-Bp-dA3"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ItU-q4-ClX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3Ax-b9-NDE"/>
+                <constraint firstAttribute="bottom" secondItem="o9F-cL-dQf" secondAttribute="bottom" constant="49" id="93z-ud-28N"/>
+                <constraint firstItem="o9F-cL-dQf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="M1h-Hj-x2Y"/>
+                <constraint firstAttribute="trailing" secondItem="o9F-cL-dQf" secondAttribute="trailing" id="MPi-2j-UPV"/>
+                <constraint firstItem="o9F-cL-dQf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SoP-LK-q3l"/>
+                <constraint firstAttribute="trailing" secondItem="ItU-q4-ClX" secondAttribute="trailing" id="eDF-X7-IgM"/>
+                <constraint firstItem="ItU-q4-ClX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iwC-km-3sx"/>
+                <constraint firstAttribute="bottom" secondItem="ItU-q4-ClX" secondAttribute="bottom" id="oCI-MZ-B4H"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

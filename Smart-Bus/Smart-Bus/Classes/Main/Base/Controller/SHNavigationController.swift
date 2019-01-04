@@ -1,0 +1,80 @@
+//
+//  SHNavigationController.swift
+//  Smart-Bus
+//
+//  Created by Mark Liu on 2017/10/8.
+//  Copyright © 2018 SmartHome. All rights reserved.
+//
+
+import UIKit
+
+class SHNavigationController: UINavigationController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        navigationBar.setBackgroundImage(UIImage(named: "navigationbarbackground"), for: .default)
+        
+        navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: (UIDevice.is_iPad() ? UIView.suitFontForPad() : UIFont.boldSystemFont(ofSize: 20)),
+            
+            NSAttributedString.Key.foregroundColor:
+                UIView.textWhiteColor()
+        ]
+    }
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        
+        if self.children.count > 0 {
+            
+            viewController.hidesBottomBarWhenPushed = true
+            
+            viewController.navigationItem.leftBarButtonItem =
+                UIBarButtonItem(title: nil,
+                                font: nil,
+                                normalTextColor: nil,
+                                highlightedTextColor: nil,
+                                imageName: "navigationbarback",
+                                hightlightedImageName: "navigationbarback",
+                                addTarget: self,
+                                action: #selector(popBack),
+                                isNavigationBackItem:true)
+        }
+        
+        super.pushViewController(viewController, animated: animated)
+    }
+    
+    /// 控制器出栈
+    @objc func popBack() {
+        
+        popViewController(animated:true)
+    }
+    
+    /// 横竖屏适配
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        
+        if UIDevice.is_iPad() {
+            return super.supportedInterfaceOrientations
+        }
+        
+        return .portrait
+    }
+    
+    /// 状态栏隐藏
+    override var prefersStatusBarHidden: Bool {
+        
+        return false
+    }
+    
+    /// 状态栏样式
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+    }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}

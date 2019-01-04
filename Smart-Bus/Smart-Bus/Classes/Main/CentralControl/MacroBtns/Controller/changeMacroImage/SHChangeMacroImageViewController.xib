@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHChangeMacroImageViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="iconListView" destination="kiT-IZ-GBD" id="aPi-5u-ne2"/>
+                <outlet property="view" destination="MfM-M0-CKN" id="Xct-2n-DwC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="MfM-M0-CKN">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="EjG-vz-qMg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kiT-IZ-GBD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5kI-kz-QIW">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="L4b-E9-LIa"/>
+                        <outlet property="delegate" destination="-1" id="Z7v-ls-XVo"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="EjG-vz-qMg" firstAttribute="leading" secondItem="MfM-M0-CKN" secondAttribute="leading" id="6O3-Gn-Cib"/>
+                <constraint firstItem="EjG-vz-qMg" firstAttribute="top" secondItem="MfM-M0-CKN" secondAttribute="top" id="Fxi-mp-F1L"/>
+                <constraint firstItem="kiT-IZ-GBD" firstAttribute="top" secondItem="MfM-M0-CKN" secondAttribute="top" id="MaI-fL-0Ov"/>
+                <constraint firstItem="kiT-IZ-GBD" firstAttribute="leading" secondItem="MfM-M0-CKN" secondAttribute="leading" id="Reh-bW-VhU"/>
+                <constraint firstAttribute="trailing" secondItem="kiT-IZ-GBD" secondAttribute="trailing" id="htG-YU-g08"/>
+                <constraint firstAttribute="bottom" secondItem="EjG-vz-qMg" secondAttribute="bottom" id="kI4-wT-sGP"/>
+                <constraint firstAttribute="trailing" secondItem="EjG-vz-qMg" secondAttribute="trailing" id="oKj-49-Hcn"/>
+                <constraint firstAttribute="bottom" secondItem="kiT-IZ-GBD" secondAttribute="bottom" constant="49" id="wcD-49-gO8"/>
+            </constraints>
+            <point key="canvasLocation" x="818" y="-672"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

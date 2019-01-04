@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ifv-6b-Jn7" customClass="SHZoneControlSATChannel" customModule="Smart_Bus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="But-rA-9kC" userLabel="groupView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                    <subviews>
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJn-E8-8k6" customClass="SHZoneControlSATChannelButton">
+                            <rect key="frame" x="10" y="5" width="67.5" height="44"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="mediabackground"/>
+                            <state key="selected">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdS-Ba-aby" customClass="SHZoneControlSATChannelButton">
+                            <rect key="frame" x="87.5" y="5" width="67.5" height="44"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="mediabackground"/>
+                            <state key="selected">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="categoryEditButtonClick" destination="ifv-6b-Jn7" eventType="touchUpInside" id="D2a-z4-pYh"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fa7-hs-sAg" customClass="SHZoneControlSATChannelButton">
+                            <rect key="frame" x="165" y="5" width="67.5" height="44"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="mediabackground"/>
+                            <state key="selected">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="channelButtonClick" destination="ifv-6b-Jn7" eventType="touchUpInside" id="Bd1-hz-04H"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ki3-5C-2Ax" customClass="SHZoneControlSATChannelButton">
+                            <rect key="frame" x="242.5" y="5" width="67.5" height="44"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="mediabackground"/>
+                            <state key="selected">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="delayForIRButtonClick" destination="ifv-6b-Jn7" eventType="touchUpInside" id="D3F-FC-gqK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="fa7-hs-sAg" firstAttribute="width" secondItem="ki3-5C-2Ax" secondAttribute="width" id="3se-C4-0e4"/>
+                        <constraint firstItem="fa7-hs-sAg" firstAttribute="leading" secondItem="qdS-Ba-aby" secondAttribute="trailing" constant="10" id="IRY-xz-Lqx"/>
+                        <constraint firstItem="HJn-E8-8k6" firstAttribute="centerY" secondItem="qdS-Ba-aby" secondAttribute="centerY" id="Ieq-tc-8nc"/>
+                        <constraint firstItem="HJn-E8-8k6" firstAttribute="width" secondItem="qdS-Ba-aby" secondAttribute="width" id="IsZ-qE-ZpZ"/>
+                        <constraint firstItem="qdS-Ba-aby" firstAttribute="centerY" secondItem="fa7-hs-sAg" secondAttribute="centerY" id="Ne7-H7-kjg"/>
+                        <constraint firstItem="HJn-E8-8k6" firstAttribute="height" secondItem="qdS-Ba-aby" secondAttribute="height" id="Pu7-zt-Jcl"/>
+                        <constraint firstAttribute="bottom" secondItem="ki3-5C-2Ax" secondAttribute="bottom" id="QxJ-Xj-fRm"/>
+                        <constraint firstItem="qdS-Ba-aby" firstAttribute="width" secondItem="fa7-hs-sAg" secondAttribute="width" id="Wl4-8L-Yod"/>
+                        <constraint firstItem="ki3-5C-2Ax" firstAttribute="leading" secondItem="fa7-hs-sAg" secondAttribute="trailing" constant="10" id="bgl-NB-4C0"/>
+                        <constraint firstItem="fa7-hs-sAg" firstAttribute="centerY" secondItem="ki3-5C-2Ax" secondAttribute="centerY" id="cYV-Po-l0D"/>
+                        <constraint firstItem="qdS-Ba-aby" firstAttribute="height" secondItem="fa7-hs-sAg" secondAttribute="height" id="hZp-Pa-7Vh"/>
+                        <constraint firstItem="qdS-Ba-aby" firstAttribute="leading" secondItem="HJn-E8-8k6" secondAttribute="trailing" constant="10" id="jiu-2P-qXp"/>
+                        <constraint firstItem="ki3-5C-2Ax" firstAttribute="top" secondItem="But-rA-9kC" secondAttribute="top" constant="5" id="qM1-t0-CHS"/>
+                        <constraint firstAttribute="height" constant="49" id="teb-D3-g8G"/>
+                        <constraint firstAttribute="trailing" secondItem="ki3-5C-2Ax" secondAttribute="trailing" constant="10" id="uux-N0-kDq"/>
+                        <constraint firstItem="fa7-hs-sAg" firstAttribute="height" secondItem="ki3-5C-2Ax" secondAttribute="height" id="wsL-k1-2Xs"/>
+                        <constraint firstItem="HJn-E8-8k6" firstAttribute="leading" secondItem="But-rA-9kC" secondAttribute="leading" constant="10" id="zRZ-cr-cLm"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="49" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nnP-Jh-Nsv">
+                    <rect key="frame" x="10" y="64" width="67.5" height="489"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="ifv-6b-Jn7" id="0Ar-sC-R4m"/>
+                        <outlet property="delegate" destination="ifv-6b-Jn7" id="EJT-Zw-Y4f"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iok-a3-Flg">
+                    <rect key="frame" x="87.5" y="64" width="222.5" height="489"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Vew-wO-oCZ">
+                            <rect key="frame" x="0.0" y="0.0" width="222.5" height="489"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MZt-MQ-LFE">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="ifv-6b-Jn7" id="8ei-dU-GUa"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="height" secondItem="Iok-a3-Flg" secondAttribute="height" id="J7g-K0-O4g"/>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="centerY" secondItem="Iok-a3-Flg" secondAttribute="centerY" id="WTD-ut-RFe"/>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="width" secondItem="Iok-a3-Flg" secondAttribute="width" id="aGZ-E0-xds"/>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="centerX" secondItem="Iok-a3-Flg" secondAttribute="centerX" id="jFv-jn-Yim"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Iok-a3-Flg" firstAttribute="height" secondItem="nnP-Jh-Nsv" secondAttribute="height" id="Ajj-KL-KY4"/>
+                <constraint firstItem="Iok-a3-Flg" firstAttribute="centerY" secondItem="nnP-Jh-Nsv" secondAttribute="centerY" id="OHY-OL-vO9"/>
+                <constraint firstItem="nnP-Jh-Nsv" firstAttribute="leading" secondItem="HJn-E8-8k6" secondAttribute="leading" id="WVk-zN-Wri"/>
+                <constraint firstItem="Iok-a3-Flg" firstAttribute="trailing" secondItem="ki3-5C-2Ax" secondAttribute="trailing" id="agE-qB-34C"/>
+                <constraint firstItem="nnP-Jh-Nsv" firstAttribute="top" secondItem="But-rA-9kC" secondAttribute="bottom" constant="15" id="gN0-KL-yfL"/>
+                <constraint firstItem="nnP-Jh-Nsv" firstAttribute="width" secondItem="HJn-E8-8k6" secondAttribute="width" id="gcj-oT-gXj"/>
+                <constraint firstItem="But-rA-9kC" firstAttribute="leading" secondItem="ifv-6b-Jn7" secondAttribute="leading" id="qVK-sP-uuj"/>
+                <constraint firstAttribute="bottom" secondItem="nnP-Jh-Nsv" secondAttribute="bottom" constant="15" id="t3X-du-TNU"/>
+                <constraint firstItem="Iok-a3-Flg" firstAttribute="leading" secondItem="qdS-Ba-aby" secondAttribute="leading" id="thM-2W-QP0"/>
+                <constraint firstItem="But-rA-9kC" firstAttribute="top" secondItem="ifv-6b-Jn7" secondAttribute="top" id="v7I-XC-gAT"/>
+                <constraint firstAttribute="trailing" secondItem="But-rA-9kC" secondAttribute="trailing" id="vuz-mV-jhy"/>
+            </constraints>
+            <connections>
+                <outlet property="categoryEditButton" destination="qdS-Ba-aby" id="i6L-h9-fFz"/>
+                <outlet property="categoryListView" destination="nnP-Jh-Nsv" id="DyW-jq-pWs"/>
+                <outlet property="categoryShowButton" destination="HJn-E8-8k6" id="9tB-83-uSp"/>
+                <outlet property="channelButton" destination="fa7-hs-sAg" id="3Oy-6l-6FS"/>
+                <outlet property="channelListView" destination="Vew-wO-oCZ" id="rNB-ec-RdZ"/>
+                <outlet property="delayForIRButton" destination="ki3-5C-2Ax" id="PXg-Ic-i1K"/>
+                <outlet property="groupViewHeightConstraint" destination="teb-D3-g8G" id="XcW-d8-Hw6"/>
+            </connections>
+            <point key="canvasLocation" x="-3" y="-187"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mediabackground" width="128" height="50"/>
+    </resources>
+</document>

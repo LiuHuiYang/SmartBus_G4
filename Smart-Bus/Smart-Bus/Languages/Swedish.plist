@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>Ja</string>
+		<key>NO</key>
+		<string>Nej</string>
+		<key>OK</key>
+		<string>OK</string>
+		<key>CANCEL</key>
+		<string>Avbryt</string>
+		<key>SAVED</key>
+		<string>Sparad</string>
+		<key>SAVE</key>
+		<string>Spara</string>
+		<key>EDIT</key>
+		<string>Redigera</string>
+		<key>DONE</key>
+		<string>Klar</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>System Meddelande</string>
+		<key>ON</key>
+		<string>PÅ</string>
+		<key>OFF</key>
+		<string>AV</string>
+		<key>NO_DATA</key>
+		<string>Ingen Data!</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>Ljus</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>Z-Audio</string>
+		<key>dshades</key>
+		<string>Gardiner</string>
+		<key>emedia</key>
+		<string>Media</string>
+		<key>fmoods</key>
+		<string>Stämmning</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>Zon/Område Styrning</string>
+			<string>Central Styrning</string>
+			<string>Gemensamma Tjänster</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>Scenario</string>
+		<key>LIGHTS</key>
+		<string>Ljus</string>
+		<key>MUSIC</key>
+		<string>Musik</string>
+		<key>SECURITY</key>
+		<string>Säkerhet</string>
+		<key>CLIMATE</key>
+		<string>Klimat</string>
+		<key>SCHEDULE</key>
+		<string>Schema</string>
+		<key>CAMERA</key>
+		<string>Kamera</string>
+		<key>APPLIANCES</key>
+		<string>Apparater</string>
+		<key>INTERCOM</key>
+		<string>Interkom</string>
+		<key>COMMUNITY</key>
+		<string>Gemenskap</string>
+		<key>HOME_STATUS</key>
+		<string>Hem Status</string>
+		<key>METERS</key>
+		<string>Mätare</string>
+		<key>WEATHER</key>
+		<string>Väder</string>
+		<key>PHOTO</key>
+		<string>Bilder</string>
+		<key>ALARM</key>
+		<string>Alarm</string>
+		<key>SMS_CONTROL</key>
+		<string>SMS Kontrol</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>Inställning</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>Nätverks Inställning</string>
+		<key>DATABASE</key>
+		<string>Databas UP/Ner Laddning</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>Språk Inställning</string>
+		<key>VERSION</key>
+		<string>Version</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>Nätverks Inställning</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>Lokal</string>
+		<key>INTERNET</key>
+		<string>Internet</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/IP Adress</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>De data som du har matas in kan inte vara null!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Misslyckas med att få IP-adress med domännamn; kontrollera att den är ansluten till Internet.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>IP-adressen är fel, kontrollera den!</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>FTP Serverinställningar</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>FTP Serveradress</string>
+		<key>USER_NAME</key>
+		<string>Användarnamn</string>
+		<key>PASSWORD</key>
+		<string>Lösenord</string>
+		<key>UPLOAD</key>
+		<string>Ladda upp</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>Ladda upp Databas</string>
+		<key>DOWNLOAD</key>
+		<string>Nerladdning</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>Ladda ner Databas</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Ladda upp databasen från denna iPhone/iPad till FTP Serser, Databas namn är &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Ladda ner databas från FTP-servern till denna iPhone/iPad, databasens namn måste vara &quot;Database.sqlite3&quot;, och katalogen av databasen måste vara i rotkatalogen på FTP-servern</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Ansluter...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Vänligen kontrollera FTP-adress!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Fyll i all information</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Databas Nerladdning&quot; meddelande:@&quot; Nuvarande databas på appen kommer att ersättas av databasen på FTP, är du säker på att du vill hämta? </string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Uppladdning Klar</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Anslutning misslyckades!</string>
+		<key>New item - 3</key>
+		<string></string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>A/C AV</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>Låg</string>
+			<string>MED.</string>
+			<string>Hög</string>
+			<string>Auto</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>Kyla</string>
+			<string>Värme</string>
+			<string>Fläkt</string>
+			<string>Auto</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>Kalt</string>
+			<string>Sval</string>
+			<string>Varmt</string>
+			<string>Hett</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>Öppen</string>
+		<key>SHADE_CLOSE</key>
+		<string>Stäng</string>
+		<key>SHADE_STOP</key>
+		<string>Stop</string>
+		<key>SENDING</key>
+		<string>Den skickar data.</string>
+		<key>EXECUTED</key>
+		<string>Utförd</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>Tryck på knappen nedan för att lägga till ny stämning</string>
+		<key>RECORD_MOOD</key>
+		<string>Spela in stämning</string>
+		<key>MOOD_NAME</key>
+		<string>Stämningsnamn:</string>
+		<key>SELECT_ICON</key>
+		<string>Välj Ikon</string>
+		<key>EDIT_MOOD</key>
+		<string>Redigera Stämning</string>
+		<key>RECORD</key>
+		<string>Spela in</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>Välj ikon för stämning</string>
+		<key>SHADE_BYPASS</key>
+		<string>Kringgå</string>
+		<key>SHADE_OPEN</key>
+		<string>Öppna</string>
+		<key>SHADE_CLOSE</key>
+		<string>Stäng</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>En annan stämning körs, om ni köra nuvarande stämning, kommer en den andra stämning avbryts. Fortsätt att köra nuvarande stämning？</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Misslyckas att spela in stämning!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- Kontrollera din nätverksanslutning.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- Kontrollera din databas konfiguration.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Felmeddelande:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1- En apparat skall väljas minst</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- Stämning namn kan inte vara tomt och måste vara unikt.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Den spelar in stämning, vänta ett ögonblick...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Misslyckades spela in! Orsak: ingen data!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>Mute</string>
+		<key>MENU</key>
+		<string>Meny</string>
+		<key>SOURCE</key>
+		<string>Källa</string>
+		<key>CONTROL</key>
+		<string>Kontrol</string>
+		<key>NUM_PAD</key>
+		<string>Numeriskt</string>
+		<key>CHANNEL</key>
+		<string>Kanal</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>SAT. Kanal Installning</string>
+		<key>DELAY_FOR_IR</key>
+		<string>Fördröjning för IR</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>Ingen Kanal</string>
+		<key>CATEGORY</key>
+		<string>Kategori</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>SAT. Kategori Inställning</string>
+		<key>LABEL_CATEGORY</key>
+		<string>Kategorinamn:</string>
+		<key>ADD</key>
+		<string>Lägg till</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Namnet är null eller finns redan!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Fördröjning för IR(50ms～5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>QTY av CH måste vara mindre än 4, och CH måste vara unikt.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Kanalnamn måste vara unikt och kan inte vara null!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Redigera fält, inte tillåta ha samma kanalnamn eller null !</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Scenario knapp</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Centralt Ljus</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>ALLT PÅ</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>ALLT AV</string>
+		<key>SELECTED_ITEM</key>
+		<string>Markerade objektet</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>En annan Scenario-knappen utförs, om ni kör nuvarande scenario-knapp kommer en den andra scenarioknappen att avbrytas. Fortsätt att köra nuvarande scenarioknapp？</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Säkerhet</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>Välj säkerhetsläge:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>Borta</string>
+			<string>Natt</string>
+			<string>Natt med Gäster</string>
+			<string>Dag</string>
+			<string>Semester</string>
+			<string>Frånkoppla</string>
+			<string>Polis Panik</string>
+			<string>Ambulans</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>Skriv lösenord</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Utförd!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Välj ett läge först!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Misslyckades</string>
+		<key>OLD_PASSWORD</key>
+		<string>Gammalt Lösenord</string>
+		<key>NEW_PASSWORD</key>
+		<string>Nytt Lösenord</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>Standardlösenord:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>För att akrivera läge &quot;Polis Panik&quot; och &quot;Ambulans&quot;, tryck och håll nere knappen i 2 sekunder</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Det gamla lösenordet är fel!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Lösenord måste vara 4 siffror.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Är du säker på att du vill ändra lösenord?</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Klimat</string>
+		<key>SELECTED_ITEM</key>
+		<string>Valda objekt:</string>
+		<key>ALL_AC_ON</key>
+		<string>Alla A/C På</string>
+		<key>ALL_AC_OFF</key>
+		<string>Alla A/C Av</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>Kallt</string>
+			<string>Svalt</string>
+			<string>Hett</string>
+			<string>Varmt</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Kamera</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Röstinspelning</string>
+		<key>RECORD</key>
+		<string>SPELA IN</string>
+		<key>PREVIEW</key>
+		<string>Förhandsgranska</string>
+		<key>STOP1</key>
+		<string>Stop</string>
+		<key>STOP</key>
+		<string>STOP</string>
+		<key>DELETE</key>
+		<string>Radera</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>Ladda Upp till FTP</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP Server IP:</string>
+		<key>USER_NAME</key>
+		<string>Användarnamn:</string>
+		<key>PASSWORD</key>
+		<string>Lösenord:</string>
+		<key>UPLOADING</key>
+		<string>Uppladdning...</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Välj en inspelad fil!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Se till att det finns en mapp &quot;Record&quot; på FTP-servern, eftersom de inspelade filerna kommer att sparas under mappen &quot;Record&quot; på FTP-server.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>De data som du har fyllt i är fel, Var god kontrollera!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Lyckas! För att spela upp inspelad fil, FTP källa på Z-Audio måste uppdateras manuellt.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Var god kontrollera ditt nätverk och FTP serverinställningar, och se till att FTP-servern är igång.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Filen finns redan!</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Schema</string>
+		<key>SCHEDULE_NAME</key>
+		<string>Schema Namn</string>
+		<key>FREQUENCY</key>
+		<string>Frekvens</string>
+		<key>DATE_TIME</key>
+		<string>Datum Tid</string>
+		<key>VALIDITY</key>
+		<string>Giltighet</string>
+		<key>ONE_TIME</key>
+		<string>En gång</string>
+		<key>DAILY</key>
+		<string>Dagligen</string>
+		<key>WEEKLY</key>
+		<string>Veckovis</string>
+		<key>ADD_NEW</key>
+		<string>Lägg till ny</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>Redigera Schema</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>Lägg till Schema</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>Kontrollerad Objekt</string>
+		<key>MACRO_BUTTONS</key>
+		<string>Senario knappar</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>Alarmklocka</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>Sång Kategorilista</string>
+		<key>ALBUMS_LIST</key>
+		<string>Albumlistan</string>
+		<key>ADD_TO_QUE</key>
+		<string>Lägg till Kö</string>
+		<key>PLAY_QUE</key>
+		<string>Spela Kö</string>
+		<key>STOP_QUE</key>
+		<string>Stopa Kö</string>
+		<key>QUE_START</key>
+		<string>Kö är startad!</string>
+		<key>ZONE_LIST</key>
+		<string>Zon lista</string>
+		<key>CHOOSE_ZONE</key>
+		<string>Välj Zon</string>
+		<key>ADD_SUCCEED</key>
+		<string>Lyckades</string>
+		<key>UPDATE_FTP</key>
+		<string>Uppdatera FTP</string>
+		<key>REPEAT_OFF</key>
+		<string>Upprepa av</string>
+		<key>REPEAT_ONE</key>
+		<string>Upprepa en gång</string>
+		<key>CONTINUED</key>
+		<string>Fortsätter</string>
+		<key>REPEAT_ALL</key>
+		<string>Upprepa allt</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Förlåt! Misslyckas med att läsa listan, kontrollera nätverks-och zon inställningar eller läsa igen senare!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audio uppdaterar album &amp; låt listan från FTP, det tar några minuter, vänta ett ögonblick…</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Album &amp; låt listan har ännu inte blivigt läst, musiken kommer att stoppas om ni fortsätter, Fortsätt nu?</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Vänligen Välj Zoner!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Det finns inte någon zon nu, lägg till zoner i databasen.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Åtminstone en zon måste väljas!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Misslyckades att ansluta Z-Audio, kontrollera inställningarna och nätverk.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Fel, försök igen senare.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Lyckades!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Ingen låt i Kön, lägg till låt i Kön. (Om ni Skakar er iPhone, kommer Val av enstaka eller val av flera att bytas!)</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Håll knappen intryckt i 2 sekunder för att gå till sidan för att rensa temporära data och uppdatera FTP</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Ta bort TEMP data för SD-kort</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>Om låtarna på SD-kortet har någon ändring måste de tillfälliga uppgifterna för SD-kort rensas och läsa igen.</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>Ta bort TEMP data för FTP</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>Om låtarna på FTP Servern har någon ändring måste de tillfälliga uppgifterna för FTP&apos;n rensas och läsa igen</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>Tala om för Z-Audio att uppdatera album och låt listan från FTP-server.</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>Downloaded!   Kindly close &amp; restart app!</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>Succeed!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>PROJECTOR</string>
+		<key>eMed_SAT</key>
+		<string>SAT./CABLE</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>SD CARD</string>
+		<key>B_NETWORK</key>
+		<string>NETWORK</string>
+		<key>C_IPHONE</key>
+		<string>IPHONE</string>
+		<key>D_RADIO</key>
+		<string>RADIO</string>
+		<key>E_AUDIO_IN</key>
+		<string>AUDIO IN</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>Macro buttons</string>
+			<string>Moods</string>
+			<string>Lights</string>
+			<string>HVAC</string>
+			<string>Music</string>
+			<string>Shades</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>From Logo Library</string>
+		<key>FROM_PHOTOS</key>
+		<string>From Photos</string>
+		<key>EDIT_LOGO</key>
+		<string>Edit Logo</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>Choose logo for channel</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>Release your finger to start to search</string>
+	</dict>
+</dict>
+</plist>

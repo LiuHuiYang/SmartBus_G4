@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>Chọn</string>
+		<key>NO</key>
+		<string>Không Chọn</string>
+		<key>OK</key>
+		<string>Đồng Ý</string>
+		<key>CANCEL</key>
+		<string>Hủy</string>
+		<key>SAVED</key>
+		<string>Đã Lưu</string>
+		<key>SAVE</key>
+		<string>Lưu</string>
+		<key>EDIT</key>
+		<string>Chỉnh Sửa</string>
+		<key>DONE</key>
+		<string>Hoàn Tất</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>Chế Độ Tin Nhắn</string>
+		<key>ON</key>
+		<string>Bật</string>
+		<key>OFF</key>
+		<string>Tắt</string>
+		<key>NO_DATA</key>
+		<string>Dữ liệu trống!</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>Chiếu Sáng</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>Âm Thanh</string>
+		<key>dshades</key>
+		<string>Rèm Cửa</string>
+		<key>emedia</key>
+		<string>Truyền Hình</string>
+		<key>fmoods</key>
+		<string>Ngữ Cảnh</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>Kiểm Soát Theo Vùng/Khu Vực</string>
+			<string>Kiểm Soát Trung Tâm</string>
+			<string>Phụ Vụ Chung</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>MarcoBtns</string>
+		<key>LIGHTS</key>
+		<string>Đèn</string>
+		<key>MUSIC</key>
+		<string>Âm Nhạc</string>
+		<key>SECURITY</key>
+		<string>An Ninh</string>
+		<key>CLIMATE</key>
+		<string>Điều Hòa</string>
+		<key>SCHEDULE</key>
+		<string>Lịch Trình</string>
+		<key>CAMERA</key>
+		<string>Camera</string>
+		<key>APPLIANCES</key>
+		<string>Thiết Bị</string>
+		<key>INTERCOM</key>
+		<string>Liên Lạc Nội Bộ</string>
+		<key>COMMUNITY</key>
+		<string>Cộng Đồng</string>
+		<key>HOME_STATUS</key>
+		<string>Tình Trạng Nhà</string>
+		<key>METERS</key>
+		<string>Đo Lường</string>
+		<key>WEATHER</key>
+		<string>Thời Tiết</string>
+		<key>PHOTO</key>
+		<string>Hình Ảnh</string>
+		<key>ALARM</key>
+		<string>Báo Động</string>
+		<key>SMS_CONTROL</key>
+		<string>Tin Nhắn Điều Khiển</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>Cài Đặt</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>Cài Đặt Mạng</string>
+		<key>DATABASE</key>
+		<string>Tải Dự Liệu Lên &amp; Xuống</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>Cài Đặt Ngôn Ngữ</string>
+		<key>VERSION</key>
+		<string>Phiên Bảng</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>Cài Đặt Mạng</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>Nội Bộ</string>
+		<key>INTERNET</key>
+		<string>Internet</string>
+		<key>DDNS_IP</key>
+		<string>Địa Chỉ DDNS/IP</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Dữ liệu khai báo không hợp lệ!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Không kết nối được địa chỉ IP, vui lòng kiểm tra kết nối Internet.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Sai địa chỉ IP, vui lòng kiểm tra lại!</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>Cài đặt Server FTP</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>Địa Chỉ Server FTP</string>
+		<key>USER_NAME</key>
+		<string>Tên Đăng Nhập</string>
+		<key>PASSWORD</key>
+		<string>Mật Khẩu</string>
+		<key>UPLOAD</key>
+		<string>Tải Lên</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>Tải Dữ Liệu Lên</string>
+		<key>DOWNLOAD</key>
+		<string>Tải Xuống</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>Tải Dữ Liệu Xuống</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Tải dữ liệu lên từ IPHONE/IPAD đến FTP Server; Dữ liệu có tên là &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Tải dữ liệu lên từ FTP Server đếnr IPHONE/IPAD; Dữ liệu có tên là &quot;Database.sqlite3&quot;, và thư mục của cơ sở dữ liệu phải ở trên thư mục gốc của FTP Server</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Đang kết nối…</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Vui lòng kiểm tra lại địa chỉ FTP!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Vui lòng điền đầy đủ các thông tin</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Tải Dữ Liệu&quot; message:@&quot;Dữ liệu hiện tại trên ứng dụng sẽ được thay thế bởi dữ liệu trên FTP, bạn có muốn thay thế không?</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Tải hoàn tất</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Lỗi kết nối!</string>
+		<key>New item - 3</key>
+		<string></string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>Tắt A/C</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>Thấp</string>
+			<string>Trung Bình</string>
+			<string>Cao</string>
+			<string>Tự Động</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>Mát</string>
+			<string>Sưởi ấm</string>
+			<string>Quạt</string>
+			<string>Tự Động</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>Lạnh</string>
+			<string>Mát</string>
+			<string>Ấm</string>
+			<string>Nóng</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>Mở</string>
+		<key>SHADE_CLOSE</key>
+		<string>Đóng</string>
+		<key>SHADE_STOP</key>
+		<string>Dừng</string>
+		<key>SENDING</key>
+		<string>Đang gửi dữ liệu.</string>
+		<key>EXECUTED</key>
+		<string>Đã thực thi</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>Nhấn nút bên dưới để thêm ngữ cảnh mới</string>
+		<key>RECORD_MOOD</key>
+		<string>Lưu Ngữ Cảnh</string>
+		<key>MOOD_NAME</key>
+		<string>Tên Ngữ Cảnh:</string>
+		<key>SELECT_ICON</key>
+		<string>Chọn biểu tượng</string>
+		<key>EDIT_MOOD</key>
+		<string>Chỉnh Sửa Ngữ Cảnh</string>
+		<key>RECORD</key>
+		<string>Thiết lập</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>Chọn biểu tượng cho ngữ cảnh</string>
+		<key>SHADE_BYPASS</key>
+		<string>Bỏ qua</string>
+		<key>SHADE_OPEN</key>
+		<string>Mở</string>
+		<key>SHADE_CLOSE</key>
+		<string>Đóng</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Một ngữ cảnh khác đang thực thi và sẽ bị hủy nếu thực thi ngữ cảnh này. Tiếp tục với ngữ cảnh này?</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Lỗi thiết lập ngữ cảnh!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- Kiểm tra kết nối mạng.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- Kiểm tra khai báo dữ liệu.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Thông Báo Lỗi:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1-Phải chọn ít nhất một thiết bị.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- Tên ngữ cảnh không được trùng nhau hoặc để trống.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Đang thiết lập ngữ cảnh, vui lòng đợi…</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Lỗi thiết lập! Lý do: không có dữ liệu!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>Tắt Âm</string>
+		<key>MENU</key>
+		<string>Danh Mục</string>
+		<key>SOURCE</key>
+		<string>Nguồn</string>
+		<key>CONTROL</key>
+		<string>Kiểm Soát</string>
+		<key>NUM_PAD</key>
+		<string>Phím Số</string>
+		<key>CHANNEL</key>
+		<string>Kênh</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>Cài Đặt Kênh Vệ Tinh</string>
+		<key>DELAY_FOR_IR</key>
+		<string>Khoảng trể cho hồng ngoại(50ms~5000ms)</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>Không Có Kênh</string>
+		<key>CATEGORY</key>
+		<string>Nhóm</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>Cài Đặt Nhóm Vệ Tinh</string>
+		<key>LABEL_CATEGORY</key>
+		<string>Tên Nhóm:</string>
+		<key>ADD</key>
+		<string>Thêm Vào</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Tên không hợp lệ hoặc đã tồn tại!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Khoảng trể cho hồng ngoại(50ms~5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Sô lượng kênh phải ít hơn 4 và không trùng lấp.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Tên kênh không được trùng nhau hoặc để trống!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Điều chỉnh nội dung, không được đặt tên trùng nhau hoặc để trống!</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Chuỗi lệnh</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Hệ thống đèn</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>Bật Tất Cả</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>Tắt Tất Cả</string>
+		<key>SELECTED_ITEM</key>
+		<string>Đối tượng được chọn</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Một chuỗi lệnh khác đang thực thi và sẽ bị hủy nếu thực thi chuỗi lệnh này. Tiếp tục với chuỗi lệnh này?</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>An Ninh</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>Chọn chế độ an ninh:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>Đi Vắng</string>
+			<string>Ban Đêm</string>
+			<string>Tiếp khách ban đêm</string>
+			<string>Ban ngày</string>
+			<string>Ngày Nghỉ</string>
+			<string>Tắt báo động</string>
+			<string>Cứu Hỏa</string>
+			<string>Xe Cứu Thương</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>Nhập mật khẩu</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Executed!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Vui lòng chọn chế độ trước!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Lỗi</string>
+		<key>OLD_PASSWORD</key>
+		<string>Mật Khẩu Cũ</string>
+		<key>NEW_PASSWORD</key>
+		<string>Mật Khẩu Mới</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>Mật khẩu mặc định:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Để kích hoạt chế độ &quot;Cứu Hỏa&quot; và &quot;Xe Cứu Thương&quot; vui lòng ấn và giữ nút này trong 2 giây</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Mật khẩu cũ bị sai!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Mật khẩu phải có 4 ký tự.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Bạn có muốn đổi mật khẩu?</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Điều Hòa</string>
+		<key>SELECTED_ITEM</key>
+		<string>Đối tượng được chọn:</string>
+		<key>ALL_AC_ON</key>
+		<string>Bật Tất Cả Các máy Lạnh</string>
+		<key>ALL_AC_OFF</key>
+		<string>Tắt Tất Cả Các Máy Lạnh</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>Lạnh</string>
+			<string>Mát</string>
+			<string>Nóng</string>
+			<string>Ấm</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Camera</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Ghi Âm</string>
+		<key>RECORD</key>
+		<string>THIẾT LẬP</string>
+		<key>PREVIEW</key>
+		<string>Xem Lại</string>
+		<key>STOP1</key>
+		<string>Dừng</string>
+		<key>STOP</key>
+		<string>DỪNG</string>
+		<key>DELETE</key>
+		<string>Xóa</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>Tải đến FTP</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP Server IP:</string>
+		<key>USER_NAME</key>
+		<string>Tên Đăng Nhập:</string>
+		<key>PASSWORD</key>
+		<string>Mật Khẩu:</string>
+		<key>UPLOADING</key>
+		<string>Đang tải lên…</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Vui lòng chọn một đoạn ghi âm!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Xác nhận có một thư mục &quot;Ghi âm&quot; trên FTP Server nên những đoạn ghi âm sẽ được lưu vào thư mục này.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Nhập dữ liệu sai, vui lòng kiểm tra lại!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Thành công! Nên cập nhật thủ công nguồn FTP trên Z-Audio trước khi phát đoạn ghi âm.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Vui lòng kiểm tra lại mạng và cài đặt FTP Server để chắc chắn FTP Server đang hoạt động.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Tập tin này đã tồn tại!</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Lịch trình</string>
+		<key>SCHEDULE_NAME</key>
+		<string>Tên Lịch</string>
+		<key>FREQUENCY</key>
+		<string>Tần Suất</string>
+		<key>DATE_TIME</key>
+		<string>Ngày Giờ</string>
+		<key>VALIDITY</key>
+		<string>Hiệu Lực</string>
+		<key>ONE_TIME</key>
+		<string>Một lần</string>
+		<key>DAILY</key>
+		<string>Hàng Ngày</string>
+		<key>WEEKLY</key>
+		<string>Hàng Tuần</string>
+		<key>ADD_NEW</key>
+		<string>Thêm Mới</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>Chỉnh Sửa Lịch</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>Thêm Lịch Mới</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>Đối Tượng Kiểm Soát</string>
+		<key>MACRO_BUTTONS</key>
+		<string>Chuỗi lệnh</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>Chuông Báo Động</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>Danh sách bài hát</string>
+		<key>ALBUMS_LIST</key>
+		<string>Danh sách Album</string>
+		<key>ADD_TO_QUE</key>
+		<string>Thêm vào QUE</string>
+		<key>PLAY_QUE</key>
+		<string>Phát QUE</string>
+		<key>STOP_QUE</key>
+		<string>Dừng QUE</string>
+		<key>QUE_START</key>
+		<string>QUE được bắt đầu!</string>
+		<key>ZONE_LIST</key>
+		<string>Danh Sách Vùng</string>
+		<key>CHOOSE_ZONE</key>
+		<string>Chọn Vùng</string>
+		<key>ADD_SUCCEED</key>
+		<string>Thành Công</string>
+		<key>UPDATE_FTP</key>
+		<string>Cập Nhật FTP</string>
+		<key>REPEAT_OFF</key>
+		<string>Tắt lặp lại</string>
+		<key>REPEAT_ONE</key>
+		<string>Lặp lại một bài</string>
+		<key>CONTINUED</key>
+		<string>Nghe tiếp</string>
+		<key>REPEAT_ALL</key>
+		<string>Lặp lại tất cả</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Xin lỗi! Không thể cập nhật danh sách, vui lòng kiểm tra lại mạng và cài đặt vùng âm thanh hoặc cập nhật lại sau!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Thiết bị đang cập nhật các album và danh sách bài hát từ FTP; Vui lòng đợi…</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Album &amp; danh sách các bài hát chưa được cập nhật xong, âm nhạc sẽ ngừng nếu vẫn tiếp tục. Có tiếp tục không?</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Vui lòng chọn vùng!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Không có vùng âm thanh, vui lòng thêm vùng âm thanh vào dữ liệu.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Phải chọn ít nhất một vùng!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Lỗi kết nối vào Z-Audio, vui lòng kiểm tra lại cài đặt và mạng.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Bị lỗi, vui lòng thử lại sau.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Thành Công!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Không có bài hát trong QUE, Vui lòng thêm bài hát vào danh sách QUE (nếu lắc Iphone sẽ hoán đổi giữa chế độ chọn một với chọn nhiều!)</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Nhấn giữ trong 2 giây để chuyển đến trang để xóa dữ liệu tạm và cập nhật FTP!</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Xóa dữ liệu tạm trên thẻ nhớ SD</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>Nếu các bài hát trên thẻ nhớ SD thay đổi, vui lòng xóa các dữ liệu tạm và mở lại.</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>Xóa dữ liệu tạm trên FTP</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>Nếu các bài hát trên Server FTP thay đổi, vui lòng xóa các dữ liệu tạm và mở lại.</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>Vui lòng cập nhật các album &amp; danh sách bài hát từ Server FTP Server.</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>Tải xong! Vui lòng đóng và mở lại ứng dụng!</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>Thành Công!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>MÁY CHIẾU</string>
+		<key>eMed_SAT</key>
+		<string>VỆ TINH/CÁP</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>THẺ NHỚ SD</string>
+		<key>B_NETWORK</key>
+		<string>MẠNG</string>
+		<key>C_IPHONE</key>
+		<string>IPHONE</string>
+		<key>D_RADIO</key>
+		<string>RADIO</string>
+		<key>E_AUDIO_IN</key>
+		<string>AUDIO</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>Chuỗi lệnh</string>
+			<string>Ngữ Cảnh</string>
+			<string>Đèn</string>
+			<string>HVAC</string>
+			<string>Âm Nhạc</string>
+			<string>Rèm Cửa</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>Từ Thư Viện Logo</string>
+		<key>FROM_PHOTOS</key>
+		<string>Từ Hình Ảnh</string>
+		<key>EDIT_LOGO</key>
+		<string>Chỉnh Sửa Logo</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>Chọn logo cho kênh</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>Ngưng chạm để bắt đầu tìm kiếm</string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>Thả xuống để chọn bài hát</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>Tìm Kiếm</string>
+	</dict>
+</dict>
+</plist>

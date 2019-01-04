@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>JA</string>
+		<key>NO</key>
+		<string>NEJ</string>
+		<key>OK</key>
+		<string>OK</string>
+		<key>CANCEL</key>
+		<string>Annuller</string>
+		<key>SAVED</key>
+		<string>Gemt</string>
+		<key>SAVE</key>
+		<string>Gem</string>
+		<key>EDIT</key>
+		<string>Ændre</string>
+		<key>DONE</key>
+		<string>Færdig</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>Systembesked</string>
+		<key>ON</key>
+		<string>TÆNDT</string>
+		<key>OFF</key>
+		<string>SLUKKET</string>
+		<key>NO_DATA</key>
+		<string>Ingen data!</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>Belysning</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>Z-Audio</string>
+		<key>dshades</key>
+		<string>Gardiner</string>
+		<key>emedia</key>
+		<string>Media</string>
+		<key>fmoods</key>
+		<string>Scenarier</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>Zone/Område Kontrol</string>
+			<string>Hurtig adgang</string>
+			<string>Fællesskab</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>Macro</string>
+		<key>LIGHTS</key>
+		<string>Belysning</string>
+		<key>MUSIC</key>
+		<string>Musik</string>
+		<key>SECURITY</key>
+		<string>Sikkerhed</string>
+		<key>CLIMATE</key>
+		<string>Indeklima</string>
+		<key>SCHEDULE</key>
+		<string>Tidsplan</string>
+		<key>CAMERA</key>
+		<string>Kamera</string>
+		<key>APPLIANCES</key>
+		<string>Husholdningmaskiner</string>
+		<key>INTERCOM</key>
+		<string>Intercom</string>
+		<key>COMMUNITY</key>
+		<string>Fællesskab</string>
+		<key>HOME_STATUS</key>
+		<string>Status</string>
+		<key>METERS</key>
+		<string>Energimåler</string>
+		<key>WEATHER</key>
+		<string>Vejret</string>
+		<key>PHOTO</key>
+		<string>Fotoalbum</string>
+		<key>ALARM</key>
+		<string>Alarm</string>
+		<key>SMS_CONTROL</key>
+		<string>SMS Kontrol</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>Indstillinger</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>Netværksindstilling</string>
+		<key>DATABASE</key>
+		<string>Database Upload &amp; Download</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>Sprogindstilling</string>
+		<key>VERSION</key>
+		<string>Version</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>Netværksindstilling</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>Local</string>
+		<key>INTERNET</key>
+		<string>Internet</string>
+		<key>DDNS_IP</key>
+		<string>DDNS/IP Adresse</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Indtastet data kan ikke være nul!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>FEJL! kan ikke få IP adresse fra domænenavn; kontroller at der er forbindelse til internettet.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Forkert IP adresse, Kontroller venligst!</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>FTP Serverindstillinger</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>FTP Serveradresse</string>
+		<key>USER_NAME</key>
+		<string>Brugernavn</string>
+		<key>PASSWORD</key>
+		<string>Kodeord</string>
+		<key>UPLOAD</key>
+		<string>Upload</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>Database Upload</string>
+		<key>DOWNLOAD</key>
+		<string>Download</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>Database Download</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Upload database fra denne IPHONE/IPAD til FTP Serveren;Database navn er &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Download database fra FTP Serveren til denne IPHONE/IPAD;Database navn skal være &quot;Database.sqlite3&quot;,mappen skal ligge i roden af FTP Serveren</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Forbinder...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Venligst kontroller FTP adressen!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Venligst udfyld alle felter</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Database Download&quot; Besked:@&quot;Nuværende database på app'en vil blive erstattet med den database fra FTP, er du sikker på at du vil downloade? </string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Upload gennemført</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>FEJL! Ingen forbindelse!</string>
+		<key>New item - 3</key>
+		<string></string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>SLUK A/C</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>Lav</string>
+			<string>Mellem</string>
+			<string>Høj</string>
+			<string>Auto</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>Køle</string>
+			<string>Varme</string>
+			<string>Ventilator</string>
+			<string>Auto</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>Kold</string>
+			<string>Køle</string>
+			<string>Varmt</string>
+			<string>Meget varmt</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>Åben</string>
+		<key>SHADE_CLOSE</key>
+		<string>Lukke</string>
+		<key>SHADE_STOP</key>
+		<string>Stop</string>
+		<key>SENDING</key>
+		<string>Der sendes data.</string>
+		<key>EXECUTED</key>
+		<string>Udført</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABLE_ADD_NEW</key>
+		<string>Aktiver knappen for at tilføje nyt scenarie</string>
+		<key>RECORD_MOOD</key>
+		<string>Optag scenarie</string>
+		<key>MOOD_NAME</key>
+		<string>Titel på Scenarie:</string>
+		<key>SELECT_ICON</key>
+		<string>Vælg Ikon</string>
+		<key>EDIT_MOOD</key>
+		<string>Ændre scenarie</string>
+		<key>RECORD</key>
+		<string>Optag</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>Vælg ikon til scenarie</string>
+		<key>SHADE_BYPASS</key>
+		<string>Undlad</string>
+		<key>SHADE_OPEN</key>
+		<string>Åben</string>
+		<key>SHADE_CLOSE</key>
+		<string>Luk</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Et andet scenarie bliver afviklet, hvis nyt scenarie afvikles, vil igangværende blve annulleret. Vil du forsætte？</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>FEJL! kan ikke optage scenarie</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1- Kontroller netværksforbindelsen.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>2- Kontroller database konfigurationen.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>FEJL Beksed:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1- Der skal vælges mindst én enhed</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2- Til på scenarie kan ikke være tomt og skal være unik.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Scenarie optages, Vent venligst...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>FEJL! Optagelse mislykket - ingen data!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>Mute</string>
+		<key>MENU</key>
+		<string>Menu</string>
+		<key>SOURCE</key>
+		<string>Kilde</string>
+		<key>CONTROL</key>
+		<string>Kontrol</string>
+		<key>NUM_PAD</key>
+		<string>Nr tastatur</string>
+		<key>CHANNEL</key>
+		<string>Kanal</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>SAT. Kanalindstilling</string>
+		<key>DELAY_FOR_IR</key>
+		<string>Delay for IR</string>
+		<key>FAV</key>
+		<string>FAVORIT</string>
+		<key>NO_CHANNEL</key>
+		<string>Ingen Kanal</string>
+		<key>CATEGORY</key>
+		<string>Kategori</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>SAT. Kategori indstillinger</string>
+		<key>LABEL_CATEGORY</key>
+		<string>Titel kategori:</string>
+		<key>ADD</key>
+		<string>Tilføj</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Titel er nul eller findes allerede!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Forsinkelse til IR(50ms～5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Antal af kanaler skal være mindre end 4, Kanal skal være unik.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Titel på kanal skal være unik og kan ikke være nul!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Ændre titel, det er ikke muligt at angive samme titel eller nul!</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Scenarier</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Belysning</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>TÆND ALT</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>SLUK ALT</string>
+		<key>SELECTED_ITEM</key>
+		<string>Valgt Zone</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Et andet scenarie bliver afviklet, hvis nyt scenarie afvikles, vil igangværende blve annulleret. Vil du forsætte？</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Sikkerhed</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>Vælg sikkerhedstilstand:</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>Aktiver alarm</string>
+			<string>Nat </string>
+			<string>Nat med besøg</string>
+			<string>Dag</string>
+			<string>Ferie</string>
+			<string>Deaktiver alarm</string>
+			<string>Politi Panik</string>
+			<string>Ambulance</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>Angiv kodeord</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Udført!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Vælg først sikkerhedstilstand!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Fejl</string>
+		<key>OLD_PASSWORD</key>
+		<string>Tidligere kodeord</string>
+		<key>NEW_PASSWORD</key>
+		<string>Nyt Kodeord</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>Standard Kodeord:</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>For at aktivere "Politi Panik" og "Ambulance", aktiver knappen i 2 sekunder.</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Tidligere kodeord er forkert!</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>kodeord skal indeholde 4 cifte.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>ER du sikker på at du vil skifte kodeord?</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Indeklima</string>
+		<key>SELECTED_ITEM</key>
+		<string>Valgt område:</string>
+		<key>ALL_AC_ON</key>
+		<string>TÆND alt AC</string>
+		<key>ALL_AC_OFF</key>
+		<string>SLUK alt AC</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>Koldt</string>
+			<string>Køle</string>
+			<string>Varmt</string>
+			<string>Meget Varmt</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Kamera</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Optag lyd</string>
+		<key>RECORD</key>
+		<string>Optag</string>
+		<key>PREVIEW</key>
+		<string>Afspil</string>
+		<key>STOP1</key>
+		<string>Stop</string>
+		<key>STOP</key>
+		<string>STOP</string>
+		<key>DELETE</key>
+		<string>Slet</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>Upload til FTP</string>
+		<key>FTP_SERVER_IP</key>
+		<string>FTP Server IP:</string>
+		<key>USER_NAME</key>
+		<string>Brugernavn:</string>
+		<key>PASSWORD</key>
+		<string>Kodeord:</string>
+		<key>UPLOADING</key>
+		<string>Uploader...</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Vælg en optaget lydfil!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Verificer at der "Record" findes på FTP serveren, fordi den optaget lydfil vil blive gemt i mappen “Record” på FTP Serveren.</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Den data der er forsøgt gemt er forkert, kontroller venligst!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Vellykket! For at afspille den optaget lydfil, skal FTP kilden på Z-Audio opdateres manuelt.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Kontroller netværk og FTP Server instillinger, og verificer at FTP Serveren er aktiveret.</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Denne fil eksisterer allerede!</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>Tidsplan</string>
+		<key>SCHEDULE_NAME</key>
+		<string>Titel på tidsplan</string>
+		<key>FREQUENCY</key>
+		<string>Hyppighed</string>
+		<key>DATE_TIME</key>
+		<string>Dato Tid</string>
+		<key>VALIDITY</key>
+		<string>Aktivering</string>
+		<key>ONE_TIME</key>
+		<string>Enkel</string>
+		<key>DAILY</key>
+		<string>Dagligt</string>
+		<key>WEEKLY</key>
+		<string>Ugentligt</string>
+		<key>ADD_NEW</key>
+		<string>Tilføj ny</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>Ændre tidsplan</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>Tilføj ny tidsplan</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>Kontrolleret enhed</string>
+		<key>MACRO_BUTTONS</key>
+		<string>Sekvens</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>Alarm</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>Sang kategoriliste</string>
+		<key>ALBUMS_LIST</key>
+		<string>Album liste</string>
+		<key>ADD_TO_QUE</key>
+		<string>Tilfør til kø</string>
+		<key>PLAY_QUE</key>
+		<string>Afspil kø</string>
+		<key>STOP_QUE</key>
+		<string>Stop kø</string>
+		<key>QUE_START</key>
+		<string>Kø afspilles!</string>
+		<key>ZONE_LIST</key>
+		<string>Zone liste</string>
+		<key>CHOOSE_ZONE</key>
+		<string>Vælg Zone</string>
+		<key>ADD_SUCCEED</key>
+		<string>Zonen er tilføjet</string>
+		<key>UPDATE_FTP</key>
+		<string>Opdatere FTP</string>
+		<key>REPEAT_OFF</key>
+		<string>Gentag ikke</string>
+		<key>REPEAT_ONE</key>
+		<string>Gentag</string>
+		<key>CONTINUED</key>
+		<string>Fortsat</string>
+		<key>REPEAT_ALL</key>
+		<string>Gentag alle</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>Beklager! Ikke muligt at læse listen, kontroller netværk og zone indstillinger, eller prøv igen senere!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audio opdaterer listen med album og sange fra FTP; det tager lidt tid, vent venligst…</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>Listen med Albums &amp; sange er ikke indlæst endnu, musikken stoppes ved fortsættelse. Vil du forsætte?</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>Vælg Zone!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Der er ikkke nogen Zone, Tilføj zone til databasen.</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Der skal vælges mindst en zone!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>FEJL! ikke muligt at forbinde til Z-Audio, kontroller indstillinger og netværk.</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>FEJL! Prøv igen senere.</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>VELLYKKET!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Ingen sange i kø, tilføj sange til køen. (Ryst IPHONE, enkelt valg &amp; flere valg vil blive ændret!)</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Aktiver knappen i 2 sekunder for at komme til siden for at slette midlertidig data og opdatere FTP</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Slet Midlertidig data fra SD-kortet</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>Hvis sange på SD-Kort ændres, skal den midlertidige data på SD-kortet slettes og genindlæses.</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>Slet midlertidig data fra FTP</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>Hvis sange på FTP ændres, skal den midlertidige data på FTP slettes og genindlæses.</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>Anmod Z-Audio om at opdatere albums &amp; sange fra FTP serveren.</string>
+	</dict>
+</dict>
+</plist>
+

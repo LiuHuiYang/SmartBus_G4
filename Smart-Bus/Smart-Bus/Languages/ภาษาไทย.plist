@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>ใช่</string>
+		<key>NO</key>
+		<string>ไม่</string>
+		<key>OK</key>
+		<string>ตกลง</string>
+		<key>CANCEL</key>
+		<string>ยกเลิก</string>
+		<key>SAVED</key>
+		<string>ถูกบันทึก</string>
+		<key>SAVE</key>
+		<string>บันทึก</string>
+		<key>EDIT</key>
+		<string>แก้ไข</string>
+		<key>DONE</key>
+		<string>สำเร็จ</string>
+		<key>SYSTEM_PROMPT</key>
+		<string>ระบบพร้อมรับคำสั่ง</string>
+		<key>ON</key>
+		<string>เปิด</string>
+		<key>OFF</key>
+		<string>ปิด</string>
+		<key>NO_DATA</key>
+		<string>ไม่มีข้อมูล</string>
+	</dict>
+	<key>MAIN_PAGE</key>
+	<dict>
+		<key>SYSTEM_NAME_BELOW</key>
+		<string></string>
+		<key>alight</key>
+		<string>แสง</string>
+		<key>bhvac</key>
+		<string>HVAC</string>
+		<key>czaudio</key>
+		<string>เสียงz</string>
+		<key>dshades</key>
+		<string>Shades</string>
+		<key>emedia</key>
+		<string>Media</string>
+		<key>fmoods</key>
+		<string>Moods</string>
+		<key>SYSTEM_NAME_ABOVE</key>
+		<string></string>
+		<key>MAIN_LABEL</key>
+		<array>
+			<string>โซน /เขตควบคุม</string>
+			<string>ส่วนควบคุมกลาง</string>
+			<string>บริการชุมชน</string>
+		</array>
+		<key>MARCO_BUTTONS</key>
+		<string>ปุ่มแมโคร</string>
+		<key>LIGHTS</key>
+		<string>แสง</string>
+		<key>MUSIC</key>
+		<string>เพลง</string>
+		<key>SECURITY</key>
+		<string>การรักษาความปลอดภัย</string>
+		<key>CLIMATE</key>
+		<string>ภูมิอากาศ</string>
+		<key>SCHEDULE</key>
+		<string>ตาราง</string>
+		<key>CAMERA</key>
+		<string>กล้องถ่ายรูป</string>
+		<key>APPLIANCES</key>
+		<string>อุปกรณ์</string>
+		<key>INTERCOM</key>
+		<string>โทรศัพท์ภายใน</string>
+		<key>COMMUNITY</key>
+		<string>ชุมชน</string>
+		<key>HOME_STATUS</key>
+		<string>สถานะ</string>
+		<key>METERS</key>
+		<string>เมตร</string>
+		<key>WEATHER</key>
+		<string>สภาพอากาศ</string>
+		<key>PHOTO</key>
+		<string>ภาพถ่าย</string>
+		<key>ALARM</key>
+		<string>ปลุก</string>
+		<key>SMS_CONTROL</key>
+		<string>การควบคุมการส่ง SMS</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>SETTINGS</key>
+		<string>การตั้งค่า</string>
+		<key>NETWORK_SETTINGS</key>
+		<string>ตั้งค่าเครือข่าย</string>
+		<key>DATABASE</key>
+		<string>ฐานข้อมูลอัปโหลดและดาวน์โหลด</string>
+		<key>LANGUAGE_SETTINGS</key>
+		<string>การตั้งค่าภาษา</string>
+		<key>VERSION</key>
+		<string>รุ่น</string>
+		<key>TITLE_NEWORK_SETTINGS</key>
+		<string>ตั้งค่าเครือข่าย</string>
+		<key>LOCAL_BUTTON_NAME</key>
+		<string>เฉพาะส่วน</string>
+		<key>INTERNET</key>
+		<string>อินเทอร์เน็ต</string>
+		<key>DDNS_IP</key>
+		<string>การแปลงหมายเลขประจำเครื่องคอมพิวเตอร์ให้เป็นชื่อโดเมน</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>ข้อมูลที่คุณได้ป้อนไม่สามารถเป็นค่าว่าง</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>ล้มเหลว ไม่สามารถรับที่อยู่หมายเลขประจำเครื่องคอมพิวเตอร์ได้โดยชื่อโดเมน; แน่ใจว่าคอมพิวเตอร์ถูกเชื่อมต่อกับอินเทอร์เน็ตหรือไม่</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>หมายเลขประจำเครื่องคอมพิวเตอร์ไม่ถูกต้อง โปรดตรวจสอบ!</string>
+		<key>FTP_SERVER_SETTINGS</key>
+		<string>FTP Server settings</string>
+		<key>FTP_SERVER_ADDRESS</key>
+		<string>FTP Server Address</string>
+		<key>USER_NAME</key>
+		<string>Username</string>
+		<key>PASSWORD</key>
+		<string>Password</string>
+		<key>UPLOAD</key>
+		<string>Upload</string>
+		<key>DATABASE_UPLOAD</key>
+		<string>Database Upload</string>
+		<key>DOWNLOAD</key>
+		<string>Download</string>
+		<key>DATABASE_DOWNLOAD</key>
+		<string>Database Download</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>Upload database from this IPHONE/IPAD to FTP Serser;Database name is  &quot;Database.sqlite3&quot;</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>Download database from FTP Server to this IPHONE/IPAD; The database name must be &quot;Database.sqlite3&quot;,and the directory of the database must be on the root directory of FTP Server</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>Connectting...</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>Please inspect FTP address!</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>Please fill in all content</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>Database Download&quot; message:@&quot;Current database on app will be replaced by the database on FTP,are you sure you want to download? </string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>Uploaded Completed</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>Connection failed!</string>
+	</dict>
+	<key>HVAC_IN_ZONE</key>
+	<dict>
+		<key>LABEL_HVAC_OFF</key>
+		<string>พัดลมปิด</string>
+		<key>FAN_BUTTON_NAMES</key>
+		<array>
+			<string>ต่ำ</string>
+			<string>กลาง</string>
+			<string>สูง</string>
+			<string>รถยนต์</string>
+		</array>
+		<key>MODE_BUTTON_NAMES</key>
+		<array>
+			<string>เย็น</string>
+			<string>ร้อน</string>
+			<string>พัดลม</string>
+			<string>รถยนต์</string>
+		</array>
+		<key>AC_FAST_CTRL</key>
+		<array>
+			<string>เย็น</string>
+			<string>เย็น</string>
+			<string>อบอุ่น</string>
+			<string>ร้อน</string>
+		</array>
+	</dict>
+	<key>SHADE_IN_ZONE</key>
+	<dict>
+		<key>SHADE_OPE</key>
+		<string>เปิด</string>
+		<key>SHADE_CLOSE</key>
+		<string>ปิด</string>
+		<key>SHADE_STOP</key>
+		<string>หยุด</string>
+		<key>SENDING</key>
+		<string>กำลังส่งข้อมูล</string>
+		<key>EXECUTED</key>
+		<string>ดำเนินการ</string>
+	</dict>
+	<key>MOOD_IN_ZONE</key>
+	<dict>
+		<key>LABEL_ADD_NEW</key>
+		<string>กดปุ่มด้านล่างเพื่อเพิ่มอารมณ์ใหม่</string>
+		<key>RECORD_MOOD</key>
+		<string>บันทึกอารมณ์</string>
+		<key>MOOD_NAME</key>
+		<string>ชื่ออารมณ์：</string>
+		<key>SELECT_ICON</key>
+		<string>เลือกไอคอน</string>
+		<key>EDIT_MOOD</key>
+		<string>แก้ไขอารมณ์</string>
+		<key>RECORD</key>
+		<string>บันทึก</string>
+		<key>CHOOSE_ICON_FOR_MOOD</key>
+		<string>เลือกไอคอนที่เหมาะกับอารมณ์</string>
+		<key>SHADE_BYPASS</key>
+		<string>ทางอ้อม</string>
+		<key>SHADE_OPEN</key>
+		<string>เปิด</string>
+		<key>SHADE_CLOSE</key>
+		<string>ปิด</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>อารมณ์อื่นกำลังดำเนินการ ถ้ายกเลิกอารมณ์ปัจจุบัน อารมณ์อื่นจะถูกยกเลิก ต้องการดำเนินอารมณ์ปัจจุบันต่อหรือไม่?
+</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>การบันทึกอารมณ์ล้มเหลว!</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>1 -ตรวจสอบการเชื่อมเครือข่ายของคุณ</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>ตรวจสอบค่าฐานข้อมูลของคุณ</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>ข้อความข้อผิดพลาด:</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>1 -ควรเลือกอุปกรณ์อย่างน้อยหนึ่งอย่าง</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>2 ชื่ออารมณ์จะต้องไม่ว่างและไม่ซ้ำกัน</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string> กำลังบันทึกอารมณ์โปรดรอสักครู่...</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>การบันทึกล้มเหลว! เหตุผล: ไม่มีข้อมูล!</string>
+	</dict>
+	<key>MEDIA_IN_ZONE</key>
+	<dict>
+		<key>MUTE</key>
+		<string>ปิดเสียง</string>
+		<key>MENU</key>
+		<string>เมนู</string>
+		<key>SOURCE</key>
+		<string>แหล่ง</string>
+		<key>CONTROL</key>
+		<string>ควบคุม</string>
+		<key>NUM_PAD</key>
+		<string> แผ่นตัวเลข</string>
+		<key>CHANNEL</key>
+		<string>ช่อง</string>
+		<key>SAT_CH_SETTINGS</key>
+		<string>ตั้งค่าช่องสัญญาณแซทเทิลไลท์</string>
+		<key>DELAY_FOR_IR</key>
+		<string>ล่าช้าสำหรับ IR</string>
+		<key>FAV</key>
+		<string>FAV.</string>
+		<key>NO_CHANNEL</key>
+		<string>ไม่มีช่อง</string>
+		<key>CATEGORY</key>
+		<string>หมวดหมู่</string>
+		<key>CATEGORY_SETTINGS_TITLE</key>
+		<string>นั่งตั้งค่าหมวดหมู่</string>
+		<key>LABEL_CATEGORY</key>
+		<string>ชื่อหมวดหมู่:</string>
+		<key>ADD</key>
+		<string>เพิ่ม</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>ชื่อเป็นโมฆะหรือมีอยู่แล้ว</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>ล่าช้าสำหรับ IR (50ms-5000ms)</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>จำนวนของช่องต้องมีค่าน้อยกว่า 4 และช่องต้องไม่ซ้ำกัน</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>ชื่อช่องต้องไม่ซ้ำกันและไม่สามารถเป็นค่าว่าง!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>แก้ไขข้อมูลไม่อนุญาตให้มีช่องเดียวกันหรือเป็นค่าว่าง</string>
+	</dict>
+	<key>MARCO_ACTION_BUTTON</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ปุ่มแมโครแอคชัน</string>
+	</dict>
+	<key>CENTRAL_LIGHTS</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ไฟกลาง</string>
+		<key>ALL_LIGHT_ON</key>
+		<string>เปิดทั้งหมด</string>
+		<key>ALL_LIGHT_OFF</key>
+		<string>ปิดทั้งหมด</string>
+		<key>SELECTED_ITEM</key>
+		<string>รายการที่เลือก</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>ปุ่มแมโครอีกอันกำลังดำเนินการ ถ้าจะดำเนินการปุ่มแมโครปัจจุบัน ปุ่มแมโครอีกปุ่มจะถูกยกเลิก ต้องการให้ปุ่มแมโครปัจจุบันดำเนินการต่อหรือไม่?</string>
+	</dict>
+	<key>SECURITY</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>การรักษาความปลอดภัย</string>
+		<key>SELECT_SECURITY_MODE</key>
+		<string>เลือกโหมดการรักษาความปลอดภัย：</string>
+		<key>MODE_BUTTON_NAME</key>
+		<array>
+			<string>ไม่อยู่</string>
+			<string>คืน</string>
+			<string>คืนที่มีแขก</string>
+			<string>วัน</string>
+			<string>วันหยุด</string>
+			<string>ปลดอาวุธ</string>
+			<string>ความตื่นตระหนกตำรวจ</string>
+			<string>รถพยาบาล</string>
+		</array>
+		<key>TYPE_PASSWORD</key>
+		<string>พิมพ์รหัสผ่าน</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>ดำเนินการ!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>โปรดเลือกโหมดแรก!</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>ล้มเหลว</string>
+		<key>OLD_PASSWORD</key>
+		<string>รหัสผ่านเก่า</string>
+		<key>NEW_PASSWORD</key>
+		<string>รหัสผ่านใหม่</string>
+		<key>PROMPT_MESSAGE_3_0</key>
+		<string>รหัสผ่านเริ่มต้น</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>หากต้องการใช้งานโหมด&quot;แจ้งตำรวจ&quot; และ &quot;เรียกรถพยาบาล&quot; โปรดกดปุ่มค้างไว้ 2 วินาที</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>รหัสผ่านเก่าผิด</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>รหัสผ่านต้องเป็นเลข 4 หลัก</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>คุณแน่ใจหรือว่าต้องการเปลี่ยนรหัสผ่าน</string>
+	</dict>
+	<key>CLIMATE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ภูมิอากาศ</string>
+		<key>SELECTED_ITEM</key>
+		<string>รายการที่เลือก</string>
+		<key>ALL_AC_ON</key>
+		<string>เปิดระบบปรับอากาศทั้งหมด</string>
+		<key>ALL_AC_OFF</key>
+		<string>ปิดระบบปรับอากาศทั้งหมด</string>
+		<key>ALL_AC_MODE</key>
+		<array>
+			<string>เย็น</string>
+			<string>เย็น</string>
+			<string>ร้อน</string>
+			<string>อบอุ่น</string>
+		</array>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ชื่อหัวข้อ</string>
+	</dict>
+	<key>RECORD</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>บันทึกเสียง</string>
+		<key>RECORD</key>
+		<string>บันทึก</string>
+		<key>PREVIEW</key>
+		<string>ดูภาพตัวอย่าง</string>
+		<key>STOP1</key>
+		<string>หยุด</string>
+		<key>STOP</key>
+		<string>หยุด</string>
+		<key>DELETE</key>
+		<string>ลบ</string>
+		<key>UPLOAD_TO_FTP</key>
+		<string>อัพโหลดไปยังftp</string>
+		<key>FTP_SERVER_IP</key>
+		<string>เซิร์ฟเวอร์ FTP</string>
+		<key>USER_NAME</key>
+		<string>ชื่อผู้ใช้</string>
+		<key>PASSWORD</key>
+		<string>รหัสผ่าน</string>
+		<key>UPLOADING</key>
+		<string>กำลังอัพโหลด</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>โปรดเลือกไฟล์ที่บันทึก</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>โปรดตรวจสอบว่ามีโฟลเดอร์หนึ่ง &quot;บันทึก&quot; บนเซิร์ฟเวอร์ FTP ตั้งแต่ไฟล์ที่บันทึกจะถูกบันทึกไว้ภายใต้โฟลเดอร์ &quot;บันทึก&quot; บนเซิร์ฟเวอร์ FTP</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>ข้อมูลที่คุณได้กรอกไม่ถูกต้องโปรดตรวจสอบ!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>สำเร็จ!หากต้องการเล่นไฟล์ที่บันทึกไว้ แหล่ง FTP ใน Z-Audio จะต้องได้รับการอัพเดทด้วยตนเอง</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>กรุณาตรวจสอบเครือข่ายและการตั้งค่าเซิร์ฟเวอร์FTP ของคุณและให้แน่ใจว่าเซิร์ฟเวอร์ FTP ทำงาน</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>ไฟล์มีอยู่แล้ว</string>
+	</dict>
+	<key>SCHEDULE</key>
+	<dict>
+		<key>TITLE_NAME</key>
+		<string>ตาราง</string>
+		<key>SCHEDULE_NAME</key>
+		<string>ตารางชื่อ</string>
+		<key>FREQUENCY</key>
+		<string>ความถี่</string>
+		<key>DATE_TIME</key>
+		<string>วันเวลา</string>
+		<key>VALIDITY</key>
+		<string>ความเที่ยงตรง</string>
+		<key>ONE_TIME</key>
+		<string>ครั้งหนึ่ง</string>
+		<key>DAILY</key>
+		<string>ประจำวัน</string>
+		<key>WEEKLY</key>
+		<string>รายสัปดาห์</string>
+		<key>ADD_NEW</key>
+		<string>เพิ่มใหม่</string>
+		<key>EDIT_SCHEDULE</key>
+		<string>แก้ไขตาราง</string>
+		<key>ADD_NEW_SCHEDULE</key>
+		<string>เพิ่มตารางใหม่</string>
+		<key>CONTROLLED_ITEM</key>
+		<string>รายการควบคุม</string>
+		<key>MACRO_BUTTONS</key>
+		<string>ปุ่มแมโคร</string>
+		<key>ALARM_CLOCK_BELL</key>
+		<string>ะฆังนาฬิกาปลุก</string>
+	</dict>
+	<key>Z_AUDIO</key>
+	<dict>
+		<key>SONG_CATEGORY_LIST</key>
+		<string>รายการหมวดหมู่เพลง</string>
+		<key>ALBUMS_LIST</key>
+		<string>รายการอัลบั้ม</string>
+		<key>ADD_TO_QUE</key>
+		<string>เพิ่มคิว</string>
+		<key>PLAY_QUE</key>
+		<string>เล่นคิว</string>
+		<key>STOP_QUE</key>
+		<string>หยุดคิว</string>
+		<key>QUE_START</key>
+		<string>คิวถูกเริ่มต้น</string>
+		<key>ZONE_LIST</key>
+		<string>รายการโซน</string>
+		<key>CHOOSE_ZONE</key>
+		<string>เลือกโซน</string>
+		<key>ADD_SUCCEED</key>
+		<string>สำเร็จ</string>
+		<key>UPDATE_FTP</key>
+		<string>การปรับปรุง FTP</string>
+		<key>REPEAT_OFF</key>
+		<string>ซ้ำ_ปิด</string>
+		<key>REPEAT_ONE</key>
+		<string>ซ้ำ_เปิด</string>
+		<key>CONTINUED</key>
+		<string>เล่นต่อเนื่อง</string>
+		<key>REPEAT_ALL</key>
+		<string>ทำซ้ำทั้งหมด</string>
+		<key>PROMPT_MESSAGE_0</key>
+		<string>ขออภัย!การอ่านรายชื่อล้มเหลว โปรดตรวจสอบการตั้งค่าเครือข่ายและโซนหรืออ่านอีกครั้งในภายหลัง!</string>
+		<key>PROMPT_MESSAGE_1</key>
+		<string>Z-Audio กำลังปรับปรุงอัลบั้มและรายการเพลงจาก FTP; จะใช้เวลาไม่นาน โปรดรอสักครู่ ...</string>
+		<key>PROMPT_MESSAGE_2</key>
+		<string>อัลบัมและรายการเพลงยังไม่ได้ถูกอ่าน เพลงจะหยุดหากต้องการดำเนินการต่อ ดำเนินการต่อตอนนี้หรือไม่?</string>
+		<key>PROMPT_MESSAGE_3</key>
+		<string>โปรดเลือกโซน!</string>
+		<key>PROMPT_MESSAGE_4</key>
+		<string>ขณะนี้ไม่อยู่ในโซนใดเลย โปรดเพิ่มโซนไปยังฐานข้อมูล</string>
+		<key>PROMPT_MESSAGE_5</key>
+		<string>อย่างน้อยหนึ่งโซนจะต้องได้รับการเลือก!</string>
+		<key>PROMPT_MESSAGE_6</key>
+		<string>การเชื่อมต่อZ-Audioล้มเหลว, โปรดตรวจสอบการตั้งค่าและเครือข่าย</string>
+		<key>PROMPT_MESSAGE_7</key>
+		<string>ล้มเหลว โปรดลองอีกครั้งในภายหลัง</string>
+		<key>PROMPT_MESSAGE_8</key>
+		<string>สำเร็จ!</string>
+		<key>PROMPT_MESSAGE_9</key>
+		<string>ไม่มีเพลงในคิวใดๆ โปรดเพิ่มเพลงในรายการคิว (ถ้าเขย่า iPhone การเลือกแบบเดียวและเลือกหลายครั้งจะถูกแลกเปลี่ยน!)</string>
+		<key>PROMPT_MESSAGE_10</key>
+		<string>กดค้างไว้ 2 วินาที เพื่อไปยังหน้าการล้างข้อมูลชั่วคราวและการปรับปรุงFTP</string>
+		<key>PROMPT_MESSAGE_11</key>
+		<string>ล้างข้อมูล TEMP จากการ์ด SD</string>
+		<key>PROMPT_MESSAGE_12</key>
+		<string>ถ้าเพลงในการ์ด SD มีการเปลี่ยนแปลงใดๆ ข้อมูลชั่วคราวสำหรับการ์ด SD ต้องมีการล้างและอ่านซ้ำอีกครั้ง</string>
+		<key>PROMPT_MESSAGE_13</key>
+		<string>ล้างข้อมูล TEMP สำหรับ FTP</string>
+		<key>PROMPT_MESSAGE_14</key>
+		<string>ถ้าเพลงบนเซิร์ฟเวอร์ FTP มีการเปลี่ยนแปลงใดๆ ข้อมูลชั่วคราวสำหรับ FTP ต้องมีการล้างและอ่านซ้ำอีกครั้ง</string>
+		<key>PROMPT_MESSAGE_15</key>
+		<string>บอก Z-Audio ให้ปรับปรุงรายการอัลบั้มและรายการเพลงจากเซิร์ฟเวอร์ FTP</string>
+	</dict>
+	<key>REMAINING</key>
+	<dict>
+		<key>FTP_DOWN_PROMPT_1</key>
+		<string>Downloaded!   Kindly close &amp; restart app!</string>
+		<key>PUBLIC_SUCCEED</key>
+		<string>Succeed!</string>
+		<key>MEDIA_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>aMed_TV</key>
+		<string>TV</string>
+		<key>bMed_AppleTV</key>
+		<string>APPLE TV</string>
+		<key>cMed_DVD</key>
+		<string>DVD</string>
+		<key>dMed_Projector</key>
+		<string>PROJECTOR</string>
+		<key>eMed_SAT</key>
+		<string>SAT./CABLE</string>
+		<key>MEDIA_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>Z-AUDIO_TITLE_BUTTON_BELOW</key>
+		<string></string>
+		<key>A_SD_CARD</key>
+		<string>SD CARD</string>
+		<key>B_NETWORK</key>
+		<string>NETWORK</string>
+		<key>C_IPHONE</key>
+		<string>IPHONE</string>
+		<key>D_RADIO</key>
+		<string>RADIO</string>
+		<key>E_AUDIO_IN</key>
+		<string>AUDIO IN</string>
+		<key>Z-AUDIO_TITLE_BUTTON_ABOVE</key>
+		<string></string>
+		<key>SCHEDULE_CONTROLLED_ITEM</key>
+		<array>
+			<string>Macro buttons</string>
+			<string>Moods</string>
+			<string>Lights</string>
+			<string>HVAC</string>
+			<string>Music</string>
+			<string>Shades</string>
+		</array>
+		<key>FROM_LOGO_LIBRARY</key>
+		<string>From Logo Library</string>
+		<key>FROM_PHOTOS</key>
+		<string>From Photos</string>
+		<key>EDIT_LOGO</key>
+		<string>Edit Logo</string>
+		<key>CHOOSE_LOGO_FOR_CHANNEL</key>
+		<string>Choose logo for channel</string>
+		<key>Z_AUDIO_SEARCH_PLAYING</key>
+		<string>Release your finger to start to search</string>
+		<key>Z_AUDIO_SEARCH_PLAYING_2</key>
+		<string>Drop down to search and jump to the song that is playing now</string>
+		<key>Z_AUDIO_SEARCHING</key>
+		<string>Searching</string>
+		<key>New item - 3</key>
+		<string></string>
+		<key>New item - 4</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

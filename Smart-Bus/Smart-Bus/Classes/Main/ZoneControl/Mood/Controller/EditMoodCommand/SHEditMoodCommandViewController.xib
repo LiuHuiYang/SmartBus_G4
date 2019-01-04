@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHEditMoodCommandViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="headerViewHeightConstraint" destination="aXp-63-Gw5" id="6x5-Wa-ssD"/>
+                <outlet property="iconButton" destination="Ncu-Ce-Sv7" id="FjA-v0-9Ef"/>
+                <outlet property="iconButtonHeightConstraint" destination="qbt-nA-pzX" id="OhN-EN-izn"/>
+                <outlet property="iconButtonWidthConstraint" destination="vas-Yn-vgG" id="igv-g7-2DO"/>
+                <outlet property="moodCommandsListView" destination="elq-CE-E2o" id="cY7-bV-9uw"/>
+                <outlet property="nameTextField" destination="l7a-Gw-Ghl" id="vfi-OJ-mwX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Wvd-8F-ScX">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28d-e3-Nk7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncu-Ce-Sv7">
+                            <rect key="frame" x="20" y="10" width="64" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="qbt-nA-pzX"/>
+                                <constraint firstAttribute="width" constant="64" id="vas-Yn-vgG"/>
+                            </constraints>
+                            <connections>
+                                <action selector="iconButtonClick" destination="-1" eventType="touchUpInside" id="rHi-EF-BQt"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="l7a-Gw-Ghl">
+                            <rect key="frame" x="99" y="21" width="256" height="42"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="QHA-Sn-r9e"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="l7a-Gw-Ghl" firstAttribute="height" secondItem="Ncu-Ce-Sv7" secondAttribute="height" multiplier="0.65" id="3yy-aN-EcS"/>
+                        <constraint firstItem="l7a-Gw-Ghl" firstAttribute="leading" secondItem="Ncu-Ce-Sv7" secondAttribute="trailing" constant="15" id="87v-zD-EuX"/>
+                        <constraint firstAttribute="trailing" secondItem="l7a-Gw-Ghl" secondAttribute="trailing" constant="20" id="GUf-74-ftF"/>
+                        <constraint firstAttribute="height" constant="84" id="aXp-63-Gw5"/>
+                        <constraint firstItem="Ncu-Ce-Sv7" firstAttribute="leading" secondItem="28d-e3-Nk7" secondAttribute="leading" constant="20" id="kyW-m7-b6Y"/>
+                        <constraint firstItem="l7a-Gw-Ghl" firstAttribute="centerY" secondItem="Ncu-Ce-Sv7" secondAttribute="centerY" id="s2p-D4-O5A"/>
+                        <constraint firstItem="Ncu-Ce-Sv7" firstAttribute="centerY" secondItem="28d-e3-Nk7" secondAttribute="centerY" id="vTr-pR-E4D"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="elq-CE-E2o">
+                    <rect key="frame" x="0.0" y="84" width="375" height="534"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="uuj-u0-j9x"/>
+                        <outlet property="delegate" destination="-1" id="8Wf-XJ-2K7"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="28d-e3-Nk7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4Na-ma-nmL"/>
+                <constraint firstAttribute="trailing" secondItem="elq-CE-E2o" secondAttribute="trailing" id="N8S-u9-h5C"/>
+                <constraint firstAttribute="bottom" secondItem="elq-CE-E2o" secondAttribute="bottom" constant="49" id="S5D-zf-8aP"/>
+                <constraint firstAttribute="trailing" secondItem="Wvd-8F-ScX" secondAttribute="trailing" id="Sva-fE-3VU"/>
+                <constraint firstItem="Wvd-8F-ScX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="alF-ht-oe8"/>
+                <constraint firstItem="28d-e3-Nk7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fK8-2O-2V2"/>
+                <constraint firstAttribute="trailing" secondItem="28d-e3-Nk7" secondAttribute="trailing" id="fpt-lH-brx"/>
+                <constraint firstAttribute="bottom" secondItem="Wvd-8F-ScX" secondAttribute="bottom" id="gOf-E6-Rtm"/>
+                <constraint firstItem="elq-CE-E2o" firstAttribute="top" secondItem="28d-e3-Nk7" secondAttribute="bottom" id="pE2-zt-ABE"/>
+                <constraint firstItem="Wvd-8F-ScX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wBN-rz-TVq"/>
+                <constraint firstItem="elq-CE-E2o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zfr-co-qo1"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

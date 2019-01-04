@@ -1,0 +1,6 @@
+framework module Pods_Smart_Bus {
+  umbrella header "Pods-Smart-Bus-umbrella.h"
+
+  export *
+  module * { export * }
+}

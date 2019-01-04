@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SHAudioAlbumCell" rowHeight="45" id="KGk-i7-Jjw" customClass="SHAudioAlbumCell" customModule="Smart_Bus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2X-d7-FDL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellbgforzonesongnone" translatesAutoresizingMaskIntoConstraints="NO" id="TkC-8o-Udb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="bwF-eA-9vv">
+                                <rect key="frame" x="10" y="10" width="300" height="24.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bwF-eA-9vv" secondAttribute="trailing" constant="10" id="7YB-6t-izo"/>
+                            <constraint firstAttribute="bottom" secondItem="bwF-eA-9vv" secondAttribute="bottom" constant="10" id="7yD-Lc-9Zb"/>
+                            <constraint firstAttribute="bottom" secondItem="TkC-8o-Udb" secondAttribute="bottom" id="Dq7-FZ-vi8"/>
+                            <constraint firstAttribute="trailing" secondItem="TkC-8o-Udb" secondAttribute="trailing" id="Pfm-qZ-MQO"/>
+                            <constraint firstItem="TkC-8o-Udb" firstAttribute="leading" secondItem="W2X-d7-FDL" secondAttribute="leading" id="cTP-vK-4c8"/>
+                            <constraint firstItem="bwF-eA-9vv" firstAttribute="leading" secondItem="W2X-d7-FDL" secondAttribute="leading" constant="10" id="pbK-Xn-8is"/>
+                            <constraint firstItem="TkC-8o-Udb" firstAttribute="top" secondItem="W2X-d7-FDL" secondAttribute="top" id="uU2-YF-0kc"/>
+                            <constraint firstItem="bwF-eA-9vv" firstAttribute="top" secondItem="W2X-d7-FDL" secondAttribute="top" constant="10" id="yhF-kW-asN"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="W2X-d7-FDL" secondAttribute="trailing" id="9S9-ah-cM2"/>
+                    <constraint firstItem="W2X-d7-FDL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9bL-nh-akv"/>
+                    <constraint firstAttribute="bottom" secondItem="W2X-d7-FDL" secondAttribute="bottom" id="Jfg-vC-m7v"/>
+                    <constraint firstItem="W2X-d7-FDL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fNi-ga-hQp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="albumNameLabel" destination="bwF-eA-9vv" id="ZOm-6O-uHi"/>
+                <outlet property="iconView" destination="TkC-8o-Udb" id="gIy-tl-JsZ"/>
+            </connections>
+            <point key="canvasLocation" x="31" y="-6.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cellbgforzonesongnone" width="278" height="47"/>
+    </resources>
+</document>
