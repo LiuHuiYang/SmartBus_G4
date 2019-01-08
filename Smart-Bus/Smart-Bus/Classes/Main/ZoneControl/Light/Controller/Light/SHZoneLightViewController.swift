@@ -195,16 +195,16 @@ extension SHZoneLightViewController {
                 
                 switch light.channelNo {
                     
-                case SHZoneControllIghtLEDChannel.red.rawValue:
+                case SHZoneControllightLEDChannel.red.rawValue:
                     light.brightness = red
                     
-                case SHZoneControllIghtLEDChannel.green.rawValue:
+                case SHZoneControllightLEDChannel.green.rawValue:
                     light.brightness = green
                     
-                case SHZoneControllIghtLEDChannel.blue.rawValue:
+                case SHZoneControllightLEDChannel.blue.rawValue:
                     light.brightness = blue
                     
-                case SHZoneControllIghtLEDChannel.white.rawValue:
+                case SHZoneControllightLEDChannel.white.rawValue:
                     light.brightness = white
                     
                 default:

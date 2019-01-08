@@ -302,28 +302,4 @@
     return plists;
 }
 
-// MARK: - 其它操作
-
-/**
- 将秒钟字符串转换为时分秒字符串(这个方法只适合解释当前音乐设备的数据)
- 
- @param secondsTimeString 广播收到的时间字符串
- @return 分:秒 字符串
- */
-+ (NSString *)getPlaySongTime:(NSString *)secondsTimeString {
-    
-    NSUInteger seconds = [secondsTimeString integerValue] / 10;
-    
-    //    NSString *hour =
-    //    [NSString stringWithFormat: @"%02ld", seconds / 3600];
-    
-    NSString *minute =
-    [NSString stringWithFormat: @"%02tu", (seconds % 3600) / 60];
-    
-    NSString *second =
-    [NSString stringWithFormat: @"%02tu", seconds % 60];
-    
-    return [NSString stringWithFormat:@"%@:%@", minute, second];
-}
-
 @end

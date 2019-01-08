@@ -14,12 +14,15 @@
                 <outlet property="audioSongsShowView" destination="qoF-1U-zyn" id="PbO-xj-MfK"/>
                 <outlet property="audioSourceView" destination="11D-R9-UuB" id="yDM-Uh-NCi"/>
                 <outlet property="bottomHeightConstraint" destination="K2i-wJ-Fdw" id="xzA-Rc-CRd"/>
+                <outlet property="leftListHolderView" destination="Q8s-CX-UOL" id="I3L-zo-cO5"/>
+                <outlet property="listScrollView" destination="WAc-Gd-X32" id="0vE-ve-hVk"/>
                 <outlet property="modelButton" destination="QF7-he-Mkv" id="1r6-il-MdA"/>
                 <outlet property="nextButton" destination="xut-YC-PLm" id="i8R-Wc-cGz"/>
                 <outlet property="pauseButton" destination="vYu-Ha-WYQ" id="UuN-76-Qaf"/>
                 <outlet property="playButton" destination="R6q-Pa-gUs" id="ZP9-7P-BzI"/>
                 <outlet property="playControlViewHeightConstraint" destination="iqZ-nK-pb9" id="K6Z-p4-Oa0"/>
                 <outlet property="previousButton" destination="gTg-OB-wGA" id="Ma9-l1-RdR"/>
+                <outlet property="rightHolderListView" destination="Tlo-PE-Ncb" id="XZT-wn-Blg"/>
                 <outlet property="sourceTypeHeightConstraint" destination="EzI-xt-QB2" id="tKd-eD-CoY"/>
                 <outlet property="stopButton" destination="JZw-Tp-XB2" id="d1s-6d-VqJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -150,7 +153,53 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qoF-1U-zyn" userLabel="middleSongView">
                     <rect key="frame" x="0.0" y="99" width="414" height="703"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAc-Gd-X32">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLp-MA-aeI">
+                                    <rect key="frame" x="0.0" y="0.0" width="828" height="703"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8s-CX-UOL" userLabel="leftListHolderView">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
+                                            <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlo-PE-Ncb" userLabel="rightHolderListView">
+                                            <rect key="frame" x="414" y="0.0" width="414" height="703"/>
+                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Tlo-PE-Ncb" firstAttribute="centerY" secondItem="Q8s-CX-UOL" secondAttribute="centerY" id="30A-7N-uBn"/>
+                                        <constraint firstItem="Q8s-CX-UOL" firstAttribute="top" secondItem="OLp-MA-aeI" secondAttribute="top" id="HTg-RT-hOG"/>
+                                        <constraint firstAttribute="bottom" secondItem="Q8s-CX-UOL" secondAttribute="bottom" id="IQo-yq-83d"/>
+                                        <constraint firstItem="Tlo-PE-Ncb" firstAttribute="width" secondItem="Q8s-CX-UOL" secondAttribute="width" id="Lwg-c2-o0k"/>
+                                        <constraint firstItem="Q8s-CX-UOL" firstAttribute="leading" secondItem="OLp-MA-aeI" secondAttribute="leading" id="M2T-GF-BtH"/>
+                                        <constraint firstAttribute="trailing" secondItem="Tlo-PE-Ncb" secondAttribute="trailing" id="Yqg-ae-7Bi"/>
+                                        <constraint firstItem="Q8s-CX-UOL" firstAttribute="width" secondItem="OLp-MA-aeI" secondAttribute="width" multiplier="0.5" id="sbh-H3-El4"/>
+                                        <constraint firstItem="Tlo-PE-Ncb" firstAttribute="height" secondItem="Q8s-CX-UOL" secondAttribute="height" id="xSS-Is-9uS"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.1369917131" blue="0.16966379579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="OLp-MA-aeI" secondAttribute="bottom" id="2pb-lN-5b4"/>
+                                <constraint firstItem="OLp-MA-aeI" firstAttribute="top" secondItem="WAc-Gd-X32" secondAttribute="top" id="Byo-ju-pO5"/>
+                                <constraint firstItem="OLp-MA-aeI" firstAttribute="width" secondItem="WAc-Gd-X32" secondAttribute="width" multiplier="2" id="G1b-il-X6z"/>
+                                <constraint firstItem="OLp-MA-aeI" firstAttribute="height" secondItem="WAc-Gd-X32" secondAttribute="height" id="L8a-n8-UGt"/>
+                                <constraint firstAttribute="trailing" secondItem="OLp-MA-aeI" secondAttribute="trailing" id="XEU-cJ-2eG"/>
+                                <constraint firstItem="OLp-MA-aeI" firstAttribute="leading" secondItem="WAc-Gd-X32" secondAttribute="leading" id="yLe-6L-M3i"/>
+                            </constraints>
+                        </scrollView>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="WAc-Gd-X32" firstAttribute="top" secondItem="qoF-1U-zyn" secondAttribute="top" id="C4b-xW-g07"/>
+                        <constraint firstAttribute="bottom" secondItem="WAc-Gd-X32" secondAttribute="bottom" id="Csg-Nt-2KD"/>
+                        <constraint firstAttribute="trailing" secondItem="WAc-Gd-X32" secondAttribute="trailing" id="p5Z-Q8-gsK"/>
+                        <constraint firstItem="WAc-Gd-X32" firstAttribute="leading" secondItem="qoF-1U-zyn" secondAttribute="leading" id="zpm-1p-gyc"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -170,7 +219,7 @@
                 <constraint firstItem="qoF-1U-zyn" firstAttribute="top" secondItem="11D-R9-UuB" secondAttribute="bottom" constant="15" id="edh-wb-zOj"/>
                 <constraint firstItem="qoF-1U-zyn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xxh-Eb-315"/>
             </constraints>
-            <point key="canvasLocation" x="24.5" y="51.5"/>
+            <point key="canvasLocation" x="23.188405797101453" y="50.892857142857139"/>
         </view>
     </objects>
     <resources>

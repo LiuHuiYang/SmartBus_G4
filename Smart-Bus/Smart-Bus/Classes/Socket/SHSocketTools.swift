@@ -24,7 +24,11 @@ import CocoaAsyncSocket
     /// socket对象
     lazy var socket: GCDAsyncUdpSocket = {
         
-        let udpSocket = GCDAsyncUdpSocket(delegate: self, delegateQueue: DispatchQueue.global())
+        let udpSocket =
+            GCDAsyncUdpSocket(
+                delegate: self,
+                delegateQueue: DispatchQueue.global()
+        )
         
         udpSocket.setIPv4Enabled(true)
         udpSocket.setIPv6Enabled(true)

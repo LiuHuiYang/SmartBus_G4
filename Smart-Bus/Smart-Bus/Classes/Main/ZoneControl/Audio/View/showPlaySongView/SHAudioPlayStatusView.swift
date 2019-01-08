@@ -11,7 +11,16 @@ import UIKit
 @objcMembers class SHAudioPlayStatusView: UIView, loadNiBView {
 
     /// 隐藏显示
-    var hiddenPlayInfo = false
+    var hiddenPlayInfo = false  {
+        
+        didSet {
+            
+            if hiddenPlayInfo {
+                timer?.invalidate()
+                timer = nil
+            }
+        }
+    }
     
     /// 正播放的歌曲
     var playSong: SHPlayingSong? {
@@ -22,8 +31,8 @@ import UIKit
                 return
             }
             
-            if song.albumName.count == 0 ||
-                song.songName.count == 0 {
+            if song.albumName.isEmpty ||
+                song.songName.isEmpty {
                 return
             }
             
@@ -50,7 +59,7 @@ import UIKit
             let min = UInt8(playTimeArray.first ?? "0") ?? 0
             let sec = UInt8(playTimeArray.last ?? "0") ?? 0
             
-            showSeconds = UInt16(min * 60 + sec)
+            showSeconds = UInt16(min * 60) + UInt16(sec)
             
             timer?.invalidate()
             timer = nil

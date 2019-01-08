@@ -28,7 +28,7 @@ import UIKit
 }
 
 /// LED中每个颜色通道的编号
-@objc enum SHZoneControllIghtLEDChannel: UInt8 {
+@objc enum SHZoneControllightLEDChannel: UInt8 {
     
     case red   = 49
     case green = 50

@@ -291,9 +291,7 @@ extension SHSocketTools {
                     
                     Scanner(string: macAddress[i]
                         ).scanHexInt32(&mac)
-                    
-                    print("\(mac)")
-                    
+                   
                     index += 1
                     socketData[index] = UInt8(mac)
                 }

@@ -18,18 +18,26 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         // 解析成数组
         var recivedData = [UInt8](data)
         
+        if recivedData.count < 27 ||
+            recivedData[14] != 0xAA ||
+            recivedData[15] != 0xAA {
+            
+            return
+        }
+        
+        
         // 数据包的前16个固定字节数(源IP + 协议头 + 开始的操作码 --> 不影响解析，所以去除)
         
         // FIXME: 暂时不进行接收校验
-        // 16的是0xAAAA后的位置 SN2
-//        guard check_crc(position: &(recivedData[16]),
-//                        length: recivedData.count - 16 - 2
-//
-//            ) else {
-//
-//                return
-//        }
-//
+        // 16 是0xAAAA后的位置 SN2
+        guard check_crc(position: &(recivedData[16]),
+                        length: recivedData.count - 16 - 2
+
+            ) else {
+
+                return
+        }
+
         let subNetID = recivedData[17]
         let deviceID = recivedData[18]
         

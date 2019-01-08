@@ -21,11 +21,7 @@ class SHZoneControlLightViewCell: UITableViewCell {
             
             backgroundColor = UIColor.clear
             nameLabel.text = light?.lightRemark
-            
-            // 这里能不能隐式转换 self.iconButton.selected = light.brightness; 会有问题
-            // iPhone6及后面的机型 测试没有影响
-            // iPhone5S及它前面的机型 升级到 iOS9(iPhone4/4s iPad1/2)/10(iPhone 5/5s)时, 会有问题
-            // 所以必须进行显式判断赋值, 明确指定 YES/NO
+        
             iconButton.isSelected = light?.brightness != 0
             
             let statusTitle = iconButton.isSelected ? SHLanguageText.on : SHLanguageText.off

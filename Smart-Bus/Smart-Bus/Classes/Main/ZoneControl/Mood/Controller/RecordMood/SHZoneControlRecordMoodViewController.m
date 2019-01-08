@@ -150,19 +150,19 @@
                         light.ledHaveColor = (red || green || blue || white);
                         
                         // 这是将LED中的每个颜色通道【独立】看成一个灯 (另一种方式)
-                        if (light.channelNo == SHZoneControllIghtLEDChannelRed) {
+                        if (light.channelNo == SHZoneControllightLEDChannelRed) {
                             
                             light.brightness = red;
                             
-                        } else if (light.channelNo == SHZoneControllIghtLEDChannelGreen) {
+                        } else if (light.channelNo == SHZoneControllightLEDChannelGreen) {
                             
                             light.brightness = green;
                             
-                        } else if (light.channelNo == SHZoneControllIghtLEDChannelBlue) {
+                        } else if (light.channelNo == SHZoneControllightLEDChannelBlue) {
                             
                             light.brightness = blue;
                             
-                        } else if (light.channelNo == SHZoneControllIghtLEDChannelWhite){
+                        } else if (light.channelNo == SHZoneControllightLEDChannelWhite){
                             
                             light.brightness = white;
                         }

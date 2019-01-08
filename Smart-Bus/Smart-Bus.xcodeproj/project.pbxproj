@@ -128,6 +128,7 @@
 		043642C8214A33BC0044040D /* Regular.m in Sources */ = {isa = PBXBuildFile; fileRef = 043642C7214A33BC0044040D /* Regular.m */; };
 		0436AA012118305A00292877 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B34A64D1F5962DB008AAC2E /* libsqlite3.tbd */; };
 		043B4C9A210726C60075E5EA /* Languages in Resources */ = {isa = PBXBuildFile; fileRef = 043B4C99210726C50075E5EA /* Languages */; };
+		043CD66221E330EA00622320 /* SHAudioOperatorTools + time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD66121E330EA00622320 /* SHAudioOperatorTools + time.swift */; };
 		0441DDDE216C927B00952CE4 /* SHAdvanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441DDDC216C927B00952CE4 /* SHAdvanceViewController.swift */; };
 		0441DDDF216C927B00952CE4 /* SHAdvanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0441DDDD216C927B00952CE4 /* SHAdvanceViewController.xib */; };
 		0441DDE2216C956C00952CE4 /* SHResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441DDE0216C956C00952CE4 /* SHResetPasswordViewController.swift */; };
@@ -603,6 +604,7 @@
 		0436A9C721182B2E00292877 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		0436A9CA21182B4400292877 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		043B4C99210726C50075E5EA /* Languages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Languages; sourceTree = "<group>"; };
+		043CD66121E330EA00622320 /* SHAudioOperatorTools + time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + time.swift"; sourceTree = "<group>"; };
 		0441DDDC216C927B00952CE4 /* SHAdvanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAdvanceViewController.swift; sourceTree = "<group>"; };
 		0441DDDD216C927B00952CE4 /* SHAdvanceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHAdvanceViewController.xib; sourceTree = "<group>"; };
 		0441DDE0216C956C00952CE4 /* SHResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -2005,11 +2007,11 @@
 			isa = PBXGroup;
 			children = (
 				8BD24B64206B657E00CFFE75 /* setZones */,
+				8B5D4FF7206C8EDF0028EEDB /* Projector */,
 				8B5D4FD2206C79E20028EEDB /* DVD */,
 				042AC886209462A200F4D040 /* DMX */,
 				8B99A722206DC65C00D97AA6 /* TV */,
 				8B99A719206DC51E00D97AA6 /* SAT */,
-				8B5D4FF7206C8EDF0028EEDB /* Projector */,
 				8B5D4FEE206C87450028EEDB /* AppleTV */,
 				8B829896204E31F300F3AD41 /* TemperatureSensor */,
 				8B82986E204E31F200F3AD41 /* NineInOne */,
@@ -2260,6 +2262,7 @@
 				044E434F21DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift */,
 				044C545021DD9B6D00749526 /* SHAudioOperatorTools + path.swift */,
 				044C545221DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift */,
+				043CD66121E330EA00622320 /* SHAudioOperatorTools + time.swift */,
 			);
 			path = SHAudioTools;
 			sourceTree = "<group>";
@@ -4661,6 +4664,7 @@
 				04CF6F462193D1750052A8A9 /* SHShade.swift in Sources */,
 				0453EA3F21A67C8400F666EF /* JHColumnChart.m in Sources */,
 				0453EA4521A67C8400F666EF /* JHColumnItem.m in Sources */,
+				043CD66221E330EA00622320 /* SHAudioOperatorTools + time.swift in Sources */,
 				044C545121DD9B6D00749526 /* SHAudioOperatorTools + path.swift in Sources */,
 				04913C8D218167F100704F3D /* SHDeviceListCell.swift in Sources */,
 				042CD7D420AD2ED600061670 /* EZAudioDevice.m in Sources */,

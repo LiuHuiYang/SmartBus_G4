@@ -95,13 +95,5 @@ typedef NS_ENUM(UInt8, SHMiniAudioSoureNumber) {
  @return 专辑或者歌曲数组
  */
 + (NSMutableArray *)readPlist:(NSString *)filePath;
-
-/**
- 将秒钟字符串转换为时分秒字符串(这个方法只适合解释当前音乐设备的数据)
  
- @param secondsTimeString 广播收到的时间字符串
- @return 分:秒 字符串
- */
-+ (NSString *)getPlaySongTime:(NSString *)secondsTimeString;
-
 @end
