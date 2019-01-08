@@ -78,6 +78,9 @@ UITableViewDelegate, UITableViewDataSource>
 /// 当前正在播放的队列音乐
 @property (nonatomic, assign) BOOL isQueuePlay;
 
+/// 播放次数
+@property (nonatomic, assign) Byte queueCount;
+
 /// 选择的队列音乐(只在内存中有效)
 @property (nonatomic, strong) NSMutableArray *selectQueueSongs;
 
@@ -196,68 +199,68 @@ UITableViewDelegate, UITableViewDataSource>
 
 /// 收到广播
 - (void)analyzeReceivedSocketData:(SHSocketData *)socketData {
-
-
+    
+    
     if (socketData.subNetID != self.currentAudio.subnetID ||
         socketData.deviceID != self.currentAudio.deviceID) {
         return;
     }
-
+    
     NSUInteger count = socketData.additionalData.count;
     Byte recivedData[count];
-
+    
     for (int i = 0; i < count; i++) {
-
+        
         recivedData[i] =
         ([socketData.additionalData[i] integerValue]) & 0xFF;
     }
-
+    
     switch (self.receivedStatusType) {
-
+            
             /********* 读取专辑与歌曲部分 **********/
-
+            
         case SHAudioReceivedStatusTypeReadTotalPackages:{
-
+            
             if (socketData.operatorCode == 0x02E1 &&
                 recivedData[0] == self.currentAudio.sourceType) {
-
+                
                 self.receivedStatusType = SHAudioReceivedStatusTypeOut;
                 self.totalPackages = recivedData[1];
                 self.isReceivedAudioData = YES;
             }
         }
             break;  // OK
-
+            
         case SHAudioReceivedStatusTypeReadAlbumList:{
-
+            
             //11 源号  12大包号
             if (recivedData[2] == self.currentAudio.sourceType &&
                 socketData.operatorCode == 0x02E3      &&
                 recivedData[3] == self.currentPackageNumber) {
-
+                
                 //                printLog(@"2.专辑总数: %d", recivedData[0 + 4]);
-
+                
                 self.receivedStatusType = SHAudioReceivedStatusTypeOut;
                 self.isReceivedAudioData = YES;
-
+                
                 // 相关的名称从5开始
                 NSUInteger albumDataLength =
                 recivedData[0] * 0xFF + recivedData[1] - 5;
-
+                
                 NSArray *albumNames =
                 [SHAudioTools getNameFrom:[NSData dataWithBytes:&recivedData[5] length:albumDataLength]
                                   isAlbum:YES
                                     count:recivedData[4]
                  ];
-
+                
                 NSString *albumName = [albumNames componentsJoinedByString:@""];
-
+                
                 [self.recivedStringList appendFormat:@"%@",albumName];
-
+                
                 if (recivedData[3] == self.totalPackages) {
-
+                    
                     // printLog(@"最终的专辑名称: %@", self.recivedStringList);
-
+                    
                     [SHAudioTools parseNameList:socketData.subNetID
                                        deviceID:socketData.deviceID
                                      sourceType:recivedData[2]
@@ -265,52 +268,52 @@ UITableViewDelegate, UITableViewDataSource>
                                         isAlbum:YES
                              currentAlbumNumber:0
                      ];
-
+                    
                     self.recivedStringList = nil;
                 }
             }
         }
             break;  // OK
-
+            
         case SHAudioReceivedStatusTypeReadSongPackages:{
             if (recivedData[0] == self.currentAudio.sourceType &&
                 socketData.operatorCode == 0x02E5 &&
                 self.currentCategoryNumber == recivedData[1]) {
-
+                
                 self.receivedStatusType = SHAudioReceivedStatusTypeOut;
                 self.totalPackages = recivedData[2];
                 self.isReceivedAudioData = YES;
-
+                
                 // printLog(@"当前专辑一共有歌曲的包数: %d", recivedData[0 + 2]);
             }
         }
             break;  // OK
-
+            
         case SHAudioReceivedStatusTypeReadSongList: {
-
+            
             // 确定是当前设备来源正在返回请求的歌曲名称
             if (recivedData[2] == self.currentAudio.sourceType &&
                 socketData.operatorCode == 0x02E7                                      &&
                 recivedData[3] == self.currentCategoryNumber
                 ) {
-
+                
                 // 请求包号与返回一致
                 if (recivedData[4] == self.currentPackageNumber) {
-
+                    
                     self.receivedStatusType = SHAudioReceivedStatusTypeOut;
                     self.isReceivedAudioData = YES;
-
+                    
                     NSUInteger songNameLength =
                     recivedData[0] * 0xFF + recivedData[1] - 6;
-
+                    
                     if (songNameLength < 3 &&
                         recivedData[4] != self.totalPackages) {
-
+                        
                         self.isReceivedAudioData = NO;
                         printLog(@"提前空包");
                         return;
                     }
-
+                    
                     NSArray *songNames =
                     [SHAudioTools getNameFrom:
                      [NSData dataWithBytes:&recivedData[6]
@@ -318,17 +321,17 @@ UITableViewDelegate, UITableViewDataSource>
                                       isAlbum:NO
                                         count:recivedData[5]
                      ];
-
-
+                    
+                    
                     NSString *songName = [songNames componentsJoinedByString:@""];
-
+                    
                     [self.recivedStringList appendFormat:@"%@",songName];
-
+                    
                     // printLog(@"当前音乐名称: %@", self.recivedStringList);
-
+                    
                     /// 拼接完成
                     if (recivedData[4] == self.totalPackages) {
-
+                        
                         //                        [SVProgressHUD showSuccessWithStatus:@"专辑所有音乐读取完成"];
                         [SHAudioTools parseNameList:socketData.subNetID
                                            deviceID:socketData.deviceID
@@ -337,40 +340,40 @@ UITableViewDelegate, UITableViewDataSource>
                                             isAlbum:NO
                                  currentAlbumNumber:recivedData[3]
                          ];
-
+                        
                         self.recivedStringList = nil;
                         self.errorSongNameNumber = 0;
-
+                        
                         //下面部分为了防止出现包拼接错误，和包内容错误
                         //后面还有包，判断包拼接是否正确
-
+                        
                     } else {
-
+                        
                         self.errorSongNameNumber =
                         recivedData[5] +
                         recivedData[6] * 0xFF +
                         recivedData[7] + 3;
                     }
-
+                    
                 } else {
-
+                    
                     printLog(@"====== 当前请求包号不一致 接收到信息========");
                     printLog(@"当前包号: %d\n请求包号: %zd\n总包号: %zd",
                              recivedData[4],
                              self.currentPackageNumber,
                              self.totalPackages
                              );
-
+                    
                     // FIXME: - 音乐空包 以后如果出现其它情况，则可能需要修改固件
                     // 这个条件只适用于 80S专辑最后一个是空包的情况，其它情况都是不可用的
                     // 空包时 固件返回的广播不完整，数据也不匹配
                     // 只能临时这样判断
                     if ((count == 4) &&
                         (self.currentPackageNumber == self.totalPackages)) {
-
+                        
                         self.receivedStatusType = SHAudioReceivedStatusTypeOut;
                         self.isReceivedAudioData = YES;
-
+                        
                         [SHAudioTools parseNameList:socketData.subNetID
                                            deviceID:socketData.deviceID
                                          sourceType:recivedData[2]
@@ -378,19 +381,19 @@ UITableViewDelegate, UITableViewDataSource>
                                             isAlbum:NO
                                  currentAlbumNumber:recivedData[3]
                          ];
-
+                        
                         self.recivedStringList = nil;
                         self.errorSongNameNumber = 0;
                     }
                 }
             }
-
+            
         }
             break;
-
+            
             /*************** 更新FTP部分 ****************/
         case SHAudioReceivedStatusTypeUpdateList: {
-
+            
             // #SsDISPUPDATE, STATUS1<CR><LF>
             if (recivedData[0]  == 0x23 && // #
                 recivedData[1]  == 0x53 && // S
@@ -413,48 +416,48 @@ UITableViewDelegate, UITableViewDataSource>
                 recivedData[18] == 0x55 && // U
                 recivedData[19] == 0x53    // S
                 ) {
-
+                
                 // 获得状态
                 SHAudioUpdateFtpServerDataStatus status =
-
+                
                 [SHAudioOperatorTools asciiToDecimalWithData:recivedData[20]];
-
+                
                 printLog(@"获得状态: %d", status);
-
+                
                 // 更新完成
                 if (status == SHAudioUpdateFtpServerDataStatusFinished) {
-
+                    
                     // 设置状态
                     self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-
+                    
                     // 成功更新
                     self.isUpdateFtpSuccess = YES;
                     [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@\n%@", [[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"UPDATE_FTP"], [[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"PROMPT_MESSAGE_8"]]];
-
+                    
                     // 其它代码
-
+                    
                     // 正在更新
                 } else if (status == SHAudioUpdateFtpServerDataStatusUpdating) {
-
+                    
                     // 更新失败
                 } else {
-
+                    
                 }
             }
-
+            
         }
             break;
-
+            
             /*************** 获得相关的状态 **************/
-
+            
         case SHAudioReceivedStatusTypeOut: {
-
+            
             if (socketData.operatorCode != 0X192F) {
                 return;
             }
-
+            
             /********* 声音 ***************/
-
+            
             // 声音大小
             if (recivedData[0]  == 0x23 && // #
                 recivedData[1]  == 0x5A && // Z
@@ -471,25 +474,25 @@ UITableViewDelegate, UITableViewDataSource>
                 recivedData[12] == 0x56 && // V
                 recivedData[13] == 0x4F && // O
                 recivedData[14] == 0x4C    // L
-
+                
                 ) {
-
+                
                 if (recivedData[17] == 0xD) { // ASCII
-
+                    
                     self.volumeView.volume =
                     SHAUDIO_MAX_VOLUME -
                     (([SHAudioOperatorTools asciiToDecimalWithData:recivedData[15]]) * 10 +
                      [SHAudioOperatorTools asciiToDecimalWithData:recivedData[16]]);
                 } else {
-
+                    
                     self.volumeView.volume =
                     SHAUDIO_MAX_VOLUME -
                     [SHAudioOperatorTools asciiToDecimalWithData:recivedData[15]];
                 }
-
+                
                 //                printLog(@"当前的声音大小: %d", self.volumeView.volume);
             }
-
+            
             // 高低音 控制 #S1DISPTONE,BASS-(或+)1,TREB+(或-)5 回车
             else if (recivedData[0]  == 0x23 &&  // #
                      recivedData[1]  == 0x53 &&  // S
@@ -507,49 +510,49 @@ UITableViewDelegate, UITableViewDataSource>
                      recivedData[13] == 0x41 &&  // A
                      recivedData[14] == 0x53 &&  // S
                      recivedData[15] == 0x53 &&  // S
-
+                     
                      recivedData[18] == 0x2C &&  // ,
                      recivedData[19] == 0x54 &&  // T
                      recivedData[20] == 0x52 &&  // R
                      recivedData[21] == 0x45 &&  // E
                      recivedData[22] == 0x42 &&  // B
-
+                     
                      recivedData[25] == 0x0D    // <CR>
                      ) {
-
-
+                
+                
                 NSInteger bass =
                 [SHAudioOperatorTools asciiToDecimalWithData:recivedData[17]];
-
+                
                 NSInteger treble =
                 [SHAudioOperatorTools asciiToDecimalWithData:recivedData[24]];
-
+                
                 if (recivedData[16] == 0x2D) { // -
-
+                    
                     bass =  0 - bass;
                 }
-
+                
                 if (recivedData[23] == 0x2D) { // -
-
+                    
                     treble = 0 - treble;
                 }
-
+                
                 self.volumeView.bass = bass;
                 self.volumeView.treble = treble;
-
+                
                 //                printLog(@"高音与低音： %@ - %@",
                 //                         @(bass), @(treble));
             }
-
+            
             /*********  播放时间与状态信息  ***********/
-
+            
             else if (recivedData[0]  == 0x23 &&  // #
                      recivedData[1]  == 0x53 &&  // S
-
+                     
                      // recivedData[2]         // 音乐来源
                      [SHAudioOperatorTools asciiToDecimalWithData:recivedData[2]] ==
                      self.currentAudio.sourceType     &&
-
+                     
                      recivedData[3]  == 0x44 &&  // D
                      recivedData[4]  == 0x49 &&  // I
                      recivedData[5]  == 0x53 &&  // S
@@ -562,15 +565,15 @@ UITableViewDelegate, UITableViewDataSource>
                      recivedData[12] == 0x44 &&  // D
                      recivedData[13] == 0x55 &&  // U
                      recivedData[14] == 0x52     // R
-
+                     
                      ) {
-
+                
                 NSString *playStatusString =
                 [[NSString alloc] initWithBytes:&recivedData[15]
                                          length:count - 2
                                        encoding:NSASCIIStringEncoding
                  ];
-
+                
                 NSArray *playStatusArray = [playStatusString
                                             componentsSeparatedByString:@","];
                 
@@ -578,80 +581,85 @@ UITableViewDelegate, UITableViewDataSource>
                 
                 // 1.总共时长
                 NSString *totalTimeString = [SHAudioOperatorTools showTimeWithSeconds:totalSeconds];
-
+                
                 [SHPlayingSong.shared
                  setTotalTime:totalTimeString
                  ];
- 
+                
                 // 2.已播放时间
                 NSInteger playSeconds = [[[playStatusArray objectAtIndex:1] substringFromIndex:3] integerValue] / 10; // POS
                 
                 NSString *playTimeString =
-                    [SHAudioOperatorTools
-                        showTimeWithSeconds:playSeconds
-                    ];
-
+                [SHAudioOperatorTools
+                 showTimeWithSeconds:playSeconds
+                 ];
+                
                 [SHPlayingSong.shared
                  setAleardyPlayTime:playTimeString
                  ];
                 
                 SHAudioBoardCastPlayStatus status =
-                    [SHAudioOperatorTools asciiToDecimalWithData:recivedData[count - 2]];
+                [SHAudioOperatorTools asciiToDecimalWithData:recivedData[count - 2]];
                 
                 // 3.播放状态
                 SHPlayingSong.shared.playStatus = status;
- 
+                
                 self.showPlayStatusView.playSong =
                 SHPlayingSong.shared;
                 
                 if (self.isQueue &&
                     status == SHAudioBoardCastPlayStatusPlay) {
-            
+                    
+                    
                     NSString *name =  SHPlayingSong.shared.songName;
                     
                     SHSong *queueSong = self.selectQueueSongs[self.indexQueue];
                     
-                    printLog(@"当前队列音乐: %@ - 正在播放: %@", queueSong.songName, name);
-                    
                     if (![queueSong.songName isEqualToString:name]) {
-                        printLog(@"不是同一首歌");
-                    
-                    } else {
-                    
-                        printLog(@"是同一首歌");
                         
-                        if (self.isQueuePlay) {
-                            return;
+                        ++self.queueCount;
+                        
+                        printLog("接收次数: %@", @(self.queueCount));
+                        
+                        if (self.queueCount == 2) {
+                            
+                            printLog(@"不是同一首歌");
+                            
+                            printLog(@"当前队列音乐: %@ - 正在播放: %@", queueSong.songName, name);
+                            
+                            printLog(@"做准备发送");
+                            
+                            self.queueCount = 0;
+                            
+                            ++self.indexQueue;
+                            self.indexQueue %= self.selectQueueSongs.count;
+                            
+                            SHSong *song =
+                            self.selectQueueSongs[self.indexQueue];
+                            
+                            [self playQueueSong:song];
                         }
                         
-                        self.isQueuePlay = YES;
                         
-                        ++self.indexQueue;
-                        self.indexQueue %= self.selectQueueSongs.count;
-                        
-                        SHSong *song =
-                        self.selectQueueSongs[self.indexQueue];
-                        
-                        [self playQueueSong:song];
                     }
                     
                 }
             }
-
+            
             /********** 歌曲与专辑信息 ***************/
-
+            
             // #SsDISPLINE1, <STX>L:??? / ???<ETX> <CR><LF>
-
+            
             else if (recivedData[0]  == 0x23 && // #
                      recivedData[1]  == 0x53 && // S
-
+                     
                      // recivedData[2] 音乐来源
                      [SHAudioOperatorTools asciiToDecimalWithData:
                       recivedData[2]
                       ]
-
+                     
                      == self.currentAudio.sourceType   && // 来源
-
+                     
                      recivedData[3]  == 0x44 && // D
                      recivedData[4]  == 0x49 && // I
                      recivedData[5]  == 0x53 && // S
@@ -660,83 +668,83 @@ UITableViewDelegate, UITableViewDataSource>
                      recivedData[8]  == 0x49 && // I
                      recivedData[9]  == 0x4E && // N
                      recivedData[10] == 0x45 && // E
-
+                     
                      recivedData[12] == 0x2C &&  // ,
                      recivedData[13] == 0x02     // STX , ASC码
                      ) {
-
+                
                 // 内容从可变参数的第14个索引开始
                 // 倒数3个是固定的结束标示 ETX> <CR><LF>
                 // 可变参数的第11个索引是1~4代表返回不同的内容
-
+                
                 NSString *string =
                 [[NSString alloc]
                  initWithBytes:&recivedData[14]
                  length:(count - 14 - 3)
                  encoding:NSUnicodeStringEncoding
                  ];
-
+                
                 if (!string.length) {
                     break;
                 }
-
+                
                 switch (recivedData[11]) {
-
+                        
                     case 0x31: {  // 列表号与列表总数
-
+                        
                         //                        printLog(@"1. 列表号与列表总数: %@", string);
-
+                        
                         [SHPlayingSong.shared
                          setAlbumSerialNumber:string];
                     }
                         break;
-
+                        
                     case 0x32: {  // 列表名
-
+                        
                         //                          printLog(@"2.专辑名称: %@", string);
                         [SHPlayingSong.shared
                          setAlbumName:string];
                     }
                         break;
-
+                        
                     case 0x33: {  // 歌曲号???/歌曲总数
-
-//                        printLog(@"3. 歌曲号???/歌曲总数: %@", string);
+                        
+                        //                        printLog(@"3. 歌曲号???/歌曲总数: %@", string);
                         [SHPlayingSong.shared
                          setSongSerialNumber:string];
                     }
                         break;
-
+                        
                     case 0x34: {  // 歌曲名
-
-//                    printLog(@"4. 歌曲名: %@", string);
+                        
+                        //                    printLog(@"4. 歌曲名: %@", string);
                         [SHPlayingSong.shared
-                            setSongName:string];
+                         setSongName:string];
                     }
                         break;
-
+                        
                     default:
                         break;
                 }
-
+                
                 [SHPlayingSong.shared setSourceType:self.currentAudio.sourceType
                  ];
-
+                
                 [self.showPlayStatusView
                  setPlaySong:SHPlayingSong.shared
                  ];
             }
-
+            
             /********** 获得当前的模式 ***********/
-
+            
             else if (recivedData[0]  == 0x23 && // #
                      recivedData[1]  == 0x53 && // S
-
+                     
                      // recivedData[2]  // 音乐来源
                      [SHAudioOperatorTools asciiToDecimalWithData:recivedData[2]]
                      ==
                      self.currentAudio.sourceType     &&
-
+                     
                      recivedData[3]  == 0x44 && // D
                      recivedData[4]  == 0x49 && // I
                      recivedData[5]  == 0x53 && // S
@@ -753,26 +761,27 @@ UITableViewDelegate, UITableViewDataSource>
                      recivedData[16] == 0x55 && // U
                      recivedData[17] == 0x53    // S
                      )  {
-
+                
                 self.currentAudio.playMode =
-
+                
                 [SHAudioOperatorTools asciiToDecimalWithData:
                  recivedData[18]
                  ];
-                //                 printLog(@"当前取值: %d", self.currentAudio.playMode);
-
+                
+                // printLog(@"当前取值: %d", self.currentAudio.playMode);
+                
                 // 显示状态
                 [self showAudioPlayModel];
             }
         }
             break;
-
+            
             //  获得状态
         case SHAudioReceivedStatusTypeReadDeviceStatus: {
-
+            
         }
             break;
-
+            
         default:
             break;
     }
@@ -787,14 +796,14 @@ UITableViewDelegate, UITableViewDataSource>
         return;     // 取消发送消息
     }
     
-     [SHSocketTools sendDataWithOperatorCode:sendData.operatorCode
-                                    subNetID:sendData.subNetID
-                                    deviceID:sendData.deviceID
-                              additionalData:sendData.additionalData
-                            remoteMacAddress:SHSocketTools.remoteControlMacAddress
-                                  needReSend:false
-                                       isDMX:false
-    ];
+    [SHSocketTools sendDataWithOperatorCode:sendData.operatorCode
+                                   subNetID:sendData.subNetID
+                                   deviceID:sendData.deviceID
+                             additionalData:sendData.additionalData
+                           remoteMacAddress:SHSocketTools.remoteControlMacAddress
+                                 needReSend:false
+                                      isDMX:false
+     ];
     
     self.isReceivedAudioData = NO;
     
@@ -939,10 +948,10 @@ UITableViewDelegate, UITableViewDataSource>
                 sendData.packageNumber = sendData.packageNumber + 1;
                 
                 sendData.additionalData =
-                        @[ @(sendData.sourceType),
-                           @(sendData.categoryNumber),
-                           @(sendData.packageNumber)
-                         ];
+                @[ @(sendData.sourceType),
+                   @(sendData.categoryNumber),
+                   @(sendData.packageNumber)
+                   ];
                 
                 self.currentPackageNumber = sendData.packageNumber;
                 
@@ -988,10 +997,10 @@ UITableViewDelegate, UITableViewDataSource>
             
             // 加载队列音乐
             self.selectQueueSongs =
-                [SHAudioOperatorTools getQueueSongsWithSubNetID:subNetID
-                                                       deviceID:deviceID
-                                                     sourceType:sourceType
-                ];
+            [SHAudioOperatorTools getQueueSongsWithSubNetID:subNetID
+                                                   deviceID:deviceID
+                                                 sourceType:sourceType
+             ];
             
             [self.songQueueListTableView reloadData];
             
@@ -1032,7 +1041,7 @@ UITableViewDelegate, UITableViewDataSource>
         sendData.categoryNumber = songAlbumNumber;
         
         sendData.additionalData =
-            @[@(sourceType), @(songAlbumNumber)];
+        @[@(sourceType), @(songAlbumNumber)];
         
         self.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
         self.reSendCount = 0;
@@ -1042,7 +1051,7 @@ UITableViewDelegate, UITableViewDataSource>
         
         // UI的处理上
         self.currentAudio.currentSelectAlbum.totalAlbumSongs
-            = @[];
+        = @[];
         
         [self.currentAlbumSongsListTableView reloadData];
     }
@@ -1078,14 +1087,14 @@ UITableViewDelegate, UITableViewDataSource>
         
         // 获得所有的专辑
         self.currentAudio.allAlbums =
-            [SHAudioTools readPlist:albumPlistFilePath];
+        [SHAudioTools readPlist:albumPlistFilePath];
         
         // 刷新列表
         [self.albumListTableView reloadData];
         
         //  选择第一个
         self.currentAudio.currentSelectAlbum =
-            self.currentAudio.allAlbums[albumNumber - 1];
+        self.currentAudio.allAlbums[albumNumber - 1];
         
         // 默认选择第一个cell 动画效果
         [self.albumListTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:(albumNumber - 1) inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
@@ -1110,7 +1119,7 @@ UITableViewDelegate, UITableViewDataSource>
         sendData.packageTotal = 1;
         sendData.categoryNumber = albumNumber;
         
-         sendData.additionalData = @[@(sourceType)];
+        sendData.additionalData = @[@(sourceType)];
         
         self.receivedStatusType = SHAudioReceivedStatusTypeReadTotalPackages;
         self.reSendCount = 0;
@@ -1121,12 +1130,12 @@ UITableViewDelegate, UITableViewDataSource>
         [self.selectAlbumButton setTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"ALBUMS_LIST"] forState:UIControlStateNormal];
         
         // 清空列表
-          self.currentAudio.allAlbums = @[];
+        self.currentAudio.allAlbums = @[];
         [self.albumListTableView reloadData];
         
         // 清空列表对应的歌曲
         self.currentAudio.currentSelectAlbum.totalAlbumSongs
-            = @[];
+        = @[];
         
         [self.currentAlbumSongsListTableView reloadData];
     }
@@ -1243,7 +1252,7 @@ UITableViewDelegate, UITableViewDataSource>
         [self playQueButtonClick];
         
     } else {
-       
+        
         [SHAudioOperatorTools stopAudioWithSubNetID:self.currentAudio.subnetID deviceID:self.currentAudio.deviceID];
         
         [SHAudioOperatorTools stopAudioSongWithSubNetID:self.currentAudio.subnetID deviceID:self.currentAudio.deviceID sourceType:self.currentAudio.sourceType zoneFlag:self.currentAudio.zoneFlag];
@@ -1310,7 +1319,7 @@ UITableViewDelegate, UITableViewDataSource>
         
         // 收音机
         if ((!self.currentAudio.isMiniZAudio &&
-              self.currentAudio.sourceType == SHAudioSourceTypeRADIO) ||
+             self.currentAudio.sourceType == SHAudioSourceTypeRADIO) ||
             (self.currentAudio.isMiniZAudio &&
              self.currentAudio.sourceType == SHMiniZAudioSourceTypeRADIO)
             ) {
@@ -1397,7 +1406,7 @@ UITableViewDelegate, UITableViewDataSource>
             
         } else {
             
-             [SVProgressHUD showInfoWithStatus:SHLanguageText.noData];
+            [SVProgressHUD showInfoWithStatus:SHLanguageText.noData];
         }
         
     } else {
@@ -1428,12 +1437,14 @@ UITableViewDelegate, UITableViewDataSource>
     
     if (UIApplication.sharedApplication.idleTimerDisabled == NO) {
         UIApplication.sharedApplication.idleTimerDisabled =
-            YES;
+        YES;
     }
     
     // 播放指定音乐
     [SHAudioOperatorTools playAudioSelectSongWithSubNetID:song.subNetID deviceID:song.deviceID sourceType:song.sourceType albumNumber:song.albumNumber songNumber:song.songNumber zoneFlag:self.currentAudio.zoneFlag
      ];
+    
+    self.queueCount = 0;
     
     NSIndexPath *queueIndex =
     [NSIndexPath indexPathForRow:self.indexQueue
@@ -1453,13 +1464,13 @@ UITableViewDelegate, UITableViewDataSource>
 - (void)stopQueueSongs {
     
     self.isQueue = NO;
-  
+    
     [self.songQueueListTableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:self.indexQueue inSection:0] animated:YES];
     
     self.indexQueue = 0;
     
     [UIApplication sharedApplication].idleTimerDisabled =
-        NO;
+    NO;
     
     [self.playQueButton setTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"PLAY_QUE"] forState:UIControlStateNormal];
     
@@ -1554,7 +1565,7 @@ UITableViewDelegate, UITableViewDataSource>
                  ];
                 
                 [NSThread sleepForTimeInterval:0.1];
-         
+                
                 
                 [self showAlbumList:self.currentAudio.subnetID
                            deviceID:self.currentAudio.deviceID
@@ -1573,7 +1584,7 @@ UITableViewDelegate, UITableViewDataSource>
                 self.currentAudio.sourceType = SHAudioSourceTypeFTP;
                 
                 
-              [SHAudioOperatorTools changeAudioSourceWithSubNetID:self.currentAudio.subnetID deviceID:self.currentAudio.deviceID musicSoureNumber:SHAudioSoureNumberFtpServer zoneFlag:self.currentAudio.zoneFlag];
+                [SHAudioOperatorTools changeAudioSourceWithSubNetID:self.currentAudio.subnetID deviceID:self.currentAudio.deviceID musicSoureNumber:SHAudioSoureNumberFtpServer zoneFlag:self.currentAudio.zoneFlag];
                 
                 [NSThread sleepForTimeInterval:0.1];
                 
@@ -1711,15 +1722,15 @@ UITableViewDelegate, UITableViewDataSource>
     self.nextButton.hidden = NO;
     self.listScrollView.hidden = YES;
     self.radioChannelButtonsView.hidden =
-        (sourceType != SHMiniZAudioSourceTypeRADIO);
+    (sourceType != SHMiniZAudioSourceTypeRADIO);
     
     // 中间的空白
     self.audioinImageView.hidden =
-        (sourceType == SHMiniZAudioSourceTypeRADIO);
+    (sourceType == SHMiniZAudioSourceTypeRADIO);
     
     // bluetooth下不显示状态
     self.showPlayStatusView.hidden =
-        (sourceType == SHMiniZAudioSourceTypeBLUETOOTH);;
+    (sourceType == SHMiniZAudioSourceTypeBLUETOOTH);;
 }
 
 
@@ -1742,13 +1753,13 @@ UITableViewDelegate, UITableViewDataSource>
 
 /// 读取音乐播放信息的状态
 - (void)readAudioStatus {
-
+    
     
     self.receivedStatusType = SHAudioReceivedStatusTypeOut;
     
     [SHAudioOperatorTools readAudioStatusWithSubNetID:self.currentAudio.subnetID
                                              deviceID:self.currentAudio.deviceID
-    ];
+     ];
 }
 
 
@@ -1757,11 +1768,11 @@ UITableViewDelegate, UITableViewDataSource>
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
-//    printLog(@"偏移量 - %g", self.listScrollView.contentOffset.x);
+    //    printLog(@"偏移量 - %g", self.listScrollView.contentOffset.x);
     self.showPlayStatusView.frame_x =
-        self.listScrollView.contentOffset.x;
+    self.listScrollView.contentOffset.x;
     
-//    [self layoutAlbumSongsListView];
+    //    [self layoutAlbumSongsListView];
 }
 
 
@@ -1899,61 +1910,61 @@ UITableViewDelegate, UITableViewDataSource>
     
     // 正在播放的指示器
     CGFloat showPlayStatusHeight =
-        [UIDevice is_iPad] ?
-        (statusBarHeight + navigationBarHeight) :
-        tabBarHeight;
-  
+    [UIDevice is_iPad] ?
+    (statusBarHeight + navigationBarHeight) :
+    tabBarHeight;
+    
     // 3.标题按钮的位置
     CGFloat controlButtonHeight =
-        [UIDevice is_iPad] ?
-        (navigationBarHeight + statusBarHeight) :
-        tabBarHeight;
+    [UIDevice is_iPad] ?
+    (navigationBarHeight + statusBarHeight) :
+    tabBarHeight;
     
     CGFloat controlButtonPadding =
-        [UIDevice is_iPad] ?
-        statusBarHeight: statusBarHeight * 0.5;
+    [UIDevice is_iPad] ?
+statusBarHeight: statusBarHeight * 0.5;
     
     // 区域选择
     self.zoneRefreshButton.frame =
-        CGRectMake(0,
-                   0,
-                   (self.leftListHolderView.frame_width - 2 * controlButtonPadding) * 0.25,
-                   controlButtonHeight
-        );
+    CGRectMake(0,
+               0,
+               (self.leftListHolderView.frame_width - 2 * controlButtonPadding) * 0.25,
+               controlButtonHeight
+               );
     
     // 选择专辑
     self.selectAlbumButton.frame =
-        CGRectMake(self.zoneRefreshButton.frame_width +
-                   controlButtonPadding,
-                   0,
-                   self.zoneRefreshButton.frame_width * 2,
-                   controlButtonHeight
-        );
+    CGRectMake(self.zoneRefreshButton.frame_width +
+               controlButtonPadding,
+               0,
+               self.zoneRefreshButton.frame_width * 2,
+               controlButtonHeight
+               );
     
     // 增加队列
     self.addToQueButton.frame =
-        CGRectMake(CGRectGetMaxX(self.selectAlbumButton.frame) +
-                   controlButtonPadding,
-                   0,
-                   self.zoneRefreshButton.frame_width,
-                   controlButtonHeight
-        );
+    CGRectMake(CGRectGetMaxX(self.selectAlbumButton.frame) +
+               controlButtonPadding,
+               0,
+               self.zoneRefreshButton.frame_width,
+               controlButtonHeight
+               );
     
     // 播放队列
     self.playQueButton.frame =
-        CGRectMake(0,
-                   0,
-                   (self.rightHolderListView.frame_width - controlButtonPadding) * 0.5,
-                   controlButtonHeight
+    CGRectMake(0,
+               0,
+               (self.rightHolderListView.frame_width - controlButtonPadding) * 0.5,
+               controlButtonHeight
                );
     
     // 编辑队列
     self.editQueButton.frame =
-        CGRectMake(self.playQueButton.frame_width +
-                   controlButtonPadding,
-                   0,
-                   self.playQueButton.frame_width,
-                   controlButtonHeight
+    CGRectMake(self.playQueButton.frame_width +
+               controlButtonPadding,
+               0,
+               self.playQueButton.frame_width,
+               controlButtonHeight
                );
     
     // 4.两张大图片的位置
@@ -1961,100 +1972,100 @@ UITableViewDelegate, UITableViewDataSource>
     
     // 4.1 左图
     self.leftListImageView.frame =
-        CGRectMake(0,
-                   controlButtonHeight +  controlButtonPadding,
-                   self.leftListHolderView.frame_width,
-                   self.leftListHolderView.frame_height -
-                                              self.zoneRefreshButton.frame_height - controlButtonPadding
-                   
-                   );
+    CGRectMake(0,
+               controlButtonHeight +  controlButtonPadding,
+               self.leftListHolderView.frame_width,
+               self.leftListHolderView.frame_height -
+               self.zoneRefreshButton.frame_height - controlButtonPadding
+               
+               );
     
     // 歌曲列表
     self.currentAlbumSongsListTableView.frame =
-        CGRectMake(controlButtonPadding,
-                   controlButtonPadding,
-                   self.leftListImageView.frame_width * scale - controlButtonPadding,
-                   self.leftListImageView.frame_height - 2 * controlButtonPadding -
-                                                           showPlayStatusHeight
-                   );
+    CGRectMake(controlButtonPadding,
+               controlButtonPadding,
+               self.leftListImageView.frame_width * scale - controlButtonPadding,
+               self.leftListImageView.frame_height - 2 * controlButtonPadding -
+               showPlayStatusHeight
+               );
     
     // 左图指示器
     self.showScrollRightButton.frame =
-        CGRectMake(self.leftListImageView.frame_width * scale,
-                   self.leftListImageView.frame_height * 0.1,
-                   self.leftListImageView.frame_width * 0.1,
-                   self.leftListImageView.frame_height * 0.3
-                   
-            );
+    CGRectMake(self.leftListImageView.frame_width * scale,
+               self.leftListImageView.frame_height * 0.1,
+               self.leftListImageView.frame_width * 0.1,
+               self.leftListImageView.frame_height * 0.3
+               
+               );
     
     // 4.2 右图
     self.rightListImageView.frame =
-        self.leftListImageView.frame;
+    self.leftListImageView.frame;
     
     // 右图指示器
     self.showScrollLeftButton.frame =
-        self.showScrollRightButton.frame;
+    self.showScrollRightButton.frame;
     
     // 队列列表
     self.songQueueListTableView.frame =
-        self.currentAlbumSongsListTableView.frame;
-   
+    self.currentAlbumSongsListTableView.frame;
+    
     // 5.专辑部分
     // 5.1 专辑的背景图片
     self.albumListBackgroundView.frame =
-        CGRectMake(self.selectAlbumButton.frame_x,
-                   0,
-                   self.selectAlbumButton.frame_width,
-                   self.leftListImageView.frame_height * scale
-        );
+    CGRectMake(self.selectAlbumButton.frame_x,
+               0,
+               self.selectAlbumButton.frame_width,
+               self.leftListImageView.frame_height * scale
+               );
     
     // 5.2 专辑列表
     self.albumListTableView.frame =
-        CGRectMake(0,
-                   0,
-                   self.albumListBackgroundView.frame_width,
-                   self.albumListBackgroundView.frame_height
-                    - self.selectAlbumButton.frame_height * scale - controlButtonPadding * 2
-        );
+    CGRectMake(0,
+               0,
+               self.albumListBackgroundView.frame_width,
+               self.albumListBackgroundView.frame_height
+               - self.selectAlbumButton.frame_height * scale - controlButtonPadding * 2
+               );
     
     // 5.3 取消按钮
     self.cancelSelectAlbumButton.frame =
-        CGRectMake(0,
-                   self.albumListTableView.frame_height + controlButtonPadding,(self.albumListBackgroundView.frame_width - controlButtonPadding) * 0.5,
-                   self.selectAlbumButton.frame_height * scale
-                );
+    CGRectMake(0,
+               self.albumListTableView.frame_height + controlButtonPadding,(self.albumListBackgroundView.frame_width - controlButtonPadding) * 0.5,
+               self.selectAlbumButton.frame_height * scale
+               );
     
     // 5.4 确认按钮
     self.sureSelectAlbumButton.frame =
-        self.cancelSelectAlbumButton.frame;
+    self.cancelSelectAlbumButton.frame;
     
     self.sureSelectAlbumButton.frame_x =
-        CGRectGetMaxX(self.cancelSelectAlbumButton.frame) +
-        controlButtonPadding;
+    CGRectGetMaxX(self.cancelSelectAlbumButton.frame) +
+    controlButtonPadding;
     
     // 6. ===== 收音机 ====
     self.radioChannelButtonsView.frame =
-        self.audioSongsShowView.bounds;
-   
+    self.audioSongsShowView.bounds;
+    
     // 7. ==== 外接音乐 ======
     self.audioinImageView.frame =
-        self.audioSongsShowView.bounds;
-   
+    self.audioSongsShowView.bounds;
+    
     // 8. ==== 设置音量调节器 ===
     
     self.volumeView.frame_width =
     self.audioSongsShowView.frame_width * scale;
-
+    
     self.volumeView.frame_height =
     3 * ([UIDevice is_iPad] ? (navigationBarHeight + defaultHeight): navigationBarHeight);
-
+    
     self.volumeView.frame_x =
     self.audioSongsShowView.frame_width * (1 - scale) * 0.5;
-
+    
     self.volumeView.frame_y =
     (self.audioSongsShowView.frame_height - self.volumeView.frame_height) * 0.5;
     
- 
+    
     // 音乐播放状态
     self.showPlayStatusView.frame =
     CGRectMake(self.listScrollView.contentOffset.x,
@@ -2062,12 +2073,12 @@ UITableViewDelegate, UITableViewDataSource>
                self.listScrollView.frame_width,
                showPlayStatusHeight
                );
-
+    
     // 播放控制
     if ([UIDevice is_iPad]) {
         
         self.playControlViewHeightConstraint.constant =
-            tabBarHeight + tabBarHeight;
+        tabBarHeight + tabBarHeight;
     }
 }
 
@@ -2169,7 +2180,7 @@ UITableViewDelegate, UITableViewDataSource>
         self.receivedStatusType = SHAudioReceivedStatusTypeUpdateList;
         
         // 3.发出更新指令
-       [SHAudioOperatorTools updateAudioFtpServerDataWithSubNetID:self.currentAudio.subnetID deviceID:self.currentAudio.deviceID];
+        [SHAudioOperatorTools updateAudioFtpServerDataWithSubNetID:self.currentAudio.subnetID deviceID:self.currentAudio.deviceID];
         
         // 4.执行回调 checkUpdateStatus // 2109
         
@@ -2220,14 +2231,14 @@ UITableViewDelegate, UITableViewDataSource>
     
     // 8. 添加状态显示栏
     [self setUpPlayStatusView];
-  
+    
     //  添加导航右侧的设置
     //    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"setting" hightlightedImageName:@"setting" addTarget:self action:@selector(updateFtpAudioDatas) isLeft:NO];
-//
-//    if (self.currentAudio.isMiniZAudio ||
-//        !self.currentAudio.haveFtp ) {
-//        self.navigationItem.rightBarButtonItem.customView.hidden = YES;
-//    }
+    //
+    //    if (self.currentAudio.isMiniZAudio ||
+    //        !self.currentAudio.haveFtp ) {
+    //        self.navigationItem.rightBarButtonItem.customView.hidden = YES;
+    //    }
     
     // miniAudio没有播放模式
     self.modelButton.hidden = self.currentAudio.isMiniZAudio;
@@ -2236,7 +2247,7 @@ UITableViewDelegate, UITableViewDataSource>
 
 /// 设置中间左边的列表视图
 - (void)setUpLeftListView {
-
+    
     // 3.添加标题按钮
     // 3.1 左图中的区域列表按钮
     UIButton *zoneRefreshButton = [SHAuioPlayTypeButton buttonWithImageName:@"refreshAudio_normal" highlightedImageName:@"refreshAudio_highlighted" backgroundImageName:@"audioButtonbackground"  highlightedBackgroundImageName:@"audioButtonbackground"  addTarget:self action:@selector(zoneRefreshButtonClick)];
@@ -2257,7 +2268,7 @@ UITableViewDelegate, UITableViewDataSource>
     self.selectAlbumButton = selectAlbumButton;
     
     // 3.4 增加队列
-    UIButton *addToQueButton =  [UIButton buttonWithTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"ADD_TO_QUE"] font:([UIDevice is_iPad] ? [UIView suitFontForPad] : [UIFont systemFontOfSize:16])  normalTextColor:[UIView textWhiteColor] highlightedTextColor:[UIView highlightedTextColor]imageName:nil backgroundImageName:@"audioButtonbackground" addTarget:self action:@selector(addToQueButtonClick)];
+    UIButton *addToQueButton = [UIButton buttonWithTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"ADD_TO_QUE"] font:([UIDevice is_iPad] ? [UIView suitFontForPad] : [UIFont systemFontOfSize:16])  normalTextColor:[UIView textWhiteColor] highlightedTextColor:[UIView highlightedTextColor]imageName:nil backgroundImageName:@"audioButtonbackground" addTarget:self action:@selector(addToQueButtonClick)];
     [self.leftListHolderView addSubview:addToQueButton];
     self.addToQueButton = addToQueButton;
     
@@ -2279,7 +2290,7 @@ UITableViewDelegate, UITableViewDataSource>
     UITableView *songListTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     songListTableView.backgroundColor = [UIColor clearColor];
     songListTableView.rowHeight =
-        [SHAudioAlbumSongCell rowHeight];
+    [SHAudioAlbumSongCell rowHeight];
     songListTableView.dataSource = self;
     songListTableView.delegate = self;
     songListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -2301,7 +2312,7 @@ UITableViewDelegate, UITableViewDataSource>
     UITableView *albumListTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     albumListTableView.backgroundColor = [UIColor clearColor];
     albumListTableView.rowHeight =
-        [SHAudioAlbumCell rowHeight];
+    [SHAudioAlbumCell rowHeight];
     albumListTableView.dataSource = self;
     albumListTableView.delegate = self;
     
@@ -2357,12 +2368,12 @@ UITableViewDelegate, UITableViewDataSource>
     UIButton *showScrollLeftButton = [UIButton buttonWithTitle:nil font:nil normalTextColor:nil highlightedTextColor:nil imageName:nil backgroundImageName:@"scrollToLeft" addTarget:self action:@selector(showScrollButtonClick)];
     [self.rightListImageView addSubview:showScrollLeftButton];
     self.showScrollLeftButton = showScrollLeftButton;
-
+    
     // 5.2 songQueListTableView 增加队列列表
     UITableView *songQueueListTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     songQueueListTableView.backgroundColor = [UIColor clearColor];
     songQueueListTableView.rowHeight =
-        [SHAudioAlbumSongCell rowHeight];
+    [SHAudioAlbumSongCell rowHeight];
     songQueueListTableView.dataSource = self;
     songQueueListTableView.delegate = self;
     songQueueListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -2390,10 +2401,10 @@ UITableViewDelegate, UITableViewDataSource>
     
     SHAudioPlayStatusView *showPlayView =
     
-        [SHAudioPlayStatusView showAudioPlayStatusView];
+    [SHAudioPlayStatusView showAudioPlayStatusView];
     
     [self.listScrollView addSubview:showPlayView];
-
+    
     self.showPlayStatusView = showPlayView;
 }
 
@@ -2525,20 +2536,16 @@ UITableViewDelegate, UITableViewDataSource>
     
     
     // 5.Phone == 这个功能没有，为了避免产生其它问题，暂时直接不显示
-//    if (self.currentAudio.havePhone) {
-//
-//        SHAudioSourceButton *phoneButton = [SHAudioSourceButton audioButtonWithType:SHAudioSourceTypePONE title:@"PHONE" normalImageName:@"phone_normal" selectImageName:@"phone_highlighted" addTarget:self action:@selector(selectAudioSourceButtonTouch:)];
-//
-//        phoneButton.userInteractionEnabled = NO; // 这个功能暂时没有
-//        phoneButton.tag = SHAudioSourceTypePONE;
-//        [self.sourceTypeScrollView addSubview:phoneButton];
-//    }
+    //    if (self.currentAudio.havePhone) {
+    //
+    //        SHAudioSourceButton *phoneButton = [SHAudioSourceButton audioButtonWithType:SHAudioSourceTypePONE title:@"PHONE" normalImageName:@"phone_normal" selectImageName:@"phone_highlighted" addTarget:self action:@selector(selectAudioSourceButtonTouch:)];
+    //
+    //        phoneButton.userInteractionEnabled = NO; // 这个功能暂时没有
+    //        phoneButton.tag = SHAudioSourceTypePONE;
+    //        [self.sourceTypeScrollView addSubview:phoneButton];
+    //    }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+ 
 
 /// 移除通知
 - (void)dealloc {
@@ -2546,8 +2553,8 @@ UITableViewDelegate, UITableViewDataSource>
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [[SHAudioPlayStatusView showAudioPlayStatusView]
-        setHiddenPlayInfo:YES
-    ];
+     setHiddenPlayInfo:YES
+     ];
 }
 
 // MARK: - getter && setter
