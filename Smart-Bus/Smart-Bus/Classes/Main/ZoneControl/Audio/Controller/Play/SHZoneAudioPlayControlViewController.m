@@ -615,28 +615,26 @@ UITableViewDelegate, UITableViewDataSource>
                     
                     SHSong *queueSong = self.selectQueueSongs[self.indexQueue];
                     
+                    
                     if (![queueSong.songName isEqualToString:name]) {
                         
                         ++self.queueCount;
                         
-                        printLog("接收次数: %@", @(self.queueCount));
-                        
                         if (self.queueCount == 2) {
-                            
-                            printLog(@"不是同一首歌");
-                            
+                         
                             printLog(@"当前队列音乐: %@ - 正在播放: %@", queueSong.songName, name);
-                            
-                            printLog(@"做准备发送");
-                            
+                        
                             self.queueCount = 0;
                             
                             ++self.indexQueue;
+                            
+                                printLog(@"做准备发送 == %@", @(self.indexQueue));
+                            
                             self.indexQueue %= self.selectQueueSongs.count;
                             
                             SHSong *song =
                             self.selectQueueSongs[self.indexQueue];
-                            
+                              
                             [self playQueueSong:song];
                         }
                         
@@ -2545,7 +2543,7 @@ statusBarHeight: statusBarHeight * 0.5;
     //        [self.sourceTypeScrollView addSubview:phoneButton];
     //    }
 }
- 
+
 
 /// 移除通知
 - (void)dealloc {

@@ -106,7 +106,9 @@ import UIKit
         let min = showSeconds / 60
         let sec = showSeconds % 60
         
-        let showTime = String(format: "%02d:%02d", min, sec)
+        let showTime = String(format: "%02d:%02d",
+                              min, sec
+        )
         
         playSong?.aleardyPlayTime = showTime
         
