@@ -162,11 +162,11 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8s-CX-UOL" userLabel="leftListHolderView">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
-                                            <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlo-PE-Ncb" userLabel="rightHolderListView">
                                             <rect key="frame" x="414" y="0.0" width="414" height="703"/>
-                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,7 +182,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="0.1369917131" blue="0.16966379579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="OLp-MA-aeI" secondAttribute="bottom" id="2pb-lN-5b4"/>
                                 <constraint firstItem="OLp-MA-aeI" firstAttribute="top" secondItem="WAc-Gd-X32" secondAttribute="top" id="Byo-ju-pO5"/>
