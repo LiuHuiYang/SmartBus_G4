@@ -611,26 +611,21 @@ UITableViewDelegate, UITableViewDataSource>
                     status == SHAudioBoardCastPlayStatusPlay) {
                     
                     
-                    NSString *name =  SHPlayingSong.shared.songName;
-                    
                     SHSong *queueSong = self.selectQueueSongs[self.indexQueue];
                     
+                    if ((SHPlayingSong.shared.albumNumber != queueSong.albumNumber) ||
+                        (SHPlayingSong.shared.songNumber != queueSong.songNumber)) {
                     
-                    if (![queueSong.songName isEqualToString:name]) {
-                        
                         ++self.queueCount;
                         
-                        if (self.queueCount == 2) {
-                         
-                            printLog(@"当前队列音乐: %@ - 正在播放: %@", queueSong.songName, name);
-                        
+                        if (self.queueCount == 2) { // 固件在短时间内会有两次相同的广播
+                           
                             self.queueCount = 0;
-                            
                             ++self.indexQueue;
                             
-                                printLog(@"做准备发送 == %@", @(self.indexQueue));
-                            
                             self.indexQueue %= self.selectQueueSongs.count;
+                            
+                              printLog(@"做准备发送 == %@", @(self.indexQueue));
                             
                             SHSong *song =
                             self.selectQueueSongs[self.indexQueue];
@@ -638,9 +633,7 @@ UITableViewDelegate, UITableViewDataSource>
                             [self playQueueSong:song];
                         }
                         
-                        
                     }
-                    
                 }
             }
             
@@ -694,6 +687,21 @@ UITableViewDelegate, UITableViewDataSource>
                         
                         [SHPlayingSong.shared
                          setAlbumSerialNumber:string];
+                        
+                        // List:XX/XXX
+                        NSRange range =
+                            [string rangeOfString:@"/"];
+                        
+                        if (range.location == NSNotFound) {
+                            return;
+                        }
+                        
+                        NSString *albumNumber = [string substringToIndex:range.location];
+                        
+                       albumNumber = [albumNumber substringFromIndex:5];
+                        
+                        SHPlayingSong.shared.albumNumber = albumNumber.integerValue;
+                        
                     }
                         break;
                         
@@ -710,6 +718,22 @@ UITableViewDelegate, UITableViewDataSource>
                         //                        printLog(@"3. 歌曲号???/歌曲总数: %@", string);
                         [SHPlayingSong.shared
                          setSongSerialNumber:string];
+                        
+                        // Track:2/3
+                        
+                        NSRange range =
+                        [string rangeOfString:@"/"];
+                        
+                        if (range.location == NSNotFound) {
+                            return;
+                        }
+                        
+                        NSString *songNumber = [string substringToIndex:range.location];
+                        
+                        songNumber = [songNumber substringFromIndex:6];
+                        
+                        SHPlayingSong.shared.songNumber =
+                            songNumber.integerValue;
                     }
                         break;
                         

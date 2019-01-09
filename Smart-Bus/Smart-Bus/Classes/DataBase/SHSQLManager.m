@@ -4147,6 +4147,36 @@ const NSUInteger maxIconIDForDataBase = 10;
     return zones;
 }
 
+// MARK: - 多地区操作
+
+///// 查询所有的区域
+//- (NSMutableArray *)getAllRegions {
+//    
+//    NSString *zonesSql = @"select ID, regionID, regionName, regionIconName from Regions order by regionID;";
+//    
+//    NSMutableArray *array = [self selectProprty:zonesSql];
+//    
+//    NSMutableArray *regionss = [NSMutableArray arrayWithCapacity:array.count];
+//    
+//    for (NSDictionary *dict in array) {
+//        
+//        [regionss addObject:[[SHZone alloc] initWithDict:dict]];
+//    }
+//    
+//    return regionss;
+//}
+
+/// 增加地区表格
+- (void)addRegions {
+    
+    if (![self isColumnName:@"regionID"
+             consistinTable:@"Zones"]) {
+
+        // 增加字段
+        [self executeSql:@"ALTER TABLE Zones ADD regionID INTEGER DEFAULT 1;"];
+    }
+}
+
 
 // MARK: - 创建表格
 
@@ -4273,6 +4303,8 @@ const NSUInteger maxIconIDForDataBase = 10;
         }
     }
   
+    // 增加多区域支持
+    [self addRegions];
     
     // 增加语音控制的字段
 //    [self addSpeechNameForDevices];

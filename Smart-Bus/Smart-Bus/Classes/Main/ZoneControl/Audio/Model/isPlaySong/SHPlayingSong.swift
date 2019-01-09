@@ -18,13 +18,13 @@ import UIKit
     /// 播放状态
     var playStatus: SHAudioBoardCastPlayStatus = .unKnow
     
-    /// 歌曲序列号码
+    /// 歌曲序列号码 【字符串】
     var songSerialNumber: String = ""
    
-    /// 专辑充列号码
+    /// 专辑充列号码 【字符串】
     var albumSerialNumber: String = ""
     
-    /// 歌曲名称
+    /// 歌曲名称 
     var songName: String = ""
     
     /// 专辑名称
@@ -35,4 +35,11 @@ import UIKit
     
     /// 已播放时间
     var aleardyPlayTime: String = ""
+    
+    /// 专辑号【整数】
+    var albumNumber: UInt8 = 0
+    
+    /// 歌曲号【整数】
+    var songNumber: UInt = 0
+    
 }
