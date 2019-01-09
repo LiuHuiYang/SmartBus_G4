@@ -7,15 +7,17 @@
 //
 
 #import "SHSchedualEditViewController.h"
-#import "SHSchdualContolZoneCell.h"
-#import "SHSchdualContolItemCell.h"
 #import "SHSchduleMacroView.h"
 #import "SHSchduleMoodView.h"
 #import "SHSchduleLightView.h"
 #import "SHSchduleHVACView.h"
 #import "SHSchduleAudioView.h"
 #import "SHSchduleShadeView.h"
- 
+
+
+/// 控制区域重用标示符
+static NSString *schdualContolItemAndZoneCellReusableIdentifier =
+    @"SHSchdualContolItemAndZoneCell";
 
 @interface SHSchedualEditViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -570,7 +572,7 @@
     
     if (tableView == self.controlItemListView) {
         
-        SHSchdualContolItemCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHSchdualContolItemCell class]) forIndexPath:indexPath];
+        SHSchdualContolItemAndZoneCell *cell = [tableView dequeueReusableCellWithIdentifier: schdualContolItemAndZoneCellReusableIdentifier forIndexPath:indexPath];
         
         cell.controlItemName = self.controlItems[indexPath.row];
         
@@ -578,9 +580,9 @@
     
     } else if (tableView == self.controlZoneListView) {
         
-        SHSchdualContolZoneCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHSchdualContolZoneCell class]) forIndexPath:indexPath];
+        SHSchdualContolItemAndZoneCell *cell = [tableView dequeueReusableCellWithIdentifier: schdualContolItemAndZoneCellReusableIdentifier forIndexPath:indexPath];
         
-        cell.zone = self.allZones[indexPath.row];
+        cell.currentZone = self.allZones[indexPath.row];
         
         return cell;
         
@@ -797,24 +799,20 @@
 /// 初始化列表
 - (void)initTableView {
     
-    [self.controlZoneListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHSchdualContolZoneCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHSchdualContolZoneCell class])];
+    [self.controlZoneListView registerNib:[UINib nibWithNibName: schdualContolItemAndZoneCellReusableIdentifier bundle:nil] forCellReuseIdentifier: schdualContolItemAndZoneCellReusableIdentifier];
     
-    self.controlZoneListView.rowHeight = [SHSchdualContolZoneCell rowHeightForSchdualContolZoneCell];
+    self.controlZoneListView.rowHeight = [SHSchdualContolItemAndZoneCell rowHeight];
   
     self.controlZoneListView.hidden = YES;
     
-    [self.controlItemListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHSchdualContolItemCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHSchdualContolItemCell class])];
+    [self.controlItemListView registerNib:[UINib nibWithNibName:schdualContolItemAndZoneCellReusableIdentifier bundle:nil] forCellReuseIdentifier:schdualContolItemAndZoneCellReusableIdentifier];
     
-    self.controlItemListView.rowHeight = [SHSchdualContolItemCell rowHeightForSchdualContolItemCell];
+    self.controlItemListView.rowHeight = [SHSchdualContolItemAndZoneCell rowHeight];
     
     self.controlItemListView.hidden = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+ 
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];

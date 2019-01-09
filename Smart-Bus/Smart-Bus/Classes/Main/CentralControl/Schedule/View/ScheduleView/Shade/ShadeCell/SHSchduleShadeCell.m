@@ -119,7 +119,7 @@
 }
 
 /// cell的行高
-+ (CGFloat)rowHeightForShadeCell {
++ (CGFloat)rowHeight {
     
     if ([UIDevice is_iPad]) {
         

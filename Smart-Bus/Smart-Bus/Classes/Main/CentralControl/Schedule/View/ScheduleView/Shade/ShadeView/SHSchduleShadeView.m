@@ -131,7 +131,8 @@
     
     [self.shadeListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHSchduleShadeCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHSchduleShadeCell class])];
     
-    self.shadeListView.rowHeight = [SHSchduleShadeCell rowHeightForShadeCell];
+    self.shadeListView.rowHeight =
+        [SHSchduleShadeCell rowHeight];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveShade:) name:SHSchedualSaveDataNotification object:nil];
 }

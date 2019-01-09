@@ -12,6 +12,8 @@ import UIKit
 /// 高音与低音的最大值
 let audioMaxTrebleBass = 7
 
+// MARK: - 音乐的来源用于请求数据
+
 // MARK: - 接收音乐数据状态标记
 
 /// 读取音乐数据标记状态(方便解析状态)

@@ -260,6 +260,7 @@
                     album.subNetID = [[arrayKeySub objectAtIndex:0] intValue];
                     album.deviceID = [[arrayKeySub objectAtIndex:1] intValue];
                     album.sourceType = [[arrayKeySub objectAtIndex:2] intValue];
+                    
                     album.albumNumber = [[albumNameArray objectAtIndex:0] intValue];
                     album.albumName = [albumNameArray objectAtIndex:1];
                     [plists addObject:album];
