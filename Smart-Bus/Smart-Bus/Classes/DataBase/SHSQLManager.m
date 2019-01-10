@@ -1661,11 +1661,11 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *insertSql = [NSString stringWithFormat:
                            @"insert into Schedules values                   \
-                           (%tu, %tu, '%@', %tu, %tu, %tu, %tu,             \
+                           (%tu, %tu, '%@', %d, %tu, %tu, %tu,             \
                            %d, %d, %d, %d, %d, %d, %d, %d, %d, '%@', %tu); ",
                            
                            maxScedualID, schedual.scheduleID,
-                           schedual.scheduleName, schedual.enabledSchedule,
+                           schedual.scheduleName, (schedual.enabledSchedule ? 1 : 0),
                            schedual.controlledItemID, schedual.zoneID,
                            schedual.frequencyID,
                            
@@ -1704,8 +1704,9 @@ const NSUInteger maxIconIDForDataBase = 10;
 - (BOOL)deleteSchedualeCommand:(SHSchedual *)schedual {
     
     NSString *deleteCommandSql = [NSString stringWithFormat:
-                                  @"delete from ScheduleCommands where ScheduleID = %tu;",
-                                  schedual.scheduleID];
+                                  @"delete from ScheduleCommands where ScheduleID = %tu and typeID = %tu;",
+                                  schedual.scheduleID,
+                                  schedual.controlledItemID];
     
     return [self executeSql:deleteCommandSql];
 }

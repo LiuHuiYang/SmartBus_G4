@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHAudioInView: UIView, loadNiBView {
+@objcMembers class SHAudioInView: UIView, loadNibView {
 
     /// 音乐设备
     var audio: SHAudio? {

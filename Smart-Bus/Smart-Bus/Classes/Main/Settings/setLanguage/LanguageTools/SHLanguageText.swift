@@ -158,6 +158,15 @@ import UIKit
                 ) as! String
     }
     
+    /// 窗帘忽略
+    class var shadeIgnore: String {
+        
+        return (SHLanguageTools.share()?.getTextFromPlist(
+                "MOOD_IN_ZONE",
+                withSubTitle: "SHADE_BYPASS")
+            ) as! String
+    }
+    
     /// 窗帘指令执行完成
     class var shadeExecuted: String {
         
@@ -310,6 +319,24 @@ import UIKit
     
     // MARK: - Schedual 部分
     
+    /// 计划名称
+    class var schedualName: String {
+        
+        return (SHLanguageTools.share()?.getTextFromPlist(
+                    "SCHEDULE",
+                    withSubTitle: "SCHEDULE_NAME")
+                ) as! String
+    }
+    
+    /// 计划声音
+    class var schedualSound: String {
+        
+        return (SHLanguageTools.share()?.getTextFromPlist(
+                    "SCHEDULE",
+                    withSubTitle: "ALARM_CLOCK_BELL")
+                ) as! String
+    }
+    
     /// 新增计划
     class var newSchedual: String {
         
@@ -317,6 +344,42 @@ import UIKit
                     "SCHEDULE",
                     withSubTitle: "ADD_NEW_SCHEDULE")
                 ) as! String
+    }
+    
+    /// 编辑计划
+    class var editSchedual: String {
+        
+        return (SHLanguageTools.share()?.getTextFromPlist(
+                    "SCHEDULE",
+                    withSubTitle: "EDIT_SCHEDULE")
+                ) as! String
+    }
+    
+    /// 控制区域
+    class var controlZone: String {
+        
+        return SHLanguageTools.share()?.getTextFromPlist(
+                    "Z_AUDIO",
+                    withSubTitle: "ZONE_LIST"
+            ) as! String
+    }
+    
+    /// 控制类别
+    class var controlItem: String {
+        
+        return SHLanguageTools.share()?.getTextFromPlist(
+                    "SCHEDULE",
+                    withSubTitle: "CONTROLLED_ITEM"
+            ) as! String
+    }
+    
+    /// 执行频率
+    class var frequency: String {
+        
+        return SHLanguageTools.share()?.getTextFromPlist(
+            "SCHEDULE",
+            withSubTitle: "FREQUENCY"
+            ) as! String
     }
     
     /// 执行一次

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHSchduleMoodCell: UITableViewCell {
+class SHSchduleMoodCell: UITableViewCell {
 
     /// 场景模型
     var mood: SHMood? {

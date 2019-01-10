@@ -21,7 +21,9 @@ typedef NS_ENUM(NSUInteger, SHSchdualControlItemType) {
     
     SHSchdualControlItemTypeAudio,
     
-    SHSchdualControlItemTypeShade
+    SHSchdualControlItemTypeShade,
+    
+    SHSchdualControlItemTypeFloorHeating
 
 } ;
 

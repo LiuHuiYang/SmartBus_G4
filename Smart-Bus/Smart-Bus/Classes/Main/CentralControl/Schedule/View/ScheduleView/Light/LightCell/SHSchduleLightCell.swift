@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHSchduleLightCell: UITableViewCell {
+class SHSchduleLightCell: UITableViewCell {
     
     /// Light设备
     var light: SHLight? {

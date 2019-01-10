@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SHZoneControlTVNumberPad: UIView, loadNiBView {
+class SHZoneControlTVNumberPad: UIView, loadNibView {
 
     /// TV模型
     var mediaTV: SHMediaTV?

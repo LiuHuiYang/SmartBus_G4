@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SHZoneControlSATNumberPad: UIView, loadNiBView {
+class SHZoneControlSATNumberPad: UIView, loadNibView {
 
     /// 卫星电视
     var mediaSAT: SHMediaSAT?

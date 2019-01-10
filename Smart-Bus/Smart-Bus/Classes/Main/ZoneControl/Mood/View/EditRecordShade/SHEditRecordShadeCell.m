@@ -57,13 +57,14 @@
     }]];
 
     // 忽略
-    [alertView addAction:[TYAlertAction actionWithTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"MOOD_IN_ZONE" withSubTitle:@"SHADE_BYPASS"] style:TYAlertActionStyleCancel handler:^(TYAlertAction *action) {
+    
+    [alertView addAction:[TYAlertAction actionWithTitle:SHLanguageText.shadeIgnore style:TYAlertActionStyleCancel handler:^(TYAlertAction *action) {
         
-        [self.homeButton setTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"MOOD_IN_ZONE" withSubTitle:@"SHADE_BYPASS"] forState:UIControlStateNormal];
+        [self.homeButton setTitle:SHLanguageText.shadeIgnore forState:UIControlStateNormal];
         
         if ([self.delegate respondsToSelector:@selector(editShade:currentStatus:)]) {
             
-            [self.delegate editShade:self.shade currentStatus:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"MOOD_IN_ZONE" withSubTitle:@"SHADE_BYPASS"]];
+            [self.delegate editShade:self.shade currentStatus:SHLanguageText.shadeIgnore];
         }
     }]];
     
@@ -92,7 +93,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     // 设置默认文字
-    [self.homeButton setTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"MOOD_IN_ZONE" withSubTitle:@"SHADE_BYPASS"] forState:UIControlStateNormal];
+    [self.homeButton setTitle:SHLanguageText.shadeIgnore forState:UIControlStateNormal];
     
     if ([UIDevice is_iPad]) {
         

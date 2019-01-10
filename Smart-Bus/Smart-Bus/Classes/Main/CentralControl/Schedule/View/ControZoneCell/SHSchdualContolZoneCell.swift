@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHSchdualContolItemAndZoneCell: UITableViewCell {
+class SHSchdualContolItemAndZoneCell: UITableViewCell {
     
     /// 区域
     @objc var currentZone: SHZone? {

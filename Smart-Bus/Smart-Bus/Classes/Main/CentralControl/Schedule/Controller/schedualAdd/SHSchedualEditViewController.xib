@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSchedualEditViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSchedualEditViewController" customModule="Smart_Bus" customModuleProvider="target">
             <connections>
                 <outlet property="baseTopConstraint" destination="0T6-1N-7vO" id="qBy-pG-YEm"/>
                 <outlet property="basseViewHeightConstraint" destination="vNc-yr-oPq" id="4l5-Wd-anT"/>
@@ -39,7 +38,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="LIH-xF-Cfr">
-                    <rect key="frame" x="0.0" y="0.0" width="318.5" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Schedule Name" textAlignment="center" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cYg-nG-FwI">
                     <rect key="frame" x="24" y="20" width="272" height="49"/>
@@ -56,19 +55,19 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnm-6C-6nb" userLabel="zoneControlView">
-                    <rect key="frame" x="24" y="74" width="272" height="102.5"/>
+                    <rect key="frame" x="24" y="74" width="272" height="102"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wo-f5-37S" userLabel="controlIemView">
-                            <rect key="frame" x="0.0" y="0.0" width="136" height="102.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="136" height="102"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="control Item" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6F-wg-6qt">
-                                    <rect key="frame" x="0.0" y="2.5" width="122.5" height="39"/>
+                                    <rect key="frame" x="0.0" y="2" width="122.5" height="39"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bck-Ti-WaY" customClass="SHCommandButton">
-                                    <rect key="frame" x="0.0" y="43.5" width="122.5" height="49"/>
+                                    <rect key="frame" x="0.0" y="43" width="122.5" height="49"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <state key="highlighted">
                                         <color key="titleColor" red="0.93725490196078431" green="0.58823529411764708" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
@@ -90,10 +89,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSc-L9-ev3" userLabel="controlzoneView">
-                            <rect key="frame" x="135.5" y="0.0" width="136" height="102.5"/>
+                            <rect key="frame" x="136" y="0.0" width="136" height="102"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zone" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmG-zJ-ri1">
-                                    <rect key="frame" x="14" y="2.5" width="122.5" height="39"/>
+                                    <rect key="frame" x="13.5" y="2" width="122.5" height="39"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -102,7 +101,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crD-Tt-XhW" userLabel="controlZone Button" customClass="SHCommandButton">
-                            <rect key="frame" x="149.5" y="43.5" width="122.5" height="49"/>
+                            <rect key="frame" x="149.5" y="43" width="122.5" height="49"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <state key="highlighted">
                                 <color key="titleColor" red="0.93725490199999995" green="0.58823529409999997" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -133,11 +132,11 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XF8-Am-dr1" userLabel="showControlScheduleView">
-                    <rect key="frame" x="24" y="191.5" width="272" height="147"/>
+                    <rect key="frame" x="24" y="191" width="272" height="147.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9OL-Db-8Of" userLabel="zoneTable View">
-                    <rect key="frame" x="173.5" y="186.5" width="122.5" height="147"/>
+                    <rect key="frame" x="173.5" y="186" width="122.5" height="147"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="psp-ON-tif"/>
@@ -145,7 +144,7 @@
                     </connections>
                 </tableView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3vL-kr-8JW">
-                    <rect key="frame" x="24" y="186.5" width="122.5" height="147"/>
+                    <rect key="frame" x="24" y="186" width="122.5" height="147"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="1J3-1o-lwI"/>
@@ -156,14 +155,14 @@
                     <rect key="frame" x="24" y="353.5" width="272" height="170.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQl-jb-zZg">
-                            <rect key="frame" x="0.5" y="0.0" width="271.5" height="42"/>
+                            <rect key="frame" x="0.0" y="0.0" width="272" height="42.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfd-Kt-Sn3" customClass="SHCommandButton">
-                            <rect key="frame" x="0.5" y="42.5" width="81.5" height="49"/>
+                            <rect key="frame" x="0.0" y="42.5" width="81.5" height="49"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <state key="highlighted">
                                 <color key="titleColor" red="0.93725490199999995" green="0.58823529409999997" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -173,7 +172,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aM5-ty-ep1" customClass="SHCommandButton">
-                            <rect key="frame" x="0.5" y="106.5" width="136" height="49"/>
+                            <rect key="frame" x="0.0" y="106.5" width="136" height="49"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <state key="normal" image="schedualButton_normal"/>
                             <state key="selected" image="schedualButton_highlighted"/>
@@ -185,7 +184,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ko-c3-0Ly" customClass="SHCommandButton">
-                            <rect key="frame" x="102" y="43" width="35" height="49"/>
+                            <rect key="frame" x="101.5" y="42.5" width="34.5" height="49"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <state key="normal" image="schedualWeek"/>
                             <connections>
@@ -203,7 +202,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M93-tY-A9X" customClass="SHCommandButton">
-                            <rect key="frame" x="163" y="42" width="109" height="49"/>
+                            <rect key="frame" x="163" y="42.5" width="109" height="49"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <state key="highlighted">
                                 <color key="titleColor" red="0.93725490199999995" green="0.58823529409999997" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -241,7 +240,7 @@
                     </constraints>
                 </view>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qwU-tR-Dki">
-                    <rect key="frame" x="-0.5" y="568" width="320" height="216"/>
+                    <rect key="frame" x="0.0" y="568" width="320" height="216"/>
                     <date key="date" timeIntervalSinceReferenceDate="533037633.51881802">
                         <!--2017-11-22 10:00:33 +0000-->
                     </date>

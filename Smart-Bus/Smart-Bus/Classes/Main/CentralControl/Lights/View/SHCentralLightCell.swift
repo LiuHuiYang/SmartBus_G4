@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHCentralLightCell: UIView, loadNiBView {
+@objcMembers class SHCentralLightCell: UIView, loadNibView {
     
     /// 图片
     @IBOutlet weak var iconView: UIImageView!

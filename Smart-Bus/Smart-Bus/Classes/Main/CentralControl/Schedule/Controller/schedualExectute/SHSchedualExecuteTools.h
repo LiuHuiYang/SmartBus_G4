@@ -29,7 +29,6 @@ typedef NS_ENUM(Byte, SHApplicationBackgroundTask) {
 - (void)initSchedualTimer;
 
 
-
 SingletonInterface(SchedualExecuteTools)
 
 @end

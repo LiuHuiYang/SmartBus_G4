@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHSchduleMacroCell: UITableViewCell {
+class SHSchduleMacroCell: UITableViewCell {
 
     /// 宏命令模型
     var macro: SHMacro? {

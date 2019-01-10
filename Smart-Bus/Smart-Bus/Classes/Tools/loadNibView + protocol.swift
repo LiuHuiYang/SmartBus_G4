@@ -2,11 +2,11 @@
 
 import UIKit
  
- protocol loadNiBView {
+ protocol loadNibView {
     
  }
  
- extension loadNiBView where Self: UIView {
+ extension loadNibView where Self: UIView {
     
     // Swift中，Self 表示当前类，作为函数返回值类型
     static func loadFromNib() -> Self {

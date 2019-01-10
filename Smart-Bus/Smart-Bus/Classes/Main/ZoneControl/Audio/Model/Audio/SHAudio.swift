@@ -30,7 +30,7 @@ import UIKit
     var schedualPlayAlbumNumber: UInt8 = 0
     
     /// 计划播放的歌曲号码
-    var schedualPlaySongNumber: Int = 0
+    var schedualPlaySongNumber: UInt = 0
     
     /// 计划专辑(中间参数)
     var schedualAlbum: SHAlbum?
@@ -84,7 +84,7 @@ import UIKit
     var deviceID: UInt8 = 0
     
     /// 音乐设备名称
-    var audioName = ""
+    var audioName = "Audio"
     
     ///  具有SDCard选项
     var haveSdCard: UInt8 = 0

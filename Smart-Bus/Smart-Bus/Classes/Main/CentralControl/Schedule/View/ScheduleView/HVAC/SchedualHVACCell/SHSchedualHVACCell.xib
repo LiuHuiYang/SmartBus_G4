@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SHSchedualHVACCell" rowHeight="79" id="KGk-i7-Jjw" customClass="SHSchedualHVACCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SHSchedualHVACCell" rowHeight="79" id="2ut-qo-gqi" customClass="SHSchedualHVACCell" customModule="Smart_Bus" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2ut-qo-gqi" id="CS4-bt-pLC">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2r-Az-FVA">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxw-iz-ACQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ljb-2t-yz5">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fRv-oR-PN1">
                                 <rect key="frame" x="0.0" y="3" width="320" height="72.5"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMs-iU-Y5E">
-                                <rect key="frame" x="15" y="17" width="243" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEX-hS-Tle">
+                                <rect key="frame" x="15" y="17.5" width="243" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="xLk-Zc-UzH"/>
+                                    <constraint firstAttribute="height" constant="44" id="K03-DF-kFK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <connections>
-                                    <action selector="schedualHVACButtonClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gby-bT-9Mj"/>
+                                    <action selector="schedualHVACButtonClick" destination="2ut-qo-gqi" eventType="touchUpInside" id="duf-6b-AVQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyi-8S-rdS">
-                                <rect key="frame" x="273" y="24" width="32" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktp-zP-aPC">
+                                <rect key="frame" x="273" y="23.5" width="32" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="12x-Au-O8y"/>
-                                    <constraint firstAttribute="height" constant="32" id="udn-Fe-aoH"/>
+                                    <constraint firstAttribute="height" constant="32" id="7DB-ee-z5v"/>
+                                    <constraint firstAttribute="width" constant="32" id="vsq-T5-uVt"/>
                                 </constraints>
                                 <state key="normal" image="schedualButton_normal"/>
                                 <state key="selected" image="schedualButton_highlighted"/>
                                 <state key="highlighted" image="schedualButton_highlighted"/>
                                 <connections>
-                                    <action selector="enableButtonClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="X7d-pN-3se"/>
+                                    <action selector="enableButtonClick" destination="2ut-qo-gqi" eventType="touchUpInside" id="8Pf-CM-AeC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ljb-2t-yz5" firstAttribute="leading" secondItem="G2r-Az-FVA" secondAttribute="leading" id="FAn-eJ-RKf"/>
-                            <constraint firstAttribute="trailing" secondItem="ljb-2t-yz5" secondAttribute="trailing" id="FuS-Gz-VkO"/>
-                            <constraint firstItem="FMs-iU-Y5E" firstAttribute="centerY" secondItem="ljb-2t-yz5" secondAttribute="centerY" id="Hql-M7-9c5"/>
-                            <constraint firstItem="cyi-8S-rdS" firstAttribute="centerY" secondItem="ljb-2t-yz5" secondAttribute="centerY" id="XFm-db-byS"/>
-                            <constraint firstAttribute="trailing" secondItem="cyi-8S-rdS" secondAttribute="trailing" constant="15" id="doH-cm-zNm"/>
-                            <constraint firstItem="cyi-8S-rdS" firstAttribute="leading" secondItem="FMs-iU-Y5E" secondAttribute="trailing" constant="15" id="ga8-9S-BDl"/>
-                            <constraint firstItem="ljb-2t-yz5" firstAttribute="top" secondItem="G2r-Az-FVA" secondAttribute="top" constant="3" id="hc1-dk-0no"/>
-                            <constraint firstItem="FMs-iU-Y5E" firstAttribute="leading" secondItem="G2r-Az-FVA" secondAttribute="leading" constant="15" id="qKV-Nd-0Fc"/>
-                            <constraint firstAttribute="bottom" secondItem="ljb-2t-yz5" secondAttribute="bottom" constant="3" id="vmP-AG-aMy"/>
+                            <constraint firstItem="fRv-oR-PN1" firstAttribute="top" secondItem="Xxw-iz-ACQ" secondAttribute="top" constant="3" id="6fU-JY-Kmf"/>
+                            <constraint firstItem="zEX-hS-Tle" firstAttribute="leading" secondItem="Xxw-iz-ACQ" secondAttribute="leading" constant="15" id="9Ey-WQ-sNt"/>
+                            <constraint firstItem="Ktp-zP-aPC" firstAttribute="centerY" secondItem="fRv-oR-PN1" secondAttribute="centerY" id="CUg-tu-1Vb"/>
+                            <constraint firstItem="fRv-oR-PN1" firstAttribute="leading" secondItem="Xxw-iz-ACQ" secondAttribute="leading" id="FLo-S8-HDL"/>
+                            <constraint firstItem="Ktp-zP-aPC" firstAttribute="leading" secondItem="zEX-hS-Tle" secondAttribute="trailing" constant="15" id="Rul-Lq-7gw"/>
+                            <constraint firstAttribute="trailing" secondItem="fRv-oR-PN1" secondAttribute="trailing" id="XV2-HB-FRP"/>
+                            <constraint firstItem="zEX-hS-Tle" firstAttribute="centerY" secondItem="fRv-oR-PN1" secondAttribute="centerY" id="g4f-Vi-UPV"/>
+                            <constraint firstAttribute="trailing" secondItem="Ktp-zP-aPC" secondAttribute="trailing" constant="15" id="owR-EC-FHL"/>
+                            <constraint firstAttribute="bottom" secondItem="fRv-oR-PN1" secondAttribute="bottom" constant="3" id="tPq-by-7CI"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="G2r-Az-FVA" secondAttribute="trailing" id="A4L-KN-H5Y"/>
-                    <constraint firstItem="G2r-Az-FVA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="E9M-fl-NLB"/>
-                    <constraint firstItem="G2r-Az-FVA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fzF-TY-BOf"/>
-                    <constraint firstAttribute="bottom" secondItem="G2r-Az-FVA" secondAttribute="bottom" id="nob-Df-sYG"/>
+                    <constraint firstItem="Xxw-iz-ACQ" firstAttribute="leading" secondItem="CS4-bt-pLC" secondAttribute="leading" id="27R-sA-Hmo"/>
+                    <constraint firstAttribute="bottom" secondItem="Xxw-iz-ACQ" secondAttribute="bottom" id="OgD-f5-XT4"/>
+                    <constraint firstItem="Xxw-iz-ACQ" firstAttribute="top" secondItem="CS4-bt-pLC" secondAttribute="top" id="fbD-a9-Ngc"/>
+                    <constraint firstAttribute="trailing" secondItem="Xxw-iz-ACQ" secondAttribute="trailing" id="lzB-ut-PqO"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="enableButton" destination="cyi-8S-rdS" id="62D-5Z-QLu"/>
-                <outlet property="flagViewHeightConstraint" destination="udn-Fe-aoH" id="9xt-DK-8iy"/>
-                <outlet property="flagViewWidthConstraint" destination="12x-Au-O8y" id="NTL-qd-tWO"/>
-                <outlet property="hvacButtonHeightConstraint" destination="xLk-Zc-UzH" id="f7Y-cK-leC"/>
-                <outlet property="iconView" destination="ljb-2t-yz5" id="g9B-ly-SaM"/>
-                <outlet property="schedualHVACButton" destination="FMs-iU-Y5E" id="cdD-rB-79i"/>
+                <outlet property="enableButton" destination="Ktp-zP-aPC" id="I6C-zl-K71"/>
+                <outlet property="flagViewHeightConstraint" destination="7DB-ee-z5v" id="KoN-tX-Wtw"/>
+                <outlet property="flagViewWidthConstraint" destination="vsq-T5-uVt" id="mi0-NO-iXa"/>
+                <outlet property="hvacButtonHeightConstraint" destination="K03-DF-kFK" id="1NO-RH-JwO"/>
+                <outlet property="iconView" destination="fRv-oR-PN1" id="ta7-qH-LcY"/>
+                <outlet property="schedualHVACButton" destination="zEX-hS-Tle" id="6hR-pM-oKc"/>
             </connections>
             <point key="canvasLocation" x="18" y="40.5"/>
         </tableViewCell>

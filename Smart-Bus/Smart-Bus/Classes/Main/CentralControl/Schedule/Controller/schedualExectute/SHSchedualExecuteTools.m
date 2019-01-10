@@ -201,7 +201,7 @@
                                                  deviceID:command.parameter2
                                                sourceType:command.parameter4 & 0xFF
                                               albumNumber:command.parameter5 & 0xFF
-                                               songNumber:command.parameter5 >> 8 zoneFlag:1
+                                               songNumber:command.parameter6 zoneFlag:1
      ];
     
     [NSThread sleepForTimeInterval:0.1];

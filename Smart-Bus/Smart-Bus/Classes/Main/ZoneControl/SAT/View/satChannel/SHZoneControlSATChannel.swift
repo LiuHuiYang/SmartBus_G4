@@ -17,7 +17,7 @@ private let mediaSATChannelCellReuseIdentifier = "SHMediaSATChannelCell"
 /// 卫星电视的IR延时时间
 private let delayIRTimekey = "SHMediaSATChannelDelayIRTime"
 
-class SHZoneControlSATChannel: UIView, loadNiBView {
+class SHZoneControlSATChannel: UIView, loadNibView {
     
     /// 卫星电视
     var mediaSAT: SHMediaSAT?

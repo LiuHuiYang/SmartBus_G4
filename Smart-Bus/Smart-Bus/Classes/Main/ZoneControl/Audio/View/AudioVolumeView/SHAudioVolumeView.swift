@@ -9,7 +9,7 @@
 import UIKit
 
 /// 声音控制与显示
-@objcMembers class SHAudioVolumeView: UIView, loadNiBView {
+@objcMembers class SHAudioVolumeView: UIView, loadNibView {
     
     /// 音乐设备
     var audio: SHAudio?

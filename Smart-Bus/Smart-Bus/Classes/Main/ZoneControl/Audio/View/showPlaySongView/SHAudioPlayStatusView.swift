@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHAudioPlayStatusView: UIView, loadNiBView {
+@objcMembers class SHAudioPlayStatusView: UIView, loadNibView {
 
     /// 隐藏显示
     var hiddenPlayInfo = false  {

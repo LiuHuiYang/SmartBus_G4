@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SHZoneNineInOneNumberPadView: UIView, loadNiBView {
+class SHZoneNineInOneNumberPadView: UIView, loadNibView {
 
     /// 9in1模型
     var nineInOne: SHNineInOne?

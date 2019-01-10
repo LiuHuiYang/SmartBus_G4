@@ -424,7 +424,9 @@
     
     self.schedualHVAC.schedualTemperature = temperature;
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil
+    ];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -543,23 +545,34 @@
     
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"close" hightlightedImageName:@"close" addTarget:self action:@selector(close) isLeft:YES];
   
+   
+    [self.lowFanButton setTitle:
+     [SHHVAC getFanSpeedName:SHAirConditioningFanSpeedTypeLow]
+                       forState:UIControlStateNormal];
     
-    [self.lowFanButton setTitle:[[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"HVAC_IN_ZONE" withSubTitle:@"FAN_BUTTON_NAMES"] firstObject]forState:UIControlStateNormal];
+    [self.middleFanButton setTitle:[SHHVAC getFanSpeedName:SHAirConditioningFanSpeedTypeMedial] forState:UIControlStateNormal];
     
-    [self.middleFanButton setTitle:([[SHLanguageTools shareLanguageTools] getTextFromPlist:@"HVAC_IN_ZONE" withSubTitle:@"FAN_BUTTON_NAMES"] [1]) forState:UIControlStateNormal];
+    [self.highFanButton setTitle:[SHHVAC getFanSpeedName:SHAirConditioningFanSpeedTypeHigh] forState:UIControlStateNormal];
     
-    [self.highFanButton setTitle:([[SHLanguageTools shareLanguageTools] getTextFromPlist:@"HVAC_IN_ZONE" withSubTitle:@"FAN_BUTTON_NAMES"] [2]) forState:UIControlStateNormal];
-    
-    [self.autoFanButton setTitle:[[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"HVAC_IN_ZONE" withSubTitle:@"FAN_BUTTON_NAMES"] lastObject]forState:UIControlStateNormal];
+    [self.autoFanButton setTitle:
+     [SHHVAC getFanSpeedName:SHAirConditioningFanSpeedTypeAuto]
+                        forState:UIControlStateNormal];
     
     // 模式控制
-    [self.coldModelButton setTitle:[[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"HVAC_IN_ZONE" withSubTitle:@"MODE_BUTTON_NAMES"] firstObject]forState:UIControlStateNormal];
     
-    [self.hotModelButton setTitle:([[SHLanguageTools shareLanguageTools] getTextFromPlist:@"HVAC_IN_ZONE" withSubTitle:@"MODE_BUTTON_NAMES"] [1]) forState:UIControlStateNormal];
+    [self.coldModelButton setTitle:
+     [SHHVAC getModeName:SHAirConditioningModeTypeCool]
+                          forState:UIControlStateNormal];
     
-    [self.fanModelButton setTitle:([[SHLanguageTools shareLanguageTools] getTextFromPlist:@"HVAC_IN_ZONE" withSubTitle:@"MODE_BUTTON_NAMES"] [2]) forState:UIControlStateNormal];
+    [self.hotModelButton setTitle:
+     [SHHVAC getModeName:SHAirConditioningModeTypeHeat]
+                         forState:UIControlStateNormal];
     
-    [self.autoModelButton setTitle:[[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"HVAC_IN_ZONE" withSubTitle:@"MODE_BUTTON_NAMES"] lastObject]forState:UIControlStateNormal];
+    [self.fanModelButton setTitle:[SHHVAC getModeName:SHAirConditioningModeTypeFan] forState:UIControlStateNormal];
+    
+    [self.autoModelButton setTitle:
+     [SHHVAC getModeName:SHAirConditioningModeTypeAuto]
+                          forState:UIControlStateNormal];
     
     self.upTemperatureButton.enabled = NO;
     self.lowerTemperatureButton.enabled = NO;

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHCentralClimateCell: UIView, loadNiBView {
+@objcMembers class SHCentralClimateCell: UIView, loadNibView {
     
     var centralHVAC: SHCentralHVAC? {
         
