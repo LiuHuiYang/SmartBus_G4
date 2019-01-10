@@ -147,7 +147,6 @@ class SHSchduleHVACView: UIView, loadNibView {
             }
         }
     }
-
 }
 
 

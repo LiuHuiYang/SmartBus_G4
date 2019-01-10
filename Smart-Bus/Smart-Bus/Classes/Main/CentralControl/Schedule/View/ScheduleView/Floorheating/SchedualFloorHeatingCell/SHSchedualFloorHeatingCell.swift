@@ -1,37 +1,52 @@
 //
-//  SHSchedualHVACCell.swift
+//  SHSchedualFloorHeatingCell.swift
 //  Smart-Bus
 //
-//  Created by Mark Liu on 2018/1/9.
-//  Copyright © 2018年 SmartHome. All rights reserved.
+//  Created by Mac on 2019/1/10.
+//  Copyright © 2019 SmartHome. All rights reserved.
 //
 
 import UIKit
 
-class SHSchedualHVACCell: UITableViewCell {
+class SHSchedualFloorHeatingCell: UITableViewCell {
     
-    /// 空调
-    var schedualHVAC: SHHVAC? {
+    /// 地热
+    var schedualFloorHeating: SHFloorHeating? {
         
         didSet {
             
-            guard let hvac = schedualHVAC else {
+            guard let floorHeating = schedualFloorHeating else {
                 return
             }
             
-            enableButton.isSelected = hvac.schedualEnable
+            enableButton.isSelected = floorHeating.schedualEnable
             
             let title =
-                "\(hvac.acRemark) : \(hvac.subnetID) - \(hvac.deviceID)"
+            "\(floorHeating.floorHeatingRemark ?? "floorHeating") : \(floorHeating.subnetID) - \(floorHeating.deviceID) - \(floorHeating.channelNo)"
             
-            schedualHVACButton.setTitle(title,
-                                        for: .normal
+            schedualFloorHeatingButton.setTitle(title,
+                                                for: .normal
             )
         }
     }
     
+    /// 行高
+    static var rowHeight: CGFloat {
+        
+        if UIDevice.is_iPad() {
+            
+            return navigationBarHeight + statusBarHeight
+            
+        } else if UIDevice.is4_0inch() {
+            
+            return tabBarHeight
+        }
+        
+        return navigationBarHeight
+    }
+    
     /// 按钮的高度
-    @IBOutlet weak var hvacButtonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
     
     /// 标示的宽度
     @IBOutlet weak var flagViewWidthConstraint: NSLayoutConstraint!
@@ -41,27 +56,12 @@ class SHSchedualHVACCell: UITableViewCell {
     
     /// 开启按钮
     @IBOutlet weak var enableButton: UIButton!
-
+    
     /// 图片
     @IBOutlet weak var iconView: UIImageView!
     
     /// 需要配置的空调
-    @IBOutlet weak var schedualHVACButton: UIButton!
-    
-    /// 行高
-    static var rowHeight: CGFloat {
-        
-        if UIDevice.is_iPad() {
-            
-            return navigationBarHeight + statusBarHeight
-        
-        } else if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
-            
-            return tabBarHeight
-        }
-        
-        return navigationBarHeight
-    }
+    @IBOutlet weak var schedualFloorHeatingButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -73,21 +73,8 @@ class SHSchedualHVACCell: UITableViewCell {
         
         if UIDevice.is_iPad() {
             
-            schedualHVACButton.titleLabel?.font =
+            schedualFloorHeatingButton.titleLabel?.font =
                 UIView.suitFontForPad()
-        }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if UIDevice.is_iPad() {
-            
-            hvacButtonHeightConstraint.constant = navigationBarHeight
-            
-            flagViewWidthConstraint.constant = tabBarHeight
-            
-            flagViewHeightConstraint.constant = tabBarHeight
         }
     }
 
@@ -96,30 +83,44 @@ class SHSchedualHVACCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if UIDevice.is_iPad() {
+            
+            buttonHeightConstraint.constant = navigationBarHeight
+            
+            flagViewWidthConstraint.constant = tabBarHeight
+            
+            flagViewHeightConstraint.constant = tabBarHeight
+        }
+    }
+    
 }
 
-
 // MARK: - 点击事件
-extension SHSchedualHVACCell {
+extension SHSchedualFloorHeatingCell {
     
     /// 开启计划
     @IBAction func enableButtonClick() {
         
         enableButton.isSelected = !enableButton.isSelected
         
-        schedualHVAC?.schedualEnable =
+        schedualFloorHeating?.schedualEnable =
             enableButton.isSelected
     }
-
+    
     /// 点击相关的空调
-    @IBAction func schedualHVACButtonClick() {
+    @IBAction func schedualFloorHeatingButtonClick() {
         
-        if let hvac = schedualHVAC {
+        if let floorHeating = schedualFloorHeating {
             
             let schedualController =
-                SHSchedualHVACViewController()
+                SHSchedualFloorHeatingController()
             
-            schedualController.schedualHVAC = hvac
+            schedualController.schedualFloorHeating =
+                floorHeating
             
             let schedualNavigationController =
                 SHNavigationController(
@@ -137,3 +138,4 @@ extension SHSchedualHVACCell {
         }
     }
 }
+

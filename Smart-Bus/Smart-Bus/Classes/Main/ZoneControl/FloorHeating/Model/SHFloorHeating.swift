@@ -46,6 +46,20 @@ import UIKit
 
 @objcMembers class SHFloorHeating: NSObject {
     
+    /// 启动配置计划
+    var schedualEnable = false
+    
+    /// 计划执行的手动模式温度 
+    var schedualTemperature: Int = 0
+    
+    /// 计划执行的模式
+    var schedualModeType: SHFloorHeatingModeType = .manual
+  
+    /// 计划执行的打开与关闭
+    var schedualIsTurnOn = false
+    
+    // MARK: - =========
+    
     /// 录制状态标示
     var recordSuccess = false
 
