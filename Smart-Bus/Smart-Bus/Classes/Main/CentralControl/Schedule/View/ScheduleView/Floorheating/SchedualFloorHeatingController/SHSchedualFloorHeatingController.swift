@@ -28,7 +28,7 @@ extension SHSchedualFloorHeatingController {
         navigationItem.leftBarButtonItem =
             UIBarButtonItem(
                 imageName: "close",
-                hightlightedImageName: "close`",
+                hightlightedImageName: "close",
                 addTarget: self,
                 action: #selector(close),
                 isLeft: true
