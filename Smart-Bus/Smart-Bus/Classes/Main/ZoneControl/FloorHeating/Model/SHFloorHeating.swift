@@ -69,6 +69,9 @@ import UIKit
     /// 地热模式
     var floorHeatingModeType: SHFloorHeatingModeType = .manual
     
+    /// 定时器使能
+    var timerEnable: Bool = false
+    
     /// 手动模式下的温度  -- 代码统一使用摄氏度
     var manualTemperature: Int = 0
     
@@ -103,7 +106,6 @@ import UIKit
     
     /// 白天结束时间的分
     var nightTimeMinute: UInt8 = 0
-    
     
     // 室内温度 (有正负)
     var insideTemperature: Int = 0

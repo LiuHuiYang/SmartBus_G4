@@ -234,7 +234,9 @@ extension SHZoneControlFloorHeatingControlViewController {
             
             if socketData.subNetID != floorHeating.subnetID ||
                 
-                socketData.deviceID != floorHeating.deviceID {
+                socketData.deviceID != floorHeating.deviceID ||
+                
+                socketData.additionalData[0] != floorHeating.channelNo {
                 
                 return
             }
@@ -246,22 +248,26 @@ extension SHZoneControlFloorHeatingControlViewController {
                     operatorCode: 0x03CB,
                     subNetID: floorHeating.subnetID,
                     deviceID: floorHeating.deviceID,
-                    additionalData: []
+                    additionalData: [floorHeating.channelNo]
                 )
             
             } else {
                 
-                floorHeating.dayTimeHour =
-                    socketData.additionalData[0]
                 
-                floorHeating.dayTimeMinute =
+                floorHeating.dayTimeHour =
                     socketData.additionalData[1]
                 
-                floorHeating.nightTimeHour =
+                floorHeating.dayTimeMinute =
                     socketData.additionalData[2]
                 
-                floorHeating.nightTimeMinute =
+                floorHeating.nightTimeHour =
                     socketData.additionalData[3]
+               
+                floorHeating.nightTimeMinute =
+                    socketData.additionalData[4]
+                
+                floorHeating.timerEnable =
+                    socketData.additionalData[5] != 0
             }
             
             // 温度传感器 与 地热本身没有什么关系
@@ -330,7 +336,7 @@ extension SHZoneControlFloorHeatingControlViewController {
             operatorCode: 0x03CB,
             subNetID: floorHeating.subnetID,
             deviceID: floorHeating.deviceID,
-            additionalData: []
+            additionalData: [floorHeating.channelNo]
         )
         
         // 读取模式匹配温度与传感器的地址
@@ -520,7 +526,10 @@ extension SHZoneControlFloorHeatingControlViewController {
     /// 选择日期
     @IBAction func selectDate() {
         
-        guard let time = NSDate.getCurrentDateComponents() else {
+        guard let time =
+            NSDate.getCurrentDateComponents(
+                from: datePicker.date
+            ) else {
             
             return
         }
@@ -530,7 +539,7 @@ extension SHZoneControlFloorHeatingControlViewController {
                    time.hour ?? 0,
                    time.minute ?? 0
         )
-        
+
         selecTimeButton?.setTitle(timeString,
                                   for: .normal
         )
@@ -650,7 +659,7 @@ extension SHZoneControlFloorHeatingControlViewController {
                     operatorCode: 0x03CB,
                     subNetID: floorHeating.subnetID,
                     deviceID: floorHeating.deviceID,
-                    additionalData: []
+                    additionalData: [floorHeating.channelNo]
                 )
         }
         
@@ -659,7 +668,6 @@ extension SHZoneControlFloorHeatingControlViewController {
         // 设置
         let sureAction = TYAlertAction(title: SHLanguageText.yes, style: .default) { (action) in
             
-  
             guard let dayTimes = self.dayTimeButton.currentTitle?.components(separatedBy: ":"),
             
             let nightTimes = self.nightTimeButton.currentTitle?.components(separatedBy: ":"),
@@ -679,12 +687,14 @@ extension SHZoneControlFloorHeatingControlViewController {
             
           
             let updateTime = [
-                
+                floorHeating.channelNo,
                 dayHour,
                 dayMinute,
                 
                 nightHour,
-                nightMinute
+                nightMinute,
+                
+                floorHeating.timerEnable ? 1 : 0
             ]
            
             SHSocketTools.sendData(
@@ -739,8 +749,8 @@ extension SHZoneControlFloorHeatingControlViewController {
         
         let nightTime =
             String(format: "%02d:%02d",
-                   floorHeating.dayTimeHour,
-                   floorHeating.dayTimeMinute
+                   floorHeating.nightTimeHour,
+                   floorHeating.nightTimeMinute
         )
         
         // 2.不同的模式温度
@@ -834,8 +844,13 @@ extension SHZoneControlFloorHeatingControlViewController {
                 == .timer
         
         // 4.设置定时器时间
-        dayTimeButton.setTitle(dayTime, for: .normal)
-        dayTimeButton.setTitle(nightTime, for: .normal)
+        dayTimeButton.setTitle(dayTime,
+                               for: .normal
+        )
+        
+        nightTimeButton.setTitle(nightTime,
+                                 for: .normal
+        )
         
         // 5.设置温度
         indoorTemperatureLabel.text =
