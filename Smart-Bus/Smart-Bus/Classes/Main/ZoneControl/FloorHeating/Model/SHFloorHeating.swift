@@ -25,7 +25,7 @@ import UIKit
 }
 
 /// 工作模式
-@objc enum SHFloorHeatingModeType: UInt {
+@objc enum SHFloorHeatingModeType: UInt8 {
     
     case manual  = 1
     case day     = 2
@@ -35,7 +35,7 @@ import UIKit
 }
 
 //// 温度范围  地热先是固定死了，如果配置可调，则参考HVAC来进行增加属性
-@objc enum SHFloorHeatingManualTemperatureRange: UInt {
+@objc enum SHFloorHeatingManualTemperatureRange: UInt8 {
     
     case centigradeMinimumValue = 5
     case centigradeMaximumValue = 32

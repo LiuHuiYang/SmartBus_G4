@@ -58,7 +58,7 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
                             
                             floorHeating.schedualIsTurnOn = (command.parameter3 != 0)
                             
-                            floorHeating.schedualModeType = SHFloorHeatingModeType(rawValue: command.parameter4) ?? .manual
+                            floorHeating.schedualModeType = SHFloorHeatingModeType(rawValue: UInt8(command.parameter4)) ?? .manual
                             floorHeating.schedualTemperature = Int(command.parameter5)
                             
                         }

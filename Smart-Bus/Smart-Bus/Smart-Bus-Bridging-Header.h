@@ -29,7 +29,6 @@
 #import "UIImageView+ReSizeImage.h"
 #import "SHZoneControlButton.h"
 #import "SHZoneAudioPlayControlViewController.h"
-#import "SHZoneControlFloorHeatingControlViewController.h"
 #import "SHZoneDmxGroupViewController.h"
 #import "SHAudioRecordControlButton.h"
 #import "SHSchedualHVACViewController.h"

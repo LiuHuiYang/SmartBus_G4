@@ -18,7 +18,7 @@
  *  @param startTime        开始时间  // @"yyyy-MM-dd'T'HH:mm"
  *  @param expireTime       结束时间
  */
-+ (BOOL)validateWithStartTime:(NSString *)startTime withExpireTime:(NSString *)expireTime {
++ (BOOL)validateStartTime:(NSString *)startTime expireTime:(NSString *)expireTime {
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"HH:mm"];
