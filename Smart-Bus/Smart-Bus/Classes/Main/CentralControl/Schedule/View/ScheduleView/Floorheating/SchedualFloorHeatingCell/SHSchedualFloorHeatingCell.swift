@@ -10,6 +10,9 @@ import UIKit
 
 class SHSchedualFloorHeatingCell: UITableViewCell {
     
+    /// 计划模型
+    var schedual: SHSchedual?
+    
     /// 地热
     var schedualFloorHeating: SHFloorHeating? {
         
@@ -121,6 +124,8 @@ extension SHSchedualFloorHeatingCell {
             
             schedualController.schedualFloorHeating =
                 floorHeating
+            
+            schedualController.schedual = schedual
             
             let schedualNavigationController =
                 SHNavigationController(

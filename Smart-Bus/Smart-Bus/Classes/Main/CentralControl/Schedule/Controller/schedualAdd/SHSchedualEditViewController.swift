@@ -426,6 +426,7 @@ extension SHSchedualEditViewController {
             SHSQLManager.share()?.updateSchedule(plan)
         }
         
+        
         SHSchedualExecuteTools.share()?.updateSchduals()
         
         NotificationCenter.default.post(

@@ -10,9 +10,11 @@ import UIKit
 
 class SHSchedualFloorHeatingController: SHViewController {
 
+    /// 计划模型
+    var schedual: SHSchedual?
+    
     /// 地热
     var schedualFloorHeating: SHFloorHeating?
-    
 
     // MARK: - 约束条件
     
@@ -62,14 +64,51 @@ extension SHSchedualFloorHeatingController {
     /// 关闭控制器
     @objc private func close() {
      
-        if let floorHeating = schedualFloorHeating {
-            
-            print(floorHeating.schedualIsTurnOn)
-            print(floorHeating.schedualModeType)
-            print(floorHeating.schedualTemperature)
-        }
+        saveSchedualFloorHeating()
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    /// 保存数据
+    private func saveSchedualFloorHeating() {
+        
+        guard let plan = schedual,
+            let floorHeating = schedualFloorHeating else {
+                return
+        }
+        
+        SHSQLManager.share()?.deleteSchedualeCommand(
+            plan
+        )
+        
+        if floorHeating.schedualEnable == false {
+            
+            return
+        }
+        
+        let command = SHSchedualCommand()
+        
+        command.scheduleID = plan.scheduleID
+        command.typeID =
+            SHSchdualControlItemType.floorHeating.rawValue
+        
+        command.parameter1 =
+            UInt(floorHeating.subnetID)
+        
+        command.parameter2 =
+            UInt(floorHeating.deviceID)
+        
+        command.parameter3 =
+            UInt(floorHeating.channelNo)
+        
+        command.parameter4 =
+            floorHeating.schedualIsTurnOn ? 1 : 0
+        
+        command.parameter5 = UInt(floorHeating.schedualModeType.rawValue)
+        
+        // 手动模式温度
+        command.parameter6 = UInt(floorHeating.schedualTemperature)
+        SHSQLManager.share()?.insertNewSchedualeCommand(command)
     }
 }
 

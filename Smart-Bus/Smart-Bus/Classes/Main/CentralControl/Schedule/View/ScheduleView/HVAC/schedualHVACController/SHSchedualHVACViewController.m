@@ -270,19 +270,22 @@
         
         case SHAirConditioningFanSpeedTypeAuto: {
             
-            self.fanImageView.image = [UIImage imageNamed:@"autofan"];
+            self.fanImageView.image =
+                [UIImage imageNamed:@"autofan"];
         }
         break;
         
         case SHAirConditioningFanSpeedTypeHigh: {
             
-            self.fanImageView.image = [UIImage imageNamed:@"highfan"];
+            self.fanImageView.image =
+                [UIImage imageNamed:@"highfan"];
         }
         break;
         
         case SHAirConditioningFanSpeedTypeMedial: {
             
-            self.fanImageView.image = [UIImage imageNamed:@"mediumfan"];
+            self.fanImageView.image =
+                [UIImage imageNamed:@"mediumfan"];
         }
         break;
         

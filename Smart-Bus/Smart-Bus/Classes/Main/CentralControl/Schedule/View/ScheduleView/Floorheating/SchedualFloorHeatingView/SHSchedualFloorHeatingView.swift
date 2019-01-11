@@ -148,7 +148,9 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
                 
                 // 手动模式温度
                 command.parameter6 = UInt(floorHeating.schedualTemperature)
-                SHSQLManager.share()?.insertNewSchedualeCommand(command)
+            SHSQLManager.share()?.insertNewSchedualeCommand(
+                    command
+                )
             }
         }
     }
@@ -174,6 +176,8 @@ extension SHSchedualFloorHeatingView: UITableViewDataSource {
         
         cell.schedualFloorHeating =
             floorHeatings[indexPath.row]
+        
+        cell.schedual = self.schedual
         
         return cell
     }
