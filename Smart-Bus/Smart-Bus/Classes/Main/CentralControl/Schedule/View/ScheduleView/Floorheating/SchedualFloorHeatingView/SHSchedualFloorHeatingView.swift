@@ -56,10 +56,11 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
                             // 只要是存在的命令就一定是选中的
                             floorHeating.schedualEnable = true
                             
-                            floorHeating.schedualIsTurnOn = (command.parameter3 != 0)
+                            floorHeating.channelNo = UInt8(command.parameter3)
+                            floorHeating.schedualIsTurnOn = (command.parameter4 != 0)
                             
-                            floorHeating.schedualModeType = SHFloorHeatingModeType(rawValue: UInt8(command.parameter4)) ?? .manual
-                            floorHeating.schedualTemperature = Int(command.parameter5)
+                            floorHeating.schedualModeType = SHFloorHeatingModeType(rawValue: UInt8(command.parameter5)) ?? .manual
+                            floorHeating.schedualTemperature = Int(command.parameter6)
                             
                         }
                     }
@@ -138,12 +139,15 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
                     UInt(floorHeating.deviceID)
                 
                 command.parameter3 =
+                    UInt(floorHeating.channelNo)
+                
+                command.parameter4 =
                     floorHeating.schedualIsTurnOn ? 1 : 0
          
-                command.parameter4 = UInt(floorHeating.schedualModeType.rawValue)
+                command.parameter5 = UInt(floorHeating.schedualModeType.rawValue)
                 
                 // 手动模式温度
-                command.parameter5 = UInt(floorHeating.schedualTemperature)
+                command.parameter6 = UInt(floorHeating.schedualTemperature)
                 SHSQLManager.share()?.insertNewSchedualeCommand(command)
             }
         }

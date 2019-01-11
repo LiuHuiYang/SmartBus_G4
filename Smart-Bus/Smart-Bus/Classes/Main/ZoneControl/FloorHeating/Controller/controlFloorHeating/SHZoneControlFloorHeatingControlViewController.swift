@@ -420,7 +420,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         changeFloorHeatingModel(model: .manual)
     }
     
-    /// 夜间模式
+    /// 白天模式
     @IBAction func dayButtonClick() {
         
         changeFloorHeatingModel(model: .day)
@@ -759,7 +759,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         case .manual:
             
             modelTemperatureLabel.text =
-                temperaturShow(
+                temperatureShow(
                     celsiusTemperature:
                     floorHeating.manualTemperature
             )
@@ -767,7 +767,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         case .day:
             
             modelTemperatureLabel.text =
-                temperaturShow(
+                temperatureShow(
                     celsiusTemperature:
                     floorHeating.dayTemperature
             )
@@ -775,7 +775,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         case .night:
             
             modelTemperatureLabel.text =
-                temperaturShow(
+                temperatureShow(
                     celsiusTemperature:
                     floorHeating.nightTemperature
             )
@@ -783,7 +783,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         case .away:
             
             modelTemperatureLabel.text =
-                temperaturShow(
+                temperatureShow(
                     celsiusTemperature:
                     floorHeating.awayTemperature
             )
@@ -799,21 +799,20 @@ extension SHZoneControlFloorHeatingControlViewController {
             if isDay {
                 
                 modelTemperatureLabel.text =
-                    temperaturShow(
+                    temperatureShow(
                         celsiusTemperature:
                         floorHeating.dayTemperature
                 )
             } else {
                 
                 modelTemperatureLabel.text =
-                    temperaturShow(
+                    temperatureShow(
                         celsiusTemperature:
                         floorHeating.nightTemperature
                 )
             }
         }
-
-       
+ 
         // 显示控制温度按钮
         reduceTemperatureButton.isHidden =
             floorHeating.floorHeatingModeType
@@ -854,13 +853,13 @@ extension SHZoneControlFloorHeatingControlViewController {
         
         // 5.设置温度
         indoorTemperatureLabel.text =
-            temperaturShow(
+            temperatureShow(
                 celsiusTemperature:
                 floorHeating.insideTemperature
         )
         
         outdoorTemperatureLabel.text =
-            temperaturShow(
+            temperatureShow(
                 celsiusTemperature:
                 floorHeating.outsideTemperature
         )
@@ -878,7 +877,7 @@ extension SHZoneControlFloorHeatingControlViewController {
     }
     
     /// 模式温度字符串
-    private func temperaturShow(celsiusTemperature: Int) -> String {
+    private func temperatureShow(celsiusTemperature: Int) -> String {
         
         let fahrenheit =
             SHHVAC.centigradeConvert(

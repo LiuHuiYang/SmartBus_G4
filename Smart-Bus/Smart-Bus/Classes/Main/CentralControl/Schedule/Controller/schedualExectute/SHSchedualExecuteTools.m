@@ -175,6 +175,55 @@
     ];
 }
 
+// MARK: - 地热
+
+/// 执行计划 地热
+- (void)exectuSchedualFloorHeating:(SHSchedualCommand *)command {
+    
+    // 1.设置开关
+    
+    NSArray *onOffData =
+        @[@(SHFloorHeatingControlTypeOnAndOff),
+          @(command.parameter4),
+          @(command.parameter3)
+         ];
+    
+    [SHSocketTools sendDataWithOperatorCode:0xE3D8
+                                   subNetID:command.parameter1
+                                   deviceID:command.parameter2
+                             additionalData:onOffData
+                           remoteMacAddress:SHSocketTools.remoteControlMacAddress
+                                 needReSend:true
+                                      isDMX:false
+     ];
+    
+    // 2.设置模式
+    
+    NSArray *modelData =
+        @[@(SHFloorHeatingControlTypeModelSet),
+          @(command.parameter5),
+          @(command.parameter3)
+      ];
+    
+    [SHSocketTools sendDataWithOperatorCode:0xE3D8 subNetID:command.parameter1 deviceID:command.parameter2 additionalData:modelData remoteMacAddress:SHSocketTools.remoteControlMacAddress needReSend:true isDMX:false
+     ];
+    
+    // 3.如果模式是手动，则设置手动模式温度
+    
+    if (command.parameter5 == SHFloorHeatingModeTypeManual) {
+        
+        NSArray *temperatureData =
+        @[@(SHFloorHeatingControlTypeTemperatureSet),
+          @(command.parameter6),
+          @(command.parameter3)
+          ];
+        
+        [SHSocketTools sendDataWithOperatorCode:0xE3D8 subNetID:command.parameter1 deviceID:command.parameter2 additionalData:temperatureData remoteMacAddress:SHSocketTools.remoteControlMacAddress needReSend:true isDMX:false
+         ];
+    }
+    
+}
+
 // MARK: - audio
 
 /// 执行计划 audio
@@ -317,6 +366,12 @@
             case SHSchdualControlItemTypeHVAC: {
                 
                 [self performSelectorInBackground:@selector(exectuSchedualHVAC:) withObject:command];
+            }
+                break;
+                
+            case SHSchdualControlItemTypeFloorHeating: {
+                
+                [self performSelectorInBackground:@selector(exectuSchedualFloorHeating:) withObject:command];
             }
                 break;
                 

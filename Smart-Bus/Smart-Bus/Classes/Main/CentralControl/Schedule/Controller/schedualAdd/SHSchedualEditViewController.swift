@@ -527,7 +527,7 @@ extension SHSchedualEditViewController {
         // 选中第一个
         self.tableView(
             controlItemListView,
-            didSelectRowAt: IndexPath(item: 0,
+            didSelectRowAt: IndexPath(row: 0,
                                       section: 0)
         )
         
