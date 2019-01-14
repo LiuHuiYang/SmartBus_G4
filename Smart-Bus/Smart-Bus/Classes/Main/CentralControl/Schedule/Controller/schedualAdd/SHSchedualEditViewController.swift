@@ -426,7 +426,15 @@ extension SHSchedualEditViewController {
             SHSQLManager.share()?.updateSchedule(plan)
         }
         
+        print("====> 保存所有的命令集合 ==== ")
+        print(plan.commands)
         
+        if let commands = plan.commands as? [SHSchedualCommand] {
+            
+            for command: SHSchedualCommand in commands {
+                SHSQLManager.share()?.insertNewSchedualeCommand(command)
+            }
+        }
         SHSchedualExecuteTools.share()?.updateSchduals()
         
         NotificationCenter.default.post(
@@ -525,6 +533,7 @@ extension SHSchedualEditViewController {
             return
         }
         
+       
         // 选中第一个
         self.tableView(
             controlItemListView,

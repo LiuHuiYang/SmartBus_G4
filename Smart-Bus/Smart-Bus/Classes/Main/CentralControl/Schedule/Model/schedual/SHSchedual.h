@@ -50,6 +50,9 @@ typedef NS_ENUM(NSInteger, SHSchdualWeek) {
 
 @interface SHSchedual : NSObject
 
+/// 所有指令
+@property (strong, nonatomic) NSMutableArray *commands;
+
 /// 这是一个界面上另一个区域的schedual
 @property (nonatomic, assign) BOOL isDifferentZoneSchedual;
 

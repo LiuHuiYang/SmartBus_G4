@@ -114,7 +114,7 @@ class SHSchduleMacroView: UIView, loadNibView {
             }
             
             // 先删除以前的命令
-            SHSQLManager.share()?.deleteSchedualeCommand(
+           SHSQLManager.share()?.deleteSchedualeCommand(
                 plan
             )
             
@@ -125,9 +125,10 @@ class SHSchduleMacroView: UIView, loadNibView {
             command.scheduleID = plan.scheduleID
             command.parameter1 = selectMacro!.macroID
             
-            SHSQLManager.share()?.insertNewSchedualeCommand(
+        SHSQLManager.share()?.insertNewSchedualeCommand(
                 command
             )
+            
         }
     }
 

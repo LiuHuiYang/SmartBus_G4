@@ -91,4 +91,16 @@
     return array;
 }
 
+// MARK: - getter && setter
+
+- (NSMutableArray *)commands {
+    
+    if (!_commands) {
+        
+        _commands = [NSMutableArray array];
+    }
+    
+    return _commands;
+}
+
 @end

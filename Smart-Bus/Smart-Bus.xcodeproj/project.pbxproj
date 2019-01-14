@@ -182,6 +182,7 @@
 		047812B7216F2148007A7162 /* SHMacroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047812B5216F2148007A7162 /* SHMacroViewController.swift */; };
 		047812B8216F2148007A7162 /* SHMacroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047812B6216F2148007A7162 /* SHMacroViewController.xib */; };
 		0478FF8220C8D06900DCB148 /* SHDeviceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0478FF8020C8D06900DCB148 /* SHDeviceViewCell.xib */; };
+		047A86C521EC17B6007A44CE /* SHScheduleCommandTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A86C421EC17B6007A44CE /* SHScheduleCommandTools.swift */; };
 		047CFA012187EEF8002CAE8A /* SHDeviceArgsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047CF9FB2187EEF8002CAE8A /* SHDeviceArgsViewController.xib */; };
 		047CFA022187EEF8002CAE8A /* SHDeviceArgsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CF9FC2187EEF8002CAE8A /* SHDeviceArgsViewController.swift */; };
 		047CFA032187EEF8002CAE8A /* SHDeviceArgsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047CF9FF2187EEF8002CAE8A /* SHDeviceArgsViewCell.xib */; };
@@ -674,6 +675,7 @@
 		047812B5216F2148007A7162 /* SHMacroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHMacroViewController.swift; sourceTree = "<group>"; };
 		047812B6216F2148007A7162 /* SHMacroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMacroViewController.xib; sourceTree = "<group>"; };
 		0478FF8020C8D06900DCB148 /* SHDeviceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDeviceViewCell.xib; sourceTree = "<group>"; };
+		047A86C421EC17B6007A44CE /* SHScheduleCommandTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHScheduleCommandTools.swift; sourceTree = "<group>"; };
 		047CF9FB2187EEF8002CAE8A /* SHDeviceArgsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDeviceArgsViewController.xib; sourceTree = "<group>"; };
 		047CF9FC2187EEF8002CAE8A /* SHDeviceArgsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHDeviceArgsViewController.swift; sourceTree = "<group>"; };
 		047CF9FF2187EEF8002CAE8A /* SHDeviceArgsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDeviceArgsViewCell.xib; sourceTree = "<group>"; };
@@ -1248,6 +1250,7 @@
 			children = (
 				044269B121CA2FB200A7A88B /* SHSchedualExecuteTools.h */,
 				044269B021CA2FB100A7A88B /* SHSchedualExecuteTools.m */,
+				047A86C421EC17B6007A44CE /* SHScheduleCommandTools.swift */,
 			);
 			path = schedualExectute;
 			sourceTree = "<group>";
@@ -4650,6 +4653,7 @@
 				0498351221C3AC0E00C57223 /* SHZoneNineInOneControlPadView.swift in Sources */,
 				04CF6F4A2193E0D70052A8A9 /* SHSecurityZone.swift in Sources */,
 				04D49FDC21B0CF230054E226 /* SHZoneDVDControlViewController.swift in Sources */,
+				047A86C521EC17B6007A44CE /* SHScheduleCommandTools.swift in Sources */,
 				0453EA3B21A67C8400F666EF /* JHRadarChart.m in Sources */,
 				047CFA0F2187FFBE002CAE8A /* SHDmxChannelSettingViewController.swift in Sources */,
 				8B4058D02047D5E600DA03FB /* TYCustomAlertView.m in Sources */,
