@@ -252,8 +252,6 @@ extern NSString *dataBaseName;
 /// 获取所有的灯光
 - (NSMutableArray *)getAllCentralLights;
 
-
-
 /// 搜索所有的空调
 - (NSMutableArray *)getAllCentralHVACs;
 
@@ -600,6 +598,9 @@ extern NSString *dataBaseName;
 
 /// 查询所有的区域
 - (NSMutableArray *)getAllZones;
+
+/// 查询指定region的所有区域
+- (NSMutableArray *)getZonesForRegion:(NSUInteger)regionID;
 
 /// 获得指示类型的区域
 - (NSMutableArray *)getZonesFor:(NSUInteger)deviceType;

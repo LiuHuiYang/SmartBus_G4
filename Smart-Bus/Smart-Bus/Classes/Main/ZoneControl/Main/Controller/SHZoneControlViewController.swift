@@ -120,6 +120,12 @@ extension SHZoneControlViewController {
         zone.zoneID = SHSQLManager.share().getMaxZoneID() + 1
         zone.zoneName = "New Zone"
         zone.zoneIconName = "Demokit"
+        
+        // 为了兼容旧版的App 必须给1
+        if zone.regionID == 0 {
+            zone.regionID = 1
+        }
+    
         SHSQLManager.share().insertNewZone(zone)
         
         let systemViewController = SHAreaSettingViewController()
@@ -373,7 +379,7 @@ extension SHZoneControlViewController {
             }
         }
         
-        guard let zones = (SHSQLManager.share()?.getAllZones() as? [SHZone]) else {
+        guard let zones = (SHSQLManager.share()?.getZonesForRegion(1) as? [SHZone]) else {
             
             return
         }

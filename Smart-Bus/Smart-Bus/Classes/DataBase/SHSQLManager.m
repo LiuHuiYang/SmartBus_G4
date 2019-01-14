@@ -4086,12 +4086,20 @@ const NSUInteger maxIconIDForDataBase = 10;
 /// 插入一个新增加的区域
 - (BOOL)insertNewZone:(SHZone *)zone {
     
-    NSString *zoneSql = [NSString stringWithFormat:@"insert into Zones values(%tu, %tu, '%@', '%@'); ",
-                         zone.regionID,
-                         zone.zoneID,
-                         zone.zoneName,
-                         zone.zoneIconName
-                         ];
+    NSString *zoneSql =
+//    [NSString stringWithFormat:@"insert into Zones values(%tu, %tu, '%@', '%@'); ",
+//                         zone.regionID,
+//                         zone.zoneID,
+//                         zone.zoneName,
+//                         zone.zoneIconName
+//                         ];
+    
+    [NSString stringWithFormat:
+        @"insert into Zones(regionID,ZoneID, ZoneName, zoneIconName) values(%tu, %tu, '%@', '%@'); ",
+        zone.regionID,
+        zone.zoneID,
+        zone.zoneName,
+        zone.zoneIconName];
     
     return [self executeSql:zoneSql];
 }
@@ -4109,6 +4117,23 @@ const NSUInteger maxIconIDForDataBase = 10;
 - (NSMutableArray *)getAllZones{
     
     NSString *zonesSql = @"select zoneID, ZoneName, zoneIconName from Zones order by zoneID;";
+    
+    NSMutableArray *array = [self selectProprty:zonesSql];
+    
+    NSMutableArray *zones = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [zones addObject:[[SHZone alloc] initWithDict:dict]];
+    }
+    
+    return zones;
+}
+
+/// 查询指定region的所有区域
+- (NSMutableArray *)getZonesForRegion:(NSUInteger)regionID {
+    
+    NSString *zonesSql = [NSString stringWithFormat:@"select zoneID, ZoneName, zoneIconName from Zones where regionID = %tu order by zoneID;", regionID];
     
     NSMutableArray *array = [self selectProprty:zonesSql];
     
@@ -4315,7 +4340,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     // 增加语音控制的字段
 //    [self addSpeechNameForDevices];
 }
-
 
 
 // MARK: - 公共封装部分
