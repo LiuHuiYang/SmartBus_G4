@@ -98,10 +98,8 @@ class SHScheduleViewCell: UITableViewCell {
         schedual?.enabledSchedule = validitySwitch.isOn
         
         SHSQLManager.share()?.updateSchedule(schedual)
-        
-        SHSchedualExecuteTools.share().updateSchduals()
+          SHSchedualExecuteTools.shared.updateSchduals()
     }
-
     
     override func awakeFromNib() {
         super.awakeFromNib()

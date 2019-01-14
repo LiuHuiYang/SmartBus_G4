@@ -435,7 +435,8 @@ extension SHSchedualEditViewController {
                 SHSQLManager.share()?.insertNewSchedualeCommand(command)
             }
         }
-        SHSchedualExecuteTools.share()?.updateSchduals()
+        
+        SHSchedualExecuteTools.shared.updateSchduals()
         
         NotificationCenter.default.post(
             name: NSNotification.Name.SHSchedualSaveData,

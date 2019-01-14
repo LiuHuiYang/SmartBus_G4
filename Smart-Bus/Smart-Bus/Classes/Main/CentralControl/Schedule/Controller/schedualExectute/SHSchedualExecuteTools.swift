@@ -1,16 +1,39 @@
 //
-//  SHScheduleCommandTools.swift
+//  SHSchedualExecuteTools.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2019/1/14.
-//  Copyright © 2019 SmartHome. All rights reserved.
+//  Created by Mark Liu on 2017/12/4.
+//  Copyright © 2017年 SmartHome. All rights reserved.
 //
 
 import UIKit
 
-/// 计划工具类
-@objcMembers class SHScheduleCommandTools: NSObject {
+/// 后台任务标示
+@objc enum SHApplicationBackgroundTask: UInt8 {
     
+    case unknow // 未知
+    case open   // 打开
+    case close  // 关闭
+}
+
+/// 计划工具类
+@objcMembers class SHSchedualExecuteTools: NSObject {
+    
+    /// 单例
+    static let shared = SHSchedualExecuteTools()
+    
+    /// 可执行的schedual
+    private lazy var schedulesActivate = [SHSchedual]()
+    
+    /// 定时器
+    private var schedualTimer: Timer?
+    
+    deinit {
+        schedualTimer?.invalidate()
+        schedualTimer = nil
+        
+        NotificationCenter.default.removeObserver(self)
+    }
     
     /// 执行计划命令
     ///
@@ -75,8 +98,191 @@ import UIKit
 }
 
 
+extension SHSchedualExecuteTools {
+    
+    func initSchedualTimer() {
+        
+        updateSchduals()
+        
+        let timer =
+            Timer.scheduledTimer(
+                timeInterval: 1.0,
+                target: self,
+                selector:
+                    #selector(prepareTimerForSchedual),
+                userInfo: nil,
+                repeats: true
+        )
+        
+        RunLoop.current.add(timer, forMode: .common)
+        
+        schedualTimer = timer
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(recvieTimeForSchedualNotification),
+            name: NSNotification.Name.SHSchedualPrepareExecute,
+            object: nil
+        )
+    }
+    
+    
+    /// 接收到了执行计划的时间通知
+    @objc private func recvieTimeForSchedualNotification() {
+        
+        guard let currentComponents =
+            NSDate.getCurrentDateComponents()
+            else {
+                
+            return
+        }
+        
+        for schedule in schedulesActivate {
+            
+            switch schedule.frequencyID {
+                
+            case .oneTime:
+                
+                guard let executeComponents =
+                    NSDate.getDateComponents(
+                            forDateFormatString: "MM-dd HH:mm",
+                        byDateString:
+                            schedule.executionDate
+                    ) else {
+                        
+                        return
+                }
+                
+                if executeComponents.month ==
+                    currentComponents.month &&
+                    executeComponents.day ==
+                    currentComponents.day &&
+                    executeComponents.hour ==
+                    currentComponents.hour &&
+                    executeComponents.minute ==
+                    currentComponents.minute {
+                    
+                    SHSchedualExecuteTools.executeSchdule(schedule)
+                }
+                
+            case .dayily:
+                guard let executeComponents =
+                    NSDate.getDateComponents(
+                        forDateFormatString: "HH:mm",
+                        byDateString:
+                        schedule.executionDate
+                    ) else {
+                        
+                        return
+                }
+                
+                if  executeComponents.hour ==
+                    currentComponents.hour &&
+                    executeComponents.minute ==
+                    currentComponents.minute {
+                    
+                    SHSchedualExecuteTools.executeSchdule(schedule)
+                }
+                
+            case .weekly:
+                guard let weekday = currentComponents.weekday,
+                let hour = currentComponents.hour,
+                let minute = currentComponents.minute else {
+                    return
+                }
+                
+                switch weekday {
+                    
+                case SHSchdualWeek.sunday.rawValue:
+                    
+                    if !schedule.withSunday {
+                        return
+                    }
+                    
+                case SHSchdualWeek.monday.rawValue:
+                    
+                    if !schedule.withMonday {
+                        return
+                    }
+                    
+                case SHSchdualWeek.tuesday.rawValue:
+                    
+                    if !schedule.withTuesday {
+                        return
+                    }
+                    
+                case SHSchdualWeek.wednesday.rawValue:
+                    
+                    if !schedule.withWednesday {
+                        return
+                    }
+                    
+                case SHSchdualWeek.thursday.rawValue:
+                    
+                    if !schedule.withThursday {
+                        return
+                    }
+                    
+                case SHSchdualWeek.friday.rawValue:
+                    
+                    if !schedule.withFriday {
+                        return
+                    }
+                    
+                case SHSchdualWeek.saturday.rawValue:
+                    
+                    if !schedule.withSaturday {
+                        return
+                    }
+                default:
+                    break
+                }
+               
+                if hour == schedule.executionHours &&
+                    minute == schedule.executionMins {
+                    SHSchedualExecuteTools.executeSchdule(schedule)
+                }
+            }
+        }
+    }
+    
+    
+    /// 每分钟发出一次通知
+    @objc private func prepareTimerForSchedual() {
+        
+        if NSDate.getCurrentDateComponents()?.second == 0 {
+           
+            NotificationCenter.default.post(
+                name: NSNotification.Name.SHSchedualPrepareExecute,
+                object: nil
+            )
+        }
+    }
+    
+    /// 更新新执行计划
+    func updateSchduals() {
+        
+        guard let scheduals = SHSQLManager.share()?.getAllSchdule() as? [SHSchedual] else {
+            return
+        }
+        
+        schedulesActivate.removeAll()
+        
+        for schedual in scheduals {
+            
+            if schedual.enabledSchedule &&
+                !schedulesActivate.contains(schedual) {
+                
+                schedulesActivate.append(schedual)
+            }
+        }
+        
+    }
+}
+
+
 // MARK: - 执行各项子命令
-extension SHScheduleCommandTools {
+extension SHSchedualExecuteTools {
     
     
     /// 执行音乐

@@ -205,8 +205,8 @@ extension SHSchedualViewController: UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             SHSQLManager.share()?.deleteScheduale(schedual)
+              SHSchedualExecuteTools.shared.updateSchduals()
             
-            SHSchedualExecuteTools.share().updateSchduals()
         }
     }
 }

@@ -29,7 +29,8 @@
     [SHSQLManager shareSQLManager];
    
     // 3. 初始化计划执行的定时器
-    [[SHSchedualExecuteTools shareSchedualExecuteTools] initSchedualTimer];
+    [[SHSchedualExecuteTools shared] initSchedualTimer];
+     
     
     // 启动界面
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
