@@ -4304,8 +4304,9 @@ const NSUInteger maxIconIDForDataBase = 10;
         }
     }
   
+    // FIXME: - 以后增加
     // 增加多区域支持
-    [self addRegions];
+//    [self addRegions];
     
     // 增加语音控制的字段
 //    [self addSpeechNameForDevices];
