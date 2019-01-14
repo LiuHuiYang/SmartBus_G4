@@ -19,10 +19,12 @@ import UIKit
         // 设置背景
 //        tabBar.backgroundImage =
 //            UIImage(named: "tabBarbackground")
-
+       
         // 解决 iOS 12.1 开始， pop返回时 tabBar 子控件抖动
         tabBar.isTranslucent = false
-        tabBar.barTintColor  = UIColor(hexString: "624731", alpha: 1.0)
+        tabBar.barTintColor =
+            UIColor(hex: 0x5c493d, alpha: 1.0)
+       
     }
 }
 

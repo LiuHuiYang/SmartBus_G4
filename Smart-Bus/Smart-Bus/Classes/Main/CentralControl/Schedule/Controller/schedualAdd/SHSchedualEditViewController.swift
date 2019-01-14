@@ -426,8 +426,7 @@ extension SHSchedualEditViewController {
             SHSQLManager.share()?.updateSchedule(plan)
         }
         
-        print("====> 保存所有的命令集合 ==== ")
-        print(plan.commands)
+        print(" ===> 保存命令集合 === \(plan.commands) ")
         
         if let commands = plan.commands as? [SHSchedualCommand] {
             
@@ -447,7 +446,6 @@ extension SHSchedualEditViewController {
             animated: true
         )
     }
-
 }
 
 
