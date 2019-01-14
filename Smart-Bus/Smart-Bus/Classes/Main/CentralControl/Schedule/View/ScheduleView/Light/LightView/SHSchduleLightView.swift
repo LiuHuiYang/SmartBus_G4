@@ -73,8 +73,7 @@ class SHSchduleLightView: UIView, loadNibView {
                     }
                 }
             }
-            
-            
+             
             lightsListView.reloadData()
         }
     }

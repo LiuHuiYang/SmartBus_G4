@@ -10,7 +10,10 @@ import UIKit
 
 @objcMembers class SHZone: NSObject {
     
-    /// 区域ID
+    /// 地区ID(大分组)
+    var regionID: UInt = 0
+    
+    /// 区域ID(小分组，类似于房间编号)
     var zoneID: UInt = 0
     
     /// 区域名称

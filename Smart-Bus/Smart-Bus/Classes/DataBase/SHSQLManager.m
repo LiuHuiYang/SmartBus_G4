@@ -3807,7 +3807,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 /// 根据名称获得图片
 - (SHIcon *)getIcon:(NSString *)iconName {
     
-    NSString *selectSQL = [NSString stringWithFormat:@"select  iconID, iconName, iconData from iconList where iconName = '%@';", iconName];
+    NSString *selectSQL = [NSString stringWithFormat:@"select iconID, iconName, iconData from iconList where iconName = '%@';", iconName];
     
     return [[SHIcon alloc] initWithDict:[[self selectProprty:selectSQL] lastObject]];
 }
@@ -3908,7 +3908,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 /// 获得指定的zone的详细信息
 - (SHZone *)getZone:(NSUInteger)zoneID {
     
-    NSString *sql = [NSString stringWithFormat:@"select ZoneID, ZoneName, zoneIconName from Zones where ZoneID = %tu", zoneID];
+    NSString *sql = [NSString stringWithFormat:@"select regionID, ZoneID, ZoneName, zoneIconName from Zones where ZoneID = %tu", zoneID];
     
     NSDictionary *dict = [[self selectProprty:sql] lastObject];
     
@@ -4086,7 +4086,12 @@ const NSUInteger maxIconIDForDataBase = 10;
 /// 插入一个新增加的区域
 - (BOOL)insertNewZone:(SHZone *)zone {
     
-    NSString *zoneSql = [NSString stringWithFormat:@"insert into Zones values(%tu, '%@', '%@'); ", zone.zoneID, zone.zoneName, zone.zoneIconName];
+    NSString *zoneSql = [NSString stringWithFormat:@"insert into Zones values(%tu, %tu, '%@', '%@'); ",
+                         zone.regionID,
+                         zone.zoneID,
+                         zone.zoneName,
+                         zone.zoneIconName
+                         ];
     
     return [self executeSql:zoneSql];
 }
@@ -4304,9 +4309,8 @@ const NSUInteger maxIconIDForDataBase = 10;
         }
     }
   
-    // FIXME: - 以后增加
     // 增加多区域支持
-//    [self addRegions];
+    [self addRegions];
     
     // 增加语音控制的字段
 //    [self addSpeechNameForDevices];

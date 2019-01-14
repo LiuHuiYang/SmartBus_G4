@@ -426,7 +426,7 @@ extension SHSchedualEditViewController {
             SHSQLManager.share()?.updateSchedule(plan)
         }
         
-        print(" ===> 保存命令集合 === \(plan.commands) ")
+        print(" ===> 保存命令集合 === \(plan.commands.count) ")
         
         if let commands = plan.commands as? [SHSchedualCommand] {
             
