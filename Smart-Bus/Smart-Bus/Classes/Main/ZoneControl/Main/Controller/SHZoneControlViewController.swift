@@ -17,6 +17,9 @@ private let deviceCellReuseIdentifier = "SHDeviceViewCell"
 
 class SHZoneControlViewController: SHViewController {
     
+    /// 区域ID 临时填充 , 默认值是1
+    private let regionID: UInt = 1
+    
     /// 所有的区域
     private lazy var allZones = [SHZone]()
     
@@ -120,12 +123,8 @@ extension SHZoneControlViewController {
         zone.zoneID = SHSQLManager.share().getMaxZoneID() + 1
         zone.zoneName = "New Zone"
         zone.zoneIconName = "Demokit"
+        zone.regionID = regionID
         
-        // 为了兼容旧版的App 必须给1
-        if zone.regionID == 0 {
-            zone.regionID = 1
-        }
-    
         SHSQLManager.share().insertNewZone(zone)
         
         let systemViewController = SHAreaSettingViewController()
@@ -379,7 +378,7 @@ extension SHZoneControlViewController {
             }
         }
         
-        guard let zones = (SHSQLManager.share()?.getZonesForRegion(1) as? [SHZone]) else {
+        guard let zones = (SHSQLManager.share()?.getZonesForRegion(regionID) as? [SHZone]) else {
             
             return
         }

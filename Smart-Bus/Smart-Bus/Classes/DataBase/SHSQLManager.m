@@ -3368,7 +3368,8 @@ const NSUInteger maxIconIDForDataBase = 10;
     NSString *allZonesAudioSql = [NSString stringWithFormat:
         @"select ID, ZoneID, SubnetID, DeviceID, haveSdCard,    \
         haveFtp, haveRadio, haveAudioIn, havePhone, haveUdisk,  \
-        haveBluetooth, isMiniZAudio, audioName from ZaudioInZone order by ID;"];
+        haveBluetooth, isMiniZAudio, audioName from ZaudioInZone order by ID;"
+    ];
     
     NSArray *array = [self selectProprty:allZonesAudioSql];
     
@@ -4087,19 +4088,12 @@ const NSUInteger maxIconIDForDataBase = 10;
 - (BOOL)insertNewZone:(SHZone *)zone {
     
     NSString *zoneSql =
-//    [NSString stringWithFormat:@"insert into Zones values(%tu, %tu, '%@', '%@'); ",
-//                         zone.regionID,
-//                         zone.zoneID,
-//                         zone.zoneName,
-//                         zone.zoneIconName
-//                         ];
-    
-    [NSString stringWithFormat:
-        @"insert into Zones(regionID,ZoneID, ZoneName, zoneIconName) values(%tu, %tu, '%@', '%@'); ",
-        zone.regionID,
-        zone.zoneID,
-        zone.zoneName,
-        zone.zoneIconName];
+        [NSString stringWithFormat:
+            @"insert into Zones(regionID,ZoneID, ZoneName, zoneIconName) values(%tu, %tu, '%@', '%@'); ",
+            zone.regionID,
+            zone.zoneID,
+            zone.zoneName,
+            zone.zoneIconName];
     
     return [self executeSql:zoneSql];
 }
@@ -4114,7 +4108,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 }
 
 /// 查询所有的区域
-- (NSMutableArray *)getAllZones{
+- (NSMutableArray *)getAllZones {
     
     NSString *zonesSql = @"select zoneID, ZoneName, zoneIconName from Zones order by zoneID;";
     
