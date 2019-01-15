@@ -27,7 +27,7 @@ class SHRegionViewController: SHViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         navigationItem.title = "Sections"
+        navigationItem.title = "Sections"
         
         let addItem =
             UIBarButtonItem(

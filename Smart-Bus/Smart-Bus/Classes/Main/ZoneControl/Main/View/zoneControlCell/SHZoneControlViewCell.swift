@@ -17,20 +17,22 @@ import UIKit
              
             nameLabel.text = region?.regionName
             
+            // 取出图片
             guard let area = region,
-            
-            let iconData =
+                let icon =
                 SHSQLManager.share()?.getIcon(
                     area.regionIconName
-                )?.iconData,
-
-            let image = UIImage(data: iconData) else {
-
-                iconView.image = UIImage(named: "HOME_STATUS_highlighted")
-                
+                ),
+            
+                let image = (icon.iconData == nil) ? UIImage(named: area.regionIconName) : UIImage(data: icon.iconData!)
+                 
+                else {
+                    
+                    iconView.image = UIImage(named: "regionIcon")
+                    
                 return
             }
-
+            
             iconView.image = image
         }
     }
@@ -46,13 +48,16 @@ import UIKit
             
             nameLabel.text = zone.zoneName
             
-            guard let icon = SHSQLManager.share()?.getIcon(zone.zoneIconName) else {
-                return
-            }
-             
-            guard let image = (icon.iconData == nil) ? UIImage(named: zone.zoneIconName ?? "") : UIImage(data: icon.iconData!) else {
+            guard let icon =
+                SHSQLManager.share()?.getIcon(
+                    zone.zoneIconName
+                ),
+                
+                let image = (icon.iconData == nil) ? UIImage(named: zone.zoneIconName ?? "") : UIImage(data: icon.iconData!) else {
+                    
                 iconView.image =
                     UIImage(named: "Demokit")
+                    
                 return
             }
             

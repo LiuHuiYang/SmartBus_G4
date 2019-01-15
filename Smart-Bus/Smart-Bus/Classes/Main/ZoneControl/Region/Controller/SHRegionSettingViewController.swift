@@ -64,7 +64,6 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
                     
                     var image: UIImage?
                     
-                    // 10 就是最大会系统ID
                     if icon.iconID > maxIconIDForDataBase {
                         
                         if icon.iconData != nil {
@@ -304,32 +303,27 @@ extension SHRegionSettingViewController {
         
         // 图片
         guard let area = region,
-            let iconData =
+            let icon =
             SHSQLManager.share()?.getIcon(
                 area.regionIconName
-            )?.iconData,
+            ),
             
-            let image = UIImage(data: iconData)
+            let image = (icon.iconData == nil) ? UIImage(named: area.regionIconName) : UIImage(data: icon.iconData!)
             
             else {
                 
-                let defaultIcon =
-                    UIImage(
-                        named:
-                        "HOME_STATUS_highlighted"
-                )
+                let defaultImage =
+                    UIImage(named: "regionIcon")
                 
-                iconButton.setImage(defaultIcon,
+                iconButton.setImage(defaultImage,
                                     for: .normal
                 )
                 
                 return
         }
-        
+      
         iconButton.setImage(image, for: .normal)
-        
     }
-    
     
     override func viewDidLayoutSubviews() {
         
