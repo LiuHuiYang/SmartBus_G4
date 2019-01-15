@@ -26,17 +26,16 @@ import UIKit
         
         return "zoneID: \(zoneID), zoneName: \(zoneName ?? ""),  zoneIconName: \(zoneIconName ?? "")"
     }
-    
-    
+      
     override init() {
         super.init()
     }
- 
-    init(dict: [String: Any]) {
+    
+    init(dictionary: [String: Any]) {
         
         super.init()
         
-        setValuesForKeys(dict)
+        setValuesForKeys(dictionary)
     }
     
     override func setValue(_ value: Any?, forKey key: String) {

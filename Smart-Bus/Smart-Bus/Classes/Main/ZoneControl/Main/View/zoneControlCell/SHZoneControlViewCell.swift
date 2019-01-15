@@ -10,6 +10,31 @@ import UIKit
 
 @objcMembers class SHZoneControlViewCell: UICollectionViewCell {
     
+    /// 地区分组
+    var region: SHRegion? {
+        
+        didSet {
+             
+            nameLabel.text = region?.regionName
+            
+            guard let area = region,
+            
+            let iconData =
+                SHSQLManager.share()?.getIcon(
+                    area.regionIconName
+                )?.iconData,
+
+            let image = UIImage(data: iconData) else {
+
+                iconView.image = UIImage(named: "HOME_STATUS_highlighted")
+                
+                return
+            }
+
+            iconView.image = image
+        }
+    }
+    
     /// 区域
     var currentZone: SHZone? {
         
@@ -24,8 +49,10 @@ import UIKit
             guard let icon = SHSQLManager.share()?.getIcon(zone.zoneIconName) else {
                 return
             }
-            
+             
             guard let image = (icon.iconData == nil) ? UIImage(named: zone.zoneIconName ?? "") : UIImage(data: icon.iconData!) else {
+                iconView.image =
+                    UIImage(named: "Demokit")
                 return
             }
             

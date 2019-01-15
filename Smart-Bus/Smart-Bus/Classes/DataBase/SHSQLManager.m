@@ -26,8 +26,6 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 @interface SHSQLManager ()
 
-/// 全局操作队列 (方便操作数据移支)
-//@property (nonatomic, strong) FMDatabaseQueue *queue;
 
 @end
 
@@ -3913,7 +3911,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSDictionary *dict = [[self selectProprty:sql] lastObject];
     
-    return [[SHZone alloc] initWithDict:dict];
+    return [[SHZone alloc] initWithDictionary:dict];
 }
 
 /// 查询指定表格中的区域ID
@@ -4089,7 +4087,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *zoneSql =
         [NSString stringWithFormat:
-            @"insert into Zones(regionID,ZoneID, ZoneName, zoneIconName) values(%tu, %tu, '%@', '%@'); ",
+            @"insert into Zones(regionID, ZoneID, ZoneName, zoneIconName) values(%tu, %tu, '%@', '%@'); ",
             zone.regionID,
             zone.zoneID,
             zone.zoneName,
@@ -4118,7 +4116,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     for (NSDictionary *dict in array) {
         
-        [zones addObject:[[SHZone alloc] initWithDict:dict]];
+        [zones addObject:[[SHZone alloc] initWithDictionary:dict]];
     }
     
     return zones;
@@ -4135,7 +4133,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     for (NSDictionary *dict in array) {
         
-        [zones addObject:[[SHZone alloc] initWithDict:dict]];
+        [zones addObject:[[SHZone alloc] initWithDictionary:dict]];
     }
     
     return zones;
@@ -4165,31 +4163,94 @@ const NSUInteger maxIconIDForDataBase = 10;
             continue;
         }
         
-        SHZone *zone = [[SHZone alloc] initWithDict:zoneDict];
+        SHZone *zone = [[SHZone alloc] initWithDictionary:zoneDict];
         [zones addObject: zone];
     }
     
     return zones;
 }
 
-// MARK: - 多地区操作
+// MARK: - 多分组操作
 
-///// 查询所有的区域
-//- (NSMutableArray *)getAllRegions {
-//    
-//    NSString *zonesSql = @"select ID, regionID, regionName, regionIconName from Regions order by regionID;";
-//    
-//    NSMutableArray *array = [self selectProprty:zonesSql];
-//    
-//    NSMutableArray *regionss = [NSMutableArray arrayWithCapacity:array.count];
-//    
-//    for (NSDictionary *dict in array) {
-//        
-//        [regionss addObject:[[SHZone alloc] initWithDict:dict]];
-//    }
-//    
-//    return regionss;
-//}
+/// 更新分组信息
+- (BOOL)updateRegion:(SHRegion *)region {
+    
+    NSString *regionSql =
+    
+    [NSString stringWithFormat:
+        @"update Regions set regionName = '%@', \
+          regionIconName = '%@' \
+          Where regionID = %tu;",
+     
+            region.regionName,
+            region.regionIconName,
+            region.regionID
+     ];
+    
+    return [self executeSql:regionSql];
+}
+
+/// 删除地区
+- (BOOL)deleteRegion:(NSUInteger)regionID {
+    
+    // 查询所有对应的区域
+    NSMutableArray *zones = [self getZonesForRegion:regionID];
+    
+    for (SHZone *zone in zones) {
+        
+        [self deleteZone:zone.zoneID];
+    }
+    
+    // 删除地区
+    NSString *deleteSQL = [NSString stringWithFormat:@"delete from Regions where regionID = %tu;", regionID];
+    
+    return [self executeSql:deleteSQL];
+}
+
+/// 插入一个新增加的区域
+- (BOOL)insertNewRegion:(SHRegion *)region {
+    
+    NSString *regionSql =
+        [NSString stringWithFormat:
+            @"insert into Regions(regionID, regionName, regionIconName) values(%tu, '%@', '%@'); ",
+         
+         region.regionID,
+         region.regionName,
+         region.regionIconName
+     ];
+    
+    return [self executeSql:regionSql];
+}
+
+/// 获得最大的地区ID
+- (NSUInteger)getMaxRegionID {
+    
+    // 获得结果ID
+    id resID = [[[self selectProprty:@"select max(regionID) from Regions"] lastObject] objectForKey:@"max(regionID)"];
+    
+    return (resID == [NSNull null]) ? 0 : [resID integerValue];
+}
+
+
+/// 查询所有的区域
+- (NSMutableArray *)getAllRegions {
+    
+    NSString *zonesSql = @"select regionID, regionName, regionIconName from Regions order by regionID;";
+    
+    NSMutableArray *array = [self selectProprty:zonesSql];
+    
+    NSMutableArray *regions = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+         SHRegion *region =
+            [[SHRegion  alloc] initWithDictionary:dict];
+        
+        [regions addObject:region];
+    }
+    
+    return regions;
+}
 
 /// 增加地区表格
 - (void)addRegions {
@@ -4199,6 +4260,17 @@ const NSUInteger maxIconIDForDataBase = 10;
 
         // 增加字段
         [self executeSql:@"ALTER TABLE Zones ADD regionID INTEGER DEFAULT 1;"];
+    }
+    
+    // 插入一条默认的多地区数据
+    if ([self getAllRegions].count == 0) {
+        
+        // 默认有一个区域
+        SHRegion *region = [[SHRegion alloc] init];
+        region.regionID = 1;
+        region.regionName = @"region";
+        region.regionIconName = @"regionIcon";
+        [self insertNewRegion:region];
     }
 }
 

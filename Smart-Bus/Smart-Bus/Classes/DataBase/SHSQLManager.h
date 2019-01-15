@@ -9,6 +9,7 @@
 /// 数据库的名称
 extern NSString *dataBaseName;
 
+@class SHRegion;
 @class SHZone;
 @class SHSystem;
 @class SHIcon;
@@ -61,6 +62,9 @@ extern NSString *dataBaseName;
 
 
 #import "SHSchedual.h"
+
+// 在数据库中可以iconList直接查询到
+extern const NSUInteger maxIconIDForDataBase;
 
 
 @interface SHSQLManager : NSObject
@@ -605,6 +609,23 @@ extern NSString *dataBaseName;
 /// 获得指示类型的区域
 - (NSMutableArray *)getZonesFor:(NSUInteger)deviceType;
 
+
+// MARK: - 分组多区域操作
+
+/// 更新分组区域信息
+- (BOOL)updateRegion:(SHRegion *)region;
+
+/// 删除分组区域
+- (BOOL)deleteRegion:(NSUInteger)regionID;
+
+/// 插入一个新增加的分组区域
+- (BOOL)insertNewRegion:(SHRegion *)region;
+
+/// 获得最大的分组地区ID
+- (NSUInteger)getMaxRegionID;
+
+/// 查询所有的区域
+- (NSMutableArray *)getAllRegions;
 
 // MARK: - 数据库本身操作相关的API
 

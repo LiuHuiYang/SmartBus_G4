@@ -37,9 +37,16 @@ extension SHMainViewController {
         // 标题数组
         let titleArray: [String] = SHLanguageTools.share()?.getTextFromPlist("MAIN_PAGE", withSubTitle: "MAIN_LABEL") as! Array
         
-        // 区域控制
+//        // 区域控制
+//        setChildViewController(
+//            viewController: SHZoneControlViewController(),
+//            title: titleArray[0],
+//            imageName: "zones_tabBar"
+//        )
+        
+        // 多区域控制
         setChildViewController(
-            viewController: SHZoneControlViewController(),
+            viewController: SHRegionViewController(),
             title: titleArray[0],
             imageName: "zones_tabBar"
         )
@@ -75,7 +82,10 @@ extension SHMainViewController {
     ///   - viewController: 实例化控制器
     ///   - title: 标题
     ///   - imageName: 图片名称
-    private func setChildViewController(viewController: SHViewController, title: String, imageName: String) {
+    private func setChildViewController(
+        viewController: SHViewController,
+        title: String,
+        imageName: String) {
         
 //        viewController.title = title
         

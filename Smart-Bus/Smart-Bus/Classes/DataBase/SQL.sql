@@ -2,14 +2,11 @@
 -- 创建所有的表格
 
 -- 0.创建地区表格
-/*
 CREATE TABLE IF NOT EXISTS Regions (
-    ID              INTEGER PRIMARY KEY AUTOINCREMENT,
     regionID        INTEGER DEFAULT 1 PRIMARY KEY,
     regionName      TEXT,
     regionIconName  TEXT
 );
-*/
 
 -- 1.创建区域表格
 CREATE TABLE IF NOT EXISTS Zones (

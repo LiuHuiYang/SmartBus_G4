@@ -47,7 +47,7 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
 /// 图片按钮点击
 - (IBAction)iconButtonClick {
     
-    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:@"Change Zone Picture ?" message:nil isCustom:YES];
+    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:nil message:@"Change zone picture?" isCustom:YES];
     
     // 图片库中获取
     [alertView addAction:[TYAlertAction actionWithTitle:@"Library" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
@@ -62,7 +62,7 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
             self.currentZone.zoneIconName = icon.iconName;
             
             UIImage *zoneImage;
-            if (icon.iconID > [[SHSQLManager shareSQLManager] getMaxIconIDForSystemIcon]) {
+            if (icon.iconID > maxIconIDForDataBase) {
                 
                 zoneImage = [UIImage imageWithData:icon.iconData];
                 
@@ -139,7 +139,16 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     
-    UIImage *sourceImage = [self.iconButton.imageView circleImageWithImage:[self.iconButton.imageView reSizeImage:info[UIImagePickerControllerOriginalImage] toSize:CGSizeMake(navigationBarHeight * 2, navigationBarHeight * 2)] borderWidth:3.0 borderColor:[UIColor colorWithRed:123/255.0 green:119/255.0 blue:120/255.0 alpha:1.0]];
+    // 尺寸
+    CGSize iconSize =
+        CGSizeMake(navigationBarHeight * 2,
+                   navigationBarHeight * 2
+    );
+    
+    UIImage *sourceImage =
+    [self.iconButton.imageView circleImageWithImage:[self.iconButton.imageView reSizeImage:info[UIImagePickerControllerOriginalImage] toSize: iconSize] borderWidth:3.0 borderColor: [UIColor colorWithHex:0x7b7778 alpha:1.0] ];
+    
+    
     
     // 如果是相机，保存到相册中去
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
@@ -151,7 +160,7 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
     
     SHIcon *icon = [[SHIcon alloc] init];
     icon.iconID = [[SHSQLManager shareSQLManager] getMaxIconID] + 1;
-    icon.iconName = [NSString stringWithFormat:@"zoneConstrol_%lu", (unsigned long)icon.iconID];
+    icon.iconName = [NSString stringWithFormat:@"icon_%tu", icon.iconID];
     icon.iconData = UIImagePNGRepresentation(sourceImage);
     
     [[SHSQLManager shareSQLManager] inserNewIcon:icon];
@@ -267,7 +276,7 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"System Settings";
+    self.navigationItem.title = @"System Setting";
     
     [self.deviceListView registerNib:[UINib nibWithNibName:systemCellReusableIdentifier bundle:nil] forCellReuseIdentifier:systemCellReusableIdentifier];
     
@@ -288,12 +297,6 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
         
         self.nameTextField.font = [UIView suitFontForPad];
     }
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 // MARK: - getter && setter
