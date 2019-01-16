@@ -61,7 +61,7 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
                         
                         return
                     }
-                    
+                     
                     var image: UIImage?
                     
                     if icon.iconID > maxIconIDForDataBase {
@@ -74,7 +74,10 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
                         
                     } else {
                         
-                        image = UIImage(named: area.regionIconName)
+                        if icon.iconName != nil {
+                            
+                             image = UIImage(named: icon.iconName!)
+                        }
                     }
                     
                     if image == nil ||
@@ -90,6 +93,8 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
                     
                     area.regionIconName = icon.iconName!
                     SHSQLManager.share()?.update(area)
+                    
+                    
             }
             
             let navigationIconViewController =
