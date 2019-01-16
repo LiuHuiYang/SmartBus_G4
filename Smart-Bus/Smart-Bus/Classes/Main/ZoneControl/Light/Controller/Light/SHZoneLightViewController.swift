@@ -25,7 +25,6 @@ private let zoneLightCellIReusabledentifier =
     
     /// 底部约束
     @IBOutlet weak var listViewBottomConstraint: NSLayoutConstraint!
-
 }
 
 // MARK: - 设备状态

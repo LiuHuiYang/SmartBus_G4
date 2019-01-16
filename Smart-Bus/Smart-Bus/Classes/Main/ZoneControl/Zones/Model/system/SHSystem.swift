@@ -43,6 +43,10 @@ import UIKit
     case temperatureSensor
     
     case dmx
+    
+    case sceneControl
+    
+    case otherControl
 }
 
 @objcMembers class SHSystem: NSObject {

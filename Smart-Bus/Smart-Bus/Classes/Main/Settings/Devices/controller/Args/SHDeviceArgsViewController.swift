@@ -11,7 +11,7 @@ import UIKit
 /// cell重标标示符
 let deviceArgsCellReuseIdentifier = "SHDeviceArgsViewCell"
 
-@objcMembers class SHDeviceArgsViewController: SHViewController {
+class SHDeviceArgsViewController: SHViewController {
     
     // MARK: - 不同类型设备
     

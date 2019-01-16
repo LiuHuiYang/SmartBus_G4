@@ -43,11 +43,14 @@ extern NSString *dataBaseName;
 @class SHFloorHeating;
 @class SHNineInOne;
 @class SHDryContact;
+@class SHSceneControl;
 
-@class SHSecurityZone;
+
 
 @class SHMacro;
 @class SHMacroCommand;
+
+@class SHSecurityZone;
 
 @class SHSchedualCommand;
 
@@ -56,6 +59,8 @@ extern NSString *dataBaseName;
 @class SHCentralHVAC;
 
 @class SHCurrentTransformer;
+
+
 
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>

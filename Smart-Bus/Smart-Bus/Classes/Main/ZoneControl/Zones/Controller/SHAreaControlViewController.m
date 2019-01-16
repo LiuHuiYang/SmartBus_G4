@@ -8,8 +8,6 @@
 
 #import "SHAreaControlViewController.h"
 #import "SHZoneAudioPlayControlViewController.h"
-
-#import "SHSystemDetailViewController.h"
 #import "SHAreaSettingViewController.h"
  
 @interface SHAreaControlViewController ()
@@ -164,12 +162,17 @@
     } else if ([self.selectedViewController isKindOfClass:[SHZoneTemperatureSensorViewController class]]){
         
         deviceType = SHSystemDeviceTypeTemperatureSensor;
+    
+        // scene控制
+    } else if ([self.selectedViewController isKindOfClass:[SHSceneControlViewController class]]){
+        
+        deviceType = SHSystemDeviceTypeSceneControl;
     }
     
     // 进入设置页面
      SHSystemDetailViewController *systemDetailViewController = [[SHSystemDetailViewController alloc] init];
     
-    systemDetailViewController.zone = [self.selectedViewController currentZone];
+    systemDetailViewController.currentZone = [self.selectedViewController currentZone];
   
     systemDetailViewController.systemType = deviceType;
     
@@ -216,10 +219,6 @@
     [self setUpNavigationBar];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-   
-}
 
 /// 初始化控制器时设置 Zone
 - (instancetype)initWithZone:(SHZone *)zone {
@@ -517,6 +516,30 @@
                 [self.deviceTypeNames addObject:@"mdmx"];
                 
                 [self addChildViewController:dmx];
+            }
+                break;
+                
+            case SHSystemDeviceTypeSceneControl: {
+                
+                SHSceneControlViewController *sceneController = [[SHSceneControlViewController alloc] init];
+                
+                sceneController.currentZone = self.currentZone;
+                
+                [self.deviceTypeNames addObject:@"nscene"];
+                
+                [self addChildViewController:sceneController];
+            }
+                break;
+                
+            case SHSystemDeviceTypeOtherControl: {
+               
+                SHSceneControlViewController *sceneController = [[SHSceneControlViewController alloc] init];
+                
+                sceneController.currentZone = self.currentZone;
+                
+                [self.deviceTypeNames addObject:@"pother"];
+                
+                [self addChildViewController:sceneController];
             }
                 break;
                 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSceneControlViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="listView" destination="WBF-wU-yaD" id="42u-sX-RS4"/>
+                <outlet property="listViewBottomConstraint" destination="vtc-Na-GCK" id="utz-op-6EP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="2ew-rl-x6d">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WBF-wU-yaD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="F9b-7d-8lJ"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2ew-rl-x6d" secondAttribute="trailing" id="2kh-OW-yGL"/>
+                <constraint firstAttribute="bottom" secondItem="2ew-rl-x6d" secondAttribute="bottom" id="3P6-Ce-CRn"/>
+                <constraint firstItem="2ew-rl-x6d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ezq-bM-OcT"/>
+                <constraint firstItem="2ew-rl-x6d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NZ7-QH-5VX"/>
+                <constraint firstItem="WBF-wU-yaD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ule-tn-ctC"/>
+                <constraint firstAttribute="trailing" secondItem="WBF-wU-yaD" secondAttribute="trailing" id="p2L-sD-9cM"/>
+                <constraint firstItem="WBF-wU-yaD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pSC-ce-e86"/>
+                <constraint firstAttribute="bottom" secondItem="WBF-wU-yaD" secondAttribute="bottom" constant="49" id="vtc-Na-GCK"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

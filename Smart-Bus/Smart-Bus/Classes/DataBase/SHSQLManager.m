@@ -31,6 +31,45 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 @implementation SHSQLManager
 
+// MARK: - 其它(自定义) 控制
+
+// 增加其它控制
+- (BOOL)addOtherControl {
+    
+    NSString *selectSQL = [NSString stringWithFormat:@"select Distinct SystemID from systemDefnition where SystemID = %tu;", SHSystemDeviceTypeOtherControl];
+    
+    // 如果存在
+    if ([[self selectProprty:selectSQL] count]) {
+        
+        return YES;
+    }
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into systemDefnition (SystemID, SystemName) values(%tu, '%@');", SHSystemDeviceTypeOtherControl, @"Other Control"];
+    
+    return [self executeSql:insertSQL];
+}
+
+// MARK: - Scene 控制
+
+// 增加Scene控制
+- (BOOL)addSceneControl {
+    
+    NSString *selectSQL = [NSString stringWithFormat:@"select Distinct SystemID from systemDefnition where SystemID = %tu;", SHSystemDeviceTypeSceneControl];
+    
+    // 如果存在
+    if ([[self selectProprty:selectSQL] count]) {
+        
+        return YES;
+    }
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into systemDefnition (SystemID, SystemName) values(%tu, '%@');", SHSystemDeviceTypeSceneControl, @"Scene Control"];
+    
+    return [self executeSql:insertSQL];
+}
+
+
+
+
 // MARK: - DMX
 
 
@@ -4402,6 +4441,12 @@ const NSUInteger maxIconIDForDataBase = 10;
   
     // 增加多区域支持
     [self addRegions];
+    
+    // 增加Scene控制
+    [self addSceneControl];
+    
+    // 增加其它控制
+    [self addOtherControl];
     
     // 增加语音控制的字段
 //    [self addSpeechNameForDevices];

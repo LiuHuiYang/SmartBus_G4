@@ -131,7 +131,7 @@ import UIKit
     var id: Int = 0
     
     /// 区域ID
-    var zoneID: Int = 0
+    var zoneID: UInt = 0
     
     /// 区域子网ID
     var subnetID: UInt8 = 0

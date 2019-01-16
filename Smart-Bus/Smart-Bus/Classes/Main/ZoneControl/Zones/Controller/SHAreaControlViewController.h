@@ -8,7 +8,6 @@
 
 
 @interface SHAreaControlViewController : SHTabBarController
-
  
 /// 通过指定的区域进行初始化控制器
 - (instancetype)initWithZone:(SHZone *)zone;

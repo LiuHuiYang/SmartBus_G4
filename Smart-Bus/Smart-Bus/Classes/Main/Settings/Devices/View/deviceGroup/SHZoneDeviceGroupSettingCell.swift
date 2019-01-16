@@ -11,7 +11,7 @@ import UIKit
 /// cell重用标示符
 let deviceGroupSettingCellReuseIdentifier = "SHZoneDeviceGroupSettingCell"
 
-@objcMembers class SHZoneDeviceGroupSettingCell: UITableViewCell {
+class SHZoneDeviceGroupSettingCell: UITableViewCell {
     
     /// 设备名称
     var deviceName: String? {
