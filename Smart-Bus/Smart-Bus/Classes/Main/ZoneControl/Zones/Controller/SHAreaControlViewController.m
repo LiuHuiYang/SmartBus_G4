@@ -50,7 +50,6 @@
         return;
     }
     
-    NSString *deviceName = @"";
     SHSystemDeviceType deviceType = 0;
     
     /// 列表类
@@ -62,63 +61,54 @@
             
             case SHSystemDeviceTypeHvac: {
                 
-                deviceName = @"HVAC";
                 deviceType = SHSystemDeviceTypeHvac;
             }
                 break;
                 
             case SHSystemDeviceTypeAudio: {
                 
-                deviceName = @"Audio";
                 deviceType = SHSystemDeviceTypeAudio;
             }
                 break;
                 
             case SHSystemDeviceTypeFloorHeating: {
                 
-                deviceName = @"FloorHeating";
                 deviceType = SHSystemDeviceTypeFloorHeating;
             }
                 break;
                 
             case SHSystemDeviceTypeNineInOne: {
                 
-                deviceName = @"NineInOne";
                 deviceType = SHSystemDeviceTypeNineInOne;
             }
                 break;
                 
             case SHSystemDeviceTypeTv: {
                 
-                deviceName = @"TV";
                 deviceType = SHSystemDeviceTypeTv;
             }
                 break;
                 
             case SHSystemDeviceTypeDvd: {
                 
-                deviceName = @"DVD";
                 deviceType = SHSystemDeviceTypeDvd;
             }
                 break;
                 
             case SHSystemDeviceTypeSat: {
                 
-                deviceName = @"Satellite TV";
                 deviceType = SHSystemDeviceTypeSat;
             }
                 break;
                 
             case SHSystemDeviceTypeAppletv: {
                 
-                deviceName = @"AppleTV";
                 deviceType = SHSystemDeviceTypeAppletv;
             }
                 break;
                 
             case SHSystemDeviceTypeProjector: {
                 
-                deviceName = @"Projector";
                 deviceType = SHSystemDeviceTypeProjector;
             }
                 break;
@@ -142,20 +132,15 @@
         // 灯泡列表
     } else if ([self.selectedViewController isKindOfClass:[SHZoneLightViewController class]]){
         
-        deviceName = @"Light";
         deviceType = SHSystemDeviceTypeLight;
     
         // 窗帘
     } else if ([self.selectedViewController isKindOfClass:[SHZoneShadeViewController class]]){
         
-        deviceName = @"Shade";
         deviceType = SHSystemDeviceTypeShade;
     
         // Mood
-    } else if ([self.selectedViewController isKindOfClass:[SHZoneMoodViewController class]]){
-    
-//        deviceName = @"Mood Settings";
-//        deviceType = SHSystemDeviceTypeMood;
+    } else if ([self.selectedViewController isKindOfClass:[SHZoneMoodViewController class]]){ 
         
         SHZoneControlEditMoodViewController *editMoodController = [[SHZoneControlEditMoodViewController alloc] init];
         
@@ -167,20 +152,17 @@
     
         // Fan
     } else if ([self.selectedViewController isKindOfClass:[SHZoneFanViewController class]]){
-        
-        deviceName = @"Fan";
+     
         deviceType = SHSystemDeviceTypeFan;
      
         // 干节点
     } else if ([self.selectedViewController isKindOfClass:[SHZoneDryContactViewController class]]){
-        
-        deviceName = @"DryContact";
+
         deviceType = SHSystemDeviceTypeDryContact;
        
         // 温度传感器
     } else if ([self.selectedViewController isKindOfClass:[SHZoneTemperatureSensorViewController class]]){
         
-        deviceName = @"TemperatureSensor";
         deviceType = SHSystemDeviceTypeTemperatureSensor;
     }
     
@@ -188,7 +170,7 @@
      SHSystemDetailViewController *systemDetailViewController = [[SHSystemDetailViewController alloc] init];
     
     systemDetailViewController.zone = [self.selectedViewController currentZone];
-    systemDetailViewController.deviceName = deviceName;
+  
     systemDetailViewController.systemType = deviceType;
     
     [self.navigationController pushViewController:systemDetailViewController animated:YES];

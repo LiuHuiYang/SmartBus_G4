@@ -92,7 +92,7 @@ let deviceArgsCellReuseIdentifier = "SHDeviceArgsViewCell"
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Devices Setting"
+        navigationItem.title = "Parameters Setting"
 
         detailListView.rowHeight = SHDeviceArgsViewCell.rowHeight
         

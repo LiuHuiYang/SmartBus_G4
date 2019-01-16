@@ -26,7 +26,7 @@ static NSString *deviceGroupSettingCellReuseIdentifier = @"SHZoneDeviceGroupSett
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = self.deviceName;
+    self.navigationItem.title = @"Devices Setting";
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"addDevice_navigationbar" hightlightedImageName:@"addDevice_navigationbar" addTarget:self action:@selector(addNewDevices) isLeft:NO];
     
@@ -286,7 +286,8 @@ static NSString *deviceGroupSettingCellReuseIdentifier = @"SHZoneDeviceGroupSett
     [self searchDevices];
     
     if (!self.allSameTypeDevices.count) {
-        [SVProgressHUD showInfoWithStatus:@"No Devices"];
+        
+        [SVProgressHUD showInfoWithStatus:SHLanguageText.noData];
     }
     
     [self.allDevicesListView reloadData];

@@ -16,7 +16,4 @@
 /// 系统ID
 @property (assign, nonatomic) SHSystemDeviceType systemType;
 
-/// 设备名称
-@property (copy, nonatomic) NSString *deviceName;
-
 @end

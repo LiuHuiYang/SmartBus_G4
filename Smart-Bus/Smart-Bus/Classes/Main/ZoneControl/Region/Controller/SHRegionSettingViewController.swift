@@ -27,11 +27,6 @@ class SHRegionSettingViewController: SHViewController {
     
     /// 名称
     @IBOutlet weak var nameTextField: UITextField!
-
-    
-     
-
-
 }
 
 
@@ -61,7 +56,7 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
                         
                         return
                     }
-                     
+                    
                     var image: UIImage?
                     
                     if icon.iconID > maxIconIDForDataBase {
@@ -93,8 +88,6 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
                     
                     area.regionIconName = icon.iconName!
                     SHSQLManager.share()?.update(area)
-                    
-                    
             }
             
             let navigationIconViewController =
