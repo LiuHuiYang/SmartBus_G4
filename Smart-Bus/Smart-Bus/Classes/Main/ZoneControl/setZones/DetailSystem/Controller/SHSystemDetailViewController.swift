@@ -8,10 +8,6 @@
 
 import UIKit
 
-/// cell重用标示符
-private let zonedeviceGroupSettingCellReuseIdentifier = "SHZoneDeviceGroupSettingCell"
-
-
 @objcMembers class SHSystemDetailViewController: SHViewController {
 
     /// 区域模型
@@ -410,8 +406,7 @@ extension SHSystemDetailViewController: UITableViewDataSource {
         
         let cell =
             tableView.dequeueReusableCell(
-                withIdentifier:
-                zonedeviceGroupSettingCellReuseIdentifier,
+                withIdentifier:  deviceGroupSettingCellReuseIdentifier,
                 for: indexPath
         ) as! SHZoneDeviceGroupSettingCell
         
@@ -641,14 +636,12 @@ extension SHSystemDetailViewController {
         
         allDevicesListView.register(
             UINib(nibName:
-                zonedeviceGroupSettingCellReuseIdentifier,
+                deviceGroupSettingCellReuseIdentifier,
                   bundle: nil),
             forCellReuseIdentifier:
-                zonedeviceGroupSettingCellReuseIdentifier
+                deviceGroupSettingCellReuseIdentifier
         )
     }
-    
-  
 }
 
 
