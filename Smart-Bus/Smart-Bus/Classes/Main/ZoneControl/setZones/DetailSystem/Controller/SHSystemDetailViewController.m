@@ -325,7 +325,6 @@ static NSString *deviceGroupSettingCellReuseIdentifier = @"SHZoneDeviceGroupSett
         
         case SHSystemDeviceTypeMood: {
             
-//            self.allSameTypeDevices = [[SHSQLManager shareSQLManager] getAllMoodFor:self.zone.zoneID];
         }
             break;
             
