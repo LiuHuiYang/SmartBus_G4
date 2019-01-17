@@ -39,17 +39,50 @@ class SHSceneControlViewCell: UITableViewCell {
     /// 停止执行按钮
     @IBOutlet weak var stopButton: UIButton!
     
+    /// 图片的宽度
+    @IBOutlet weak var iconViewWidthConstraint: NSLayoutConstraint!
+    
+    /// 图片的高度
+    @IBOutlet weak var iconViewHeightConstraint: NSLayoutConstraint!
+    
+    /// 初始化
     override func awakeFromNib() {
         super.awakeFromNib()
         
         backgroundColor = UIColor.red
         selectionStyle = .none
         
+        runButton.setTitle(SHLanguageText.on,
+                           for: .normal
+        )
+        
+        stopButton.setTitle(SHLanguageText.off,
+                            for: .normal
+        )
+        
         runButton.setRoundedRectangleBorder()
         stopButton.setRoundedRectangleBorder()
         
         if UIDevice.is_iPad() {
-            nameLabel.font = UIView.suitFontForPad()
+            
+            let font = UIView.suitFontForPad()
+            
+            nameLabel.font = font
+            runButton.titleLabel?.font = font
+            stopButton.titleLabel?.font = font
+        }
+    }
+    
+    /// 布局
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if UIDevice.is_iPad() {
+            
+            iconViewWidthConstraint.constant = navigationBarHeight * 2
+            
+            iconViewHeightConstraint.constant =
+                navigationBarHeight * 2
         }
     }
 

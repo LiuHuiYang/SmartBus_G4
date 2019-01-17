@@ -13,7 +13,11 @@ class SHNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationBar.setBackgroundImage(UIImage(named: "navigationbarbackground"), for: .default)
+        navigationBar.setBackgroundImage(
+            UIImage(
+                named: "navigationbarbackground"),
+                for: .default
+        )
         
         navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: (UIDevice.is_iPad() ? UIView.suitFontForPad() : UIFont.boldSystemFont(ofSize: 20)),
