@@ -44,7 +44,7 @@ extern NSString *dataBaseName;
 @class SHNineInOne;
 @class SHDryContact;
 @class SHScene;
-
+@class SHSequence;
 
 
 @class SHMacro;
@@ -80,6 +80,23 @@ extern const NSUInteger maxIconIDForDataBase;
 @property (nonatomic, strong) FMDatabaseQueue *queue;
 
 // MARK: - 操作方法
+
+// MARK: - Sequence Control
+
+/// 增加一个新的Sequence
+- (BOOL)insertNewSequence:(SHSequence *)sequence;
+
+/// 更新当前指定Sequence的数据
+- (void)updateSequenceInZone:(SHSequence *)sequence;
+
+/// 删除当前的 Sequence
+- (BOOL)deleteSequenceInZone:(SHSequence *)sequence;
+
+/// 查询当前区域中的所有Sequence
+- (NSMutableArray *)getSequenceForZone:(NSUInteger)zoneID;
+
+/// 获得当前区域中的最大的SequenceID
+- (NSUInteger)getMaxSequenceIDForZone:(NSUInteger)zoneID;
 
 // MARK: - Scene Control
 

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SHSequenceControlViewCell" rowHeight="83" id="KGk-i7-Jjw" customClass="SHSequenceControlViewCell" customModule="Smart_Bus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="82.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCD-wO-wVz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="82.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cellline" translatesAutoresizingMaskIntoConstraints="NO" id="PmK-Ab-8jo">
+                                <rect key="frame" x="0.0" y="100.5" width="640" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scene" translatesAutoresizingMaskIntoConstraints="NO" id="Xqj-FR-tJy">
+                                <rect key="frame" x="99" y="9.5" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Q93-qc-l9f"/>
+                                    <constraint firstAttribute="height" constant="64" id="WjG-vG-3W4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scene100" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X72-OE-OLJ">
+                                <rect key="frame" x="15" y="19.5" width="64" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="fiW-Ov-bkC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOd-bg-t4C">
+                                <rect key="frame" x="180" y="19" width="45" height="44.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="run">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.92549019610000005" green="0.50980392159999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="runButtonClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tQD-AY-OuT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agO-9C-bvy">
+                                <rect key="frame" x="255" y="19" width="45" height="44.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="stop">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.92549019610000005" green="0.50980392159999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopButtonClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HZL-nM-Nwi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vOd-bg-t4C" firstAttribute="width" secondItem="Xqj-FR-tJy" secondAttribute="width" multiplier="0.7" id="FyT-hJ-Ned"/>
+                            <constraint firstItem="agO-9C-bvy" firstAttribute="centerY" secondItem="vOd-bg-t4C" secondAttribute="centerY" id="IQf-ES-FOb"/>
+                            <constraint firstItem="X72-OE-OLJ" firstAttribute="centerY" secondItem="zCD-wO-wVz" secondAttribute="centerY" id="LnV-P0-aXQ"/>
+                            <constraint firstItem="X72-OE-OLJ" firstAttribute="width" secondItem="zCD-wO-wVz" secondAttribute="width" multiplier="0.2" id="M0F-HI-Iyx"/>
+                            <constraint firstItem="agO-9C-bvy" firstAttribute="height" secondItem="vOd-bg-t4C" secondAttribute="height" id="Ryh-ZY-U4w"/>
+                            <constraint firstItem="agO-9C-bvy" firstAttribute="width" secondItem="vOd-bg-t4C" secondAttribute="width" id="V0X-ts-0ci"/>
+                            <constraint firstItem="Xqj-FR-tJy" firstAttribute="centerY" secondItem="X72-OE-OLJ" secondAttribute="centerY" id="VLO-Zg-UeK"/>
+                            <constraint firstItem="agO-9C-bvy" firstAttribute="leading" secondItem="zCD-wO-wVz" secondAttribute="centerX" multiplier="1.5" constant="15" id="fD3-PF-bCf"/>
+                            <constraint firstItem="X72-OE-OLJ" firstAttribute="leading" secondItem="zCD-wO-wVz" secondAttribute="leading" constant="15" id="kKY-6q-Vt6"/>
+                            <constraint firstItem="vOd-bg-t4C" firstAttribute="leading" secondItem="zCD-wO-wVz" secondAttribute="centerX" constant="20" id="nsn-f7-1JS"/>
+                            <constraint firstItem="vOd-bg-t4C" firstAttribute="height" secondItem="Xqj-FR-tJy" secondAttribute="height" multiplier="0.7" id="qhk-t4-dhM"/>
+                            <constraint firstItem="Xqj-FR-tJy" firstAttribute="leading" secondItem="X72-OE-OLJ" secondAttribute="trailing" constant="20" id="xg7-gr-U2o"/>
+                            <constraint firstItem="vOd-bg-t4C" firstAttribute="centerY" secondItem="zCD-wO-wVz" secondAttribute="centerY" id="zmR-pi-PH5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zCD-wO-wVz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="36j-lB-Zc8"/>
+                    <constraint firstAttribute="trailing" secondItem="zCD-wO-wVz" secondAttribute="trailing" id="MKC-fq-8mT"/>
+                    <constraint firstItem="zCD-wO-wVz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gH4-ro-kbe"/>
+                    <constraint firstAttribute="bottom" secondItem="zCD-wO-wVz" secondAttribute="bottom" id="udV-rk-0mk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="iconViewHeightConstraint" destination="WjG-vG-3W4" id="LMz-sg-5qu"/>
+                <outlet property="iconViewWidthConstraint" destination="Q93-qc-l9f" id="HKg-oQ-hQA"/>
+                <outlet property="nameLabel" destination="X72-OE-OLJ" id="Hoq-ih-9Ew"/>
+                <outlet property="runButton" destination="vOd-bg-t4C" id="2m6-6C-iKk"/>
+                <outlet property="stopButton" destination="agO-9C-bvy" id="KQW-nO-29r"/>
+            </connections>
+            <point key="canvasLocation" x="132.80000000000001" y="172.26386806596702"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cellline" width="640" height="2"/>
+        <image name="scene" width="128" height="128"/>
+    </resources>
+</document>

@@ -49,6 +49,130 @@ const NSUInteger maxIconIDForDataBase = 10;
     return [self executeSql:insertSQL];
 }
 
+// MARK: -  Sequence 控制
+
+/// 增加一个新的Sequence
+- (BOOL)insertNewSequence:(SHSequence *)sequence {
+    
+    NSString *insertSQL =
+        [NSString stringWithFormat:
+         @"insert into SequenceInZone (ZoneID,     \
+         SequenceID, remark, SubnetID, DeviceID,   \
+         AreaNo, SequenceNo) values(%tu, %tu, '%@',\
+         %d, %d, %d, %d);",
+         
+         sequence.zoneID, sequence.sequenceID,
+         sequence.remark,
+         sequence.subnetID, sequence.deviceID,
+         sequence.areaNo, sequence.sequenceNo
+     ];
+    
+    return [self executeSql:insertSQL];
+}
+
+/// 更新当前指定Sequence的数据
+- (void)updateSequenceInZone:(SHSequence *)sequence {
+    
+    NSString *updateSQL =
+    [NSString stringWithFormat:
+        @"update SequenceInZone set remark = '%@',    \
+        SubnetID = %d, DeviceID = %d, AreaNo = %d, \
+        SequenceNo = %d where ZoneID = %tu and         \
+        SequenceID = %tu;",
+     
+        sequence.remark,
+        sequence.subnetID, sequence.deviceID,
+        sequence.areaNo, sequence.sequenceNo,
+        sequence.zoneID, sequence.sequenceID
+     ];
+    
+    [self executeSql:updateSQL];
+}
+
+/// 删除当前的 Sequence
+- (BOOL)deleteSequenceInZone:(SHSequence *)sequence {
+    
+    NSString *deleteSQL =
+        [NSString stringWithFormat:
+            @"delete from SequenceInZone where    \
+            ZoneID = %tu and SequenceID = %tu;",
+         sequence.zoneID,
+         sequence.sequenceID
+     ];
+    
+    return [self executeSql:deleteSQL];
+}
+
+/// 查询当前区域中的所有Sequence
+- (NSMutableArray *)getSequenceForZone:(NSUInteger)zoneID {
+    
+    NSString *sequenceSql =
+        [NSString stringWithFormat:
+            @"select id, ZoneID, SequenceID, remark,  \
+            SubnetID, DeviceID, AreaNo, SequenceNo    \
+            from SequenceInZone where ZoneID = %tu    \
+            order by SequenceID;",
+            zoneID
+         ];
+    
+    NSMutableArray *array =
+    [self selectProprty:sequenceSql];
+    
+    NSMutableArray *sequences = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        SHSequence *sequence =
+        [[SHSequence alloc] initWithDictionary:dict];
+        
+        [sequences addObject:sequence];
+    }
+    
+    return sequences;
+}
+
+/// 获得当前区域中的最大的SequenceID
+- (NSUInteger)getMaxSequenceIDForZone:(NSUInteger)zoneID {
+    
+    NSString *sql =
+        [NSString stringWithFormat:
+         @"select max(SequenceID) from SequenceInZone   \
+         where ZoneID = %tu;",
+         zoneID
+        ];
+    
+    id resID = [[[self selectProprty:sql] lastObject] objectForKey:@"max(SequenceID)"];
+    
+    return (resID == [NSNull null]) ? 0 : [resID integerValue];
+}
+
+/// 增加序列控制
+- (BOOL)addSequenceControl {
+    
+    NSString *selectSQL =
+        [NSString stringWithFormat:
+            @"select Distinct SystemID from     \
+            systemDefnition where SystemID = %tu;",
+            SHSystemDeviceTypeSequenceControl
+        ];
+    
+    // 如果存在
+    if ([[self selectProprty:selectSQL] count]) {
+        
+        return YES;
+    }
+    
+    NSString *insertSQL =
+        [NSString stringWithFormat:
+            @"insert into systemDefnition (SystemID,    \
+            SystemName) values(%tu, '%@');",
+                SHSystemDeviceTypeSequenceControl,
+                @"Sequence Control"
+        ];
+    
+    return [self executeSql:insertSQL];
+}
+
 // MARK: - Scene 控制
 
 /// 增加一个新的Scene
@@ -4533,6 +4657,9 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     // 增加Scene控制
     [self addSceneControl];
+    
+    // 增加 Sequence 控制
+    [self addSequenceControl];
     
     // 增加其它控制
     [self addOtherControl];

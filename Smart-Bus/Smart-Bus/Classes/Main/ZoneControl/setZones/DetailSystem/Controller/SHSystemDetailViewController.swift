@@ -21,8 +21,6 @@ import UIKit
     
     /// 所有同类型设备列表
     @IBOutlet weak var allDevicesListView: UITableView!
-
- 
 }
 
 
@@ -227,6 +225,18 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                     self.allDevices.remove(scene)
                 }
                 
+            case .sequenceControl:
+                
+                if let sequence  = self.allDevices[indexPath.row]
+                        as? SHSequence {
+                    
+                    SHSQLManager.share()?.deleteSequence(
+                        inZone: sequence
+                    )
+                    
+                    self.allDevices.remove(sequence)
+                }
+                
             case .otherControl:
                 break
                 
@@ -399,6 +409,16 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 
                 detailController.scene =
                     scene
+            }
+            
+        case .sequenceControl:
+            
+            if let sequence =
+                allDevices[indexPath.row]
+                    as? SHSequence {
+                
+                detailController.sequence =
+                    sequence
             }
             
         default:
@@ -611,6 +631,20 @@ extension SHSystemDetailViewController: UITableViewDataSource {
                     "\(scene.deviceID) - " +
                     "\(scene.areaNo) - "   +
                     "\(scene.sceneNo)"
+            }
+            
+        case .sequenceControl:
+            
+            if let sequence = allDevices[indexPath.row]
+                as? SHSequence {
+                
+                deviceName =
+                    "\(sequence.sequenceID) - "  +
+                    "\(sequence.remark) : "   +
+                    "\(sequence.subnetID) - " +
+                    "\(sequence.deviceID) - " +
+                    "\(sequence.areaNo) - "   +
+                    "\(sequence.sequenceNo)"
             }
             
         default:
@@ -923,6 +957,19 @@ extension SHSystemDetailViewController {
             
             detailController.scene = scene
             
+        case .sequenceControl:
+            
+            let sequence = SHSequence()
+            sequence.remark = "sequence"
+            sequence.zoneID = zoneID
+            sequence.sequenceID =
+                (SHSQLManager.share()?.getMaxSequenceID(
+                    forZone: zoneID) ?? 0) + 1
+            
+            SHSQLManager.share()?.insertNewSequence(sequence)
+            
+            detailController.sequence = sequence
+            
         default:
             break
         }
@@ -1095,6 +1142,15 @@ extension SHSystemDetailViewController {
             }
             
             allDevices = sences
+            
+        case .sequenceControl:
+            guard let sequences = SHSQLManager.share()?.getSequenceForZone(
+                zoneID) else {
+                    
+                    return
+            }
+            
+            allDevices = sequences
             
         default:
             break

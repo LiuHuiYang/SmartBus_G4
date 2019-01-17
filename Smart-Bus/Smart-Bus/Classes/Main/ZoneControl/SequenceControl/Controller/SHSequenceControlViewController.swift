@@ -1,68 +1,69 @@
 //
-//  SHSceneControlViewController.swift
+//  SHSequenceControlViewController.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2019/1/16.
+//  Created by Mac on 2019/1/17.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 
 import UIKit
 
-/// cell重用标示
-private let sceneControlViewCellReuseIdentifier = "SHSceneControlViewCell"
+private let sequenceControlViewCellReuseIdentifier =
+    "SHSequenceControlViewCell"
 
-@objcMembers class SHSceneControlViewController: SHViewController {
+@objcMembers class SHSequenceControlViewController: SHViewController {
     
     /// 当前区域
     @objc var currentZone: SHZone?
     
-    /// 所有的场景
-    private lazy var scenes = [SHScene]()
+    /// 所有的序列
+    private lazy var sequences = [SHSequence]()
     
     /// 列表
     @IBOutlet weak var listView: UITableView!
     
     /// 底部约束
     @IBOutlet weak var listViewBottomConstraint: NSLayoutConstraint!
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         guard let zoneID = currentZone?.zoneID,
-        let allScene =
-            SHSQLManager.share()?.getSceneForZone(
-                zoneID
-            ) as? [SHScene] else {
-            
-            SVProgressHUD.showInfo(
-                withStatus: SHLanguageText.noData
-            )
-                
+            let allSequence =
+                SHSQLManager.share()?.getSequenceForZone(
+                    zoneID
+                    ) as? [SHSequence]
+            else {
+                    
+                SVProgressHUD.showInfo(
+                    withStatus: SHLanguageText.noData
+                )
+                    
             return
         }
         
-        scenes = allScene
+        sequences = allSequence
         
         listView.reloadData()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         listView.register(
             UINib(nibName:
-                sceneControlViewCellReuseIdentifier,
+                sequenceControlViewCellReuseIdentifier,
                   bundle: nil),
             forCellReuseIdentifier:
-                sceneControlViewCellReuseIdentifier
+                sequenceControlViewCellReuseIdentifier
         )
         
         listView.rowHeight =
-            SHSceneControlViewCell.rowHeight
+            SHSequenceControlViewCell.rowHeight
     }
-
- 
+    
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -72,16 +73,15 @@ private let sceneControlViewCellReuseIdentifier = "SHSceneControlViewCell"
             tabBarHeight_iPhoneX_more
         }
     }
-    
 }
 
 
 // MARK: - UITableViewDataSource
-extension SHSceneControlViewController: UITableViewDataSource {
+extension SHSequenceControlViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return scenes.count
+        return sequences.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,13 +89,12 @@ extension SHSceneControlViewController: UITableViewDataSource {
         let cell =
             tableView.dequeueReusableCell(
                 withIdentifier:
-                    sceneControlViewCellReuseIdentifier,
+                    sequenceControlViewCellReuseIdentifier,
                 for: indexPath
-        ) as! SHSceneControlViewCell
+            ) as! SHSequenceControlViewCell
         
-        cell.scene = scenes[indexPath.row]
+        cell.sequence = sequences[indexPath.row]
         
         return cell
     }
-    
 }

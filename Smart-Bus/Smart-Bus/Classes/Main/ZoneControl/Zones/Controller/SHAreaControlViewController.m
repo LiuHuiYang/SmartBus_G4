@@ -167,6 +167,11 @@
     } else if ([self.selectedViewController isKindOfClass:[SHSceneControlViewController class]]){
         
         deviceType = SHSystemDeviceTypeSceneControl;
+        
+        // Sequence 控制
+    } else if ([self.selectedViewController isKindOfClass:[SHSequenceControlViewController class]]){
+        
+        deviceType = SHSystemDeviceTypeSequenceControl;
     }
     
     // 进入设置页面
@@ -528,6 +533,20 @@
                 [self.deviceTypeNames addObject:@"nscene"];
                 
                 [self addChildViewController:sceneController];
+            }
+                break;
+                
+            case SHSystemDeviceTypeSequenceControl: {
+                
+                SHSequenceControlViewController
+                * sequenceController =
+                    [[SHSequenceControlViewController alloc] init];
+                
+                sequenceController.currentZone = self.currentZone;
+                
+                [self.deviceTypeNames addObject:@"nscene"];
+                
+                [self addChildViewController:sequenceController];
             }
                 break;
                 

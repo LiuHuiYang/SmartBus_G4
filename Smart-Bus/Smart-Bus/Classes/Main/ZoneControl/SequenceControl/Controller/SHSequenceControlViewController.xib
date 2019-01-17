@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSequenceControlViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="listView" destination="jXV-xw-kPA" id="Aux-XW-KEq"/>
+                <outlet property="listViewBottomConstraint" destination="nIp-Ru-bIQ" id="eP5-IM-f6Q"/>
+                <outlet property="view" destination="1VX-aQ-1O9" id="Bd2-4d-ftl"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="1VX-aQ-1O9">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="aEv-Ih-4xU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jXV-xw-kPA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="7xE-Yx-gnL"/>
+                        <outlet property="delegate" destination="-1" id="tYn-79-roR"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jXV-xw-kPA" secondAttribute="trailing" id="3Jn-CW-qhX"/>
+                <constraint firstItem="jXV-xw-kPA" firstAttribute="top" secondItem="1VX-aQ-1O9" secondAttribute="top" id="7fp-Kn-KkS"/>
+                <constraint firstAttribute="trailing" secondItem="aEv-Ih-4xU" secondAttribute="trailing" id="8qm-FW-uJn"/>
+                <constraint firstAttribute="bottom" secondItem="aEv-Ih-4xU" secondAttribute="bottom" id="BxF-9I-AxF"/>
+                <constraint firstItem="aEv-Ih-4xU" firstAttribute="leading" secondItem="1VX-aQ-1O9" secondAttribute="leading" id="C6T-sn-3yV"/>
+                <constraint firstItem="aEv-Ih-4xU" firstAttribute="top" secondItem="1VX-aQ-1O9" secondAttribute="top" id="GZL-nW-CgN"/>
+                <constraint firstItem="jXV-xw-kPA" firstAttribute="leading" secondItem="1VX-aQ-1O9" secondAttribute="leading" id="SiB-ze-P5q"/>
+                <constraint firstAttribute="bottom" secondItem="jXV-xw-kPA" secondAttribute="bottom" constant="49" id="nIp-Ru-bIQ"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

@@ -1,21 +1,21 @@
 //
-//  SHSceneControlViewCell.swift
+//  SHSequenceControlViewCell.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2019/1/16.
+//  Created by Mac on 2019/1/17.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 
 import UIKit
 
-class SHSceneControlViewCell: UITableViewCell {
-    
-    /// 场景控制
-    var scene: SHScene? {
+class SHSequenceControlViewCell: UITableViewCell {
+
+    /// 序列控制
+    var sequence: SHSequence? {
         
         didSet {
             
-            nameLabel.text = scene?.remark
+            nameLabel.text = sequence?.remark
         }
     }
     
@@ -85,46 +85,45 @@ class SHSceneControlViewCell: UITableViewCell {
                 navigationBarHeight * 2
         }
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     
-    /// 开始执行场景 
+    /// 开始执行场景
     @IBAction func runButtonClick() {
         
-         executeScene(isStop: false)
+        executeSequence(isStop: false)
     }
     
     /// 停止执行场景
     @IBAction func stopButtonClick() {
-    
-        executeScene(isStop: true)
+        
+        executeSequence(isStop: true)
     }
     
     
     /// 执行scene
     ///
     /// - Parameter isStop: 是否停止执行
-    private func executeScene(isStop: Bool = false) {
+    private func executeSequence(isStop: Bool = false) {
         
-        guard let sceneControl = scene else {
+        guard let sequenceControl = sequence else {
             return
         }
         
         SHSocketTools.sendData(
-            operatorCode: 0x0002,
-            subNetID: sceneControl.subnetID,
-            deviceID: sceneControl.deviceID,
+            operatorCode: 0x001A,
+            subNetID: sequenceControl.subnetID,
+            deviceID: sequenceControl.deviceID,
             additionalData:
-                [sceneControl.areaNo,
-                 isStop ? 0 : sceneControl.sceneNo]
+                [sequenceControl.areaNo,
+                 isStop ? 0 : sequenceControl.sequenceNo
+            ]
         )
     }
+    
 }
-
-
-

@@ -294,6 +294,12 @@
 		04B353ED21C74A8F000A7D0B /* SHMediaSATCategoryEditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B353EC21C74A8F000A7D0B /* SHMediaSATCategoryEditViewCell.swift */; };
 		04B353EF21C77138000A7D0B /* SHZoneSATViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B353EE21C77138000A7D0B /* SHZoneSATViewController.swift */; };
 		04B353F121C775A1000A7D0B /* SHMediaSATChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B353F021C775A1000A7D0B /* SHMediaSATChannelViewController.swift */; };
+		04B4CC7421F064BE0076B600 /* SHSequenceControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CC7321F064BE0076B600 /* SHSequenceControlViewController.swift */; };
+		04B4CC7621F064E80076B600 /* SHSequenceControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B4CC7521F064E80076B600 /* SHSequenceControlViewController.xib */; };
+		04B4CC7821F065380076B600 /* SHSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CC7721F065380076B600 /* SHSequence.swift */; };
+		04B4CC7B21F068850076B600 /* SHSequenceControlViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CC7921F068850076B600 /* SHSequenceControlViewCell.swift */; };
+		04B4CC7C21F068850076B600 /* SHSequenceControlViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B4CC7A21F068850076B600 /* SHSequenceControlViewCell.xib */; };
+		04B4CC7E21F070650076B600 /* SHDeviceArgsViewController + Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CC7D21F070640076B600 /* SHDeviceArgsViewController + Sequence.swift */; };
 		04BF930021E82238009328BA /* SHZoneControlFloorHeatingControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF92FF21E82238009328BA /* SHZoneControlFloorHeatingControlViewController.swift */; };
 		04C5830221927C4A0017701A /* SHMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5830021927C4A0017701A /* SHMoodCell.swift */; };
 		04C5830321927C4A0017701A /* SHMoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C5830121927C4A0017701A /* SHMoodCell.xib */; };
@@ -818,6 +824,12 @@
 		04B353EC21C74A8F000A7D0B /* SHMediaSATCategoryEditViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMediaSATCategoryEditViewCell.swift; sourceTree = "<group>"; };
 		04B353EE21C77138000A7D0B /* SHZoneSATViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneSATViewController.swift; sourceTree = "<group>"; };
 		04B353F021C775A1000A7D0B /* SHMediaSATChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMediaSATChannelViewController.swift; sourceTree = "<group>"; };
+		04B4CC7321F064BE0076B600 /* SHSequenceControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSequenceControlViewController.swift; sourceTree = "<group>"; };
+		04B4CC7521F064E80076B600 /* SHSequenceControlViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSequenceControlViewController.xib; sourceTree = "<group>"; };
+		04B4CC7721F065380076B600 /* SHSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSequence.swift; sourceTree = "<group>"; };
+		04B4CC7921F068850076B600 /* SHSequenceControlViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSequenceControlViewCell.swift; sourceTree = "<group>"; };
+		04B4CC7A21F068850076B600 /* SHSequenceControlViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSequenceControlViewCell.xib; sourceTree = "<group>"; };
+		04B4CC7D21F070640076B600 /* SHDeviceArgsViewController + Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Sequence.swift"; sourceTree = "<group>"; };
 		04BF92FF21E82238009328BA /* SHZoneControlFloorHeatingControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneControlFloorHeatingControlViewController.swift; sourceTree = "<group>"; };
 		04C5830021927C4A0017701A /* SHMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMoodCell.swift; sourceTree = "<group>"; };
 		04C5830121927C4A0017701A /* SHMoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHMoodCell.xib; sourceTree = "<group>"; };
@@ -1419,6 +1431,42 @@
 			path = showAudioCell;
 			sourceTree = "<group>";
 		};
+		042450E721F063E200C99512 /* SequenceControl */ = {
+			isa = PBXGroup;
+			children = (
+				042450E821F063E200C99512 /* Controller */,
+				042450E921F063E200C99512 /* Model */,
+				042450EA21F063E200C99512 /* View */,
+			);
+			path = SequenceControl;
+			sourceTree = "<group>";
+		};
+		042450E821F063E200C99512 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04B4CC7321F064BE0076B600 /* SHSequenceControlViewController.swift */,
+				04B4CC7521F064E80076B600 /* SHSequenceControlViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		042450E921F063E200C99512 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04B4CC7721F065380076B600 /* SHSequence.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		042450EA21F063E200C99512 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04B4CC7921F068850076B600 /* SHSequenceControlViewCell.swift */,
+				04B4CC7A21F068850076B600 /* SHSequenceControlViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0427E86E21E72129000ED6AA /* Floorheating */ = {
 			isa = PBXGroup;
 			children = (
@@ -1752,6 +1800,7 @@
 			children = (
 				047CF9FB2187EEF8002CAE8A /* SHDeviceArgsViewController.xib */,
 				047CF9FC2187EEF8002CAE8A /* SHDeviceArgsViewController.swift */,
+				04B4CC7D21F070640076B600 /* SHDeviceArgsViewController + Sequence.swift */,
 				042450E121F0197D00C99512 /* SHDeviceArgsViewController +  Scene.swift */,
 				042450B921F0144400C99512 /* SHDeviceArgsViewController + CT24.swift */,
 				042450BD21F0151B00C99512 /* SHDeviceArgsViewController + Security.swift */,
@@ -2166,6 +2215,7 @@
 		8B28E12B2024667E00267B90 /* ZoneControl */ = {
 			isa = PBXGroup;
 			children = (
+				042450E721F063E200C99512 /* SequenceControl */,
 				04CD32D221EED3010041683A /* SceneControl */,
 				044270C621ED902A00275398 /* Region */,
 				8BD24B64206B657E00CFFE75 /* setZones */,
@@ -4586,6 +4636,7 @@
 				8B99A736206E07D400D97AA6 /* SHZoneControlTVView.xib in Resources */,
 				8B829620204E30E700F3AD41 /* SHCentralLightCell.xib in Resources */,
 				041C006B21B4DDDA0003CB49 /* SHScheduleWeekCell.xib in Resources */,
+				04B4CC7C21F068850076B600 /* SHSequenceControlViewCell.xib in Resources */,
 				042864E7219C19FC00351285 /* SHCurrentTransformerShowDataViewController.xib in Resources */,
 				044269AA21CA153C00A7A88B /* SHDmxFunctionViewController.xib in Resources */,
 				041C004821B4DDDA0003CB49 /* SHSchedualEditViewController.xib in Resources */,
@@ -4595,6 +4646,7 @@
 				0414364D217089E500A3E5F6 /* SHSecurityZoneViewCell.xib in Resources */,
 				8B39F5DD20565B2D0063DE05 /* SHZoneControlFloorHeatingControlViewController.xib in Resources */,
 				04143649217086B900A3E5F6 /* SHIconViewCell.xib in Resources */,
+				04B4CC7621F064E80076B600 /* SHSequenceControlViewController.xib in Resources */,
 				8B82954D204E2ECD00F3AD41 /* SHModifyPasswordViewController.xib in Resources */,
 				04C5830321927C4A0017701A /* SHMoodCell.xib in Resources */,
 				8B99A775206E163200D97AA6 /* SHZoneControlSATView.xib in Resources */,
@@ -4733,8 +4785,10 @@
 				8B99A773206E163200D97AA6 /* SHZoneControlSATChannelButton.m in Sources */,
 				0426734021C89D9200FA597B /* SHColorWheelView.swift in Sources */,
 				0401BC67219166900046BF18 /* SHMacro.swift in Sources */,
+				04B4CC7821F065380076B600 /* SHSequence.swift in Sources */,
 				049A9C5C21D7738200F79EE5 /* SHAudioOperatorTools + status.swift in Sources */,
 				042450D821F017E000C99512 /* SHDeviceArgsViewController + Fan.swift in Sources */,
+				04B4CC7B21F068850076B600 /* SHSequenceControlViewCell.swift in Sources */,
 				8B25820C1FD7C1740000CD73 /* UIImage+Antialias.m in Sources */,
 				042450DC21F0183500C99512 /* SHDeviceArgsViewController + HVAC.swift in Sources */,
 				042450C221F0158000C99512 /* SHDeviceArgsViewController + Mood.swift in Sources */,
@@ -4945,6 +4999,7 @@
 				8B2582151FD7C3B10000CD73 /* UIImageView+ReSizeImage.m in Sources */,
 				0480399121B76FDB009D9A32 /* SHZoneDryContactViewController.swift in Sources */,
 				04C5831E2192C5910017701A /* SHMediaSATCategory.swift in Sources */,
+				04B4CC7E21F070650076B600 /* SHDeviceArgsViewController + Sequence.swift in Sources */,
 				04C583202192C67C0017701A /* SHMediaSATChannel.swift in Sources */,
 				049A9C5621D7604800F79EE5 /* SHAudioOperatorTools + mode.swift in Sources */,
 				042864F1219C1B4C00351285 /* SHCurrentTransformerChannelDataViewCell.swift in Sources */,
@@ -5028,6 +5083,7 @@
 				042CD7C720AD2ED600061670 /* EZMicrophone.m in Sources */,
 				0427E86B21E7131E000ED6AA /* SHSchedualAudioCell.swift in Sources */,
 				042CD7D520AD2ED600061670 /* EZAudioDisplayLink.m in Sources */,
+				04B4CC7421F064BE0076B600 /* SHSequenceControlViewController.swift in Sources */,
 				0401BC622191437D0046BF18 /* SHZoneDeviceGroupSettingCell.swift in Sources */,
 				041C00AC21B504740003CB49 /* loadNibView + protocol.swift in Sources */,
 				04CF6F4E2193E3D80052A8A9 /* SHCentralHVACCommand.swift in Sources */,

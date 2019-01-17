@@ -78,6 +78,9 @@ class SHDeviceArgsViewController: SHViewController {
     /// 场景控制
     var scene: SHScene?
     
+    /// 序列控制
+    var sequence: SHSequence?
+    
     // MARK: - 通部用部分属性
     
     /// 详情列表
@@ -327,9 +330,16 @@ extension SHDeviceArgsViewController {
 
         }
         
+        // scene
         if scene != nil {
             
             refreshScene()
+        }
+        
+        // sequence
+        if sequence != nil {
+            
+            refreshSequence()
         }
         
         detailListView.reloadData()
@@ -462,6 +472,12 @@ extension SHDeviceArgsViewController {
         if scene != nil {
             
             updateScene(value: value, index: index)
+        }
+        
+        // 保存sequence
+        if sequence != nil {
+            
+            updateSequence(value: value, index: index)
         }
         
         refreshListView()

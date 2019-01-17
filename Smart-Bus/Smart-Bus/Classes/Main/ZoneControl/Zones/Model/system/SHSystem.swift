@@ -46,6 +46,8 @@ import UIKit
     
     case sceneControl
     
+    case sequenceControl
+    
     case otherControl
 }
 

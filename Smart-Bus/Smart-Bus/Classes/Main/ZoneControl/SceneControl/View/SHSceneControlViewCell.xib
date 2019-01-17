@@ -34,10 +34,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scene100" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0u-Go-Yej">
-                                <rect key="frame" x="15" y="29" width="77" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="4lq-pt-uYT"/>
-                                </constraints>
+                                <rect key="frame" x="15" y="28.5" width="77" height="44.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -69,7 +66,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.92549019610000005" green="0.50980392159999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6pK-oN-33t" firstAttribute="width" secondItem="xjl-ZG-OPV" secondAttribute="width" multiplier="0.7" id="1bY-0E-n67"/>
                             <constraint firstItem="6pK-oN-33t" firstAttribute="leading" secondItem="1ms-s1-B26" secondAttribute="centerX" constant="20" id="9Rt-YZ-l1R"/>
@@ -80,6 +77,7 @@
                             <constraint firstItem="6pK-oN-33t" firstAttribute="centerY" secondItem="1ms-s1-B26" secondAttribute="centerY" id="OZ4-3q-XeW"/>
                             <constraint firstItem="WnW-Qi-UPQ" firstAttribute="centerY" secondItem="6pK-oN-33t" secondAttribute="centerY" id="U2U-6n-JLV"/>
                             <constraint firstItem="WnW-Qi-UPQ" firstAttribute="height" secondItem="6pK-oN-33t" secondAttribute="height" id="WZE-me-6kP"/>
+                            <constraint firstItem="L0u-Go-Yej" firstAttribute="height" secondItem="xjl-ZG-OPV" secondAttribute="height" multiplier="0.7" id="hbc-1O-fWd"/>
                             <constraint firstItem="WnW-Qi-UPQ" firstAttribute="width" secondItem="6pK-oN-33t" secondAttribute="width" id="la6-C3-b5c"/>
                             <constraint firstItem="xjl-ZG-OPV" firstAttribute="leading" secondItem="L0u-Go-Yej" secondAttribute="trailing" constant="20" id="slr-hy-INt"/>
                             <constraint firstItem="L0u-Go-Yej" firstAttribute="width" secondItem="1ms-s1-B26" secondAttribute="width" multiplier="0.2" id="xDj-yX-hqa"/>
