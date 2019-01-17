@@ -66,6 +66,27 @@
 		041C008321B4DFFC0003CB49 /* SHSchedualViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041C008121B4DFFB0003CB49 /* SHSchedualViewController.xib */; };
 		041C008421B4DFFC0003CB49 /* SHSchedualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C008221B4DFFB0003CB49 /* SHSchedualViewController.swift */; };
 		041C00AC21B504740003CB49 /* loadNibView + protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C00AB21B504740003CB49 /* loadNibView + protocol.swift */; };
+		042450B821F00E4900C99512 /* SHScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450B721F00E4900C99512 /* SHScene.swift */; };
+		042450BA21F0144400C99512 /* SHDeviceArgsViewController + CT24.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450B921F0144400C99512 /* SHDeviceArgsViewController + CT24.swift */; };
+		042450BC21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450BB21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift */; };
+		042450BE21F0151B00C99512 /* SHDeviceArgsViewController + Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450BD21F0151B00C99512 /* SHDeviceArgsViewController + Security.swift */; };
+		042450C021F0155500C99512 /* SHDeviceArgsViewController + Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450BF21F0155500C99512 /* SHDeviceArgsViewController + Macro.swift */; };
+		042450C221F0158000C99512 /* SHDeviceArgsViewController + Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450C121F0158000C99512 /* SHDeviceArgsViewController + Mood.swift */; };
+		042450C421F015B000C99512 /* SHDeviceArgsViewController + Dmx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450C321F015B000C99512 /* SHDeviceArgsViewController + Dmx.swift */; };
+		042450C621F015E400C99512 /* SHDeviceArgsViewController + TemperatureSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450C521F015E400C99512 /* SHDeviceArgsViewController + TemperatureSensor.swift */; };
+		042450C821F0161800C99512 /* SHDeviceArgsViewController + DryContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450C721F0161800C99512 /* SHDeviceArgsViewController + DryContact.swift */; };
+		042450CA21F0166200C99512 /* SHDeviceArgsViewController + Projector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450C921F0166200C99512 /* SHDeviceArgsViewController + Projector.swift */; };
+		042450CC21F016AC00C99512 /* SHDeviceArgsViewController + SAT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450CB21F016AC00C99512 /* SHDeviceArgsViewController + SAT.swift */; };
+		042450CE21F016D100C99512 /* SHDeviceArgsViewController + DVD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450CD21F016D100C99512 /* SHDeviceArgsViewController + DVD.swift */; };
+		042450D021F016FA00C99512 /* SHDeviceArgsViewController + AppleTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450CF21F016FA00C99512 /* SHDeviceArgsViewController + AppleTV.swift */; };
+		042450D221F0174100C99512 /* SHDeviceArgsViewController + TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450D121F0174100C99512 /* SHDeviceArgsViewController + TV.swift */; };
+		042450D421F0178A00C99512 /* SHDeviceArgsViewController + NineInOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450D321F0178A00C99512 /* SHDeviceArgsViewController + NineInOne.swift */; };
+		042450D621F017C300C99512 /* SHDeviceArgsViewController + Shade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450D521F017C300C99512 /* SHDeviceArgsViewController + Shade.swift */; };
+		042450D821F017E000C99512 /* SHDeviceArgsViewController + Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450D721F017E000C99512 /* SHDeviceArgsViewController + Fan.swift */; };
+		042450DA21F0181500C99512 /* SHDeviceArgsViewController + FloorHeating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450D921F0181500C99512 /* SHDeviceArgsViewController + FloorHeating.swift */; };
+		042450DC21F0183500C99512 /* SHDeviceArgsViewController + HVAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450DB21F0183500C99512 /* SHDeviceArgsViewController + HVAC.swift */; };
+		042450DE21F0185500C99512 /* SHDeviceArgsViewController + Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450DD21F0185500C99512 /* SHDeviceArgsViewController + Light.swift */; };
+		042450E221F0197D00C99512 /* SHDeviceArgsViewController +  Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450E121F0197D00C99512 /* SHDeviceArgsViewController +  Scene.swift */; };
 		0426733A21C87EDF00FA597B /* SHZoneControlLightViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426733921C87EDF00FA597B /* SHZoneControlLightViewCell.swift */; };
 		0426733C21C8938D00FA597B /* SHZoneLightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426733B21C8938D00FA597B /* SHZoneLightButton.swift */; };
 		0426733E21C8966700FA597B /* SHSelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426733D21C8966700FA597B /* SHSelectColorViewController.swift */; };
@@ -298,7 +319,6 @@
 		04C94E09216DD10A00EF069E /* SHLanguagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C94E07216DD10A00EF069E /* SHLanguagesViewController.xib */; };
 		04CD32D821EED3180041683A /* SHSceneControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD32D621EED3180041683A /* SHSceneControlViewController.swift */; };
 		04CD32D921EED3180041683A /* SHSceneControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CD32D721EED3180041683A /* SHSceneControlViewController.xib */; };
-		04CD32DB21EED3530041683A /* SHSceneControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD32DA21EED3530041683A /* SHSceneControl.swift */; };
 		04CD32DE21EED4610041683A /* SHSceneControlViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD32DC21EED4610041683A /* SHSceneControlViewCell.swift */; };
 		04CD32DF21EED4610041683A /* SHSceneControlViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CD32DD21EED4610041683A /* SHSceneControlViewCell.xib */; };
 		04CD32E121EF02F70041683A /* SHSystemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD32E021EF02F70041683A /* SHSystemDetailViewController.swift */; };
@@ -518,6 +538,27 @@
 		041CFFF821B4DDD90003CB49 /* SHSchedualHVACViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSchedualHVACViewController.m; sourceTree = "<group>"; };
 		041CFFF921B4DDD90003CB49 /* SHSchedualHVACViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSchedualHVACViewController.h; sourceTree = "<group>"; };
 		041CFFFC21B4DDD90003CB49 /* SHSchduleAudioView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchduleAudioView.xib; sourceTree = "<group>"; };
+		042450B721F00E4900C99512 /* SHScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHScene.swift; sourceTree = "<group>"; };
+		042450B921F0144400C99512 /* SHDeviceArgsViewController + CT24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + CT24.swift"; sourceTree = "<group>"; };
+		042450BB21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Audio.swift"; sourceTree = "<group>"; };
+		042450BD21F0151B00C99512 /* SHDeviceArgsViewController + Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Security.swift"; sourceTree = "<group>"; };
+		042450BF21F0155500C99512 /* SHDeviceArgsViewController + Macro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Macro.swift"; sourceTree = "<group>"; };
+		042450C121F0158000C99512 /* SHDeviceArgsViewController + Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Mood.swift"; sourceTree = "<group>"; };
+		042450C321F015B000C99512 /* SHDeviceArgsViewController + Dmx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Dmx.swift"; sourceTree = "<group>"; };
+		042450C521F015E400C99512 /* SHDeviceArgsViewController + TemperatureSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + TemperatureSensor.swift"; sourceTree = "<group>"; };
+		042450C721F0161800C99512 /* SHDeviceArgsViewController + DryContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + DryContact.swift"; sourceTree = "<group>"; };
+		042450C921F0166200C99512 /* SHDeviceArgsViewController + Projector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Projector.swift"; sourceTree = "<group>"; };
+		042450CB21F016AC00C99512 /* SHDeviceArgsViewController + SAT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + SAT.swift"; sourceTree = "<group>"; };
+		042450CD21F016D100C99512 /* SHDeviceArgsViewController + DVD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + DVD.swift"; sourceTree = "<group>"; };
+		042450CF21F016FA00C99512 /* SHDeviceArgsViewController + AppleTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + AppleTV.swift"; sourceTree = "<group>"; };
+		042450D121F0174100C99512 /* SHDeviceArgsViewController + TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + TV.swift"; sourceTree = "<group>"; };
+		042450D321F0178A00C99512 /* SHDeviceArgsViewController + NineInOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + NineInOne.swift"; sourceTree = "<group>"; };
+		042450D521F017C300C99512 /* SHDeviceArgsViewController + Shade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Shade.swift"; sourceTree = "<group>"; };
+		042450D721F017E000C99512 /* SHDeviceArgsViewController + Fan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Fan.swift"; sourceTree = "<group>"; };
+		042450D921F0181500C99512 /* SHDeviceArgsViewController + FloorHeating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + FloorHeating.swift"; sourceTree = "<group>"; };
+		042450DB21F0183500C99512 /* SHDeviceArgsViewController + HVAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + HVAC.swift"; sourceTree = "<group>"; };
+		042450DD21F0185500C99512 /* SHDeviceArgsViewController + Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Light.swift"; sourceTree = "<group>"; };
+		042450E121F0197D00C99512 /* SHDeviceArgsViewController +  Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController +  Scene.swift"; sourceTree = "<group>"; };
 		0426733921C87EDF00FA597B /* SHZoneControlLightViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneControlLightViewCell.swift; sourceTree = "<group>"; };
 		0426733B21C8938D00FA597B /* SHZoneLightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneLightButton.swift; sourceTree = "<group>"; };
 		0426733D21C8966700FA597B /* SHSelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSelectColorViewController.swift; sourceTree = "<group>"; };
@@ -802,7 +843,6 @@
 		04C94E07216DD10A00EF069E /* SHLanguagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHLanguagesViewController.xib; sourceTree = "<group>"; };
 		04CD32D621EED3180041683A /* SHSceneControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSceneControlViewController.swift; sourceTree = "<group>"; };
 		04CD32D721EED3180041683A /* SHSceneControlViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSceneControlViewController.xib; sourceTree = "<group>"; };
-		04CD32DA21EED3530041683A /* SHSceneControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSceneControl.swift; sourceTree = "<group>"; };
 		04CD32DC21EED4610041683A /* SHSceneControlViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSceneControlViewCell.swift; sourceTree = "<group>"; };
 		04CD32DD21EED4610041683A /* SHSceneControlViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSceneControlViewCell.xib; sourceTree = "<group>"; };
 		04CD32E021EF02F70041683A /* SHSystemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSystemDetailViewController.swift; sourceTree = "<group>"; };
@@ -1712,6 +1752,26 @@
 			children = (
 				047CF9FB2187EEF8002CAE8A /* SHDeviceArgsViewController.xib */,
 				047CF9FC2187EEF8002CAE8A /* SHDeviceArgsViewController.swift */,
+				042450E121F0197D00C99512 /* SHDeviceArgsViewController +  Scene.swift */,
+				042450B921F0144400C99512 /* SHDeviceArgsViewController + CT24.swift */,
+				042450BD21F0151B00C99512 /* SHDeviceArgsViewController + Security.swift */,
+				042450BF21F0155500C99512 /* SHDeviceArgsViewController + Macro.swift */,
+				042450C121F0158000C99512 /* SHDeviceArgsViewController + Mood.swift */,
+				042450C521F015E400C99512 /* SHDeviceArgsViewController + TemperatureSensor.swift */,
+				042450C721F0161800C99512 /* SHDeviceArgsViewController + DryContact.swift */,
+				042450C321F015B000C99512 /* SHDeviceArgsViewController + Dmx.swift */,
+				042450CB21F016AC00C99512 /* SHDeviceArgsViewController + SAT.swift */,
+				042450CD21F016D100C99512 /* SHDeviceArgsViewController + DVD.swift */,
+				042450C921F0166200C99512 /* SHDeviceArgsViewController + Projector.swift */,
+				042450CF21F016FA00C99512 /* SHDeviceArgsViewController + AppleTV.swift */,
+				042450D121F0174100C99512 /* SHDeviceArgsViewController + TV.swift */,
+				042450D321F0178A00C99512 /* SHDeviceArgsViewController + NineInOne.swift */,
+				042450D521F017C300C99512 /* SHDeviceArgsViewController + Shade.swift */,
+				042450D721F017E000C99512 /* SHDeviceArgsViewController + Fan.swift */,
+				042450BB21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift */,
+				042450D921F0181500C99512 /* SHDeviceArgsViewController + FloorHeating.swift */,
+				042450DB21F0183500C99512 /* SHDeviceArgsViewController + HVAC.swift */,
+				042450DD21F0185500C99512 /* SHDeviceArgsViewController + Light.swift */,
 			);
 			path = Args;
 			sourceTree = "<group>";
@@ -1861,7 +1921,7 @@
 		04CD32D421EED3010041683A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				04CD32DA21EED3530041683A /* SHSceneControl.swift */,
+				042450B721F00E4900C99512 /* SHScene.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4674,7 +4734,10 @@
 				0426734021C89D9200FA597B /* SHColorWheelView.swift in Sources */,
 				0401BC67219166900046BF18 /* SHMacro.swift in Sources */,
 				049A9C5C21D7738200F79EE5 /* SHAudioOperatorTools + status.swift in Sources */,
+				042450D821F017E000C99512 /* SHDeviceArgsViewController + Fan.swift in Sources */,
 				8B25820C1FD7C1740000CD73 /* UIImage+Antialias.m in Sources */,
+				042450DC21F0183500C99512 /* SHDeviceArgsViewController + HVAC.swift in Sources */,
+				042450C221F0158000C99512 /* SHDeviceArgsViewController + Mood.swift in Sources */,
 				0484DA5D21D08078005F33CC /* SHAlbum.swift in Sources */,
 				0453EA4621A67C8400F666EF /* JHPieItemsView.m in Sources */,
 				04978EE22182A26300FA1E65 /* SHSecurityLogCell.swift in Sources */,
@@ -4688,7 +4751,9 @@
 				041C008421B4DFFC0003CB49 /* SHSchedualViewController.swift in Sources */,
 				041C005121B4DDDA0003CB49 /* SHSchedualHVACViewController.m in Sources */,
 				042CD7CA20AD2ED600061670 /* EZAudioFFT.m in Sources */,
+				042450C621F015E400C99512 /* SHDeviceArgsViewController + TemperatureSensor.swift in Sources */,
 				04CD3E34216B3045007010C6 /* SHSettingViewController.swift in Sources */,
+				042450B821F00E4900C99512 /* SHScene.swift in Sources */,
 				0401BC752191935C0046BF18 /* SHCentralLight.swift in Sources */,
 				8B6B20192050C34100F1B943 /* SHSecurityControlViewController.m in Sources */,
 				0426735521C8E72E00FA597B /* SHSchedualWeekView.swift in Sources */,
@@ -4738,6 +4803,7 @@
 				044269A921CA153C00A7A88B /* SHDmxFunctionViewController.m in Sources */,
 				0480399521B7A099009D9A32 /* SHZoneProjectorViewController.swift in Sources */,
 				042CD7D720AD2ED600061670 /* EZAudioPlotGL.m in Sources */,
+				042450D621F017C300C99512 /* SHDeviceArgsViewController + Shade.swift in Sources */,
 				049A9C5821D7653500F79EE5 /* SHAudioOperatorTools + radio.swift in Sources */,
 				8B687D171EEA2E1400B58314 /* UIImage+SaveAndGet.m in Sources */,
 				8B8298E1204E31F300F3AD41 /* SHEditRecordShadeCell.m in Sources */,
@@ -4756,12 +4822,14 @@
 				0441DDDE216C927B00952CE4 /* SHAdvanceViewController.swift in Sources */,
 				0414365021708B0100A3E5F6 /* SHSecurityViewController.swift in Sources */,
 				04CD3E2F216B29C3007010C6 /* SHTabBarController.m in Sources */,
+				042450BC21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift in Sources */,
 				0401BC6F21917CF70046BF18 /* SHDevice.swift in Sources */,
 				0401BC73219187CA0046BF18 /* SHCurrentTransformerRealTimeDataViewController.swift in Sources */,
 				0498351221C3AC0E00C57223 /* SHZoneNineInOneControlPadView.swift in Sources */,
 				04CF6F4A2193E0D70052A8A9 /* SHSecurityZone.swift in Sources */,
 				04D49FDC21B0CF230054E226 /* SHZoneDVDControlViewController.swift in Sources */,
 				047A86C521EC17B6007A44CE /* SHSchedualExecuteTools.swift in Sources */,
+				042450CA21F0166200C99512 /* SHDeviceArgsViewController + Projector.swift in Sources */,
 				0453EA3B21A67C8400F666EF /* JHRadarChart.m in Sources */,
 				047CFA0F2187FFBE002CAE8A /* SHDmxChannelSettingViewController.swift in Sources */,
 				8B4058D02047D5E600DA03FB /* TYCustomAlertView.m in Sources */,
@@ -4771,6 +4839,7 @@
 				04B353E521C7427F000A7D0B /* SHZoneControlSATView.swift in Sources */,
 				0453EA4821A67C8400F666EF /* JHTableChart.m in Sources */,
 				04C583182192BE410017701A /* SHSystem.swift in Sources */,
+				042450C421F015B000C99512 /* SHDeviceArgsViewController + Dmx.swift in Sources */,
 				0441DDEE216C9CB000952CE4 /* SHApplianceViewController.swift in Sources */,
 				042CD7CE20AD2ED600061670 /* TPCircularBuffer.c in Sources */,
 				044E435021DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift in Sources */,
@@ -4786,6 +4855,7 @@
 				0453EA4521A67C8400F666EF /* JHColumnItem.m in Sources */,
 				043CD66221E330EA00622320 /* SHAudioOperatorTools + time.swift in Sources */,
 				044C545121DD9B6D00749526 /* SHAudioOperatorTools + path.swift in Sources */,
+				042450BE21F0151B00C99512 /* SHDeviceArgsViewController + Security.swift in Sources */,
 				04913C8D218167F100704F3D /* SHDeviceListCell.swift in Sources */,
 				042CD7D420AD2ED600061670 /* EZAudioDevice.m in Sources */,
 				04143638217046CB00A3E5F6 /* SHMacroCommandsViewController.swift in Sources */,
@@ -4795,6 +4865,7 @@
 				044C545321DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift in Sources */,
 				04F3C8B921B657DF00BF5608 /* SHZoneMoodViewController.swift in Sources */,
 				043642C8214A33BC0044040D /* Regular.m in Sources */,
+				042450CE21F016D100C99512 /* SHDeviceArgsViewController + DVD.swift in Sources */,
 				0427E86621E6F1A4000ED6AA /* SHSchedualHVACCell.swift in Sources */,
 				045DD37720A433A100C37C7B /* SHDmxFunctionCustomView.m in Sources */,
 				04FFCFA92174384D00684CFA /* SHNetWorkRealIPViewController.swift in Sources */,
@@ -4815,8 +4886,10 @@
 				04A177EA215F73D300BD9744 /* SHCommunalServicesViewController.swift in Sources */,
 				8B8298D8204E31F300F3AD41 /* SHZoneControlRecordMoodViewController.m in Sources */,
 				0401BC69219168080046BF18 /* SHMacroCommand.swift in Sources */,
+				042450D221F0174100C99512 /* SHDeviceArgsViewController + TV.swift in Sources */,
 				8B8298EE204E31F300F3AD41 /* SHCommandButton.m in Sources */,
 				04DF642121AD21110033A083 /* SHLight.swift in Sources */,
+				042450DE21F0185500C99512 /* SHDeviceArgsViewController + Light.swift in Sources */,
 				04FD5CFA21A8050900F32C8C /* SHWebDataBaseViewController.swift in Sources */,
 				8B0A0E521F3AEBD800055ECB /* SoundTools.m in Sources */,
 				0498350A21C3937000C57223 /* SHZoneNineInOneControlViewController.swift in Sources */,
@@ -4847,11 +4920,11 @@
 				04978EE42182A77900FA1E65 /* SHSecurityLog.swift in Sources */,
 				049151EA21E73BAB00BAE939 /* SHSchedualFloorHeatingController.swift in Sources */,
 				8B5D5013206CBA5C0028EEDB /* SHAudioTools.m in Sources */,
+				042450C821F0161800C99512 /* SHDeviceArgsViewController + DryContact.swift in Sources */,
 				0429AC9521C23E3D0051263A /* SHZoneLightViewController.swift in Sources */,
 				0453EA4421A67C8400F666EF /* JHShowInfoView.m in Sources */,
 				0427E87621E7226C000ED6AA /* SHSchedualFloorHeatingView.swift in Sources */,
 				04CF6F482193DC440052A8A9 /* SHFan.swift in Sources */,
-				04CD32DB21EED3530041683A /* SHSceneControl.swift in Sources */,
 				049A9C5421D75A5500F79EE5 /* SHAudioOperatorTools + vol.swift in Sources */,
 				8B5D504C206CBAE30028EEDB /* SHAuioPlayTypeButton.m in Sources */,
 				04CD3E31216B2AA8007010C6 /* SHMainViewController.swift in Sources */,
@@ -4875,9 +4948,12 @@
 				04C583202192C67C0017701A /* SHMediaSATChannel.swift in Sources */,
 				049A9C5621D7604800F79EE5 /* SHAudioOperatorTools + mode.swift in Sources */,
 				042864F1219C1B4C00351285 /* SHCurrentTransformerChannelDataViewCell.swift in Sources */,
+				042450BA21F0144400C99512 /* SHDeviceArgsViewController + CT24.swift in Sources */,
 				8B0DED65205A1BEC0062BDC7 /* SHConstraint.m in Sources */,
+				042450D021F016FA00C99512 /* SHDeviceArgsViewController + AppleTV.swift in Sources */,
 				8B39CE2E2057827900436100 /* NSObject+Property.m in Sources */,
 				04C5830C21929A600017701A /* SHMediaAppleTV.swift in Sources */,
+				042450DA21F0181500C99512 /* SHDeviceArgsViewController + FloorHeating.swift in Sources */,
 				8B5D504B206CBAE30028EEDB /* SHAudioRecordControlButton.m in Sources */,
 				0453EA4721A67C8400F666EF /* JHPieForeBGView.m in Sources */,
 				8B99A757206E15BC00D97AA6 /* SHMediaSATCategoryViewController.m in Sources */,
@@ -4888,6 +4964,7 @@
 				8B8298E8204E31F300F3AD41 /* SHAreaControlViewController.m in Sources */,
 				04A177D2215F5EEF00BD9744 /* SHWeatherViewController.swift in Sources */,
 				04D4A02A21B133C80054E226 /* SHMusicViewController.swift in Sources */,
+				042450C021F0155500C99512 /* SHDeviceArgsViewController + Macro.swift in Sources */,
 				0498350C21C3A0B200C57223 /* SHZoneNineInOneNumberPadView.swift in Sources */,
 				04C58308219292A10017701A /* SHMood.swift in Sources */,
 				8B8298ED204E31F300F3AD41 /* SHZoneControlButton.m in Sources */,
@@ -4912,6 +4989,7 @@
 				8B2582181FD7C80F0000CD73 /* UIImageView+ColorAtPoint.m in Sources */,
 				047CFA022187EEF8002CAE8A /* SHDeviceArgsViewController.swift in Sources */,
 				8B2581EE1FD798F30000CD73 /* UIView+frame.m in Sources */,
+				042450CC21F016AC00C99512 /* SHDeviceArgsViewController + SAT.swift in Sources */,
 				0499C9F621D620DD00E15569 /* SHAudioPlayStatusView.swift in Sources */,
 				0499C9EA21D5F6EB00E15569 /* SHAudioInView.swift in Sources */,
 				041C007721B4DE950003CB49 /* SHSchedualSettingViewController.swift in Sources */,
@@ -4953,8 +5031,10 @@
 				0401BC622191437D0046BF18 /* SHZoneDeviceGroupSettingCell.swift in Sources */,
 				041C00AC21B504740003CB49 /* loadNibView + protocol.swift in Sources */,
 				04CF6F4E2193E3D80052A8A9 /* SHCentralHVACCommand.swift in Sources */,
+				042450D421F0178A00C99512 /* SHDeviceArgsViewController + NineInOne.swift in Sources */,
 				04CD3E38216B361D007010C6 /* SHCentralControlViewController.swift in Sources */,
 				0453EA4921A67C8400F666EF /* JHScatterChart.m in Sources */,
+				042450E221F0197D00C99512 /* SHDeviceArgsViewController +  Scene.swift in Sources */,
 				04E782C4218FDCEF00330AB5 /* SHZoneControlViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

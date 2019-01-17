@@ -51,6 +51,95 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 // MARK: - Scene 控制
 
+/// 增加一个新的Scene
+- (BOOL)insertNewScene:(SHScene *)scene {
+  
+     NSString *insertSQL =
+        [NSString stringWithFormat:
+         @"insert into SceneInZone (ZoneID,     \
+         SceneID, remark, SubnetID, DeviceID,   \
+         AreaNo, SceneNo) values(%tu, %tu, '%@',\
+         %d, %d, %d, %d);",
+            scene.zoneID, scene.sceneID,
+            scene.remark,
+            scene.subnetID, scene.deviceID,
+            scene.areaNo, scene.sceneNo
+        ];
+
+    return [self executeSql:insertSQL];
+}
+
+/// 更新当前指定Scene的数据
+- (void)updateSceneInZone:(SHScene *)scene {
+    
+    NSString *updateSQL =
+        [NSString stringWithFormat:
+         @"update SceneInZone set remark = '%@',    \
+         SubnetID = %d, DeviceID = %d, AreaNo = %d, \
+         SceneNo = %d where ZoneID = %tu and         \
+         SceneID = %tu;",
+            scene.remark,
+            scene.subnetID, scene.deviceID,
+            scene.areaNo, scene.sceneNo,
+            scene.zoneID, scene.sceneID
+        ];
+    
+    [self executeSql:updateSQL];
+}
+
+
+/// 删除当前的Scene
+- (BOOL)deleteSceneInZone:(SHScene *)scene {
+    
+    NSString *deleteSQL =
+        [NSString stringWithFormat:
+         @"delete from SceneInZone where    \
+         ZoneID = %tu and SceneID = %tu;",
+            scene.zoneID,
+            scene.sceneID
+        ];
+    
+    return [self executeSql:deleteSQL];
+}
+
+/// 获得当前区域中的最大的SceneID
+- (NSUInteger)getMaxSceneIDForZone:(NSUInteger)zoneID {
+    
+    NSString *sql = [NSString stringWithFormat:@"select max(SceneID) from SceneInZone where ZoneID = %tu;", zoneID];
+    
+    id resID = [[[self selectProprty:sql] lastObject] objectForKey:@"max(SceneID)"];
+    
+    return (resID == [NSNull null]) ? 0 : [resID integerValue];
+}
+
+/// 查询当前区域中的所有Scene
+- (NSMutableArray *)getSceneForZone:(NSUInteger)zoneID {
+    
+    NSString *sceneSql =
+        [NSString stringWithFormat:
+         @"select id, ZoneID, SceneID, remark,  \
+         SubnetID, DeviceID, AreaNo, SceneNo    \
+         from SceneInZone where ZoneID = %tu    \
+         order by SceneID;",
+         zoneID
+        ];
+    
+    NSMutableArray *array =
+        [self selectProprty:sceneSql];
+    
+    NSMutableArray *scenes = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        SHScene *scene =
+            [[SHScene alloc] initWithDictionary:dict];
+        
+        [scenes addObject:scene];
+    }
+    
+    return scenes;
+}
+
 // 增加Scene控制
 - (BOOL)addSceneControl {
     

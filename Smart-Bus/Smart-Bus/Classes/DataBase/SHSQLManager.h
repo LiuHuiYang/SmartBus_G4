@@ -43,7 +43,7 @@ extern NSString *dataBaseName;
 @class SHFloorHeating;
 @class SHNineInOne;
 @class SHDryContact;
-@class SHSceneControl;
+@class SHScene;
 
 
 
@@ -81,6 +81,23 @@ extern const NSUInteger maxIconIDForDataBase;
 @property (nonatomic, strong) FMDatabaseQueue *queue;
 
 // MARK: - 操作方法
+
+// MARK: - Scene Control
+
+/// 增加一个新的Scene
+- (BOOL)insertNewScene:(SHScene *)scene;
+
+/// 更新当前指定Scene的数据
+- (void)updateSceneInZone:(SHScene *)scene;
+
+/// 删除当前的Scene
+- (BOOL)deleteSceneInZone:(SHScene *)scene;
+
+/// 获得当前区域中的最大的SceneID
+- (NSUInteger)getMaxSceneIDForZone:(NSUInteger)zoneID;
+
+/// 查询当前区域中的所有Scene
+- (NSMutableArray *)getSceneForZone:(NSUInteger)zoneID;
 
 // MARK: - DMX
 

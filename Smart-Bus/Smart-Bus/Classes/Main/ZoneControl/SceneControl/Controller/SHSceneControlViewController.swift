@@ -17,7 +17,7 @@ private let sceneControlViewCellReuseIdentifier = "SHSceneControlViewCell"
     @objc var currentZone: SHZone?
     
     /// 所有的场景
-    private lazy var scenes = [SHSceneControl]()
+    private lazy var scenes = [SHScene]()
     
     /// 灯具列表
     @IBOutlet weak var listView: UITableView!
@@ -73,7 +73,7 @@ extension SHSceneControlViewController: UITableViewDataSource {
                 for: indexPath
         ) as! SHSceneControlViewCell
         
-        cell.sceneControl = scenes[indexPath.row]
+        cell.scene = scenes[indexPath.row]
         
         return cell
     }

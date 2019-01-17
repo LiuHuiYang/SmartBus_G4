@@ -1,16 +1,15 @@
 //
-//  SHSceneControl.swift
+//  SHScene.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2019/1/16.
+//  Created by Mac on 2019/1/17.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 
 import UIKit
 
-/// sceneControl 模型
-@objcMembers class SHSceneControl: NSObject {
- 
+@objcMembers class SHScene: NSObject {
+
     // MARK: - 数据库字段
     
     /// 主键

@@ -11,7 +11,7 @@ import UIKit
 class SHSceneControlViewCell: UITableViewCell {
     
     /// 场景控制
-    var sceneControl: SHSceneControl?
+    var scene: SHScene?
     
     /// 行高
     static var rowHeight: CGFloat {

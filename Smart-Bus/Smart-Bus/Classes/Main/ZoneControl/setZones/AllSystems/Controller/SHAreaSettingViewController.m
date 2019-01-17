@@ -146,7 +146,7 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
     );
     
     UIImage *sourceImage =
-    [self.iconButton.imageView circleImageWithImage:[self.iconButton.imageView reSizeImage:info[UIImagePickerControllerOriginalImage] toSize: iconSize] borderWidth:3.0 borderColor: [UIColor colorWithHex:0x7b7778 alpha:1.0] ];
+    [self.iconButton.imageView circleImageWithImage:[self.iconButton.imageView reSizeImage:info[UIImagePickerControllerOriginalImage] toSize: iconSize] borderWidth:3.0 borderColor: [UIColor colorWithHex:0x7b7778 alpha:1.0]];
     
     
     

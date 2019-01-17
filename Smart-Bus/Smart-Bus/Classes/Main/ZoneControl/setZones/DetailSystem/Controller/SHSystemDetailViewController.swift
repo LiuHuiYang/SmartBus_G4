@@ -216,7 +216,16 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 }
                 
             case .sceneControl:
-                break
+                
+                if let scene = self.allDevices[indexPath.row]
+                        as? SHScene {
+                    
+                    SHSQLManager.share()?.deleteScene(
+                        inZone: scene
+                    )
+                    
+                    self.allDevices.remove(scene)
+                }
                 
             case .otherControl:
                 break
@@ -380,6 +389,16 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 
                 detailController.temperatureSensor =
                     sensor
+            }
+            
+        case .sceneControl:
+            
+            if let scene =
+                allDevices[indexPath.row]
+                    as? SHScene {
+                
+                detailController.scene =
+                    scene
             }
             
         default:
@@ -579,7 +598,21 @@ extension SHSystemDetailViewController: UITableViewDataSource {
                     "\(sensor.deviceID) - "      +
                     "\(sensor.channelNo)"
             }
-        
+            
+        case .sceneControl:
+            
+            if let scene = allDevices[indexPath.row]
+                as? SHScene {
+                
+                deviceName =
+                    "\(scene.sceneID) - "  +
+                    "\(scene.remark) - "   +
+                    "\(scene.subnetID) - " +
+                    "\(scene.deviceID) - " +
+                    "\(scene.areaNo) - "   +
+                    "\(scene.sceneNo)"
+            }
+            
         default:
             break
         }
@@ -659,6 +692,7 @@ extension SHSystemDetailViewController {
             SHDeviceArgsViewController()
         
         switch systemType {
+            
         case .light:
             
             let light = SHLight()
@@ -875,6 +909,20 @@ extension SHSystemDetailViewController {
             
             detailController.temperatureSensor = sensor
             
+        case .sceneControl:
+            
+            let scene = SHScene()
+            
+            scene.remark = "scene"
+            scene.zoneID = zoneID
+            scene.sceneID =
+                (SHSQLManager.share()?.getMaxSceneID(
+                    forZone: zoneID) ?? 0) + 1
+            
+            SHSQLManager.share()?.insertNewScene(scene)
+            
+            detailController.scene = scene
+            
         default:
             break
         }
@@ -1037,6 +1085,16 @@ extension SHSystemDetailViewController {
             }
             
             allDevices = sensors
+            
+            
+        case .sceneControl:
+            guard let sences = SHSQLManager.share()?.getSceneForZone(
+                    zoneID) else {
+                
+                return
+            }
+            
+            allDevices = sences
             
         default:
             break
