@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="100.5" width="640" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scene" translatesAutoresizingMaskIntoConstraints="NO" id="Xqj-FR-tJy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sequence" translatesAutoresizingMaskIntoConstraints="NO" id="Xqj-FR-tJy">
                                 <rect key="frame" x="99" y="9.5" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="Q93-qc-l9f"/>
@@ -107,6 +107,6 @@
     </objects>
     <resources>
         <image name="cellline" width="640" height="2"/>
-        <image name="scene" width="128" height="128"/>
+        <image name="sequence" width="128" height="128"/>
     </resources>
 </document>

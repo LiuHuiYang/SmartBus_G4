@@ -544,7 +544,7 @@
                 
                 sequenceController.currentZone = self.currentZone;
                 
-                [self.deviceTypeNames addObject:@"nscene"];
+                [self.deviceTypeNames addObject:@"psequence"];
                 
                 [self addChildViewController:sequenceController];
             }
@@ -556,7 +556,7 @@
                 
                 sceneController.currentZone = self.currentZone;
                 
-                [self.deviceTypeNames addObject:@"pother"];
+                [self.deviceTypeNames addObject:@"qother"];
                 
                 [self addChildViewController:sceneController];
             }
