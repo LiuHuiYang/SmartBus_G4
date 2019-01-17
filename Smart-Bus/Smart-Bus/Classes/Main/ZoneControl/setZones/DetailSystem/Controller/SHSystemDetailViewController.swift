@@ -606,7 +606,7 @@ extension SHSystemDetailViewController: UITableViewDataSource {
                 
                 deviceName =
                     "\(scene.sceneID) - "  +
-                    "\(scene.remark) - "   +
+                    "\(scene.remark) : "   +
                     "\(scene.subnetID) - " +
                     "\(scene.deviceID) - " +
                     "\(scene.areaNo) - "   +

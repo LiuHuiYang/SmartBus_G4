@@ -62,7 +62,6 @@ class SHZoneShadeViewController: SHViewController {
             bottomHeightConstraint.constant = tabBarHeight_iPhoneX_more
         }
     }
-
 }
 
 

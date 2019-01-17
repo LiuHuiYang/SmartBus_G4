@@ -20,6 +20,7 @@
 /// 程序加载完成
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
     // 1.准备语言适配文件
     [[SHLanguageTools shareLanguageTools] copyLanguagePlist];
     
@@ -30,7 +31,6 @@
    
     // 3. 初始化计划执行的定时器
     [[SHSchedualExecuteTools shared] initSchedualTimer];
-     
     
     // 启动界面
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

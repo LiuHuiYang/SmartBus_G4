@@ -19,22 +19,83 @@
                 <rect key="frame" x="0.0" y="0.0" width="330" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sY-f2-9Zr">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ms-s1-B26">
                         <rect key="frame" x="0.0" y="0.0" width="330" height="79.5"/>
-                        <color key="backgroundColor" red="1" green="0.1011170533" blue="0.20961378589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellline" translatesAutoresizingMaskIntoConstraints="NO" id="k4W-BP-5Bx">
+                                <rect key="frame" x="0.0" y="78.5" width="330" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="jWZ-T8-0Yf"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="scene" translatesAutoresizingMaskIntoConstraints="NO" id="xjl-ZG-OPV">
+                                <rect key="frame" x="103" y="19" width="65" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scene1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0u-Go-Yej">
+                                <rect key="frame" x="15" y="21" width="53" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pK-oN-33t">
+                                <rect key="frame" x="210" y="17" width="42" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="run">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.92549019610000005" green="0.50980392159999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="runButtonClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="E9v-PA-Av7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnW-Qi-UPQ">
+                                <rect key="frame" x="260" y="14" width="50" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="stop">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.92549019610000005" green="0.50980392159999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopButtonClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iMh-Ei-9Fu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.50980392159999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="k4W-BP-5Bx" secondAttribute="bottom" id="RrB-Bb-lxf"/>
+                            <constraint firstItem="k4W-BP-5Bx" firstAttribute="leading" secondItem="1ms-s1-B26" secondAttribute="leading" id="bPA-zu-hyR"/>
+                            <constraint firstAttribute="trailing" secondItem="k4W-BP-5Bx" secondAttribute="trailing" id="fkb-oh-hZb"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="2sY-f2-9Zr" secondAttribute="trailing" id="6HZ-4I-i2j"/>
-                    <constraint firstAttribute="bottom" secondItem="2sY-f2-9Zr" secondAttribute="bottom" id="QF5-vr-LNg"/>
-                    <constraint firstItem="2sY-f2-9Zr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QyG-yD-mCT"/>
-                    <constraint firstItem="2sY-f2-9Zr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zU7-SM-7nu"/>
+                    <constraint firstAttribute="bottom" secondItem="1ms-s1-B26" secondAttribute="bottom" id="2Fe-BX-EdJ"/>
+                    <constraint firstItem="1ms-s1-B26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Zq6-C0-K1P"/>
+                    <constraint firstAttribute="trailing" secondItem="1ms-s1-B26" secondAttribute="trailing" id="iCJ-9V-wNB"/>
+                    <constraint firstItem="1ms-s1-B26" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xkV-GL-RUY"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nameLabel" destination="L0u-Go-Yej" id="N3Q-is-gBb"/>
+                <outlet property="runButton" destination="6pK-oN-33t" id="mbp-NO-Kv0"/>
+                <outlet property="stopButton" destination="WnW-Qi-UPQ" id="4Bm-lp-1Q5"/>
+            </connections>
             <point key="canvasLocation" x="140.80000000000001" y="170.91454272863569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="cellline" width="640" height="2"/>
+        <image name="scene" width="128" height="128"/>
+    </resources>
 </document>

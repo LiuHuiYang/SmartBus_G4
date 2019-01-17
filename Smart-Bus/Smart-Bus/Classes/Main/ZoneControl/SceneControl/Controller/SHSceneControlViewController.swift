@@ -24,6 +24,27 @@ private let sceneControlViewCellReuseIdentifier = "SHSceneControlViewCell"
     
     /// 底部约束
     @IBOutlet weak var listViewBottomConstraint: NSLayoutConstraint!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let zoneID = currentZone?.zoneID,
+        let allScene =
+            SHSQLManager.share()?.getSceneForZone(
+                zoneID
+            ) as? [SHScene] else {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+                
+            return
+        }
+        
+        scenes = allScene
+        
+        listView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

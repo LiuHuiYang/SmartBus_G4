@@ -61,7 +61,6 @@ extern NSString *dataBaseName;
 @class SHCurrentTransformer;
 
 
-
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>
 
