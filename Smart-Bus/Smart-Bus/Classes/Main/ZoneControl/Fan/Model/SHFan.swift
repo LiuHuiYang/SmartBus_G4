@@ -51,7 +51,7 @@ import UIKit
     var fanID: UInt = 0
     
     /// 风扇名称
-    var fanName: String?
+    var fanName: String = "fan"
     
     /// 风扇子网ID
     var subnetID: UInt8 = 0
@@ -66,7 +66,7 @@ import UIKit
     var fanTypeID: SHFanType = .unknow
     
     /// 风扇备注
-    var remark: String?
+    var remark: String = "fan"
     
     /// 风扇 保留参数
     var reserved1: UInt = 0
@@ -96,23 +96,23 @@ import UIKit
     
     override func setValue(_ value: Any?, forKey key: String) {
         
-        if key.isEqual("Reserved1") {
+        if key == "Reserved1" {
             
             reserved1 = (value as? UInt) ?? 0
         
-        } else if key.isEqual("Reserved2") {
+        } else if key == "Reserved2" {
             
             reserved2 = (value as? UInt) ?? 0
         
-        } else if key.isEqual("Reserved3") {
+        } else if key == "Reserved3" {
             
             reserved3 = (value as? UInt) ?? 0
         
-        } else if key.isEqual("Reserved4") {
+        } else if key == "Reserved4" {
             
             reserved4 = (value as? UInt) ?? 0
         
-        } else if key.isEqual("Reserved5") {
+        } else if key == "Reserved5" {
             
             reserved5 = (value as? UInt) ?? 0
         

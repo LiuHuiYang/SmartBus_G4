@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSMutableDictionary* currentLanguagePlistDictionary;
 
 /// 获得具体的字段名称(可能是字段)
-- (id )getTextFromPlist:(NSString *)mainTitle withSubTitle:(NSString *)subTitle;
+- (id)getTextFromPlist:(NSString *)mainTitle withSubTitle:(NSString *)subTitle;
 
 /// 设置应用使用的语言
 - (void)setLanguage;

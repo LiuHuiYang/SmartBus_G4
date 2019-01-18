@@ -3887,50 +3887,10 @@ const NSUInteger maxIconIDForDataBase = 10;
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
 
-/// 获得LightInZone表中的最大ID
-- (NSUInteger)getMaxIDForLightInZone {
-    
-    // 获得结果ID
-    id resID = [[[self selectProprty:@"select max(ID) from LightInZone;"] lastObject] objectForKey:@"max(ID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
+
+
 
 // MARK: - 风扇
-
-/// 保存当前的风扇数据
-- (void)saveFanInZone:(SHFan *)fan {
-    
-    NSString *saveSql = [NSString stringWithFormat:
-                         @"update FanInZone set SubnetID = %d,              \
-                         DeviceID = %d, FanName = '%@', ChannelNO = %d,     \
-                         FanTypeID = %tu, Remark = '%@', Reserved1 = %tu,   \
-                         Reserved2 = %tu, Reserved3 = %tu, Reserved4 = %tu, \
-                         Reserved5 = %tu Where zoneID = %tu and FanID = %tu;",
-                         
-                         fan.subnetID, fan.deviceID, fan.fanName,
-                         fan.channelNO, fan.fanTypeID, fan.remark,
-                         fan.reserved1, fan.reserved2, fan.reserved3,
-                         fan.reserved4, fan.reserved5,
-                         fan.zoneID, fan.fanID
-                         ];
-    
-    [self executeSql:saveSql];
-}
-
-/// 删除风扇
-- (BOOL)deleteFanInZone:(SHFan *)fan {
-    
-    NSString *deleteSql = [NSString stringWithFormat:
-                           @"delete from FanInZone Where zoneID = %tu and   \
-                           FanID = %tu and SubnetID = %d and DeviceID = %d and ChannelNO = %d;",
-                           fan.zoneID, fan.fanID,
-                           fan.subnetID, fan.deviceID,
-                           fan.channelNO
-                           ];
-    
-    return [self executeSql:deleteSql];
-}
 
 /// 删除区域中的所有风扇
 - (BOOL)deleteZoneFans:(NSUInteger)zoneID {
@@ -3944,52 +3904,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     return [self executeSql:deleteSql];
 }
 
-/// 增加一个新的风扇
-- (BOOL)insertNewFan:(SHFan *)fan {
-    
-    NSString *sql = [NSString stringWithFormat:
-                     @"insert into FanInZone (ZoneID, FanID, FanName,       \
-                     SubnetID, DeviceID, ChannelNO, FanTypeID, Remark,      \
-                     Reserved1, Reserved2, Reserved3, Reserved4, Reserved5) \
-                     values(%tu, %tu, '%@', %d, %d, %d, %tu, '%@', %tu,     \
-                            %tu, %tu, %tu, %tu);",
-                     
-                     fan.zoneID, fan.fanID, fan.fanName,
-                     fan.subnetID, fan.deviceID, fan.channelNO,
-                     fan.fanTypeID, fan.remark,
-                     fan.reserved1, fan.reserved2, fan.reserved3,
-                     fan.reserved4, fan.reserved5
-                     ];
-    
-    return [self executeSql:sql];
-}
 
-/// 获得当前区域中的最大的FanID
-- (NSUInteger)getMaxFanIDForZone:(NSUInteger)zoneID {
-    
-    NSString *sql = [NSString stringWithFormat:@"select max(FanID) from FanInZone where ZoneID = %tu;", zoneID];
-    
-    id resID = [[[self selectProprty:sql] lastObject] objectForKey:@"max(FanID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-/// 查询当前区域的所有风扇
-- (NSMutableArray *)getFanForZone:(NSUInteger)zoneID {
-    
-    NSString *fanSql = [NSString stringWithFormat:@"select id, ZoneID, FanID, FanName, SubnetID, DeviceID, ChannelNO, FanTypeID, Remark, Reserved1, Reserved2, Reserved3, Reserved4, Reserved5 from FanInZone where ZoneID = %tu order by id;", zoneID];
-    
-    NSMutableArray *array = [self selectProprty:fanSql];
-    
-    NSMutableArray *fans = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-    
-        [fans addObject: [[SHFan alloc] initWithDict:dict]];
-    }
-    
-    return fans;
-}
 
 // MARK: - 区域操作相关
 
@@ -4459,21 +4374,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     return [self executeSql:deleteSQL];
 }
 
-/// 插入一个新增加的区域
-- (BOOL)insertNewRegion:(SHRegion *)region {
-    
-    NSString *regionSql =
-        [NSString stringWithFormat:
-            @"insert into Regions(regionID, regionName, regionIconName) values(%tu, '%@', '%@'); ",
-         
-         region.regionID,
-         region.regionName,
-         region.regionIconName
-     ];
-    
-    return [self executeSql:regionSql];
-}
-
+ 
 /// 获得最大的地区ID
 - (NSUInteger)getMaxRegionID {
     
@@ -4482,50 +4383,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
-
-
-/// 查询所有的区域
-- (NSMutableArray *)getAllRegions {
-    
-    NSString *zonesSql = @"select regionID, regionName, regionIconName from Regions order by regionID;";
-    
-    NSMutableArray *array = [self selectProprty:zonesSql];
-    
-    NSMutableArray *regions = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-         SHRegion *region =
-            [[SHRegion  alloc] initWithDictionary:dict];
-        
-        [regions addObject:region];
-    }
-    
-    return regions;
-}
-
-/// 增加地区表格
-- (void)addRegions {
-    
-    if (![self isColumnName:@"regionID"
-             consistinTable:@"Zones"]) {
-
-        // 增加字段
-        [self executeSql:@"ALTER TABLE Zones ADD regionID INTEGER DEFAULT 1;"];
-    }
-    
-    // 插入一条默认的多地区数据
-    if ([self getAllRegions].count == 0) {
-        
-        // 默认有一个区域
-        SHRegion *region = [[SHRegion alloc] init];
-        region.regionID = 1;
-        region.regionName = @"region";
-        region.regionIconName = @"regionIcon";
-        [self insertNewRegion:region];
-    }
-}
-
+ 
 
 // MARK: - 创建表格
 
@@ -4652,8 +4510,6 @@ const NSUInteger maxIconIDForDataBase = 10;
         }
     }
   
-    // 增加多区域支持
-    [self addRegions];
     
     // 增加Scene控制
     [self addSceneControl];
@@ -4663,9 +4519,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     // 增加其它控制
     [self addOtherControl];
-    
-    // 增加语音控制的字段
-//    [self addSpeechNameForDevices];
+
 }
 
 

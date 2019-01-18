@@ -45,6 +45,10 @@
 		04184DFD21F16E950002E491 /* SHDmxFunctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04184DFC21F16E950002E491 /* SHDmxFunctionViewController.swift */; };
 		04184E0321F183A00002E491 /* SHDmxVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04184E0021F1839E0002E491 /* SHDmxVoiceViewController.m */; };
 		04184E0421F183A00002E491 /* SHDmxVoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04184E0121F1839F0002E491 /* SHDmxVoiceViewController.xib */; };
+		04184E2A21F1A63C0002E491 /* SHSQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04184E2921F1A63C0002E491 /* SHSQLiteManager.swift */; };
+		04184E2C21F1BAFB0002E491 /* SHSQLiteManager + Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04184E2B21F1BAFB0002E491 /* SHSQLiteManager + Region.swift */; };
+		04184E2E21F1CBCD0002E491 /* SHSQLiteManager + Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04184E2D21F1CBCD0002E491 /* SHSQLiteManager + Zone.swift */; };
+		04184E3221F1CD4C0002E491 /* SHSQLiteManager + Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04184E3121F1CD4C0002E491 /* SHSQLiteManager + Fan.swift */; };
 		041C004821B4DDDA0003CB49 /* SHSchedualEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041CFFE521B4DDD80003CB49 /* SHSchedualEditViewController.xib */; };
 		041C004F21B4DDDA0003CB49 /* SHSchduleHVACView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041CFFF521B4DDD90003CB49 /* SHSchduleHVACView.xib */; };
 		041C005021B4DDDA0003CB49 /* SHSchedualHVACViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041CFFF721B4DDD90003CB49 /* SHSchedualHVACViewController.xib */; };
@@ -521,6 +525,10 @@
 		04184E0021F1839E0002E491 /* SHDmxVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDmxVoiceViewController.m; sourceTree = "<group>"; };
 		04184E0121F1839F0002E491 /* SHDmxVoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDmxVoiceViewController.xib; sourceTree = "<group>"; };
 		04184E0221F1839F0002E491 /* SHDmxVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDmxVoiceViewController.h; sourceTree = "<group>"; };
+		04184E2921F1A63C0002E491 /* SHSQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSQLiteManager.swift; sourceTree = "<group>"; };
+		04184E2B21F1BAFB0002E491 /* SHSQLiteManager + Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Region.swift"; sourceTree = "<group>"; };
+		04184E2D21F1CBCD0002E491 /* SHSQLiteManager + Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Zone.swift"; sourceTree = "<group>"; };
+		04184E3121F1CD4C0002E491 /* SHSQLiteManager + Fan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Fan.swift"; sourceTree = "<group>"; };
 		041BFFA521533BA700D13A99 /* Smart-Bus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Smart-Bus.entitlements"; sourceTree = "<group>"; };
 		041C000121B4DDD90003CB49 /* SHSchedualAudioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchedualAudioCell.xib; sourceTree = "<group>"; };
 		041C000421B4DDD90003CB49 /* SHSchedualAudioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchedualAudioViewController.xib; sourceTree = "<group>"; };
@@ -2604,6 +2612,10 @@
 			children = (
 				8B687D281EEA4F8E00B58314 /* SHSQLManager.h */,
 				8B687D291EEA4F8E00B58314 /* SHSQLManager.m */,
+				04184E2921F1A63C0002E491 /* SHSQLiteManager.swift */,
+				04184E2B21F1BAFB0002E491 /* SHSQLiteManager + Region.swift */,
+				04184E2D21F1CBCD0002E491 /* SHSQLiteManager + Zone.swift */,
+				04184E3121F1CD4C0002E491 /* SHSQLiteManager + Fan.swift */,
 				04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */,
 				8BF9268D1EEE857D00EE5A54 /* SQL.sql */,
 			);
@@ -4815,10 +4827,12 @@
 				042CD7CF20AD2ED600061670 /* EZAudio.m in Sources */,
 				0441DDE2216C956C00952CE4 /* SHResetPasswordViewController.swift in Sources */,
 				047CFA042187EEF8002CAE8A /* SHDeviceArgsViewCell.swift in Sources */,
+				04184E2A21F1A63C0002E491 /* SHSQLiteManager.swift in Sources */,
 				042CD7D020AD2ED600061670 /* EZAudioUtilities.m in Sources */,
 				047812AC216F210E007A7162 /* SHCurrentTransformerViewController.swift in Sources */,
 				04CF6F442193CF660052A8A9 /* SHDryContact.swift in Sources */,
 				044270CE21ED902A00275398 /* SHRegionViewController.swift in Sources */,
+				04184E2C21F1BAFB0002E491 /* SHSQLiteManager + Region.swift in Sources */,
 				0499C9EF21D6002500E15569 /* SHAudioRadioView.swift in Sources */,
 				042CD7CD20AD2ED600061670 /* EZAudioPlayer.m in Sources */,
 				0453EA4121A67C8400F666EF /* JHIndexPath.m in Sources */,
@@ -4934,6 +4948,7 @@
 				8B8298D8204E31F300F3AD41 /* SHZoneControlRecordMoodViewController.m in Sources */,
 				0401BC69219168080046BF18 /* SHMacroCommand.swift in Sources */,
 				042450D221F0174100C99512 /* SHDeviceArgsViewController + TV.swift in Sources */,
+				04184E3221F1CD4C0002E491 /* SHSQLiteManager + Fan.swift in Sources */,
 				8B8298EE204E31F300F3AD41 /* SHCommandButton.m in Sources */,
 				04DF642121AD21110033A083 /* SHLight.swift in Sources */,
 				042450DE21F0185500C99512 /* SHDeviceArgsViewController + Light.swift in Sources */,
@@ -5027,6 +5042,7 @@
 				048D6DB421CC942300261782 /* SHAudioSendData.swift in Sources */,
 				04E074612186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift in Sources */,
 				0453EA4221A67C8400F666EF /* JHRingChart.m in Sources */,
+				04184E2E21F1CBCD0002E491 /* SHSQLiteManager + Zone.swift in Sources */,
 				0480399921B7B965009D9A32 /* SHZoneControlTVView.swift in Sources */,
 				0448850521E5A3D500BA806C /* SHSchdualContolZoneCell.swift in Sources */,
 				04A177DA215F608500BD9744 /* SHHomeStatusViewController.swift in Sources */,

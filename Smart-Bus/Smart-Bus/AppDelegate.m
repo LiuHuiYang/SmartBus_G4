@@ -27,7 +27,8 @@
     [[SHLanguageTools shareLanguageTools] setLanguage];
     
     // 2. 打开数据库
-    [SHSQLManager shareSQLManager];
+    [SHSQLiteManager shared];
+//    [SHSQLManager shareSQLManager];
    
     // 3. 初始化计划执行的定时器
     [[SHSchedualExecuteTools shared] initSchedualTimer];

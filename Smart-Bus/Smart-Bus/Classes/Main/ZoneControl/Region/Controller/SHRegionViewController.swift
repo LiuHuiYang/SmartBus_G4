@@ -62,28 +62,17 @@ class SHRegionViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
-        guard let allRegion = SHSQLManager.share()?.getAllRegions() as? [SHRegion] else {
+        
+        regions = SHSQLiteManager.shared.getAllRegions()
+        
+        if regions.isEmpty {
             
             SVProgressHUD.showInfo(
                 withStatus: SHLanguageText.noData
             )
-            
-            return
         }
-        
-        if allRegion.isEmpty {
-            
-            SVProgressHUD.showInfo(
-                withStatus: SHLanguageText.noData
-            )
-            
-            return
-        }
-        
-        regions = allRegion
         
         listView.reloadData()
-        
     }
     
     /// 布局
@@ -138,7 +127,7 @@ extension SHRegionViewController {
         region.regionName = "New Region"
         region.regionIconName = "regionIcon"
         
-        SHSQLManager.share()?.insertNewRegion(region)
+        _ = SHSQLiteManager.shared.insertRegion(region)
    
         let detailController =
             SHRegionSettingViewController()

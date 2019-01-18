@@ -158,9 +158,7 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 if let fan = self.allDevices[indexPath.row]
                         as? SHFan {
                     
-                    SHSQLManager.share()?.deleteFan(
-                        inZone: fan
-                    )
+                    _ = SHSQLiteManager.shared.deleteFan(fan)
                     
                     self.allDevices.remove(fan)
                 }
@@ -560,10 +558,10 @@ extension SHSystemDetailViewController: UITableViewDataSource {
                 as? SHFan {
                 
                 deviceName =
-                    "\(fan.fanID) - " +
-                    "\(fan.fanName ?? "fan") : " +
-                    "\(fan.subnetID) - "         +
-                    "\(fan.deviceID) - "         +
+                    "\(fan.fanID) - "    +
+                    "\(fan.fanName) : "  +
+                    "\(fan.subnetID) - " +
+                    "\(fan.deviceID) - " +
                     "\(fan.channelNO)"
             }
             
@@ -861,8 +859,8 @@ extension SHSystemDetailViewController {
             fan.fanID =
                 (SHSQLManager.share()?.getMaxShadeID(
                     forZone: zoneID) ?? 0) + 1
-            
-            SHSQLManager.share()?.insertNewFan(fan)
+        
+            _ = SHSQLiteManager.shared.insertFan(fan)
             
             detailController.fan = fan
             
@@ -1084,12 +1082,11 @@ extension SHSystemDetailViewController {
             
         case .fan:
             guard let fans =
-                SHSQLManager.share()?.getFanForZone(
-                    zoneID) else {
+                SHSQLiteManager.shared.getFans(zoneID) as? NSMutableArray else {
                 
                 return
             }
-            
+           
             allDevices = fans
             
         case .floorHeating:

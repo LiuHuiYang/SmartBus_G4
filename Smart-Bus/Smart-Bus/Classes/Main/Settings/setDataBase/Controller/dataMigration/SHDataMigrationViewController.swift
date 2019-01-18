@@ -126,7 +126,7 @@ extension SHDataMigrationViewController {
         
         let sourceDataBasePath = FileTools.documentPath() + "/" + oldDataBase
         
-        SHSQLManager.share()?.queue = FMDatabaseQueue(path: sourceDataBasePath)
+        SHSQLiteManager.shared.queue = FMDatabaseQueue(path: sourceDataBasePath)
         
         if changeSystemDefnition() == false {
             return false
@@ -235,18 +235,23 @@ extension SHDataMigrationViewController {
         }
         
         // 删除一些数据库
-        SHSQLManager.share()?.deleteTable("CommandTypeDefinition")
         
-        SHSQLManager.share()?.deleteTable("Camera")
-        SHSQLManager.share()?.deleteTable("IpCamera")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "CommandTypeDefinition"
+        )
         
-        SHSQLManager.share()?.deleteTable("Schedules")
-        SHSQLManager.share()?.deleteTable("ScheduleCommands")
+        _ = SHSQLiteManager.shared.deleteTable("Camera")
+        _ = SHSQLiteManager.shared.deleteTable("IpCamera")
+        
+        _ = SHSQLiteManager.shared.deleteTable("Schedules")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "ScheduleCommands"
+        )
         
         // 指向新的数据库
         let destDataBasePath = FileTools.documentPath() + "/" + dataBaseName
         
-        SHSQLManager.share()?.queue =
+        SHSQLiteManager.shared.queue =
             FMDatabaseQueue(path: destDataBasePath)
         
         return true
@@ -273,7 +278,9 @@ extension SHDataMigrationViewController {
                 "SequenceNo  INTEGER NOT NULL DEFAULT 0, "            +
         "ZoneID INTEGER NOT NULL DEFAULT 0);"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
             "INSERT INTO SATChannels_tmp (  "                       +
@@ -282,11 +289,14 @@ extension SHDataMigrationViewController {
                 "ChannelNo, ChannelName, 'mediaSATChannelDefault',  "   +
         "SequenceNo FROM SATChannels;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("SATChannels")
+        _ = SHSQLiteManager.shared.deleteTable("SATChannels")
         
-        SHSQLManager.share()?.renameTable("SATChannels_tmp", toName: "SATChannels")
+        _ = SHSQLiteManager.shared.renameTable(
+            "SATChannels_tmp",
+            toName: "SATChannels"
+        )
         
         return true
     }
@@ -302,17 +312,20 @@ extension SHDataMigrationViewController {
                 "SequenceNo INTEGER NOT NULL DEFAULT 0, "               +
         "ZoneID INTEGER NOT NULL DEFAULT 0 );"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
         "INSERT INTO SATCategory_tmp (CategoryID, CategoryName, SequenceNo) SELECT CategoryID, CategoryName, SequenceNo FROM SATCategory;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("SATCategory")
+        _ = SHSQLiteManager.shared.deleteTable("SATCategory")
         
-        SHSQLManager.share()?.renameTable("SATCategory_tmp",
-                                          toName: "SATCategory"
+        _ = SHSQLiteManager.shared.renameTable(
+            "SATCategory_tmp",
+            toName: "SATCategory"
         )
         
         return true
@@ -360,7 +373,9 @@ extension SHDataMigrationViewController {
                 "IRMacroNumberForSATSpare4 INTEGER DEFAULT 0,        "  +
         "IRMacroNumberForSATSpare5 INTEGER DEFAULT 0);"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
             "INSERT INTO SATInZone_tmp ("       +
@@ -425,12 +440,13 @@ extension SHDataMigrationViewController {
                 "IRMacroNumbForSATSpare4, "         +
         "IRMacroNumbForSATSpare5 FROM SATInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("SATInZone")
+        _ = SHSQLiteManager.shared.deleteTable("SATInZone")
         
-        SHSQLManager.share()?.renameTable("SATInZone_tmp",
-                                          toName: "SATInZone"
+        _ = SHSQLiteManager.shared.renameTable(
+            "SATInZone_tmp",
+            toName: "SATInZone"
         )
         
         return true
@@ -464,7 +480,9 @@ extension SHDataMigrationViewController {
                 "IRMacroNumberForProjectorSpare4 INTEGER DEFAULT 0," +
         "IRMacroNumberForProjectorSpare5 INTEGER DEFAULT 0);"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
             "INSERT INTO ProjectorInZone_tmp("      +
@@ -505,11 +523,16 @@ extension SHDataMigrationViewController {
                 "IRMacroNumbForProjectorSpare4,"        +
         "IRMacroNumbForProjectorSpare5 FROM ProjectorInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("ProjectorInZone")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "ProjectorInZone"
+        )
         
-        SHSQLManager.share()?.renameTable("ProjectorInZone_tmp", toName: "ProjectorInZone")
+        _ = SHSQLiteManager.shared.renameTable(
+            "ProjectorInZone_tmp",
+            toName: "ProjectorInZone"
+        )
         
         return true
     }
@@ -546,7 +569,9 @@ extension SHDataMigrationViewController {
                 "IRMacroNumberForDVDStart4 INTEGER DEFAULT 4, "       +
         "IRMacroNumberForDVDStart5 INTEGER DEFAULT 5 );"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
             "INSERT INTO DVDInZone_tmp(         "   +
@@ -595,12 +620,13 @@ extension SHDataMigrationViewController {
                 "IRMacroNumbForDVDSpare4,           "   +
         "IRMacroNumbForDVDSpare5 FROM DVDInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("DVDInZone")
+        _ = SHSQLiteManager.shared.deleteTable("DVDInZone")
         
-        SHSQLManager.share()?.renameTable("DVDInZone_tmp",
-                                          toName: "DVDInZone"
+        _ = SHSQLiteManager.shared.renameTable(
+            "DVDInZone_tmp",
+            toName: "DVDInZone"
         )
         
         return true
@@ -634,7 +660,9 @@ extension SHDataMigrationViewController {
                 "IRMacroNumberForAppleTVStart4 INTEGER DEFAULT 0,"    +
         "IRMacroNumberForAppleTVStart5 INTEGER DEFAULT 0);"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
             "INSERT INTO AppleTVInZone_tmp(ZoneID, SubnetID,"   +
@@ -674,11 +702,13 @@ extension SHDataMigrationViewController {
                 "IRMacroNumbForAppleTVSpare4, "                     +
         "IRMacroNumbForAppleTVSpare5 FROM AppleTVInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("AppleTVInZone")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "AppleTVInZone"
+        )
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "AppleTVInZone_tmp",
             toName: "AppleTVInZone"
         )
@@ -726,7 +756,9 @@ extension SHDataMigrationViewController {
         "IRMacroNumberForTVStart5 INTEGER DEFAULT 0);"
         
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
             "INSERT INTO TVInZone_tmp (ZoneID, SubnetID, DeviceID," +
@@ -787,11 +819,11 @@ extension SHDataMigrationViewController {
                 "IRMacroNumbForTVSpare4,"                               +
         "IRMacroNumbForTVSpare5 FROM TVInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("TVInZone")
+        _ = SHSQLiteManager.shared.deleteTable("TVInZone")
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "TVInZone_tmp",
             toName: "TVInZone"
         )
@@ -805,7 +837,9 @@ extension SHDataMigrationViewController {
     
     func changeZoneLights() -> Bool {
         
-        SHSQLManager.share()?.deleteTable("LightTypeDefinition")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "LightTypeDefinition"
+        )
         
         let createNewTableSql =
             "CREATE TABLE LightInZone_tmp ("            +
@@ -819,15 +853,17 @@ extension SHDataMigrationViewController {
                 "LightTypeID integer, "                     +
         "id integer PRIMARY KEY AUTOINCREMENT NOT NULL);"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL = "INSERT INTO LightInZone_tmp (ZoneID, LightID, LightRemark, SubnetID, DeviceID, ChannelNo, CanDim, LightTypeID) SELECT ZoneID, LightID, LightRemark, SubnetID, DeviceID, ChannelNo, CanDim, LightTypeID FROM LightInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("LightInZone")
+        _ = SHSQLiteManager.shared.deleteTable("LightInZone")
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "LightInZone_tmp",
             toName: "LightInZone"
         )
@@ -847,15 +883,17 @@ extension SHDataMigrationViewController {
                 "ACRemark text,"                        +
         "id integer PRIMARY KEY NOT NULL);"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL = "INSERT INTO HVACInZone_tmp (ZoneID, SubnetID, DeviceID, ACNumber, ACTypeID, ACRemark) SELECT ZoneID, SubnetID, DeviceID, ACNumber, ACTypeID, Remark FROM HVACInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("HVACInZone")
+        _ = SHSQLiteManager.shared.deleteTable("HVACInZone")
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "HVACInZone_tmp",
             toName: "HVACInZone"
         )
@@ -875,15 +913,20 @@ extension SHDataMigrationViewController {
                 "TempertureOfWarm integer DEFAULT(26), "    +
         "TempertureOfHot integer DEFAULT(30) );"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL = "INSERT INTO HVACSetUp_tmp (isCelsius, TempertureOfCold, TempertureOfCool, TempertureOfWarm, TempertureOfHot) SELECT IsCelsiur, TempertureOfCold, TempertureOfCool, TempertureOfWarm, TempertureOfHot FROM HVACSetUp;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("HVACSetUp")
+        _ = SHSQLiteManager.shared.deleteTable("HVACSetUp")
         
-        SHSQLManager.share()?.renameTable("HVACSetUp_tmp", toName: "HVACSetUp")
+        _ = SHSQLiteManager.shared.renameTable(
+            "HVACSetUp_tmp",
+            toName: "HVACSetUp"
+        )
         
         return true
     }
@@ -891,7 +934,7 @@ extension SHDataMigrationViewController {
     /// 区域Audio数据
     func changeZoneAudio() -> Bool {
         
-        SHSQLManager.share()?.deleteTable("ZAudioId")
+        _ = SHSQLiteManager.shared.deleteTable("ZAudioId")
         
         let createNewTableSql =
             "CREATE TABLE ZaudioInZone_tmp ( "      +
@@ -905,18 +948,25 @@ extension SHDataMigrationViewController {
                 "haveAudioIn integer NOT NULL DEFAULT(1), " +
         "havePhone integer NOT NULL DEFAULT(0));"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
             "INSERT INTO ZaudioInZone_tmp (ZoneID, SubnetID," +
                 "DeviceID) SELECT ZoneID, SubnetID, DeviceID "    +
         "FROM ZaudioInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("ZaudioInZone")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "ZaudioInZone"
+        )
         
-        SHSQLManager.share()?.renameTable("ZaudioInZone_tmp", toName: "ZaudioInZone")
+        _ = SHSQLiteManager.shared.renameTable(
+            "ZaudioInZone_tmp",
+            toName: "ZaudioInZone"
+        )
         
         return true
     }
@@ -941,7 +991,9 @@ extension SHDataMigrationViewController {
                 "Reserved4 INTEGER DEFAULT 0,     "          +
         "Reserved5 INTEGER DEFAULT 0 );"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
             "INSERT INTO FanInZone_tmp (ZoneID, FanID,"     +
@@ -954,11 +1006,11 @@ extension SHDataMigrationViewController {
                 "Reserved2 as integer, Reserved3 as integer,"   +
         "Reserved4 as integer, Reserved5 as integer FROM FanInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("FanInZone")
+        _ = SHSQLiteManager.shared.deleteTable("FanInZone")
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "FanInZone_tmp",
             toName: "FanInZone"
         )
@@ -969,8 +1021,11 @@ extension SHDataMigrationViewController {
     /// 窗帘迁移
     func changeZoneShade() -> Bool {
         
-        SHSQLManager.share()?.deleteTable("ShadeIconDefinition")
-        SHSQLManager.share()?.deleteTable(
+        _ = SHSQLiteManager.shared.deleteTable(
+            "ShadeIconDefinition"
+        )
+        
+        _ = SHSQLiteManager.shared.deleteTable(
             "ShadesControlTypeDefinition"
         )
         
@@ -1000,9 +1055,9 @@ extension SHDataMigrationViewController {
                 "switchIDforStop INTEGER NOT NULL DEFAULT 0, "        +
         "switchIDStatusforStop INTEGER NOT NULL DEFAULT 0);"
         
-        SHSQLManager.share()?.executeSql(createShadeSQL)
+        _ = SHSQLiteManager.shared.executeSql(createShadeSQL)
         
-        let array = SHSQLManager.share()?.selectProprty("select ZoneID, ShadeID, ShadeName, HasStop from ShadesInZone;") as? [[String: String]]
+        let array = SHSQLiteManager.shared.selectProprty("select ZoneID, ShadeID, ShadeName, HasStop from ShadesInZone;") as? [[String: String]]
         
         if let shades = array {
             
@@ -1020,7 +1075,7 @@ extension SHDataMigrationViewController {
                         "from ShadesCommands where ZoneID = \(zoneID) and"    +
                 "shadeID = \(shadeID);"
                 
-                if let commands = SHSQLManager.share()?.selectProprty(commandSql) as? [[String: String]] {
+                if let commands = SHSQLiteManager.shared.selectProprty(commandSql) as? [[String: String]] {
                     
                     let shade = SHShade()
                     shade.zoneID = zoneID
@@ -1104,19 +1159,21 @@ extension SHDataMigrationViewController {
                         }
                     }
                     
-                    SHSQLManager.share()?.insertNewShade(shade)
+                   SHSQLManager.share()?.insertNewShade(shade)
                 }
                 
-                
             }
-            
             
         }
         
         
-        SHSQLManager.share()?.deleteTable("ShadesCommands")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "ShadesCommands"
+        )
         
-        SHSQLManager.share()?.deleteTable("ShadesInZone")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "ShadesInZone"
+        )
         
         return true
     }
@@ -1124,7 +1181,9 @@ extension SHDataMigrationViewController {
     /// Mood数据迁移
     func changeZoneMood() -> Bool {
         
-        SHSQLManager.share()?.deleteTable("MoodIconDefinition")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "MoodIconDefinition"
+        )
         
         let createNewTableSql =
             "CREATE TABLE IF NOT EXISTS MoodInZone_tmp ("            +
@@ -1135,15 +1194,17 @@ extension SHDataMigrationViewController {
                 "MoodIconName  TEXT NOT NULL DEFAULT 'mood_romantic' , " +
         "IsSystemMood INTEGER DEFAULT 0);"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL = "INSERT INTO MoodInZone_tmp(ZoneID, MoodID, MoodName, IsSystemMood) SELECT ZoneID, MoodID, MoodName, IsSystemMood FROM  MoodInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("MoodInZone")
+        _ = SHSQLiteManager.shared.deleteTable("MoodInZone")
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "MoodInZone_tmp",
             toName: "MoodInZone"
         )
@@ -1171,7 +1232,9 @@ extension SHDataMigrationViewController {
                 "Parameter6 INTEGER NOT NULL DEFAULT 0 , "          +
         "DelayMillisecondAfterSend integer NOT NULL DEFAULT(100));"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let inserSQL =
             "INSERT INTO MoodCommands_tmp(ZoneID, MoodID,"       +
@@ -1182,12 +1245,15 @@ extension SHDataMigrationViewController {
                 "FirstParameter, SecondParameter, ThirdParameter,"   +
         "DelayMillisecondAfterSend FROM MoodCommands;"
         
-        SHSQLManager.share()?.executeSql(inserSQL)
+        _ = SHSQLiteManager.shared.executeSql(inserSQL)
         
-        SHSQLManager.share()?.deleteTable("MoodCommands")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "MoodCommands"
+        )
         
-        SHSQLManager.share()?.renameTable("MoodCommands_tmp",
-                                          toName: "MoodCommands"
+        _ = SHSQLiteManager.shared.renameTable(
+            "MoodCommands_tmp",
+            toName: "MoodCommands"
         )
         
         return true
@@ -1206,15 +1272,19 @@ extension SHDataMigrationViewController {
                 "SystemID INTEGER  DEFAULT 0, "                    +
         "SystemName TEXT DEFAULT  'systemName');"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL = "INSERT INTO systemDefnition_tmp(SystemID, SystemName) SELECT DISTINCT SystemID, SystemName FROM SystemDefinition;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("SystemDefinition")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "SystemDefinition"
+        )
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "systemDefnition_tmp",
             toName: "systemDefnition"
         )
@@ -1230,16 +1300,23 @@ extension SHDataMigrationViewController {
                 "ZoneID INTEGER,"                               +
         "SystemID INTEGER );"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL =
         "INSERT INTO SystemInZone_tmp(ZoneID, SystemID) SELECT DISTINCT ZoneID, SystemID FROM SystemInZone;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("SystemInZone")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "SystemInZone"
+        )
         
-        SHSQLManager.share()?.renameTable("SystemInZone_tmp", toName: "SystemInZone")
+        _ = SHSQLiteManager.shared.renameTable(
+            "SystemInZone_tmp",
+            toName: "SystemInZone"
+        )
         
         return true
     }
@@ -1253,20 +1330,24 @@ extension SHDataMigrationViewController {
                 "ZoneName text,  "                       +
         "zoneIconName text);"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL = "INSERT INTO Zones_tmp (ZoneID, ZoneName, zoneIconName) SELECT ZoneID, ZoneName, 'Demokit' FROM Zones;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("Zones")
+        _ = SHSQLiteManager.shared.deleteTable("Zones")
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "Zones_tmp",
             toName: "Zones"
         )
         
-        SHSQLManager.share()?.deleteTable("ZoneIconDefine")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "ZoneIconDefine"
+        )
         
         return true
     }
@@ -1274,14 +1355,14 @@ extension SHDataMigrationViewController {
     /// 区域图片
     func changeZoneImages() -> Bool {
         
-        SHSQLManager.share()?.deleteTable("Logo")
+        _ = SHSQLiteManager.shared.deleteTable("Logo")
         
         let createImages =
             "CREATE TABLE IF NOT EXISTS iconList (" +
                 "iconID INTEGER PRIMARY KEY, "          +
         "iconName TEXT );"
         
-        SHSQLManager.share()?.executeSql(createImages)
+        _ = SHSQLiteManager.shared.executeSql(createImages)
         
         let images = [
             "Assistants", "Ceooffice", "Corridor", "Demokit",
@@ -1293,7 +1374,7 @@ extension SHDataMigrationViewController {
             
             let insertSQL = "INSERT INTO iconList(iconID, iconName) VALUES(\(i + 1), \(images[i]));"
             
-            SHSQLManager.share()?.executeSql(insertSQL)
+            _ = SHSQLiteManager.shared.executeSql(insertSQL)
         }
         
         return true
@@ -1318,15 +1399,17 @@ extension SHDataMigrationViewController {
                 "Parameter2 INTEGER NOT NULL DEFAULT 0,"               +
         "DelayMillisecondAfterSend INTEGER NOT NULL DEFAULT 0);"
         
-        SHSQLManager.share()?.executeSql(createCommands)
+        _ = SHSQLiteManager.shared.executeSql(createCommands)
         
         let insertSQL = "INSERT INTO CentralHVACCommands_tmp(FloorID, CommandID, Remark, SubnetID, DeviceID, CommandTypeID, DelayMillisecondAfterSend) SELECT FloorID, CommandID, Remark, SubnetID, DeviceID, CommandTypeID, DelayMillisecondAfterSend FROM CentralHVACCommands;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("CentralHVACCommands")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "CentralHVACCommands"
+        )
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "CentralHVACCommands_tmp",
             toName: "CentralHVACCommands"
         )
@@ -1344,15 +1427,18 @@ extension SHDataMigrationViewController {
                 "FloorName TEXT NOT NULL DEFAULT 'hvac',"       +
         "isHaveHot BOOL NOT NULL  DEFAULT 1);"
         
-        SHSQLManager.share()?.executeSql(createHVAC)
+        _ = SHSQLiteManager.shared.executeSql(createHVAC)
         
         let insertSQL = "INSERT INTO CentralHVAC_tmp(FloorID, FloorName, isHaveHot) SELECT FloorID, FloorName, BlnHaveHot FROM CentralHVAC;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("CentralHVAC")
+        _ = SHSQLiteManager.shared.deleteTable("CentralHVAC")
         
-        SHSQLManager.share()?.renameTable("CentralHVAC_tmp", toName: "CentralHVAC")
+        _ = SHSQLiteManager.shared.renameTable(
+            "CentralHVAC_tmp",
+            toName: "CentralHVAC"
+        )
         
         return true
     }
@@ -1368,15 +1454,18 @@ extension SHDataMigrationViewController {
                 "ZoneID INTEGER NOT NULL DEFAULT 0,"                +
         "zoneNameOfSecurity TEXT NOT NULL DEFAULT 'zoneName');"
         
-        SHSQLManager.share()?.executeSql(createSecurity)
+        _ = SHSQLiteManager.shared.executeSql(createSecurity)
         
         let insertSQL = "INSERT INTO CentralSecurity_tmp(SubnetID, DeviceID, ZoneID, zoneNameOfSecurity) SELECT SubnetID as integer, DeviceID as integer, ZoneID as integer, ZoneNameOfSecurity FROM Security;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("Security")
+        _ = SHSQLiteManager.shared.deleteTable("Security")
         
-        SHSQLManager.share()?.renameTable("CentralSecurity_tmp", toName: "CentralSecurity")
+        _ = SHSQLiteManager.shared.renameTable(
+            "CentralSecurity_tmp",
+            toName: "CentralSecurity"
+        )
         
         return true
     }
@@ -1397,15 +1486,20 @@ extension SHDataMigrationViewController {
                 "Parameter2 INTEGER NOT NULL DEFAULT 0,"                 +
         "DelayMillisecondAfterSend INTEGER NOT NULL DEFAULT 0);"
         
-        SHSQLManager.share()?.executeSql(createCommands)
+        _ = SHSQLiteManager.shared.executeSql(createCommands)
         
         let insertSQL = "INSERT INTO CentralLightsCommands_tmp(FloorID, CommandID, Remark, SubnetID, DeviceID, CommandTypeID, Parameter1, Parameter2, DelayMillisecondAfterSend) SELECT FloorID, CommandID, Remark, SubnetID, DeviceID, CommandTypeID, FirstParameter, ThirdParameter, DelayMillisecondAfterSend FROM CentralLightsCommands;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("CentralLightsCommands")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "CentralLightsCommands"
+        )
         
-        SHSQLManager.share()?.renameTable("CentralLightsCommands_tmp", toName: "CentralLightsCommands")
+        _ = SHSQLiteManager.shared.renameTable(
+            "CentralLightsCommands_tmp",
+            toName: "CentralLightsCommands"
+        )
         
         return true
     }
@@ -1419,15 +1513,20 @@ extension SHDataMigrationViewController {
                 "FloorID INTEGER NOT NULL, "                     +
         "FloorName TEXT NOT NULL );"
         
-        SHSQLManager.share()?.executeSql(createLights)
+        _ = SHSQLiteManager.shared.executeSql(createLights)
         
         let insertSQL = "INSERT INTO CentralLights_tmp(FloorID, FloorName) SELECT FloorID, FloorName FROM CentralLights;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("CentralLights")
+        _ = SHSQLiteManager.shared.deleteTable(
+            "CentralLights"
+        )
         
-        SHSQLManager.share()?.renameTable("CentralLights_tmp", toName: "CentralLights")
+        _ = SHSQLiteManager.shared.renameTable(
+            "CentralLights_tmp",
+            toName: "CentralLights"
+        )
         
         return true
     }
@@ -1442,15 +1541,17 @@ extension SHDataMigrationViewController {
                 "MacroName TEXT NOT NULL DEFAULT 'MacroName' ," +
         "MacroIconName TEXT NOT NULL DEFAULT 'MacroIconName');"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL = "INSERT INTO MacroButtons_tmp(MacroID, MacroName, MacroIconName) SELECT MacroID, MacroName, 'Romatic' FROM MacroButton;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(insertSQL)
         
-        SHSQLManager.share()?.deleteTable("MacroButton")
+        _ = SHSQLiteManager.shared.deleteTable("MacroButton")
         
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.renameTable(
             "MacroButtons_tmp",
             toName: "MacroButtons"
         )
@@ -1474,14 +1575,21 @@ extension SHDataMigrationViewController {
                 "ThirdParameter INTEGER NOT NULL DEFAULT 0 ,  "         +
         "DelayMillisecondAfterSend INTEGER NOT NULL DEFAULT 0);"
         
-        SHSQLManager.share()?.executeSql(createNewTableSql)
+        _ = SHSQLiteManager.shared.executeSql(
+            createNewTableSql
+        )
         
         let insertSQL = "INSERT INTO MacroButtonCommands_tmp(MacroID, Remark, SubnetID, DeviceID, CommandTypeID, FirstParameter, SecondParameter, ThirdParameter, DelayMillisecondAfterSend) SELECT MacroID, Remark, SubnetID, DeviceID, CommandTypeID, FirstParameter, SecondParameter, ThirdParameter, DelayMillisecondAfterSend FROM MacroCommands;"
         
-        SHSQLManager.share()?.executeSql(insertSQL)
+        _ = SHSQLiteManager.shared.executeSql(
+            insertSQL
+        )
         
-        SHSQLManager.share()?.deleteTable("MacroCommands")
-        SHSQLManager.share()?.renameTable(
+        _ = SHSQLiteManager.shared.deleteTable(
+            "MacroCommands"
+        )
+        
+        _ = SHSQLiteManager.shared.renameTable(
             "MacroButtonCommands_tmp",
             toName: "MacroButtonCommands"
         )

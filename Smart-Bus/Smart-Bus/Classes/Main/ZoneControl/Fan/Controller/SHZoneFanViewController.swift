@@ -39,15 +39,18 @@ class SHZoneFanViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let zoneID = currentZone?.zoneID,
-            let fans =
-            SHSQLManager.share()?.getFanForZone(zoneID) else {
-                
-                SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
-                return
+        guard let zoneID = currentZone?.zoneID else {
+            
+            return
+        }
+      
+        allFans = SHSQLiteManager.shared.getFans(zoneID)
+        
+        if allFans.isEmpty {
+            
+             SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
         }
         
-        allFans = fans as! [SHFan]
         fansListView.reloadData()
         
         readDevicesStatus()

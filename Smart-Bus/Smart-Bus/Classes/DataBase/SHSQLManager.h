@@ -567,28 +567,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得当前区域中的最大的lightID
 - (NSUInteger)getMaxLightIDForZone:(NSUInteger)zoneID;
 
-
-// MARK: - 风扇
-
-/// 增加一个新的风扇
-- (BOOL)insertNewFan:(SHFan *)fan;
-
-/// 保存当前的风扇数据
-- (void)saveFanInZone:(SHFan *)fan;
-
-/// 删除风扇
-- (BOOL)deleteFanInZone:(SHFan *)fan;
-
-/// 删除区域中的所有风扇
-- (BOOL)deleteZoneFans:(NSUInteger)zoneID;
-
-/// 获得当前区域中的最大的FanID
-- (NSUInteger)getMaxFanIDForZone:(NSUInteger)zoneID;
-
-/// 查询当前区域的所有风扇
-- (NSMutableArray *)getFanForZone:(NSUInteger)zoneID;
-
-
+ 
 // MARK: - 系统区域
 
 /// 保存当前区域的所有设备
@@ -656,40 +635,10 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 删除分组区域
 - (BOOL)deleteRegion:(NSUInteger)regionID;
 
-/// 插入一个新增加的分组区域
-- (BOOL)insertNewRegion:(SHRegion *)region;
-
 /// 获得最大的分组地区ID
 - (NSUInteger)getMaxRegionID;
 
-/// 查询所有的区域
-- (NSMutableArray *)getAllRegions;
 
-// MARK: - 数据库本身操作相关的API
-
-
-/**
- 删除表格
- 
- @param name 表格名称
- @return YES - 删除成功 NO - 删除失败
- */
-- (BOOL)deleteTable:(NSString *)name;
-
-/**
- 修改数据表的名称
- 
- @param srcName 旧名称
- @param destName 新名称
- @return YES - 修改成功, NO - 修改失败
- */
-- (BOOL)renameTable:(NSString *)srcName toName:(NSString *)destName;
-
-/// 执行SQL语句 成功返回YES， 失败返回NO。
-- (BOOL)executeSql:(NSString *)sql;
-
-/// 查询封装语句 -- 注意，它返回的【字典】数组
-- (NSMutableArray *)selectProprty:(NSString *)sql;
 
 SingletonInterface(SQLManager)
 
