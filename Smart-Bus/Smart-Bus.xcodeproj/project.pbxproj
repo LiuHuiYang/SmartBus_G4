@@ -40,6 +40,11 @@
 		0414365021708B0100A3E5F6 /* SHSecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414364E21708B0100A3E5F6 /* SHSecurityViewController.swift */; };
 		0414365121708B0100A3E5F6 /* SHSecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0414364F21708B0100A3E5F6 /* SHSecurityViewController.xib */; };
 		04157DE6219EA8D300A2E259 /* SHCurrentTransformerChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04157DE5219EA8D300A2E259 /* SHCurrentTransformerChannel.swift */; };
+		04184DF921F160C10002E491 /* SHDmxPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04184DF821F160C10002E491 /* SHDmxPictureViewController.swift */; };
+		04184DFB21F16DB30002E491 /* SHDmxFunctionCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04184DFA21F16DB30002E491 /* SHDmxFunctionCustomView.swift */; };
+		04184DFD21F16E950002E491 /* SHDmxFunctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04184DFC21F16E950002E491 /* SHDmxFunctionViewController.swift */; };
+		04184E0321F183A00002E491 /* SHDmxVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04184E0021F1839E0002E491 /* SHDmxVoiceViewController.m */; };
+		04184E0421F183A00002E491 /* SHDmxVoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04184E0121F1839F0002E491 /* SHDmxVoiceViewController.xib */; };
 		041C004821B4DDDA0003CB49 /* SHSchedualEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041CFFE521B4DDD80003CB49 /* SHSchedualEditViewController.xib */; };
 		041C004F21B4DDDA0003CB49 /* SHSchduleHVACView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041CFFF521B4DDD90003CB49 /* SHSchduleHVACView.xib */; };
 		041C005021B4DDDA0003CB49 /* SHSchedualHVACViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041CFFF721B4DDD90003CB49 /* SHSchedualHVACViewController.xib */; };
@@ -137,8 +142,6 @@
 		042CD7D520AD2ED600061670 /* EZAudioDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 042CD7C220AD2ED600061670 /* EZAudioDisplayLink.m */; };
 		042CD7D620AD2ED600061670 /* EZAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 042CD7C320AD2ED600061670 /* EZAudioFile.m */; };
 		042CD7D720AD2ED600061670 /* EZAudioPlotGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 042CD7C420AD2ED600061670 /* EZAudioPlotGL.m */; };
-		042CD7DB20AD2FF500061670 /* SHDmxVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042CD7D920AD2FF500061670 /* SHDmxVoiceViewController.m */; };
-		042CD7DC20AD2FF500061670 /* SHDmxVoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042CD7DA20AD2FF500061670 /* SHDmxVoiceViewController.xib */; };
 		042E190E21DEE5CD00BCE8F6 /* SHZoneAudioPlayControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E190C21DEE5CD00BCE8F6 /* SHZoneAudioPlayControlViewController.m */; };
 		042E190F21DEE5CD00BCE8F6 /* SHZoneAudioPlayControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042E190D21DEE5CD00BCE8F6 /* SHZoneAudioPlayControlViewController.xib */; };
 		042E191121DF410700BCE8F6 /* SHAudioPlayStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042E191021DF410700BCE8F6 /* SHAudioPlayStatusView.xib */; };
@@ -161,7 +164,6 @@
 		044269A121C9E6AD00A7A88B /* SHZoneDmxChannelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044269A021C9E6AD00A7A88B /* SHZoneDmxChannelViewCell.swift */; };
 		044269A321C9EA9B00A7A88B /* SHDmxChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044269A221C9EA9B00A7A88B /* SHDmxChannelViewController.swift */; };
 		044269A521C9F06700A7A88B /* SHDmxColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044269A421C9F06700A7A88B /* SHDmxColorViewController.swift */; };
-		044269A921CA153C00A7A88B /* SHDmxFunctionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044269A721CA153C00A7A88B /* SHDmxFunctionViewController.m */; };
 		044269AA21CA153C00A7A88B /* SHDmxFunctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044269A821CA153C00A7A88B /* SHDmxFunctionViewController.xib */; };
 		044270CD21ED902A00275398 /* SHRegionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044270C821ED902A00275398 /* SHRegionViewController.xib */; };
 		044270CE21ED902A00275398 /* SHRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044270C921ED902A00275398 /* SHRegionViewController.swift */; };
@@ -174,7 +176,6 @@
 		044C545121DD9B6D00749526 /* SHAudioOperatorTools + path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C545021DD9B6D00749526 /* SHAudioOperatorTools + path.swift */; };
 		044C545321DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C545221DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift */; };
 		044E435021DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E434F21DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift */; };
-		04526C2920A2DEA500B39597 /* SHDmxPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04526C2720A2DEA500B39597 /* SHDmxPictureViewController.m */; };
 		04526C2A20A2DEA500B39597 /* SHDmxPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04526C2820A2DEA500B39597 /* SHDmxPictureViewController.xib */; };
 		04526C3020A2F58B00B39597 /* SHDmxColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04526C2E20A2F58B00B39597 /* SHDmxColorViewController.xib */; };
 		0453EA3B21A67C8400F666EF /* JHRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453EA1E21A67C8400F666EF /* JHRadarChart.m */; };
@@ -194,7 +195,6 @@
 		0453EA4921A67C8400F666EF /* JHScatterChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453EA3921A67C8400F666EF /* JHScatterChart.m */; };
 		04566DA621AFCB640099F548 /* SHZoneDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04566DA521AFCB640099F548 /* SHZoneDevicesViewController.swift */; };
 		045A9D9D209C0D980046EB45 /* SHZoneDmxGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A9D9C209C0D980046EB45 /* SHZoneDmxGroupViewController.m */; };
-		045DD37720A433A100C37C7B /* SHDmxFunctionCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DD37620A433A100C37C7B /* SHDmxFunctionCustomView.m */; };
 		045DD37920A4341D00C37C7B /* SHDmxFunctionCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045DD37820A4341D00C37C7B /* SHDmxFunctionCustomView.xib */; };
 		04674097214BAB8900FFCCEA /* SMART-BUS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */; };
 		0471CAE921CB74BE007DC208 /* SHZoneHVACControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471CAE721CB74BD007DC208 /* SHZoneHVACControlViewController.xib */; };
@@ -515,6 +515,12 @@
 		0414364E21708B0100A3E5F6 /* SHSecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSecurityViewController.swift; sourceTree = "<group>"; };
 		0414364F21708B0100A3E5F6 /* SHSecurityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSecurityViewController.xib; sourceTree = "<group>"; };
 		04157DE5219EA8D300A2E259 /* SHCurrentTransformerChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHCurrentTransformerChannel.swift; sourceTree = "<group>"; };
+		04184DF821F160C10002E491 /* SHDmxPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDmxPictureViewController.swift; sourceTree = "<group>"; };
+		04184DFA21F16DB30002E491 /* SHDmxFunctionCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDmxFunctionCustomView.swift; sourceTree = "<group>"; };
+		04184DFC21F16E950002E491 /* SHDmxFunctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDmxFunctionViewController.swift; sourceTree = "<group>"; };
+		04184E0021F1839E0002E491 /* SHDmxVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDmxVoiceViewController.m; sourceTree = "<group>"; };
+		04184E0121F1839F0002E491 /* SHDmxVoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDmxVoiceViewController.xib; sourceTree = "<group>"; };
+		04184E0221F1839F0002E491 /* SHDmxVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDmxVoiceViewController.h; sourceTree = "<group>"; };
 		041BFFA521533BA700D13A99 /* Smart-Bus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Smart-Bus.entitlements"; sourceTree = "<group>"; };
 		041C000121B4DDD90003CB49 /* SHSchedualAudioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchedualAudioCell.xib; sourceTree = "<group>"; };
 		041C000421B4DDD90003CB49 /* SHSchedualAudioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchedualAudioViewController.xib; sourceTree = "<group>"; };
@@ -636,9 +642,6 @@
 		042CD7C420AD2ED600061670 /* EZAudioPlotGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZAudioPlotGL.m; sourceTree = "<group>"; };
 		042CD7C520AD2ED600061670 /* EZAudioFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioFFT.h; sourceTree = "<group>"; };
 		042CD7C620AD2ED600061670 /* EZAudioiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioiOS.h; sourceTree = "<group>"; };
-		042CD7D820AD2FF500061670 /* SHDmxVoiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDmxVoiceViewController.h; sourceTree = "<group>"; };
-		042CD7D920AD2FF500061670 /* SHDmxVoiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDmxVoiceViewController.m; sourceTree = "<group>"; };
-		042CD7DA20AD2FF500061670 /* SHDmxVoiceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDmxVoiceViewController.xib; sourceTree = "<group>"; };
 		042E190B21DEE5CD00BCE8F6 /* SHZoneAudioPlayControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHZoneAudioPlayControlViewController.h; sourceTree = "<group>"; };
 		042E190C21DEE5CD00BCE8F6 /* SHZoneAudioPlayControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHZoneAudioPlayControlViewController.m; sourceTree = "<group>"; };
 		042E190D21DEE5CD00BCE8F6 /* SHZoneAudioPlayControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneAudioPlayControlViewController.xib; sourceTree = "<group>"; };
@@ -666,8 +669,6 @@
 		044269A021C9E6AD00A7A88B /* SHZoneDmxChannelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneDmxChannelViewCell.swift; sourceTree = "<group>"; };
 		044269A221C9EA9B00A7A88B /* SHDmxChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDmxChannelViewController.swift; sourceTree = "<group>"; };
 		044269A421C9F06700A7A88B /* SHDmxColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDmxColorViewController.swift; sourceTree = "<group>"; };
-		044269A621CA153C00A7A88B /* SHDmxFunctionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDmxFunctionViewController.h; sourceTree = "<group>"; };
-		044269A721CA153C00A7A88B /* SHDmxFunctionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDmxFunctionViewController.m; sourceTree = "<group>"; };
 		044269A821CA153C00A7A88B /* SHDmxFunctionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDmxFunctionViewController.xib; sourceTree = "<group>"; };
 		044270C821ED902A00275398 /* SHRegionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHRegionViewController.xib; sourceTree = "<group>"; };
 		044270C921ED902A00275398 /* SHRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHRegionViewController.swift; sourceTree = "<group>"; };
@@ -680,8 +681,6 @@
 		044C545021DD9B6D00749526 /* SHAudioOperatorTools + path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + path.swift"; sourceTree = "<group>"; };
 		044C545221DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + queueSongs.swift"; sourceTree = "<group>"; };
 		044E434F21DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + asc.swift"; sourceTree = "<group>"; };
-		04526C2620A2DEA500B39597 /* SHDmxPictureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDmxPictureViewController.h; sourceTree = "<group>"; };
-		04526C2720A2DEA500B39597 /* SHDmxPictureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDmxPictureViewController.m; sourceTree = "<group>"; };
 		04526C2820A2DEA500B39597 /* SHDmxPictureViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDmxPictureViewController.xib; sourceTree = "<group>"; };
 		04526C2E20A2F58B00B39597 /* SHDmxColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDmxColorViewController.xib; sourceTree = "<group>"; };
 		0453EA1C21A67C8400F666EF /* JHLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLineChart.h; sourceTree = "<group>"; };
@@ -718,8 +717,6 @@
 		04566DA521AFCB640099F548 /* SHZoneDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneDevicesViewController.swift; sourceTree = "<group>"; };
 		045A9D9B209C0D980046EB45 /* SHZoneDmxGroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHZoneDmxGroupViewController.h; sourceTree = "<group>"; };
 		045A9D9C209C0D980046EB45 /* SHZoneDmxGroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHZoneDmxGroupViewController.m; sourceTree = "<group>"; };
-		045DD37520A433A100C37C7B /* SHDmxFunctionCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDmxFunctionCustomView.h; sourceTree = "<group>"; };
-		045DD37620A433A100C37C7B /* SHDmxFunctionCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDmxFunctionCustomView.m; sourceTree = "<group>"; };
 		045DD37820A4341D00C37C7B /* SHDmxFunctionCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDmxFunctionCustomView.xib; sourceTree = "<group>"; };
 		04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SMART-BUS.sqlite"; sourceTree = "<group>"; };
 		0471C68D211BE39C0067D731 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
@@ -1630,8 +1627,7 @@
 		04526C2520A2DE9700B39597 /* picture */ = {
 			isa = PBXGroup;
 			children = (
-				04526C2620A2DEA500B39597 /* SHDmxPictureViewController.h */,
-				04526C2720A2DEA500B39597 /* SHDmxPictureViewController.m */,
+				04184DF821F160C10002E491 /* SHDmxPictureViewController.swift */,
 				04526C2820A2DEA500B39597 /* SHDmxPictureViewController.xib */,
 			);
 			path = picture;
@@ -1714,8 +1710,7 @@
 		045DD36E20A42D6C00C37C7B /* function */ = {
 			isa = PBXGroup;
 			children = (
-				044269A621CA153C00A7A88B /* SHDmxFunctionViewController.h */,
-				044269A721CA153C00A7A88B /* SHDmxFunctionViewController.m */,
+				04184DFC21F16E950002E491 /* SHDmxFunctionViewController.swift */,
 				044269A821CA153C00A7A88B /* SHDmxFunctionViewController.xib */,
 			);
 			path = function;
@@ -1724,8 +1719,7 @@
 		045DD37420A4338300C37C7B /* functionCustomView */ = {
 			isa = PBXGroup;
 			children = (
-				045DD37520A433A100C37C7B /* SHDmxFunctionCustomView.h */,
-				045DD37620A433A100C37C7B /* SHDmxFunctionCustomView.m */,
+				04184DFA21F16DB30002E491 /* SHDmxFunctionCustomView.swift */,
 				045DD37820A4341D00C37C7B /* SHDmxFunctionCustomView.xib */,
 			);
 			path = functionCustomView;
@@ -1941,9 +1935,9 @@
 		04C801BB20AC08B10049658A /* voice */ = {
 			isa = PBXGroup;
 			children = (
-				042CD7D820AD2FF500061670 /* SHDmxVoiceViewController.h */,
-				042CD7D920AD2FF500061670 /* SHDmxVoiceViewController.m */,
-				042CD7DA20AD2FF500061670 /* SHDmxVoiceViewController.xib */,
+				04184E0221F1839F0002E491 /* SHDmxVoiceViewController.h */,
+				04184E0021F1839E0002E491 /* SHDmxVoiceViewController.m */,
+				04184E0121F1839F0002E491 /* SHDmxVoiceViewController.xib */,
 			);
 			path = voice;
 			sourceTree = "<group>";
@@ -4557,7 +4551,6 @@
 				8B8296A9204E30FA00F3AD41 /* SHSetSecurityPasswordViewController.xib in Resources */,
 				0441DDE3216C956C00952CE4 /* SHResetPasswordViewController.xib in Resources */,
 				04674097214BAB8900FFCCEA /* SMART-BUS.sqlite in Resources */,
-				042CD7DC20AD2FF500061670 /* SHDmxVoiceViewController.xib in Resources */,
 				8B82961B204E30E700F3AD41 /* SHLightViewController.xib in Resources */,
 				8B8296C6204E310500F3AD41 /* SHCentralClimateCell.xib in Resources */,
 				04CD32DF21EED4610041683A /* SHSceneControlViewCell.xib in Resources */,
@@ -4657,6 +4650,7 @@
 				0478FF8220C8D06900DCB148 /* SHDeviceViewCell.xib in Resources */,
 				8B8298EF204E31F300F3AD41 /* SHLoadProgressView.xib in Resources */,
 				8B8298CD204E31F300F3AD41 /* SHEditMoodCommandViewController.xib in Resources */,
+				04184E0421F183A00002E491 /* SHDmxVoiceViewController.xib in Resources */,
 				041C007621B4DE950003CB49 /* SHSchedualSettingViewController.xib in Resources */,
 				04FFCFB42174787F00684CFA /* SHSetSystemViewCell.xib in Resources */,
 				0441DDEF216C9CB000952CE4 /* SHApplianceViewController.xib in Resources */,
@@ -4822,7 +4816,6 @@
 				0441DDE2216C956C00952CE4 /* SHResetPasswordViewController.swift in Sources */,
 				047CFA042187EEF8002CAE8A /* SHDeviceArgsViewCell.swift in Sources */,
 				042CD7D020AD2ED600061670 /* EZAudioUtilities.m in Sources */,
-				042CD7DB20AD2FF500061670 /* SHDmxVoiceViewController.m in Sources */,
 				047812AC216F210E007A7162 /* SHCurrentTransformerViewController.swift in Sources */,
 				04CF6F442193CF660052A8A9 /* SHDryContact.swift in Sources */,
 				044270CE21ED902A00275398 /* SHRegionViewController.swift in Sources */,
@@ -4834,10 +4827,10 @@
 				04D839AE21C9E0190080153F /* SHSchduleMacroCell.swift in Sources */,
 				044269A521C9F06700A7A88B /* SHDmxColorViewController.swift in Sources */,
 				0426735321C8E3A200FA597B /* SHScheduleWeekCell.swift in Sources */,
-				04526C2920A2DEA500B39597 /* SHDmxPictureViewController.m in Sources */,
 				04A177BE215F2D9C00BD9744 /* SHAboutVersionViewController.swift in Sources */,
 				042CD7D620AD2ED600061670 /* EZAudioFile.m in Sources */,
 				04FFCFB32174787F00684CFA /* SHSetSystemViewCell.swift in Sources */,
+				04184DFD21F16E950002E491 /* SHDmxFunctionViewController.swift in Sources */,
 				8B407E301F18B49900D4799E /* SHNetWorkTools.m in Sources */,
 				04CF6F422193CAFE0052A8A9 /* SHNineInOne.swift in Sources */,
 				0426734521C8A7B300FA597B /* SHMacroButton.m in Sources */,
@@ -4854,15 +4847,16 @@
 				049151F021E73C3500BAE939 /* SHSchedualFloorHeatingCell.swift in Sources */,
 				0426735921C8FBAA00FA597B /* SHSchduleMoodCell.swift in Sources */,
 				0499C9E521D5D0FC00E15569 /* SHAudioVolumeView.swift in Sources */,
-				044269A921CA153C00A7A88B /* SHDmxFunctionViewController.m in Sources */,
 				0480399521B7A099009D9A32 /* SHZoneProjectorViewController.swift in Sources */,
 				042CD7D720AD2ED600061670 /* EZAudioPlotGL.m in Sources */,
 				042450D621F017C300C99512 /* SHDeviceArgsViewController + Shade.swift in Sources */,
+				04184E0321F183A00002E491 /* SHDmxVoiceViewController.m in Sources */,
 				049A9C5821D7653500F79EE5 /* SHAudioOperatorTools + radio.swift in Sources */,
 				8B687D171EEA2E1400B58314 /* UIImage+SaveAndGet.m in Sources */,
 				8B8298E1204E31F300F3AD41 /* SHEditRecordShadeCell.m in Sources */,
 				04A177E2215F61A000BD9744 /* SHPhotosViewController.swift in Sources */,
 				04C583102192B5580017701A /* SHMediaDVD.swift in Sources */,
+				04184DFB21F16DB30002E491 /* SHDmxFunctionCustomView.swift in Sources */,
 				04B353EB21C7496E000A7D0B /* SHMediaSATCategoryCell.swift in Sources */,
 				044269A321C9EA9B00A7A88B /* SHDmxChannelViewController.swift in Sources */,
 				04C583262192CC090017701A /* SHMediaProjector.swift in Sources */,
@@ -4921,7 +4915,6 @@
 				043642C8214A33BC0044040D /* Regular.m in Sources */,
 				042450CE21F016D100C99512 /* SHDeviceArgsViewController + DVD.swift in Sources */,
 				0427E86621E6F1A4000ED6AA /* SHSchedualHVACCell.swift in Sources */,
-				045DD37720A433A100C37C7B /* SHDmxFunctionCustomView.m in Sources */,
 				04FFCFA92174384D00684CFA /* SHNetWorkRealIPViewController.swift in Sources */,
 				042E190E21DEE5CD00BCE8F6 /* SHZoneAudioPlayControlViewController.m in Sources */,
 				0427E86921E6F590000ED6AA /* SHSchduleHVACView.swift in Sources */,
@@ -5005,6 +4998,7 @@
 				042864F1219C1B4C00351285 /* SHCurrentTransformerChannelDataViewCell.swift in Sources */,
 				042450BA21F0144400C99512 /* SHDeviceArgsViewController + CT24.swift in Sources */,
 				8B0DED65205A1BEC0062BDC7 /* SHConstraint.m in Sources */,
+				04184DF921F160C10002E491 /* SHDmxPictureViewController.swift in Sources */,
 				042450D021F016FA00C99512 /* SHDeviceArgsViewController + AppleTV.swift in Sources */,
 				8B39CE2E2057827900436100 /* NSObject+Property.m in Sources */,
 				04C5830C21929A600017701A /* SHMediaAppleTV.swift in Sources */,

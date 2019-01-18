@@ -8,9 +8,6 @@
 
 #import "SHZoneDmxGroupViewController.h"
 #import "SHZoneControlButton.h"
-
-#import "SHDmxPictureViewController.h"
-#import "SHDmxFunctionViewController.h"
 #import "SHDmxVoiceViewController.h"
 
 @interface SHZoneDmxGroupViewController ()
@@ -142,17 +139,6 @@
 //    [self.deviceTypeNames addObject:@"dmxVoice"];
 //    [self addChildViewController:voiceController];
 }
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 /// 布局子控件
 - (void)viewDidLayoutSubviews {

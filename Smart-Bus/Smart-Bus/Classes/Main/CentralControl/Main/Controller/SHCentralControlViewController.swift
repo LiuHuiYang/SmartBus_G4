@@ -39,6 +39,7 @@ class SHCentralControlViewController: SHViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // 初始化列表
         listView.register(
             UINib(nibName: centralControlCellReuseIdentifier,
@@ -49,11 +50,11 @@ class SHCentralControlViewController: SHViewController {
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         let titleArray: [String] = SHLanguageTools.share()?.getTextFromPlist("MAIN_PAGE", withSubTitle: "MAIN_LABEL") as! Array
-        
+
         navigationItem.title = titleArray[1]
-        
+
         listView.reloadData()
     }
 

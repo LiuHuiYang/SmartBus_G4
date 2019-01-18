@@ -125,16 +125,24 @@
 /// 发送控制颜色通道的的值
 - (void)sendDmxChannleData:(SHDmxChannel *)dmxChannel value:(Byte)value {
     
-    NSArray *controlData = @[@(dmxChannel.channelNo), @(value), @(0), @(0)];
+   
+    NSArray *channelData =
+        @[
+          @(dmxChannel.channelNo),
+          @(value),
+          @(0),
+          @(0)
+        ];
     
     [SHSocketTools sendDataWithOperatorCode:0x0031
                                    subNetID:dmxChannel.subnetID
                                    deviceID:dmxChannel.deviceID
-                             additionalData:controlData
+                             additionalData:channelData
                            remoteMacAddress:SHSocketTools.remoteControlMacAddress
-                                 needReSend:true
-                                      isDMX:true
+                                 needReSend:YES
+                                      isDMX:YES
     ];
+    
 }
 
 // MARK: - 相关的代理
@@ -333,10 +341,12 @@
     
     self.windowSize = 4096;
     
-    [self.turnOnAndOffButton setTitle:SHLanguageText.off
+    [self.turnOnAndOffButton setTitle:[[SHLanguageTools shareLanguageTools]
+                                  getTextFromPlist:@"PUBLIC" withSubTitle:@"OFF"]
                         forState:UIControlStateNormal];
     
-    [self.turnOnAndOffButton setTitle:SHLanguageText.on
+    [self.turnOnAndOffButton setTitle:[[SHLanguageTools shareLanguageTools]
+                                  getTextFromPlist:@"PUBLIC" withSubTitle:@"ON"]
                         forState:UIControlStateSelected];
     
     
