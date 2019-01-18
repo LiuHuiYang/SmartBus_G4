@@ -42,8 +42,7 @@ import UIKit
     
     /// 底部约束
     @IBOutlet weak var bottomMarignConstraint: NSLayoutConstraint!
-
-
+ 
 }
 
 
@@ -285,7 +284,6 @@ extension SHDmxPictureViewController {
         }
     }
 }
-
 
 // MARK: - 布局
 extension SHDmxPictureViewController {

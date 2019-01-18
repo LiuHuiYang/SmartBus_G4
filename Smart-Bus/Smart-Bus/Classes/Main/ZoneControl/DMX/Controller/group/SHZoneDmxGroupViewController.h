@@ -6,7 +6,6 @@
 //  Copyright © 2018年 SmartHome. All rights reserved.
 //
 
-//#import "SHTabBarController.h"
 
 @interface SHZoneDmxGroupViewController : SHTabBarController
 

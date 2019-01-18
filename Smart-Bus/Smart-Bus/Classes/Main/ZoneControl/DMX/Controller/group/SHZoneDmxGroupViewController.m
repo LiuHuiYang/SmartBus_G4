@@ -28,7 +28,7 @@
 
 @implementation SHZoneDmxGroupViewController
 
-/// 通过指定的dmx进行初始化控制器
+/// 通过指定的dmx进行初始化控制器 (尝试使用Swift通过属性传递来设置)
 - (instancetype)initWithDmxGroup:(SHDmxGroup *)dmxGroup {
     
     if (self = [super init]) {
@@ -44,6 +44,7 @@
     
     return self;
 }
+
 
 /// 设置tabBar
 - (void)setUpTabBar {
