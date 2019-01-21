@@ -60,7 +60,7 @@ extension SHDeviceArgsViewController {
         default:
             break;
         }
-         
-        SHSQLiteManager.shared.updateScene(scene)
+        
+        _ = SHSQLiteManager.shared.updateScene(scene)
     }
 }

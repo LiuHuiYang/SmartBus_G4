@@ -116,6 +116,12 @@ private let sandboxVersionKey = "sandboxVersionKey"
         
         // 增加Scene控制
         _ = addSceneControl()
+        
+        // 增加 Sequence 控制
+        _ = addSequenceControl()
+        
+        // 增加其它 控制
+        _ = addOtherControl()
     }
 }
 

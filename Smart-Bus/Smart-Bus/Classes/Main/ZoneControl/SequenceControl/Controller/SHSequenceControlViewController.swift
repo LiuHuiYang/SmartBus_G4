@@ -28,21 +28,20 @@ private let sequenceControlViewCellReuseIdentifier =
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let zoneID = currentZone?.zoneID,
-            let allSequence =
-                SHSQLManager.share()?.getSequenceForZone(
-                    zoneID
-                    ) as? [SHSequence]
-            else {
-                    
-                SVProgressHUD.showInfo(
-                    withStatus: SHLanguageText.noData
-                )
+        guard let zoneID = currentZone?.zoneID else {
                     
             return
         }
         
-        sequences = allSequence
+        sequences =
+            SHSQLiteManager.shared.getSequences(zoneID)
+        
+        if sequences.isEmpty {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+        }
         
         listView.reloadData()
     }

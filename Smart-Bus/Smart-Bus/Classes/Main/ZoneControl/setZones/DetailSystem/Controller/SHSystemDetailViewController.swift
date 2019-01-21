@@ -228,10 +228,8 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 if let sequence  = self.allDevices[indexPath.row]
                         as? SHSequence {
                     
-                    SHSQLManager.share()?.deleteSequence(
-                        inZone: sequence
-                    )
-                    
+                    _ = SHSQLiteManager.shared.deleteSequence(sequence)
+                     
                     self.allDevices.remove(sequence)
                 }
                 
@@ -960,10 +958,12 @@ extension SHSystemDetailViewController {
             sequence.remark = "sequence"
             sequence.zoneID = zoneID
             sequence.sequenceID =
-                (SHSQLManager.share()?.getMaxSequenceID(
-                    forZone: zoneID) ?? 0) + 1
+                SHSQLiteManager.shared.getMaxSequenceID(
+                    zoneID) + 1
             
-            SHSQLManager.share()?.insertNewSequence(sequence)
+            _ = SHSQLiteManager.shared.insertSequence(
+                sequence
+            )
             
             detailController.sequence = sequence
             
@@ -1131,13 +1131,11 @@ extension SHSystemDetailViewController {
             allDevices = NSMutableArray(array: scenes)
             
         case .sequenceControl:
-            guard let sequences = SHSQLManager.share()?.getSequenceForZone(
-                zoneID) else {
-                    
-                    return
-            }
+           
+            let sequences =
+                SHSQLiteManager.shared.getSequences(zoneID)
             
-            allDevices = sequences
+            allDevices = NSMutableArray(array: sequences)
             
         default:
             break

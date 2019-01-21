@@ -35,29 +35,31 @@ extension SHDeviceArgsViewController {
     /// 保存 Sequence
     func updateSequence(value: String, index: Int) {
         
+        guard let sequence = self.sequence else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.sequence?.remark = value
+            sequence.remark = value
             
         case 1:
-            self.sequence?.subnetID = UInt8(value) ?? 0
+            sequence.subnetID = UInt8(value) ?? 0
             
         case 2:
-            self.sequence?.deviceID = UInt8(value) ?? 0
+            sequence.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.sequence?.areaNo = UInt8(value) ?? 0
+            sequence.areaNo = UInt8(value) ?? 0
             
         case 4:
-            self.sequence?.sequenceNo = UInt8(value) ?? 0
+            sequence.sequenceNo = UInt8(value) ?? 0
             
         default:
             break;
         }
         
-        SHSQLManager.share()?.updateSequence(
-            inZone: sequence
-        )
+        _ = SHSQLiteManager.shared.updateSequence(sequence)
     }
 }
