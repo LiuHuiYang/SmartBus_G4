@@ -85,98 +85,103 @@ extension SHDeviceArgsViewController {
     /// 更新并保存CT24
     func updateCurrentTransformer(value: String, index: Int) {
         
+        guard let ct24 = self.currentTransformer else {
+            return
+        }
+        
         // 更新每一个参数
         switch index {
             
         case 0:
-            self.currentTransformer?.remark = value
+            ct24.remark = value
             
         case 1:
-            self.currentTransformer?.subnetID = UInt8(value) ?? 1
+            ct24.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.currentTransformer?.deviceID = UInt8(value) ?? 0
+            ct24.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.currentTransformer?.voltage = UInt(value) ?? 0
+            ct24.voltage = UInt(value) ?? 0
             
         case 4:
-            self.currentTransformer?.channel1 = value
+            ct24.channel1 = value
             
         case 5:
-            self.currentTransformer?.channel2 = value
+            ct24.channel2 = value
             
         case 6:
-            self.currentTransformer?.channel3 = value
+            ct24.channel3 = value
             
         case 7:
-            self.currentTransformer?.channel4 = value
+            ct24.channel4 = value
             
         case 8:
-            self.currentTransformer?.channel5 = value
+            ct24.channel5 = value
             
         case 9:
-            self.currentTransformer?.channel6 = value
+            ct24.channel6 = value
             
         case 10:
-            self.currentTransformer?.channel7 = value
+            ct24.channel7 = value
             
         case 11:
-            self.currentTransformer?.channel8 = value
+            ct24.channel8 = value
             
         case 12:
-            self.currentTransformer?.channel9 = value
+            ct24.channel9 = value
             
         case 13:
-            self.currentTransformer?.channel10 = value
+            ct24.channel10 = value
             
         case 14:
-            self.currentTransformer?.channel11 = value
+            ct24.channel11 = value
             
         case 15:
-            self.currentTransformer?.channel12 = value
+            ct24.channel12 = value
             
         case 16:
-            self.currentTransformer?.channel13 = value
+            ct24.channel13 = value
             
         case 17:
-            self.currentTransformer?.channel14 = value
+            ct24.channel14 = value
             
         case 18:
-            self.currentTransformer?.channel15 = value
+            ct24.channel15 = value
             
         case 19:
-            self.currentTransformer?.channel16 = value
+            ct24.channel16 = value
             
         case 20:
-            self.currentTransformer?.channel17 = value
+            ct24.channel17 = value
             
         case 21:
-            self.currentTransformer?.channel18 = value
+            ct24.channel18 = value
             
         case 22:
-            self.currentTransformer?.channel19 = value
+            ct24.channel19 = value
             
         case 23:
-            self.currentTransformer?.channel20 = value
+            ct24.channel20 = value
             
         case 24:
-            self.currentTransformer?.channel21 = value
+            ct24.channel21 = value
             
         case 25:
-            self.currentTransformer?.channel22 = value
+            ct24.channel22 = value
             
         case 26:
-            self.currentTransformer?.channel23 = value
+            ct24.channel23 = value
             
         case 27:
-            self.currentTransformer?.channel24 = value
+            ct24.channel24 = value
             
         default:
             break
         }
-        
-        // 保存到数据库
-        SHSQLManager.share()?.update(currentTransformer)
+       
+        _ = SHSQLiteManager.shared.updateCurrentTransformer(
+            ct24
+        )
     }
 }

@@ -114,6 +114,9 @@ private let sandboxVersionKey = "sandboxVersionKey"
         // 增加多区域支持
         addRegions()
         
+        // 增加CT24的参数
+        addCurrentTransformerParameter()
+        
         // 增加Scene控制
         _ = addSceneControl()
         

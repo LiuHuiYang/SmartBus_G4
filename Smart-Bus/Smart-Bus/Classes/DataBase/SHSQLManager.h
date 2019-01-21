@@ -113,22 +113,6 @@ extern const NSUInteger maxIconIDForDataBase;
 - (NSMutableArray *)getZoneDmxGroup:(NSUInteger)zoneID;
 
   
-// MARK: - CT24
-
-/// 删除选择的CT24的操作
-- (BOOL)deleteCurrentTransformer:(SHCurrentTransformer *)currentTransformer;
-
-/// 获得所有的CT24
-- (NSMutableArray *)getAllCurrentTransformers;
-
-/// 更新CT24的参数
-- (BOOL)updateCurrentTransformer:(SHCurrentTransformer *)currentTransformer;
-
-/// 增加新的CurrentTransformer 返回 id
-- (NSInteger)insertCurrentTransformer:(SHCurrentTransformer *)CurrentTransformer;
-
-/// 获得当前表格中最大的 CurrentTransformerID
-- (NSInteger)getMaxCurrentTransformerID;
 
 // MARK: - 9in1
 

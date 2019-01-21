@@ -18,7 +18,8 @@ class SHCurrentTransformerViewController: SHViewController {
     @IBOutlet weak var listView: UICollectionView!
     
     /// 所有的设备
-    fileprivate var allCurrentTransformers: [SHCurrentTransformer]?
+    private lazy var allCurrentTransformers =
+        [SHCurrentTransformer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +54,10 @@ class SHCurrentTransformerViewController: SHViewController {
         
         super.viewWillAppear(animated)
         
-        allCurrentTransformers = SHSQLManager.share()?.getAllCurrentTransformers() as? [SHCurrentTransformer]
+        allCurrentTransformers =
+            SHSQLiteManager.shared.getCurrentTransformers()
         
-        if allCurrentTransformers?.count == 0 {
+        if allCurrentTransformers.isEmpty {
              
             SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
         }
@@ -99,11 +101,14 @@ extension SHCurrentTransformerViewController {
         
         let currentTransformer = SHCurrentTransformer();
         
-        currentTransformer.currentTransformerID =  UInt((SHSQLManager.share()?.getMaxCurrentTransformerID() ?? 0) + 1)
+        currentTransformer.currentTransformerID =
+            SHSQLiteManager.shared.getMaxCurrentTransformerID() + 1
         
         currentTransformer.remark = "CT24"
         
-        SHSQLManager.share()?.insert(currentTransformer)
+        currentTransformer.id = SHSQLiteManager.shared.insertCurrentTransformer(
+            currentTransformer
+        )
         
         let addDevicesController = SHDeviceArgsViewController()
         
@@ -142,7 +147,7 @@ extension SHCurrentTransformerViewController {
         
         let editAction = TYAlertAction(title: SHLanguageText.edit, style: .default) { (action) in
             
-            let currentTransformer = self.allCurrentTransformers?[index.item]
+            let currentTransformer = self.allCurrentTransformers[index.item]
             
             let detailViewController = SHDeviceArgsViewController()
             
@@ -160,11 +165,11 @@ extension SHCurrentTransformerViewController {
         
         let deleteAction = TYAlertAction(title: SHLanguageText.delete, style: .destructive) { (action) in
             
-            let currentTransformer = self.allCurrentTransformers?[index.item]
+            let currentTransformer = self.allCurrentTransformers[index.item]
             
-            self.allCurrentTransformers?.remove(at: index.item)
-            
-            SHSQLManager.share()?.delete(currentTransformer)
+            self.allCurrentTransformers.remove(at: index.item)
+              
+            _ = SHSQLiteManager.shared.deleteCurrentTransformer(currentTransformer)
             
             self.listView.reloadData()
         }
@@ -193,7 +198,7 @@ extension SHCurrentTransformerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return allCurrentTransformers?.count ?? 0
+        return allCurrentTransformers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -204,7 +209,7 @@ extension SHCurrentTransformerViewController: UICollectionViewDataSource {
                 for: indexPath
                 ) as! SHCurrentTransformerCollectionViewCell
         
-        cell.currentTransformer = allCurrentTransformers?[indexPath.item]
+        cell.currentTransformer = allCurrentTransformers[indexPath.item]
         
         return cell
     }
@@ -223,7 +228,7 @@ extension SHCurrentTransformerViewController: UICollectionViewDelegate {
         
         let showDataController = SHCurrentTransformerShowDataViewController()
         showDataController.currentTransformer =
-            allCurrentTransformers?[indexPath.item]
+            allCurrentTransformers[indexPath.item]
         
         navigationController?.pushViewController(
             showDataController,
