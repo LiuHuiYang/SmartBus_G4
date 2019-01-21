@@ -215,12 +215,12 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 
                 if let scene = self.allDevices[indexPath.row]
                         as? SHScene {
-                    
-                    SHSQLManager.share()?.deleteScene(
-                        inZone: scene
-                    )
-                    
+                   
                     self.allDevices.remove(scene)
+                    
+                    _ = SHSQLiteManager.shared.deleteScene(
+                        scene
+                    )
                 }
                 
             case .sequenceControl:
@@ -947,10 +947,10 @@ extension SHSystemDetailViewController {
             scene.remark = "scene"
             scene.zoneID = zoneID
             scene.sceneID =
-                (SHSQLManager.share()?.getMaxSceneID(
-                    forZone: zoneID) ?? 0) + 1
-            
-            SHSQLManager.share()?.insertNewScene(scene)
+                SHSQLiteManager.shared.getMaxSceneID(
+                    zoneID) + 1
+             
+            _ = SHSQLiteManager.shared.insertScene(scene)
             
             detailController.scene = scene
             
@@ -1124,13 +1124,11 @@ extension SHSystemDetailViewController {
             
             
         case .sceneControl:
-            guard let sences = SHSQLManager.share()?.getSceneForZone(
-                    zoneID) else {
-                
-                return
-            }
             
-            allDevices = sences
+            let scenes =
+                SHSQLiteManager.shared.getScenes(zoneID)
+            
+            allDevices = NSMutableArray(array: scenes)
             
         case .sequenceControl:
             guard let sequences = SHSQLManager.share()?.getSequenceForZone(

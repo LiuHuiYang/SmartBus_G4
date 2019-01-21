@@ -28,20 +28,19 @@ private let sceneControlViewCellReuseIdentifier = "SHSceneControlViewCell"
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let zoneID = currentZone?.zoneID,
-        let allScene =
-            SHSQLManager.share()?.getSceneForZone(
-                zoneID
-            ) as? [SHScene] else {
+        guard let zoneID = currentZone?.zoneID else {
+            
+            return
+        }
+        
+        scenes = SHSQLiteManager.shared.getScenes(zoneID)
+        
+        if scenes.isEmpty {
             
             SVProgressHUD.showInfo(
                 withStatus: SHLanguageText.noData
             )
-                
-            return
         }
-        
-        scenes = allScene
         
         listView.reloadData()
     }

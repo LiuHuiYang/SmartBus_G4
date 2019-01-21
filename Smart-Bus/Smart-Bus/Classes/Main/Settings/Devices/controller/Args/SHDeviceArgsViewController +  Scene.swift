@@ -36,27 +36,31 @@ extension SHDeviceArgsViewController {
     /// 保存
     func updateScene(value: String, index: Int) {
         
+        guard let scene = self.scene else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.scene?.remark = value
+            scene.remark = value
             
         case 1:
-            self.scene?.subnetID = UInt8(value) ?? 0
+            scene.subnetID = UInt8(value) ?? 0
             
         case 2:
-            self.scene?.deviceID = UInt8(value) ?? 0
+            scene.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.scene?.areaNo = UInt8(value) ?? 0
+            scene.areaNo = UInt8(value) ?? 0
             
         case 4:
-            self.scene?.sceneNo = UInt8(value) ?? 0
+            scene.sceneNo = UInt8(value) ?? 0
             
         default:
             break;
         }
-        
-        SHSQLManager.share()?.updateScene(inZone: scene)
+         
+        SHSQLiteManager.shared.updateScene(scene)
     }
 }
