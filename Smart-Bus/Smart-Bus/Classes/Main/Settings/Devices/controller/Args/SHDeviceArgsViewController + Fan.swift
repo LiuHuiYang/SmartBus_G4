@@ -88,6 +88,6 @@ extension SHDeviceArgsViewController {
             break;
         }
        
-        SHSQLiteManager.shared.updateFan(fan)
+        _ = SHSQLiteManager.shared.updateFan(fan)
     }
 }

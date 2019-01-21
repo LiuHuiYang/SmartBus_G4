@@ -50,9 +50,9 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 
                 if let light = self.allDevices[indexPath.row]
                         as? SHLight {
-                    
-                    SHSQLManager.share()?.deleteLight(
-                        inZone: light
+                   
+                    _ = SHSQLiteManager.shared.deleteLight(
+                        light
                     )
                     
                     self.allDevices.remove(light)
@@ -731,11 +731,10 @@ extension SHSystemDetailViewController {
             
             light.lightRemark = "light"
             light.zoneID = zoneID
-            light.lightID =
-                (SHSQLManager.share()?.getMaxLightID(
-                    forZone: zoneID) ?? 0) + 1
+            light.lightID =  SHSQLiteManager.shared.getMaxLightID(
+                    zoneID) + 1
             
-            SHSQLManager.share()?.insertNewLight(light)
+            _ = SHSQLiteManager.shared.insertLight(light)
             
             detailController.light = light
             
@@ -990,14 +989,10 @@ extension SHSystemDetailViewController {
         
         case .light:
             
-           guard let lights =
-            SHSQLManager.share()?.getLightForZone(
-               zoneID) else {
-                
-                return
-            }
+            let lights = SHSQLiteManager.shared.getLights(
+                zoneID)
             
-            allDevices = lights
+           allDevices = NSMutableArray(array: lights)
             
         case .hvac:
             guard let hvacs =
@@ -1081,13 +1076,10 @@ extension SHSystemDetailViewController {
             
             
         case .fan:
-            guard let fans =
-                SHSQLiteManager.shared.getFans(zoneID) as? NSMutableArray else {
-                
-                return
-            }
            
-            allDevices = fans
+            let fans = SHSQLiteManager.shared.getFans(zoneID)
+           
+            allDevices = NSMutableArray(array: fans)
             
         case .floorHeating:
             guard let floorHeatings =

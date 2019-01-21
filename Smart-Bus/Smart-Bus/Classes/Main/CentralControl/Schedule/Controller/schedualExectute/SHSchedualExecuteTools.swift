@@ -553,10 +553,9 @@ extension SHSchedualExecuteTools {
     static func exectuSchedualLight(_ command: SHSchedualCommand) {
         
         guard let light =
-            SHSQLManager.share()?.getLightFor(
+            SHSQLiteManager.shared.getLight(
                 command.parameter2,
-                lightID: command.parameter1
-            ) else {
+                lightID: command.parameter1) else {
                 
                 return
         }

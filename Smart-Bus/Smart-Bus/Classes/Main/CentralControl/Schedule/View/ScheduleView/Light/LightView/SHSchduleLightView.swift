@@ -27,18 +27,15 @@ class SHSchduleLightView: UIView, loadNibView {
                 (!plan.isDifferentZoneSchedual &&
                 allLights.count == 0) {
                 
-                guard let lights =
-                    SHSQLManager.share()?.getLightForZone(
+                allLights =
+                    SHSQLiteManager.shared.getLights(
                         plan.zoneID
-                    ) as? [SHLight] ,
+                )
                 
-                    let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
+                guard let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
                         
                         return
                 }
-                
-                
-                allLights = lights
                 
                 for light in allLights {
                     

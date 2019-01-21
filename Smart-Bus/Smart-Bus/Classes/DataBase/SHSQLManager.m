@@ -3782,73 +3782,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return [[SHHVACSetUpInfo alloc] initWithDict:dict];
 }
-
-// MARK: - 灯泡数据
-
-/// 增加一个新的Light
-- (BOOL)insertNewLight:(SHLight *)light {
-    
-    NSString *sql =
-        [NSString stringWithFormat:
-            @"insert into LightInZone (ZoneID, LightID,           \
-            LightRemark, SubnetID, DeviceID, ChannelNo, CanDim,   \
-            LightTypeID) values(%tu, %tu, '%@', %d, %d, %d,       \
-            %d, %d);",
-         
-         light.zoneID, light.lightID, light.lightRemark,
-         light.subnetID, light.deviceID, light.channelNo,
-         light.canDim, light.lightTypeID
-        ];
-    
-    return [self executeSql:sql];
-}
-
-/// 更新当前所灯光设备的数据
-- (void)updateLightInZone:(SHLight *)light {
-    
-    NSString *saveSql =
-        [NSString stringWithFormat:
-            @"update LightInZone set ZoneID = %tu, LightID = %tu,   \
-            LightRemark = '%@', SubnetID = %d, DeviceID = %d,     \
-            ChannelNo = %d, CanDim = %d, LightTypeID = %d Where  \
-         zoneID = %tu and LightID = %tu;",
-         
-            light.zoneID, light.lightID, light.lightRemark,
-            light.subnetID, light.deviceID, light.channelNo,
-            light.canDim, light.lightTypeID, light.zoneID,
-            light.lightID
-        ];
-    
-    [self executeSql:saveSql];
-}
-
-/// 查询所有需要的灯
-- (SHLight *)getLightFor:(NSUInteger)zoneID lightID:(NSUInteger)lightID {
-    
-    NSString *lightSql = [NSString stringWithFormat:@"select id, ZoneID, LightID, LightRemark, SubnetID, DeviceID, ChannelNo, CanDim, LightTypeID from LightInZone where ZoneID = %tu and LightID = %tu;", zoneID, lightID];
-    
-    NSDictionary *dict = [[self selectProprty:lightSql] lastObject];
-    
-    return [[SHLight alloc] initWithDictionary:dict];
-}
-
-/// 删除当前的灯光设备
-- (BOOL)deleteLightInZone:(SHLight *)light {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from LightInZone Where zoneID = %tu and    \
-            SubnetID = %d and DeviceID = %d and                 \
-            ChannelNo = %d and CanDim = %d and                 \
-            LightTypeID = %d;",
-                light.zoneID, light.subnetID,
-                light.deviceID, light.channelNo,
-                light.canDim, light.lightTypeID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
+ 
 /// 删除整个区域的灯泡
 - (BOOL)deleteZoneLights:(NSUInteger)zoneID {
     
@@ -3860,34 +3794,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return [self executeSql:deleteSQL];
 }
-
-/// 查询当前区域中的所有light
-- (NSMutableArray *)getLightForZone:(NSUInteger)zoneID {
-    
-    NSString *ligtSql = [NSString stringWithFormat:@"select id, ZoneID, LightID, LightRemark, SubnetID, DeviceID, ChannelNo, CanDim, LightTypeID from LightInZone where ZoneID = %tu order by LightID;", zoneID];
-    
-    NSMutableArray *array = [self selectProprty:ligtSql];
-    
-    NSMutableArray *lights = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        [lights addObject:[[SHLight alloc] initWithDictionary:dict]];
-    }
-    
-    return lights;
-}
-
-/// 获得当前区域中的最大的lightID
-- (NSUInteger)getMaxLightIDForZone:(NSUInteger)zoneID {
-    
-    NSString *sql = [NSString stringWithFormat:@"select max(LightID) from LightInZone where ZoneID = %tu;", zoneID];
-    
-    id resID = [[[self selectProprty:sql] lastObject] objectForKey:@"max(LightID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-
 
 
 // MARK: - 风扇

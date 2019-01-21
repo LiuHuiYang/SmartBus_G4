@@ -920,7 +920,12 @@
     
     self.lightButton.selected = !self.lightButton.selected;
     
-    self.allLights = self.lightButton.selected ? ([[SHSQLManager shareSQLManager] getLightForZone:self.currentZone.zoneID]) : nil;
+    NSArray *lights = [[SHSQLiteManager shared]
+                       getLights:self.currentZone.zoneID];
+    
+    NSMutableArray *allLights = [NSMutableArray arrayWithArray:lights];
+    
+    self.allLights = self.lightButton.selected ? allLights : nil;
 }
 
 /// 选择空调

@@ -263,18 +263,20 @@ extension SHZoneLightViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let zoneID = currentZone?.zoneID,
-            let ligths =
-            SHSQLManager.share()?.getLightForZone(zoneID)
-                as? [SHLight]
+        guard let zoneID = currentZone?.zoneID
             else {
                 
-                SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
-                
-                return
+            return
         }
         
-        allLights = ligths
+        allLights = SHSQLiteManager.shared.getLights(zoneID)
+        
+        if allLights.isEmpty {
+            
+            SVProgressHUD.showInfo(withStatus:
+                SHLanguageText.noData
+            )
+        }
         
         lightListView.reloadData()
         

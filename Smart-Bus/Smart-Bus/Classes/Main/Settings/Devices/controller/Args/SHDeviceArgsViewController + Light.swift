@@ -37,30 +37,34 @@ extension SHDeviceArgsViewController {
     /// 保存
     func updateLight(value: String, index: Int) {
         
+        guard let light = self.light else {
+            return
+        }
+        
         switch (index) {
         case 0:
-            self.light?.lightRemark = value
+            light.lightRemark = value
             
         case 1:
-            self.light?.subnetID = UInt8(value) ?? 0
+            light.subnetID = UInt8(value) ?? 0
             
         case 2:
-            self.light?.deviceID = UInt8(value) ?? 0
+            light.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.light?.channelNo = UInt8(value) ?? 0
+            light.channelNo = UInt8(value) ?? 0
             
         case 4:
-            self.light?.canDim = SHZoneControlLightCanDimType(rawValue: (UInt8(value) ?? 0)) ?? .notDimmable
+            light.canDim = SHZoneControlLightCanDimType(rawValue: (UInt8(value) ?? 0)) ?? .notDimmable
             
         case 5:
-            self.light?.lightTypeID = SHZoneControlLightType(rawValue: (UInt8(value) ?? 1)) ?? .incandescent
+            light.lightTypeID = SHZoneControlLightType(rawValue: (UInt8(value) ?? 1)) ?? .incandescent
             
         default:
             break;
         }
-        
-        SHSQLManager.share()?.updateLight(inZone: light)
+         
+        _ = SHSQLiteManager.shared.updateLight(light)
     }
 }
 

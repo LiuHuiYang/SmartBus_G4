@@ -544,29 +544,6 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得当前区域的最大shadeID
 - (NSUInteger)getMaxShadeIDForZone:(NSUInteger)zoneID;
 
-// MARK: - 灯泡
-
-/// 增加一个新的Light
-- (BOOL)insertNewLight:(SHLight *)light;
-
-/// 保存当前所灯光设备的数据
-- (void)updateLightInZone:(SHLight *)light;
-
-/// 删除当前的灯光设备
-- (BOOL)deleteLightInZone:(SHLight *)light;
-
-/// 删除整个区域的灯泡
-- (BOOL)deleteZoneLights:(NSUInteger)zoneID;
-
-/// 查询所有需要的灯
-- (SHLight *)getLightFor:(NSUInteger)zoneID lightID:(NSUInteger)lightID;
-
-/// 查询当前区域中的所有light
-- (NSMutableArray *)getLightForZone:(NSUInteger)zoneID;
-
-/// 获得当前区域中的最大的lightID
-- (NSUInteger)getMaxLightIDForZone:(NSUInteger)zoneID;
-
  
 // MARK: - 系统区域
 
