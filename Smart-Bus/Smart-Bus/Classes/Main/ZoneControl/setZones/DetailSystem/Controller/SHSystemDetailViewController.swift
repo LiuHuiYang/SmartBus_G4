@@ -192,11 +192,9 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 if let dryContact = self.allDevices[indexPath.row]
                         as? SHDryContact {
                     
-                    SHSQLManager.share()?.deleteDryContact(
-                        inZone: dryContact
-                    )
-                    
                     self.allDevices.remove(dryContact)
+                    
+                    _ = SHSQLiteManager.shared.deleteDryContact(dryContact)
                 }
                 
             case .temperatureSensor:
@@ -916,9 +914,10 @@ extension SHSystemDetailViewController {
             dryContact.remark = "dry contact"
             dryContact.zoneID = zoneID
             
-            dryContact.contactID = (SHSQLManager.share()?.getMaxDryContactID(forZone: zoneID) ?? 0) + 1
+            dryContact.contactID =   SHSQLiteManager.shared.getMaxDryContactID(
+                    zoneID) + 1
             
-            SHSQLManager.share()?.insertNewDryContact(
+            _ = SHSQLiteManager.shared.insertDryContact(
                 dryContact
             )
             
@@ -1102,14 +1101,11 @@ extension SHSystemDetailViewController {
             allDevices = nineInOnes
             
         case .dryContact:
-            guard let nodes =
-                SHSQLManager.share()?.getDryContact(
-                    forZone: zoneID) else {
-                
-                return
-            }
+           
+            let nodes =
+                SHSQLiteManager.shared.getDryContact(zoneID)
             
-            allDevices = nodes
+            allDevices = NSMutableArray(array: nodes)
             
         case .temperatureSensor:
             

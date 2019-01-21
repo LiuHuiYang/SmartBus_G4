@@ -33,25 +33,29 @@ extension SHDeviceArgsViewController {
     /// 更新 干节点
     func updateDryContact(value: String, index: Int) {
         
+        guard let node = self.dryContact else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.dryContact?.remark = value
+            node.remark = value
             
         case 1:
-            self.dryContact?.subnetID = UInt8(value) ?? 0
+            node.subnetID = UInt8(value) ?? 0
             
         case 2:
-            self.dryContact?.deviceID = UInt8(value) ?? 0
+            node.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.dryContact?.channelNo = UInt8(value) ?? 0
+            node.channelNo = UInt8(value) ?? 0
             
         default:
             break;
         }
         
-        SHSQLManager.share()?.update(dryContact)
+        _ = SHSQLiteManager.shared.updateDryContact(node)
     }
 }
 

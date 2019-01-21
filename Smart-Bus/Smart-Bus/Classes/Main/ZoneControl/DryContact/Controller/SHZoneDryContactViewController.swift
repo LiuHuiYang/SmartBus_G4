@@ -42,17 +42,19 @@ class SHZoneDryContactViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let zoneID = currentZone?.zoneID,
-        let drynodes = (SHSQLManager.share()?.getDryContact(forZone: zoneID) as? [SHDryContact]) else {
-            
-            SVProgressHUD.showInfo(
-                withStatus: SHLanguageText.noData
-            )
+        guard let zoneID = currentZone?.zoneID else {
             
             return
         }
         
-        allDryContacts = drynodes
+        allDryContacts = SHSQLiteManager.shared.getDryContact(zoneID)
+        
+        if allDryContacts.isEmpty {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+        }
         
         dryContactListView.reloadData()
         

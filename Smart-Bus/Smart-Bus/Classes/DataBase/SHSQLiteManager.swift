@@ -125,6 +125,9 @@ private let sandboxVersionKey = "sandboxVersionKey"
         
         // 增加温度传感器
         _ = addTemperatureSensor()
+        
+        // 增加区域干节点
+        _ = addZoneDryContact()
     }
 }
 

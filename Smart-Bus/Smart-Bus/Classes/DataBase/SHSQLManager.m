@@ -261,116 +261,8 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return [self executeSql:insertSQL];
 }
+
  
-
-// MARK: - Dry Input
-
-/// 更新当前干节点的数据
-- (void)updateDryContact:(SHDryContact *)dryContact {
-    
-    NSString *updateSql = [NSString stringWithFormat:
-                           @"update DryContactInZone set remark = '%@',       \
-                           SubnetID = %d, DeviceID = %d, ChannelNo = %d       \
-                           Where zoneID = %tu and contactID = %tu;",
-                           
-                           dryContact.remark, dryContact.subnetID,
-                           dryContact.deviceID, dryContact.channelNo,
-                           dryContact.zoneID, dryContact.contactID];
-    
-    [self executeSql:updateSql];
-}
-
-/// 增加新的干节点
-- (BOOL)insertNewDryContact:(SHDryContact *)dryContact {
-    
-    NSString *sql = [NSString stringWithFormat:
-                     @"insert into DryContactInZone (ZoneID, contactID,     \
-                     remark, SubnetID, DeviceID, ChannelNo)                 \
-                     values(%tu, %tu, '%@', %d, %d, %d);",
-                     
-                     dryContact.zoneID, dryContact.contactID,
-                     dryContact.remark, dryContact.subnetID,
-                     dryContact.deviceID, dryContact.channelNo];
-    
-    return [self executeSql:sql];
-}
-
-/// 删除当前的干节点设备
-- (BOOL)deleteDryContactInZone:(SHDryContact *)dryContact {
-    
-    NSString *deleteSql = [NSString stringWithFormat:
-                           @"delete from DryContactInZone Where zoneID = %tu  \
-                           and SubnetID = %d and DeviceID = %d                \
-                           and ChannelNo = %d and contactID = %tu;",
-                           
-                           dryContact.zoneID, dryContact.subnetID,
-                           dryContact.deviceID,dryContact.channelNo,
-                           dryContact.contactID];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 删除区域中的干节点
-- (BOOL)deleteZoneDryContacts:(NSUInteger)zoneID {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from DryContactInZone Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 查询当前区域中的所有干节点设备
-- (NSMutableArray *)getDryContactForZone:(NSUInteger)zoneID {
-    
-    NSString *selectSQL = [NSString stringWithFormat:@"select ID, remark, contactID, ZoneID, SubnetID, DeviceID, ChannelNo from DryContactInZone where ZoneID = %tu;", zoneID];
-    
-    NSArray *array = [self selectProprty:selectSQL];
-    
-    NSMutableArray *dryContacts = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [dryContacts addObject:
-            [[SHDryContact alloc] initWithDict:dict]
-        ];
-    }
-    
-    return dryContacts;
-}
-
-/// 获得当前区域中的最大的DryInputID
-- (NSUInteger)getMaxDryContactIDForZone:(NSUInteger)zoneID {
-    
-    NSString *sql = [NSString stringWithFormat:@"select max(contactID) from DryContactInZone where ZoneID = %tu;", zoneID];
-    
-    id resID = [[[self selectProprty:sql] lastObject] objectForKey:@"max(contactID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-/// 增加干节点输入类型
-- (BOOL)addZoneDryContact {
-    
-    // 删除表格
-    [self deleteTable:@"DryInputModuleInZone"];
-    
-    NSString *selectSQL = [NSString stringWithFormat:@"select Distinct SystemID from systemDefnition where SystemID = %tu;", SHSystemDeviceTypeDryContact];
-    
-    // 如果不存在
-    if ([[self selectProprty:selectSQL] count]) {
-        
-        return YES;
-    }
-    
-    NSString *insertSQL = [NSString stringWithFormat:@"insert into systemDefnition (SystemID, SystemName) values(%tu, '%@');", SHSystemDeviceTypeDryContact, @"Dry Contact"];
-    
-    return [self executeSql:insertSQL];
-    
-}
-
 
 // MARK: - CT24相关的操作
 
@@ -3443,7 +3335,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                 
             case SHSystemDeviceTypeDryContact: {
                 
-                [self deleteZoneDryContacts:zoneID];
+//                [self deleteZoneDryContacts:zoneID];
             }
                 break;
                 
@@ -3680,9 +3572,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     // 增加9in1
     [self addNineInOne];
-    
-    // 增加区域干节点
-    [self addZoneDryContact];
     
     
     // 增加音乐选项卡的配置

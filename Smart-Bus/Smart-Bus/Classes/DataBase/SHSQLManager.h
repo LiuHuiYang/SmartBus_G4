@@ -112,27 +112,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得指定区域的DMX分组
 - (NSMutableArray *)getZoneDmxGroup:(NSUInteger)zoneID;
 
- 
-// MARK: - 干节点
-
-/// 更新当前干节点的数据
-- (void)updateDryContact:(SHDryContact *)dryInput;
-
-/// 增加新的干节点
-- (BOOL)insertNewDryContact:(SHDryContact *)dryInput;
-
-/// 删除当前的干节点设备
-- (BOOL)deleteDryContactInZone:(SHDryContact *)dryInput;
-
-/// 删除区域中的干节点
-- (BOOL)deleteZoneDryContacts:(NSUInteger)zoneID;
-
-/// 查询当前区域中的所有干节点设备
-- (NSMutableArray *)getDryContactForZone:(NSUInteger)zoneID;
-
-/// 获得当前区域中的最大的DryContactID
-- (NSUInteger)getMaxDryContactIDForZone:(NSUInteger)zoneID;
-
+  
 // MARK: - CT24
 
 /// 删除选择的CT24的操作
