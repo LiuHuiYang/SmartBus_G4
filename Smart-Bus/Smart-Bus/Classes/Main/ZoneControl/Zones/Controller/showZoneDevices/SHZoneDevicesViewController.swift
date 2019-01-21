@@ -267,7 +267,10 @@ extension SHZoneDevicesViewController {
             
         case .dmx:
             
-            if let dmxs =  SHSQLManager.share()?.getZoneDmxGroup(zoneID) {
+            let dmxs =
+                SHSQLiteManager.shared.getDmxGroup(zoneID)
+            
+            if !dmxs.isEmpty {
                 
                 allDevices = dmxs as! [Any]
             }

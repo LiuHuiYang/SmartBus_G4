@@ -50,7 +50,7 @@ import UIKit
     var channelType: SHDmxChannelType = .none
     
     /// 通道名称
-    var  remark: String?
+    var  remark: String = "dmx channel"
 
 
     override init() {

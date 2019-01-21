@@ -69,7 +69,7 @@ class SHZoneDeviceGroupSettingCell: UITableViewCell {
                 return
             }
             
-            nameLabel.text = "\(channel.groupID) - \(channel.remark ?? "dmx channel")"
+            nameLabel.text = "\(channel.groupID) - \(channel.remark)"
             
             iconView.image = nil
         }

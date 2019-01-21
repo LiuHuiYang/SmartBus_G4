@@ -17,7 +17,8 @@ private let dmxGroupCellReuseIdentifier = "SHZoneDeviceGroupSettingCell"
     var currentZone: SHZone?
     
     /// 所有的分组
-    var dmxGroups: [SHDmxGroup]?
+    private lazy var dmxGroups: [SHDmxGroup] =
+        [SHDmxGroup]()
     
     /// 组列表
     @IBOutlet weak var dmxGroupListView: UITableView!
@@ -48,9 +49,14 @@ private let dmxGroupCellReuseIdentifier = "SHZoneDeviceGroupSettingCell"
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        dmxGroups = SHSQLManager.share()?.getZoneDmxGroup(currentZone?.zoneID ?? 0) as? [SHDmxGroup]
+        guard let zoneID = currentZone?.zoneID  else {
+            return
+        }
         
-        if dmxGroups?.count == 0 {
+        dmxGroups =
+            SHSQLiteManager.shared.getDmxGroup(zoneID)
+        
+        if dmxGroups.isEmpty {
              
             SVProgressHUD.showError(withStatus: SHLanguageText.noData)
             
@@ -90,7 +96,7 @@ extension SHZoneDmxGroupSettingViewController: UITableViewDelegate {
         
         let editChannelController = SHDmxChannelSettingViewController()
         
-        editChannelController.dmxGroup = dmxGroups?[indexPath.row]
+        editChannelController.dmxGroup = dmxGroups[indexPath.row]
         
         navigationController?.pushViewController(
             editChannelController,
@@ -108,11 +114,13 @@ extension SHZoneDmxGroupSettingViewController: UITableViewDelegate {
             
             tableView.setEditing(false, animated: true)
             
-            let dmxGroup = self.dmxGroups?[indexPath.row]
+            let dmxGroup = self.dmxGroups[indexPath.row]
             
-            self.dmxGroups?.remove(at: indexPath.row)
+            self.dmxGroups.remove(at: indexPath.row)
             
-            SHSQLManager.share()?.delete(dmxGroup)
+            _ = SHSQLiteManager.shared.deleteDmxGroup(
+                dmxGroup
+            )
             
             tableView.reloadData()
         }
@@ -125,7 +133,7 @@ extension SHZoneDmxGroupSettingViewController: UITableViewDelegate {
                 SHDmxChannelSettingViewController()
             
             editChannelController.dmxGroup =
-                self.dmxGroups?[indexPath.row]
+                self.dmxGroups[indexPath.row]
             
             self.navigationController?.pushViewController(
                 editChannelController,
@@ -142,7 +150,7 @@ extension SHZoneDmxGroupSettingViewController:
 UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return dmxGroups?.count ?? 0
+        return dmxGroups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -152,7 +160,7 @@ UITableViewDataSource {
             for: indexPath
         ) as! SHZoneDeviceGroupSettingCell
         
-        cell.dmxGroup = dmxGroups?[indexPath.row]
+        cell.dmxGroup = dmxGroups[indexPath.row]
         
         return cell
     }

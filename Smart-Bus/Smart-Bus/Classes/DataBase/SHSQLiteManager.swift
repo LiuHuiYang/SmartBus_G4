@@ -117,6 +117,9 @@ private let sandboxVersionKey = "sandboxVersionKey"
         // 增加CT24的参数
         addCurrentTransformerParameter()
         
+        // 增加DMX类型
+        _ = addZoneDmx()
+        
         // 增加Scene控制
         _ = addSceneControl()
         

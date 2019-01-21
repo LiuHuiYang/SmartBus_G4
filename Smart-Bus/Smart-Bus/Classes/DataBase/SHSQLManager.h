@@ -85,11 +85,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 更新通道
 - (BOOL)updateDmxChannel:(SHDmxChannel *)dmxChannel;
 
-/// 删除dmx通道
-- (BOOL)deleteDmxChannel:(SHDmxChannel *)dmxChannel;
 
-/// 删除区域中的所有DMX
-- (BOOL)deleteZoneDMXs:(NSUInteger)zoneID;
 
 /// 增加新的通道
 - (NSInteger)insertNewDmxChannnel:(SHDmxChannel *)dmxChannel;
@@ -103,17 +99,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得指定区域的最大分组ID
 - (NSUInteger)getMaxDmxGrooupGroupIDFor:(NSUInteger)zoneID;
 
-/// 删除指定的DMX分组
-- (BOOL)deleteDmxGroup:(SHDmxGroup *)dmxGroup;
- 
-/// 获得分组的通道
-- (NSMutableArray *)getDmxGroupChannels:(SHDmxGroup *)dmxGroup;
-
-/// 获得指定区域的DMX分组
-- (NSMutableArray *)getZoneDmxGroup:(NSUInteger)zoneID;
-
   
-
 // MARK: - 9in1
 
 /// 查询当前区域中的所有9in1

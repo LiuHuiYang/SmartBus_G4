@@ -248,17 +248,19 @@ extension SHDmxPictureViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let channels = SHSQLManager.share()?.getDmxGroupChannels(dmxGroup) as? [SHDmxChannel] else {
+        guard let group = dmxGroup else {
+            
+            return
+        }
+        groupChannels =
+            SHSQLiteManager.shared.getDmxGroupChannels(group)
+        
+        if groupChannels.isEmpty {
             
             SVProgressHUD.showInfo(
                 withStatus: SHLanguageText.noData
             )
-            
-            return
         }
-        
-        groupChannels = channels
-        
     }
     
     override func viewDidLoad() {

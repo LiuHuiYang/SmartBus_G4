@@ -14,7 +14,8 @@ class SHDmxChannelSettingViewController: SHViewController {
     var dmxGroup: SHDmxGroup?
     
     /// 所有的通道
-    var allChannels: [SHDmxChannel]?
+    private lazy var allChannels: [SHDmxChannel] =
+        [SHDmxChannel]()
     
     /// 通道列表
     @IBOutlet weak var channelListView: UITableView!
@@ -45,7 +46,20 @@ class SHDmxChannelSettingViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        allChannels = SHSQLManager.share()?.getDmxGroupChannels(dmxGroup) as? [SHDmxChannel]
+        guard let group = dmxGroup else {
+            
+            return
+        }
+        
+        allChannels =
+            SHSQLiteManager.shared.getDmxGroupChannels(group)
+        
+        if allChannels.isEmpty {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+        }
         
         channelListView.reloadData()
     }
@@ -83,7 +97,7 @@ extension SHDmxChannelSettingViewController: UITableViewDelegate {
         let detailViewController = SHDeviceArgsViewController()
         
         detailViewController.dmxChannel =
-            allChannels?[indexPath.row]
+            allChannels[indexPath.row]
         
         navigationController?.pushViewController(
             detailViewController,
@@ -102,11 +116,12 @@ extension SHDmxChannelSettingViewController: UITableViewDelegate {
             
             tableView.setEditing(false, animated: true)
             
-            let dmxChannel = self.allChannels?[indexPath.row]
+            let dmxChannel = self.allChannels[indexPath.row]
             
-            self.allChannels?.remove(at: indexPath.row)
+            self.allChannels.remove(at: indexPath.row)
             
-            SHSQLManager.share()?.delete(dmxChannel)
+           
+            _ = SHSQLiteManager.shared.deleteDmxChannel(dmxChannel)
             
             tableView.reloadData()
         }
@@ -119,7 +134,7 @@ extension SHDmxChannelSettingViewController: UITableViewDelegate {
                 SHDeviceArgsViewController()
             
             detailViewController.dmxChannel =
-                self.allChannels?[indexPath.row]
+                self.allChannels[indexPath.row]
             
             self.navigationController?.pushViewController(
                 detailViewController,
@@ -135,7 +150,7 @@ extension SHDmxChannelSettingViewController: UITableViewDelegate {
 extension SHDmxChannelSettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allChannels?.count ?? 0
+        return allChannels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,7 +161,7 @@ extension SHDmxChannelSettingViewController: UITableViewDataSource {
                 for: indexPath
             ) as! SHZoneDeviceGroupSettingCell
         
-        cell.dmxChannel = allChannels?[indexPath.row]
+        cell.dmxChannel = allChannels[indexPath.row]
         
         return cell
     }

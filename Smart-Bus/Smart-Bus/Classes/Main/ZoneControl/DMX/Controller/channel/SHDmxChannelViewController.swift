@@ -150,13 +150,21 @@ extension SHDmxChannelViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let group = dmxGroup,
-            let channels = SHSQLManager.share()?.getDmxGroupChannels(group) as? [SHDmxChannel] else {
-                
-                return
+        guard let group = dmxGroup else {
+            
+            return
         }
+        groupChannels =
+            SHSQLiteManager.shared.getDmxGroupChannels(group)
         
-        groupChannels = channels
+        if groupChannels.isEmpty {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+            
+            return
+        }
         
         readDeviceStatus()
     }

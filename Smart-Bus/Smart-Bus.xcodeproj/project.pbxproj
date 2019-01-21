@@ -39,6 +39,7 @@
 		0412E34121F5AEA00084F3DB /* SHSQLiteManager + TemperatureSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E34021F5AEA00084F3DB /* SHSQLiteManager + TemperatureSensor.swift */; };
 		0412E34321F5B5CC0084F3DB /* SHSQLiteManager + DryContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E34221F5B5CC0084F3DB /* SHSQLiteManager + DryContact.swift */; };
 		0412E34521F5BC2B0084F3DB /* SHSQLiteManager + CT24.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E34421F5BC2B0084F3DB /* SHSQLiteManager + CT24.swift */; };
+		0412E34721F5C86B0084F3DB /* SHSQLiteManager + Dmx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E34621F5C86B0084F3DB /* SHSQLiteManager + Dmx.swift */; };
 		041436342170412E00A3E5F6 /* SHChangeMacroImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041436322170412E00A3E5F6 /* SHChangeMacroImageViewController.swift */; };
 		041436352170412E00A3E5F6 /* SHChangeMacroImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041436332170412E00A3E5F6 /* SHChangeMacroImageViewController.xib */; };
 		04143638217046CB00A3E5F6 /* SHMacroCommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04143636217046CB00A3E5F6 /* SHMacroCommandsViewController.swift */; };
@@ -530,6 +531,7 @@
 		0412E34021F5AEA00084F3DB /* SHSQLiteManager + TemperatureSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + TemperatureSensor.swift"; sourceTree = "<group>"; };
 		0412E34221F5B5CC0084F3DB /* SHSQLiteManager + DryContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + DryContact.swift"; sourceTree = "<group>"; };
 		0412E34421F5BC2B0084F3DB /* SHSQLiteManager + CT24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + CT24.swift"; sourceTree = "<group>"; };
+		0412E34621F5C86B0084F3DB /* SHSQLiteManager + Dmx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Dmx.swift"; sourceTree = "<group>"; };
 		041436322170412E00A3E5F6 /* SHChangeMacroImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHChangeMacroImageViewController.swift; sourceTree = "<group>"; };
 		041436332170412E00A3E5F6 /* SHChangeMacroImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHChangeMacroImageViewController.xib; sourceTree = "<group>"; };
 		04143636217046CB00A3E5F6 /* SHMacroCommandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMacroCommandsViewController.swift; sourceTree = "<group>"; };
@@ -2650,6 +2652,7 @@
 				0412E33E21F5A8CA0084F3DB /* SHSQLiteManager + OtherControl.swift */,
 				0412E33C21F5A1CE0084F3DB /* SHSQLiteManager + Sequence.swift */,
 				0412E33A21F599EC0084F3DB /* SHSQLiteManager + Scene.swift */,
+				0412E34621F5C86B0084F3DB /* SHSQLiteManager + Dmx.swift */,
 				0412E34021F5AEA00084F3DB /* SHSQLiteManager + TemperatureSensor.swift */,
 				0412E34221F5B5CC0084F3DB /* SHSQLiteManager + DryContact.swift */,
 				04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */,
@@ -4992,6 +4995,7 @@
 				8B8298D8204E31F300F3AD41 /* SHZoneControlRecordMoodViewController.m in Sources */,
 				0401BC69219168080046BF18 /* SHMacroCommand.swift in Sources */,
 				042450D221F0174100C99512 /* SHDeviceArgsViewController + TV.swift in Sources */,
+				0412E34721F5C86B0084F3DB /* SHSQLiteManager + Dmx.swift in Sources */,
 				04184E3221F1CD4C0002E491 /* SHSQLiteManager + Fan.swift in Sources */,
 				8B8298EE204E31F300F3AD41 /* SHCommandButton.m in Sources */,
 				04DF642121AD21110033A083 /* SHLight.swift in Sources */,

@@ -32,67 +32,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 @implementation SHSQLManager
 
 // MARK: - DMX
-
-
-/// 更新通道
-- (BOOL)updateDmxChannel:(SHDmxChannel *)dmxChannel {
-    
-    NSString *updateChannelSQL = [NSString stringWithFormat:@"update    \
-                                  dmxChannelInZone set remark = '%@',    \
-                                  channelType = %tu, SubnetID = %d,    \
-                                  DeviceID = %d, channelNo = %d where \
-                                  id = %tu;",
-                                  dmxChannel.remark,
-                                  dmxChannel.channelType,
-                                  dmxChannel.subnetID,
-                                  dmxChannel.deviceID,
-                                  dmxChannel.channelNo,
-                                  dmxChannel.id];
-    
-    
-    return [self executeSql:updateChannelSQL];
-}
-
-/// 删除通道
-- (BOOL)deleteDmxChannel:(SHDmxChannel *)dmxChannel {
-    
-    NSString *deleteChannelSQL = [NSString stringWithFormat:@"delete from   \
-                                  dmxChannelInZone where ZoneID = %tu and   \
-                                  groupID = %tu and SubnetID = %d and  \
-                                  DeviceID = %d and channelNo = %d;",
-                                  dmxChannel.zoneID,
-                                  dmxChannel.groupID,
-                                  dmxChannel.subnetID,
-                                  dmxChannel.deviceID,
-                                  dmxChannel.channelNo];
-    
-    return [self executeSql:deleteChannelSQL];
-}
-
-/// 删除区域中的所有DMX
-- (BOOL)deleteZoneDMXs:(NSUInteger)zoneID {
-    
-    // 删除通道
-    NSString *deleteChannelSQL =
-        [NSString stringWithFormat:
-            @"delete from dmxChannelInZone where ZoneID = %tu;",
-            zoneID
-        ];
-    
-    BOOL deleteChannel = [self executeSql:deleteChannelSQL];
-    
-    // 删除分组
-    NSString *deleteGroupSQL =
-        [NSString stringWithFormat:
-            @"delete from dmxGroupInZone where ZoneID = %tu;",
-            zoneID
-        ];
-    
-    BOOL deleteGroup = [self executeSql:deleteGroupSQL];
-    
-    return deleteChannel && deleteGroup;
-}
-
+ 
 /// 增加新的通道
 - (NSInteger)insertNewDmxChannnel:(SHDmxChannel *)dmxChannel {
     
@@ -159,107 +99,6 @@ const NSUInteger maxIconIDForDataBase = 10;
                 objectForKey:@"max(groupID)"];
     
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-/// 删除指定的DMX分组
-- (BOOL)deleteDmxGroup:(SHDmxGroup *)dmxGroup {
-    
-    // 删除分组
-    NSString *deleteGruopSQL =
-        [NSString stringWithFormat:
-            @"delete from dmxGroupInZone where ZoneID = %tu and   \
-                                groupID = %tu;",
-              dmxGroup.zoneID, dmxGroup.groupID
-        ];
-    
-    BOOL deleteGroup = [self executeSql:deleteGruopSQL];
-    
-    // 同时删除通道
-    NSString *deleteChannelSQL =
-        [NSString stringWithFormat:
-            @"delete from dmxChannelInZone where ZoneID = %tu and   \
-            groupID = %tu;",
-         
-         dmxGroup.zoneID, dmxGroup.groupID
-        ];
-    
-    BOOL deleteChannel = [self executeSql:deleteChannelSQL];
-    
-    return deleteGroup && deleteChannel;
-}
-
-/// 获得分组的通道
-- (NSMutableArray *)getDmxGroupChannels:(SHDmxGroup *)dmxGroup {
-    
-    NSString *selectSQL =
-        [NSString stringWithFormat:
-            @"select ID, ZoneID, groupID, groupName, remark,    \
-            channelType, SubnetID, DeviceID, channelNo from     \
-            dmxChannelInZone where ZoneID = %tu and groupID = %tu;",
-                           dmxGroup.zoneID, dmxGroup.groupID
-        ];
-    
-    NSArray *array = [self selectProprty:selectSQL];
-    
-    NSMutableArray *channels = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [channels addObject:
-            [[SHDmxChannel alloc] initWithDict:dict]
-        ];
-    }
-    
-    return channels;
-}
-
-
-/// 获得指定区域的DMX分组
-- (NSMutableArray *)getZoneDmxGroup:(NSUInteger)zoneID {
-    
-    NSString *selectSQL =
-        [NSString stringWithFormat:
-                @"select ID, ZoneID, groupID, groupName from    \
-                dmxGroupInZone    where ZoneID = %tu;",
-            zoneID
-        ];
-    
-    NSArray *array = [self selectProprty:selectSQL];
-    
-    NSMutableArray *group = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [group addObject:[[SHDmxGroup alloc] initWithDict:dict]];
-    }
-    
-    return group;
-}
-
-
-/// 增加DMX的字段
-- (BOOL)addZoneDMX {
-
-    NSString *selectSQL =
-        [NSString stringWithFormat:
-            @"select Distinct SystemID from systemDefnition     \
-            where SystemID = %tu;",
-            SHSystemDeviceTypeDmx
-        ];
-    
-    if ([[self selectProprty:selectSQL] count]) {
-        
-        return YES;
-    }
-    
-    NSString *insertSQL =
-        [NSString stringWithFormat:
-            @"insert into systemDefnition (SystemID, SystemName)    \
-                values(%tu, '%@');",
-            SHSystemDeviceTypeDmx, @"dmx"
-        ];
-    
-    return [self executeSql:insertSQL];
 }
 
 
@@ -2914,22 +2753,6 @@ const NSUInteger maxIconIDForDataBase = 10;
 }
 
 
-// MARK: - 风扇
-
-/// 删除区域中的所有风扇
-- (BOOL)deleteZoneFans:(NSUInteger)zoneID {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from FanInZone Where zoneID = %tu ;",
-            zoneID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-
-
 // MARK: - 区域操作相关
 
 /// 保存当前区域的所有设备
@@ -3200,7 +3023,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                 
             case SHSystemDeviceTypeFan: {
                 
-                [self deleteZoneFans:zoneID];
+//                [self deleteZoneFans:zoneID];
             }
                 break;
                 
@@ -3230,7 +3053,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                 
             case SHSystemDeviceTypeDmx: {
                 
-                [self deleteZoneDMXs:zoneID];
+//                [self deleteZoneDMXs:zoneID];
             }
                 break;
                 
@@ -3475,9 +3298,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     // 增加区域的温度通用显示
     [self addRoomTemperatureShow];
     
-    // 增加DMX
-    [self addZoneDMX];
-    
     // 增加SAT的字段
     [self addSATControlIetms];
     
@@ -3491,33 +3311,6 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 // MARK: - 公共封装部分
 
-
-/**
- 删除表格
- 
- @param name 表格名称
- @return YES - 删除成功 NO - 删除失败
- */
-- (BOOL)deleteTable:(NSString *)name {
-    
-    NSString *deleteSQL = [NSString stringWithFormat:@"DROP TABLE IF EXISTS %@;", name];
-    
-    return [self executeSql:deleteSQL];
-}
-
-/**
- 修改数据表的名称
- 
- @param srcName 旧名称
- @param destName 新名筄
- @return YES - 修改成功, NO - 修改失败
- */
-- (BOOL)renameTable:(NSString *)srcName toName:(NSString *)destName {
-    
-    NSString *renameSQL = [NSString stringWithFormat:@"ALTER TABLE %@ RENAME TO %@;", srcName, destName];
-    
-    return [self executeSql:renameSQL];
-}
 
 /**
  判断表中是否存在字段
@@ -3642,11 +3435,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return self;
 }
-
-- (NSString *)dataBaseName {
-    
-    return dataBaseName;
-}
+ 
 
 SingletonImplementation(SQLManager)
 
