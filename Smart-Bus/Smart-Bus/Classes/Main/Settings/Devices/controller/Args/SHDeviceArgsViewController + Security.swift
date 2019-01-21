@@ -34,26 +34,32 @@ extension SHDeviceArgsViewController {
     /// 更新值
     func updateSecurityZone(value: String, index: Int) {
         
+        guard let security = self.securityZone else {
+            return
+        }
+        
         // 更新每一个参数
         switch index {
             
         case 0:
-            self.securityZone?.zoneNameOfSecurity = value
+            security.zoneNameOfSecurity = value
             
         case 1:
-            self.securityZone?.subnetID = UInt8(value) ?? 1
+            security.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.securityZone?.deviceID = UInt8(value) ?? 0
+            security.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.securityZone?.zoneID = UInt(value) ?? 0
+            security.zoneID = UInt(value) ?? 0
             
         default:
             break
         }
         
         // 保存到数据库
-        SHSQLManager.share()?.update(securityZone)
+        _ = SHSQLiteManager.shared.updateSecurityZone(
+            security
+        )
     }
 }

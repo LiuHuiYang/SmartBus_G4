@@ -40,32 +40,36 @@ extension SHDeviceArgsViewController {
     /// 更新
     func updateMacroCommand(value: String, index: Int) {
         
+        guard let command = macroCommand else {
+            return
+        }
+        
         // 更新每一个参数
         switch index {
             
         case 0:
-            self.macroCommand?.remark = value
+            command.remark = value
             
         case 1:
-            self.macroCommand?.subnetID = UInt8(value) ?? 1
+            command.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.macroCommand?.deviceID = UInt8(value) ?? 0
+            command.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.macroCommand?.commandTypeID = UInt(value) ?? 0
+            command.commandTypeID = UInt(value) ?? 0
             
         case 4:
-            self.macroCommand?.firstParameter = UInt(value) ?? 0
+            command.firstParameter = UInt(value) ?? 0
             
         case 5:
-            self.macroCommand?.secondParameter = UInt(value) ?? 0
+            command.secondParameter = UInt(value) ?? 0
             
         case 6:
-            self.macroCommand?.thirdParameter = UInt(value) ?? 0
+            command.thirdParameter = UInt(value) ?? 0
             
         case 7:
-            self.macroCommand?.delayMillisecondAfterSend =
+            command.delayMillisecondAfterSend =
                 UInt(value) ?? 0
             
         default:
@@ -73,8 +77,8 @@ extension SHDeviceArgsViewController {
         }
         
         // 保存到数据库
-        SHSQLManager.share()?.updateCentralMacroCommand(
-            macroCommand
+        _ = SHSQLiteManager.shared.updateMacroCommand(
+            command
         )
     }
 }

@@ -18,7 +18,7 @@ class SHMacroViewController: SHViewController {
     
     
     /// 所有的宏命令
-    fileprivate var allMacros: [SHMacro]?
+    private var allMacros: [SHMacro] = [SHMacro]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,21 +53,20 @@ class SHMacroViewController: SHViewController {
         )
         
         listView.addGestureRecognizer(longPress)
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-        listView.reloadData()
+        allMacros = SHSQLiteManager.shared.getMacros()
         
-        allMacros = SHSQLManager.share()?.getAllCentralMacros() as? [SHMacro]
-        
-        if allMacros?.count == 0 {
+        if allMacros.isEmpty {
 
             SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
         }
+        
+        listView.reloadData()
     }
  
 
@@ -101,13 +100,13 @@ class SHMacroViewController: SHViewController {
         
         let macro = SHMacro();
         
-        macro.macroID =  (SHSQLManager.share()?.getMaxMacroID())! + 1
+        macro.macroID =  SHSQLiteManager.shared.getMaxMacroID() + 1
         
         macro.macroName = "New Macro"
         macro.macroIconName = "Romatic"
         
-        SHSQLManager.share()?.insertNewMacro(macro)
-        
+        _ = SHSQLiteManager.shared.insertMacro(macro)
+       
         let commandViewController = SHMacroCommandsViewController()
         
         commandViewController.macro = macro;
@@ -124,7 +123,7 @@ extension SHMacroViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return allMacros?.count ?? 0
+        return allMacros.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -135,13 +134,11 @@ extension SHMacroViewController: UICollectionViewDataSource {
                 for: indexPath
                 ) as! SHMacroCell
         
-        cell.macro = allMacros?[indexPath.item]
+        cell.macro = allMacros[indexPath.item]
         
         return cell
     }
-     
 }
-
 
 
 // MARK: - 手势操作
@@ -174,7 +171,7 @@ extension SHMacroViewController {
             TYAlertAction(title: SHLanguageText.edit,
                           style: .default) { (action) in
             
-            let macro = self.allMacros?[index.item]
+            let macro = self.allMacros[index.item]
             
             let commandViewController = SHMacroCommandsViewController()
             
@@ -193,11 +190,11 @@ extension SHMacroViewController {
             TYAlertAction(title: SHLanguageText.delete,
                           style: .destructive) { (action) in
             
-            let macro = self.allMacros?[index.item]
+            let macro = self.allMacros[index.item]
             
-            self.allMacros?.remove(at: index.item)
+            self.allMacros.remove(at: index.item)
             
-            SHSQLManager.share()?.delete(macro)
+            _ = SHSQLiteManager.shared.deleteMacro(macro)
             
             self.listView.reloadData()
         }

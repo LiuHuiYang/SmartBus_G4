@@ -29,6 +29,10 @@
 		040B78FD21ABF2D000E1F9A0 /* SHClimateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B78FC21ABF2D000E1F9A0 /* SHClimateViewController.swift */; };
 		0412E32F21F54F290084F3DB /* SHSQLiteManager + Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E32E21F54F290084F3DB /* SHSQLiteManager + Light.swift */; };
 		0412E33121F55F960084F3DB /* SHSQLiteManager +Shade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E33021F55F960084F3DB /* SHSQLiteManager +Shade.swift */; };
+		0412E33321F563350084F3DB /* SHSQLiteManager + Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E33221F563350084F3DB /* SHSQLiteManager + Macro.swift */; };
+		0412E33521F5753F0084F3DB /* SHSQLiteManager + CentralLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E33421F5753F0084F3DB /* SHSQLiteManager + CentralLights.swift */; };
+		0412E33721F577E10084F3DB /* SHSQLiteManager + CentralClimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E33621F577E10084F3DB /* SHSQLiteManager + CentralClimate.swift */; };
+		0412E33921F57A2F0084F3DB /* SHSQLiteManager + Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412E33821F57A2F0084F3DB /* SHSQLiteManager + Security.swift */; };
 		041436342170412E00A3E5F6 /* SHChangeMacroImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041436322170412E00A3E5F6 /* SHChangeMacroImageViewController.swift */; };
 		041436352170412E00A3E5F6 /* SHChangeMacroImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041436332170412E00A3E5F6 /* SHChangeMacroImageViewController.xib */; };
 		04143638217046CB00A3E5F6 /* SHMacroCommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04143636217046CB00A3E5F6 /* SHMacroCommandsViewController.swift */; };
@@ -510,6 +514,10 @@
 		040B78FC21ABF2D000E1F9A0 /* SHClimateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHClimateViewController.swift; sourceTree = "<group>"; };
 		0412E32E21F54F290084F3DB /* SHSQLiteManager + Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Light.swift"; sourceTree = "<group>"; };
 		0412E33021F55F960084F3DB /* SHSQLiteManager +Shade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager +Shade.swift"; sourceTree = "<group>"; };
+		0412E33221F563350084F3DB /* SHSQLiteManager + Macro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Macro.swift"; sourceTree = "<group>"; };
+		0412E33421F5753F0084F3DB /* SHSQLiteManager + CentralLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + CentralLights.swift"; sourceTree = "<group>"; };
+		0412E33621F577E10084F3DB /* SHSQLiteManager + CentralClimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + CentralClimate.swift"; sourceTree = "<group>"; };
+		0412E33821F57A2F0084F3DB /* SHSQLiteManager + Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Security.swift"; sourceTree = "<group>"; };
 		041436322170412E00A3E5F6 /* SHChangeMacroImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHChangeMacroImageViewController.swift; sourceTree = "<group>"; };
 		041436332170412E00A3E5F6 /* SHChangeMacroImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHChangeMacroImageViewController.xib; sourceTree = "<group>"; };
 		04143636217046CB00A3E5F6 /* SHMacroCommandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMacroCommandsViewController.swift; sourceTree = "<group>"; };
@@ -2622,6 +2630,10 @@
 				04184E3121F1CD4C0002E491 /* SHSQLiteManager + Fan.swift */,
 				0412E32E21F54F290084F3DB /* SHSQLiteManager + Light.swift */,
 				0412E33021F55F960084F3DB /* SHSQLiteManager +Shade.swift */,
+				0412E33221F563350084F3DB /* SHSQLiteManager + Macro.swift */,
+				0412E33421F5753F0084F3DB /* SHSQLiteManager + CentralLights.swift */,
+				0412E33621F577E10084F3DB /* SHSQLiteManager + CentralClimate.swift */,
+				0412E33821F57A2F0084F3DB /* SHSQLiteManager + Security.swift */,
 				04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */,
 				8BF9268D1EEE857D00EE5A54 /* SQL.sql */,
 			);
@@ -4805,6 +4817,7 @@
 				042450DC21F0183500C99512 /* SHDeviceArgsViewController + HVAC.swift in Sources */,
 				042450C221F0158000C99512 /* SHDeviceArgsViewController + Mood.swift in Sources */,
 				0484DA5D21D08078005F33CC /* SHAlbum.swift in Sources */,
+				0412E33721F577E10084F3DB /* SHSQLiteManager + CentralClimate.swift in Sources */,
 				0453EA4621A67C8400F666EF /* JHPieItemsView.m in Sources */,
 				04978EE22182A26300FA1E65 /* SHSecurityLogCell.swift in Sources */,
 				8BD24B8A206B657F00CFFE75 /* SHAreaSettingViewController.m in Sources */,
@@ -4817,6 +4830,7 @@
 				041C008421B4DFFC0003CB49 /* SHSchedualViewController.swift in Sources */,
 				041C005121B4DDDA0003CB49 /* SHSchedualHVACViewController.m in Sources */,
 				042CD7CA20AD2ED600061670 /* EZAudioFFT.m in Sources */,
+				0412E33921F57A2F0084F3DB /* SHSQLiteManager + Security.swift in Sources */,
 				042450C621F015E400C99512 /* SHDeviceArgsViewController + TemperatureSensor.swift in Sources */,
 				04CD3E34216B3045007010C6 /* SHSettingViewController.swift in Sources */,
 				042450B821F00E4900C99512 /* SHScene.swift in Sources */,
@@ -5006,6 +5020,7 @@
 				04143648217086B900A3E5F6 /* SHIconViewCell.swift in Sources */,
 				04A5A24B217DC09200461580 /* SHSettingViewCell.swift in Sources */,
 				04978EE62182A90100FA1E65 /* SHSetSecurityPasswordViewController.swift in Sources */,
+				0412E33321F563350084F3DB /* SHSQLiteManager + Macro.swift in Sources */,
 				04C583162192BCC10017701A /* SHZone.swift in Sources */,
 				04A177CA215F5CE400BD9744 /* SHSmsControlViewController.swift in Sources */,
 				04D839AC21C9D5070080153F /* SHSchduleLightCell.swift in Sources */,
@@ -5074,6 +5089,7 @@
 				8B829540204E2ECD00F3AD41 /* SHLanguageTools.m in Sources */,
 				8B33A3631EE64EDD001D8EE1 /* UIBarButtonItem+init.m in Sources */,
 				0427E85D21E6D6F3000ED6AA /* SHSchduleMoodView.swift in Sources */,
+				0412E33521F5753F0084F3DB /* SHSQLiteManager + CentralLights.swift in Sources */,
 				04D4A02621B1302A0054E226 /* SHAudioRecordViewController.swift in Sources */,
 				040B78FD21ABF2D000E1F9A0 /* SHClimateViewController.swift in Sources */,
 				04C94E05216DD08D00EF069E /* SHModifyRSIPNameViewController.swift in Sources */,

@@ -54,7 +54,7 @@
 //        command.firstParameter = i + 1;
 //        command.secondParameter = 100;
 //
-//        [[SHSQLManager shareSQLManager] insertNewCentralMacroCommand:command];
+//        [SHSQLiteManager.shared insertMacroCommand:command];
 //    }
 //
 //    for (Byte i = 0; i < 24; i++) {
@@ -64,7 +64,7 @@
 //        command.firstParameter = i + 1;
 //        command.secondParameter = 0;
 //
-//        [[SHSQLManager shareSQLManager] insertNewCentralMacroCommand:command];
+//       [SHSQLiteManager.shared insertMacroCommand:command];
 //    }
     
     return YES;

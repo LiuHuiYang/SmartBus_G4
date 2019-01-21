@@ -55,8 +55,9 @@ extension SHSQLiteManager {
             "select max(regionID) from Regions;"
         
         guard let dict = selectProprty(sql).last,
-            let resID = dict["max(regionID)"] as? String,
-            let regionID = UInt(resID) else {
+            let regionID = dict["max(regionID)"] as? UInt
+            
+            else {
                 
                 return 0
         }

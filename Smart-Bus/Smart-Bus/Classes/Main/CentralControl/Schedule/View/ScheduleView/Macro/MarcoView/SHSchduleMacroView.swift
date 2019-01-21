@@ -18,17 +18,20 @@ class SHSchduleMacroView: UIView, loadNibView {
     var schedual: SHSchedual? {
         
         didSet {
-            
-            guard let plan = schedual,
-                let macros = SHSQLManager.share()?.getAllCentralMacros() as? [SHMacro] else {
-                    
-                    SVProgressHUD.showInfo(
-                        withStatus: SHLanguageText.noData
-                    )
+             
+            guard let plan = schedual else {
+                
                 return
             }
             
-            allMacros = macros
+            allMacros =  SHSQLiteManager.shared.getMacros()
+            
+            if allMacros.isEmpty {
+                
+                SVProgressHUD.showInfo(
+                    withStatus: SHLanguageText.noData
+                )
+            }
             
             marcoListView.reloadData()
             

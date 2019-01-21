@@ -623,7 +623,7 @@ extension SHSchedualExecuteTools {
     }
     
     
-    /// 执行macro
+    /// 执行macroCommand
     ///
     /// - Parameter command: 命令
     static func exectuSchedualMacro(_ command: SHSchedualCommand) {
@@ -632,13 +632,14 @@ extension SHSchedualExecuteTools {
         
         macro.macroID = command.parameter1
         
-        guard let macros = SHSQLManager.share()?.getCentralMacroCommands(
-            macro) as? [SHMacroCommand] else {
-                
-                return
+        let macroCommands =
+            SHSQLiteManager.shared.getMacroCommands(macro)
+        
+        if macroCommands.isEmpty {
+            return
         }
         
-        for command in macros {
+        for command in macroCommands {
             
             SHSocketTools.executeMacroCommand(command)
             

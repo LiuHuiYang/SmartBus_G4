@@ -20,13 +20,14 @@ extension SHSQLiteManager {
             "where ZoneID = \(zoneID);"
         
         guard let dict = selectProprty(sql).last,
-            let resID = dict["max(LightID)"] as? String,
-            let fanID = UInt(resID) else {
+            let lightID = dict["max(LightID)"] as? UInt
+            
+            else {
                 
-                return 0
+            return 0
         }
         
-        return fanID
+        return lightID
     }
     
     /// 查询当前区域中的所有light

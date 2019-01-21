@@ -288,67 +288,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得空调的配置信息
 - (SHHVACSetUpInfo *)getHVACSetUpInfo;
 
-/// 获得当前CentralLight的所有指令集
-- (NSMutableArray *)getCentralLightCommands:(SHCentralLight *)light;
-
-/// 获取所有的灯光
-- (NSMutableArray *)getAllCentralLights;
-
-/// 搜索所有的空调
-- (NSMutableArray *)getAllCentralHVACs;
-
-/// 搜索当前的空调指令集
-- (NSMutableArray *)getCentralHVACCommands:(SHCentralHVAC *)hvac;
-
-
-// MARK: - Security 相关的操作
-
-/// 删除 Security Zone
-- (BOOL)deleteSecurity:(SHSecurityZone *)securityZone;
-
-/// 增加 Security
-- (BOOL)insertNewSecurity:(SHSecurityZone *)securityZone;
-
-/// 更新Security
-- (BOOL)updateSecurityZone:(SHSecurityZone *)securityZone;
-
-/// 获得最大的Security ID
-- (NSUInteger)getMaxSecurityID;
-
-/// 搜索所有的安防区域
-- (NSMutableArray *)getAllCentralSecuity;
-
-
-// MARK: - Macro 相关的操作
-
-/// 更新Macro中的命令中的参数
-- (BOOL)updateCentralMacroCommand:(SHMacroCommand *)command;
-
-/// 增加一条Macro的执行指令 返回 id
-- (NSInteger)insertNewCentralMacroCommand:(SHMacroCommand *)command;
-
-/// 删除宏命令中的具体执行指令
-- (BOOL)deleteCentralMacroCommand:(SHMacroCommand *)command;
-
-/// 获得当前CentralLight的所有指令集
-- (NSMutableArray *)getCentralMacroCommands:(SHMacro *)macro;
-
-/// 获取所有的宏命令按钮
-- (NSMutableArray *)getAllCentralMacros;
-
-/// 删除Macro
-- (BOOL)deleteMacro:(SHMacro *)macro;
-
-/// 增加Macro
-- (BOOL)insertNewMacro:(SHMacro *)macro;
-
-/// 更新MACRO
-- (BOOL)updateMacro:(SHMacro *)macro;
-
-/// 获得最大的区域ID
-- (NSUInteger)getMaxMacroID;
-
-
+   
 // MARK: - schedaul 相关的操作
 
 /// 获得所有的计划 
@@ -609,7 +549,6 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 删除分组区域
 - (BOOL)deleteRegion:(NSUInteger)regionID;
 
- 
 SingletonInterface(SQLManager)
 
 @end

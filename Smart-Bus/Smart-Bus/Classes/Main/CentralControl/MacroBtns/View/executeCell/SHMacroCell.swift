@@ -84,11 +84,17 @@ import UIKit
     /// 宏点击
     @IBAction func commandButtonClick() {
         
-        let commands = SHSQLManager.share()?.getCentralMacroCommands(macro) as? [SHMacroCommand]
+        if macro == nil {
+            
+            return
+        }
         
-        guard let macroCommands = commands  else {
+        let commands =
+            SHSQLiteManager.shared.getMacroCommands(macro!)
+         
+        if commands.isEmpty {
         
-            let title = macro?.macroName
+            let title = macro!.macroName
             
             SVProgressHUD.showInfo(withStatus: "\(title ?? "") \(SHLanguageText.noData)")
             
@@ -101,7 +107,7 @@ import UIKit
         
         performSelector(
             inBackground: #selector(executeCommands(_:)),
-            with: macroCommands
+            with: commands
         )
     }
     

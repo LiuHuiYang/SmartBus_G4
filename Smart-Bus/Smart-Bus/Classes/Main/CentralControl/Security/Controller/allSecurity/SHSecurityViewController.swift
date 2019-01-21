@@ -14,7 +14,8 @@ private let securityZoneViewCellReuseIdentifier =
 
 class SHSecurityViewController: SHViewController {
     
-    var allSecurityZones:[SHSecurityZone]?
+    /// 安防区域
+    private lazy var allSecurityZones = [SHSecurityZone]()
     
     @IBOutlet weak var listView: UICollectionView!
 
@@ -51,11 +52,12 @@ class SHSecurityViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        allSecurityZones = (SHSQLManager.share()?.getAllCentralSecuity() as! [SHSecurityZone])
+        allSecurityZones =
+            SHSQLiteManager.shared.getSecurityZones()
         
         listView.reloadData()
         
-        if allSecurityZones?.count == 0 {
+        if allSecurityZones.isEmpty {
        
             SVProgressHUD.showError(withStatus: SHLanguageText.noData)
         }
@@ -110,7 +112,7 @@ extension SHSecurityViewController {
             
             let editSecurityZoneController = SHDeviceArgsViewController()
             
-            editSecurityZoneController.securityZone = self.allSecurityZones?[index]
+            editSecurityZoneController.securityZone = self.allSecurityZones[index]
             
             self.navigationController?.pushViewController(
                 editSecurityZoneController,
@@ -124,11 +126,13 @@ extension SHSecurityViewController {
             TYAlertAction(title: SHLanguageText.delete,
                           style: .destructive) { (action) in
             
-            let securityZone = self.allSecurityZones?[index]
+            let securityZone = self.allSecurityZones[index]
             
-            self.allSecurityZones?.remove(at: index)
-            
-            SHSQLManager.share()?.deleteSecurity(securityZone)
+            self.allSecurityZones.remove(at: index)
+                            
+            _ = SHSQLiteManager.shared.deleteSecurityZone(
+                securityZone
+            )
             
             self.listView.reloadData()
         }
@@ -163,11 +167,15 @@ extension SHSecurityViewController {
         
         let securityZone = SHSecurityZone()
         
-        securityZone.id = UInt((SHSQLManager.share()?.getMaxSecurityID())! + 1)
+        
+        securityZone.id =
+            SHSQLiteManager.shared.getMaxSecurityID() + 1
         
         securityZone.zoneNameOfSecurity = "Security"
-        
-        SHSQLManager.share()?.insertNewSecurity(securityZone)
+      
+        _ = SHSQLiteManager.shared.insertSecurityZone(
+            securityZone
+        )
         
         let editSecuriytZoneController = SHDeviceArgsViewController()
         
@@ -185,7 +193,7 @@ extension SHSecurityViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return allSecurityZones?.count ?? 0
+        return allSecurityZones.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -196,7 +204,7 @@ extension SHSecurityViewController: UICollectionViewDataSource {
                 for: indexPath
             ) as! SHSecurityZoneViewCell
         
-        cell.securityZone = allSecurityZones?[indexPath.item]
+        cell.securityZone = allSecurityZones[indexPath.item]
         
         return cell
     }
@@ -210,7 +218,7 @@ extension SHSecurityViewController: UICollectionViewDelegate {
         
         let securityControlViewController = SHSecurityControlViewController()
         
-        securityControlViewController.securityZone = allSecurityZones?[indexPath.item]
+        securityControlViewController.securityZone = allSecurityZones[indexPath.item]
         
         navigationController?.pushViewController(
             securityControlViewController,

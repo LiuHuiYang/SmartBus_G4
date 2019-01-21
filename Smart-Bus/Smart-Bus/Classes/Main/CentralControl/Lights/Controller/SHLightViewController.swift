@@ -19,8 +19,8 @@ enum SHLightBrightness: UInt8 {
 @objcMembers class SHLightViewController: SHViewController {
     
     /// 所有的灯光
-    private lazy var allLights: [SHCentralLight] =
-        (SHSQLManager.share()?.getAllCentralLights() as? [SHCentralLight]) ?? [SHCentralLight]()
+    private lazy var allLights =
+        SHSQLiteManager.shared.getCentralLights()
     
     /// 选中的灯光区域
     var selectCentrallightArea: SHCentralLight?
@@ -284,9 +284,12 @@ extension SHLightViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         
         selectCentrallightArea = light
         
-        allLightCommands = (SHSQLManager.share()?.getCentralLightCommands(light) as? [SHCentralLightCommand]) ?? [SHCentralLightCommand]()
+        allLightCommands =
+            SHSQLiteManager.shared.getCentralLightCommands(
+                light
+        )
         
-        if allLightCommands.count == 0 {
+        if allLightCommands.isEmpty {
              
             let alertView =
                 TYCustomAlertView(title: SHLanguageText.noData,

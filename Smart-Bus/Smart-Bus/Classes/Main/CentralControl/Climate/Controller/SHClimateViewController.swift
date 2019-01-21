@@ -14,7 +14,8 @@ import UIKit
     var selectCentralHVAC: SHCentralHVAC?
     
     /// 所有的空调
-    private lazy var allHVACs: [SHCentralHVAC] = SHSQLManager.share()?.getAllCentralHVACs()as? [SHCentralHVAC] ?? [SHCentralHVAC]()
+    private lazy var allHVACs: [SHCentralHVAC] =
+        SHSQLiteManager.shared.getCentralClimates()
     
     /// 区域空调对应的指令
     private var hvacCommands = [SHCentralHVACCommand]()
@@ -301,7 +302,7 @@ extension SHClimateViewController: UIPickerViewDataSource, UIPickerViewDelegate 
         
         selectCentralHVAC = hvac
         
-        hvacCommands = (SHSQLManager.share()?.getCentralHVACCommands(hvac) as? [SHCentralHVACCommand]) ?? [SHCentralHVACCommand]()
+        hvacCommands = SHSQLiteManager.shared.getCentralClimateCommands(hvac)
         
         if allHVACs.count == 0 {
         

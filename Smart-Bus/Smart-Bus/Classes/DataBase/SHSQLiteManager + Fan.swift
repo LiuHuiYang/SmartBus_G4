@@ -20,8 +20,7 @@ extension SHSQLiteManager {
             "where ZoneID = \(zoneID);"
         
         guard let dict = selectProprty(sql).last,
-            let resID = dict["max(FanID)"] as? String,
-            let fanID = UInt(resID) else {
+            let fanID = dict["max(FanID)"] as? UInt else {
             
             return 0
         }

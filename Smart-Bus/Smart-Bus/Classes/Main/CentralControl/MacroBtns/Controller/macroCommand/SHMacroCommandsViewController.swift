@@ -14,7 +14,8 @@ class SHMacroCommandsViewController: SHViewController {
     var macro: SHMacro?
     
     /// 所有的宏命令集合
-    fileprivate var allCommands:[SHMacroCommand]?
+    private lazy var allCommands:[SHMacroCommand] =
+        [SHMacroCommand]()
     
     /// 命令列表
     @IBOutlet weak var commandsListView: UITableView!
@@ -53,8 +54,10 @@ class SHMacroCommandsViewController: SHViewController {
                 UIImage.resize("\(macroImageName)_highlighted"),
                 for: .highlighted
             )
-            
-            SHSQLManager.share()?.update(self.macro!)
+             
+            _ = SHSQLiteManager.shared.updateMacro(
+                self.macro!
+            )
         }
         
         let changeImageNavigationController =
@@ -116,8 +119,18 @@ class SHMacroCommandsViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
         
-        allCommands = (SHSQLManager.share()?.getCentralMacroCommands(macro!) as! [SHMacroCommand])
+        if macro == nil {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+            
+            return
+        }
         
+        allCommands =  SHSQLiteManager.shared.getMacroCommands(macro!)
+        
+       
         commandsListView.reloadData()
     }
  
@@ -150,7 +163,10 @@ extension SHMacroCommandsViewController {
         let command = SHMacroCommand()
         command.macroID = macro?.macroID ?? 1
         command.remark = macro?.macroName ?? "macro"
-        command.id = UInt(SHSQLManager.share()?.insertNewCentralMacroCommand(command) ?? 1)
+        command.id =
+            SHSQLiteManager.shared.insertMacroCommand(
+                command
+            ) + 1
         
         detailViewController.macroCommand = command
         
@@ -170,7 +186,7 @@ extension SHMacroCommandsViewController: UITableViewDelegate {
         
         let detailViewController = SHDeviceArgsViewController()
         
-        detailViewController.macroCommand = allCommands![indexPath.row]
+        detailViewController.macroCommand = allCommands[indexPath.row]
             
         navigationController?.pushViewController(
             detailViewController,
@@ -189,11 +205,11 @@ extension SHMacroCommandsViewController: UITableViewDelegate {
             
             tableView.setEditing(false, animated: true)
             
-            let command = self.allCommands![indexPath.row]
+            let command = self.allCommands[indexPath.row]
             
-            self.allCommands?.remove(at: indexPath.row)
+            self.allCommands.remove(at: indexPath.row)
             
-            SHSQLManager.share()?.deleteCentralMacroCommand(
+            _ = SHSQLiteManager.shared.deleteMacroCommand(
                 command
             )
             
@@ -207,7 +223,7 @@ extension SHMacroCommandsViewController: UITableViewDelegate {
             let detailViewController = SHDeviceArgsViewController()
             
             detailViewController.macroCommand =
-                self.allCommands![indexPath.row]
+                self.allCommands[indexPath.row]
             
             self.navigationController?.pushViewController(
                 detailViewController,
@@ -224,7 +240,7 @@ extension SHMacroCommandsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return allCommands?.count ?? 0
+        return allCommands.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -234,7 +250,7 @@ extension SHMacroCommandsViewController: UITableViewDataSource {
             for: indexPath
         ) as! SHZoneDeviceGroupSettingCell
         
-        cell.macroCommand = allCommands?[indexPath.row]
+        cell.macroCommand = allCommands[indexPath.row]
         
         return cell
     }
@@ -272,7 +288,8 @@ extension SHMacroCommandsViewController: UITextFieldDelegate {
         
         // 更新
         macro!.macroName = name
-        SHSQLManager.share()?.update(macro!)
+        
+        _ = SHSQLiteManager.shared.updateMacro(macro!)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
