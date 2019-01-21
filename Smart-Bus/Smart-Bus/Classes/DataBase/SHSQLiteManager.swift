@@ -122,6 +122,9 @@ private let sandboxVersionKey = "sandboxVersionKey"
         
         // 增加其它 控制
         _ = addOtherControl()
+        
+        // 增加温度传感器
+        _ = addTemperatureSensor()
     }
 }
 

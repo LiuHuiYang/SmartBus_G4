@@ -49,16 +49,21 @@ class SHZoneTemperatureSensorViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let zoneID = currentZone?.zoneID,
-         let sensors = (SHSQLManager.share()?.getTemperatureSensor(forZone: zoneID)) as? [SHTemperatureSensor] else {
-            
-            SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
+        guard let zoneID = currentZone?.zoneID else {
             
             return
         }
         
-        allTemperatureSensors = sensors
+        allTemperatureSensors =
+            SHSQLiteManager.shared.getTemperatureSensors(
+                zoneID: zoneID
+        )
         
+        if allTemperatureSensors.isEmpty {
+            
+            SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
+        }
+         
         temperatureListView.reloadData()
         
         timer =

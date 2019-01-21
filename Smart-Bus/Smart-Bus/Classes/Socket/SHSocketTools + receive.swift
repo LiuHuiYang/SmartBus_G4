@@ -25,7 +25,6 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
             return
         }
         
-        
         // 数据包的前16个固定字节数(源IP + 协议头 + 开始的操作码 --> 不影响解析，所以去除)
         
         // FIXME: 暂时不进行接收校验

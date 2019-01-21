@@ -31,25 +31,6 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 @implementation SHSQLManager
 
-// MARK: - 其它(自定义) 控制
-
-// 增加其它控制
-- (BOOL)addOtherControl {
-    
-    NSString *selectSQL = [NSString stringWithFormat:@"select Distinct SystemID from systemDefnition where SystemID = %tu;", SHSystemDeviceTypeOtherControl];
-    
-    // 如果存在
-    if ([[self selectProprty:selectSQL] count]) {
-        
-        return YES;
-    }
-    
-    NSString *insertSQL = [NSString stringWithFormat:@"insert into systemDefnition (SystemID, SystemName) values(%tu, '%@');", SHSystemDeviceTypeOtherControl, @"Other Control"];
-    
-    return [self executeSql:insertSQL];
-}
-
-  
 // MARK: - DMX
 
 
@@ -280,120 +261,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return [self executeSql:insertSQL];
 }
-
-// MARK: - 温度传感器
-
-/// 更新当前温度传感器的数据
-- (void)updateTemperatureSensor:(SHTemperatureSensor *)temperatureSensor {
-    
-    NSString *updateSql =
-        [NSString stringWithFormat:
-            @"update TemperatureSensorInZone set remark = '%@', \
-            SubnetID = %d, DeviceID = %d, ChannelNo = %d Where  \
-            zoneID = %tu and temperatureID = %tu;",
-                temperatureSensor.remark,
-                temperatureSensor.subnetID,
-                temperatureSensor.deviceID,
-                temperatureSensor.channelNo,
-                temperatureSensor.zoneID,
-                temperatureSensor.temperatureID
-        ];
-    
-    [self executeSql:updateSql];
-}
-
-/// 增加新的干节点
-- (BOOL)insertNewTemperatureSensor:(SHTemperatureSensor *)temperatureSensor {
-    
-    NSString *sql =
-        [NSString stringWithFormat:
-            @"insert into TemperatureSensorInZone (ZoneID,          \
-            temperatureID, remark, SubnetID, DeviceID, ChannelNo)  \
-            values(%tu, %tu, '%@', %d, %d, %d);",
-                     temperatureSensor.zoneID,
-                     temperatureSensor.temperatureID,
-                     temperatureSensor.remark,
-                     temperatureSensor.subnetID,
-                     temperatureSensor.deviceID,
-                     temperatureSensor.channelNo
-         ];
-    
-    return [self executeSql:sql];
-}
-
-/// 删除当前的温度传感器
-- (BOOL)deleteTemperatureSensorInZone:(SHTemperatureSensor *)temperatureSensor {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from TemperatureSensorInZone Where         \
-            zoneID = %tu and SubnetID = %d and DeviceID = %d    \
-            and ChannelNo = %d and temperatureID = %tu;",
-         
-            temperatureSensor.zoneID,
-            temperatureSensor.subnetID,
-            temperatureSensor.deviceID,
-            temperatureSensor.channelNo,
-            temperatureSensor.temperatureID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 删除区域中的温度传感器
-- (BOOL)deleteZoneTemperatureSensors:(NSUInteger)zoneID {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from TemperatureSensorInZone Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 查询当前区域中的所有温度传感器
-- (NSMutableArray *)getTemperatureSensorForZone:(NSUInteger)zoneID {
-    
-    NSString *selectSQL = [NSString stringWithFormat:@"select ID, ZoneID, remark, temperatureID, SubnetID, DeviceID, ChannelNo from TemperatureSensorInZone  where ZoneID = %tu;", zoneID];
-    
-    NSArray *array = [self selectProprty:selectSQL];
-    
-    NSMutableArray *temperatureSensor = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [temperatureSensor addObject:[[SHTemperatureSensor alloc] initWithDict:dict]];
-    }
-    
-    return temperatureSensor;
-}
-
-/// 获得当前区域中的最大的温度传感器的ID
-- (NSUInteger)getMaxTemperatureTemperatureIDForZone:(NSUInteger)zoneID {
-    
-    NSString *sql = [NSString stringWithFormat:@"select max(TemperatureID) from TemperatureSensorInZone where ZoneID = %tu;", zoneID];
-    
-    id resID = [[[self selectProprty:sql] lastObject] objectForKey:@"max(TemperatureID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-/// 增加温度传感器类型
-- (BOOL)addTemperatureSensor {
-    
-    NSString *selectSQL = [NSString stringWithFormat:@"select Distinct SystemID from systemDefnition where SystemID = %tu;", SHSystemDeviceTypeTemperatureSensor];
-    
-    // 如果不存在
-    if ([[self selectProprty:selectSQL] count]) {
-        
-        return YES;
-    }
-    
-    NSString *insertSQL = [NSString stringWithFormat:@"insert into systemDefnition (SystemID, SystemName) values(%tu, '%@');", SHSystemDeviceTypeTemperatureSensor, @"temperature"];
-    
-    return [self executeSql:insertSQL];
-}
+ 
 
 // MARK: - Dry Input
 
@@ -3581,7 +3449,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                 
             case SHSystemDeviceTypeTemperatureSensor: {
                 
-                [self deleteZoneTemperatureSensors:zoneID];
+//                [self deleteZoneTemperatureSensors:zoneID];
             }
                 break;
                 
@@ -3816,8 +3684,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     // 增加区域干节点
     [self addZoneDryContact];
     
-    // 增加温度传感器
-    [self addTemperatureSensor];
     
     // 增加音乐选项卡的配置
     [self addAudioInZoneSetSourceType];

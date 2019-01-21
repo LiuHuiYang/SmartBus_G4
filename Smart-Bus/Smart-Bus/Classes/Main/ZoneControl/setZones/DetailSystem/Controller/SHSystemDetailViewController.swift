@@ -204,11 +204,9 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 if let sensor = self.allDevices[indexPath.row]
                         as? SHTemperatureSensor {
                     
-                    SHSQLManager.share()?.deleteTemperatureSensor(
-                        inZone: sensor
-                    )
-                    
                     self.allDevices.remove(sensor)
+                    
+                    _ = SHSQLiteManager.shared.deleteTemperatureSensor(sensor)
                 }
                 
             case .sceneControl:
@@ -932,9 +930,11 @@ extension SHSystemDetailViewController {
             
             sensor.remark = "temperature sensor"
             sensor.zoneID = zoneID
-            sensor.temperatureID = (SHSQLManager.share()?.getMaxTemperatureTemperatureID(forZone: zoneID) ?? 0) + 1
             
-              SHSQLManager.share()?.insertNewTemperatureSensor(sensor)
+            sensor.temperatureID = SHSQLiteManager.shared.getMaxTemperatureID(
+                    zoneID) + 1
+            
+            _ = SHSQLiteManager.shared.insertTemperatureSensor(sensor)
             
             detailController.temperatureSensor = sensor
             
@@ -1112,16 +1112,12 @@ extension SHSystemDetailViewController {
             allDevices = nodes
             
         case .temperatureSensor:
-            guard let sensors =
             
-                SHSQLManager.share()?.getTemperatureSensor(
-                     forZone: zoneID) else {
-                
-                return
-            }
+            let sensors = SHSQLiteManager.shared.getTemperatureSensors(
+                    zoneID: zoneID
+            )
             
-            allDevices = sensors
-            
+            allDevices = NSMutableArray(array: sensors)
             
         case .sceneControl:
             

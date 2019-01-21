@@ -33,24 +33,30 @@ extension SHDeviceArgsViewController {
     /// 保存 4T
     func updateTemperatureSensor(value: String, index: Int) {
         
+        guard let sensor = self.temperatureSensor else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.temperatureSensor?.remark = value
+            sensor.remark = value
             
         case 1:
-            self.temperatureSensor?.subnetID = UInt8(value) ?? 0
+            sensor.subnetID = UInt8(value) ?? 0
             
         case 2:
-            self.temperatureSensor?.deviceID = UInt8(value) ?? 0
+            sensor.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.temperatureSensor?.channelNo = UInt8(value) ?? 0
+            sensor.channelNo = UInt8(value) ?? 0
             
         default:
             break;
-        }
-        
-        SHSQLManager.share()?.update(temperatureSensor)
+        } 
+       
+        _ = SHSQLiteManager.shared.updateTemperatureSensor(
+            sensor
+        )
     }
 }

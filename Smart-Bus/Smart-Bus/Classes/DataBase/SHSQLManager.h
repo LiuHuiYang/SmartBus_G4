@@ -112,26 +112,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得指定区域的DMX分组
 - (NSMutableArray *)getZoneDmxGroup:(NSUInteger)zoneID;
 
-// MARK: - 温度传感器
-
-/// 更新当前温度传感器的数据
-- (void)updateTemperatureSensor:(SHTemperatureSensor *)temperatureSensor;
-
-/// 增加新的温度传感器
-- (BOOL)insertNewTemperatureSensor:(SHTemperatureSensor *)temperatureSensor;
-
-/// 删除当前的温度传感器
-- (BOOL)deleteTemperatureSensorInZone:(SHTemperatureSensor *)temperatureSensor;
-
-/// 删除区域中的温度传感器
-- (BOOL)deleteZoneTemperatureSensors:(NSUInteger)zoneID;
-
-/// 查询当前区域中的所有温度传感器
-- (NSMutableArray *)getTemperatureSensorForZone:(NSUInteger)zoneID;
-
-/// 获得当前区域中的最大的温度传感器的ID
-- (NSUInteger)getMaxTemperatureTemperatureIDForZone:(NSUInteger)zoneID;
-
+ 
 // MARK: - 干节点
 
 /// 更新当前干节点的数据
