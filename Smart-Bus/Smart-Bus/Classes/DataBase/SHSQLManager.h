@@ -605,18 +605,11 @@ extern const NSUInteger maxIconIDForDataBase;
 
 
 // MARK: - 分组多区域操作
-
-/// 更新分组区域信息
-- (BOOL)updateRegion:(SHRegion *)region;
-
+  
 /// 删除分组区域
 - (BOOL)deleteRegion:(NSUInteger)regionID;
 
-/// 获得最大的分组地区ID
-- (NSUInteger)getMaxRegionID;
-
-
-
+ 
 SingletonInterface(SQLManager)
 
 @end

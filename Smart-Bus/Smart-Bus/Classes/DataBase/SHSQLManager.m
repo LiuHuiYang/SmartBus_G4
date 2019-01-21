@@ -4245,24 +4245,6 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 // MARK: - 多分组操作
 
-/// 更新分组信息
-- (BOOL)updateRegion:(SHRegion *)region {
-    
-    NSString *regionSql =
-    
-    [NSString stringWithFormat:
-        @"update Regions set regionName = '%@', \
-          regionIconName = '%@' \
-          Where regionID = %tu;",
-     
-            region.regionName,
-            region.regionIconName,
-            region.regionID
-     ];
-    
-    return [self executeSql:regionSql];
-}
-
 /// 删除地区
 - (BOOL)deleteRegion:(NSUInteger)regionID {
     
@@ -4281,14 +4263,6 @@ const NSUInteger maxIconIDForDataBase = 10;
 }
 
  
-/// 获得最大的地区ID
-- (NSUInteger)getMaxRegionID {
-    
-    // 获得结果ID
-    id resID = [[[self selectProprty:@"select max(regionID) from Regions"] lastObject] objectForKey:@"max(regionID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
  
 
 // MARK: - 创建表格

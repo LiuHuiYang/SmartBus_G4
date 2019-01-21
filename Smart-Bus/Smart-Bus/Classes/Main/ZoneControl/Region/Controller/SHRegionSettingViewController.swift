@@ -87,7 +87,10 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
                     )
                     
                     area.regionIconName = icon.iconName!
-                    SHSQLManager.share()?.update(area)
+                    
+                    _ = SHSQLiteManager.shared.updateRegion(
+                        area
+                    )
             }
             
             let navigationIconViewController =
@@ -239,7 +242,7 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
         
         area.regionIconName = iconName
         
-        SHSQLManager.share()?.update(area)
+        _ = SHSQLiteManager.shared.updateRegion(area)
     }
 }
 
@@ -270,7 +273,8 @@ extension SHRegionSettingViewController: UITextFieldDelegate {
         }
         
         area.regionName = name
-        SHSQLManager.share()?.update(area)
+       
+        _ = SHSQLiteManager.shared.updateRegion(area)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

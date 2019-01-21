@@ -122,8 +122,8 @@ extension SHRegionViewController {
         
         let region = SHRegion()
         region.regionID =
-            (SHSQLManager.share()?.getMaxRegionID()
-                ?? 0) + 1
+            SHSQLiteManager.shared.getMaxRegionID()
+                + 1
         region.regionName = "New Region"
         region.regionIconName = "regionIcon"
         

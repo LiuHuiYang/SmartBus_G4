@@ -12,7 +12,30 @@ import Foundation
 // MARK: - 多分组操作
 extension SHSQLiteManager {
     
- 
+//    func deleteRegion(_ region: SHRegion) -> Bool {
+//
+//        // 删除区域
+//
+//
+//        // 删除地区
+//        let sql =
+//            "delete from Regions where " +
+//            "regionID = \(region.regionID);"
+//
+//        return executeSql(sql)
+//    }
+    
+    /// 更新region信息
+    func updateRegion(_ region: SHRegion) -> Bool {
+        
+        let sql =
+            "update Regions set "                   +
+            "regionName = '\(region.regionName)', " +
+            "regionIconName = '\(region.regionIconName)' " +
+            "Where regionID = \(region.regionID);"
+        
+        return executeSql(sql)
+    }
     
     /// 插入一个新增加的region
     func insertRegion(_ region: SHRegion) -> Bool {
@@ -24,6 +47,21 @@ extension SHSQLiteManager {
             "'\(region.regionIconName)' );"
         
         return executeSql(sql)
+    }
+    
+    func getMaxRegionID() -> UInt {
+        
+        let sql =
+            "select max(regionID) from Regions;"
+        
+        guard let dict = selectProprty(sql).last,
+            let resID = dict["max(regionID)"] as? String,
+            let regionID = UInt(resID) else {
+                
+                return 0
+        }
+        
+        return regionID
     }
     
     /// 查询所有的区域分组
