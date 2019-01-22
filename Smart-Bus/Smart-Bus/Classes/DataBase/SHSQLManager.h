@@ -211,15 +211,6 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 保存当前区域的TV参数
 - (void)updateMediaTVInZone:(SHMediaTV *)mediaTV;
 
-/// 删除当前区域的TV
-- (BOOL)deleteTVInZone:(SHMediaTV *)mediaTV;
-
-/// 删除区域中的TV
-- (BOOL)deleteZoneTVs:(NSUInteger)zoneID;
-
-/// 获得当前区域中的电视
-- (NSMutableArray *)getMediaTVFor:(NSUInteger)zoneID;
-
 
 // MARK: - SAT
 

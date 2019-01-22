@@ -125,6 +125,9 @@ private let sandboxVersionKey = "sandboxVersionKey"
         // 增加音乐的一些字段
         addAudioParameter()
         
+        // 增加多媒体设备的标注
+        addMediaDeviceRemark()
+        
         // 增加FloorHeating类型
         _ = addFloorHeating()
         

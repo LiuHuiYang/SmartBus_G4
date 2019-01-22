@@ -98,12 +98,10 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 
                 if let tv = self.allDevices[indexPath.row]
                         as? SHMediaTV {
-                    
-                    SHSQLManager.share()?.deleteTV(
-                        inZone: tv
-                    )
-                    
+               
                     self.allDevices.remove(tv)
+                    
+                    _ = SHSQLiteManager.shared.deleteTV(tv)
                 }
                 
             case .dvd:
@@ -1012,13 +1010,10 @@ extension SHSystemDetailViewController {
             allDevices =  NSMutableArray(array: shades)
             
         case .tv:
-            guard let tvs =
-                SHSQLManager.share()?.getMediaTV(
-                    for: zoneID) else {
-                return
-            }
+         
+            let tvs = SHSQLiteManager.shared.getMediaTV(zoneID)
             
-            allDevices = tvs
+            allDevices =  NSMutableArray(array: tvs)
             
         case .dvd:
             guard let dvds =

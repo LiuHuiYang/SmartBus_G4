@@ -91,6 +91,7 @@
 		041EA61721F6C5B7004FFEAF /* SHSQLiteManager + FloorHeating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61621F6C5B7004FFEAF /* SHSQLiteManager + FloorHeating.swift */; };
 		041EA61921F6E61E004FFEAF /* SHSQLiteManager + Hvac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61821F6E61E004FFEAF /* SHSQLiteManager + Hvac.swift */; };
 		041EA61B21F6F5D4004FFEAF /* SHSQLiteManager + Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61A21F6F5D3004FFEAF /* SHSQLiteManager + Audio.swift */; };
+		041EA61F21F71D9F004FFEAF /* SHSQLiteManager + TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61E21F71D9F004FFEAF /* SHSQLiteManager + TV.swift */; };
 		042450B821F00E4900C99512 /* SHScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450B721F00E4900C99512 /* SHScene.swift */; };
 		042450BA21F0144400C99512 /* SHDeviceArgsViewController + CT24.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450B921F0144400C99512 /* SHDeviceArgsViewController + CT24.swift */; };
 		042450BC21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450BB21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift */; };
@@ -590,6 +591,7 @@
 		041EA61621F6C5B7004FFEAF /* SHSQLiteManager + FloorHeating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + FloorHeating.swift"; sourceTree = "<group>"; };
 		041EA61821F6E61E004FFEAF /* SHSQLiteManager + Hvac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Hvac.swift"; sourceTree = "<group>"; };
 		041EA61A21F6F5D3004FFEAF /* SHSQLiteManager + Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Audio.swift"; sourceTree = "<group>"; };
+		041EA61E21F71D9F004FFEAF /* SHSQLiteManager + TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + TV.swift"; sourceTree = "<group>"; };
 		042450B721F00E4900C99512 /* SHScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHScene.swift; sourceTree = "<group>"; };
 		042450B921F0144400C99512 /* SHDeviceArgsViewController + CT24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + CT24.swift"; sourceTree = "<group>"; };
 		042450BB21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Audio.swift"; sourceTree = "<group>"; };
@@ -2664,6 +2666,7 @@
 				0412E34021F5AEA00084F3DB /* SHSQLiteManager + TemperatureSensor.swift */,
 				0412E34221F5B5CC0084F3DB /* SHSQLiteManager + DryContact.swift */,
 				041EA61621F6C5B7004FFEAF /* SHSQLiteManager + FloorHeating.swift */,
+				041EA61E21F71D9F004FFEAF /* SHSQLiteManager + TV.swift */,
 				04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */,
 				8BF9268D1EEE857D00EE5A54 /* SQL.sql */,
 			);
@@ -5160,6 +5163,7 @@
 				04B4CC7421F064BE0076B600 /* SHSequenceControlViewController.swift in Sources */,
 				0401BC622191437D0046BF18 /* SHZoneDeviceGroupSettingCell.swift in Sources */,
 				041C00AC21B504740003CB49 /* loadNibView + protocol.swift in Sources */,
+				041EA61F21F71D9F004FFEAF /* SHSQLiteManager + TV.swift in Sources */,
 				04CF6F4E2193E3D80052A8A9 /* SHCentralHVACCommand.swift in Sources */,
 				042450D421F0178A00C99512 /* SHDeviceArgsViewController + NineInOne.swift in Sources */,
 				04CD3E38216B361D007010C6 /* SHCentralControlViewController.swift in Sources */,

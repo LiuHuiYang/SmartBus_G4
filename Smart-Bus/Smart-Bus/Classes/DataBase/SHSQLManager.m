@@ -760,91 +760,7 @@ const NSUInteger maxIconIDForDataBase = 10;
  
 // MARK: - 多媒体设备的操作
 
-/// 增加多媒体设备注释
-- (void)addMediaDeviceRemark {
-    
-    // 1.电视
-    if (![self isColumnName:@"remark" consistinTable:@"TVInZone"]) {
-        
-        // 增加remark
-        [self executeSql:@"ALTER TABLE TVInZone ADD remark TEXT NOT NULL DEFAULT 'TV';"];
-    }
-    
-    // 2.AppleTV
-    if (![self isColumnName:@"remark" consistinTable:@"AppleTVInZone"]) {
-        
-        // 增加remark
-        [self executeSql:@"ALTER TABLE AppleTVInZone ADD remark TEXT NOT NULL DEFAULT 'APPLE TV';"];
-    }
-    
-    
-    // 3.DVD
-    if (![self isColumnName:@"remark" consistinTable:@"DVDInZone"]) {
-        
-        // 增加remark
-        [self executeSql:@"ALTER TABLE DVDInZone ADD remark TEXT NOT NULL DEFAULT 'DVD';"];
-    }
-    
-    // 4.ProjectorInZone
-    if (![self isColumnName:@"remark" consistinTable:@"ProjectorInZone"]) {
-        
-        // 增加remark
-        [self executeSql:@"ALTER TABLE ProjectorInZone ADD remark TEXT NOT NULL DEFAULT 'PROJECTOR';"];
-    }
-    
-    
-    // 5.卫星电视
-    // 4.ProjectorInZone
-    if (![self isColumnName:@"remark" consistinTable:@"SATInZone"]) {
-        
-        // 增加remark
-        [self executeSql:@"ALTER TABLE SATInZone ADD remark TEXT NOT NULL DEFAULT 'SATELLITE TV';"];
-    }
-}
 
-
-/// 获得当前区域中的电视
-- (NSMutableArray *)getMediaTVFor:(NSUInteger)zoneID {
-    
-    NSString *tvSql = [NSString stringWithFormat:@"select ID, remark, ZoneID, SubnetID, DeviceID, UniversalSwitchIDforOn, UniversalSwitchStatusforOn, UniversalSwitchIDforOff, UniversalSwitchStatusforOff, UniversalSwitchIDforCHAdd, UniversalSwitchIDforCHMinus, UniversalSwitchIDforVOLUp, UniversalSwitchIDforVOLDown, UniversalSwitchIDforMute, UniversalSwitchIDforMenu, UniversalSwitchIDforSource, UniversalSwitchIDforOK, UniversalSwitchIDfor0, UniversalSwitchIDfor1, UniversalSwitchIDfor2, UniversalSwitchIDfor3, UniversalSwitchIDfor4, UniversalSwitchIDfor5, UniversalSwitchIDfor6, UniversalSwitchIDfor7, UniversalSwitchIDfor8, UniversalSwitchIDfor9, IRMacroNumberForTVStart0, IRMacroNumberForTVStart1, IRMacroNumberForTVStart2, IRMacroNumberForTVStart3, IRMacroNumberForTVStart4, IRMacroNumberForTVStart5 from TVInZone where ZoneID = %tu order by id;", zoneID];
-    
-    NSArray *array = [self selectProprty:tvSql];
-    
-    if (!array.count) {
-        return nil;
-    }
-    
-    NSMutableArray *tvs = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [tvs addObject:
-            [[SHMediaTV alloc] initWithDict:dict]
-        ];
-    }
-    
-    return tvs;
-}
-
-/// 删除当前区域的TV
-- (BOOL)deleteTVInZone:(SHMediaTV *)mediaTV {
-    
-    NSString *deleteSql = [NSString stringWithFormat:@"delete from TVInZone Where zoneID = %tu and SubnetID = %d and DeviceID = %d;", mediaTV.zoneID, mediaTV.subnetID, mediaTV.deviceID];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 删除区域中的TV
-- (BOOL)deleteZoneTVs:(NSUInteger)zoneID {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from TVInZone Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
 
 /// 存入新的TV设备
 - (NSInteger)inserNewMediaTV:(SHMediaTV *)mediaTV {
@@ -2204,7 +2120,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                 
             case SHSystemDeviceTypeTv: {
                 
-                [self deleteZoneTVs:zoneID];
+//                [self deleteZoneTVs:zoneID];
             }
                 break;
                 
@@ -2442,9 +2358,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     // 增加9in1
     [self addNineInOne];
   
-    // 增加多媒体设备的标注
-    [self addMediaDeviceRemark];
-    
     // 增加场景模式的延时功能
     [self addMoodCommandDelaytime];
     
