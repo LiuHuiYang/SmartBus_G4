@@ -212,10 +212,11 @@ extension SHZoneDevicesViewController {
         switch deviceType {
             
         case .hvac:
-            if let hvacs =  SHSQLManager.share()?.getHVACForZone(zoneID) {
-                
-                allDevices = hvacs as! [Any]
-            }
+            
+            let hvacs =
+                SHSQLiteManager.shared.getHVACs(zoneID)
+            
+            allDevices = hvacs as [Any]
             
         case .audio:
             if let audios =  SHSQLManager.share()?.getAudioForZone(zoneID) {

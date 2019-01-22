@@ -215,8 +215,9 @@
             BOOL isCelsiusFlag = (recivedData[0] == 0);
             
             self.havcSetUpInfo.isCelsius = isCelsiusFlag;
+  
+            [SHSQLiteManager.shared updateHvacSetUpInfo:self.havcSetUpInfo.isCelsius];
             
-            [[SHSQLManager shareSQLManager] updateHVACSetUpInfoTempertureFlag:self.havcSetUpInfo.isCelsius];
         }
             break;
             
@@ -932,8 +933,10 @@
 - (IBAction)hvacButtonClick {
     
     self.hvacButton.selected = !self.hvacButton.selected;
+   
+    NSArray *hvacs = [SHSQLiteManager.shared getHVACs:self.currentZone.zoneID];
     
-    self.allHVACs = self.hvacButton.selected ? ([[SHSQLManager shareSQLManager] getHVACForZone:self.currentZone.zoneID]) : nil;
+    self.allHVACs = [NSMutableArray arrayWithArray:hvacs];
 }
 
 /// 选择音乐

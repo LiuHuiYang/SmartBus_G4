@@ -208,8 +208,8 @@
                       if (self.havcSetUpInfo.isCelsius != isCelsiusFlag) {
                           
                           self.havcSetUpInfo.isCelsius = isCelsiusFlag;
-                          
-                          [[SHSQLManager shareSQLManager] updateHVACSetUpInfoTempertureFlag:self.havcSetUpInfo.isCelsius];
+                     
+                          [SHSQLiteManager.shared updateHvacSetUpInfo:self.havcSetUpInfo.isCelsius];
                       }
                       
                       self.currentHVAC.indoorTemperature = [SHHVAC realTemperature:recivedData[2]];
@@ -383,8 +383,8 @@
                       if (self.havcSetUpInfo.isCelsius != isCelsiusFlag) {
                           
                           self.havcSetUpInfo.isCelsius = isCelsiusFlag;
-                          
-                          [[SHSQLManager shareSQLManager] updateHVACSetUpInfoTempertureFlag:self.havcSetUpInfo.isCelsius];
+                     
+                          [SHSQLiteManager.shared updateHvacSetUpInfo:self.havcSetUpInfo.isCelsius];
                       }
                   }
                       break;

@@ -294,28 +294,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 查询当前区域中的所有Audio
 - (NSMutableArray *)getAudioForZone:(NSUInteger)zoneID;
 
-
-// MARK: - HVAC
-
-/// 保存当前的空调数据
-- (void)updateHVACInZone:(SHHVAC *)hvac;
-
-/// 删除当前的空调
-- (BOOL)deleteHVACInZone:(SHHVAC *)hvac;
-
-/// 删除整个区域的空调
-- (BOOL) deleteZoneHVACs:(NSUInteger)zoneID;
-
-/// 增加新的空调
-- (NSInteger)insertNewHVAC:(SHHVAC *)hvac;
-
-/// 查询当前区域中的所有HAVC
-- (NSMutableArray *)getHVACForZone:(NSUInteger)zoneID;
-
-/// 设置配置空调的单位是否摄氏度
-- (BOOL)updateHVACSetUpInfoTempertureFlag:(BOOL)isCelsius;
-
-
+ 
 // MARK: - 系统区域
 
 /// 保存当前区域的所有设备

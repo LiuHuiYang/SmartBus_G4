@@ -27,18 +27,15 @@ class SHSchduleHVACView: UIView, loadNibView {
                 (!plan.isDifferentZoneSchedual &&
                     hvacs.count == 0) {
                 
-                guard let allHVAC =
-                    SHSQLManager.share()?.getHVACForZone(
-                        plan.zoneID
-                    ) as? [SHHVAC] ,
-                    
-                    let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
+                guard let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
                         
                         return
                 }
                 
-                
-                hvacs = allHVAC
+                hvacs =
+                    SHSQLiteManager.shared.getHVACs(
+                        plan.zoneID
+                )
                 
                 for hvac in hvacs {
                     

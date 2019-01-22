@@ -128,7 +128,7 @@ import UIKit
     // ============模型中的存储数据库的部分 ========
     
     /// ID
-    var id: Int = 0
+    var id: UInt = 0
     
     /// 区域ID
     var zoneID: UInt = 0
@@ -186,6 +186,17 @@ import UIKit
 //        hvac.temperatureSensorSubNetID = [[dictionary objectForKey:@"temperatureSensorSubNetID"] integerValue];
 //        hvac.temperatureSensorDeviceID = [[dictionary objectForKey:@"temperatureSensorDeviceID"] integerValue];
 //        hvac.temperatureSensorChannelNo = [[dictionary objectForKey:@"temperatureSensorChannelNo"] integerValue];
+    }
+    
+    override func setValue(_ value: Any?, forKey key: String) {
+        
+        if key == "ACRemark" {
+            
+            acRemark = value as? String ?? "ac"
+            return
+        }
+        
+        super.setValue(value, forKey: key)
     }
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {

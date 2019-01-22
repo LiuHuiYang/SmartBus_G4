@@ -63,11 +63,11 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 if let hvac = self.allDevices[indexPath.row]
                         as? SHHVAC {
                     
-                    SHSQLManager.share()?.deleteHVAC(
-                        inZone: hvac
-                    )
-                    
                     self.allDevices.remove(hvac)
+                    
+                    _ = SHSQLiteManager.shared.deleteHVAC(
+                        hvac
+                    )
                 }
                 
             case .audio:
@@ -566,7 +566,7 @@ extension SHSystemDetailViewController: UITableViewDataSource {
                 
                 deviceName =
                     "\(floorHeating.floorHeatingID) - " +
-                    "\(floorHeating.floorHeatingRemark ?? "floorHeating") : " +
+                    "\(floorHeating.floorHeatingRemark) : " +
                     "\(floorHeating.subnetID) - " +
                     "\(floorHeating.deviceID) - " +
                     "\(floorHeating.channelNo)"
@@ -737,10 +737,10 @@ extension SHSystemDetailViewController {
             
             hvac.acRemark = "hvac"
             hvac.zoneID = zoneID
-            hvac.id =
-                SHSQLManager.share()?.insertNewHVAC(
-                    hvac
-                ) ?? 1
+            
+            let id = SHSQLiteManager.shared.insertHVAC(hvac)
+            
+            hvac.id = (id == 0) ? 1 : id
             
             detailController.hvac = hvac
             
@@ -994,14 +994,11 @@ extension SHSystemDetailViewController {
            allDevices = NSMutableArray(array: lights)
             
         case .hvac:
-            guard let hvacs =
-                SHSQLManager.share()?.getHVACForZone(
-                    zoneID) else {
-                
-                return
-            }
+         
+            let hvacs =
+                SHSQLiteManager.shared.getHVACs(zoneID)
             
-            allDevices = hvacs
+            allDevices = NSMutableArray(array: hvacs)
             
         case .audio:
             

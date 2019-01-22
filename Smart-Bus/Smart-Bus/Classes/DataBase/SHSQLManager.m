@@ -2170,154 +2170,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return allZonesAudioDevices;
 }
-
-// MARK: - HVAC
-
-/// 增加通用温度传感器显示空调
-- (void)addRoomTemperatureShow {
-    
-    // 增加用于显示温度的传感器的三个参数
-    if (![self isColumnName:@"temperatureSensorSubNetID" consistinTable:@"HVACInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE HVACInZone ADD temperatureSensorSubNetID INTEGER NOT NULL DEFAULT 1;"];
-    }
-    
-    if (![self isColumnName:@"temperatureSensorDeviceID" consistinTable:@"HVACInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE HVACInZone ADD temperatureSensorDeviceID INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    if (![self isColumnName:@"temperatureSensorChannelNo" consistinTable:@"HVACInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE HVACInZone ADD temperatureSensorChannelNo INTEGER NOT NULL DEFAULT 0;"];
-    }
-}
-
-/// 保存当前的空调数据
-- (void)updateHVACInZone:(SHHVAC *)hvac {
-    
-    NSString *saveSql = [NSString stringWithFormat:
-                         @"update HVACInZone set ZoneID = %tu, SubnetID = %d, \
-                         DeviceID = %d, ACNumber = %tu, ACTypeID = %d,        \
-                         ACRemark = '%@', temperatureSensorSubNetID = %d,     \
-                         temperatureSensorDeviceID = %d,                      \
-                         temperatureSensorChannelNo = %d, channelNo = %d      \
-                         Where zoneID = %tu and id = %tu;",
-                         
-                         hvac.zoneID, hvac.subnetID,
-                         hvac.deviceID, hvac.acNumber,
-                         hvac.acTypeID, hvac.acRemark,
-                         hvac.temperatureSensorSubNetID,
-                         hvac.temperatureSensorDeviceID,
-                         hvac.temperatureSensorChannelNo,
-                         hvac.channelNo,
-                         hvac.zoneID, hvac.id
-                         ];
-    
-    [self executeSql:saveSql];
-}
-
-/// 删除当前的空调
-- (BOOL)deleteHVACInZone:(SHHVAC *)hvac {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from HVACInZone Where zoneID = %tu and  \
-            SubnetID = %d and DeviceID = %d and ACNumber = %tu;",
-                           
-            hvac.zoneID, hvac.subnetID,
-            hvac.deviceID, hvac.acNumber
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 删除整个区域的空调
-- (BOOL) deleteZoneHVACs:(NSUInteger)zoneID {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from HVACInZone Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 增加新的空调 返回ID
-- (NSInteger)insertNewHVAC:(SHHVAC *)hvac {
-    
-    NSString *insertSQL =
-        [NSString stringWithFormat:
-            @"insert into HVACInZone (ZoneID, SubnetID,             \
-            DeviceID, ACNumber, ACTypeID, ACRemark,                 \
-            temperatureSensorSubNetID, temperatureSensorDeviceID,   \
-            temperatureSensorChannelNo, channelNo)                  \
-            values(%tu, %d, %d, %tu, %d, '%@',                      \
-            %d, %d, %d, %d);",
-                           
-            hvac.zoneID, hvac.subnetID,
-            hvac.deviceID, hvac.acNumber,
-            hvac.acTypeID, hvac.acRemark,
-            hvac.temperatureSensorSubNetID,
-            hvac.temperatureSensorDeviceID,
-            hvac.temperatureSensorChannelNo,
-            hvac.channelNo
-        ];
-    
-    
-    BOOL res = [self executeSql:insertSQL];
-    
-    NSInteger maxID = -1;
-    
-    if (res) {
-        
-        // 获得ID号
-        NSString *string = [NSString stringWithFormat:@"select max(ID) from HVACInZone;"];
-        
-        maxID =  [[[[self selectProprty:string] lastObject] objectForKey:@"max(ID)"] integerValue];
-    }
-    
-    return maxID;
-}
-
-
-/// 查询当前区域中的所有HAVC
-- (NSMutableArray *)getHVACForZone:(NSUInteger)zoneID {
-    
-    NSString *hvacSql = [NSString stringWithFormat:@"select id, ZoneID, SubnetID, DeviceID, ACNumber, ACTypeID, acRemark, temperatureSensorSubNetID, temperatureSensorDeviceID, temperatureSensorChannelNo, channelNo from HVACInZone where ZoneID = %tu;", zoneID];
-    
-    
-    NSMutableArray *array = [self selectProprty:hvacSql];
-    
-    NSMutableArray *hvacs = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-       
-        SHHVAC *ac = [[SHHVAC alloc] initWithDictionary:dict];
-         [hvacs addObject:ac];
-    }
-    
-    return hvacs;
-}
-
-/// 设置配置空调的单位是否摄氏度
-- (BOOL)updateHVACSetUpInfoTempertureFlag:(BOOL)isCelsius {
-    
-    NSString * updateSql = [NSString stringWithFormat:@"update HVACSetUp set isCelsius = %d;", isCelsius];
-    
-    return [self executeSql:updateSql];
-}
-
-/// 获得空调的配置信息
-- (SHHVACSetUpInfo *)getHVACSetUpInfo {
-    
-    NSString *sql = @"select isCelsius, TempertureOfCold, TempertureOfCool, TempertureOfWarm, TempertureOfHot from HVACSetUp;";
-    
-    NSDictionary *dict = [[self selectProprty:sql] lastObject];
-    
-    return [[SHHVACSetUpInfo alloc] initWithDict:dict];
-}
+ 
  
 /// 删除整个区域的灯泡
 - (BOOL)deleteZoneLights:(NSUInteger)zoneID {
@@ -2548,7 +2401,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                 
             case SHSystemDeviceTypeHvac: {
                 
-                [self deleteZoneHVACs:zoneID];
+//                [self deleteZoneHVACs:zoneID];
             }
                 break;
                 
@@ -2833,9 +2686,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     // 增加图片的二进制数据
     [self addZoneIconData];
-    
-    // 增加区域的温度通用显示
-    [self addRoomTemperatureShow];
     
     // 增加SAT的字段
     [self addSATControlIetms];

@@ -42,38 +42,42 @@ extension SHDeviceArgsViewController {
     /// 保存HVAC
     func updateHVAC(value: String, index: Int) {
         
+        guard let ac = self.hvac else {
+            return
+        }
+        
         switch (index) {
         case 0:
-            self.hvac?.acRemark = value
+            ac.acRemark = value
             
         case 1:
-            self.hvac?.subnetID = UInt8(value) ?? 0
+            ac.subnetID = UInt8(value) ?? 0
             
         case 2:
-            self.hvac?.deviceID = UInt8(value) ?? 0
+            ac.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.hvac?.acNumber = UInt(value) ?? 0
+            ac.acNumber = UInt(value) ?? 0
             
         case 4:
-            self.hvac?.acTypeID = SHAirConditioningType(rawValue: (UInt8(value) ?? 1)) ?? SHAirConditioningType.hvac
+            ac.acTypeID = SHAirConditioningType(rawValue: (UInt8(value) ?? 1)) ?? SHAirConditioningType.hvac
             
             
         case 5:
-            self.hvac?.channelNo = UInt8(value) ?? 0
+            ac.channelNo = UInt8(value) ?? 0
             
         case 6:
-            self.hvac?.temperatureSensorSubNetID = UInt8(value) ?? 0
+            ac.temperatureSensorSubNetID = UInt8(value) ?? 0
             
         case 7:
-            self.hvac?.temperatureSensorDeviceID = UInt8(value) ?? 0
+            ac.temperatureSensorDeviceID = UInt8(value) ?? 0
             
         case 8:
-            self.hvac?.temperatureSensorChannelNo = UInt8(value) ?? 0
+            ac.temperatureSensorChannelNo = UInt8(value) ?? 0
         default:
             break;
-        }
+        } 
         
-        SHSQLManager.share()?.updateHVAC(inZone: hvac)
+        _ = SHSQLiteManager.shared.updateHVAC(ac)
     }
 }
