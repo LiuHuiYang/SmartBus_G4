@@ -83,7 +83,7 @@ class SHZoneShadeViewCell: UITableViewCell {
                 additionalData: G4Curtain
             )
             
-            SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted)\(openButton.currentTitle ?? "")")
+            SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(openButton.currentTitle ?? "")")
         }
     }
     
@@ -158,7 +158,7 @@ class SHZoneShadeViewCell: UITableViewCell {
         
         curtain.currentStatus = .open
         
-        SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted)\(openButton.currentTitle ?? "")")
+        SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(openButton.currentTitle ?? "")")
     }
     
     /// 关闭按钮按下
@@ -185,7 +185,7 @@ class SHZoneShadeViewCell: UITableViewCell {
                 additionalData: G4Curtain
             )
             
-             SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted)\(closeButton.currentTitle ?? "")")
+             SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(closeButton.currentTitle ?? "")")
         }
     }
     
@@ -262,7 +262,7 @@ class SHZoneShadeViewCell: UITableViewCell {
         
         curtain.currentStatus = .close
         
-        SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted)\(stopButton.currentTitle ?? "")")
+        SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(closeButton.currentTitle ?? "")")
        
     }
     
@@ -346,7 +346,7 @@ class SHZoneShadeViewCell: UITableViewCell {
             break
         }
         
-        SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted)\(stopButton.currentTitle ?? "")")
+        SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(stopButton.currentTitle ?? "")")
     }
 }
 
