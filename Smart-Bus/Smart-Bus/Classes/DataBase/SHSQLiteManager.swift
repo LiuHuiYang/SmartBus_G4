@@ -122,6 +122,9 @@ private let sandboxVersionKey = "sandboxVersionKey"
         // 增加窗帘操作的一些参数
         addShadeParameter()
         
+        // 增加音乐的一些字段
+        addAudioParameter()
+        
         // 增加FloorHeating类型
         _ = addFloorHeating()
         

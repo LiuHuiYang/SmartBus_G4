@@ -47,45 +47,49 @@ extension SHDeviceArgsViewController {
     
     func updateAudio(value: String, index: Int) {
         
+        guard let music = self.audio else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.audio?.audioName = value
+            music.audioName = value
             
         case 1:
-            self.audio?.subnetID = UInt8(value) ?? 1
+            music.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.audio?.deviceID = UInt8(value) ?? 0
+            music.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.audio?.haveSdCard = UInt8(value) ?? 0
+            music.haveSdCard = UInt8(value) ?? 0
             
         case 4:
-            self.audio?.haveFtp = UInt8(value) ?? 0
+            music.haveFtp = UInt8(value) ?? 0
             
         case 5:
-            self.audio?.haveRadio = UInt8(value) ?? 0
+            music.haveRadio = UInt8(value) ?? 0
             
         case 6:
-            self.audio?.haveAudioIn = UInt8(value) ?? 0
+            music.haveAudioIn = UInt8(value) ?? 0
             
         case 7:
-            self.audio?.havePhone = UInt8(value) ?? 0
+            music.havePhone = UInt8(value) ?? 0
             
         case 8:
-            self.audio?.haveUdisk = UInt8(value) ?? 0
+            music.haveUdisk = UInt8(value) ?? 0
             
         case 9:
-            self.audio?.haveBluetooth = UInt8(value) ?? 0
+            music.haveBluetooth = UInt8(value) ?? 0
             
         case 10:
-            self.audio?.isMiniZAudio = UInt8(value) ?? 0
+            music.isMiniZAudio = UInt8(value) ?? 0
             
         default:
             break
         }
-        
-        SHSQLManager.share()?.updateAudio(inZone: audio)
+         
+        _ = SHSQLiteManager.shared.updateAudio(music)
     }
 }

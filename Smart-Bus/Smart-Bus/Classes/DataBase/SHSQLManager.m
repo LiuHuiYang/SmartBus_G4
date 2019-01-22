@@ -1974,216 +1974,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     [self executeSql:saveSql];
 }
-
-
-// MARK: - 音乐
-
-/// 增加可以配置音乐选项卡的使用
-- (BOOL)addAudioInZoneSetSourceType {
-    
-    // 增加一个音乐设备名称的字段
-    if (![self isColumnName:@"audioName" consistinTable:@"ZaudioInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ZaudioInZone ADD audioName TEXT NOT NULL DEFAULT 'audio';"];
-    }
-    
-    // 增加SDCard
-    if (![self isColumnName:@"haveSdCard" consistinTable:@"ZaudioInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ZaudioInZone ADD haveSdCard INTEGER NOT NULL DEFAULT 1;"];
-    }
-    
-    // 增加FTP
-    if (![self isColumnName:@"haveFtp" consistinTable:@"ZaudioInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ZaudioInZone ADD haveFtp INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 增加Radio
-    if (![self isColumnName:@"haveRadio" consistinTable:@"ZaudioInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ZaudioInZone ADD haveRadio INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 增加AudioIN
-    if (![self isColumnName:@"haveAudioIn" consistinTable:@"ZaudioInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ZaudioInZone ADD haveAudioIn INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 增加Phone
-    if (![self isColumnName:@"havePhone" consistinTable:@"ZaudioInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ZaudioInZone ADD havePhone INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 增加U盘
-    if (![self isColumnName:@"haveUdisk" consistinTable:@"ZaudioInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ZaudioInZone ADD haveUdisk INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 增加蓝牙
-    if (![self isColumnName:@"haveBluetooth" consistinTable:@"ZaudioInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ZaudioInZone ADD haveBluetooth INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 增加判断当前是否为 mini Audio
-    if (![self isColumnName:@"isMiniZAudio" consistinTable:@"ZaudioInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ZaudioInZone ADD isMiniZAudio INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    return YES;
-}
-
-/// 存入新的音乐设备
-- (NSInteger)insertNewAudio:(SHAudio *)audio {
-    
-    NSString *insertSQL = [NSString stringWithFormat:
-        @"insert into ZaudioInZone (ZoneID, SubnetID,     \
-        DeviceID, haveSdCard, haveFtp, haveRadio,         \
-        haveAudioIn, havePhone, haveUdisk, haveBluetooth, \
-        isMiniZAudio, audioName) values                   \
-        (%tu, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, '%@');",
-                           
-                           audio.zoneID,
-                           audio.subnetID,
-                           audio.deviceID,
-                           audio.haveSdCard,
-                           audio.haveFtp,
-                           audio.haveRadio,
-                           audio.haveAudioIn,
-                           audio.havePhone,
-                           audio.haveUdisk,
-                           audio.haveBluetooth,
-                           audio.isMiniZAudio,
-                           audio.audioName
-                           ];
-    
-    BOOL res = [self executeSql:insertSQL];
-    
-    NSInteger maxID = -1;
-    
-    if (res) {
-        
-        // 获得ID号
-        NSString *string = [NSString stringWithFormat:@"select max(ID) from ZaudioInZone;"];
-        
-        maxID =  [[[[self selectProprty:string] lastObject] objectForKey:@"max(ID)"] integerValue];
-    }
-    
-    return maxID;
-}
-
-/// 保存当前的音乐数据
-- (void)updateAudioInZone:(SHAudio *)audio {
-    
-    NSString *saveSql = [NSString stringWithFormat:
-        @"update ZaudioInZone set ZoneID = %tu,             \
-        SubnetID = %d, DeviceID = %d, haveSdCard = %d,      \
-        haveFtp = %d, haveRadio = %d, haveAudioIn = %d,     \
-        havePhone = %d, haveUdisk = %D, haveBluetooth = %d, \
-        isMiniZAudio = %d, audioName = '%@'                 \
-        Where zoneID = %tu and id = %tu;",
-                         
-                         audio.zoneID,
-                         audio.subnetID,
-                         audio.deviceID,
-                         audio.haveSdCard,
-                         audio.haveFtp,
-                         audio.haveRadio,
-                         audio.haveAudioIn,
-                         audio.havePhone,
-                         audio.haveUdisk,
-                         audio.haveBluetooth,
-                         audio.isMiniZAudio,
-                         audio.audioName,
-                         audio.zoneID, audio.id
-                         ];
-    
-    [self executeSql:saveSql];
-}
-
-/// 删除当前的音乐设备
-- (BOOL)deleteAudioInZone:(SHAudio *)audio {
-    
-    NSString *deleteSql = [NSString stringWithFormat:
-                           @"delete from ZaudioInZone Where zoneID = %tu    \
-                           and SubnetID = %d and DeviceID = %d;",
-                           audio.zoneID, audio.subnetID, audio.deviceID
-                           ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 删除整个区域的音乐设备
-- (BOOL)deleteZoneAudios:(NSUInteger)zoneID {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from ZaudioInZone Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 查询当前区域中的所有Audio
-- (NSMutableArray *)getAudioForZone:(NSUInteger)zoneID {
-    
-    NSMutableArray *array = [self getAllZonesAudioDevices];
-    
-    NSMutableArray *audioDevices = [NSMutableArray array];
-    
-    for (SHAudio *audio in array) {
-        
-        if (audio.zoneID == zoneID) {
-            
-            [audioDevices addObject:audio];
-        }
-    }
-    
-    return audioDevices;
-}
-
-/// 获得所有的音乐设备数据
-- (NSMutableArray *)getAllZonesAudioDevices {
-    
-    NSString *allZonesAudioSql = [NSString stringWithFormat:
-        @"select ID, ZoneID, SubnetID, DeviceID, haveSdCard,    \
-        haveFtp, haveRadio, haveAudioIn, havePhone, haveUdisk,  \
-        haveBluetooth, isMiniZAudio, audioName from ZaudioInZone order by ID;"
-    ];
-    
-    NSArray *array = [self selectProprty:allZonesAudioSql];
-    
-    NSMutableArray *allZonesAudioDevices = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [allZonesAudioDevices addObject:
-            [[SHAudio alloc] initWithDictionary:dict]
-        ];
-    }
-    
-    return allZonesAudioDevices;
-}
  
- 
-/// 删除整个区域的灯泡
-- (BOOL)deleteZoneLights:(NSUInteger)zoneID {
-    
-    NSString *deleteSQL =
-        [NSString stringWithFormat:
-            @"delete from LightInZone Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    return [self executeSql:deleteSQL];
-}
-
 
 // MARK: - 区域操作相关
 
@@ -2395,7 +2186,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             
             case SHSystemDeviceTypeLight: {
                 
-                [self deleteZoneLights:zoneID];
+//                [self deleteZoneLights:zoneID];
             }
                 break;
                 
@@ -2407,7 +2198,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                 
             case SHSystemDeviceTypeAudio: {
                 
-                [self deleteZoneAudios:zoneID];
+//                [self deleteZoneAudios:zoneID];
             }
                 break;
                 
@@ -2673,11 +2464,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     // 增加9in1
     [self addNineInOne];
-    
-    
-    // 增加音乐选项卡的配置
-    [self addAudioInZoneSetSourceType];
-    
+  
     // 增加多媒体设备的标注
     [self addMediaDeviceRemark];
     
@@ -2689,12 +2476,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     // 增加SAT的字段
     [self addSATControlIetms];
-    
-    // 增加空调中的通道号
-    if (![self isColumnName:@"channelNo" consistinTable:@"HVACInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE HVACInZone ADD channelNo INTEGER NOT NULL DEFAULT 0;"];
-    }
 }
 
 

@@ -936,7 +936,9 @@
    
     NSArray *hvacs = [SHSQLiteManager.shared getHVACs:self.currentZone.zoneID];
     
-    self.allHVACs = [NSMutableArray arrayWithArray:hvacs];
+    self.allHVACs =
+        self.hvacButton.isSelected ?
+        [NSMutableArray arrayWithArray:hvacs] : nil;
 }
 
 /// 选择音乐
@@ -944,7 +946,9 @@
     
     self.audioButton.selected = !self.audioButton.selected;
     
-    self.allAudios = self.audioButton.selected ? ([[SHSQLManager shareSQLManager] getAudioForZone:self.currentZone.zoneID]) : nil;
+    NSArray *audios = [SHSQLiteManager.shared getAudios:self.currentZone.zoneID];
+    
+    self.allAudios = self.audioButton.isSelected? [NSMutableArray arrayWithArray:audios] : nil;
 }
 
 /// 选择窗帘
@@ -971,7 +975,9 @@
      
     NSArray *FloorHeatings = [SHSQLiteManager.shared getFloorHeatings:self.currentZone.zoneID];
     
-    self.allFloorHeatings = [NSMutableArray arrayWithArray:FloorHeatings];
+    self.allFloorHeatings =
+        self.floorHeatingButton.isSelected ?
+        [NSMutableArray arrayWithArray:FloorHeatings] : nil;
 }
 
 /// 选择图片

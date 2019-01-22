@@ -132,6 +132,17 @@ extension SHSQLiteManager {
                 "ALTER TABLE HVACInZone ADD temperatureSensorChannelNo INTEGER NOT NULL DEFAULT 0;"
             )
         }
+        
+        // 增加通道号
+        
+        if isColumnName(
+            "channelNo",
+            consistinTable: "HVACInZone") == false {
+            
+            _ = executeSql(
+                "ALTER TABLE HVACInZone ADD channelNo INTEGER NOT NULL DEFAULT 0;"
+            )
+        }
     }
     
 }

@@ -969,7 +969,7 @@
     [super viewDidLoad];
     
     // 获得配置信息
-    self.havcSetUpInfo = [[SHSQLManager shareSQLManager] getHVACSetUpInfo];
+    self.havcSetUpInfo = SHSQLiteManager.shared.getHvacSetUpInfo;
     
     // DDP/CTP 是不需要通道的
     if (!self.currentHVAC.temperatureSensorChannelNo) {

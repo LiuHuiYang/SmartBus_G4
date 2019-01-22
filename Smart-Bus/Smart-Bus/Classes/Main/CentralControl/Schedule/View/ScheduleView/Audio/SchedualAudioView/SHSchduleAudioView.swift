@@ -27,18 +27,15 @@ class SHSchduleAudioView: UIView, loadNibView {
                 (!plan.isDifferentZoneSchedual &&
                     allAudios.count == 0) {
                 
-                guard let audios =
-                    SHSQLManager.share()?.getAudioForZone(
-                        plan.zoneID
-                        ) as? [SHAudio] ,
-                    
-                    let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
+                guard let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
                         
                         return
                 }
                 
-                
-                allAudios = audios
+                allAudios =
+                    SHSQLiteManager.shared.getAudios(
+                        plan.zoneID
+                )
                 
                 for audio in allAudios {
                     
@@ -68,8 +65,7 @@ class SHSchduleAudioView: UIView, loadNibView {
                     }
                 }
             }
-            
-            
+             
             allAudioListView.reloadData()
         }
     }

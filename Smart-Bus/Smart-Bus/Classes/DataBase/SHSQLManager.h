@@ -135,13 +135,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 查询所有的模式按钮
 - (NSMutableArray *)getAllMoodFor:(NSUInteger)zoneID;
 
-
-/// 获得所有的音乐设备数据
-- (NSMutableArray *)getAllZonesAudioDevices;
-
-/// 获得空调的配置信息
-- (SHHVACSetUpInfo *)getHVACSetUpInfo;
-
+ 
    
 // MARK: - schedaul 相关的操作
 
@@ -277,24 +271,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得当前区域中的DVD
 - (NSMutableArray *)getMediaDVDFor:(NSUInteger)zoneID;
 
-// MARK: - Audio
-
-/// 存入新的音乐设备
-- (NSInteger)insertNewAudio:(SHAudio *)audio;
-
-/// 保存当前的音乐数据
-- (void)updateAudioInZone:(SHAudio *)audio;
-
-/// 删除当前的音乐设备
-- (BOOL)deleteAudioInZone:(SHAudio *)audio;
-
-/// 删除整个区域的音乐设备
-- (BOOL)deleteZoneAudios:(NSUInteger)zoneID;
-
-/// 查询当前区域中的所有Audio
-- (NSMutableArray *)getAudioForZone:(NSUInteger)zoneID;
-
- 
+  
 // MARK: - 系统区域
 
 /// 保存当前区域的所有设备

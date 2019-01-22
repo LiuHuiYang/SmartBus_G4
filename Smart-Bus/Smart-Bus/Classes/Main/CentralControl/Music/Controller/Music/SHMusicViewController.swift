@@ -16,7 +16,8 @@ class SHMusicViewController: SHViewController {
     @IBOutlet weak var listView: UICollectionView!
     
     /// 所有的音乐设备
-    private lazy var allAudios = (SHSQLManager.share()?.getAllZonesAudioDevices() as? [SHAudio]) ?? [SHAudio]()
+    private lazy var allAudios =
+        SHSQLiteManager.shared.getAllAudios()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -74,12 +74,12 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 
                 if let audio = self.allDevices[indexPath.row]
                         as? SHAudio {
-                    
-                    SHSQLManager.share()?.deleteAudio(
-                        inZone: audio
-                    )
-                    
+                 
                     self.allDevices.remove(audio)
+                    
+                    _ = SHSQLiteManager.shared.deleteAudio(
+                        audio
+                    )
                 }
                 
             case .shade:
@@ -756,11 +756,9 @@ extension SHSystemDetailViewController {
                 "\(currentZone!.zoneName ?? "") Audio"
             
             let result =
-               SHSQLManager.share()?.insertNewAudio(
-                audio
-            ) ?? 0
+                SHSQLiteManager.shared.insertAudio(audio)
             
-            audio.id = UInt(result)
+            audio.id = (result == 0) ? 1 : result
             
             detailController.audio = audio
             
@@ -1002,14 +1000,9 @@ extension SHSystemDetailViewController {
             
         case .audio:
             
-            guard let audios =
-                SHSQLManager.share()?.getAudioForZone(
-                    zoneID) else {
-                
-                return
-            }
+            let audios = SHSQLiteManager.shared.getAudios(zoneID)
             
-            allDevices = audios
+            allDevices = NSMutableArray(array: audios)
             
         case .shade:
        
