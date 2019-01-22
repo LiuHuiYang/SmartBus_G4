@@ -96,7 +96,7 @@ extension SHZoneIconViewController {
         
         let icon = allIcons[index]
         
-        if icon.iconID > (SHSQLManager.share()?.getMaxIconIDForSystemIcon())! {
+        if icon.iconID > maxIconIDForDataBase {
             
             let alertView =
                 TYCustomAlertView(title: "Do you want to delete the picture?",

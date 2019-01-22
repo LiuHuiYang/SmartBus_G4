@@ -291,9 +291,6 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 插入一个新图片
 - (BOOL)inserNewIcon:(SHIcon *)icon;
 
-/// 获得最大的系统图标ID
-- (NSUInteger)getMaxIconIDForSystemIcon;
-
 /// 获得所有的系统名称
 - (NSMutableArray *)getAllSystemName;
 

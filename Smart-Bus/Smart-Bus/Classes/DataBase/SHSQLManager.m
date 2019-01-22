@@ -2048,12 +2048,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     return [[SHIcon alloc] initWithDict:[[self selectProprty:selectSQL] lastObject]];
 }
 
-/// 获得最大的系统图标ID
-- (NSUInteger)getMaxIconIDForSystemIcon {
-    
-    return maxIconIDForDataBase;
-}
-
 /// 获得最大的图标ID
 - (NSUInteger)getMaxIconID {
     
@@ -2110,7 +2104,7 @@ const NSUInteger maxIconIDForDataBase = 10;
         [self executeSql:@"ALTER TABLE iconList ADD iconData DATA;"];
         
         // 原来沙盒中的图全部获取出来，导入到数据库当中
-        NSString *imagesSQL = [NSString stringWithFormat:@"select iconID, iconName from iconList where iconID > %tu;", [self getMaxIconIDForSystemIcon]];
+        NSString *imagesSQL = [NSString stringWithFormat:@"select iconID, iconName from iconList where iconID > %tu;", maxIconIDForDataBase];
         
         NSMutableArray *array = [self selectProprty:imagesSQL];
         
