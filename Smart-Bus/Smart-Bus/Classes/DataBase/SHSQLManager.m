@@ -2344,23 +2344,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
 
-/// 查询所有的区域
-- (NSMutableArray *)getAllZones {
-    
-    NSString *zonesSql = @"select zoneID, ZoneName, zoneIconName from Zones order by zoneID;";
-    
-    NSMutableArray *array = [self selectProprty:zonesSql];
-    
-    NSMutableArray *zones = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [zones addObject:[[SHZone alloc] initWithDictionary:dict]];
-    }
-    
-    return zones;
-}
-
 /// 查询指定region的所有区域
 - (NSMutableArray *)getZonesForRegion:(NSUInteger)regionID {
     

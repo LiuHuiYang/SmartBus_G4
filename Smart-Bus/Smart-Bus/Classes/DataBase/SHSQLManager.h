@@ -321,8 +321,6 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得最大的区域ID
 - (NSUInteger)getMaxZoneID;
 
-/// 查询所有的区域
-- (NSMutableArray *)getAllZones;
 
 /// 查询指定region的所有区域
 - (NSMutableArray *)getZonesForRegion:(NSUInteger)regionID;
