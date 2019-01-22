@@ -38,33 +38,39 @@ extension SHDeviceArgsViewController {
     /// 更新 地热
     func updateFloorHeating(value: String, index: Int) {
         
+        guard let floorheater = self.floorHeating else {
+            return
+        }
+        
         switch (index) {
         case 0:
-            self.floorHeating?.floorHeatingRemark = value
+            floorheater.floorHeatingRemark = value
             
         case 1:
-            self.floorHeating?.subnetID = UInt8(value) ?? 1
+            floorheater.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.floorHeating?.deviceID = UInt8(value) ?? 0
+            floorheater.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.floorHeating?.channelNo = UInt8(value) ?? 0
+            floorheater.channelNo = UInt8(value) ?? 0
             
         case 4:
-            self.floorHeating?.outsideSensorSubNetID = UInt8(value) ?? 1
+            floorheater.outsideSensorSubNetID = UInt8(value) ?? 1
             
         case 5:
-            self.floorHeating?.outsideSensorDeviceID = UInt8(value) ?? 0
+            floorheater.outsideSensorDeviceID = UInt8(value) ?? 0
             
         case 6:
-            self.floorHeating?.outsideSensorChannelNo =
+            floorheater.outsideSensorChannelNo =
                 UInt8(value) ?? 0
             
         default:
             break;
         }
         
-        SHSQLManager.share()?.updateFloorHeating(inZone: floorHeating)
+        _ = SHSQLiteManager.shared.updateFloorHeating(
+            floorheater
+        )
     }
 }

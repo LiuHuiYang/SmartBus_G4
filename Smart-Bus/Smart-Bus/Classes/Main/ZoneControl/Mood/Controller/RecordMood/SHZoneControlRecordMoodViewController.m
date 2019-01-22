@@ -965,8 +965,10 @@
 - (IBAction)floorheatingButtonClick {
     
     self.floorHeatingButton.selected = !self.floorHeatingButton.selected;
+     
+    NSArray *FloorHeatings = [SHSQLiteManager.shared getFloorHeatings:self.currentZone.zoneID];
     
-    self.allFloorHeatings = self.floorHeatingButton.selected ? ([[SHSQLManager shareSQLManager] getFloorHeatingForZone:self.currentZone.zoneID]) : nil;
+    self.allFloorHeatings = [NSMutableArray arrayWithArray:FloorHeatings];
 }
 
 /// 选择图片

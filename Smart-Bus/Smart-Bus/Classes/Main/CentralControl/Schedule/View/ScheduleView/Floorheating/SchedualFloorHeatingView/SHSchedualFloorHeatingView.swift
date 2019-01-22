@@ -27,19 +27,15 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
                 (!plan.isDifferentZoneSchedual &&
                     floorHeatings.count == 0) {
                 
-                
-                guard let allFloorHeatings =
-                    SHSQLManager.share()?.getFloorHeating(
-                        forZone: plan.zoneID
-                    ) as? [SHFloorHeating] ,
-                    
-                    let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
+                guard let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
                         
                         return
                 }
                 
-                
-                floorHeatings = allFloorHeatings
+                floorHeatings =
+                    SHSQLiteManager.shared.getFloorHeatings(
+                    plan.zoneID
+                )
                 
                 for floorHeating in floorHeatings {
                     

@@ -168,11 +168,10 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 if let floorHeating = self.allDevices[indexPath.row]
                         as? SHFloorHeating {
                     
-                    SHSQLManager.share()?.deleteFloorHeating(
-                            inZone: floorHeating
-                    )
                     
                     self.allDevices.remove(floorHeating)
+                    
+                    _ = SHSQLiteManager.shared.deleteFloorHeating(floorHeating)
                 }
                 
             case .nineInOne:
@@ -864,10 +863,10 @@ extension SHSystemDetailViewController {
                 "floorHeating"
             floorHeating.zoneID = zoneID
             floorHeating.floorHeatingID =
-                (SHSQLManager.share()?.getMaxFloorHeatingID(
-                    forZone: zoneID) ?? 0) + 1
+                SHSQLiteManager.shared.getMaxFloorHeatingID(
+                    zoneID) + 1
             
-            SHSQLManager.share()?.insertNewFloorHeating(
+            _ = SHSQLiteManager.shared.insertFloorHeating(
                 floorHeating
             )
             
@@ -1078,14 +1077,13 @@ extension SHSystemDetailViewController {
             allDevices = NSMutableArray(array: fans)
             
         case .floorHeating:
-            guard let floorHeatings =
-                SHSQLManager.share()?.getFloorHeating(
-                    forZone: zoneID) else {
-                
-                return
-            }
             
-            allDevices = floorHeatings
+            let floorHeatings =
+                SHSQLiteManager.shared.getFloorHeatings(
+                    zoneID
+                )
+            
+            allDevices = NSMutableArray(array: floorHeatings)
             
         case .nineInOne:
             guard let nineInOnes =

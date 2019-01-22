@@ -60,10 +60,8 @@ extern NSString *dataBaseName;
 
 @class SHCurrentTransformer;
 
-
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>
-
 
 #import "SHSchedual.h"
 
@@ -99,27 +97,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得当前区域中的最大的NineInOneID
 - (NSUInteger)getMaxNineInOneIDForZone:(NSUInteger)zoneID;
 
-// MARK: - 地热
-
-/// 查询当前区域中的所有地热
-- (NSMutableArray *)getFloorHeatingForZone:(NSUInteger)zoneID;
-
-/// 更新当前地热设备的数据
-- (void)updateFloorHeatingInZone:(SHFloorHeating *)floorHeating;
-
-/// 增加地热
-- (BOOL)insertNewFloorHeating:(SHFloorHeating *)floorHeating;
-
-/// 删除当前的地热
-- (BOOL)deleteFloorHeatingInZone:(SHFloorHeating *)floorHeating;
-
-/// 删除区域中的地热
-- (BOOL)deleteZoneFloorHeatings:(NSUInteger)zoneID;
-
-/// 获得当前区域中的最大的FloorHeatingInZone
-- (NSUInteger)getMaxFloorHeatingIDForZone:(NSUInteger)zoneID;
-
-
+  
 // MARK: - Mood
 
 /// 模式命令的最大ID

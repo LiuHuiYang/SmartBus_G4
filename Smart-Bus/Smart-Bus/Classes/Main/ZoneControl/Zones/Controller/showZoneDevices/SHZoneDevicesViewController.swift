@@ -254,10 +254,13 @@ extension SHZoneDevicesViewController {
             }
             
         case .floorHeating:
-            if let floorHeaters =  SHSQLManager.share()?.getFloorHeating(forZone: zoneID) {
-                
-                allDevices = floorHeaters as! [Any]
-            }
+          
+            let floorHeaters =
+                SHSQLiteManager.shared.getFloorHeatings(
+                    zoneID
+            )
+            
+            allDevices = floorHeaters as [Any]
             
         case .nineInOne:
             if let nineInOnes =  SHSQLManager.share()?.getNineInOne(forZone: zoneID) {

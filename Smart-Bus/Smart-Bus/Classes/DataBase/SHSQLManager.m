@@ -18,9 +18,6 @@
 /// 数据库的名称
 NSString * dataBaseName = @"SMART-BUS.sqlite";
 
-/// 沙盒记录版本
-NSString * const sandboxVersionKey = @"sandboxVersionKey";
-
 // 在数据库中可以iconList直接查询到
 const NSUInteger maxIconIDForDataBase = 10;
 
@@ -334,133 +331,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     return [self executeSql:insertSQL];
 }
 
-// MARK: - 地热
-
-/// 查询当前区域中的所有地热
-- (NSMutableArray *)getFloorHeatingForZone:(NSUInteger)zoneID {
-    
-    NSString *ligtSql = [NSString stringWithFormat:@"select id, ZoneID, FloorHeatingID, FloorHeatingRemark, SubnetID, DeviceID, ChannelNo, outsideSensorSubNetID, outsideSensorDeviceID, outsideSensorChannelNo from FloorHeatingInZone where ZoneID = %tu order by FloorHeatingID;", zoneID];
-    
-    NSMutableArray *array = [self selectProprty:ligtSql];
-    
-    NSMutableArray *floorHeatings = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        [floorHeatings addObject:
-            [[SHFloorHeating alloc] initWithDict:dict]
-        ];
-    }
-    
-    return floorHeatings;
-}
-
-/// 更新当前地热设备的数据
-- (void)updateFloorHeatingInZone:(SHFloorHeating *)floorHeating {
-    
-    NSString *updateSql = [NSString stringWithFormat:
-                           @"update FloorHeatingInZone set ZoneID = %tu,    \
-                           FloorHeatingID = %tu, FloorHeatingRemark = '%@', \
-                           SubnetID = %d, DeviceID = %d, ChannelNo = %d,    \
-                           outsideSensorSubNetID = %d,                      \
-                           outsideSensorDeviceID = %d,                      \
-                           outsideSensorChannelNo = %d Where zoneID = %tu   \
-                           and FloorHeatingID = %tu;",
-                           
-                           floorHeating.zoneID,
-                           floorHeating.floorHeatingID,
-                           floorHeating.floorHeatingRemark,
-                           floorHeating.subnetID,
-                           floorHeating.deviceID,
-                           floorHeating.channelNo,
-                           floorHeating.outsideSensorSubNetID,
-                           floorHeating.outsideSensorDeviceID,
-                           floorHeating.outsideSensorChannelNo,
-                           floorHeating.zoneID,
-                           floorHeating.floorHeatingID
-                           ];
-    
-    [self executeSql:updateSql];
-}
-
-/// 增加地热
-- (BOOL)insertNewFloorHeating:(SHFloorHeating *)floorHeating {
-    
-    NSString *sql = [NSString stringWithFormat:
-                     @"insert into FloorHeatingInZone (ZoneID, FloorHeatingID, \
-                     FloorHeatingRemark, SubnetID, DeviceID, ChannelNo,        \
-                     outsideSensorSubNetID, outsideSensorDeviceID,             \
-                     outsideSensorChannelNo)                                   \
-                     values(%tu, %tu, '%@', %d, %d, %d, %d, %d, %d);",
-                     
-                     floorHeating.zoneID,
-                     floorHeating.floorHeatingID,
-                     floorHeating.floorHeatingRemark,
-                     floorHeating.subnetID,
-                     floorHeating.deviceID,
-                     floorHeating.channelNo,
-                     floorHeating.outsideSensorSubNetID,
-                     floorHeating.outsideSensorDeviceID,
-                     floorHeating.outsideSensorChannelNo];
-    
-    return [self executeSql:sql];
-}
-
-/// 删除当前的地热设备
-- (BOOL)deleteFloorHeatingInZone:(SHFloorHeating *)floorHeating {
-    
-    NSString *deleteSql = [NSString stringWithFormat:
-                           @"delete from FloorHeatingInZone Where           \
-                           zoneID = %tu and SubnetID = %d and DeviceID = %d \
-                           and ChannelNo = %d and FloorHeatingID = %tu;",
-                           floorHeating.zoneID,
-                           floorHeating.subnetID,
-                           floorHeating.deviceID,
-                           floorHeating.channelNo,
-                           floorHeating.floorHeatingID
-                           ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 删除区域中的地热
-- (BOOL)deleteZoneFloorHeatings:(NSUInteger)zoneID {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from FloorHeatingInZone Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-
-/// 获得当前区域中的最大的FloorHeatingInZone
-- (NSUInteger)getMaxFloorHeatingIDForZone:(NSUInteger)zoneID {
-    
-    NSString *sql = [NSString stringWithFormat:@"select max(FloorHeatingID) from FloorHeatingInZone where ZoneID = %tu;", zoneID];
-    
-    id resID = [[[self selectProprty:sql] lastObject] objectForKey:@"max(FloorHeatingID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-/// 增加系统地热的系统ID
-- (BOOL)addFloorHeating {
-    
-    NSString *selectSQL = [NSString stringWithFormat:@"select Distinct SystemID from systemDefnition where SystemID = %tu;", SHSystemDeviceTypeFloorHeating];
-    
-    // 如果不存在
-    if ([[self selectProprty:selectSQL] count]) {
-        
-        return YES;
-    }
-    
-    NSString *insertSQL = [NSString stringWithFormat:@"insert into systemDefnition (SystemID, SystemName) values(%tu, '%@');", SHSystemDeviceTypeFloorHeating, @"FloorHeating"];
-    
-    return [self executeSql:insertSQL];
-}
-
+ 
 // MARK: - Mood
 
 /// 增加延时字段
@@ -2737,7 +2608,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                 
             case SHSystemDeviceTypeFloorHeating: {
                 
-                [self deleteZoneFloorHeatings:zoneID];
+//                [self deleteZoneFloorHeatings:zoneID];
             }
                 break;
                 
@@ -2918,47 +2789,11 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 // MARK: - 创建表格
 
-///  创建表格
-- (void)createSqlTables {
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"SQL.sql" ofType:nil];
-    
-    NSString *sql = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    
-    // 创建单张表格
-    [self.queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        
-        if ([db executeStatements:sql]) {
-            printLog(@"%@", [FileTools documentPath]);
-        }
-    }];
-}
 
 /// 增加新表或者是字段
 - (void)alertTablesOrColumnName {
     
-    /**** 1. 版本匹配记录 *****/
-    
-    // 获得记录版本
-    NSString *sandboxVersion =
-        [[NSUserDefaults standardUserDefaults]
-            objectForKey:sandboxVersionKey];
-    
-    // 当前应用版本
-    NSString *currentVersion =
-        [[[NSBundle mainBundle] infoDictionary]
-            objectForKey:@"CFBundleShortVersionString"];
-    
-    if ([sandboxVersion isEqualToString:currentVersion]) {
-        return;  // 最新版本不需要更新
-    }
-    
-    // 设置最新版本
-    [[NSUserDefaults standardUserDefaults]
-        setObject:currentVersion forKey:sandboxVersionKey];
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
+   
     /**** 2. 删除区域中的旧数据 *****/
     
     // 2.1 有效区域
@@ -2982,9 +2817,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     }
     
     /**** 3. 设置字段和新设备 *****/
-    
-    // 增加地热
-    [self addFloorHeating];
     
     // 增加9in1
     [self addNineInOne];
@@ -3133,8 +2965,7 @@ const NSUInteger maxIconIDForDataBase = 10;
         // 如果数据库不存在，会建立数据库，然后，再创建队列，并且打开数据库
         self.queue = [FMDatabaseQueue databaseQueueWithPath:filePath];
         
-        // 创建表格
-        [self createSqlTables];
+      
 
         // 增加表名或者是字段
         [self alertTablesOrColumnName];
@@ -3142,7 +2973,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return self;
 }
- 
 
 SingletonImplementation(SQLManager)
 

@@ -125,7 +125,7 @@ import UIKit
     var floorHeatingID: UInt = 0
     
     /// FloorHeatingID备注
-    var floorHeatingRemark: String?
+    var floorHeatingRemark: String = "floor heating"
     
     /// FloorHeatingID子网ID
     var subnetID: UInt8 = 0

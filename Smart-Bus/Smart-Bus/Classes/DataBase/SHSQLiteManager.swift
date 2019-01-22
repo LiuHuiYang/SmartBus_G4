@@ -108,7 +108,6 @@ private let sandboxVersionKey = "sandboxVersionKey"
         
         /**** 2. 删除区域中的旧数据 *****/
         
-        
         /**** 3. 设置字段和新设备 *****/
         
         // 增加多区域支持
@@ -119,6 +118,9 @@ private let sandboxVersionKey = "sandboxVersionKey"
         
         // 增加窗帘操作的一些参数
         addShadeParameter()
+        
+        // 增加FloorHeating类型
+        _ = addFloorHeating()
         
         // 增加DMX类型
         _ = addZoneDmx()
