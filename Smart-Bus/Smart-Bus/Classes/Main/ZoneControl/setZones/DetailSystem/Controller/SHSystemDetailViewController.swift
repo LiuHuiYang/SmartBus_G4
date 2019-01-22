@@ -87,11 +87,11 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 if let shade = self.allDevices[indexPath.row]
                         as? SHShade {
                     
-                    SHSQLManager.share()?.deleteShade(
-                        inZone: shade
-                    )
-                    
                     self.allDevices.remove(shade)
+                    
+                    _ = SHSQLiteManager.shared.deleteShade(
+                        shade
+                    )
                 }
                 
             case .tv:
@@ -489,7 +489,7 @@ extension SHSystemDetailViewController: UITableViewDataSource {
                 as? SHShade {
                 
                 deviceName =
-                    "\(shade.shadeName ?? "curtain") : " +
+                    "\(shade.shadeName) : " +
                     "\(shade.subnetID) - "  +
                     "\(shade.deviceID)"
             }
@@ -769,14 +769,15 @@ extension SHSystemDetailViewController {
             let shade = SHShade()
             shade.shadeName = "shade"
             shade.zoneID = zoneID
-            shade.shadeID = (SHSQLManager.share()?.getMaxShadeID(
-                    forZone: zoneID) ?? 0) + 1
+            shade.shadeID =
+                SHSQLiteManager.shared.getMaxShadeID(
+                    zoneID) + 1
             
-            shade.remarkForStop = ""
-            shade.remarkForClose = ""
-            shade.remarkForOpen = ""
+            shade.remarkForStop = "stop"
+            shade.remarkForClose = "close"
+            shade.remarkForOpen = "open"
             
-            SHSQLManager.share()?.insertNewShade(shade)
+            _ = SHSQLiteManager.shared.insertShade(shade)
             
             detailController.shade = shade
             
@@ -850,8 +851,8 @@ extension SHSystemDetailViewController {
             fan.fanName = "fan"
             fan.zoneID = zoneID
             fan.fanID =
-                (SHSQLManager.share()?.getMaxShadeID(
-                    forZone: zoneID) ?? 0) + 1
+                SHSQLiteManager.shared.getMaxFanID(
+                    zoneID) + 1
         
             _ = SHSQLiteManager.shared.insertFan(fan)
             
@@ -1015,15 +1016,11 @@ extension SHSystemDetailViewController {
             allDevices = audios
             
         case .shade:
+       
+            let shades =
+                SHSQLiteManager.shared.getShades(zoneID)
             
-            guard let shades =
-                SHSQLManager.share()?.getShadeForZone(
-                    zoneID) else {
-                
-                return
-            }
-            
-            allDevices = shades
+            allDevices =  NSMutableArray(array: shades)
             
         case .tv:
             guard let tvs =

@@ -1080,7 +1080,8 @@ extension SHDataMigrationViewController {
                     let shade = SHShade()
                     shade.zoneID = zoneID
                     shade.shadeID = shadeID
-                    shade.shadeName = dict["ShadeName"]
+                    shade.shadeName = dict["ShadeName"] ?? "curtain"
+                    
                     shade.hasStop = UInt8(dict["HasStop"] ?? "") ?? 0
                     
                     shade.subnetID = UInt8(dict["SubnetID"] ?? "") ?? 0
@@ -1105,21 +1106,21 @@ extension SHDataMigrationViewController {
                             switch shadeControlType {
                                 
                             case SHShadeCommandType.open.rawValue:
-                                shade.remarkForOpen = commandDict["Remark"]
+                                shade.remarkForOpen = commandDict["Remark"] ?? "open"
                                 
                                 shade.openChannel = UInt8(commandDict["FirstParameter"] ?? "") ?? 0
                                 
                                 shade.openingRatio = UInt8(commandDict["SecondParameter"] ?? "") ?? 0
                                 
                             case SHShadeCommandType.close.rawValue:
-                                shade.remarkForClose = commandDict["Remark"]
+                                shade.remarkForClose = commandDict["Remark"] ?? "close"
                                 
                                 shade.closeChannel = UInt8(commandDict["FirstParameter"] ?? "") ?? 0
                                 
                                 shade.closingRatio = UInt8(commandDict["SecondParameter"] ?? "") ?? 0
                                 
                             case SHShadeCommandType.stop.rawValue:
-                                shade.remarkForStop = commandDict["Remark"]
+                                shade.remarkForStop = commandDict["Remark"] ?? "stop"
                                 
                             default:
                                 break
@@ -1132,7 +1133,7 @@ extension SHDataMigrationViewController {
                             switch shadeControlType {
                                 
                             case SHShadeCommandType.open.rawValue:
-                                shade.remarkForOpen = commandDict["Remark"]
+                                shade.remarkForOpen = commandDict["Remark"] ?? "open"
                                 
                                 shade.switchIDforOpen = UInt(commandDict["FirstParameter"] ?? "") ?? 0
                                 
@@ -1140,14 +1141,14 @@ extension SHDataMigrationViewController {
                                 
                             case SHShadeCommandType.close.rawValue:
                                 
-                                shade.remarkForClose = commandDict["Remark"]
+                                shade.remarkForClose = commandDict["Remark"] ?? "close"
                                 
                                 shade.switchIDforClose = UInt(commandDict["FirstParameter"] ?? "") ?? 0
                                 
                                 shade.switchIDStatusforClose = UInt(commandDict["SecondParameter"] ?? "") ?? 0
                                 
                             case SHShadeCommandType.stop.rawValue:
-                                shade.remarkForStop = commandDict["Remark"]
+                                shade.remarkForStop = commandDict["Remark"] ?? "stop"
                                 
                                 shade.switchIDforStop = UInt(commandDict["FirstParameter"] ?? "") ?? 0
                                 
@@ -1159,7 +1160,10 @@ extension SHDataMigrationViewController {
                         }
                     }
                     
-                   SHSQLManager.share()?.insertNewShade(shade)
+                   
+                    _ = SHSQLiteManager.shared.insertShade(
+                        shade
+                    )
                 }
                 
             }

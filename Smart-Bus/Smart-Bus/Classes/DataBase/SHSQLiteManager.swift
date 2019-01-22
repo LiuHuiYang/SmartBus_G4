@@ -117,6 +117,9 @@ private let sandboxVersionKey = "sandboxVersionKey"
         // 增加CT24的参数
         addCurrentTransformerParameter()
         
+        // 增加窗帘操作的一些参数
+        addShadeParameter()
+        
         // 增加DMX类型
         _ = addZoneDmx()
         
@@ -281,4 +284,5 @@ extension SHSQLiteManager {
         
         return false
     }
+    
 }

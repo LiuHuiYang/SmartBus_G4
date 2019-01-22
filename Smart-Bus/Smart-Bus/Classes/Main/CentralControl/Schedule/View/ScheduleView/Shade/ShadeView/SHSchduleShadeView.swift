@@ -20,9 +20,7 @@ class SHSchduleShadeView: UIView, loadNibView {
         didSet {
             
             guard let plan = schedual,
-            let shades = SHSQLManager.share()?.getShadeForZone(
-                    plan.zoneID ) as? [SHShade],
-            
+             
             let commands = SHSQLManager.share()?.getSchedualCommands(
                     plan.scheduleID
                     ) as? [SHSchedualCommand]
@@ -36,7 +34,7 @@ class SHSchduleShadeView: UIView, loadNibView {
                 return
             }
             
-            allShades = shades
+            allShades = SHSQLiteManager.shared.getShades(plan.zoneID)
             
             for command in commands {
                 

@@ -359,12 +359,11 @@ extension SHSchedualExecuteTools {
             
             return
         }
-        
+         
         guard let shade =
-            SHSQLManager.share()?.getShadeFor(
+            SHSQLiteManager.shared.getShade(
                 command.parameter2,
-                shadeID: command.parameter1
-            ) else {
+                shadeID: command.parameter1) else {
                 
                 return
         }

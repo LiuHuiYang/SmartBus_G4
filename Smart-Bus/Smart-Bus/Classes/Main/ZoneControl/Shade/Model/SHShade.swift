@@ -27,9 +27,9 @@ import UIKit
 
 @objc enum SHShadeControlType: UInt {
     
-    case defaultControl   // 默认是使用继电器的控制的方式
-    case universalSwitch  // 通用开关
-    case pushOnReleaseOff // 按住动作，松开停下
+    case defaultControl    // 默认是使用继电器的控制的方式
+    case universalSwitch   // 通用开关
+    case pushOnReleaseOff  // 按住动作，松开停下
 }
 
 @objcMembers class SHShade: NSObject {
@@ -51,7 +51,7 @@ import UIKit
     var shadeID: UInt = 0
     
     /// 名称
-    var shadeName: String?
+    var shadeName: String = "curtain"
     
     /// 是否有停止键
     var hasStop: UInt8 = 0
@@ -87,13 +87,13 @@ import UIKit
     var reserved2: UInt = 0
     
     /// 开启的备注名称
-    var remarkForOpen: String?
+    var remarkForOpen: String = "open"
     
     /// 关闭的备注名称
-    var remarkForClose: String?
+    var remarkForClose: String = "close"
     
     /// 停止的备注名称
-    var remarkForStop: String?
+    var remarkForStop: String = "stop"
     
     /// 窗帘的的操作方式
     var controlType: SHShadeControlType = .defaultControl

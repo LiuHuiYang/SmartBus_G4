@@ -337,30 +337,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 设置配置空调的单位是否摄氏度
 - (BOOL)updateHVACSetUpInfoTempertureFlag:(BOOL)isCelsius;
 
-// MARK: - 窗帘
 
-/// 插入新的窗帘
-- (BOOL)insertNewShade:(SHShade *)shade;
-
-/// 获得指定的窗帘
-- (SHShade *)getShadeFor:(NSUInteger)zoneID shadeID:(NSUInteger)shadeID;
-
-/// 查询当前区域的所所有窗帘
-- (NSMutableArray *)getShadeForZone:(NSUInteger)zoneID;
-
-/// 保存当前窗帘数据
-- (void)updateShadeInZone:(SHShade *)shade;
-
-/// 删除当前的窗帘
-- (BOOL)deleteShadeInZone:(SHShade *)shade;
-
-/// 删除区域中的所有窗帘
-- (BOOL)deleteZoneShades:(NSUInteger)zoneID;
-
-/// 获得当前区域的最大shadeID
-- (NSUInteger)getMaxShadeIDForZone:(NSUInteger)zoneID;
-
- 
 // MARK: - 系统区域
 
 /// 保存当前区域的所有设备

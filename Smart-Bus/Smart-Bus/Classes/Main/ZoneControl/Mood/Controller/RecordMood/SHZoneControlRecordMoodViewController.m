@@ -952,7 +952,10 @@
     
     if (self.shadeButton.selected) {
         
-        self.allShades = [[SHSQLManager shareSQLManager] getShadeForZone:self.currentZone.zoneID];
+        NSArray *shades = [[SHSQLiteManager shared] getShades:self.currentZone.zoneID];
+        
+        self.allShades =
+            [NSMutableArray arrayWithArray:shades];
         
         [self.shadeListView reloadData];
     }

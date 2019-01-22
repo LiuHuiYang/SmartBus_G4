@@ -76,77 +76,81 @@ extension SHDeviceArgsViewController {
     
     func updateShade(value: String, index: Int) {
         
+        guard let curtain = self.shade else {
+            return
+        }
+        
         switch (index) {
         case 0:
-            self.shade?.shadeName = value
+            curtain.shadeName = value
             
         case 1:
-            self.shade?.subnetID = UInt8(value) ?? 1
+            curtain.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.shade?.deviceID = UInt8(value) ?? 0
+            curtain.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.shade?.hasStop = UInt8(value) ?? 0
+            curtain.hasStop = UInt8(value) ?? 0
             
         case 4:
-            self.shade?.openChannel = UInt8(value) ?? 0
+            curtain.openChannel = UInt8(value) ?? 0
             
         case 5:
-            self.shade?.openingRatio = UInt8(value) ?? 0
+            curtain.openingRatio = UInt8(value) ?? 0
             
         case 6:
-            self.shade?.closeChannel = UInt8(value) ?? 0
+            curtain.closeChannel = UInt8(value) ?? 0
             
         case 7:
-            self.shade?.closingRatio = UInt8(value) ?? 0
+            curtain.closingRatio = UInt8(value) ?? 0
             
         case 8:
-            self.shade?.stopChannel = UInt8(value) ?? 0
+            curtain.stopChannel = UInt8(value) ?? 0
             
         case 9:
-            self.shade?.stoppingRatio = UInt8(value) ?? 0
+            curtain.stoppingRatio = UInt8(value) ?? 0
             
         case 10:
-            self.shade?.reserved1 = UInt(value) ?? 0
+            curtain.reserved1 = UInt(value) ?? 0
             
         case 11:
-            self.shade?.reserved2 = UInt(value) ?? 0
+            curtain.reserved2 = UInt(value) ?? 0
             
         case 12:
-            self.shade?.remarkForOpen = value
+            curtain.remarkForOpen = value
             
         case 13:
-            self.shade?.remarkForClose = value
+            curtain.remarkForClose = value
             
         case 14:
-            self.shade?.remarkForStop = value
+            curtain.remarkForStop = value
             
         case 15:
-            self.shade?.controlType = SHShadeControlType(rawValue: UInt(value) ?? 0) ?? .defaultControl
+            curtain.controlType = SHShadeControlType(rawValue: UInt(value) ?? 0) ?? .defaultControl
             
         case 16:
-            self.shade?.switchIDforOpen = UInt(value) ?? 0
+            curtain.switchIDforOpen = UInt(value) ?? 0
             
         case 17:
-            self.shade?.switchIDStatusforOpen = UInt(value) ?? 0
+            curtain.switchIDStatusforOpen = UInt(value) ?? 0
             
         case 18:
-            self.shade?.switchIDforClose = UInt(value) ?? 0
+            curtain.switchIDforClose = UInt(value) ?? 0
             
         case 19:
-            self.shade?.switchIDStatusforClose = UInt(value) ?? 0
+            curtain.switchIDStatusforClose = UInt(value) ?? 0
             
         case 20:
-            self.shade?.switchIDforStop = UInt(value) ?? 0
+            curtain.switchIDforStop = UInt(value) ?? 0
             
         case 21:
-            self.shade?.switchIDStatusforStop = UInt(value) ?? 0
+            curtain.switchIDStatusforStop = UInt(value) ?? 0
             
         default:
             break
         }
-        
-        SHSQLManager.share()?.updateShade(inZone: shade)
+         
+        _ = SHSQLiteManager.shared.updateShade(curtain)
     }
 }

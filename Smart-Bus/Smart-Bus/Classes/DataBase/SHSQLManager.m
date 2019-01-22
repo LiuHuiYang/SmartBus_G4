@@ -2105,228 +2105,6 @@ const NSUInteger maxIconIDForDataBase = 10;
 }
 
 
-
-// MARK: - 窗帘数据
-
-/// 增加窗帘的字段
-- (void)addShadeOPeratorTypeAndRemark {
-    
-    // 增加停止通道(三个继电器控制窗帘的)
-    if (![self isColumnName:@"stopChannel" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD stopChannel INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 停止比例(保留参数)
-    if (![self isColumnName:@"stoppingRatio" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD stoppingRatio INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    //  增加三个文字标注
-    if (![self isColumnName:@"remarkForOpen" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD remarkForOpen TEXT NOT NULL DEFAULT '';"];
-    }
-    
-    if (![self isColumnName:@"remarkForClose" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD remarkForClose TEXT NOT NULL DEFAULT '';"];
-    }
-    
-    if (![self isColumnName:@"remarkForStop" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD remarkForStop TEXT NOT NULL DEFAULT '';"];
-    }
-    
-    // 增加其它方的操作字段
-    
-    // 控制窗帘的操作方式
-    if (![self isColumnName:@"controlType" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD controlType INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 增加窗帘的开
-    if (![self isColumnName:@"switchIDforOpen" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD switchIDforOpen INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 开状态
-    if (![self isColumnName:@"switchIDStatusforOpen" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD switchIDStatusforOpen INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 关
-    if (![self isColumnName:@"switchIDforClose" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD switchIDforClose INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 关状态
-    if (![self isColumnName:@"switchIDStatusforClose" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD switchIDStatusforClose INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 停
-    if (![self isColumnName:@"switchIDforStop" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD switchIDforStop INTEGER NOT NULL DEFAULT 0;"];
-    }
-    
-    // 停状态
-    if (![self isColumnName:@"switchIDStatusforStop" consistinTable:@"ShadeInZone"]) {
-        
-        [self executeSql:@"ALTER TABLE ShadeInZone ADD switchIDStatusforStop INTEGER NOT NULL DEFAULT 0;"];
-    }
-}
-
-/// 插入新的窗帘
-- (BOOL)insertNewShade:(SHShade *)shade {
-    
-    NSString *sql = [NSString stringWithFormat:
-                     @"insert into ShadeInZone (ZoneID, ShadeID, ShadeName, \
-                     HasStop, SubnetID, DeviceID, openChannel, openingRatio, \
-                     closeChannel, closingRatio, Reserved1, Reserved2,       \
-                     remarkForOpen, remarkForClose, remarkForStop,          \
-                     controlType, switchIDforOpen, switchIDStatusforOpen,   \
-                     switchIDforClose, switchIDStatusforClose,              \
-                     switchIDforStop, switchIDStatusforStop, stopChannel,   \
-                     stoppingRatio) values(%tu, %tu, '%@', %d, %d, %d, %d,  \
-                     %d, %d, %d, %tu, %tu, '%@', '%@', '%@', %tu, %tu,      \
-                     %tu, %tu, %tu, %tu, %tu, %d, %d);",
-                     
-                     shade.zoneID, shade.shadeID,
-                     shade.shadeName, shade.hasStop,
-                     shade.subnetID, shade.deviceID,
-                     shade.openChannel, shade.openingRatio,
-                     shade.closeChannel, shade.closingRatio,
-                     shade.reserved1, shade.reserved2,
-                     shade.remarkForOpen,
-                     shade.remarkForClose,
-                     shade.remarkForStop,
-                     shade.controlType,
-                     shade.switchIDforOpen,
-                     shade.switchIDStatusforOpen,
-                     shade.switchIDforClose,
-                     shade.switchIDStatusforClose,
-                     shade.switchIDforStop,
-                     shade.switchIDStatusforStop,
-                     shade.stopChannel,
-                     shade.stoppingRatio
-                     ];
-    
-    return [self executeSql:sql];
-}
-
-/// 保存当前窗帘数据
-- (void)updateShadeInZone:(SHShade *)shade {
-    
-    NSString *saveSql = [NSString stringWithFormat:@"update ShadeInZone \
-                         set SubnetID = %d, DeviceID = %d,           \
-                         ShadeName = '%@', HasStop = %d,             \
-                         openChannel = %d, openingRatio = %d,        \
-                         closeChannel = %d, closingRatio = %d,       \
-                         Reserved1 = %tu, Reserved2 = %tu ,          \
-                         remarkForOpen = '%@', remarkForClose = '%@',\
-                         remarkForStop = '%@', controlType = %tu,    \
-                         switchIDforOpen = %tu,                      \
-                         switchIDStatusforOpen = %tu,                \
-                         switchIDforClose = %tu,                     \
-                         switchIDStatusforClose = %tu,               \
-                         switchIDforStop = %tu,                      \
-                         switchIDStatusforStop = %tu,                \
-                         stopChannel = %d, stoppingRatio = %d        \
-                         Where zoneID = %tu and ShadeID = %tu;",
-                         
-                         shade.subnetID, shade.deviceID,
-                         shade.shadeName,
-                         shade.hasStop, shade.openChannel,
-                         shade.openingRatio,
-                         shade.closeChannel, shade.closingRatio,
-                         shade.reserved1, shade.reserved2,
-                         shade.remarkForOpen, shade.remarkForClose,
-                         shade.remarkForStop, shade.controlType,
-                         shade.switchIDforOpen,
-                         shade.switchIDStatusforOpen,
-                         shade.switchIDforClose,
-                         shade.switchIDStatusforClose,
-                         shade.switchIDforStop,
-                         shade.switchIDStatusforStop,
-                         shade.stopChannel, shade.stoppingRatio,
-                         shade.zoneID, shade.shadeID
-                         ];
-    
-    [self executeSql:saveSql];
-}
-
-/// 删除当前的窗帘
-- (BOOL)deleteShadeInZone:(SHShade *)shade {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from ShadeInZone Where zoneID = %tu and    \
-            ShadeID = %tu and SubnetID = %d and DeviceID = %d;",
-                           
-            shade.zoneID, shade.shadeID,
-            shade.subnetID, shade.deviceID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 删除区域中的所有窗帘
-- (BOOL)deleteZoneShades:(NSUInteger)zoneID {
-    
-    NSString *deleteSql =
-        [NSString stringWithFormat:
-            @"delete from ShadeInZone Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    return [self executeSql:deleteSql];
-}
-
-/// 获得当前区域的最大shadeID
-- (NSUInteger)getMaxShadeIDForZone:(NSUInteger)zoneID {
-    
-    NSString *sql = [NSString stringWithFormat:@"select max(ShadeID) from ShadeInZone where ZoneID = %tu;", zoneID];
-    
-    id resID = [[[self selectProprty:sql] lastObject] objectForKey:@"max(ShadeID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-/// 获得指定窗帘
-- (SHShade *)getShadeFor:(NSUInteger)zoneID shadeID:(NSUInteger)shadeID {
-    
-    NSString *shadeSql = [NSString stringWithFormat:@"select id, ZoneID, ShadeID, ShadeName, HasStop, SubnetID, DeviceID, openChannel, openingRatio, closeChannel, closingRatio, Reserved1, Reserved2, remarkForOpen, remarkForClose, remarkForStop, controlType, switchIDforOpen, switchIDStatusforOpen, switchIDforClose, switchIDStatusforClose, switchIDforStop, switchIDStatusforStop, stopChannel, stoppingRatio from ShadeInZone where ZoneID = %tu and ShadeID = %tu;", zoneID, shadeID];
-    
-    NSDictionary *dict = [[self selectProprty:shadeSql] lastObject];
-    
-    return [[SHShade alloc] initWithDict:dict];
-}
-
-/// 查询当前区域的所所有窗帘
-- (NSMutableArray *)getShadeForZone:(NSUInteger)zoneID {
-    
-    NSString *shadeSql = [NSString stringWithFormat:@"select id, ZoneID, ShadeID, ShadeName, HasStop, SubnetID, DeviceID, openChannel, openingRatio, closeChannel, closingRatio, Reserved1, Reserved2, remarkForOpen, remarkForClose, remarkForStop, controlType, switchIDforOpen, switchIDStatusforOpen, switchIDforClose, switchIDStatusforClose, switchIDforStop, switchIDStatusforStop, stopChannel, stoppingRatio from ShadeInZone where ZoneID = %tu order by ShadeID;", zoneID];
-    
-    NSMutableArray *array = [self selectProprty:shadeSql];
-    
-    NSMutableArray *shades = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-    
-        [shades addObject:[[SHShade alloc] initWithDict:dict]];
-    }
-    
-    return shades;
-}
-
 // MARK: - 音乐
 
 /// 增加可以配置音乐选项卡的使用
@@ -2911,7 +2689,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                 
             case SHSystemDeviceTypeShade: {
                 
-                [self deleteZoneShades:zoneID];
+//                [self deleteZoneShades:zoneID];
             }
                 break;
                 
@@ -2986,6 +2764,8 @@ const NSUInteger maxIconIDForDataBase = 10;
 //                [self deleteZoneDMXs:zoneID];
             }
                 break;
+                
+                // 后续增加的系统类型都要删除
                 
             default:
                 break;
@@ -3218,9 +2998,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     // 增加场景模式的延时功能
     [self addMoodCommandDelaytime];
-    
-    // 增加窗帘的字段
-    [self addShadeOPeratorTypeAndRemark];
     
     // 增加图片的二进制数据
     [self addZoneIconData];

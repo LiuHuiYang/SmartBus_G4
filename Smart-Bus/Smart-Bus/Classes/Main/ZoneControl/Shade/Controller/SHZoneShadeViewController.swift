@@ -40,15 +40,18 @@ class SHZoneShadeViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let zoneID = currentZone?.zoneID,
-            let shades =
-            SHSQLManager.share()?.getShadeForZone(zoneID) else {
+        guard let zoneID = currentZone?.zoneID else {
             
-                SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
-             return
+            return
         }
         
-        allShades = shades as! [SHShade]
+        allShades = SHSQLiteManager.shared.getShades(zoneID)
+        
+        if allShades.isEmpty {
+            
+            SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
+        }
+        
         shadesListView.reloadData()
         
         readDevicesStatus()
