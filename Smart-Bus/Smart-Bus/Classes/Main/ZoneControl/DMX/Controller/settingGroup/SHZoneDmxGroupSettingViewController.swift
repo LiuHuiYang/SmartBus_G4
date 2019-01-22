@@ -71,9 +71,11 @@ private let dmxGroupCellReuseIdentifier = "SHZoneDeviceGroupSettingCell"
         
         let dmxGroup = SHDmxGroup()
         dmxGroup.zoneID = currentZone?.zoneID ?? 1
-        dmxGroup.groupID = (SHSQLManager.share()?.getMaxDmxGrooupGroupID(for: currentZone?.zoneID ?? 0))! + 1
+        dmxGroup.groupID =
+            SHSQLiteManager.shared.getMaxDmxGroupID(
+                currentZone?.zoneID ?? 0) + 1
         
-        SHSQLManager.share()?.insertNewDmxGroup(dmxGroup)
+       _ = SHSQLiteManager.shared.insertDmxGroup(dmxGroup)
         
         let detailViewController = SHDeviceArgsViewController()
         

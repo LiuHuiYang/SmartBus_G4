@@ -12,6 +12,60 @@ import Foundation
 // MARK: - DMX操作
 extension SHSQLiteManager {
     
+    /// 增加 dmx 通道
+    func insertDmxChannel(_ channel: SHDmxChannel) -> UInt {
+        
+        let sql =
+            "insert into dmxChannelInZone (ZoneID, " +
+            "groupID, groupName) values( "           +
+            "\(channel.zoneID), "                    +
+            "\(channel.groupID), "                   +
+            "'\(channel.groupName)');"
+        
+        if executeSql(sql) == false {
+            
+            return 0
+        }
+      
+        
+        let idSQL =
+            "select max(ID) from dmxChannelInZone;"
+        
+        guard let dict = selectProprty(idSQL).last,
+            let id = dict["max(ID)"] as? UInt else {
+                
+            return 0
+        }
+        
+        return id
+    }
+    
+    /// 增加 Dmx 分组
+    func insertDmxGroup(_ dmxGroup: SHDmxGroup) -> Bool {
+        
+        let sql =
+            "insert into dmxGroupInZone(ZoneID, groupID) " +
+            "values( \(dmxGroup.zoneID), " +
+            "\(dmxGroup.groupID));"
+        
+        return executeSql(sql)
+    }
+    
+    /// 获得指定区域的最大分组ID
+    func getMaxDmxGroupID(_ zoneID: UInt) -> UInt {
+        
+        let sql =
+            "select max(groupID) from dmxGroupInZone " +
+            "where ZoneID = \(zoneID);"
+        
+        guard let dict = selectProprty(sql).last,
+        let groupID = dict["max(groupID)"] as? UInt else {
+            return 0
+        }
+        
+        return groupID
+    }
+    
     /// 更新 dmx 通道
     func updateDmxChannel(_ channel: SHDmxChannel) -> Bool {
         
@@ -24,6 +78,18 @@ extension SHSQLiteManager {
             "DeviceID = \(channel.deviceID), "  +
             "channelNo = \(channel.channelNo) " +
             "where  id = \(channel.id);"
+        
+        return executeSql(sql)
+    }
+    
+    /// 更新 dmx 分组
+    func updateDmxGroup(_ dmxGroup: SHDmxGroup) -> Bool {
+        
+        let sql =
+            "update dmxGroupInZone set "             +
+            "groupName = '\(dmxGroup.groupName)' "   +
+            "where ZoneID = \(dmxGroup.zoneID) and " +
+            "groupID = \(dmxGroup.groupID); "
         
         return executeSql(sql)
     }

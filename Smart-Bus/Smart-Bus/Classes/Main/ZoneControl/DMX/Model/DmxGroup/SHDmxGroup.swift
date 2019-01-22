@@ -20,7 +20,7 @@ import UIKit
     var zoneID: UInt = 0
     
     /// 分组标题
-    var groupName: String?
+    var groupName: String = "dmx group"
     
     override init() {
         super.init()

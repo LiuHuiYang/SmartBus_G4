@@ -31,77 +31,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 @implementation SHSQLManager
 
-// MARK: - DMX
  
-/// 增加新的通道
-- (NSInteger)insertNewDmxChannnel:(SHDmxChannel *)dmxChannel {
-    
-    NSString *insertSQL = [NSString stringWithFormat:@"insert into  \
-                           dmxChannelInZone (ZoneID, groupID, groupName)    \
-                           values(%tu, %tu, '%@');",
-                           dmxChannel.zoneID,
-                           dmxChannel.groupID,
-                           dmxChannel.groupName];
-    
-    
-    BOOL res = [self executeSql:insertSQL];
-    
-    NSInteger maxID = -1;
-    
-    if (res) {
-        
-        // 获得ID号
-        NSString *string = [NSString stringWithFormat:@"select max(ID) from dmxChannelInZone;"];
-        
-        maxID =  [[[[self selectProprty:string] lastObject] objectForKey:@"max(ID)"] integerValue];
-    }
-    
-    return maxID;
-}
-
-/// 更新分组信息
-- (BOOL)updateDmxGroup:(SHDmxGroup *)dmxGroup {
-    
-    NSString *updateSQL =
-        [NSString stringWithFormat:
-            @"update dmxGroupInZone set groupName = '%@'   \
-            where ZoneID = %tu and groupID = %tu; ",
-         
-            dmxGroup.groupName, dmxGroup.zoneID, dmxGroup.groupID
-        ];
-    
-    return [self executeSql:updateSQL];
-}
-
-/// 增加新的分组
-- (BOOL)insertNewDmxGroup:(SHDmxGroup *)dmxGroup {
-    
-    NSString *insertSQL =
-        [NSString stringWithFormat:
-            @"insert into dmxGroupInZone(ZoneID, groupID)   \
-                values(%tu, %tu);",
-            dmxGroup.zoneID, dmxGroup.groupID
-        ];
-    
-    return [self executeSql:insertSQL];
-}
-
-/// 获得指定区域的最大分组ID
-- (NSUInteger)getMaxDmxGrooupGroupIDFor:(NSUInteger)zoneID {
-    
-    NSString *maxGroupIDsql =
-        [NSString stringWithFormat:
-            @"select max(groupID) from dmxGroupInZone   \
-            where ZoneID = %tu;", zoneID
-        ];
-    
-    id resID = [[[self selectProprty:maxGroupIDsql] lastObject]
-                objectForKey:@"max(groupID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-
 // MARK: - 9合1
 
 /// 查询当前区域中的所有9in1

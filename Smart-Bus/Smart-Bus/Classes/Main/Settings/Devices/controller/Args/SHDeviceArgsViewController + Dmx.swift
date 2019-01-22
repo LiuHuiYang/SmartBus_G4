@@ -56,35 +56,44 @@ extension SHDeviceArgsViewController {
             break
         }
         
-        SHSQLManager.share()?.update(dmxGroup)
+        if self.dmxGroup != nil {
+        
+            _ = SHSQLiteManager.shared.updateDmxGroup(
+                self.dmxGroup!
+            )
+        }
     }
     
     /// 保存dmx通道
     func updateDmxChannel(value: String, index: Int) {
         
+        guard let channel = self.dmxChannel else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.dmxChannel?.remark = value;
+            channel.remark = value;
             
         case 1:
-            self.dmxChannel?.channelType =
+            channel.channelType =
                 SHDmxChannelType(rawValue: UInt(value) ?? 0) ?? .none
             
         case 2:
-            self.dmxChannel?.subnetID = UInt8(value) ?? 1
+            channel.subnetID = UInt8(value) ?? 1
             
         case 3:
-            self.dmxChannel?.deviceID = UInt8(value) ?? 0
+            channel.deviceID = UInt8(value) ?? 0
             
         case 4:
-            self.dmxChannel?.channelNo = UInt8(value) ?? 0
+            channel.channelNo = UInt8(value) ?? 0
             
         default:
             break;
-        }
+        } 
         
-        SHSQLManager.share()?.update(dmxChannel)
+        _ = SHSQLiteManager.shared.updateDmxChannel(channel)
     }
 }
 

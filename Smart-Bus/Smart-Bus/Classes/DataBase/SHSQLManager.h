@@ -79,26 +79,6 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 全局操作队列
 @property (nonatomic, strong) FMDatabaseQueue *queue;
 
- 
-// MARK: - DMX
-
-/// 更新通道
-- (BOOL)updateDmxChannel:(SHDmxChannel *)dmxChannel;
-
-
-
-/// 增加新的通道
-- (NSInteger)insertNewDmxChannnel:(SHDmxChannel *)dmxChannel;
-
-/// 更新分组信息
-- (BOOL)updateDmxGroup:(SHDmxGroup *)dmxGroup;
-
-/// 增加新的分组
-- (BOOL)insertNewDmxGroup:(SHDmxGroup *)dmxGroup;
-
-/// 获得指定区域的最大分组ID
-- (NSUInteger)getMaxDmxGrooupGroupIDFor:(NSUInteger)zoneID;
-
   
 // MARK: - 9in1
 

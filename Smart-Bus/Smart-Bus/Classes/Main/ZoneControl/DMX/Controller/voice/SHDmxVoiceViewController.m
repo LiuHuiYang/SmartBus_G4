@@ -252,8 +252,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.groupChannels = [[SHSQLManager shareSQLManager] getDmxGroupChannels:
-                          self.dmxGroup];
+    NSArray *channels =
+        [SHSQLiteManager.shared getDmxGroupChannels:self.dmxGroup];
+    
+    self.groupChannels =
+        [NSMutableArray arrayWithArray:channels];
     
     [self buttonClick];
 }

@@ -270,10 +270,7 @@ extension SHZoneDevicesViewController {
             let dmxs =
                 SHSQLiteManager.shared.getDmxGroup(zoneID)
             
-            if !dmxs.isEmpty {
-                
-                allDevices = dmxs as! [Any]
-            }
+             allDevices = dmxs as [Any]
             
         default:
             break

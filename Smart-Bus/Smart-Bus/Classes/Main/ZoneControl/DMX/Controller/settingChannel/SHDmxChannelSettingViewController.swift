@@ -72,9 +72,12 @@ class SHDmxChannelSettingViewController: SHViewController {
         dmxChannel.groupID = dmxGroup?.groupID ?? 1
         dmxChannel.groupName = dmxGroup?.groupName ?? "dmx group"
         
-        let res = SHSQLManager.share()?.insertNewDmxChannnel(dmxChannel) ?? 0
+        let res =
+            SHSQLiteManager.shared.insertDmxChannel(
+                dmxChannel
+            )
 
-        dmxChannel.id = res < 0 ? 1 : UInt(res)
+        dmxChannel.id = (res == 0) ? 1 : UInt(res)
 
         let detailViewController = SHDeviceArgsViewController()
         
