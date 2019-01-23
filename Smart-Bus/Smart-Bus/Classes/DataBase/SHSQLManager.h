@@ -167,7 +167,6 @@ extern const NSUInteger maxIconIDForDataBase;
 - (BOOL)updateSchedule:(SHSchedual *)schedual;
 
 
-
 // MARK: - AppleTV
 
 /// 保存苹果电视
@@ -201,17 +200,7 @@ extern const NSUInteger maxIconIDForDataBase;
 
 /// 获得当前区域的投影仪
 - (NSMutableArray *)getMediaProjectorFor:(NSUInteger)zoneID;
-
-
-// MARK: - TV
-
-/// 存入新的TV设备
-- (NSInteger)inserNewMediaTV:(SHMediaTV *)mediaTV;
-
-/// 保存当前区域的TV参数
-- (void)updateMediaTVInZone:(SHMediaTV *)mediaTV;
-
-
+ 
 // MARK: - SAT
 
 // 保存当前SAT

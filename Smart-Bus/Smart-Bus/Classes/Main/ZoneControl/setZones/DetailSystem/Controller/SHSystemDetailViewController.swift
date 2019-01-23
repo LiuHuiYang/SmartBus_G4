@@ -781,10 +781,10 @@ extension SHSystemDetailViewController {
             tv.remark = "tv"
             tv.zoneID = zoneID
             
-            let result = SHSQLManager.share()?.inserNewMediaTV(
-                    tv) ?? 1
+            let result =
+                SHSQLiteManager.shared.insertTV(tv)
             
-            tv.id = UInt(result)
+            tv.id = (result == 0) ? 1 : result
             
             detailController.mediaTV = tv
             

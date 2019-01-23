@@ -25,7 +25,7 @@ class SHSchedualFloorHeatingCell: UITableViewCell {
             enableButton.isSelected = floorHeating.schedualEnable
             
             let title =
-            "\(floorHeating.floorHeatingRemark ?? "floorHeating") : \(floorHeating.subnetID) - \(floorHeating.deviceID) - \(floorHeating.channelNo)"
+            "\(floorHeating.floorHeatingRemark) : \(floorHeating.subnetID) - \(floorHeating.deviceID) - \(floorHeating.channelNo)"
             
             schedualFloorHeatingButton.setTitle(title,
                                                 for: .normal

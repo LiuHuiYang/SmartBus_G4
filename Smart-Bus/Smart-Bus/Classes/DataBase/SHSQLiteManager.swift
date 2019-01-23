@@ -31,8 +31,7 @@ private let sandboxVersionKey = "sandboxVersionKey"
       
         let filePath =
             FileTools.documentPath() + "/" + dataBaseName
-        
-       
+         
         if let resourcePath = Bundle.main.resourcePath {
             
             let sourcePath =
