@@ -59,6 +59,16 @@ extension SHSQLiteManager {
         return sceneID
     }
     
+    /// 删除区域中的 scene
+    func deleteScenes(_ zoneID: UInt) -> Bool {
+        
+        let sql =
+            "delete from SceneInZone where " +
+            "ZoneID = \(zoneID);"
+        
+        return executeSql(sql)
+    }
+    
     /// 删除 Scene
     func deleteScene(_ scene: SHScene) -> Bool {
         

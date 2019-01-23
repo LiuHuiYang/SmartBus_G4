@@ -11,7 +11,7 @@ import FMDB
 
 
 /// 数据库名称
-private let dataBaseName = "SMART-BUS.sqlite";
+let dataBaseName = "SMART-BUS.sqlite";
 
 /// 沙盒记录版本标示
 let sandboxVersionKey = "sandboxVersionKey"
@@ -134,7 +134,7 @@ let sandboxVersionKey = "sandboxVersionKey"
         /**** 1. 版本匹配记录 *****/
         if isLatestVersion() {
             
-//            return // 最新版本
+            return // 最新版本
         }
         
         /**** 2. 删除区域中的旧数据 *****/
@@ -180,6 +180,12 @@ let sandboxVersionKey = "sandboxVersionKey"
         
         // 增加区域干节点
         _ = addZoneDryContact()
+        
+        // 增加SAT的字段
+        addSatControlItems()
+   
+        // 增加场景模式的延时功能
+        _ = addMoodCommandDelaytime()
     }
 }
 

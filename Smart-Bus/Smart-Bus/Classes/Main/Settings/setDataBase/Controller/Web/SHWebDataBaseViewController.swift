@@ -9,9 +9,6 @@
 import UIKit
 import GCDWebServer
 
-/// 数据库名称
-private let dataBaseName = "SMART-BUS.sqlite"
-
 class SHWebDataBaseViewController: SHViewController {
     
     /// 网络服务器

@@ -6,10 +6,7 @@
 //  Copyright © 2017年 Mark Liu. All rights reserved.
 //
 
-/// 数据库的名称
-extern NSString *dataBaseName;
 
-@class SHRegion;
 @class SHZone;
 @class SHSystem;
 @class SHIcon;
@@ -68,16 +65,8 @@ extern NSString *dataBaseName;
 // 在数据库中可以iconList直接查询到
 extern const NSUInteger maxIconIDForDataBase;
 
-
 @interface SHSQLManager : NSObject
 
-/// 数据库的名称
-@property (nonatomic, copy, readonly) NSString *dataBaseName;
-
-/// 全局操作队列
-@property (nonatomic, strong) FMDatabaseQueue *queue;
-
-  
 // MARK: - 9in1
 
 /// 查询当前区域中的所有9in1
@@ -97,46 +86,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得当前区域中的最大的NineInOneID
 - (NSUInteger)getMaxNineInOneIDForZone:(NSUInteger)zoneID;
 
-  
-// MARK: - Mood
-
-/// 模式命令的最大ID
-- (NSUInteger)getMoodCommandMaxID;
-
-- (BOOL)updateMoodCommand:(SHMoodCommand *)command;
-
-/// 删除场景模式中指定的命令
-- (BOOL)deleteMoodCommand:(SHMoodCommand *)command;
-
-/// 获得当前模式下的所有指令
-- (NSMutableArray *)getAllMoodCommandsFor:(SHMood *)mood;
-
-/// 删除当前的模式包含它所拥有的命令集合
-- (BOOL)deleteCurrentMood:(SHMood *)mood;
-
-/// 删除区域中的模式
-- (BOOL)deleteZoneMoods:(NSUInteger)zoneID;
-
-/// 插入当前模式的命令
-- (BOOL)insertNewMoodCommandFor:(SHMoodCommand *)command;
-
-/// 更新模式
-- (BOOL)updateMood:(SHMood *)mood;
-
-/// 插入当前区域的新模式
-- (BOOL)insertNewMood:(SHMood *)mood;
-
-/// 模式的最大ID
-- (NSUInteger)getMaxIDForMood;
-
-/// 获得当前区域的最大模式ID
-- (NSUInteger)getMaxMoodIDFor:(NSUInteger)zoneID;
-
-/// 查询所有的模式按钮
-- (NSMutableArray *)getAllMoodFor:(NSUInteger)zoneID;
-
  
-   
 // MARK: - schedaul 相关的操作
 
 /// 获得所有的计划 
@@ -234,10 +184,6 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得当前区域中的DVD
 - (NSMutableArray *)getMediaDVDFor:(NSUInteger)zoneID;
 
-// MARK: - 系统区域
-
-/// 保存当前区域的所有设备
-- (void)saveAllSystemID:(NSMutableArray *)systems inZone:(SHZone *)zone;
 
 // MARK: - icon
 
@@ -257,9 +203,6 @@ extern const NSUInteger maxIconIDForDataBase;
 - (NSMutableArray *)getAllIcons;
 
 // MARK: - ZONES
-
-/// 删除区域
-- (BOOL)deleteZone:(NSUInteger)zoneID;
 
 /// 获得指示类型的区域
 - (NSMutableArray *)getZonesFor:(NSUInteger)deviceType;

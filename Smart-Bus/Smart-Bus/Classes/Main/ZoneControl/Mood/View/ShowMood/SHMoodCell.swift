@@ -83,17 +83,17 @@ import UIKit
     /// 宏点击
     @IBAction func commandButtonClick() {
         
-        let commands = SHSQLManager.share()?.getAllMoodCommands(for: mood) as? [SHMoodCommand]
-        
-        guard let moodCommands = commands else {
-             
+        if mood == nil {
             
             let title = mood?.moodName
             
             SVProgressHUD.showInfo(withStatus: "\(title ?? "") \(SHLanguageText.noData)")
-        
+            
             return
         }
+        
+        let moodCommands =
+            SHSQLiteManager.shared.getMoodCommands(mood!)
         
         commandButton.isSelected = true
         

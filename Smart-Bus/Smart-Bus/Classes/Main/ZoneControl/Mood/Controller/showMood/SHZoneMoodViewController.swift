@@ -73,17 +73,21 @@ class SHZoneMoodViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let zone = currentZone,
-            let moods = SHSQLManager.share()?.getAllMood(for: zone.zoneID) else {
-                
-                SVProgressHUD.showInfo(
-                    withStatus: SHLanguageText.noData
-                )
-                
-                return
+        guard let zone = currentZone else {
+            
+            return
         }
         
-        allMoods = moods as! [SHMood]
+        allMoods =
+            SHSQLiteManager.shared.getMoods(zone.zoneID)
+        
+        if allMoods.isEmpty {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+        }
+        
         moodsCollectionView.reloadData()
     }
     

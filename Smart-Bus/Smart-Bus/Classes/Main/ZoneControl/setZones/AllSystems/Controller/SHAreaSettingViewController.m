@@ -259,8 +259,8 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
 /// 保存系统设备ID
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
-    [[SHSQLManager shareSQLManager] saveAllSystemID:self.allSystems inZone:self.currentZone];
+ 
+    [SHSQLiteManager.shared saveSystemIDs:self.allSystems zoneID:self.currentZone.zoneID];
     
     [self.view endEditing:YES];
 }

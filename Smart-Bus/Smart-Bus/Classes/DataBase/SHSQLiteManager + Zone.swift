@@ -15,7 +15,98 @@ extension SHSQLiteManager {
     /// 删除区域
     func deleteZone(_ zoneID: UInt) -> Bool {
         
-        return false
+        let systems = getSystemIDs(zoneID)
+        
+        // 1.删除每种设备数据
+        for type in systems {
+            
+            switch type {
+                
+            case SHSystemDeviceType.light.rawValue:
+                _ = deleteLights(zoneID: zoneID)
+                
+            case SHSystemDeviceType.hvac.rawValue:
+                _ = deleteHVACs(zoneID)
+                
+            case SHSystemDeviceType.audio.rawValue:
+                _ = deleteAudios(zoneID)
+                
+            case SHSystemDeviceType.shade.rawValue:
+                _ = deleteShades(zoneID)
+                
+            case SHSystemDeviceType.tv.rawValue:
+                _ = deleteTVs(zoneID)
+                
+            case SHSystemDeviceType.dvd.rawValue:
+                SHSQLManager.share()?.deleteZoneDVDs(zoneID)
+            
+            case SHSystemDeviceType.sat.rawValue:
+                SHSQLManager.share()?.deleteZoneSATs(zoneID)
+                
+            case SHSystemDeviceType.appletv.rawValue:
+               _ = deleteAppleTVs(zoneID)
+                
+            case SHSystemDeviceType.projector.rawValue:
+                SHSQLManager.share()?.deleteZoneProjectors(
+                    zoneID
+                )
+                
+            case SHSystemDeviceType.mood.rawValue:
+                _ = SHSQLiteManager.shared.deleteMoods(zoneID)
+                
+            case SHSystemDeviceType.fan.rawValue:
+                _ = deleteFans(zoneID)
+                
+            case SHSystemDeviceType.floorHeating.rawValue:
+                _ = deleteFloorHeatings(zoneID)
+                
+            case SHSystemDeviceType.nineInOne.rawValue:
+                SHSQLManager.share()?.deleteZoneNine(
+                    inOnes: zoneID)
+                
+            case SHSystemDeviceType.dryContact.rawValue:
+                _ = deleteDryContacts(zoneID)
+                
+            case SHSystemDeviceType.temperatureSensor.rawValue:
+                _ = deleteTemperatureSensors(zoneID)
+                
+            case SHSystemDeviceType.dmx.rawValue:
+                _ = deleteDmxs(zoneID)
+                
+            case SHSystemDeviceType.sceneControl.rawValue:
+                _ = deleteScenes(zoneID)
+                
+            case SHSystemDeviceType.sequenceControl.rawValue:
+                _ = deleteSequences(zoneID)
+                
+            case SHSystemDeviceType.otherControl.rawValue:
+                _ = deleteOtherControls(zoneID)
+            
+            default:
+                break
+            }
+        }
+        
+        // 2.删除设置类型配置
+        let systemSQL =
+            "delete from SystemInZone " +
+            "where zoneID = \(zoneID);"
+        
+        if executeSql(systemSQL) == false {
+            
+            return false
+        }
+        
+        // 3. 删除区域
+        let zoneSQL =
+            "delete from Zones where zoneID = \(zoneID);"
+        
+        if executeSql(zoneSQL) == false {
+            
+            return false
+        }
+        
+        return true
     }
     
     func insertZone(_ zone: SHZone) -> Bool {

@@ -15,14 +15,10 @@
 
 #import "SHSQLManager.h"
 
-/// 数据库的名称
-NSString * dataBaseName = @"SMART-BUS.sqlite";
-
 // 在数据库中可以iconList直接查询到
 const NSUInteger maxIconIDForDataBase = 10;
 
 @interface SHSQLManager ()
-
 
 @end
 
@@ -330,236 +326,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return [SHSQLiteManager.shared executeSql:insertSQL];
 }
-
  
-// MARK: - Mood
-
-/// 增加延时字段
-- (void)addMoodCommandDelaytime {
-    
-    if (![SHSQLiteManager.shared isColumnName:@"DelayMillisecondAfterSend" consistinTable:@"MoodCommands"]) {
-        
-        // 增加remark
-        [SHSQLiteManager.shared executeSql:@"ALTER TABLE MoodCommands ADD DelayMillisecondAfterSend INTEGER NOT NULL DEFAULT 100;"];
-    }
-}
-
-
-- (NSMutableArray *)getAllMoodCommandsFor:(SHMood *)mood {
-    
-    NSString *sql = [NSString stringWithFormat:@"select ID, ZoneID, MoodID, deviceType, SubnetID, DeviceID, deviceName, Parameter1, Parameter2, Parameter3, Parameter4, Parameter5, Parameter6, DelayMillisecondAfterSend from MoodCommands where ZoneID = %tu and MoodID = %tu order by id;", mood.zoneID, mood.moodID];
-    
-    NSArray *array = [SHSQLiteManager.shared selectProprty:sql];
-    
-    NSMutableArray *commands = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        SHMoodCommand *command =
-            [[SHMoodCommand alloc] initWithDict:dict];
-        
-        [commands addObject:command];
-    }
-    
-    return commands;
-}
-
-/// 更新指令
-- (BOOL)updateMoodCommand:(SHMoodCommand *)command {
-    
-    NSString *updateSQL = [NSString stringWithFormat:
-                           @"update MoodCommands set deviceName = '%@',     \
-                           deviceType = %tu, SubnetID = %d, DeviceID = %d,  \
-                           Parameter1 = %tu, Parameter2 = %tu,      \
-                           Parameter3 = %tu, Parameter4 = %tu,      \
-                           Parameter5 = %tu, Parameter6 = %tu       \
-                           Where zoneID = %tu and MoodID = %tu      \
-                           and ID = %tu;",
-                           
-                           command.deviceName, command.deviceType,
-                           command.subnetID, command.deviceID,
-                           command.parameter1, command.parameter2,
-                           command.parameter3, command.parameter4,
-                           command.parameter5, command.parameter6,
-                           command.zoneID, command.moodID, command.id
-                           ];
-    
-    return [SHSQLiteManager.shared executeSql:updateSQL];
-}
-
-/// 删除场景模式中指定的命令
-- (BOOL)deleteMoodCommand:(SHMoodCommand *)command {
-    
-    NSString *commandSql = [NSString stringWithFormat:
-                            @"delete from MoodCommands where ZoneID = %tu   \
-                            and MoodID = %tu and ID = %tu;",
-                            command.zoneID, command.moodID, command.id
-                            ];
-    
-    return [SHSQLiteManager.shared executeSql:commandSql];
-}
-
-/// 删除当前的模式
-- (BOOL)deleteCurrentMood:(SHMood *)mood {
-    
-    // 删除场景
-    NSString *moodsql = [NSString stringWithFormat:
-                         @"delete from MoodInZone where ZoneID = %tu and    \
-                         MoodID = %tu;",
-                         mood.zoneID, mood.moodID
-                         ];
-    
-    BOOL moodRes = [SHSQLiteManager.shared executeSql:moodsql];
-    
-    // 删除场景中的命令集
-    NSString *commandSql = [NSString stringWithFormat:
-                            @"delete from MoodCommands where        \
-                            ZoneID = %tu and MoodID = %tu;",
-                            mood.zoneID, mood.moodID
-                            ];
-    
-    BOOL commandRes = [SHSQLiteManager.shared executeSql:commandSql];
-    
-    return moodRes && commandRes;
-}
-
-/// 删除区域中的模式
-- (BOOL)deleteZoneMoods:(NSUInteger)zoneID {
-
-    BOOL result = NO;
-    
-    // 删除命令
-    NSString *commandSql =
-        [NSString stringWithFormat:
-            @"delete from MoodCommands where ZoneID = %tu;",
-            zoneID
-        ];
-    
-    result = [SHSQLiteManager.shared executeSql:commandSql];
-    
-    // 删除场景
-    NSString *moodsql =
-        [NSString stringWithFormat:
-            @"delete from MoodInZone where ZoneID = %tu;",
-            zoneID
-        ];
-    
-    result = [SHSQLiteManager.shared executeSql:moodsql];
-    
-    return result;
-}
-
-/// 插入当前模式的命令
-- (BOOL)insertNewMoodCommandFor:(SHMoodCommand *)command {
-    
-    NSString *commandSql = [NSString stringWithFormat:
-                            @"insert into MoodCommands values           \
-                            (%tu, %tu, %tu, %tu, %d, %d, '%@', %tu,     \
-                            %tu, %tu, %tu, %tu, %tu, %tu);",
-                            
-                            command.id,
-                            command.zoneID,
-                            command.moodID,
-                            command.deviceType,
-                            
-                            command.subnetID,
-                            command.deviceID,
-                            
-                            command.deviceName,
-                            command.parameter1,
-                            command.parameter2,
-                            command.parameter3,
-                            command.parameter4,
-                            command.parameter5,
-                            command.parameter6,
-                            command.delayMillisecondAfterSend
-                            ];
-    
-    
-    return [SHSQLiteManager.shared executeSql:commandSql];
-}
-
-/// 更新模式
-- (BOOL)updateMood:(SHMood *)mood {
-    
-    NSString *updateSql = [NSString stringWithFormat:
-                           @"update MoodInZone set MoodName = '%@',     \
-                           MoodIconName = '%@' Where zoneID = %tu       \
-                           and MoodID = %tu;",
-                           mood.moodName, mood.moodIconName,
-                           mood.zoneID, mood.moodID
-                           ];
-    
-    return [SHSQLiteManager.shared executeSql:updateSql];
-}
-
-/// 插入当前区域的新模式
-- (BOOL)insertNewMood:(SHMood *)mood {
-    
-    NSString *moodSql = [NSString stringWithFormat:@"insert into MoodInZone values(%tu, %tu, %tu, '%@', '%@', %tu);",
-        
-                         [self getMaxIDForMood] + 1,
-                         mood.zoneID,
-                         mood.moodID,
-                         mood.moodName,
-                         mood.moodIconName,
-                         mood.isSystemMood
-                         ];
-    
-    return [SHSQLiteManager.shared executeSql:moodSql];
-}
-
-/// 模式命令的最大ID
-- (NSUInteger)getMoodCommandMaxID {
-    
-    NSString *moodIDSql = [NSString stringWithFormat:@"select max(ID) from MoodCommands;"];
-    
-    // 获得结果ID
-    id resID = [[[SHSQLiteManager.shared selectProprty:moodIDSql] lastObject] objectForKey:@"max(ID)"];
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-/// 模式表中的最大ID
-- (NSUInteger)getMaxIDForMood {
-    
-    NSString *moodIDSql = [NSString stringWithFormat:@"select max(ID) from MoodInZone;"];
-    
-    // 获得结果ID
-    id resID = [[[SHSQLiteManager.shared selectProprty:moodIDSql] lastObject] objectForKey:@"max(ID)"];
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-/// 获得当前区域的最大模式ID
-- (NSUInteger)getMaxMoodIDFor:(NSUInteger)zoneID {
-    
-    NSString *moodIDSql = [NSString stringWithFormat:@"select max(MoodID) from MoodInZone where zoneID = %tu;", zoneID];
-    
-    // 获得结果ID
-    id resID = [[[SHSQLiteManager.shared selectProprty:moodIDSql] lastObject] objectForKey:@"max(MoodID)"];
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-
-/// 查询所有的模式按钮
-- (NSMutableArray *)getAllMoodFor:(NSUInteger)zoneID {
-    
-    NSString *moodSql = [NSString stringWithFormat:@"select ZoneID, MoodID, MoodName, MoodIconName, IsSystemMood from MoodInZone where ZoneID = %tu order by MoodID;", zoneID];
-    
-    NSArray *array = [SHSQLiteManager.shared selectProprty:moodSql];
-    NSMutableArray *moods = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        
-        [moods addObject:
-            ([[SHMood alloc] initWithDict:dict])
-         ];
-    }
-    
-    return moods;
-}
- 
-   
 
 // MARK: - Schedual
 
@@ -911,50 +678,6 @@ const NSUInteger maxIconIDForDataBase = 10;
 }
 
 // MARK: - SAT
-
-/// 添加控制单元
-- (void)addSATControlIetms {
- 
-    if (![SHSQLiteManager.shared isColumnName:@"SwitchNameforControl1" consistinTable:@"SATInZone"]) {
-        
-        [SHSQLiteManager.shared executeSql:
-            @"ALTER TABLE SATInZone ADD SwitchNameforControl1 TEXT DEFAULT 'C1';"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchIDforControl1 INTEGER DEFAULT 0;"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchNameforControl2 TEXT DEFAULT 'C2';"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchIDforControl2 INTEGER DEFAULT 0;"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchNameforControl3 TEXT DEFAULT 'C3';"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchIDforControl3 INTEGER DEFAULT 0;"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchNameforControl4 TEXT DEFAULT 'C4';"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchIDforControl4 INTEGER DEFAULT 0;"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchNameforControl5 TEXT DEFAULT 'C5';"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchIDforControl5 INTEGER DEFAULT 0;"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchNameforControl6 TEXT DEFAULT 'C6';"];
-        
-        [SHSQLiteManager.shared executeSql:
-         @"ALTER TABLE SATInZone ADD SwitchIDforControl6 INTEGER DEFAULT 0;"];
-    }
-  
-}
 
 /// 获得当前区域的卫星电视
 - (NSMutableArray *)getMediaSATFor:(NSUInteger)zoneID {
@@ -1579,22 +1302,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 // MARK: - 区域操作相关
 
-/// 保存当前区域的所有设备
-- (void)saveAllSystemID:(NSMutableArray *)systems inZone:(SHZone *)zone {
-    
-    // 删除这个区域的所有设备
-    NSString *systemDeleteSql = [NSString stringWithFormat:@"delete from SystemInZone where ZoneID = %tu;", zone.zoneID];
-    
-    [SHSQLiteManager.shared executeSql:systemDeleteSql];
-    
-    // 全部插入重新新数据
-    for (NSNumber *number in systems) {
-        NSString *systemInsertSql = [NSString stringWithFormat:@"insert into SystemInZone values(%tu, %tu);", zone.zoneID, [number integerValue]];
-        [SHSQLiteManager.shared executeSql:systemInsertSql];
-    }
-}
  
-
 // MARK: - 区域图片操作
 
 /// 根据名称获得图片
@@ -1626,7 +1334,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 - (BOOL)inserNewIcon:(SHIcon *)icon {
     
     __block BOOL res = YES;
-    [self.queue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
+    [SHSQLiteManager.shared.queue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
         
         // 这种语法相当怪异
         res = [db executeUpdate:@"INSERT INTO iconList (iconID, iconName, iconData) VALUES (?, ?, ?);", @(icon.iconID), icon.iconName, icon.iconData];
@@ -1689,147 +1397,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     return YES;
 }
 
-
 // MARK: - 区域操作
-
-/// 删除区域
-- (BOOL)deleteZone:(NSUInteger)zoneID {
-    
-    BOOL executeResult = NO;
-    
-    // 1.查询这个区域所包含的设备
-    NSArray *systems =
-        [SHSQLiteManager.shared getSystemIDs: zoneID];
-    
-    for (NSNumber *system in systems) {
-        
-        switch (system.integerValue) {
-            
-            case SHSystemDeviceTypeLight: {
-                
-//                [self deleteZoneLights:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeHvac: {
-                
-//                [self deleteZoneHVACs:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeAudio: {
-                
-//                [self deleteZoneAudios:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeShade: {
-                
-//                [self deleteZoneShades:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeTv: {
-                
-//                [self deleteZoneTVs:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeDvd: {
-                
-                [self deleteZoneDVDs:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeSat: {
-                
-                [self deleteZoneSATs:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeAppletv: {
-                
-//                [self deleteZoneAppleTVs:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeProjector: {
-                
-                [self deleteZoneProjectors:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeMood: {
-                
-                [self deleteZoneMoods:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeFan: {
-                
-//                [self deleteZoneFans:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeFloorHeating: {
-                
-//                [self deleteZoneFloorHeatings:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeNineInOne: {
-                
-                [self deleteZoneNineInOnes:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeDryContact: {
-                
-//                [self deleteZoneDryContacts:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeTemperatureSensor: {
-                
-//                [self deleteZoneTemperatureSensors:zoneID];
-            }
-                break;
-                
-            case SHSystemDeviceTypeDmx: {
-                
-//                [self deleteZoneDMXs:zoneID];
-            }
-                break;
-                
-                // 后续增加的系统类型都要删除
-                
-            default:
-                break;
-        }
-    }
-    
-    // 2.删除区域中的设备
-    NSString *systemSQL =
-        [NSString stringWithFormat:
-            @"delete from SystemInZone where zoneID = %tu;",
-            zoneID
-        ];
-    
-    executeResult = [SHSQLiteManager.shared executeSql:systemSQL];
-    
-    // 3.删除区域
-    NSString *zoneSQL =
-        [NSString stringWithFormat:
-            @"delete from Zones where zoneID = %tu;",
-            zoneID
-        ];
-    
-    executeResult = [SHSQLiteManager.shared executeSql:zoneSQL];
-    
-    return executeResult;
-}
-
-
 
 /// 获得指示类型的区域
 - (NSMutableArray *)getZonesFor:(NSUInteger)deviceType {
@@ -1863,51 +1431,16 @@ const NSUInteger maxIconIDForDataBase = 10;
 }
 
 
-/// 增加新表或者是字段
-- (void)alertTablesOrColumnName {
-    
-    /**** 3. 设置字段和新设备 *****/
-    
-    // 增加9in1
-    [self addNineInOne];
-  
-    // 增加场景模式的延时功能
-    [self addMoodCommandDelaytime];
-    
-    // 增加图片的二进制数据
-    [self addZoneIconData];
-    
-    // 增加SAT的字段
-    [self addSATControlIetms];
-}
-
-
 /// 创建数据库
 - (instancetype)init {
     
     if (self = [super init]) {
+     
+        // 增加9in1
+        [self addNineInOne];
         
-        // 1.数据库的目标路径
-        NSString *filePath = [[FileTools documentPath] stringByAppendingPathComponent:dataBaseName];
-        
-        // 2.获得资源路径
-        NSString *sourceDataBasePath =
-            [[[NSBundle mainBundle] resourcePath]
-                stringByAppendingPathComponent:dataBaseName];
-        
-        // 判断路径是否存在
-        if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-            
-            if ([[NSFileManager defaultManager] copyItemAtPath:sourceDataBasePath toPath:filePath error:nil]) {
-                
-            }
-        }
-        
-        // 如果数据库不存在，会建立数据库，然后，再创建队列，并且打开数据库
-        self.queue = [FMDatabaseQueue databaseQueueWithPath:filePath];
-         
-        // 增加表名或者是字段
-        [self alertTablesOrColumnName];
+        // 增加图片的二进制数据
+        [self addZoneIconData];
     }
     
     return self;

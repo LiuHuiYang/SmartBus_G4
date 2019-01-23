@@ -14,7 +14,7 @@ import UIKit
    @objc var mood: SHMood?
     
     /// 所有的场景指令集
-    var allCommands: [SHMoodCommand]?
+    private lazy var allCommands = [SHMoodCommand]()
     
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     
@@ -75,7 +75,11 @@ import UIKit
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        allCommands = SHSQLManager.share()?.getAllMoodCommands(for: mood) as? [SHMoodCommand]
+        if mood != nil {
+            
+            allCommands =
+                SHSQLiteManager.shared.getMoodCommands(mood!)
+        }
         
         moodCommandsListView.reloadData()
     }
@@ -104,16 +108,17 @@ import UIKit
         
         changeMoodImageController.selectMoodImage = {(moodIconName: String?) -> () in
             
-            guard let name = moodIconName else {
+            guard let name = moodIconName,
+            let mood = self.mood else {
                 return
             }
             
-            if name.isEqual(self.mood?.moodIconName) {
+            if name == mood.moodIconName {
                 
                 return
             }
             
-            self.mood?.moodIconName = name
+            mood.moodIconName = name
             
             self.iconButton.setImage(
                 UIImage.resize(name + "_normal"),
@@ -125,8 +130,7 @@ import UIKit
                 for: UIControl.State.highlighted
             )
             
-            SHSQLManager.share()?.update(self.mood)
-            
+            _ = SHSQLiteManager.shared.updateMood(mood)
         }
         
         let changeImageNavigationController =
@@ -155,9 +159,10 @@ extension SHEditMoodCommandViewController {
         command.moodID = mood!.moodID
         command.zoneID = mood!.zoneID
         command.deviceName = "device name"
-        command.id = (SHSQLManager.share()?.getMoodCommandMaxID())! + 1
-        
-        SHSQLManager.share()?.insertNewMoodCommand(for: command)
+        command.id =
+            SHSQLiteManager.shared.getMaxIDForMoodCommand() + 1
+          
+        _ = SHSQLiteManager.shared.insertMoodCommand(command)
         
         detailViewController.moodCommand = command
         
@@ -177,7 +182,7 @@ extension SHEditMoodCommandViewController: UITableViewDelegate {
         let detailViewController = SHDeviceArgsViewController()
         
         detailViewController.moodCommand =
-            allCommands?[indexPath.row]
+            allCommands[indexPath.row]
         
         navigationController?.pushViewController(
             detailViewController,
@@ -195,22 +200,24 @@ extension SHEditMoodCommandViewController: UITableViewDelegate {
             
             tableView.setEditing(false, animated: true)
             
-            let command = self.allCommands?[indexPath.row]
+            let command = self.allCommands[indexPath.row]
             
-            self.allCommands?.remove(at: indexPath.row)
+            self.allCommands.remove(at: indexPath.row)
             
-            SHSQLManager.share()?.delete(command)
+            _ = SHSQLiteManager.shared.deleteMoodCommand(
+                command
+            )
             
             tableView.reloadData()
         }
         
-        let editAction = UITableViewRowAction(style: .default, title: SHLanguageText.edit) { (action, indexPath) in
+        let editAction = UITableViewRowAction(style: .normal, title: SHLanguageText.edit) { (action, indexPath) in
             
             tableView.setEditing(false, animated: true)
             
             let detailViewController = SHDeviceArgsViewController()
             
-            detailViewController.moodCommand = self.allCommands?[indexPath.row]
+            detailViewController.moodCommand = self.allCommands[indexPath.row]
             
             self.navigationController?.pushViewController(
                 detailViewController,
@@ -227,7 +234,7 @@ extension SHEditMoodCommandViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return allCommands?.count ?? 0
+        return allCommands.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -237,7 +244,7 @@ extension SHEditMoodCommandViewController: UITableViewDataSource {
             for: indexPath
         ) as! SHZoneDeviceGroupSettingCell
         
-        cell.moodCommand = allCommands?[indexPath.row]
+        cell.moodCommand = allCommands[indexPath.row]
         
         return cell
     }
@@ -260,16 +267,17 @@ extension SHEditMoodCommandViewController: UITextFieldDelegate {
         textField.backgroundColor = UIColor.clear
         textField.textColor = UIView.textWhiteColor()
         
-        guard let name = textField.text else {
+        guard let scene = mood,
+            let name = textField.text else {
             SVProgressHUD.showInfo(withStatus: "The name cannot be empty!")
             return false
         }
         
         // 获得新名字
-        mood?.moodName = name
+        scene.moodName = name
         textField.endEditing(true)
         
-        SHSQLManager.share()?.update(mood)
+        _ = SHSQLiteManager.shared.updateMood(scene)
         
         return true
     }

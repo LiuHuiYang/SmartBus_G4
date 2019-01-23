@@ -605,13 +605,8 @@ extension SHSchedualExecuteTools {
         mood.moodID = command.parameter1
         mood.zoneID = command.parameter2
         
-        guard let moodCommands =
-            SHSQLManager.share()?.getAllMoodCommands(
-                for: mood
-                ) as? [SHMoodCommand] else {
-                    
-                    return
-        }
+        let moodCommands =
+            SHSQLiteManager.shared.getMoodCommands(mood)
         
         for moodCommand in moodCommands {
             

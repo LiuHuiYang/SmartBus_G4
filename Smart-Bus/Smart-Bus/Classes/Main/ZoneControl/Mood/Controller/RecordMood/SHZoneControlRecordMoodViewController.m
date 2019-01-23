@@ -557,8 +557,8 @@
         
         printLog(@"保存数据");
         
-        // 保存数据
-        [[SHSQLManager shareSQLManager] insertNewMood:self.currentMood];
+        [SHSQLiteManager.shared insertMood:self.currentMood];
+        
         [self saveLightMoods];
         [self saveHvacMoods];
         [self saveShadeMoods];
@@ -607,7 +607,8 @@
     for (SHShade *shade in self.allShades) {
         
         SHMoodCommand *moodCommand = [[SHMoodCommand alloc] init];
-        moodCommand.id = [[SHSQLManager shareSQLManager] getMoodCommandMaxID] + 1;
+        moodCommand.id =
+        [SHSQLiteManager.shared getMaxIDForMoodCommand] + 1;
         moodCommand.deviceName = shade.shadeName;
         moodCommand.zoneID = self.currentMood.zoneID;
         moodCommand.moodID = self.currentMood.moodID;
@@ -622,7 +623,7 @@
         if (shade.currentStatus == SHShadeStatusClose ||
             shade.currentStatus == SHShadeStatusOpen) {
             
-            [[SHSQLManager shareSQLManager] insertNewMoodCommandFor:moodCommand];
+            [SHSQLiteManager.shared insertMoodCommand:moodCommand];
         }
     }
 }
@@ -633,7 +634,7 @@
     for (SHAudio *audio in self.allAudios) {
         
         SHMoodCommand *moodCommand = [[SHMoodCommand alloc] init];
-        moodCommand.id = [[SHSQLManager shareSQLManager] getMoodCommandMaxID] + 1;
+        moodCommand.id = SHSQLiteManager.shared.getMaxIDForMoodCommand + 1;
         moodCommand.deviceName = audio.audioName;
         
         moodCommand.zoneID = self.currentMood.zoneID;
@@ -650,7 +651,7 @@
         moodCommand.parameter4 = audio.recordSongNumber;
         moodCommand.parameter5 = audio.recordPlayStatus;
         
-        [[SHSQLManager shareSQLManager] insertNewMoodCommandFor:moodCommand];
+        [SHSQLiteManager.shared insertMoodCommand:moodCommand];
     }
 }
 
@@ -661,7 +662,7 @@
         
         SHMoodCommand *command = [[SHMoodCommand alloc] init];
         
-        command.id = [[SHSQLManager shareSQLManager] getMoodCommandMaxID] + 1;
+        command.id = SHSQLiteManager.shared.getMaxIDForMoodCommand + 1;
         command.zoneID = self.currentMood.zoneID;
         command.moodID = self.currentMood.moodID;
         command.deviceName = floorHeating.floorHeatingRemark;
@@ -674,7 +675,8 @@
         command.parameter3 = floorHeating.floorHeatingModeType;
         command.parameter4 = floorHeating.manualTemperature;
         
-        [[SHSQLManager shareSQLManager] insertNewMoodCommandFor:command];
+       
+        [SHSQLiteManager.shared insertMoodCommand:command];
     }
 }
 
@@ -684,7 +686,7 @@
     for (SHHVAC *hvac in self.allHVACs) {
         
         SHMoodCommand *moodCommand = [[SHMoodCommand alloc] init];
-        moodCommand.id = [[SHSQLManager shareSQLManager] getMoodCommandMaxID] + 1;
+        moodCommand.id = SHSQLiteManager.shared.getMaxIDForMoodCommand + 1;
         moodCommand.deviceName = hvac.acRemark;
         
         moodCommand.zoneID = self.currentMood.zoneID;
@@ -711,7 +713,7 @@
             moodCommand.parameter4 = hvac.coolTemperture;
         }
         
-        [[SHSQLManager shareSQLManager] insertNewMoodCommandFor:moodCommand];
+        [SHSQLiteManager.shared insertMoodCommand:moodCommand];
     }
 }
 
@@ -721,7 +723,9 @@
     for (SHLight *light in self.allLights) {
         
         SHMoodCommand *moodCommand = [[SHMoodCommand alloc] init];
-        moodCommand.id = [[SHSQLManager shareSQLManager] getMoodCommandMaxID] + 1;
+        moodCommand.id =
+            SHSQLiteManager.shared.getMaxIDForMoodCommand + 1;
+        
         moodCommand.deviceName = light.lightRemark;
         
         moodCommand.zoneID = self.currentMood.zoneID;
@@ -749,7 +753,7 @@
             moodCommand.parameter3 = light.brightness;
         }
         
-        [[SHSQLManager shareSQLManager] insertNewMoodCommandFor:moodCommand];
+        [SHSQLiteManager.shared insertMoodCommand:moodCommand];
     }
 }
 
@@ -1035,9 +1039,11 @@
     }
     
     //  检查名字是否有相同的
-    NSMutableArray *allMoods = [[SHSQLManager shareSQLManager] getAllMoodFor:self.currentZone.zoneID];
     
-    for (SHMood *mood in allMoods) {
+    NSArray * moods =
+        [SHSQLiteManager.shared getMoods:self.currentZone.zoneID];
+    
+    for (SHMood *mood in moods) {
         
         if ([mood.moodName isEqualToString:name]) {
             
@@ -1181,7 +1187,8 @@
     // 1.创建新模式
     SHMood *mood = [[SHMood alloc]  init];
     
-    mood.moodID = [[SHSQLManager shareSQLManager] getMaxMoodIDFor:self.currentZone.zoneID] + 1;
+    mood.moodID = 
+    [SHSQLiteManager.shared getMaxMoodID:self.currentZone.zoneID] + 1;
     
     mood.zoneID = self.currentZone.zoneID;
     mood.moodIconName = self.moodImageNames.firstObject;

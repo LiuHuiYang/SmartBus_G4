@@ -190,7 +190,9 @@ extension SHZoneControlViewController {
                             
                             let zone = self.allZones[index.item]
                             self.allZones.remove(at: index.item)
-                            SHSQLManager.share().deleteZone(zone.zoneID)
+                            
+                            _ = SHSQLiteManager.shared.deleteZone(zone.zoneID)
+                            
                             self.listView.reloadData()
         }
         

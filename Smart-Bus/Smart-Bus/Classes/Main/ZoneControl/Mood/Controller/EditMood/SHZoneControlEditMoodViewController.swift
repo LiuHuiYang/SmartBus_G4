@@ -60,17 +60,20 @@ private let moodEditCellReusableIdentifier =  "SHZoneDeviceGroupSettingCell"
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let zoneID = currentZone?.zoneID,
-            let moods = SHSQLManager.share()?.getAllMood(for: zoneID) as? [SHMood] else {
-                
-            SVProgressHUD.showInfo(
-                withStatus: SHLanguageText.noData
-            )
-                
+        guard let zoneID = currentZone?.zoneID else {
+            
             return
         }
         
-        allMoods = moods
+        allMoods =
+            SHSQLiteManager.shared.getMoods(zoneID)
+        
+        if allMoods.isEmpty {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+        }
         
         moodsListView.reloadData()
     }
@@ -89,12 +92,12 @@ private let moodEditCellReusableIdentifier =  "SHZoneDeviceGroupSettingCell"
         
         mood.zoneID = zoneID
         mood.moodID =
-            ((SHSQLManager.share()?.getMaxMoodID(for: zoneID)) ?? 0) + 1
+            SHSQLiteManager.shared.getMaxMoodID(zoneID) + 1
         
-        mood.moodName = "newMood"
+        mood.moodName = "new Mood"
         mood.moodIconName = "mood_romantic"
         
-        SHSQLManager.share()?.insertNewMood(mood)
+        _ = SHSQLiteManager.shared.insertMood(mood)
         
         editMoodViewController.mood = mood
         
@@ -134,7 +137,8 @@ extension SHZoneControlEditMoodViewController: UITableViewDelegate {
             
             let mood = self.allMoods[indexPath.row]
             self.allMoods.remove(at: indexPath.row)
-            SHSQLManager.share()?.deleteCurrentMood(mood)
+             
+            _ = SHSQLiteManager.shared.deleteMood(mood)
             
             tableView.reloadData()
         }

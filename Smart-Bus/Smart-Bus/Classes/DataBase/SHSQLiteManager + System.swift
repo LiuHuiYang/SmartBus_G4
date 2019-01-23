@@ -11,6 +11,35 @@ import Foundation
 /// 设备类型操作
 extension SHSQLiteManager {
     
+    /// 保存区域中的 设备类型
+    func saveSystemIDs(_ systemID: [UInt], zoneID: UInt) -> Bool { 
+        
+        let sql =
+            "delete from SystemInZone where " +
+            "ZoneID = \(zoneID); "
+        
+        if executeSql(sql) == false {
+            
+            return false
+        }
+        
+        // 重新记录新的数据
+        
+        for type in systemID {
+            
+            let insertSQL =
+                "insert into SystemInZone values( " +
+                "\(zoneID), \(type));"
+            
+            if executeSql(insertSQL) == false {
+                
+                return false
+            }
+        }
+        
+        return true
+    }
+    
     /// 获得系统设备名称
     func getSystemNames() -> [String] {
         

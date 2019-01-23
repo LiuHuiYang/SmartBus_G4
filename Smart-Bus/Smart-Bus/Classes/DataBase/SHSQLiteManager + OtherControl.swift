@@ -12,6 +12,15 @@ import Foundation
 // MARK: - 其实控制
 extension SHSQLiteManager {
     
+    
+    /// 删除区域中的所有的 其它控制
+    func deleteOtherControls(_ zoneID: UInt) -> Bool {
+        
+        // 暂时没有实现
+        
+        return false
+    }
+    
     /// 增加 其它控件
     func addOtherControl() -> Bool {
      

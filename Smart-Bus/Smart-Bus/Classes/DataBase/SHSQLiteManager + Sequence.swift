@@ -57,6 +57,16 @@ extension SHSQLiteManager {
         return sequenceID
     }
     
+    /// 删除指定区域的所有Sequence
+    func deleteSequences(_ zoneID: UInt) -> Bool {
+        
+        let sql =
+            "delete from SequenceInZone where " +
+            "zoneID = \(zoneID);"
+        
+        return executeSql(sql)
+    }
+    
     /// 删除当前的 Sequence
     func deleteSequence(_ sequence: SHSequence) -> Bool {
         

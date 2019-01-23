@@ -19,16 +19,20 @@ class SHSchduleMoodView: UIView, loadNibView {
         
         didSet {
             
-            guard let plan = schedual,
-                let moods = SHSQLManager.share()?.getAllMood(for:plan.zoneID) as? [SHMood] else {
-                    
-                    SVProgressHUD.showInfo(
-                        withStatus: SHLanguageText.noData
-                    )
-                    return
+            guard let plan = schedual else {
+                
+                return
             }
             
-            allMoods = moods
+            allMoods =
+                SHSQLiteManager.shared.getMoods(plan.zoneID)
+            
+            if allMoods.isEmpty {
+                
+                SVProgressHUD.showInfo(
+                    withStatus: SHLanguageText.noData
+                )
+            }
             
             moodListView.reloadData()
             

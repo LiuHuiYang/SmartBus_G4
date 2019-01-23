@@ -46,46 +46,52 @@ extension SHDeviceArgsViewController {
     /// 保存
     func updateMoodCommand(value: String, index: Int) {
         
+        guard let command = self.moodCommand else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.moodCommand?.deviceName = value
+            command.deviceName = value
             
         case 1:
-            self.moodCommand?.deviceType = UInt(value) ?? 0
+            command.deviceType = UInt(value) ?? 0
             
         case 2:
-            self.moodCommand?.subnetID = UInt8(value) ?? 0
+            command.subnetID = UInt8(value) ?? 0
             
         case 3:
-            self.moodCommand?.deviceID = UInt8(value) ?? 0
+            command.deviceID = UInt8(value) ?? 0
             
         case 4:
-            self.moodCommand?.parameter1 = UInt(value) ?? 0
+            command.parameter1 = UInt(value) ?? 0
             
         case 5:
-            self.moodCommand?.parameter2 = UInt(value) ?? 0
+            command.parameter2 = UInt(value) ?? 0
             
         case 6:
-            self.moodCommand?.parameter3 = UInt(value) ?? 0
+            command.parameter3 = UInt(value) ?? 0
             
         case 7:
-            self.moodCommand?.parameter4 = UInt(value) ?? 0
+            command.parameter4 = UInt(value) ?? 0
             
         case 8:
-            self.moodCommand?.parameter5 = UInt(value) ?? 0
+            command.parameter5 = UInt(value) ?? 0
             
         case 9:
-            self.moodCommand?.parameter6 = UInt(value) ?? 0
+            command.parameter6 = UInt(value) ?? 0
             
         case 10:
-            self.moodCommand?.delayMillisecondAfterSend = UInt(value) ?? 0
+            command.delayMillisecondAfterSend =
+                UInt(value) ?? 0
             
         default:
             break;
         }
         
-        SHSQLManager.share()?.update(moodCommand)
+        _ = SHSQLiteManager.shared.updateMoodCommand(command)
+        
     }
 }
 

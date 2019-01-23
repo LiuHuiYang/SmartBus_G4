@@ -52,7 +52,7 @@ extension SHSQLiteManager {
     }
     
     /// 删除区域的light
-    func deleteZoneLights(zoneID: UInt) -> Bool {
+    func deleteLights(zoneID: UInt) -> Bool {
         
         let sql =
             "delete from LightInZone Where " +
