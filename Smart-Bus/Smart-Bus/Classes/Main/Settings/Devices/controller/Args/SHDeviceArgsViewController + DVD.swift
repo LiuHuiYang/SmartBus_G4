@@ -81,84 +81,88 @@ extension SHDeviceArgsViewController {
     /// 更新DVD
     func updateMediaDVD(value: String, index: Int) {
         
+        guard let dvd = self.mediaDVD else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.mediaDVD?.remark = value
+            dvd.remark = value
             
         case 1:
-            self.mediaDVD?.subnetID = UInt8(value) ?? 1
+            dvd.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.mediaDVD?.deviceID = UInt8(value) ?? 0
+            dvd.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.mediaDVD?.universalSwitchIDforOn = UInt(value) ?? 0
+            dvd.universalSwitchIDforOn = UInt(value) ?? 0
             
         case 4:
-            self.mediaDVD?.universalSwitchStatusforOn = UInt(value) ?? 0
+            dvd.universalSwitchStatusforOn = UInt(value) ?? 0
             
         case 5:
-            self.mediaDVD?.universalSwitchIDforOff = UInt(value) ?? 0
+            dvd.universalSwitchIDforOff = UInt(value) ?? 0
             
         case 6:
-            self.mediaDVD?.universalSwitchStatusforOff = UInt(value) ?? 0
+            dvd.universalSwitchStatusforOff = UInt(value) ?? 0
             
         case 7:
-            self.mediaDVD?.universalSwitchIDfoMenu = UInt(value) ?? 0
+            dvd.universalSwitchIDfoMenu = UInt(value) ?? 0
             
         case 8:
-            self.mediaDVD?.universalSwitchIDfoUp = UInt(value) ?? 0
+            dvd.universalSwitchIDfoUp = UInt(value) ?? 0
             
         case 9:
-            self.mediaDVD?.universalSwitchIDforDown = UInt(value) ?? 0
+            dvd.universalSwitchIDforDown = UInt(value) ?? 0
             
         case 10:
-            self.mediaDVD?.universalSwitchIDforFastForward = UInt(value) ?? 0
+            dvd.universalSwitchIDforFastForward = UInt(value) ?? 0
             
         case 11:
-            self.mediaDVD?.universalSwitchIDforBackForward = UInt(value) ?? 0
+            dvd.universalSwitchIDforBackForward = UInt(value) ?? 0
             
         case 12:
-            self.mediaDVD?.universalSwitchIDforOK = UInt(value) ?? 0
+            dvd.universalSwitchIDforOK = UInt(value) ?? 0
             
         case 13:
-            self.mediaDVD?.universalSwitchIDforPREVChapter = UInt(value) ?? 0
+            dvd.universalSwitchIDforPREVChapter = UInt(value) ?? 0
             
         case 14:
-            self.mediaDVD?.universalSwitchIDforNextChapter = UInt(value) ?? 0
+            dvd.universalSwitchIDforNextChapter = UInt(value) ?? 0
             
         case 15:
-            self.mediaDVD?.universalSwitchIDforPlayPause = UInt(value) ?? 0
+            dvd.universalSwitchIDforPlayPause = UInt(value) ?? 0
             
         case 16:
-            self.mediaDVD?.universalSwitchIDforPlayRecord = UInt(value) ?? 0
+            dvd.universalSwitchIDforPlayRecord = UInt(value) ?? 0
             
         case 17:
-            self.mediaDVD?.universalSwitchIDforPlayStopRecord = UInt(value) ?? 0
+            dvd.universalSwitchIDforPlayStopRecord = UInt(value) ?? 0
             
         case 18:
-            self.mediaDVD?.iRMacroNumberForDVDStart0 = UInt(value) ?? 0
+            dvd.iRMacroNumberForDVDStart0 = UInt(value) ?? 0
             
         case 19:
-            self.mediaDVD?.iRMacroNumberForDVDStart1 = UInt(value) ?? 0
+            dvd.iRMacroNumberForDVDStart1 = UInt(value) ?? 0
             
         case 20:
-            self.mediaDVD?.iRMacroNumberForDVDStart2 = UInt(value) ?? 0
+            dvd.iRMacroNumberForDVDStart2 = UInt(value) ?? 0
             
         case 21:
-            self.mediaDVD?.iRMacroNumberForDVDStart3 = UInt(value) ?? 0
+            dvd.iRMacroNumberForDVDStart3 = UInt(value) ?? 0
             
         case 22:
-            self.mediaDVD?.iRMacroNumberForDVDStart4 = UInt(value) ?? 0
+            dvd.iRMacroNumberForDVDStart4 = UInt(value) ?? 0
             
         case 23:
-            self.mediaDVD?.iRMacroNumberForDVDStart5 = UInt(value) ?? 0
+            dvd.iRMacroNumberForDVDStart5 = UInt(value) ?? 0
             
         default:
             break
         }
-        
-        SHSQLManager.share()?.updateMediaDVD(inZone: mediaDVD)
+         
+        _ = SHSQLiteManager.shared.updateDVD(dvd)
     }
 }

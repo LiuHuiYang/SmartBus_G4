@@ -13,6 +13,8 @@ import Foundation
 extension SHSQLiteManager {
     
     
+   
+    
     
     /// 增加控制单元
     func addSatControlItems() {

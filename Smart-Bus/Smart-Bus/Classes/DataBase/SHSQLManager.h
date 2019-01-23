@@ -167,24 +167,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得卫星电视指定分类中的所有频道
 - (NSMutableArray *)getMediaSATChannelFor:(SHMediaSATCategory *)category;
 
-// MARK: - DVD
-
-/// 保存当前DVD
-- (void)updateMediaDVDInZone:(SHMediaDVD *)mediaDVD;
-
-/// 删除当前的DVD
-- (BOOL)deleteDVDInZone:(SHMediaDVD *)mediaDVD;
-
-/// 删除区域中的DVD
-- (BOOL)deleteZoneDVDs:(NSUInteger)zoneID;
-
-/// 增加DVD设备
-- (NSInteger)inserNewMediaDVD:(SHMediaDVD *)mediaDVD;
-
-/// 获得当前区域中的DVD
-- (NSMutableArray *)getMediaDVDFor:(NSUInteger)zoneID;
-
-
+  
 // MARK: - icon
 
 /// 根据名称获得图片

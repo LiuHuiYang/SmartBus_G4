@@ -109,9 +109,7 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 if let dvd = self.allDevices[indexPath.row]
                         as? SHMediaDVD {
                     
-                    SHSQLManager.share()?.deleteDVD(
-                        inZone: dvd
-                    )
+                    _ = SHSQLiteManager.shared.deleteDVD(dvd)
                     
                     self.allDevices.remove(dvd)
                 }
@@ -793,10 +791,10 @@ extension SHSystemDetailViewController {
             dvd.remark = "dvd"
             dvd.zoneID = zoneID
             
-            let result = SHSQLManager.share()?.inserNewMediaDVD(
-                dvd) ?? 1
+            let result =
+                SHSQLiteManager.shared.insertDVD(dvd)
             
-            dvd.id = UInt(result)
+            dvd.id = (result == 0) ? 1 : result
             
             detailController.mediaDVD = dvd
             
@@ -1017,14 +1015,10 @@ extension SHSystemDetailViewController {
             allDevices =  NSMutableArray(array: tvs)
             
         case .dvd:
-            guard let dvds =
-                SHSQLManager.share()?.getMediaDVD(
-                    for: zoneID
-                ) else {
-                return
-            }
+        
+            let dvds = SHSQLiteManager.shared.getDVDs(zoneID)
             
-            allDevices = dvds
+            allDevices = NSMutableArray(array: dvds)
             
         case .sat:
             guard let sats =

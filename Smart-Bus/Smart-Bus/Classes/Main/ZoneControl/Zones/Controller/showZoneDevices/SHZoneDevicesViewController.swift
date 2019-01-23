@@ -228,14 +228,12 @@ extension SHZoneDevicesViewController {
         case .tv:
            
             let tvs = SHSQLiteManager.shared.getMediaTV(zoneID)
-            
             allDevices = tvs as [Any]
             
         case .dvd:
-            if let dvds =  SHSQLManager.share()?.getMediaDVD(for: zoneID) {
-                
-                allDevices = dvds as! [Any]
-            }
+            
+            let dvds = SHSQLiteManager.shared.getDVDs(zoneID)
+            allDevices = dvds as [Any]
             
         case .sat:
             if let sats =  SHSQLManager.share()?.getMediaSAT(for: zoneID) {
