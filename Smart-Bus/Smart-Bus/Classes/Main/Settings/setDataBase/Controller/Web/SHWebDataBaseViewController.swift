@@ -50,7 +50,7 @@ class SHWebDataBaseViewController: SHViewController {
         
         // 由于启动时会依据是否为最新版本来判断 是否需要判断数据为为新的还是旧的
         // 所以清空沙盒中的版本记录, App重新启动时会重新执行一次
-        UserDefaults.standard.set("", forKey: "sandboxVersionKey")
+        UserDefaults.standard.set("", forKey: sandboxVersionKey)
         UserDefaults.standard.synchronize()
         
         // 检查网络环境

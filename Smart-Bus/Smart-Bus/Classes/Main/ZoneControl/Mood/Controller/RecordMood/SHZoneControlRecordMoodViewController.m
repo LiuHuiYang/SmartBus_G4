@@ -47,7 +47,7 @@
 @property (weak, nonatomic) IBOutlet SHCommandButton *floorHeatingButton;
 
 /// 当前区域的所有系统ID
-@property (strong, nonatomic) NSMutableArray *systemIDs;
+@property (strong, nonatomic) NSArray *systemIDs;
 
 /// 录制控制的背景界面
 @property (weak, nonatomic) IBOutlet UIView *recordView;
@@ -1247,7 +1247,8 @@
 - (void)showRecordDeviceKinds {
     
     // 获得当前区域中的所有系统设备
-    self.systemIDs = [[SHSQLManager shareSQLManager] getSystemID:self.currentZone.zoneID];
+    self.systemIDs =
+    [SHSQLiteManager.shared getSystemIDs:self.currentZone.zoneID];
     
     self.lightButton.hidden = !([self.systemIDs containsObject:@(SHSystemDeviceTypeLight)]);
     

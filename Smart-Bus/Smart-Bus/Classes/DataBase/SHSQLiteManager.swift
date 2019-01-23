@@ -14,7 +14,7 @@ import FMDB
 private let dataBaseName = "SMART-BUS.sqlite";
 
 /// 沙盒记录版本标示
-private let sandboxVersionKey = "sandboxVersionKey"
+let sandboxVersionKey = "sandboxVersionKey"
 
 @objcMembers class SHSQLiteManager: NSObject {
 
@@ -23,7 +23,6 @@ private let sandboxVersionKey = "sandboxVersionKey"
     
     /// 全局操作队列
     var queue: FMDatabaseQueue?
-    
     
     /// 初始化
     override init() {
@@ -77,26 +76,47 @@ private let sandboxVersionKey = "sandboxVersionKey"
     }
     
     
-    /// 增加字段操作
-    func alertTablesOrColumnName() {
+    /// 删除残留数据
+    func deleteResidualData() {
+    
+        // 有效区域
+        let zones = getZoneID(tableName: "Zones")
         
-        /**** 1. 版本匹配记录 *****/
+        // 查询相关的区域
+        var systemDeviceZones =
+            getZoneID(tableName: "SystemInZone")
+        
+        var delelteZones = [SHZone]()
+        
+        for zoneID in systemDeviceZones.enumerated() {
+            
+            if zones.contains(zoneID.element) {
+                
+//                systemDeviceZones.remove(at: zoneID.offset)
+            }
+        }
+    
+        // 删除残留数据
+        for zoneID in systemDeviceZones {
+            
+//            _ = deleteZone(zoneID)
+        }
+    }
+    
+    /// 是否为最新版本
+    func isLatestVersion() -> Bool {
         
         // 获得记录版本
         let sandboxVersion =
             UserDefaults.standard.object(
                 forKey: sandboxVersionKey
-            ) as? String
+                ) as? String
         
         // 当前应用版本
         let currentVersion =
             Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
-        if currentVersion == sandboxVersion {
-            
-//            return // 最新版本
-        }
-        
+       
         // 设置最新版本
         UserDefaults.standard.set(
             currentVersion,
@@ -105,8 +125,21 @@ private let sandboxVersionKey = "sandboxVersionKey"
         
         UserDefaults.standard.synchronize()
         
-        /**** 2. 删除区域中的旧数据 *****/
+        return currentVersion == sandboxVersion
+    }
+    
+    /// 增加字段操作
+    func alertTablesOrColumnName() {
         
+        /**** 1. 版本匹配记录 *****/
+        if isLatestVersion() {
+            
+//            return // 最新版本
+        }
+        
+        /**** 2. 删除区域中的旧数据 *****/
+        deleteResidualData()
+         
         /**** 3. 设置字段和新设备 *****/
         
         // 增加多区域支持

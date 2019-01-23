@@ -32,7 +32,7 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
 @property (weak, nonatomic) IBOutlet UITableView *deviceListView;
 
 /// 设置名称
-@property (strong, nonatomic) NSMutableArray *deviceNames;
+@property (strong, nonatomic) NSArray *deviceNames;
 
 /// 区域中包含的所有开启功能的系统设备
 @property (nonatomic, strong) NSMutableArray *allSystems;
@@ -73,7 +73,7 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
             
             [self.iconButton setImage:[self.iconButton.imageView circleImageWithImage:zoneImage borderWidth:0 borderColor: nil] forState:UIControlStateNormal];
             
-            [[SHSQLManager shareSQLManager] updateZone:self.currentZone];
+            [SHSQLiteManager.shared updateZone:self.currentZone];
         };
         
         SHNavigationController *navigationController = [[SHNavigationController alloc] initWithRootViewController:zoneIconViewController];
@@ -166,7 +166,8 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
     [[SHSQLManager shareSQLManager] inserNewIcon:icon];
     
     self.currentZone.zoneIconName = icon.iconName;
-    [[SHSQLManager shareSQLManager] updateZone:self.currentZone];
+    
+    [SHSQLiteManager.shared updateZone:self.currentZone];
     
     [self.iconButton setImage:sourceImage forState:UIControlStateNormal];
 }
@@ -194,8 +195,8 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
     }
     
     self.currentZone.zoneName = textField.text;
-    
-    [[SHSQLManager shareSQLManager] updateZone:self.currentZone];
+  
+    [SHSQLiteManager.shared updateZone:self.currentZone];
 }
 
 /// 退出
@@ -268,7 +269,11 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
     
     [super viewWillAppear:animated];
     
-    self.allSystems = [[SHSQLManager shareSQLManager] getSystemID:self.currentZone.zoneID];
+    NSArray *types =
+        [SHSQLiteManager.shared getSystemIDs:self.currentZone.zoneID];
+    
+    self.allSystems = [NSMutableArray arrayWithArray:types];
+  
     
     [self.deviceListView reloadData];
 }
@@ -277,6 +282,8 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
     [super viewDidLoad];
     
     self.navigationItem.title = @"System Setting";
+    
+    self.deviceNames = [SHSQLiteManager.shared getSystemNames];
     
     [self.deviceListView registerNib:[UINib nibWithNibName:systemCellReusableIdentifier bundle:nil] forCellReuseIdentifier:systemCellReusableIdentifier];
     
@@ -308,16 +315,6 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
         _allSystems = [NSMutableArray array];
     }
     return _allSystems;
-}
-
-/// 所有的设备名称
-- (NSMutableArray *)deviceNames {
-    
-    if (!_deviceNames) {
-        
-        _deviceNames = [[SHSQLManager shareSQLManager] getAllSystemName];
-    }
-    return _deviceNames;
 }
 
 @end

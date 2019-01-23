@@ -121,11 +121,10 @@ import UIKit
         
         if audioName == "audio" || audioName == "(null)" {
             
-            if let zone = SHSQLManager.share()?.getZone(UInt(zoneID)) {
+            if let zone = SHSQLiteManager.shared.getZone(zoneID: zoneID) {
                 
                 audioName = zone.zoneName ?? "Audio"
             }
-            
         }
     }
     

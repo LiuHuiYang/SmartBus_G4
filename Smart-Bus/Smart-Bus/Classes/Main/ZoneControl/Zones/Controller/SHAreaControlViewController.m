@@ -18,7 +18,7 @@
 @property (assign, nonatomic) SHZone *currentZone;
 
 /// 所有的设置类型ID
-@property (strong, nonatomic) NSMutableArray *allDeviceTypeIDs;
+@property (strong, nonatomic) NSArray *allDeviceTypeIDs;
 
 /// 系统相关的名称
 @property (strong, nonatomic) NSMutableArray *deviceTypeNames;
@@ -302,7 +302,9 @@
 /// 添加区域中的所有子控制器
 - (void)addChildViewControllers {
 
-    self.allDeviceTypeIDs =  [[SHSQLManager shareSQLManager] getSystemID:self.currentZone.zoneID];
+    self.allDeviceTypeIDs =
+        [SHSQLiteManager.shared
+            getSystemIDs:self.currentZone.zoneID];
     
     if (!self.allDeviceTypeIDs.count) {
         

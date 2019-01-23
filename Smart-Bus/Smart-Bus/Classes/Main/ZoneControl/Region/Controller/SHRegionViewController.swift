@@ -63,7 +63,7 @@ class SHRegionViewController: SHViewController {
         super.viewWillAppear(animated)
     
         
-        regions = SHSQLiteManager.shared.getAllRegions()
+        regions = SHSQLiteManager.shared.getRegions()
         
         if regions.isEmpty {
             
@@ -192,7 +192,9 @@ extension SHRegionViewController {
                             
                             let region = self.regions[index.item]
                             self.regions.remove(at: index.item)
-                            SHSQLManager.share()?.deleteRegion(region.regionID)
+                            
+                            _ = SHSQLiteManager.shared.deleteRegion(region.regionID)
+                            
                             self.listView.reloadData()
         }
         

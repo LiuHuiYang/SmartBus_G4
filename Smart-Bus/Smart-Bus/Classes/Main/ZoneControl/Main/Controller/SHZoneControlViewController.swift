@@ -120,12 +120,13 @@ extension SHZoneControlViewController {
         }
         
         let zone = SHZone()
-        zone.zoneID = SHSQLManager.share().getMaxZoneID() + 1
+        zone.zoneID =
+            SHSQLiteManager.shared.getMaxZoneID() + 1
         zone.zoneName = "New Zone"
         zone.zoneIconName = "Demokit"
         zone.regionID = region?.regionID ?? 1 // 默认是1
         
-        SHSQLManager.share().insertNewZone(zone)
+        _ = SHSQLiteManager.shared.insertZone(zone)
         
         let systemViewController = SHAreaSettingViewController()
         
@@ -222,9 +223,11 @@ extension SHZoneControlViewController: UICollectionViewDelegate {
         
         let currentZone = allZones[indexPath.item]
         
-        let systemDevices = SHSQLManager.share()?.getSystemID(currentZone.zoneID) as? [SHSystem]
+        let systemDevices =  SHSQLiteManager.shared.getSystemIDs(
+                currentZone.zoneID
+        )
     
-        if systemDevices?.count == 0 {
+        if systemDevices.isEmpty {
             
             let systemViewController =
                 SHAreaSettingViewController()
@@ -386,10 +389,14 @@ extension SHZoneControlViewController {
             }
         }
         
-        guard let area = region,
-            let zones = (SHSQLManager.share()?.getZonesForRegion(area.regionID) as? [SHZone])
+        guard let area = region else {
+            
+            return
+        }
         
-            else {
+        allZones = SHSQLiteManager.shared.getZones(regionID: area.regionID)
+        
+        if allZones.isEmpty {
             
             SVProgressHUD.showInfo(
                 withStatus: SHLanguageText.noData
@@ -398,16 +405,6 @@ extension SHZoneControlViewController {
             return
         }
         
-        if zones.isEmpty {
-            
-            SVProgressHUD.showInfo(
-                withStatus: SHLanguageText.noData
-            )
-            
-            return
-        }
-        
-        allZones =  zones
         listView.reloadData()
     }
     

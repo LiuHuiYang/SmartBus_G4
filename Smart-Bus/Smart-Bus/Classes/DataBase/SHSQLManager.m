@@ -36,7 +36,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *ligtSql = [NSString stringWithFormat:@"select ID, ZoneID, NineInOneID, NineInOneName, SubnetID, DeviceID, SwitchIDforControlSure, SwitchIDforControlUp, SwitchIDforControlDown, SwitchIDforControlLeft, SwitchIDforControlRight, SwitchNameforControl1, SwitchIDforControl1,  SwitchNameforControl2, SwitchIDforControl2, SwitchNameforControl3, SwitchIDforControl3,  SwitchNameforControl4, SwitchIDforControl4, SwitchNameforControl5, SwitchIDforControl5, SwitchNameforControl6, SwitchIDforControl6,  SwitchNameforControl7, SwitchIDforControl7, SwitchNameforControl8, SwitchIDforControl8, SwitchIDforNumber0, SwitchIDforNumber1,  SwitchIDforNumber2, SwitchIDforNumber3, SwitchIDforNumber4, SwitchIDforNumber5, SwitchIDforNumber6, SwitchIDforNumber7, SwitchIDforNumber8, SwitchIDforNumber9, SwitchIDforNumberAsterisk, SwitchIDforNumberPound, SwitchNameforSpare1, SwitchIDforSpare1,  SwitchNameforSpare2, SwitchIDforSpare2, SwitchNameforSpare3, SwitchIDforSpare3, SwitchNameforSpare4, SwitchIDforSpare4,  SwitchNameforSpare5, SwitchIDforSpare5,  SwitchNameforSpare6, SwitchIDforSpare6, SwitchNameforSpare7, SwitchIDforSpare7, SwitchNameforSpare8, SwitchIDforSpare8, SwitchNameforSpare9, SwitchIDforSpare9, SwitchNameforSpare10, SwitchIDforSpare10, SwitchNameforSpare11, SwitchIDforSpare11, SwitchNameforSpare12, SwitchIDforSpare12 from NineInOneInZone where ZoneID = %tu order by NineInOneID;", zoneID];
     
-    NSMutableArray *array = [self selectProprty:ligtSql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:ligtSql];
     
     NSMutableArray *nineInOnes = [NSMutableArray arrayWithCapacity:array.count];
     
@@ -171,7 +171,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                            
                            nineInOne.zoneID, nineInOne.nineInOneID];
     
-    return [self executeSql:updateSQL];
+    return [SHSQLiteManager.shared executeSql:updateSQL];
 }
 
 /// 删除当前的9in1设备
@@ -179,7 +179,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *deleteSql = [NSString stringWithFormat:@"delete from NineInOneInZone Where zoneID = %tu and SubnetID = %d and DeviceID = %d and NineInOneID = %tu;", nineInOne.zoneID, nineInOne.subnetID, nineInOne.deviceID, nineInOne.nineInOneID];
     
-    return [self executeSql:deleteSql];
+    return [SHSQLiteManager.shared executeSql:deleteSql];
 }
 
 /// 删除区域中的9in1
@@ -191,7 +191,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
         ];
     
-    return [self executeSql:deleteSql];
+    return [SHSQLiteManager.shared executeSql:deleteSql];
 }
 
 /// 增加一个新的NineInOne
@@ -301,7 +301,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                      nineInOne.switchIDforSpare12
                      ];
     
-    return [self executeSql:sql];
+    return [SHSQLiteManager.shared executeSql:sql];
     
 }
 
@@ -310,7 +310,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *sql = [NSString stringWithFormat:@"select max(NineInOneID) from NineInOneInZone where ZoneID = %tu;", zoneID];
     
-    id resID = [[[self selectProprty:sql] lastObject] objectForKey:@"max(NineInOneID)"];
+    id resID = [[[SHSQLiteManager.shared selectProprty:sql] lastObject] objectForKey:@"max(NineInOneID)"];
     
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
@@ -321,14 +321,14 @@ const NSUInteger maxIconIDForDataBase = 10;
     NSString *selectSQL = [NSString stringWithFormat:@"select Distinct SystemID from systemDefnition where SystemID = %tu;", SHSystemDeviceTypeNineInOne];
     
     // 如果不存在
-    if ([[self selectProprty:selectSQL] count]) {
+    if ([[SHSQLiteManager.shared selectProprty:selectSQL] count]) {
         
         return YES;
     }
     
     NSString *insertSQL = [NSString stringWithFormat:@"insert into systemDefnition (SystemID, SystemName) values(%tu, '%@');", SHSystemDeviceTypeNineInOne, @"9in1"];
     
-    return [self executeSql:insertSQL];
+    return [SHSQLiteManager.shared executeSql:insertSQL];
 }
 
  
@@ -337,10 +337,10 @@ const NSUInteger maxIconIDForDataBase = 10;
 /// 增加延时字段
 - (void)addMoodCommandDelaytime {
     
-    if (![self isColumnName:@"DelayMillisecondAfterSend" consistinTable:@"MoodCommands"]) {
+    if (![SHSQLiteManager.shared isColumnName:@"DelayMillisecondAfterSend" consistinTable:@"MoodCommands"]) {
         
         // 增加remark
-        [self executeSql:@"ALTER TABLE MoodCommands ADD DelayMillisecondAfterSend INTEGER NOT NULL DEFAULT 100;"];
+        [SHSQLiteManager.shared executeSql:@"ALTER TABLE MoodCommands ADD DelayMillisecondAfterSend INTEGER NOT NULL DEFAULT 100;"];
     }
 }
 
@@ -349,7 +349,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *sql = [NSString stringWithFormat:@"select ID, ZoneID, MoodID, deviceType, SubnetID, DeviceID, deviceName, Parameter1, Parameter2, Parameter3, Parameter4, Parameter5, Parameter6, DelayMillisecondAfterSend from MoodCommands where ZoneID = %tu and MoodID = %tu order by id;", mood.zoneID, mood.moodID];
     
-    NSArray *array = [self selectProprty:sql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:sql];
     
     NSMutableArray *commands = [NSMutableArray arrayWithCapacity:array.count];
     
@@ -384,7 +384,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                            command.zoneID, command.moodID, command.id
                            ];
     
-    return [self executeSql:updateSQL];
+    return [SHSQLiteManager.shared executeSql:updateSQL];
 }
 
 /// 删除场景模式中指定的命令
@@ -396,7 +396,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                             command.zoneID, command.moodID, command.id
                             ];
     
-    return [self executeSql:commandSql];
+    return [SHSQLiteManager.shared executeSql:commandSql];
 }
 
 /// 删除当前的模式
@@ -409,7 +409,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                          mood.zoneID, mood.moodID
                          ];
     
-    BOOL moodRes = [self executeSql:moodsql];
+    BOOL moodRes = [SHSQLiteManager.shared executeSql:moodsql];
     
     // 删除场景中的命令集
     NSString *commandSql = [NSString stringWithFormat:
@@ -418,7 +418,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                             mood.zoneID, mood.moodID
                             ];
     
-    BOOL commandRes = [self executeSql:commandSql];
+    BOOL commandRes = [SHSQLiteManager.shared executeSql:commandSql];
     
     return moodRes && commandRes;
 }
@@ -435,7 +435,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
         ];
     
-    result = [self executeSql:commandSql];
+    result = [SHSQLiteManager.shared executeSql:commandSql];
     
     // 删除场景
     NSString *moodsql =
@@ -444,7 +444,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
         ];
     
-    result = [self executeSql:moodsql];
+    result = [SHSQLiteManager.shared executeSql:moodsql];
     
     return result;
 }
@@ -476,7 +476,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                             ];
     
     
-    return [self executeSql:commandSql];
+    return [SHSQLiteManager.shared executeSql:commandSql];
 }
 
 /// 更新模式
@@ -490,7 +490,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                            mood.zoneID, mood.moodID
                            ];
     
-    return [self executeSql:updateSql];
+    return [SHSQLiteManager.shared executeSql:updateSql];
 }
 
 /// 插入当前区域的新模式
@@ -506,7 +506,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                          mood.isSystemMood
                          ];
     
-    return [self executeSql:moodSql];
+    return [SHSQLiteManager.shared executeSql:moodSql];
 }
 
 /// 模式命令的最大ID
@@ -515,7 +515,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     NSString *moodIDSql = [NSString stringWithFormat:@"select max(ID) from MoodCommands;"];
     
     // 获得结果ID
-    id resID = [[[self selectProprty:moodIDSql] lastObject] objectForKey:@"max(ID)"];
+    id resID = [[[SHSQLiteManager.shared selectProprty:moodIDSql] lastObject] objectForKey:@"max(ID)"];
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
 
@@ -525,7 +525,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     NSString *moodIDSql = [NSString stringWithFormat:@"select max(ID) from MoodInZone;"];
     
     // 获得结果ID
-    id resID = [[[self selectProprty:moodIDSql] lastObject] objectForKey:@"max(ID)"];
+    id resID = [[[SHSQLiteManager.shared selectProprty:moodIDSql] lastObject] objectForKey:@"max(ID)"];
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
 
@@ -535,7 +535,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     NSString *moodIDSql = [NSString stringWithFormat:@"select max(MoodID) from MoodInZone where zoneID = %tu;", zoneID];
     
     // 获得结果ID
-    id resID = [[[self selectProprty:moodIDSql] lastObject] objectForKey:@"max(MoodID)"];
+    id resID = [[[SHSQLiteManager.shared selectProprty:moodIDSql] lastObject] objectForKey:@"max(MoodID)"];
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
 
@@ -545,7 +545,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *moodSql = [NSString stringWithFormat:@"select ZoneID, MoodID, MoodName, MoodIconName, IsSystemMood from MoodInZone where ZoneID = %tu order by MoodID;", zoneID];
     
-    NSMutableArray *array = [self selectProprty:moodSql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:moodSql];
     NSMutableArray *moods = [NSMutableArray arrayWithCapacity:array.count];
     
     for (NSDictionary *dict in array) {
@@ -583,7 +583,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *sql = [NSString stringWithFormat:@"select ID, ScheduleID, typeID, parameter1, parameter2, parameter3, parameter4, parameter5, parameter6 from ScheduleCommands where ScheduleID = %tu;", findSchedualID];
     
-    NSArray *array = [self selectProprty:sql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:sql];
     
     NSMutableArray *commands = [NSMutableArray arrayWithCapacity:array.count];
     
@@ -604,7 +604,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *schduleSql = @"select ID, ScheduleID, ScheduleName, EnabledSchedule, ControlledItemID, ZoneID, FrequencyID, WithSunday, WithMonday, WithTuesday, WithWednesday, WithThursday, WithFriday, WithSaturday, ExecutionHours, ExecutionMins, ExecutionDate, HaveSound from Schedules;";
     
-    NSArray *array = [self selectProprty:schduleSql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:schduleSql];
     
     NSMutableArray *schdules = [NSMutableArray arrayWithCapacity:array.count];
     
@@ -622,7 +622,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 - (NSUInteger)getMaxScheduleID {
     
     // 获得结果ID
-    id resID = [[[self selectProprty:@"select max(scheduleID) from Schedules"] lastObject] objectForKey:@"max(scheduleID)"];
+    id resID = [[[SHSQLiteManager.shared selectProprty:@"select max(scheduleID) from Schedules"] lastObject] objectForKey:@"max(scheduleID)"];
     
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
@@ -649,14 +649,14 @@ const NSUInteger maxIconIDForDataBase = 10;
                                    schedual.haveSound,
                                    schedual.scheduleID];
     
-    return [self executeSql:updateScheduleSql];
+    return [SHSQLiteManager.shared executeSql:updateScheduleSql];
 }
 
 /// 获得Schedual中的最大的ID
 - (NSUInteger)getMaxSchedualID {
     
     // 获得结果ID
-    id resID = [[[self selectProprty:@"select max(ID) from Schedules"] lastObject] objectForKey:@"max(ID)"];
+    id resID = [[[SHSQLiteManager.shared selectProprty:@"select max(ID) from Schedules"] lastObject] objectForKey:@"max(ID)"];
     
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
@@ -665,7 +665,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 - (NSUInteger)getMaxIDForSchedualCommand {
     
     // 获得结果ID
-    id resID = [[[self selectProprty:@"select max(ID) from ScheduleCommands"] lastObject] objectForKey:@"max(ID)"];
+    id resID = [[[SHSQLiteManager.shared selectProprty:@"select max(ID) from ScheduleCommands"] lastObject] objectForKey:@"max(ID)"];
     
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
@@ -677,7 +677,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *inserCommandSql = [NSString stringWithFormat:@"insert into ScheduleCommands values(%tu, %tu, %tu, %tu, %tu, %tu, %tu, %tu, %tu);", maxID, schedualCommand.scheduleID, schedualCommand.typeID, schedualCommand.parameter1, schedualCommand.parameter2, schedualCommand.parameter3, schedualCommand.parameter4, schedualCommand.parameter5, schedualCommand.parameter6];
     
-    [self executeSql:inserCommandSql];
+    [SHSQLiteManager.shared executeSql:inserCommandSql];
     
     //    // 查找要的计划命令集
     //    NSMutableArray *commands = [self getSchedualCommands:schedualCommand.scheduleID];
@@ -725,7 +725,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                            ];
     
     // 插入新的 schedual
-    [self executeSql:insertSql];
+    [SHSQLiteManager.shared executeSql:insertSql];
 }
 
 /// 删除计划及命令
@@ -735,14 +735,14 @@ const NSUInteger maxIconIDForDataBase = 10;
     NSString *schdualSql = [NSString stringWithFormat:
                             @"delete from Schedules where ScheduleID = %tu;", schedual.scheduleID];
     
-    BOOL deleteSchdual = [self executeSql:schdualSql];
+    BOOL deleteSchdual = [SHSQLiteManager.shared executeSql:schdualSql];
     
     // 2. 删除计划中的命令
     NSString *commandSql = [NSString stringWithFormat:
                             @"delete from ScheduleCommands where ScheduleID = %tu;",
                             schedual.scheduleID];
     
-    BOOL deleteCommand = [self executeSql:commandSql];
+    BOOL deleteCommand = [SHSQLiteManager.shared executeSql:commandSql];
     
     return deleteSchdual && deleteCommand;
 }
@@ -755,7 +755,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                                   schedual.scheduleID,
                                   schedual.controlledItemID];
     
-    return [self executeSql:deleteCommandSql];
+    return [SHSQLiteManager.shared executeSql:deleteCommandSql];
 }
  
 // MARK: - 多媒体设备的操作
@@ -766,7 +766,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *tvSql = [NSString stringWithFormat:@"select ID, remark, ZoneID, SubnetID, DeviceID, UniversalSwitchIDforOn, UniversalSwitchStatusforOn, UniversalSwitchIDforOff, UniversalSwitchStatusforOff, UniversalSwitchIDfoMenu, UniversalSwitchIDfoUp, UniversalSwitchIDforDown, UniversalSwitchIDforLeft, UniversalSwitchIDforRight, UniversalSwitchIDforOK, UniversalSwitchIDforSource, IRMacroNumberForProjectorSpare0, IRMacroNumberForProjectorSpare1, IRMacroNumberForProjectorSpare2, IRMacroNumberForProjectorSpare3, IRMacroNumberForProjectorSpare4, IRMacroNumberForProjectorSpare5 from ProjectorInZone where ZoneID = %tu order by id;",  zoneID];
     
-    NSArray *array = [self selectProprty:tvSql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:tvSql];
     
     if (!array.count) {
         return nil;
@@ -796,7 +796,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                            mediaProjector.subnetID,
                            mediaProjector.deviceID];
     
-    return [self executeSql:deleteSql];
+    return [SHSQLiteManager.shared executeSql:deleteSql];
 }
 
 /// 删除区域中的投影仪
@@ -808,7 +808,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
         ];
     
-    return [self executeSql:deleteSql];
+    return [SHSQLiteManager.shared executeSql:deleteSql];
 }
 
 /// 保存投影仪数据
@@ -866,7 +866,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                         mediaProjector.zoneID
                          ];
     
-    [self executeSql:saveSql];
+    [SHSQLiteManager.shared executeSql:saveSql];
 }
 
 /// 增加新的投影仪
@@ -898,13 +898,13 @@ const NSUInteger maxIconIDForDataBase = 10;
                            mediaProjector.iRMacroNumberForProjectorSpare4,
                            mediaProjector.iRMacroNumberForProjectorSpare5];
     
-    BOOL res = [self executeSql:insertSQL];
+    BOOL res = [SHSQLiteManager.shared executeSql:insertSQL];
     
     NSInteger maxID = -1;
     
     if (res) {
         
-        return [[[[self selectProprty:@"select max(ID) from ProjectorInZone;"] lastObject] objectForKey:@"max(ID)"] integerValue];
+        return [[[[SHSQLiteManager.shared selectProprty:@"select max(ID) from ProjectorInZone;"] lastObject] objectForKey:@"max(ID)"] integerValue];
     }
     
     return maxID;
@@ -915,63 +915,45 @@ const NSUInteger maxIconIDForDataBase = 10;
 /// 添加控制单元
 - (void)addSATControlIetms {
  
-    if (![self isColumnName:@"SwitchNameforControl1" consistinTable:@"SATInZone"]) {
+    if (![SHSQLiteManager.shared isColumnName:@"SwitchNameforControl1" consistinTable:@"SATInZone"]) {
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
             @"ALTER TABLE SATInZone ADD SwitchNameforControl1 TEXT DEFAULT 'C1';"];
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchIDforControl1 INTEGER DEFAULT 0;"];
-    }
-    
-   
-    
-    if (![self isColumnName:@"SwitchNameforControl2" consistinTable:@"SATInZone"]) {
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchNameforControl2 TEXT DEFAULT 'C2';"];
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchIDforControl2 INTEGER DEFAULT 0;"];
-    }
-    
-    if (![self isColumnName:@"SwitchNameforControl3" consistinTable:@"SATInZone"]) {
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchNameforControl3 TEXT DEFAULT 'C3';"];
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchIDforControl3 INTEGER DEFAULT 0;"];
-    }
-    
-    
-    if (![self isColumnName:@"SwitchNameforControl4" consistinTable:@"SATInZone"]) {
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchNameforControl4 TEXT DEFAULT 'C4';"];
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchIDforControl4 INTEGER DEFAULT 0;"];
-    }
-    
-    if (![self isColumnName:@"SwitchNameforControl5" consistinTable:@"SATInZone"]) {
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchNameforControl5 TEXT DEFAULT 'C5';"];
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchIDforControl5 INTEGER DEFAULT 0;"];
-    }
-    
-    if (![self isColumnName:@"SwitchNameforControl6" consistinTable:@"SATInZone"]) {
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchNameforControl6 TEXT DEFAULT 'C6';"];
         
-        [self executeSql:
+        [SHSQLiteManager.shared executeSql:
          @"ALTER TABLE SATInZone ADD SwitchIDforControl6 INTEGER DEFAULT 0;"];
     }
-    
+  
 }
 
 /// 获得当前区域的卫星电视
@@ -1027,7 +1009,7 @@ const NSUInteger maxIconIDForDataBase = 10;
           zoneID
         ];
     
-    NSArray *array = [self selectProprty:tvSql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:tvSql];
     
     if (!array.count) {
         return nil;
@@ -1151,13 +1133,13 @@ const NSUInteger maxIconIDForDataBase = 10;
     ];
     
     
-    BOOL res = [self executeSql:insertSQL];
+    BOOL res = [SHSQLiteManager.shared executeSql:insertSQL];
     
     NSInteger maxID = -1;
     
     if (res) {
         
-        return [[[[self selectProprty:@"select max(ID) from SATInZone;"] lastObject] objectForKey:@"max(ID)"] integerValue];
+        return [[[[SHSQLiteManager.shared selectProprty:@"select max(ID) from SATInZone;"] lastObject] objectForKey:@"max(ID)"] integerValue];
     }
     
     return maxID;
@@ -1173,7 +1155,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                            mediaSAT.zoneID, mediaSAT.subnetID, mediaSAT.deviceID
                            ];
     
-    return [self executeSql:deleteSql];
+    return [SHSQLiteManager.shared executeSql:deleteSql];
 }
 
 /// 删除区域中的SAT
@@ -1186,7 +1168,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
         ];
     
-    BOOL deleteSAT = [self executeSql:deleteSQL];
+    BOOL deleteSAT = [SHSQLiteManager.shared executeSql:deleteSQL];
     
     // 删除分类
     NSString *deleteCategorySQL =
@@ -1195,7 +1177,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
         ];
     
-    BOOL deleteCategory = [self executeSql:deleteCategorySQL];
+    BOOL deleteCategory = [SHSQLiteManager.shared executeSql:deleteCategorySQL];
     
     // 删除频道
     NSString *deleteChannelSQL =
@@ -1204,7 +1186,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
          ];
     
-    BOOL deleteChannel = [self executeSql:deleteChannelSQL];
+    BOOL deleteChannel = [SHSQLiteManager.shared executeSql:deleteChannelSQL];
     
     return  (deleteSAT && deleteCategory && deleteChannel);
 }
@@ -1320,7 +1302,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                          mediaSAT.zoneID, mediaSAT.id
                          ];
     
-    [self executeSql:saveSql];
+    [SHSQLiteManager.shared executeSql:saveSql];
 }
 
 
@@ -1335,7 +1317,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             category.categoryID
         ];
     
-    NSArray *array = [self selectProprty:sql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:sql];
     
     NSMutableArray *channels = [NSMutableArray arrayWithCapacity:array.count];
     
@@ -1362,7 +1344,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                            category.zoneID
          ];
     
-    return [self executeSql:insertSql];
+    return [SHSQLiteManager.shared executeSql:insertSql];
 }
 
 
@@ -1377,7 +1359,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             category.zoneID
         ];
     
-    return [self executeSql:deleteSql];
+    return [SHSQLiteManager.shared executeSql:deleteSql];
 }
 
 /// 更新卫星电视分类名称
@@ -1390,7 +1372,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             category.categoryName, category.categoryID
         ];
     
-    return [self executeSql:updateSql];
+    return [SHSQLiteManager.shared executeSql:updateSql];
 }
 
 /// 获得卫星电视的分类
@@ -1400,7 +1382,7 @@ const NSUInteger maxIconIDForDataBase = 10;
         @"select CategoryID, CategoryName, SequenceNo, ZoneID   \
         from SATCategory;";
     
-    NSMutableArray *array = [self selectProprty:sql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:sql];
     
     NSMutableArray *categoryArray = [NSMutableArray arrayWithCapacity:array.count];
     
@@ -1445,7 +1427,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             IRMacroNumberForDVDStart5                           \
             from DVDInZone where ZoneID = %tu order by id;", zoneID];
     
-    NSArray *array = [self selectProprty:tvSql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:tvSql];
     
     if (!array.count) {
         return nil;
@@ -1472,7 +1454,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                            mediaDVD.deviceID
                            ];
     
-    return [self executeSql:deleteSql];
+    return [SHSQLiteManager.shared executeSql:deleteSql];
 }
 
 /// 删除区域中的DVD
@@ -1484,7 +1466,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
         ];
     
-    return [self executeSql:deleteSql];
+    return [SHSQLiteManager.shared executeSql:deleteSql];
 }
 
 /// 增加DVD设备
@@ -1518,13 +1500,13 @@ const NSUInteger maxIconIDForDataBase = 10;
                            mediaDVD.iRMacroNumberForDVDStart5
                            ];
     
-    BOOL res = [self executeSql:insertSQL];
+    BOOL res = [SHSQLiteManager.shared executeSql:insertSQL];
     
     NSInteger maxID = -1;
     
     if (res) {
         
-        return [[[[self selectProprty:@"select max(ID) from DVDInZone;"] lastObject] objectForKey:@"max(ID)"] integerValue];
+        return [[[[SHSQLiteManager.shared selectProprty:@"select max(ID) from DVDInZone;"] lastObject] objectForKey:@"max(ID)"] integerValue];
     }
     
     return maxID;
@@ -1591,7 +1573,7 @@ const NSUInteger maxIconIDForDataBase = 10;
                          mediaDVD.zoneID, mediaDVD.id
                          ];
     
-    [self executeSql:saveSql];
+    [SHSQLiteManager.shared executeSql:saveSql];
 }
  
 
@@ -1603,59 +1585,15 @@ const NSUInteger maxIconIDForDataBase = 10;
     // 删除这个区域的所有设备
     NSString *systemDeleteSql = [NSString stringWithFormat:@"delete from SystemInZone where ZoneID = %tu;", zone.zoneID];
     
-    [self executeSql:systemDeleteSql];
+    [SHSQLiteManager.shared executeSql:systemDeleteSql];
     
     // 全部插入重新新数据
     for (NSNumber *number in systems) {
         NSString *systemInsertSql = [NSString stringWithFormat:@"insert into SystemInZone values(%tu, %tu);", zone.zoneID, [number integerValue]];
-        [self executeSql:systemInsertSql];
+        [SHSQLiteManager.shared executeSql:systemInsertSql];
     }
 }
-
-
-/// 查询当前区域中包含的所有设备
-- (NSMutableArray *)getSystemID:(NSUInteger)zoneID {
-    
-    NSString *systemSql =
-        [NSString stringWithFormat:
-            @"select ZoneID, SystemID from SystemInZone \
-         where ZoneID = %tu order by SystemID;",
-            zoneID
-        ];
-    
-    NSMutableArray *array = [self selectProprty:systemSql];
-    
-    NSMutableArray *systems =
-        [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        SHSystem *deviceSystem =
-            [[SHSystem alloc] initWithDict:dict];
-        
-        [systems addObject:@(deviceSystem.systemID)];
-    }
-    
-    return systems;
-}
-
-/// 获得所有的系统名称
-- (NSMutableArray *)getAllSystemName {
-    
-    NSString *sql = @"select SystemName from systemDefnition order by SystemID;";
-    
-    NSArray *array = [self selectProprty:sql];
-    
-    NSMutableArray *systemNames = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        //        SHLog(@"%@", dict);
-        [systemNames addObject:[dict objectForKey:@"SystemName"]];
-    }
-    
-    return systemNames;
-}
+ 
 
 // MARK: - 区域图片操作
 
@@ -1664,14 +1602,14 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *selectSQL = [NSString stringWithFormat:@"select iconID, iconName, iconData from iconList where iconName = '%@';", iconName];
     
-    return [[SHIcon alloc] initWithDict:[[self selectProprty:selectSQL] lastObject]];
+    return [[SHIcon alloc] initWithDict:[[SHSQLiteManager.shared selectProprty:selectSQL] lastObject]];
 }
 
 /// 获得最大的图标ID
 - (NSUInteger)getMaxIconID {
     
     // 获得结果ID
-    id resID = [[[self selectProprty:@"select max(iconID) from iconList"] lastObject] objectForKey:@"max(iconID)"];
+    id resID = [[[SHSQLiteManager.shared selectProprty:@"select max(iconID) from iconList"] lastObject] objectForKey:@"max(iconID)"];
     
     return (resID == [NSNull null]) ? 0 : [resID integerValue];
 }
@@ -1681,7 +1619,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *iconSql = [NSString stringWithFormat:@"delete from iconList where iconID = %tu;", icon.iconID];
     
-    return [self executeSql:iconSql];
+    return [SHSQLiteManager.shared executeSql:iconSql];
 }
 
 /// 插入一个新图片
@@ -1702,7 +1640,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *iconsSql = @"select iconID, iconName, iconData from iconList order by iconID";
     
-    NSMutableArray *array = [self selectProprty:iconsSql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:iconsSql];
     
     NSMutableArray *icons = [NSMutableArray arrayWithCapacity:array.count];
     
@@ -1717,15 +1655,15 @@ const NSUInteger maxIconIDForDataBase = 10;
 /// 增加图片的二进制字段
 - (BOOL)addZoneIconData {
     
-    if (![self isColumnName:@"iconData" consistinTable:@"iconList"]) {
+    if (![SHSQLiteManager.shared isColumnName:@"iconData" consistinTable:@"iconList"]) {
         
         // 增加remark
-        [self executeSql:@"ALTER TABLE iconList ADD iconData DATA;"];
+        [SHSQLiteManager.shared executeSql:@"ALTER TABLE iconList ADD iconData DATA;"];
         
         // 原来沙盒中的图全部获取出来，导入到数据库当中
         NSString *imagesSQL = [NSString stringWithFormat:@"select iconID, iconName from iconList where iconID > %tu;", maxIconIDForDataBase];
         
-        NSMutableArray *array = [self selectProprty:imagesSQL];
+        NSArray *array = [SHSQLiteManager.shared selectProprty:imagesSQL];
         
         /// 有数据
         if (array.count) {
@@ -1754,44 +1692,14 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 // MARK: - 区域操作
 
-/// 获得指定的zone的详细信息
-- (SHZone *)getZone:(NSUInteger)zoneID {
-    
-    NSString *sql = [NSString stringWithFormat:@"select regionID, ZoneID, ZoneName, zoneIconName from Zones where ZoneID = %tu", zoneID];
-    
-    NSDictionary *dict = [[self selectProprty:sql] lastObject];
-    
-    return [[SHZone alloc] initWithDictionary:dict];
-}
-
-/// 查询指定表格中的区域ID
-- (NSMutableArray *)getZoneIDFromTable:(NSString *)tableName {
-    
-    NSString *selectSql =
-    [NSString stringWithFormat:
-     @"select DISTINCT ZoneID from %@;", tableName]
-    ;
-    
-    NSMutableArray *array = [self selectProprty:selectSql];
-    
-    NSMutableArray *zoneIDs =
-    [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [zoneIDs addObject:[dict objectForKey:@"ZoneID"]];
-    }
-    
-    return zoneIDs;
-}
-
 /// 删除区域
 - (BOOL)deleteZone:(NSUInteger)zoneID {
     
     BOOL executeResult = NO;
     
     // 1.查询这个区域所包含的设备
-    NSArray *systems = [self getSystemID:zoneID];
+    NSArray *systems =
+        [SHSQLiteManager.shared getSystemIDs: zoneID];
     
     for (NSNumber *system in systems) {
         
@@ -1907,7 +1815,7 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
         ];
     
-    executeResult = [self executeSql:systemSQL];
+    executeResult = [SHSQLiteManager.shared executeSql:systemSQL];
     
     // 3.删除区域
     NSString *zoneSQL =
@@ -1916,63 +1824,12 @@ const NSUInteger maxIconIDForDataBase = 10;
             zoneID
         ];
     
-    executeResult = [self executeSql:zoneSQL];
+    executeResult = [SHSQLiteManager.shared executeSql:zoneSQL];
     
     return executeResult;
 }
 
-/// 更新区域信息
-- (BOOL)updateZone:(SHZone *)zone {
-    
-    NSString *zonesSql =
-        [NSString stringWithFormat:
-            @"update Zones set ZoneName = '%@', zoneIconName = '%@' \
-            Where zoneID = %tu;",
-         zone.zoneName, zone.zoneIconName, zone.zoneID
-        ];
-    
-    return [self executeSql:zonesSql];
-}
 
-/// 插入一个新增加的区域
-- (BOOL)insertNewZone:(SHZone *)zone {
-    
-    NSString *zoneSql =
-        [NSString stringWithFormat:
-            @"insert into Zones(regionID, ZoneID, ZoneName, zoneIconName) values(%tu, %tu, '%@', '%@'); ",
-            zone.regionID,
-            zone.zoneID,
-            zone.zoneName,
-            zone.zoneIconName];
-    
-    return [self executeSql:zoneSql];
-}
-
-/// 获得最大的区域ID
-- (NSUInteger)getMaxZoneID {
-    
-    // 获得结果ID
-    id resID = [[[self selectProprty:@"select max(zoneID) from Zones"] lastObject] objectForKey:@"max(zoneID)"];
-    
-    return (resID == [NSNull null]) ? 0 : [resID integerValue];
-}
-
-/// 查询指定region的所有区域
-- (NSMutableArray *)getZonesForRegion:(NSUInteger)regionID {
-    
-    NSString *zonesSql = [NSString stringWithFormat:@"select zoneID, ZoneName, zoneIconName from Zones where regionID = %tu order by zoneID;", regionID];
-    
-    NSMutableArray *array = [self selectProprty:zonesSql];
-    
-    NSMutableArray *zones = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [zones addObject:[[SHZone alloc] initWithDictionary:dict]];
-    }
-    
-    return zones;
-}
 
 /// 获得指示类型的区域
 - (NSMutableArray *)getZonesFor:(NSUInteger)deviceType {
@@ -1981,7 +1838,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     NSString *systemSql = [NSString stringWithFormat:@"select distinct ZoneID from SystemInZone where SystemID = %tu order by zoneID;", deviceType];
     
-    NSMutableArray *array = [self selectProprty:systemSql];
+    NSArray *array = [SHSQLiteManager.shared selectProprty:systemSql];
     
     NSMutableArray *zones = [NSMutableArray array];
     
@@ -1992,7 +1849,7 @@ const NSUInteger maxIconIDForDataBase = 10;
         
         NSString *zonesSql = [NSString stringWithFormat:@"select zoneID, ZoneName, zoneIconName from Zones where zoneID = %tu order by zoneID;", zoneID];
         
-        NSDictionary *zoneDict = [[self selectProprty:zonesSql] lastObject];
+        NSDictionary *zoneDict = [[SHSQLiteManager.shared selectProprty:zonesSql] lastObject];
         
         if (!zoneDict) {
             continue;
@@ -2005,56 +1862,9 @@ const NSUInteger maxIconIDForDataBase = 10;
     return zones;
 }
 
-// MARK: - 多分组操作
-
-/// 删除地区
-- (BOOL)deleteRegion:(NSUInteger)regionID {
-    
-    // 查询所有对应的区域
-    NSMutableArray *zones = [self getZonesForRegion:regionID];
-    
-    for (SHZone *zone in zones) {
-        
-        [self deleteZone:zone.zoneID];
-    }
-    
-    // 删除地区
-    NSString *deleteSQL = [NSString stringWithFormat:@"delete from Regions where regionID = %tu;", regionID];
-    
-    return [self executeSql:deleteSQL];
-}
-
- 
- 
-
-// MARK: - 创建表格
-
 
 /// 增加新表或者是字段
 - (void)alertTablesOrColumnName {
-    
-   
-    /**** 2. 删除区域中的旧数据 *****/
-    
-    // 2.1 有效区域
-    NSMutableArray *zones = [self getZoneIDFromTable:@"Zones"];
-    
-    // 2.2 查询相关配置中的所有区域
-    NSMutableArray *systemZoneIDs = [self getZoneIDFromTable:@"SystemInZone"];
-    
-    // 2.3 找到历史残留的区域
-    for (NSNumber *zoneID in zones) {
-        
-        if ([systemZoneIDs containsObject:zoneID]) {
-            [systemZoneIDs removeObject:zoneID]; // 移除合理存在的区域
-        }
-    }
-    
-    // 2.4 删除残留区域中的数据
-    for (NSNumber *zoneID in systemZoneIDs) {
-        
-        [self deleteZone:zoneID.integerValue];
-    }
     
     /**** 3. 设置字段和新设备 *****/
     
@@ -2069,99 +1879,6 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     // 增加SAT的字段
     [self addSATControlIetms];
-}
-
-
-// MARK: - 公共封装部分
-
-
-/**
- 判断表中是否存在字段
- 
- @param columnName 字段名称
- @param tableName 表格名称
- @return YES - 存在 NO - 不存在
- */
-- (BOOL)isColumnName:(NSString *)columnName consistinTable:(NSString *)tableName {
-    
-    NSString * sqlstr = [NSString stringWithFormat:@"select * from %@", tableName];
-    
-    __block FMResultSet * result;
-    
-    [self.queue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
-        result = [db executeQuery:sqlstr];
-    }];
-    
-    
-    for (int col = 0; col < result.columnCount; col++) {
-        
-        // 获得字段名称
-        NSString * tableColumnName = [result columnNameForIndex:col];
-        
-        // 判断是否存在 (由于SQL不区分大小，所以需要统一区分成大小。)
-        if ([tableColumnName.uppercaseString isEqualToString:columnName.uppercaseString]) {
-            
-            return YES;
-        }
-    }
-    
-    return NO;
-}
-
-/// 插入语句 成功返回YES， 失败返回NO。
-- (BOOL)executeSql:(NSString *)sql {
-    
-    __block BOOL res = YES;
-    
-    [self.queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        
-        if (![db executeUpdate:sql]) {
-            res = NO;
-        }
-    }];
-    
-    return res;
-}
-
-/// 查询封装语句 -- 注意，它返回的【字典】数组
-- (NSMutableArray *)selectProprty:(NSString *)sql {
-    
-    // 准备一个数组来存储所有内容
-    __block NSMutableArray *array = [NSMutableArray array];
-    
-    [self.queue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        
-        // 获得全部的记录
-        FMResultSet *resultSet = [db executeQuery:sql];
-        
-        // 遍历结果
-        while (resultSet.next) {
-            
-            // 准备一个字典
-            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-            
-            // 获得列数
-            int count = [resultSet columnCount];
-            
-            // 遍历所有的记录
-            for (int i = 0; i < count; i++) {
-                
-                // 获得字段名称
-                NSString *name = [resultSet columnNameForIndex:i];
-                
-                // 获得字段值
-                NSString *value = [resultSet objectForColumn:name];
-                
-                // 存储在字典中
-                dict[name] =  value;
-            }
-            
-            // 添加到数组
-            [array addObject:dict];
-        }
-    }];
-    
-    return array;
 }
 
 

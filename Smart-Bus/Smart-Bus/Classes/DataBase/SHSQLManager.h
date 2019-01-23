@@ -234,14 +234,10 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得当前区域中的DVD
 - (NSMutableArray *)getMediaDVDFor:(NSUInteger)zoneID;
 
-  
 // MARK: - 系统区域
 
 /// 保存当前区域的所有设备
 - (void)saveAllSystemID:(NSMutableArray *)systems inZone:(SHZone *)zone;
-
-/// 查询当前区域中包含的所有设备
-- (NSMutableArray *)getSystemID:(NSUInteger)zoneID;
 
 // MARK: - icon
 
@@ -254,46 +250,21 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 插入一个新图片
 - (BOOL)inserNewIcon:(SHIcon *)icon;
 
-/// 获得所有的系统名称
-- (NSMutableArray *)getAllSystemName;
-
 /// 获得最大的图标ID
 - (NSUInteger)getMaxIconID;
 
 /// 查询所有的图标
 - (NSMutableArray *)getAllIcons;
 
-
 // MARK: - ZONES
-
-/// 获得指定的zone
-- (SHZone *)getZone:(NSUInteger)zoneID;
 
 /// 删除区域
 - (BOOL)deleteZone:(NSUInteger)zoneID;
 
-/// 更新区域信息
-- (BOOL)updateZone:(SHZone *)zone;
-
-/// 插入一个新增加的区域
-- (BOOL)insertNewZone:(SHZone *)zone;
-
-/// 获得最大的区域ID
-- (NSUInteger)getMaxZoneID;
-
-
-/// 查询指定region的所有区域
-- (NSMutableArray *)getZonesForRegion:(NSUInteger)regionID;
-
 /// 获得指示类型的区域
 - (NSMutableArray *)getZonesFor:(NSUInteger)deviceType;
 
-
-// MARK: - 分组多区域操作
-  
-/// 删除分组区域
-- (BOOL)deleteRegion:(NSUInteger)regionID;
-
+ 
 SingletonInterface(SQLManager)
 
 @end
