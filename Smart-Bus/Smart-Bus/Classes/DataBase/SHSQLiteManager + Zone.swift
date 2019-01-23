@@ -184,6 +184,37 @@ extension SHSQLiteManager {
         return SHZone(dictionary: dict)
     }
     
+    /// 依据类型获得区域
+    func getZones(deviceType: UInt) -> [SHZone] {
+        
+        let typeSQL =
+            "select distinct ZoneID from SystemInZone " +
+            "where SystemID = \(deviceType) order by zoneID;"
+        
+        let array = selectProprty(typeSQL)
+        
+        var zones = [SHZone]()
+        
+        for dict in array {
+            
+            if let zoneID = dict["ZoneID"] as? UInt {
+                
+                let zoneSQL =
+                    "select zoneID, ZoneName, zoneIconName " +
+                    "from Zones where zoneID = \(zoneID)   " +
+                    "order by zoneID;"
+                
+                if let dict = selectProprty(zoneSQL).last {
+                    
+                    zones.append(SHZone(dictionary: dict))
+                }
+            }
+            
+        }
+        
+        return zones
+    }
+    
     /// 查询指定region的所有区域
     func getZones(regionID: UInt) -> [SHZone] {
         

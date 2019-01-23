@@ -201,12 +201,6 @@ extern const NSUInteger maxIconIDForDataBase;
 
 /// 查询所有的图标
 - (NSMutableArray *)getAllIcons;
-
-// MARK: - ZONES
-
-/// 获得指示类型的区域
-- (NSMutableArray *)getZonesFor:(NSUInteger)deviceType;
-
  
 SingletonInterface(SQLManager)
 

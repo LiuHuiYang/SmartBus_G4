@@ -326,7 +326,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return [SHSQLiteManager.shared executeSql:insertSQL];
 }
- 
+
 
 // MARK: - Schedual
 
@@ -1300,9 +1300,7 @@ const NSUInteger maxIconIDForDataBase = 10;
 }
  
 
-// MARK: - 区域操作相关
 
- 
 // MARK: - 区域图片操作
 
 /// 根据名称获得图片
@@ -1397,40 +1395,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     return YES;
 }
 
-// MARK: - 区域操作
-
-/// 获得指示类型的区域
-- (NSMutableArray *)getZonesFor:(NSUInteger)deviceType {
-    
-    // 1. 先找出包含这个类型的区域ID
-    
-    NSString *systemSql = [NSString stringWithFormat:@"select distinct ZoneID from SystemInZone where SystemID = %tu order by zoneID;", deviceType];
-    
-    NSArray *array = [SHSQLiteManager.shared selectProprty:systemSql];
-    
-    NSMutableArray *zones = [NSMutableArray array];
-    
-    // 从结果中再找区域
-    for (NSDictionary *dict in array) {
-        
-        NSUInteger zoneID = [[dict objectForKey:@"ZoneID"] integerValue];
-        
-        NSString *zonesSql = [NSString stringWithFormat:@"select zoneID, ZoneName, zoneIconName from Zones where zoneID = %tu order by zoneID;", zoneID];
-        
-        NSDictionary *zoneDict = [[SHSQLiteManager.shared selectProprty:zonesSql] lastObject];
-        
-        if (!zoneDict) {
-            continue;
-        }
-        
-        SHZone *zone = [[SHZone alloc] initWithDictionary:zoneDict];
-        [zones addObject: zone];
-    }
-    
-    return zones;
-}
-
-
+  
 /// 创建数据库
 - (instancetype)init {
     

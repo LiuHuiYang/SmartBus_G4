@@ -114,7 +114,7 @@ extension SHSQLiteManager {
         let sql =
             "update MacroButtons set " +
             "MacroName = '\(macro.macroName ?? "Macro" )',  " +
-            "MacroIconName = '\(macro.macroIconName ?? "Macro")' " +
+            "MacroIconName = '\(macro.macroIconName ?? "Romatic")' " +
             "where MacroID = \(macro.macroID);"
         
         return executeSql(sql)
@@ -147,7 +147,7 @@ extension SHSQLiteManager {
             "(MacroID, MacroName, MacroIconName) " +
             "values(\(macro.macroID), " +
             "'\(macro.macroName ?? "Macro" )', '  " +
-            "\(macro.macroIconName ?? "Macro" )');"
+            "\(macro.macroIconName ?? "Romatic" )');"
         
         return executeSql(sql)
     }

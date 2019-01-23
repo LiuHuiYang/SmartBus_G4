@@ -869,9 +869,9 @@ extension SHSchedualEditViewController {
                 )
             }
             
-            zones = SHSQLManager.share()?.getZonesFor(
-                SHSystemDeviceType.mood.rawValue
-            ) as? [SHZone]
+            zones =
+            SHSQLiteManager.shared.getZones(
+                deviceType: SHSystemDeviceType.mood.rawValue)
             
             
         case .light:
@@ -883,10 +883,12 @@ extension SHSchedualEditViewController {
                 )
             }
             
-            zones = SHSQLManager.share()?.getZonesFor(
+            zones =
+            SHSQLiteManager.shared.getZones(
+                deviceType:
                 SHSystemDeviceType.light.rawValue
-            ) as? [SHZone]
-            
+            )
+             
         case .HVAC:
             
             if hvacView.window == nil {
@@ -896,9 +898,11 @@ extension SHSchedualEditViewController {
                 )
             }
             
-            zones = SHSQLManager.share()?.getZonesFor(
+            zones =
+            SHSQLiteManager.shared.getZones(
+                deviceType:
                 SHSystemDeviceType.hvac.rawValue
-            ) as? [SHZone]
+            )
             
         case .audio:
             
@@ -909,9 +913,11 @@ extension SHSchedualEditViewController {
                 )
             }
             
-            zones = SHSQLManager.share()?.getZonesFor(
+            zones =
+            SHSQLiteManager.shared.getZones(
+                deviceType:
                 SHSystemDeviceType.audio.rawValue
-            ) as? [SHZone]
+            )
             
         case .shade:
             
@@ -922,9 +928,11 @@ extension SHSchedualEditViewController {
                 )
             }
             
-            zones = SHSQLManager.share()?.getZonesFor(
+            zones =
+            SHSQLiteManager.shared.getZones(
+                deviceType:
                 SHSystemDeviceType.shade.rawValue
-            ) as? [SHZone]
+            )
             
         case .floorHeating:
             
@@ -935,9 +943,12 @@ extension SHSchedualEditViewController {
                 )
             }
             
-            zones = SHSQLManager.share()?.getZonesFor(
-                SHSystemDeviceType.floorHeating.rawValue
-            ) as? [SHZone]
+            zones =
+            
+            SHSQLiteManager.shared.getZones(
+                deviceType:
+                    SHSystemDeviceType.floorHeating.rawValue
+            )
             
         default:
             break

@@ -18,7 +18,7 @@ class SHSchduleMacroCell: UITableViewCell {
             let iconName =
                 macro?.macroIconName ?? "Romatic"
             
-            nameLabel.text = macro?.macroIconName
+            nameLabel.text = macro?.macroName
             
             iconView.image = UIImage(named: iconName + "_normal")
         }

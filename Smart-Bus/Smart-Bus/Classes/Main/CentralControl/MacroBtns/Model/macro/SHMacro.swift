@@ -20,7 +20,16 @@ import Foundation
     var macroName: String?
     
     /// macroIconName
-    var macroIconName: String?
+    var macroIconName: String? {
+        
+        didSet {
+            
+            if macroIconName == "MacroIconName" {
+                
+                macroIconName = "Romatic"
+            }
+        }
+    }
     
     override init() {
         super.init()
