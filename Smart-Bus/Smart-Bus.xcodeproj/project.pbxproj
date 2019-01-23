@@ -92,6 +92,7 @@
 		041EA61921F6E61E004FFEAF /* SHSQLiteManager + Hvac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61821F6E61E004FFEAF /* SHSQLiteManager + Hvac.swift */; };
 		041EA61B21F6F5D4004FFEAF /* SHSQLiteManager + Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61A21F6F5D3004FFEAF /* SHSQLiteManager + Audio.swift */; };
 		041EA61F21F71D9F004FFEAF /* SHSQLiteManager + TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61E21F71D9F004FFEAF /* SHSQLiteManager + TV.swift */; };
+		0421B67E21F7F8F300C42F65 /* SHSQLiteManager + AppleTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421B67D21F7F8F300C42F65 /* SHSQLiteManager + AppleTV.swift */; };
 		042450B821F00E4900C99512 /* SHScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450B721F00E4900C99512 /* SHScene.swift */; };
 		042450BA21F0144400C99512 /* SHDeviceArgsViewController + CT24.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450B921F0144400C99512 /* SHDeviceArgsViewController + CT24.swift */; };
 		042450BC21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042450BB21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift */; };
@@ -592,6 +593,7 @@
 		041EA61821F6E61E004FFEAF /* SHSQLiteManager + Hvac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Hvac.swift"; sourceTree = "<group>"; };
 		041EA61A21F6F5D3004FFEAF /* SHSQLiteManager + Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Audio.swift"; sourceTree = "<group>"; };
 		041EA61E21F71D9F004FFEAF /* SHSQLiteManager + TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + TV.swift"; sourceTree = "<group>"; };
+		0421B67D21F7F8F300C42F65 /* SHSQLiteManager + AppleTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + AppleTV.swift"; sourceTree = "<group>"; };
 		042450B721F00E4900C99512 /* SHScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHScene.swift; sourceTree = "<group>"; };
 		042450B921F0144400C99512 /* SHDeviceArgsViewController + CT24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + CT24.swift"; sourceTree = "<group>"; };
 		042450BB21F014BB00C99512 /* SHDeviceArgsViewController + Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController + Audio.swift"; sourceTree = "<group>"; };
@@ -2667,6 +2669,7 @@
 				0412E34221F5B5CC0084F3DB /* SHSQLiteManager + DryContact.swift */,
 				041EA61621F6C5B7004FFEAF /* SHSQLiteManager + FloorHeating.swift */,
 				041EA61E21F71D9F004FFEAF /* SHSQLiteManager + TV.swift */,
+				0421B67D21F7F8F300C42F65 /* SHSQLiteManager + AppleTV.swift */,
 				04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */,
 				8BF9268D1EEE857D00EE5A54 /* SQL.sql */,
 			);
@@ -5004,6 +5007,7 @@
 				0412E33F21F5A8CA0084F3DB /* SHSQLiteManager + OtherControl.swift in Sources */,
 				047812B7216F2148007A7162 /* SHMacroViewController.swift in Sources */,
 				0427E85F21E6DC52000ED6AA /* SHSchduleLightView.swift in Sources */,
+				0421B67E21F7F8F300C42F65 /* SHSQLiteManager + AppleTV.swift in Sources */,
 				0453EA4321A67C8400F666EF /* JHLineChart.m in Sources */,
 				8BA6B4671FE11F4700C3156F /* UIDevice+DeviceType.m in Sources */,
 				04A177EA215F73D300BD9744 /* SHCommunalServicesViewController.swift in Sources */,

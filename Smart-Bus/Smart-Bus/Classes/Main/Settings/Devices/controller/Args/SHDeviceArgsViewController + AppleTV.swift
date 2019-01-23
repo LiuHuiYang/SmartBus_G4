@@ -70,73 +70,77 @@ extension SHDeviceArgsViewController {
     /// 保存AppleTV
     func updateMediaAppleTV(value: String, index: Int) {
         
+        guard let tv = self.mediaAppleTV else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.mediaAppleTV?.remark = value
+            tv.remark = value
             
         case 1:
-            self.mediaAppleTV?.subnetID = UInt8(value) ?? 1
+            tv.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.mediaAppleTV?.deviceID = UInt8(value) ?? 0
+            tv.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.mediaAppleTV?.universalSwitchIDforOn = UInt(value) ?? 0
+            tv.universalSwitchIDforOn = UInt(value) ?? 0
             
         case 4:
-            self.mediaAppleTV?.universalSwitchStatusforOn = UInt(value) ?? 0
+            tv.universalSwitchStatusforOn = UInt(value) ?? 0
             
         case 5:
-            self.mediaAppleTV?.universalSwitchIDforOff = UInt(value) ?? 0
+            tv.universalSwitchIDforOff = UInt(value) ?? 0
             
         case 6:
-            self.mediaAppleTV?.universalSwitchStatusforOff = UInt(value) ?? 0
+            tv.universalSwitchStatusforOff = UInt(value) ?? 0
             
         case 7:
-            self.mediaAppleTV?.universalSwitchIDforUp = UInt(value) ?? 0
+            tv.universalSwitchIDforUp = UInt(value) ?? 0
             
         case 8:
-            self.mediaAppleTV?.universalSwitchIDforDown = UInt(value) ?? 0
+            tv.universalSwitchIDforDown = UInt(value) ?? 0
             
         case 9:
-            self.mediaAppleTV?.universalSwitchIDforLeft = UInt(value) ?? 0
+            tv.universalSwitchIDforLeft = UInt(value) ?? 0
             
         case 10:
-            self.mediaAppleTV?.universalSwitchIDforRight = UInt(value) ?? 0
+            tv.universalSwitchIDforRight = UInt(value) ?? 0
             
         case 11:
-            self.mediaAppleTV?.universalSwitchIDforOK = UInt(value) ?? 0
+            tv.universalSwitchIDforOK = UInt(value) ?? 0
             
         case 12:
-            self.mediaAppleTV?.universalSwitchIDforMenu = UInt(value) ?? 0
+            tv.universalSwitchIDforMenu = UInt(value) ?? 0
             
         case 13:
-            self.mediaAppleTV?.universalSwitchIDforPlayPause = UInt(value) ?? 0
+            tv.universalSwitchIDforPlayPause = UInt(value) ?? 0
             
         case 14:
-            self.mediaAppleTV?.iRMacroNumberForAppleTVStart0 = UInt(value) ?? 0
+            tv.iRMacroNumberForAppleTVStart0 = UInt(value) ?? 0
             
         case 15:
-            self.mediaAppleTV?.iRMacroNumberForAppleTVStart1 = UInt(value) ?? 0
+            tv.iRMacroNumberForAppleTVStart1 = UInt(value) ?? 0
             
         case 16:
-            self.mediaAppleTV?.iRMacroNumberForAppleTVStart2 = UInt(value) ?? 0
+            tv.iRMacroNumberForAppleTVStart2 = UInt(value) ?? 0
             
         case 17:
-            self.mediaAppleTV?.iRMacroNumberForAppleTVStart3 = UInt(value) ?? 0
+            tv.iRMacroNumberForAppleTVStart3 = UInt(value) ?? 0
             
         case 18:
-            self.mediaAppleTV?.iRMacroNumberForAppleTVStart4 = UInt(value) ?? 0
+            tv.iRMacroNumberForAppleTVStart4 = UInt(value) ?? 0
             
         case 19:
-            self.mediaAppleTV?.iRMacroNumberForAppleTVStart5 = UInt(value) ?? 0
+            tv.iRMacroNumberForAppleTVStart5 = UInt(value) ?? 0
             
         default:
             break
         }
-        
-        SHSQLManager.share()?.updateMediaAppleTV(inZone: mediaAppleTV)
+         
+        _ = SHSQLiteManager.shared.updateAppleTV(tv)
     }
 }
 

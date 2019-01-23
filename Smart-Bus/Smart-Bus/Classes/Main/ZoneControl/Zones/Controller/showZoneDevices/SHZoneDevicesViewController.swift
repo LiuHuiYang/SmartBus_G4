@@ -244,11 +244,11 @@ extension SHZoneDevicesViewController {
             }
             
         case .appletv:
-            if let apptvs =  SHSQLManager.share()?.getMediaAppleTV(for: zoneID) {
-                
-                allDevices = apptvs as! [Any]
-            }
+             
+            let appleTVs = SHSQLiteManager.shared.getAppleTV(zoneID)
             
+            allDevices = appleTVs as [Any]
+
         case .projector:
             if let projectors =  SHSQLManager.share()?.getMediaProjector(for: zoneID) {
                 

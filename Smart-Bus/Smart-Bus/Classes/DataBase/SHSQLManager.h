@@ -166,24 +166,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 更新计划
 - (BOOL)updateSchedule:(SHSchedual *)schedual;
 
-
-// MARK: - AppleTV
-
-/// 保存苹果电视
-- (void)updateMediaAppleTVInZone:(SHMediaAppleTV *)mediaTV;
-
-/// 删除苹果电视
-- (BOOL)deleteAppleTVInZone:(SHMediaAppleTV *)mediaTV;
-
-/// 删除区域中所所有AppleTV
-- (BOOL)deleteZoneAppleTVs:(NSUInteger)zoneID;
-
-/// 增加苹果电视
-- (NSInteger)insertNewMediaAppleTV:(SHMediaAppleTV *)mediaAppleTV;
-
-/// 获得当前区域中的Apple TV
-- (NSMutableArray *)getMediaAppleTVFor:(NSUInteger)zoneID;
-
+ 
 // MARK: - Projector
 
 /// 保存投影仪数据
