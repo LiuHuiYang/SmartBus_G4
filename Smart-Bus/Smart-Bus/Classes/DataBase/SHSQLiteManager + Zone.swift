@@ -41,7 +41,7 @@ extension SHSQLiteManager {
                 _ = SHSQLiteManager.shared.deleteDVDs(zoneID)
             
             case SHSystemDeviceType.sat.rawValue:
-                SHSQLManager.share()?.deleteZoneSATs(zoneID)
+                _ = SHSQLiteManager.shared.deleteSats(zoneID)
                 
             case SHSystemDeviceType.appletv.rawValue:
                _ = deleteAppleTVs(zoneID)

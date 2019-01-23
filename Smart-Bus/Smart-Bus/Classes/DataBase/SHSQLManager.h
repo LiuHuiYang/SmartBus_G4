@@ -138,18 +138,11 @@ extern const NSUInteger maxIconIDForDataBase;
 
 // 保存当前SAT
 - (void)updateMediaSATInZone:(SHMediaSAT *)mediaSAT;
-
-/// 删除当前的SAT
-- (BOOL)deleteSATInZone:(SHMediaSAT *)mediaSAT;
-
-/// 删除区域中的SAT
-- (BOOL)deleteZoneSATs:(NSUInteger)zoneID;
-
+ 
+  
 /// 增加SAT设备
 - (NSInteger)insertNewMediaSAT:(SHMediaSAT *)mediaSAT;
 
-/// 获得当前区域的卫星电视
-- (NSMutableArray *)getMediaSATFor:(NSUInteger)zoneID;
 
 /// 获得卫星电视的分类
 - (NSMutableArray *)getMediaSATCategory;

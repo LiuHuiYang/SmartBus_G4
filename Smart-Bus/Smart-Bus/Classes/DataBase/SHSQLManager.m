@@ -679,78 +679,6 @@ const NSUInteger maxIconIDForDataBase = 10;
 
 // MARK: - SAT
 
-/// 获得当前区域的卫星电视
-- (NSMutableArray *)getMediaSATFor:(NSUInteger)zoneID {
-    
-    NSString *tvSql =
-        [NSString stringWithFormat:
-            @"select ID, remark, ZoneID, SubnetID, DeviceID,    \
-            UniversalSwitchIDforOn,             \
-            UniversalSwitchStatusforOn,         \
-            UniversalSwitchIDforOff,            \
-            UniversalSwitchStatusforOff,        \
-            UniversalSwitchIDforUp,             \
-            UniversalSwitchIDforDown,           \
-            UniversalSwitchIDforLeft,           \
-            UniversalSwitchIDforRight,          \
-            UniversalSwitchIDforOK ,            \
-            UniversalSwitchIDfoMenu,            \
-            UniversalSwitchIDforFAV,            \
-            UniversalSwitchIDfor0,              \
-            UniversalSwitchIDfor1,              \
-            UniversalSwitchIDfor2,              \
-            UniversalSwitchIDfor3,              \
-            UniversalSwitchIDfor4,              \
-            UniversalSwitchIDfor5,              \
-            UniversalSwitchIDfor6,              \
-            UniversalSwitchIDfor7,              \
-            UniversalSwitchIDfor8,              \
-            UniversalSwitchIDfor9,              \
-            UniversalSwitchIDforPlayRecord,     \
-            UniversalSwitchIDforPlayStopRecord, \
-            IRMacroNumberForSATSpare0,          \
-            IRMacroNumberForSATSpare1,          \
-            IRMacroNumberForSATSpare2,          \
-            IRMacroNumberForSATSpare3,          \
-            IRMacroNumberForSATSpare4,          \
-            IRMacroNumberForSATSpare5,          \
-            UniversalSwitchIDforPREVChapter,    \
-            UniversalSwitchIDforNextChapter,    \
-            SwitchNameforControl1,              \
-            SwitchIDforControl1,                \
-            SwitchNameforControl2,              \
-            SwitchIDforControl2,                \
-            SwitchNameforControl3,              \
-            SwitchIDforControl3,                \
-            SwitchNameforControl4,              \
-            SwitchIDforControl4,                \
-            SwitchNameforControl5,              \
-            SwitchIDforControl5,                \
-            SwitchNameforControl6,              \
-            SwitchIDforControl6                 \
-            from SATInZone where ZoneID = %tu order by id;",
-          zoneID
-        ];
-    
-    NSArray *array = [SHSQLiteManager.shared selectProprty:tvSql];
-    
-    if (!array.count) {
-        return nil;
-    }
-    
-    NSMutableArray *sats = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [sats addObject:
-            [[SHMediaSAT alloc] initWithDict:dict]
-        ];
-    }
-    
-    return sats;
-}
-
-
 /// 增加SAT设备
 - (NSInteger)insertNewMediaSAT:(SHMediaSAT *)mediaSAT {
     
@@ -867,52 +795,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     
     return maxID;
 }
-
-/// 删除当前的SAT
-- (BOOL)deleteSATInZone:(SHMediaSAT *)mediaSAT {
-    
-    NSString *deleteSql = [NSString stringWithFormat:
-                           @"delete from SATInZone Where zoneID = %tu       \
-                           and SubnetID = %d and DeviceID = %d;",
-                           
-                           mediaSAT.zoneID, mediaSAT.subnetID, mediaSAT.deviceID
-                           ];
-    
-    return [SHSQLiteManager.shared executeSql:deleteSql];
-}
-
-/// 删除区域中的SAT
-- (BOOL)deleteZoneSATs:(NSUInteger)zoneID {
-    
-    // 删除SAT
-    NSString *deleteSQL =
-        [NSString stringWithFormat:
-            @"delete from SATInZone Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    BOOL deleteSAT = [SHSQLiteManager.shared executeSql:deleteSQL];
-    
-    // 删除分类
-    NSString *deleteCategorySQL =
-        [NSString stringWithFormat:
-            @"delete from SATCategory Where zoneID = %tu;",
-            zoneID
-        ];
-    
-    BOOL deleteCategory = [SHSQLiteManager.shared executeSql:deleteCategorySQL];
-    
-    // 删除频道
-    NSString *deleteChannelSQL =
-        [NSString stringWithFormat:
-            @"delete from SATChannels Where zoneID = %tu;",
-            zoneID
-         ];
-    
-    BOOL deleteChannel = [SHSQLiteManager.shared executeSql:deleteChannelSQL];
-    
-    return  (deleteSAT && deleteCategory && deleteChannel);
-}
+ 
 
 // 保存当前SAT
 - (void)updateMediaSATInZone:(SHMediaSAT *)mediaSAT {
@@ -1119,7 +1002,7 @@ const NSUInteger maxIconIDForDataBase = 10;
     return categoryArray;
 }
 
- 
+
 // MARK: - 区域图片操作
 
 /// 根据名称获得图片

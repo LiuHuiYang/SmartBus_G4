@@ -118,10 +118,8 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 
                 if let sat = self.allDevices[indexPath.row]
                         as? SHMediaSAT {
-                    
-                    SHSQLManager.share()?.deleteSAT(
-                        inZone: sat
-                    )
+                   
+                    _ = SHSQLiteManager.shared.deleteSat(sat)
                     
                     self.allDevices.remove(sat)
                 }
@@ -1021,14 +1019,10 @@ extension SHSystemDetailViewController {
             allDevices = NSMutableArray(array: dvds)
             
         case .sat:
-            guard let sats =
-                SHSQLManager.share()?.getMediaSAT(
-                    for: zoneID) else {
-                
-                return
-            }
+        
+            let sats = SHSQLiteManager.shared.getSats(zoneID)
             
-            allDevices = sats
+            allDevices = NSMutableArray(array: sats)
             
         case .appletv:
      
