@@ -43,23 +43,17 @@
 @class SHScene;
 @class SHSequence;
 
-
 @class SHMacro;
 @class SHMacroCommand;
-
 @class SHSecurityZone;
-
 @class SHSchedualCommand;
-
 @class SHCentralLight;
 @class SHCentralLightCommand;
 @class SHCentralHVAC;
-
 @class SHCurrentTransformer;
 
 #import <Foundation/Foundation.h>
 #import <FMDB/FMDB.h>
-
 #import "SHSchedual.h"
 
 // 在数据库中可以iconList直接查询到
@@ -67,26 +61,7 @@ extern const NSUInteger maxIconIDForDataBase;
 
 @interface SHSQLManager : NSObject
 
-// MARK: - 9in1
-
-/// 查询当前区域中的所有9in1
-- (NSMutableArray *)getNineInOneForZone:(NSUInteger)zoneID;
-
-- (BOOL)updateNineInOneInZone:(SHNineInOne *)nineInOne;
-
-/// 增加一个新的NineInOne
-- (BOOL)insertNewNineInOne:(SHNineInOne *)nineInOne;
-
-/// 删除当前的9in1设备
-- (BOOL)deleteNineInOneInZone:(SHNineInOne *)nineInOne;
-
-/// 删除区域中的9in1
-- (BOOL)deleteZoneNineInOnes:(NSUInteger)zoneID;
-
-/// 获得当前区域中的最大的NineInOneID
-- (NSUInteger)getMaxNineInOneIDForZone:(NSUInteger)zoneID;
-
- 
+  
 // MARK: - schedaul 相关的操作
 
 /// 获得所有的计划 
@@ -116,8 +91,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 更新计划
 - (BOOL)updateSchedule:(SHSchedual *)schedual;
 
- 
- 
+
 // MARK: - icon
 
 /// 根据名称获得图片

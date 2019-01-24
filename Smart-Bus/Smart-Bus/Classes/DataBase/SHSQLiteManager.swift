@@ -166,6 +166,9 @@ let sandboxVersionKey = "sandboxVersionKey"
         // 增加DMX类型
         _ = addZoneDmx()
         
+        // 增加9in1类型
+        _ = addNineInOne()
+        
         // 增加Scene控制
         _ = addSceneControl()
         

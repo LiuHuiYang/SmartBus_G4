@@ -263,10 +263,11 @@ extension SHZoneDevicesViewController {
             allDevices = floorHeaters as [Any]
             
         case .nineInOne:
-            if let nineInOnes =  SHSQLManager.share()?.getNineInOne(forZone: zoneID) {
-                
-                allDevices = nineInOnes as! [Any]
-            }
+            
+            let nineInOnes =
+                SHSQLiteManager.shared.getNineInOnes(zoneID)
+            
+            allDevices = nineInOnes as [Any]
             
         case .dmx:
             

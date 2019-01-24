@@ -62,8 +62,10 @@ extension SHSQLiteManager {
                 _ = deleteFloorHeatings(zoneID)
                 
             case SHSystemDeviceType.nineInOne.rawValue:
-                SHSQLManager.share()?.deleteZoneNine(
-                    inOnes: zoneID)
+                
+                _ = SHSQLiteManager.shared.deleteNineInOnes(
+                    zoneID
+                )
                 
             case SHSystemDeviceType.dryContact.rawValue:
                 _ = deleteDryContacts(zoneID)

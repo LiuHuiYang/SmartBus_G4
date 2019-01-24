@@ -172,12 +172,12 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 
                 if let nineInOne = self.allDevices[indexPath.row]
                         as? SHNineInOne {
-                    
-                    SHSQLManager.share()?.deleteNineInOne(
-                         inZone: nineInOne
-                    )
-                    
+                     
                     self.allDevices.remove(nineInOne)
+                    
+                    _ = SHSQLiteManager.shared.deleteNineInOne(
+                        nineInOne
+                    )
                 }
                 
             case .dryContact:
@@ -867,32 +867,10 @@ extension SHSystemDetailViewController {
             nineInOne.nineInOneName = "9in1";
             nineInOne.zoneID = zoneID
             nineInOne.nineInOneID =
-                (SHSQLManager.share()?.getMaxNineInOneID(
-                    forZone: zoneID) ?? 0) + 1
-            
-            nineInOne.switchNameforControl1 = "C1"
-            nineInOne.switchNameforControl2 = "C2"
-            nineInOne.switchNameforControl3 = "C3"
-            nineInOne.switchNameforControl4 = "C4"
-            nineInOne.switchNameforControl5 = "C5"
-            nineInOne.switchNameforControl6 = "C6"
-            nineInOne.switchNameforControl7 = "C7"
-            nineInOne.switchNameforControl8 = "C8"
-            
-            nineInOne.switchNameforSpare1 = "Spare_1"
-            nineInOne.switchNameforSpare2 = "Spare_2"
-            nineInOne.switchNameforSpare3 = "Spare_3"
-            nineInOne.switchNameforSpare4 = "Spare_4"
-            nineInOne.switchNameforSpare5 = "Spare_5"
-            nineInOne.switchNameforSpare6 = "Spare_6"
-            nineInOne.switchNameforSpare7 = "Spare_7"
-            nineInOne.switchNameforSpare8 = "Spare_8"
-            nineInOne.switchNameforSpare9 = "Spare_9"
-            nineInOne.switchNameforSpare10 = "Spare_10"
-            nineInOne.switchNameforSpare11 = "Spare_11"
-            nineInOne.switchNameforSpare12 = "Spare_12"
-            
-            SHSQLManager.share()?.insertNewNine(
+                SHSQLiteManager.shared.getMaxNineInOneID(
+                    zoneID) + 1
+        
+            _ = SHSQLiteManager.shared.insertNineInOne(
                 nineInOne
             )
             
@@ -1051,14 +1029,11 @@ extension SHSystemDetailViewController {
             allDevices = NSMutableArray(array: floorHeatings)
             
         case .nineInOne:
-            guard let nineInOnes =
-                SHSQLManager.share()?.getNineInOne(
-                    forZone: zoneID) else {
-                
-                return
-            }
+        
+            let nineInOnes =
+                SHSQLiteManager.shared.getNineInOnes(zoneID)
             
-            allDevices = nineInOnes
+            allDevices = NSMutableArray(array: nineInOnes)
             
         case .dryContact:
            

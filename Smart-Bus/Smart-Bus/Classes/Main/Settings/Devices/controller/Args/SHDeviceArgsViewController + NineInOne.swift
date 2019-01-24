@@ -158,193 +158,196 @@ extension SHDeviceArgsViewController {
     /// 更新9in1
     func updateNineInOne(value: String, index: Int) {
         
+        guard let nine = self.nineInOne else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.nineInOne?.nineInOneName = value
+            nine.nineInOneName = value
             
         case 1:
-            self.nineInOne?.subnetID = UInt8(value) ?? 0
-            break;
+            nine.subnetID = UInt8(value) ?? 0
             
         case 2:
-            self.nineInOne?.deviceID = UInt8(value) ?? 0
+            nine.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.nineInOne?.switchIDforControlSure = UInt(value) ?? 0
+            nine.switchIDforControlSure = UInt(value) ?? 0
             
         case 4:
-            self.nineInOne?.switchIDforControlUp = UInt(value) ?? 0
+            nine.switchIDforControlUp = UInt(value) ?? 0
             
         case 5:
-            self.nineInOne?.switchIDforControlDown = UInt(value) ?? 0
+            nine.switchIDforControlDown = UInt(value) ?? 0
             
         case 6:
-            self.nineInOne?.switchIDforControlLeft = UInt(value) ?? 0
+            nine.switchIDforControlLeft = UInt(value) ?? 0
             
         case 7:
-            self.nineInOne?.switchIDforControlRight = UInt(value) ?? 0
+            nine.switchIDforControlRight = UInt(value) ?? 0
             
         case 8:
             self.nineInOne?.switchNameforControl1 = value
             
         case 9:
-            self.nineInOne?.switchIDforControl1 = UInt(value) ?? 0
+            nine.switchIDforControl1 = UInt(value) ?? 0
             
         case 10:
-            self.nineInOne?.switchNameforControl2 = value
+            nine.switchNameforControl2 = value
             
         case 11:
-            self.nineInOne?.switchIDforControl2 = UInt(value) ?? 0
+            nine.switchIDforControl2 = UInt(value) ?? 0
             
         case 12:
-            self.nineInOne?.switchNameforControl3 = value
+            nine.switchNameforControl3 = value
             
         case 13:
-            self.nineInOne?.switchIDforControl3 = UInt(value) ?? 0
+            nine.switchIDforControl3 = UInt(value) ?? 0
             
         case 14:
-            self.nineInOne?.switchNameforControl4 = value
+            nine.switchNameforControl4 = value
             
         case 15:
-            self.nineInOne?.switchIDforControl4 = UInt(value) ?? 0
+            nine.switchIDforControl4 = UInt(value) ?? 0
             
         case 16:
-            self.nineInOne?.switchNameforControl5 = value
+            nine.switchNameforControl5 = value
             
         case 17:
-            self.nineInOne?.switchIDforControl5 = UInt(value) ?? 0
+            nine.switchIDforControl5 = UInt(value) ?? 0
             
         case 18:
-            self.nineInOne?.switchNameforControl6 = value
+            nine.switchNameforControl6 = value
             
         case 19:
-            self.nineInOne?.switchIDforControl6 = UInt(value) ?? 0
+            nine.switchIDforControl6 = UInt(value) ?? 0
             
         case 20:
             self.nineInOne?.switchNameforControl7 = value
             
         case 21:
-            self.nineInOne?.switchIDforControl7 = UInt(value) ?? 0
+            nine.switchIDforControl7 = UInt(value) ?? 0
             
         case 22:
-            self.nineInOne?.switchNameforControl8 = value
+            nine.switchNameforControl8 = value
             
         case 23:
-            self.nineInOne?.switchIDforControl8 = UInt(value) ?? 0
+            nine.switchIDforControl8 = UInt(value) ?? 0
             
         case 24:
-            self.nineInOne?.switchIDforNumber0 = UInt(value) ?? 0
+            nine.switchIDforNumber0 = UInt(value) ?? 0
             
         case 25:
-            self.nineInOne?.switchIDforNumber1 = UInt(value) ?? 0
+            nine.switchIDforNumber1 = UInt(value) ?? 0
             
         case 26:
-            self.nineInOne?.switchIDforNumber2 = UInt(value) ?? 0
+            nine.switchIDforNumber2 = UInt(value) ?? 0
             
         case 27:
-            self.nineInOne?.switchIDforNumber3 = UInt(value) ?? 0
+            nine.switchIDforNumber3 = UInt(value) ?? 0
             
         case 28:
-            self.nineInOne?.switchIDforNumber4 = UInt(value) ?? 0
+            nine.switchIDforNumber4 = UInt(value) ?? 0
             
         case 29:
-            self.nineInOne?.switchIDforNumber5 = UInt(value) ?? 0
+            nine.switchIDforNumber5 = UInt(value) ?? 0
             
         case 30:
-            self.nineInOne?.switchIDforNumber6 = UInt(value) ?? 0
+            nine.switchIDforNumber6 = UInt(value) ?? 0
             
         case 31:
-            self.nineInOne?.switchIDforNumber7 = UInt(value) ?? 0
+            nine.switchIDforNumber7 = UInt(value) ?? 0
             
         case 32:
-            self.nineInOne?.switchIDforNumber8 = UInt(value) ?? 0
+            nine.switchIDforNumber8 = UInt(value) ?? 0
             
         case 33:
-            self.nineInOne?.switchIDforNumber9 = UInt(value) ?? 0
+            nine.switchIDforNumber9 = UInt(value) ?? 0
             
         case 34:
-            self.nineInOne?.switchIDforNumberAsterisk = UInt(value) ?? 0
+            nine.switchIDforNumberAsterisk = UInt(value) ?? 0
             
         case 35:
-            self.nineInOne?.switchIDforNumberPound = UInt(value) ?? 0
+            nine.switchIDforNumberPound = UInt(value) ?? 0
             
         case 36:
-            self.nineInOne?.switchNameforSpare1 = value
+            nine.switchNameforSpare1 = value
             
         case 37:
-            self.nineInOne?.switchIDforSpare1 = UInt(value) ?? 0
+            nine.switchIDforSpare1 = UInt(value) ?? 0
             
         case 38:
-            self.nineInOne?.switchNameforSpare2 = value
+            nine.switchNameforSpare2 = value
             
         case 39:
-            self.nineInOne?.switchIDforSpare2 = UInt(value) ?? 0
+            nine.switchIDforSpare2 = UInt(value) ?? 0
             
         case 40:
-            self.nineInOne?.switchNameforSpare3 = value
+            nine.switchNameforSpare3 = value
             
         case 41:
-            self.nineInOne?.switchIDforSpare3 = UInt(value) ?? 0
+            nine.switchIDforSpare3 = UInt(value) ?? 0
             
         case 42:
-            self.nineInOne?.switchNameforSpare4 = value
+            nine.switchNameforSpare4 = value
             
         case 43:
-            self.nineInOne?.switchIDforSpare4 = UInt(value) ?? 0
+            nine.switchIDforSpare4 = UInt(value) ?? 0
             
         case 44:
-            self.nineInOne?.switchNameforSpare5 = value
+            nine.switchNameforSpare5 = value
             
         case 45:
-            self.nineInOne?.switchIDforSpare5 = UInt(value) ?? 0
+            nine.switchIDforSpare5 = UInt(value) ?? 0
             
         case 46:
-            self.nineInOne?.switchNameforSpare6 = value
+            nine.switchNameforSpare6 = value
             
         case 47:
-            self.nineInOne?.switchIDforSpare6 = UInt(value) ?? 0
+            nine.switchIDforSpare6 = UInt(value) ?? 0
             
         case 48:
-            self.nineInOne?.switchNameforSpare7 = value
+            nine.switchNameforSpare7 = value
             
         case 49:
-            self.nineInOne?.switchIDforSpare7 = UInt(value) ?? 0
+            nine.switchIDforSpare7 = UInt(value) ?? 0
             
         case 50:
-            self.nineInOne?.switchNameforSpare8 = value
+            nine.switchNameforSpare8 = value
             
         case 51:
-            self.nineInOne?.switchIDforSpare8 = UInt(value) ?? 0
+            nine.switchIDforSpare8 = UInt(value) ?? 0
             
         case 52:
-            self.nineInOne?.switchNameforSpare9 = value
+            nine.switchNameforSpare9 = value
             
         case 53:
-            self.nineInOne?.switchIDforSpare9 = UInt(value) ?? 0
+            nine.switchIDforSpare9 = UInt(value) ?? 0
             
         case 54:
-            self.nineInOne?.switchNameforSpare10 = value
+            nine.switchNameforSpare10 = value
             
         case 55:
-            self.nineInOne?.switchIDforSpare10 = UInt(value) ?? 0
+            nine.switchIDforSpare10 = UInt(value) ?? 0
             
         case 56:
-            self.nineInOne?.switchNameforSpare11 = value
+            nine.switchNameforSpare11 = value
             
         case 57:
-            self.nineInOne?.switchIDforSpare11 = UInt(value) ?? 0
+            nine.switchIDforSpare11 = UInt(value) ?? 0
             
         case 58:
-            self.nineInOne?.switchNameforSpare12 = value
+            nine.switchNameforSpare12 = value
             
         case 59:
-            self.nineInOne?.switchIDforSpare12 = UInt(value) ?? 0
+            nine.switchIDforSpare12 = UInt(value) ?? 0
             
         default:
             break;
         }
         
-        SHSQLManager.share()?.updateNineInOne(inZone: nineInOne)
+        _ = SHSQLiteManager.shared.updateNineInOne(nine)
     }
 }
