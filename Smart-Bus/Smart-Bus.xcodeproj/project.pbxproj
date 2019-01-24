@@ -90,6 +90,8 @@
 		041C00AC21B504740003CB49 /* loadNibView + protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C00AB21B504740003CB49 /* loadNibView + protocol.swift */; };
 		041E45A921F95A3B00B796E1 /* SHSQLiteManager + Projector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E45A821F95A3B00B796E1 /* SHSQLiteManager + Projector.swift */; };
 		041E45AB21F9669400B796E1 /* SHSQLiteManager + NineInOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E45AA21F9669400B796E1 /* SHSQLiteManager + NineInOne.swift */; };
+		041E45AD21F9959900B796E1 /* SHSQLiteManager + Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E45AC21F9959900B796E1 /* SHSQLiteManager + Schedule.swift */; };
+		041E45AF21F9A3F300B796E1 /* SHSQLiteManager + Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E45AE21F9A3F300B796E1 /* SHSQLiteManager + Icon.swift */; };
 		041EA61721F6C5B7004FFEAF /* SHSQLiteManager + FloorHeating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61621F6C5B7004FFEAF /* SHSQLiteManager + FloorHeating.swift */; };
 		041EA61921F6E61E004FFEAF /* SHSQLiteManager + Hvac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61821F6E61E004FFEAF /* SHSQLiteManager + Hvac.swift */; };
 		041EA61B21F6F5D4004FFEAF /* SHSQLiteManager + Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041EA61A21F6F5D3004FFEAF /* SHSQLiteManager + Audio.swift */; };
@@ -597,6 +599,8 @@
 		041CFFFC21B4DDD90003CB49 /* SHSchduleAudioView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchduleAudioView.xib; sourceTree = "<group>"; };
 		041E45A821F95A3B00B796E1 /* SHSQLiteManager + Projector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Projector.swift"; sourceTree = "<group>"; };
 		041E45AA21F9669400B796E1 /* SHSQLiteManager + NineInOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + NineInOne.swift"; sourceTree = "<group>"; };
+		041E45AC21F9959900B796E1 /* SHSQLiteManager + Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Schedule.swift"; sourceTree = "<group>"; };
+		041E45AE21F9A3F300B796E1 /* SHSQLiteManager + Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Icon.swift"; sourceTree = "<group>"; };
 		041EA61621F6C5B7004FFEAF /* SHSQLiteManager + FloorHeating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + FloorHeating.swift"; sourceTree = "<group>"; };
 		041EA61821F6E61E004FFEAF /* SHSQLiteManager + Hvac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Hvac.swift"; sourceTree = "<group>"; };
 		041EA61A21F6F5D3004FFEAF /* SHSQLiteManager + Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHSQLiteManager + Audio.swift"; sourceTree = "<group>"; };
@@ -2662,8 +2666,9 @@
 				8B687D291EEA4F8E00B58314 /* SHSQLManager.m */,
 				04184E2921F1A63C0002E491 /* SHSQLiteManager.swift */,
 				04184E2B21F1BAFB0002E491 /* SHSQLiteManager + Region.swift */,
-				04184E2D21F1CBCD0002E491 /* SHSQLiteManager + Zone.swift */,
 				0421B67F21F8186E00C42F65 /* SHSQLiteManager + System.swift */,
+				041E45AE21F9A3F300B796E1 /* SHSQLiteManager + Icon.swift */,
+				04184E2D21F1CBCD0002E491 /* SHSQLiteManager + Zone.swift */,
 				04184E3121F1CD4C0002E491 /* SHSQLiteManager + Fan.swift */,
 				0412E32E21F54F290084F3DB /* SHSQLiteManager + Light.swift */,
 				0412E33021F55F960084F3DB /* SHSQLiteManager + Shade.swift */,
@@ -2673,6 +2678,7 @@
 				0412E33421F5753F0084F3DB /* SHSQLiteManager + CentralLights.swift */,
 				0412E33621F577E10084F3DB /* SHSQLiteManager + CentralClimate.swift */,
 				0412E33821F57A2F0084F3DB /* SHSQLiteManager + Security.swift */,
+				041E45AC21F9959900B796E1 /* SHSQLiteManager + Schedule.swift */,
 				0412E34421F5BC2B0084F3DB /* SHSQLiteManager + CT24.swift */,
 				0412E33E21F5A8CA0084F3DB /* SHSQLiteManager + OtherControl.swift */,
 				0412E33C21F5A1CE0084F3DB /* SHSQLiteManager + Sequence.swift */,
@@ -4979,6 +4985,7 @@
 				0412E33121F55F960084F3DB /* SHSQLiteManager + Shade.swift in Sources */,
 				8B4058D02047D5E600DA03FB /* TYCustomAlertView.m in Sources */,
 				0441DDEA216C9C6300952CE4 /* SHCameraViewController.swift in Sources */,
+				041E45AF21F9A3F300B796E1 /* SHSQLiteManager + Icon.swift in Sources */,
 				0429AC9721C248540051263A /* SHSocketTools + cache.swift in Sources */,
 				8B4219102061031700F1F16F /* UIView+CustomSetting.m in Sources */,
 				04B353E521C7427F000A7D0B /* SHZoneControlSATView.swift in Sources */,
@@ -5029,6 +5036,7 @@
 				047812B7216F2148007A7162 /* SHMacroViewController.swift in Sources */,
 				0427E85F21E6DC52000ED6AA /* SHSchduleLightView.swift in Sources */,
 				0421B67E21F7F8F300C42F65 /* SHSQLiteManager + AppleTV.swift in Sources */,
+				041E45AD21F9959900B796E1 /* SHSQLiteManager + Schedule.swift in Sources */,
 				0453EA4321A67C8400F666EF /* JHLineChart.m in Sources */,
 				8BA6B4671FE11F4700C3156F /* UIDevice+DeviceType.m in Sources */,
 				04A177EA215F73D300BD9744 /* SHCommunalServicesViewController.swift in Sources */,

@@ -27,9 +27,13 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
                 (!plan.isDifferentZoneSchedual &&
                     floorHeatings.count == 0) {
                 
-                guard let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
-                        
-                        return
+                let commands =
+                    SHSQLiteManager.shared.getSchedualCommands(
+                        plan.scheduleID
+                )
+                
+                if commands.isEmpty {
+                    return
                 }
                 
                 floorHeatings =
@@ -111,7 +115,7 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
         if type == .floorHeating {
             
             // 先删除以前的命令
-            SHSQLManager.share()?.deleteSchedualeCommand(
+            _ = SHSQLiteManager.shared.deleteSchedualeCommand(
                 plan
             )
             
@@ -144,9 +148,8 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
                 
                 // 手动模式温度
                 command.parameter6 = UInt(floorHeating.schedualTemperature)
-            SHSQLManager.share()?.insertNewSchedualeCommand(
-                    command
-                )
+              
+                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
             }
         }
     }

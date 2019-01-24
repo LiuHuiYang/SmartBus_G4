@@ -36,7 +36,7 @@ class SHSchduleMacroView: UIView, loadNibView {
             marcoListView.reloadData()
             
             // 查找要的计划具体的指令
-            guard let command = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID)?.lastObject as? SHSchedualCommand else {
+            guard let command = SHSQLiteManager.shared.getSchedualCommands(plan.scheduleID).last else {
                 
                 return
             }
@@ -117,7 +117,7 @@ class SHSchduleMacroView: UIView, loadNibView {
             }
             
             // 先删除以前的命令
-           SHSQLManager.share()?.deleteSchedualeCommand(
+           _ = SHSQLiteManager.shared.deleteSchedualeCommand(
                 plan
             )
             
@@ -128,13 +128,10 @@ class SHSchduleMacroView: UIView, loadNibView {
             command.scheduleID = plan.scheduleID
             command.parameter1 = selectMacro!.macroID
             
-        SHSQLManager.share()?.insertNewSchedualeCommand(
-                command
-            )
+            _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
             
         }
     }
-
 }
 
 

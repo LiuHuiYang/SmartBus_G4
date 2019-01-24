@@ -31,10 +31,14 @@ class SHSchduleLightView: UIView, loadNibView {
                     SHSQLiteManager.shared.getLights(
                         plan.zoneID
                 )
+               
+                let commands =
+                    SHSQLiteManager.shared.getSchedualCommands(
+                        plan.scheduleID
+                )
                 
-                guard let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
-                        
-                        return
+                if commands.isEmpty {
+                    return
                 }
                 
                 for light in allLights {
@@ -120,7 +124,7 @@ class SHSchduleLightView: UIView, loadNibView {
         if type == .light {
             
             // 先删除以前的命令
-            SHSQLManager.share()?.deleteSchedualeCommand(
+            _ = SHSQLiteManager.shared.deleteSchedualeCommand(
                 plan
             )
             
@@ -156,7 +160,7 @@ class SHSchduleLightView: UIView, loadNibView {
                         UInt(light.schedualBrightness)
                 }
                 
-            SHSQLManager.share()?.insertNewSchedualeCommand(command)
+                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
             }
         }
     }

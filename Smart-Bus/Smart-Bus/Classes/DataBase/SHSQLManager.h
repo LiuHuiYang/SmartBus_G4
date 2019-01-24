@@ -60,38 +60,7 @@
 extern const NSUInteger maxIconIDForDataBase;
 
 @interface SHSQLManager : NSObject
-
-  
-// MARK: - schedaul 相关的操作
-
-/// 获得所有的计划 
-- (NSMutableArray *)getAllSchdule;
-
-/// 获得指定的计划
-- (SHSchedual *)getSchedualFor:(NSUInteger)findSchedualID;
-
-/// 获得计划的命令集
-- (NSMutableArray *)getSchedualCommands:(NSUInteger)findSchedualID;
-
-/// 获得最大的计划ID 
-- (NSUInteger)getMaxScheduleID;
-
-/// 删除schedual 及命令
-- (BOOL)deleteScheduale:(SHSchedual *)schedual;
-
-/// 只删除schedual中的执行 指令
-- (BOOL)deleteSchedualeCommand:(SHSchedual *)schedual;
-
-/// 插入新的计划
-- (void)insertNewScheduale:(SHSchedual *)schedual;
-
-/// 插入计划要执行的命令
-- (void)insertNewSchedualeCommand:(SHSchedualCommand *)schedualCommand;
-
-/// 更新计划
-- (BOOL)updateSchedule:(SHSchedual *)schedual;
-
-
+ 
 // MARK: - icon
 
 /// 根据名称获得图片

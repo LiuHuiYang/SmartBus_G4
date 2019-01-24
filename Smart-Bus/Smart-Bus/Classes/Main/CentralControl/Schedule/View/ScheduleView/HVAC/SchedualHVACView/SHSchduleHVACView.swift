@@ -27,9 +27,13 @@ class SHSchduleHVACView: UIView, loadNibView {
                 (!plan.isDifferentZoneSchedual &&
                     hvacs.count == 0) {
                 
-                guard let commands = SHSQLManager.share()?.getSchedualCommands(plan.scheduleID) as? [SHSchedualCommand] else {
-                        
-                        return
+                let commands =
+                    SHSQLiteManager.shared.getSchedualCommands(
+                        plan.scheduleID
+                )
+                
+                if commands.isEmpty {
+                    return
                 }
                 
                 hvacs =
@@ -113,7 +117,7 @@ class SHSchduleHVACView: UIView, loadNibView {
         if type == .HVAC {
             
             // 先删除以前的命令
-            SHSQLManager.share()?.deleteSchedualeCommand(
+            _ = SHSQLiteManager.shared.deleteSchedualeCommand(
                 plan
             )
             
@@ -140,7 +144,8 @@ class SHSchduleHVACView: UIView, loadNibView {
                 
                  // 模式温度 -> 具体是哪种模式温度 取决于 parameter5
                 command.parameter6 = UInt(hvac.schedualTemperature)
-                SHSQLManager.share()?.insertNewSchedualeCommand(command)
+                
+                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
             }
         }
     }

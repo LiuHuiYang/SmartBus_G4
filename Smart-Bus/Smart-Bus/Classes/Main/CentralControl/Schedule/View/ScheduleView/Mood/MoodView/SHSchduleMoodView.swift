@@ -36,13 +36,11 @@ class SHSchduleMoodView: UIView, loadNibView {
             
             moodListView.reloadData()
             
-            // 查找要的计划具体的指令
-            guard let command =  SHSQLManager.share()?.getSchedualCommands(
-                    plan.scheduleID
-                )?.lastObject as? SHSchedualCommand else {
+            guard let command = SHSQLiteManager.shared.getSchedualCommands(plan.scheduleID).last else {
                 
                 return
             }
+            
             
             for mood in allMoods.enumerated() {
                 
@@ -119,7 +117,7 @@ class SHSchduleMoodView: UIView, loadNibView {
             }
             
             // 先删除以前的命令
-            SHSQLManager.share()?.deleteSchedualeCommand(
+            _ = SHSQLiteManager.shared.deleteSchedualeCommand(
                 plan
             )
             
@@ -131,9 +129,7 @@ class SHSchduleMoodView: UIView, loadNibView {
             command.parameter1 = selectMood!.moodID
             command.parameter2 = selectMood!.zoneID
             
-            SHSQLManager.share()?.insertNewSchedualeCommand(
-                command
-            )
+            _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
         }
     }
 }

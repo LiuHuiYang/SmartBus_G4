@@ -51,12 +51,13 @@ import UIKit
             }
             
             // 查询需要的命令
-            guard let schedualCommands =
-                SHSQLManager.share()?.getSchedualCommands(
+            let schedualCommands =
+                SHSQLiteManager.shared.getSchedualCommands(
                     schdule.scheduleID
-                    ) as? [SHSchedualCommand] else {
-                        
-                        return
+            )
+            
+            if schedualCommands.isEmpty {
+                return
             }
             
             for command in schedualCommands {
@@ -261,8 +262,10 @@ extension SHSchedualExecuteTools {
     
     /// 更新新执行计划
     func updateSchduals() {
+         
+        let scheduals = SHSQLiteManager.shared.getSchedules()
         
-        guard let scheduals = SHSQLManager.share()?.getAllSchdule() as? [SHSchedual] else {
+        if scheduals.isEmpty {
             return
         }
         

@@ -419,11 +419,11 @@ extension SHSchedualEditViewController {
         
         if isAddSedual {
             
-            SHSQLManager.share()?.insertNewScheduale(plan)
+            _ = SHSQLiteManager.shared.insertSchedule(plan)
         
         } else {
         
-            SHSQLManager.share()?.updateSchedule(plan)
+            _ = SHSQLiteManager.shared.updateSchedule(plan)
         }
         
         print(" ===> 保存命令集合 === \(plan.commands.count) ")
@@ -431,7 +431,8 @@ extension SHSchedualEditViewController {
         if let commands = plan.commands as? [SHSchedualCommand] {
             
             for command: SHSchedualCommand in commands {
-                SHSQLManager.share()?.insertNewSchedualeCommand(command)
+                
+                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
             }
         }
         
@@ -476,19 +477,19 @@ extension SHSchedualEditViewController: UITextFieldDelegate {
             return false
         }
         
-        if let allScheduales = SHSQLManager.share()?.getAllSchdule() as? [SHSchedual] {
+        let allScheduales =
+            SHSQLiteManager.shared.getSchedules()
+        
+        for plan in allScheduales {
             
-            for plan in allScheduales {
+            if plan.scheduleName == name &&
+                plan.scheduleID != schedual?.scheduleID {
                 
-                if plan.scheduleName == name &&
-                    plan.scheduleID != schedual?.scheduleID {
-                    
-                    SVProgressHUD.showError(
-                        withStatus: "The name has been saved!"
-                    )
-                    
-                    return false
-                }
+                SVProgressHUD.showError(
+                    withStatus: "The name has been saved!"
+                )
+                
+                return false
             }
         }
         

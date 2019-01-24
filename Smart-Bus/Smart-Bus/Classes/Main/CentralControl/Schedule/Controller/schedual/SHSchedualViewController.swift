@@ -48,7 +48,8 @@ class SHSchedualViewController: SHViewController {
         editViewController.isAddSedual = true
         
         let schedual = SHSchedual()
-        schedual.scheduleID = (SHSQLManager.share()?.getMaxScheduleID() ?? 0) + 1
+        schedual.scheduleID =
+            SHSQLiteManager.shared.getMaxSchedualID() + 1
         schedual.scheduleName = "new schedule"
         schedual.controlledItemID = .marco
         schedual.frequencyID = .oneTime
@@ -170,7 +171,7 @@ class SHSchedualViewController: SHViewController {
         super.viewWillAppear(animated)
         
         allSchedules =
-            (SHSQLManager.share()?.getAllSchdule() as? [SHSchedual]) ?? [SHSchedual]()
+            SHSQLiteManager.shared.getSchedules()
         
         scheduleTableView.reloadData()
     }
@@ -204,8 +205,12 @@ extension SHSchedualViewController: UITableViewDelegate {
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-            SHSQLManager.share()?.deleteScheduale(schedual)
-              SHSchedualExecuteTools.shared.updateSchduals()
+            
+            _ = SHSQLiteManager.shared.deleteScheduale(
+                schedual
+            )
+            
+            SHSchedualExecuteTools.shared.updateSchduals()
             
         }
     }

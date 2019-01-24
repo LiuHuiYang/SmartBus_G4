@@ -94,11 +94,16 @@ class SHScheduleViewCell: UITableViewCell {
 
     /// 开启计划的开启点击
     @IBAction func validitySwitchClick() {
-
-        schedual?.enabledSchedule = validitySwitch.isOn
         
-        SHSQLManager.share()?.updateSchedule(schedual)
-          SHSchedualExecuteTools.shared.updateSchduals()
+        guard let plan = schedual else {
+            return
+        }
+
+        plan.enabledSchedule = validitySwitch.isOn
+        
+        _ = SHSQLiteManager.shared.updateSchedule(plan)
+        
+        SHSchedualExecuteTools.shared.updateSchduals()
     }
     
     override func awakeFromNib() {

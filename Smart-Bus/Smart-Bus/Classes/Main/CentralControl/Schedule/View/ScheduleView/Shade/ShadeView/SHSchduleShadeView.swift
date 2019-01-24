@@ -19,18 +19,21 @@ class SHSchduleShadeView: UIView, loadNibView {
         
         didSet {
             
-            guard let plan = schedual,
-             
-            let commands = SHSQLManager.share()?.getSchedualCommands(
+            guard let plan = schedual else {
+                    
+                return
+            }
+            
+            let commands =
+                SHSQLiteManager.shared.getSchedualCommands(
                     plan.scheduleID
-                    ) as? [SHSchedualCommand]
+            )
+            
+            if commands.isEmpty {
                 
-                else {
-                    
-                    SVProgressHUD.showInfo(
-                        withStatus: SHLanguageText.noData
-                    )
-                    
+                SVProgressHUD.showInfo(
+                    withStatus: SHLanguageText.noData
+                )
                 return
             }
             
@@ -98,7 +101,7 @@ class SHSchduleShadeView: UIView, loadNibView {
         if type == .shade {
             
             // 先删除以前的命令
-            SHSQLManager.share()?.deleteSchedualeCommand(
+            _ = SHSQLiteManager.shared.deleteSchedualeCommand(
                 plan
             )
             
@@ -115,8 +118,8 @@ class SHSchduleShadeView: UIView, loadNibView {
                 command.parameter2 = shade.zoneID
                 command.parameter3 =
                     shade.currentStatus.rawValue
-             
-                SHSQLManager.share()?.insertNewSchedualeCommand(command)
+           
+                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
             }
         }
     }
