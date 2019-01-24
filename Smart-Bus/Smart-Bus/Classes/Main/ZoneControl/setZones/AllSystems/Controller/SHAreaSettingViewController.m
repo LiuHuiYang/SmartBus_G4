@@ -8,6 +8,9 @@
 
 #import "SHAreaSettingViewController.h"
 
+/// 系统图片最大ID
+NSUInteger maxIconIDForDataBase = 10;
+
 /// 重用cell
 static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
 
@@ -159,11 +162,12 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
     // ===========图片需要保存在沙盒中================
     
     SHIcon *icon = [[SHIcon alloc] init];
-    icon.iconID = [[SHSQLManager shareSQLManager] getMaxIconID] + 1;
+    icon.iconID =
+        SHSQLiteManager.shared.getMaxIconID + 1;
     icon.iconName = [NSString stringWithFormat:@"icon_%tu", icon.iconID];
     icon.iconData = UIImagePNGRepresentation(sourceImage);
-    
-    [[SHSQLManager shareSQLManager] inserNewIcon:icon];
+  
+    [SHSQLiteManager.shared insertIcon:icon];
     
     self.currentZone.zoneIconName = icon.iconName;
     
@@ -293,7 +297,11 @@ static NSString *systemCellReusableIdentifier = @"SHSetSystemViewCell";
     
     if (!image) {
         
-        image = [UIImage imageWithData:[[SHSQLManager shareSQLManager] getIcon:self.currentZone.zoneIconName].iconData];
+        SHIcon *icon =
+            [SHSQLiteManager.shared
+                getIcon:self.currentZone.zoneIconName];
+        
+        image = [UIImage imageWithData:icon.iconData];
     }
     
     [self.iconButton setImage:image forState:UIControlStateNormal];

@@ -228,8 +228,7 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
         // 保存到数据库
         let icon = SHIcon()
         icon.iconID =
-            (SHSQLManager.share()?.getMaxIconID() ?? 0)
-                + 1
+            SHSQLiteManager.shared.getMaxIconID() + 1
         
         let iconName = "icon_\(icon.iconID)"
         icon.iconName = iconName
@@ -237,8 +236,7 @@ extension SHRegionSettingViewController : UINavigationControllerDelegate, UIImag
         icon.iconData =
             sectionImage.pngData()
         
-        // 插入到图片
-        SHSQLManager.share()?.inserNewIcon(icon)
+        _ = SHSQLiteManager.shared.insertIcon(icon)
         
         area.regionIconName = iconName
         
@@ -306,9 +304,8 @@ extension SHRegionSettingViewController {
         // 图片
         guard let area = region,
             let icon =
-            SHSQLManager.share()?.getIcon(
-                area.regionIconName
-            ),
+                SHSQLiteManager.shared.getIcon(
+                    area.regionIconName),
             
             let image = (icon.iconData == nil) ? UIImage(named: area.regionIconName) : UIImage(data: icon.iconData!)
             

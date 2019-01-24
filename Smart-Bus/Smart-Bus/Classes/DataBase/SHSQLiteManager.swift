@@ -16,6 +16,9 @@ let dataBaseName = "SMART-BUS.sqlite";
 /// 沙盒记录版本标示
 let sandboxVersionKey = "sandboxVersionKey"
 
+// 在数据库中可以iconList直接查询到
+let maxIconIDForDataBase = 10
+
 @objcMembers class SHSQLiteManager: NSObject {
 
     /// 单列对象
@@ -144,6 +147,9 @@ let sandboxVersionKey = "sandboxVersionKey"
         
         // 增加多区域支持
         addRegions()
+        
+        // 增加图片的二进制数据
+        addIconData()
         
         // 增加CT24的参数
         addCurrentTransformerParameter()

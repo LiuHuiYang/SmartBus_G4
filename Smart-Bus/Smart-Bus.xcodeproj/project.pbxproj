@@ -443,7 +443,6 @@
 		8B5D5055206CBAE30028EEDB /* SHAudioSourceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D5048206CBAE20028EEDB /* SHAudioSourceButton.m */; };
 		8B5D505F206CC3AC0028EEDB /* SHMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5D505D206CC3AC0028EEDB /* SHMusicViewController.xib */; };
 		8B687D171EEA2E1400B58314 /* UIImage+SaveAndGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B687D161EEA2E1400B58314 /* UIImage+SaveAndGet.m */; };
-		8B687D2A1EEA4F8E00B58314 /* SHSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B687D291EEA4F8E00B58314 /* SHSQLManager.m */; };
 		8B6B20192050C34100F1B943 /* SHSecurityControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B20162050C34100F1B943 /* SHSecurityControlViewController.m */; };
 		8B6B201A2050C34100F1B943 /* SHSecurityControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B20182050C34100F1B943 /* SHSecurityControlViewController.xib */; };
 		8B829540204E2ECD00F3AD41 /* SHLanguageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8294A5204E2ECC00F3AD41 /* SHLanguageTools.m */; };
@@ -1050,8 +1049,6 @@
 		8B5D505D206CC3AC0028EEDB /* SHMusicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHMusicViewController.xib; sourceTree = "<group>"; };
 		8B687D151EEA2E1400B58314 /* UIImage+SaveAndGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SaveAndGet.h"; sourceTree = "<group>"; };
 		8B687D161EEA2E1400B58314 /* UIImage+SaveAndGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SaveAndGet.m"; sourceTree = "<group>"; };
-		8B687D281EEA4F8E00B58314 /* SHSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSQLManager.h; sourceTree = "<group>"; };
-		8B687D291EEA4F8E00B58314 /* SHSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSQLManager.m; sourceTree = "<group>"; };
 		8B6B20162050C34100F1B943 /* SHSecurityControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSecurityControlViewController.m; sourceTree = "<group>"; };
 		8B6B20172050C34100F1B943 /* SHSecurityControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSecurityControlViewController.h; sourceTree = "<group>"; };
 		8B6B20182050C34100F1B943 /* SHSecurityControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSecurityControlViewController.xib; sourceTree = "<group>"; };
@@ -2662,8 +2659,6 @@
 		8B687D271EEA4F7000B58314 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				8B687D281EEA4F8E00B58314 /* SHSQLManager.h */,
-				8B687D291EEA4F8E00B58314 /* SHSQLManager.m */,
 				04184E2921F1A63C0002E491 /* SHSQLiteManager.swift */,
 				04184E2B21F1BAFB0002E491 /* SHSQLiteManager + Region.swift */,
 				0421B67F21F8186E00C42F65 /* SHSQLiteManager + System.swift */,
@@ -5011,7 +5006,6 @@
 				04913C8D218167F100704F3D /* SHDeviceListCell.swift in Sources */,
 				042CD7D420AD2ED600061670 /* EZAudioDevice.m in Sources */,
 				04143638217046CB00A3E5F6 /* SHMacroCommandsViewController.swift in Sources */,
-				8B687D2A1EEA4F8E00B58314 /* SHSQLManager.m in Sources */,
 				04A177D6215F5FD500BD9744 /* SHMetersViewController.swift in Sources */,
 				0401BC56219132490046BF18 /* SHZoneDevicesCell.swift in Sources */,
 				044C545321DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift in Sources */,

@@ -6,7 +6,6 @@
 
 #import "UIView+CustomSetting.h"
 #import "SHLanguageTools.h"
-#import "SHSQLManager.h"
 #import "UIButton+init.h"
 #import "SHViewController.h"
 #include "SHConstraint.h"
@@ -42,4 +41,4 @@
 #import "SHSchedualHVACViewController.h"
 #import "SHSchedualAudioViewController.h"
 
- 
+#import "SHSchedual.h"

@@ -20,7 +20,7 @@ import UIKit
             // 取出图片
             guard let area = region,
                 let icon =
-                SHSQLManager.share()?.getIcon(
+                SHSQLiteManager.shared.getIcon(
                     area.regionIconName
                 ),
             
@@ -49,8 +49,8 @@ import UIKit
             nameLabel.text = zone.zoneName
             
             guard let icon =
-                SHSQLManager.share()?.getIcon(
-                    zone.zoneIconName
+                SHSQLiteManager.shared.getIcon(
+                    zone.zoneIconName ?? ""
                 ),
                 
                 let image = (icon.iconData == nil) ? UIImage(named: zone.zoneIconName ?? "") : UIImage(data: icon.iconData!) else {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FMDB
 
 /// 旧数据库的名称
 private let oldDataBase = "Database.sqlite3"

@@ -8,6 +8,8 @@
 
 #import "SHViewController.h"
 
+@class SHZone;
+
 @interface SHZoneControlRecordMoodViewController : SHViewController
 
 /// 当前区域

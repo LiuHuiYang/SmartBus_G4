@@ -20,8 +20,8 @@ class SHZoneIconViewController: SHViewController {
     @IBOutlet weak var iconListView: UICollectionView!
     
     /// 所有的图片
-    fileprivate lazy var allIcons: [SHIcon] =
-        SHSQLManager.share()?.getAllIcons() as! [SHIcon]
+    private lazy var allIcons: [SHIcon] =
+        SHSQLiteManager.shared.getIcons()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,7 +117,7 @@ extension SHZoneIconViewController {
                 
                 self.allIcons.remove(at: index)
                 
-                SHSQLManager.share()?.delete(icon)
+                _ = SHSQLiteManager.shared.deleteIcon(icon)
                 
                 self.iconListView.reloadData()
                 

@@ -6,6 +6,7 @@
 //  Copyright © 2017年 SmartHome. All rights reserved.
 //
 
+@class SHZone;
 
 @interface SHAreaControlViewController : SHTabBarController
  

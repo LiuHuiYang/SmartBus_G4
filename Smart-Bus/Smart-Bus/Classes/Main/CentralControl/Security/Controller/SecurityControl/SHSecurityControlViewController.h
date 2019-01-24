@@ -8,6 +8,8 @@
 
 #import "SHViewController.h"
 
+@class SHSecurityZone;
+
 @interface SHSecurityControlViewController : SHViewController
 
 /// 安防区域

@@ -7,6 +7,7 @@
 //
 
 #import "SHViewController.h"
+@class SHHVAC;
 
 @interface SHSchedualHVACViewController : SHViewController
     
