@@ -247,10 +247,11 @@ extension SHZoneDevicesViewController {
             allDevices = appleTVs as [Any]
 
         case .projector:
-            if let projectors =  SHSQLManager.share()?.getMediaProjector(for: zoneID) {
-                
-                allDevices = projectors as! [Any]
-            }
+        
+            let projectors =
+                SHSQLiteManager.shared.getProjectors(zoneID)
+            
+            allDevices = projectors as [Any]
             
         case .floorHeating:
           

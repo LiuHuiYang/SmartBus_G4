@@ -47,7 +47,8 @@ extension SHSQLiteManager {
                _ = deleteAppleTVs(zoneID)
                 
             case SHSystemDeviceType.projector.rawValue:
-                SHSQLManager.share()?.deleteZoneProjectors(
+                
+                _ = SHSQLiteManager.shared.deleteProjectors(
                     zoneID
                 )
                 

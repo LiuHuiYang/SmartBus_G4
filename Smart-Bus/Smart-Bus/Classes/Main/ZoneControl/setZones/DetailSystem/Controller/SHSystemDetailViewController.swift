@@ -140,11 +140,11 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 if let projector = self.allDevices[indexPath.row]
                         as? SHMediaProjector {
                     
-                    SHSQLManager.share()?.deleteProjector(
-                        inZone: projector
-                    )
-                    
                     self.allDevices.remove(projector)
+                    
+                    _ = SHSQLiteManager.shared.deleteProjector(
+                        projector
+                    )
                 }
                 
             case .fan:
@@ -825,9 +825,12 @@ extension SHSystemDetailViewController {
             projector.remark = "projector"
             projector.zoneID = zoneID
             
-            let result = SHSQLManager.share()?.insertNewMediaProjector(projector) ?? 1
+            let result =
+                SHSQLiteManager.shared.insertProjector(
+                    projector
+            )
             
-            projector.id = UInt(result)
+            projector.id = (result == 0) ? 1 : result
             
             detailController.mediaProjector = projector
             
@@ -1026,15 +1029,12 @@ extension SHSystemDetailViewController {
             allDevices = NSMutableArray(array: appleTVs)
             
         case .projector:
-            guard let projectors = SHSQLManager.share()?.getMediaProjector(
-                    for: zoneID) else {
-                
-                return
-            }
+       
+            let projectors =
+                SHSQLiteManager.shared.getProjectors(zoneID)
             
-            allDevices = projectors
-            
-            
+            allDevices = NSMutableArray(array: projectors)
+             
         case .fan:
            
             let fans = SHSQLiteManager.shared.getFans(zoneID)

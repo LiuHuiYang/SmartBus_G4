@@ -117,23 +117,6 @@ extern const NSUInteger maxIconIDForDataBase;
 - (BOOL)updateSchedule:(SHSchedual *)schedual;
 
  
-// MARK: - Projector
-
-/// 保存投影仪数据
-- (void)saveMediaProjectorInZone:(SHMediaProjector *)mediaProjector;
-
-/// 增加新的投影仪
-- (NSInteger)insertNewMediaProjector:(SHMediaProjector *)mediaProjector;
-
-/// 删除投影仪
-- (BOOL)deleteProjectorInZone:(SHMediaProjector *)mediaProjector;
-
-/// 删除区域中的投影仪
-- (BOOL)deleteZoneProjectors:(NSUInteger)zoneID;
-
-/// 获得当前区域的投影仪
-- (NSMutableArray *)getMediaProjectorFor:(NSUInteger)zoneID;
- 
  
 // MARK: - icon
 

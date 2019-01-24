@@ -70,73 +70,77 @@ extension SHDeviceArgsViewController {
     /// 保存投影仪
     func updateMediaProjector(value: String, index: Int) {
         
+        guard let projector = self.mediaProjector else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.mediaProjector?.remark = value
+            projector.remark = value
             
         case 1:
-            self.mediaProjector?.subnetID = UInt8(value) ?? 1
+            projector.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.mediaProjector?.deviceID = UInt8(value) ?? 0
+            projector.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.mediaProjector?.universalSwitchIDforOn = UInt(value) ?? 0
+            projector.universalSwitchIDforOn = UInt(value) ?? 0
             
         case 4:
-            self.mediaProjector?.universalSwitchStatusforOn = UInt(value) ?? 0
+            projector.universalSwitchStatusforOn = UInt(value) ?? 0
             
         case 5:
-            self.mediaProjector?.universalSwitchIDforOff = UInt(value) ?? 0
+            projector.universalSwitchIDforOff = UInt(value) ?? 0
             
         case 6:
-            self.mediaProjector?.universalSwitchStatusforOff = UInt(value) ?? 0
+            projector.universalSwitchStatusforOff = UInt(value) ?? 0
             
         case 7:
-            self.mediaProjector?.universalSwitchIDfoUp = UInt(value) ?? 0
+            projector.universalSwitchIDfoUp = UInt(value) ?? 0
             
         case 8:
-            self.mediaProjector?.universalSwitchIDforDown = UInt(value) ?? 0
+            projector.universalSwitchIDforDown = UInt(value) ?? 0
             
         case 9:
-            self.mediaProjector?.universalSwitchIDforLeft = UInt(value) ?? 0
+            projector.universalSwitchIDforLeft = UInt(value) ?? 0
             
         case 10:
-            self.mediaProjector?.universalSwitchIDforRight = UInt(value) ?? 0
+            projector.universalSwitchIDforRight = UInt(value) ?? 0
             
         case 11:
-            self.mediaProjector?.universalSwitchIDforOK = UInt(value) ?? 0
+            projector.universalSwitchIDforOK = UInt(value) ?? 0
             
         case 12:
-            self.mediaProjector?.universalSwitchIDfoMenu = UInt(value) ?? 0
+            projector.universalSwitchIDfoMenu = UInt(value) ?? 0
             
         case 13:
-            self.mediaProjector?.universalSwitchIDforSource = UInt(value) ?? 0
+            projector.universalSwitchIDforSource = UInt(value) ?? 0
             
         case 14:
-            self.mediaProjector?.iRMacroNumberForProjectorSpare0 = UInt(value) ?? 0
+            projector.iRMacroNumberForProjectorSpare0 = UInt(value) ?? 0
             
         case 15:
-            self.mediaProjector?.iRMacroNumberForProjectorSpare1 = UInt(value) ?? 0
+            projector.iRMacroNumberForProjectorSpare1 = UInt(value) ?? 0
             
         case 16:
-            self.mediaProjector?.iRMacroNumberForProjectorSpare2 = UInt(value) ?? 0
+            projector.iRMacroNumberForProjectorSpare2 = UInt(value) ?? 0
             
         case 17:
-            self.mediaProjector?.iRMacroNumberForProjectorSpare3 = UInt(value) ?? 0
+            projector.iRMacroNumberForProjectorSpare3 = UInt(value) ?? 0
             
         case 18:
-            self.mediaProjector?.iRMacroNumberForProjectorSpare4 = UInt(value) ?? 0
+            projector.iRMacroNumberForProjectorSpare4 = UInt(value) ?? 0
             
         case 19:
-            self.mediaProjector?.iRMacroNumberForProjectorSpare5 = UInt(value) ?? 0
+            projector.iRMacroNumberForProjectorSpare5 = UInt(value) ?? 0
             
         default:
             break
         }
-        
-        SHSQLManager.share()?.saveMediaProjector(inZone: mediaProjector)
+         
+        _ = SHSQLiteManager.shared.updateProjector(projector)
     }
 }
 
