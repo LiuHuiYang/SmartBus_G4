@@ -83,26 +83,27 @@ let maxIconIDForDataBase = 10
     func deleteResidualData() {
     
         // 有效区域
-        let zones = getZoneID(tableName: "Zones")
+        let zoneIDs = getZoneID(tableName: "Zones")
         
-        // 查询相关的区域
-        var systemDeviceZones =
+        // 已配置的区域
+        let systemDeviceZoneIDs =
             getZoneID(tableName: "SystemInZone")
         
-        var delelteZones = [SHZone]()
+        // 需要被删除的区域
+        var delelteZoneID = [UInt]()
         
-        for zoneID in systemDeviceZones.enumerated() {
+        for zoneID in systemDeviceZoneIDs {
             
-            if zones.contains(zoneID.element) {
-                
-//                systemDeviceZones.remove(at: zoneID.offset)
+            if !zoneIDs.contains(zoneID) {
+             
+                delelteZoneID.append(zoneID)
             }
         }
-    
+        
         // 删除残留数据
-        for zoneID in systemDeviceZones {
+        for zoneID in delelteZoneID {
             
-//            _ = deleteZone(zoneID)
+            _ = deleteZone(zoneID)
         }
     }
     
@@ -119,7 +120,6 @@ let maxIconIDForDataBase = 10
         let currentVersion =
             Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
-       
         // 设置最新版本
         UserDefaults.standard.set(
             currentVersion,
