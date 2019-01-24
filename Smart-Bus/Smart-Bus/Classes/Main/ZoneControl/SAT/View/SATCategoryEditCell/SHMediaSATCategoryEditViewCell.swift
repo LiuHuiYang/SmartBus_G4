@@ -72,21 +72,20 @@ extension SHMediaSATCategoryEditViewCell : UITextFieldDelegate {
         textField.backgroundColor = UIColor.clear
         textField.textColor = UIView.textWhiteColor()
 
-        guard let name = textField.text else {
+        guard let satCategory = category,
+            let name = textField.text else {
             return
         }
         
-        if name.isEmpty || name == category?.categoryName {
+        if name.isEmpty || name == satCategory.categoryName {
             return
         }
         
-        category?.categoryName = name
+        satCategory.categoryName = name
         
         let result =
                 isNew ?
-                SHSQLManager.share().insertNewMediaSATCategory(category) :
-        
-                    (SHSQLManager.share()?.update(category))!
+                SHSQLiteManager.shared.insertSatCategory(satCategory) :  SHSQLiteManager.shared.updateSatCategory(satCategory)
         
         if result {
               SVProgressHUD.showSuccess(

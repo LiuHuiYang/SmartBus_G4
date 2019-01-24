@@ -129,149 +129,155 @@ extension SHDeviceArgsViewController {
     /// 保存sat.
     func updateMediaSAT(value: String, index: Int) {
         
+        guard let sat = self.mediaSAT else {
+            return
+        }
+        
         switch (index) {
             
         case 0:
-            self.mediaSAT?.remark = value
+            sat.remark = value
+            
         case 1:
-            self.mediaSAT?.subnetID = UInt8(value) ?? 1
+            sat.subnetID = UInt8(value) ?? 1
             
         case 2:
-            self.mediaSAT?.deviceID = UInt8(value) ?? 0
+            sat.deviceID = UInt8(value) ?? 0
             
         case 3:
-            self.mediaSAT?.universalSwitchIDforOn = UInt(value) ?? 0
+            sat.universalSwitchIDforOn = UInt(value) ?? 0
             
         case 4:
-            self.mediaSAT?.universalSwitchStatusforOn = UInt(value) ?? 0
+            sat.universalSwitchStatusforOn = UInt(value) ?? 0
             
         case 5:
-            self.mediaSAT?.universalSwitchIDforOff = UInt(value) ?? 0
+            sat.universalSwitchIDforOff = UInt(value) ?? 0
             
         case 6:
-            self.mediaSAT?.universalSwitchStatusforOff = UInt(value) ?? 0
+            sat.universalSwitchStatusforOff = UInt(value) ?? 0
             
         case 7:
-            self.mediaSAT?.universalSwitchIDforUp = UInt(value) ?? 0
+            sat.universalSwitchIDforUp = UInt(value) ?? 0
             
         case 8:
-            self.mediaSAT?.universalSwitchIDforDown = UInt(value) ?? 0
+            sat.universalSwitchIDforDown = UInt(value) ?? 0
             
         case 9:
-            self.mediaSAT?.universalSwitchIDforLeft = UInt(value) ?? 0
+            sat.universalSwitchIDforLeft = UInt(value) ?? 0
             
         case 10:
-            self.mediaSAT?.universalSwitchIDforRight = UInt(value) ?? 0
+            sat.universalSwitchIDforRight = UInt(value) ?? 0
+        
         case 11:
-            self.mediaSAT?.universalSwitchIDforOK = UInt(value) ?? 0
+            sat.universalSwitchIDforOK = UInt(value) ?? 0
             
         case 12:
-            self.mediaSAT?.universalSwitchIDfoMenu = UInt(value) ?? 0
+            sat.universalSwitchIDfoMenu = UInt(value) ?? 0
             
         case 13:
-            self.mediaSAT?.universalSwitchIDforFAV = UInt(value) ?? 0
+            sat.universalSwitchIDforFAV = UInt(value) ?? 0
             
         case 14:
-            self.mediaSAT?.universalSwitchIDfor0 = UInt(value) ?? 0
+            sat.universalSwitchIDfor0 = UInt(value) ?? 0
             
         case 15:
-            self.mediaSAT?.universalSwitchIDfor1 = UInt(value) ?? 0
+            sat.universalSwitchIDfor1 = UInt(value) ?? 0
             
         case 16:
-            self.mediaSAT?.universalSwitchIDfor2 = UInt(value) ?? 0
+            sat.universalSwitchIDfor2 = UInt(value) ?? 0
             
         case 17:
-            self.mediaSAT?.universalSwitchIDfor3 = UInt(value) ?? 0
+            sat.universalSwitchIDfor3 = UInt(value) ?? 0
             
         case 18:
-            self.mediaSAT?.universalSwitchIDfor4 = UInt(value) ?? 0
+            sat.universalSwitchIDfor4 = UInt(value) ?? 0
             
         case 19:
-            self.mediaSAT?.universalSwitchIDfor5 = UInt(value) ?? 0
+            sat.universalSwitchIDfor5 = UInt(value) ?? 0
             
         case 20:
-            self.mediaSAT?.universalSwitchIDfor6 = UInt(value) ?? 0
+            sat.universalSwitchIDfor6 = UInt(value) ?? 0
             
         case 21:
-            self.mediaSAT?.universalSwitchIDfor7 = UInt(value) ?? 0
+            sat.universalSwitchIDfor7 = UInt(value) ?? 0
             
         case 22:
-            self.mediaSAT?.universalSwitchIDfor8 = UInt(value) ?? 0
+            sat.universalSwitchIDfor8 = UInt(value) ?? 0
             
         case 23:
-            self.mediaSAT?.universalSwitchIDfor9 = UInt(value) ?? 0
+            sat.universalSwitchIDfor9 = UInt(value) ?? 0
             
         case 24:
-            self.mediaSAT?.universalSwitchIDforPREVChapter = UInt(value) ?? 0
+            sat.universalSwitchIDforPREVChapter = UInt(value) ?? 0
             
         case 25:
-            self.mediaSAT?.universalSwitchIDforNextChapter = UInt(value) ?? 0
+            sat.universalSwitchIDforNextChapter = UInt(value) ?? 0
             
         case 26:
-            self.mediaSAT?.universalSwitchIDforPlayRecord = UInt(value) ?? 0
+            sat.universalSwitchIDforPlayRecord = UInt(value) ?? 0
             
         case 27:
-            self.mediaSAT?.universalSwitchIDforPlayStopRecord =  UInt(value) ?? 0
+            sat.universalSwitchIDforPlayStopRecord =  UInt(value) ?? 0
             
         case 28:
-            self.mediaSAT?.iRMacroNumberForSATSpare0 = UInt(value) ?? 0
+            sat.iRMacroNumberForSATSpare0 = UInt(value) ?? 0
             
         case 29:
-            self.mediaSAT?.iRMacroNumberForSATSpare1 = UInt(value) ?? 0
+            sat.iRMacroNumberForSATSpare1 = UInt(value) ?? 0
             
         case 30:
-            self.mediaSAT?.iRMacroNumberForSATSpare2 = UInt(value) ?? 0
+            sat.iRMacroNumberForSATSpare2 = UInt(value) ?? 0
             
         case 31:
-            self.mediaSAT?.iRMacroNumberForSATSpare3 = UInt(value) ?? 0
+            sat.iRMacroNumberForSATSpare3 = UInt(value) ?? 0
             
         case 32:
-            self.mediaSAT?.iRMacroNumberForSATSpare4 = UInt(value) ?? 0
+            sat.iRMacroNumberForSATSpare4 = UInt(value) ?? 0
             
         case 33:
-            self.mediaSAT?.iRMacroNumberForSATSpare5 = UInt(value) ?? 0
+            sat.iRMacroNumberForSATSpare5 = UInt(value) ?? 0
             
         case 34:
-            self.mediaSAT?.switchNameforControl1 = value
+            sat.switchNameforControl1 = value
             
         case 35:
-            self.mediaSAT?.switchIDforControl1 = UInt(value) ?? 0
+            sat.switchIDforControl1 = UInt(value) ?? 0
             
         case 36:
-            self.mediaSAT?.switchNameforControl2 = value
+            sat.switchNameforControl2 = value
             
         case 37:
-            self.mediaSAT?.switchIDforControl2 = UInt(value) ?? 0
+            sat.switchIDforControl2 = UInt(value) ?? 0
             
         case 38:
-            self.mediaSAT?.switchNameforControl3 = value
+            sat.switchNameforControl3 = value
             
         case 39:
-            self.mediaSAT?.switchIDforControl3 = UInt(value) ?? 0
+            sat.switchIDforControl3 = UInt(value) ?? 0
             
         case 40:
-            self.mediaSAT?.switchNameforControl4 = value
+            sat.switchNameforControl4 = value
             
         case 41:
-            self.mediaSAT?.switchIDforControl4 = UInt(value) ?? 0
+            sat.switchIDforControl4 = UInt(value) ?? 0
             
         case 42:
-            self.mediaSAT?.switchNameforControl5 = value
+            sat.switchNameforControl5 = value
             
         case 43:
-            self.mediaSAT?.switchIDforControl5 = UInt(value) ?? 0
+            sat.switchIDforControl5 = UInt(value) ?? 0
             
         case 44:
-            self.mediaSAT?.switchNameforControl6 = value
+            sat.switchNameforControl6 = value
             
         case 45:
-            self.mediaSAT?.switchIDforControl6 = UInt(value) ?? 0
+            sat.switchIDforControl6 = UInt(value) ?? 0
             
         default:
             break
         }
         
-        SHSQLManager.share()?.updateMediaSAT(inZone: mediaSAT)
+        _ = SHSQLiteManager.shared.updateSat(sat)
     }
 }
 

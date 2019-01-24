@@ -309,7 +309,10 @@ extension SHZoneControlSATChannel {
     /// 加载数据
     @objc private func loadCategoryData() {
         
-        guard let satCategories = SHSQLManager.share()?.getMediaSATCategory() as? [SHMediaSATCategory] else {
+        categories = SHSQLiteManager.shared.getSatCategory()
+        categoryListView.reloadData()
+        
+        if categories.isEmpty {
             
             SVProgressHUD.showInfo(
                 withStatus: SHLanguageText.noData
@@ -317,9 +320,6 @@ extension SHZoneControlSATChannel {
             
             return
         }
-        
-        categories = satCategories
-        categoryListView.reloadData()
         
         // 默认选择第一个 - UI效果
         categoryListView.selectRow(
@@ -345,13 +345,15 @@ extension SHZoneControlSATChannel: UITableViewDelegate {
         
         let category = categories[indexPath.row]
         
-        guard let allChannels = SHSQLManager.share()?.getMediaSATChannel(for: category) as? [SHMediaSATChannel] else {
+        channels =
+            SHSQLiteManager.shared.getSatChannels(category)
+        
+        if channels.isEmpty {
             
             SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
-            return
+           
         }
         
-        channels = allChannels
         channelListView.reloadData()
     }
 }

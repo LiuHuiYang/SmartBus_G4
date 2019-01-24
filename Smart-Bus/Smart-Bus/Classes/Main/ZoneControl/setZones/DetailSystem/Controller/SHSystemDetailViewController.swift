@@ -800,17 +800,11 @@ extension SHSystemDetailViewController {
             let sat = SHMediaSAT()
             sat.remark = "Satellite TV"
             sat.zoneID = zoneID
-            sat.switchNameforControl1 = "C1"
-            sat.switchNameforControl2 = "C2"
-            sat.switchNameforControl3 = "C3"
-            sat.switchNameforControl4 = "C4"
-            sat.switchNameforControl5 = "C5"
-            sat.switchNameforControl6 = "C6"
+           
+            let result =
+                SHSQLiteManager.shared.insertSat(sat)
             
-            let result = SHSQLManager.share()?.insertNewMediaSAT(
-                sat) ?? 1
-            
-            sat.id = UInt(result)
+            sat.id = (result == 0) ? 1 : result
             
             detailController.mediaSAT = sat
             

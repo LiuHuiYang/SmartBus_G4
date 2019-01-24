@@ -48,8 +48,8 @@
             SHMediaSATCategory *category = [self.categories objectAtIndex:indexPath.row];
             
             [self.categories removeObject:category];
-            
-            [[SHSQLManager shareSQLManager] deleteMediaSATCategory:category];
+         
+            [SHSQLiteManager.shared deleteSatCategory:category];
             
             [tableView reloadData];
             
@@ -173,8 +173,12 @@
     
     [super viewWillAppear:animated];
     
+    NSArray *categories =
+        SHSQLiteManager.shared.getSatCategory;
+    
     // 取出所有的分类
-    self.categories = [[SHSQLManager shareSQLManager] getMediaSATCategory];
+    self.categories = [NSMutableArray arrayWithArray:categories];
+    
     
     if (!self.categories.count) {
         
@@ -207,10 +211,6 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /// 初始化列表
 - (void)setUpListView {

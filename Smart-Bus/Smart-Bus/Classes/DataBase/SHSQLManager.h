@@ -134,33 +134,7 @@ extern const NSUInteger maxIconIDForDataBase;
 /// 获得当前区域的投影仪
 - (NSMutableArray *)getMediaProjectorFor:(NSUInteger)zoneID;
  
-// MARK: - SAT
-
-// 保存当前SAT
-- (void)updateMediaSATInZone:(SHMediaSAT *)mediaSAT;
  
-  
-/// 增加SAT设备
-- (NSInteger)insertNewMediaSAT:(SHMediaSAT *)mediaSAT;
-
-
-/// 获得卫星电视的分类
-- (NSMutableArray *)getMediaSATCategory;
-
-
-/// 增加新的卫星电视分类
-- (BOOL)insertNewMediaSATCategory:(SHMediaSATCategory *)category;
-
-/// 删除卫星电视的分类
-- (BOOL)deleteMediaSATCategory:(SHMediaSATCategory *)category;
-
-/// 更新卫星电视分类名称
-- (BOOL)updateMediaSATCategory:(SHMediaSATCategory *)category;
-
-/// 获得卫星电视指定分类中的所有频道
-- (NSMutableArray *)getMediaSATChannelFor:(SHMediaSATCategory *)category;
-
-  
 // MARK: - icon
 
 /// 根据名称获得图片
