@@ -223,7 +223,14 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 }
                 
             case .otherControl:
-                break
+                
+                if let other  = self.allDevices[indexPath.row]
+                    as? SHOtherControl {
+                    
+                    _ = SHSQLiteManager.shared.deleteOtherControl(other)
+                    
+                    self.allDevices.remove(other)
+                }
                 
                 
             default:
@@ -404,6 +411,15 @@ extension SHSystemDetailViewController: UITableViewDelegate {
                 
                 detailController.sequence =
                     sequence
+            }
+            
+        case .otherControl:
+            if let other =
+                allDevices[indexPath.row]
+                    as? SHOtherControl {
+                
+                detailController.otherControl =
+                    other
             }
             
         default:
@@ -613,9 +629,7 @@ extension SHSystemDetailViewController: UITableViewDataSource {
                     "\(scene.sceneID) - "  +
                     "\(scene.remark) : "   +
                     "\(scene.subnetID) - " +
-                    "\(scene.deviceID) - " +
-                    "\(scene.areaNo) - "   +
-                    "\(scene.sceneNo)"
+                    "\(scene.deviceID)   "
             }
             
         case .sequenceControl:
@@ -627,10 +641,21 @@ extension SHSystemDetailViewController: UITableViewDataSource {
                     "\(sequence.sequenceID) - "  +
                     "\(sequence.remark) : "   +
                     "\(sequence.subnetID) - " +
-                    "\(sequence.deviceID) - " +
-                    "\(sequence.areaNo) - "   +
-                    "\(sequence.sequenceNo)"
+                    "\(sequence.deviceID)   "
             }
+            
+        case .otherControl:
+            
+            if let other = allDevices[indexPath.row] as? SHOtherControl {
+                
+                deviceName =
+                    "\(other.otherControlID) - "       +
+                    "\(other.remark) : "               +
+                    "\(other.controlType.rawValue) - " +
+                    "\(other.subnetID) - "             +
+                    "\(other.deviceID)   "
+            }
+            
             
         default:
             break
@@ -642,13 +667,10 @@ extension SHSystemDetailViewController: UITableViewDataSource {
         return cell
     }
     
-    
-    
 }
 
 // MARK: - UI初始化
 extension SHSystemDetailViewController {
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -934,6 +956,20 @@ extension SHSystemDetailViewController {
             
             detailController.sequence = sequence
             
+        case .otherControl:
+            let otherControl = SHOtherControl()
+            otherControl.remark = "other control"
+            otherControl.zoneID = zoneID
+            otherControl.otherControlID =
+                SHSQLiteManager.shared.getMaxOtherControlID(
+                    zoneID) + 1
+            
+            _ = SHSQLiteManager.shared.insertOtherControl(
+                otherControl
+            )
+            
+            detailController.otherControl = otherControl
+            
         default:
             break
         }
@@ -1063,6 +1099,13 @@ extension SHSystemDetailViewController {
                 SHSQLiteManager.shared.getSequences(zoneID)
             
             allDevices = NSMutableArray(array: sequences)
+            
+        case .otherControl:
+            
+            let otherControls =
+                SHSQLiteManager.shared.getOtherControls(zoneID)
+            
+            allDevices = NSMutableArray(array: otherControls)
             
         default:
             break

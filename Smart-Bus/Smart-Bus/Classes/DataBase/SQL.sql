@@ -624,6 +624,19 @@ CREATE TABLE IF NOT EXISTS  SequenceInZone (
     SequenceNo INTEGER NOT NULL DEFAULT 0
 );
 
+-- OtherControl控制
+CREATE TABLE IF NOT EXISTS OtherControlInZone (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    OtherControlID INTEGER NOT NULL DEFAULT(0),
+    ZoneID INTEGER NOT NULL DEFAULT(0),
+    remark TEXT NOT NULL DEFAULT 'OtherControl',
+    ControlType INTEGER NOT NULL DEFAULT 0,
+    SubnetID INTEGER NOT NULL DEFAULT 0,
+    DeviceID INTEGER NOT NULL DEFAULT 0,
+    Parameter1 INTEGER NOT NULL DEFAULT(0),
+    Parameter2 INTEGER NOT NULL DEFAULT(0)
+);
+
 
 -- --------------中心控制区域------------
 

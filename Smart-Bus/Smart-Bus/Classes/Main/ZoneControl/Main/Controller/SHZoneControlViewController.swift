@@ -106,6 +106,15 @@ extension SHZoneControlViewController {
             deviceID: 0xFF,
             additionalData: []
         )
+        
+        // 同时搜索DMX
+        SHSocketTools.sendData(
+            operatorCode: 0x000E,
+            subNetID: 0xFF,
+            deviceID: 0xFF,
+            additionalData: [],
+            isDMX: true
+        )
     }
 }
 

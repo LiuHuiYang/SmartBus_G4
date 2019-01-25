@@ -22,9 +22,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCD-wO-wVz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="82.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cellline" translatesAutoresizingMaskIntoConstraints="NO" id="PmK-Ab-8jo">
-                                <rect key="frame" x="0.0" y="100.5" width="640" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellline" translatesAutoresizingMaskIntoConstraints="NO" id="PmK-Ab-8jo">
+                                <rect key="frame" x="0.0" y="81.5" width="320" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="3jC-gc-XXP"/>
+                                </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sequence" translatesAutoresizingMaskIntoConstraints="NO" id="Xqj-FR-tJy">
                                 <rect key="frame" x="99" y="9.5" width="64" height="64"/>
@@ -73,12 +75,15 @@
                         <constraints>
                             <constraint firstItem="vOd-bg-t4C" firstAttribute="width" secondItem="Xqj-FR-tJy" secondAttribute="width" multiplier="0.7" id="FyT-hJ-Ned"/>
                             <constraint firstItem="agO-9C-bvy" firstAttribute="centerY" secondItem="vOd-bg-t4C" secondAttribute="centerY" id="IQf-ES-FOb"/>
+                            <constraint firstAttribute="trailing" secondItem="PmK-Ab-8jo" secondAttribute="trailing" id="JDt-Xe-Mbx"/>
                             <constraint firstItem="X72-OE-OLJ" firstAttribute="centerY" secondItem="zCD-wO-wVz" secondAttribute="centerY" id="LnV-P0-aXQ"/>
                             <constraint firstItem="X72-OE-OLJ" firstAttribute="width" secondItem="zCD-wO-wVz" secondAttribute="width" multiplier="0.2" id="M0F-HI-Iyx"/>
                             <constraint firstItem="agO-9C-bvy" firstAttribute="height" secondItem="vOd-bg-t4C" secondAttribute="height" id="Ryh-ZY-U4w"/>
                             <constraint firstItem="agO-9C-bvy" firstAttribute="width" secondItem="vOd-bg-t4C" secondAttribute="width" id="V0X-ts-0ci"/>
                             <constraint firstItem="Xqj-FR-tJy" firstAttribute="centerY" secondItem="X72-OE-OLJ" secondAttribute="centerY" id="VLO-Zg-UeK"/>
                             <constraint firstItem="agO-9C-bvy" firstAttribute="leading" secondItem="zCD-wO-wVz" secondAttribute="centerX" multiplier="1.5" constant="15" id="fD3-PF-bCf"/>
+                            <constraint firstAttribute="bottom" secondItem="PmK-Ab-8jo" secondAttribute="bottom" id="hui-Gw-kNe"/>
+                            <constraint firstItem="PmK-Ab-8jo" firstAttribute="leading" secondItem="zCD-wO-wVz" secondAttribute="leading" id="iPk-fN-skc"/>
                             <constraint firstItem="X72-OE-OLJ" firstAttribute="leading" secondItem="zCD-wO-wVz" secondAttribute="leading" constant="15" id="kKY-6q-Vt6"/>
                             <constraint firstItem="vOd-bg-t4C" firstAttribute="leading" secondItem="zCD-wO-wVz" secondAttribute="centerX" constant="20" id="nsn-f7-1JS"/>
                             <constraint firstItem="vOd-bg-t4C" firstAttribute="height" secondItem="Xqj-FR-tJy" secondAttribute="height" multiplier="0.7" id="qhk-t4-dhM"/>

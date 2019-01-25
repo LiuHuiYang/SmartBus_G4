@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHOtherControlViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="listView" destination="xTd-uV-PG3" id="wLF-M1-gwT"/>
+                <outlet property="listViewBottomConstraint" destination="NrV-uI-fXq" id="3NH-op-vYP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="MX6-PX-cIt">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xTd-uV-PG3">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Q2I-rd-LkE"/>
+                        <outlet property="delegate" destination="-1" id="ob1-4E-Xwr"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="MX6-PX-cIt" secondAttribute="trailing" id="0e7-wh-AAa"/>
+                <constraint firstAttribute="trailing" secondItem="xTd-uV-PG3" secondAttribute="trailing" id="3eB-M5-qHY"/>
+                <constraint firstItem="xTd-uV-PG3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4jl-09-HII"/>
+                <constraint firstAttribute="bottom" secondItem="MX6-PX-cIt" secondAttribute="bottom" id="Bih-RF-XBf"/>
+                <constraint firstItem="MX6-PX-cIt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EKc-Rl-hcQ"/>
+                <constraint firstItem="MX6-PX-cIt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="J8h-cd-hQz"/>
+                <constraint firstAttribute="bottom" secondItem="xTd-uV-PG3" secondAttribute="bottom" constant="49" id="NrV-uI-fXq"/>
+                <constraint firstItem="xTd-uV-PG3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pa5-vf-fva"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

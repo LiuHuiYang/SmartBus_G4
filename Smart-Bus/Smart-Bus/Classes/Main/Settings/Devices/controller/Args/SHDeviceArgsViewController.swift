@@ -81,6 +81,9 @@ class SHDeviceArgsViewController: SHViewController {
     /// 序列控制
     var sequence: SHSequence?
     
+    /// 其它控制
+    var otherControl: SHOtherControl?
+    
     // MARK: - 通部用部分属性
     
     /// 详情列表
@@ -342,6 +345,12 @@ extension SHDeviceArgsViewController {
             refreshSequence()
         }
         
+        // OtherControl
+        if otherControl != nil {
+            
+            refreshOtherControl()
+        }
+        
         detailListView.reloadData()
     }
     
@@ -478,6 +487,12 @@ extension SHDeviceArgsViewController {
         if sequence != nil {
             
             updateSequence(value: value, index: index)
+        }
+        
+        // OtherControl
+        if otherControl != nil {
+            
+            updateOtherControl(value: value, index: index)
         }
         
         refreshListView()

@@ -172,12 +172,18 @@
     } else if ([self.selectedViewController isKindOfClass:[SHSequenceControlViewController class]]){
         
         deviceType = SHSystemDeviceTypeSequenceControl;
+        
+        // otherControl 控制
+    } else if ([self.selectedViewController isKindOfClass:[SHOtherControlViewController class]]){
+        
+        deviceType = SHSystemDeviceTypeOtherControl;
     }
     
     // 进入设置页面
      SHSystemDetailViewController *systemDetailViewController = [[SHSystemDetailViewController alloc] init];
     
-    systemDetailViewController.currentZone = [self.selectedViewController currentZone];
+    systemDetailViewController.currentZone =
+        [self.selectedViewController currentZone];
   
     systemDetailViewController.systemType = deviceType;
     
@@ -554,13 +560,13 @@
                 
             case SHSystemDeviceTypeOtherControl: {
                
-                SHSceneControlViewController *sceneController = [[SHSceneControlViewController alloc] init];
+                SHOtherControlViewController *otherController = [[SHOtherControlViewController alloc] init];
                 
-                sceneController.currentZone = self.currentZone;
+                otherController.currentZone = self.currentZone;
                 
                 [self.deviceTypeNames addObject:@"qother"];
                 
-                [self addChildViewController:sceneController];
+                [self addChildViewController:otherController];
             }
                 break;
                 
