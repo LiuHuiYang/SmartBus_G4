@@ -14,7 +14,7 @@ private let moodCellReuseIdentifier = "SHMoodCell"
 class SHZoneMoodViewController: SHViewController {
     
     /// 当前区域
-    @objc var currentZone: SHZone?
+    var currentZone: SHZone?
     
     /// 所有的模型
     lazy var allMoods = [SHMood]()

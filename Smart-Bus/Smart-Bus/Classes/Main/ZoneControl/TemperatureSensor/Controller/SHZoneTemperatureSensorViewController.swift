@@ -18,7 +18,7 @@ private let zoneTemperatureReuseIdentifier =
 class SHZoneTemperatureSensorViewController: SHViewController {
 
     /// 当前区域
-    @objc var currentZone: SHZone?
+    var currentZone: SHZone?
     
     /// 所有的温度传感器(通道)
     lazy var allTemperatureSensors = [SHTemperatureSensor]()

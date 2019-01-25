@@ -10,7 +10,7 @@ import UIKit
 
 private let deviceCellReuseIdentifier = "SHZoneDevicesCell"
 
-@objcMembers class SHZoneDevicesViewController: SHViewController {
+class SHZoneDevicesViewController: SHViewController {
     
     /// 当前区域
     var currentZone: SHZone?

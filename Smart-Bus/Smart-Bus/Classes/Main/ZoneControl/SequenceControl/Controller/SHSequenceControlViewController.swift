@@ -11,10 +11,10 @@ import UIKit
 private let sequenceControlViewCellReuseIdentifier =
     "SHSequenceControlViewCell"
 
-@objcMembers class SHSequenceControlViewController: SHViewController {
+class SHSequenceControlViewController: SHViewController {
     
     /// 当前区域
-    @objc var currentZone: SHZone?
+    var currentZone: SHZone?
     
     /// 所有的序列
     private lazy var sequences = [SHSequence]()

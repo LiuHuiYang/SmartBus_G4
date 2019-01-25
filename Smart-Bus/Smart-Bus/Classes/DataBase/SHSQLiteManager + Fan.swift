@@ -32,19 +32,19 @@ extension SHSQLiteManager {
     func updateFan(_ fan: SHFan) -> Bool {
         
         let sql =
-            "update FanInZone set " +
-            "SubnetID = \(fan.subnetID), " +
-            "DeviceID = \(fan.deviceID), " +
-            "FanName = '\(fan.fanName)', " +
-            "ChannelNO = \(fan.channelNO), " +
-            "FanTypeID = \(fan.fanTypeID), " +
-            "Remark = '\(fan.remark)', " +
-            "Reserved1 = \(fan.reserved1), " +
-            "Reserved2 = \(fan.reserved2), " +
-            "Reserved3 = \(fan.reserved3), " +
-            "Reserved4 = \(fan.reserved4), " +
-            "Reserved5 = \(fan.reserved5)  " +
-            "Where zoneID = \(fan.zoneID) " +
+            "update FanInZone set                   " +
+            "SubnetID = \(fan.subnetID),            " +
+            "DeviceID = \(fan.deviceID),            " +
+            "FanName = '\(fan.fanName)',            " +
+            "ChannelNO = \(fan.channelNO),          " +
+            "FanTypeID = \(fan.fanTypeID.rawValue), " +
+            "Remark = '\(fan.remark)',              " +
+            "Reserved1 = \(fan.reserved1),          " +
+            "Reserved2 = \(fan.reserved2),          " +
+            "Reserved3 = \(fan.reserved3),          " +
+            "Reserved4 = \(fan.reserved4),          " +
+            "Reserved5 = \(fan.reserved5)           " +
+            "Where zoneID = \(fan.zoneID)           " +
             "and FanID = \(fan.fanID);"
         
         return executeSql(sql)
@@ -62,10 +62,10 @@ extension SHSQLiteManager {
             "values(\(fan.zoneID), \(fan.fanID), " +
             " '\(fan.fanName)', \(fan.subnetID), " +
             "\(fan.deviceID), \(fan.channelNO),  " +
-            "\(fan.fanTypeID), '\(fan.remark)', "  +
-            "\(fan.reserved1), \(fan.reserved2), " +
-            "\(fan.reserved3), \(fan.reserved4), " +
-            "\(fan.reserved5));"
+            "\(fan.fanTypeID.rawValue),          " +
+            "'\(fan.remark)', \(fan.reserved1),  " +
+            "\(fan.reserved2), \(fan.reserved3), " +
+            "\(fan.reserved4), \(fan.reserved5));"
         
         return executeSql(sql)
     }

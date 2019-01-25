@@ -14,7 +14,7 @@ private let zoneFanCellReuseIdentifier = "SHZoneFanViewCell"
 class SHZoneFanViewController: SHViewController {
     
     /// 当前区域
-    @objc var currentZone: SHZone?
+    var currentZone: SHZone?
     
     /// 所有的风扇
     lazy var allFans = [SHFan]()

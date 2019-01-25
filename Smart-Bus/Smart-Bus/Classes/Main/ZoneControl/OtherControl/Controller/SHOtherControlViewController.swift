@@ -12,10 +12,10 @@ import UIKit
 let otherControlViewCellReuseIdentifier =
     "SHOtherControlViewCell"
 
-@objcMembers class SHOtherControlViewController: SHViewController {
+class SHOtherControlViewController: SHViewController {
     
     /// 当前区域
-    @objc var currentZone: SHZone?
+    var currentZone: SHZone?
     
     /// 所有的其它控制
     private lazy var otherControls = [SHOtherControl]()

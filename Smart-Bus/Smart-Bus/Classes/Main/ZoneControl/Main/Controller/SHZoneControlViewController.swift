@@ -254,10 +254,12 @@ extension SHZoneControlViewController: UICollectionViewDelegate {
         }
         
         let zoneController =
-            SHAreaControlViewController.init(zone: currentZone)
+            SHAreaControlViewController()
+        
+        zoneController.setupViewController(currentZone)
         
         navigationController?.pushViewController(
-            zoneController!,
+            zoneController,
             animated: true
         )
     }

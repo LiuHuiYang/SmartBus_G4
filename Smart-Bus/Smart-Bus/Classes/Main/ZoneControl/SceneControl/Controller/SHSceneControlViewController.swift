@@ -11,10 +11,10 @@ import UIKit
 /// cell重用标示
 private let sceneControlViewCellReuseIdentifier = "SHSceneControlViewCell"
 
-@objcMembers class SHSceneControlViewController: SHViewController {
+class SHSceneControlViewController: SHViewController {
     
     /// 当前区域
-    @objc var currentZone: SHZone?
+    var currentZone: SHZone?
     
     /// 所有的场景
     private lazy var scenes = [SHScene]()

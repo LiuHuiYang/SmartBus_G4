@@ -15,7 +15,7 @@ private let dryContactCellReuseIdentifier =
 class SHZoneDryContactViewController: SHViewController {
 
     /// 当前区域
-    @objc var currentZone: SHZone?
+    var currentZone: SHZone?
     
     /// 所有的干节点
     lazy var allDryContacts = [SHDryContact]()

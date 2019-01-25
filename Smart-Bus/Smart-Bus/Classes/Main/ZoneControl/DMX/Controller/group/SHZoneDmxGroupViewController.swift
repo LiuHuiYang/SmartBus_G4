@@ -2,8 +2,8 @@
 //  SHZoneDmxGroupViewController.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2019/1/25.
-//  Copyright © 2019 SmartHome. All rights reserved.
+//  Created by Mac on 2017/11/7.
+//  Copyright © 2018 SmartHome. All rights reserved.
 //
 
 import UIKit
@@ -44,7 +44,7 @@ class SHZoneDmxGroupViewController: SHTabBarController {
     private func setUpTabBar() {
         
         tabBar.backgroundImage =
-            UIImage(named: "tabBarbackground")
+            UIImage.resize("tabBarbackground")
         
         view.addSubview(tabBarScrollView)
         

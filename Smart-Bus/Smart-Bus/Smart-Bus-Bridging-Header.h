@@ -8,9 +8,8 @@
 #import "SHLanguageTools.h"
 #import "UIButton+init.h"
 #import "SHViewController.h"
-#include "SHConstraint.h"
+#import "SHConstraint.h"
 #import "UIBarButtonItem+init.h"
-#import "SHTabBarController.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "TYCustomAlertView.h"
 #import <AFNetworking/AFNetworking.h>
@@ -23,7 +22,6 @@
 #import "SHAudioTools.h"
 #import "JHColumnChart.h"
 #import "SHAudioRecordControlButton.h"
-#import "SHAreaControlViewController.h"
 #import "SHAreaSettingViewController.h"
 #import "UIImageView+ReSizeImage.h"
 #import "SHZoneControlButton.h"

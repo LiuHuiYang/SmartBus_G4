@@ -118,6 +118,8 @@ extension SHZoneSATViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        channelButton.isUserInteractionEnabled = false
+        
         navigationItem.title = zoneSAT?.remark
         
         let selectColor = UIView.highlightedTextColor()

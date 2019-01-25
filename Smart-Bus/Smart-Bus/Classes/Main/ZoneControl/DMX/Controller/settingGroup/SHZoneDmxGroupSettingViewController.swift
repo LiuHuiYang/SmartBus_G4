@@ -58,7 +58,9 @@ private let dmxGroupCellReuseIdentifier = "SHZoneDeviceGroupSettingCell"
         
         if dmxGroups.isEmpty {
              
-            SVProgressHUD.showError(withStatus: SHLanguageText.noData)
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
             
             return
         }

@@ -14,7 +14,7 @@ private let zoneShadeCellReuseIdentifier = "SHZoneShadeViewCell"
 class SHZoneShadeViewController: SHViewController {
 
     /// 当前区域
-   @objc var currentZone: SHZone?
+    var currentZone: SHZone?
     
     /// 所有的窗帘
     lazy var allShades = [SHShade]()

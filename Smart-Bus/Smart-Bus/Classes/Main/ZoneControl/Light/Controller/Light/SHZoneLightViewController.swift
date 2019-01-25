@@ -12,10 +12,10 @@ import UIKit
 private let zoneLightCellIReusabledentifier =
     "SHZoneControlLightViewCell"
 
-@objcMembers class SHZoneLightViewController: SHViewController {
+class SHZoneLightViewController: SHViewController {
 
     /// 当前区域
-    @objc var currentZone: SHZone?
+    var currentZone: SHZone?
     
     /// 所有的灯
     private lazy var allLights = [SHLight]()

@@ -8,6 +8,7 @@
 
 #import "SHViewController.h"
 
+@class SHZone;
 
 @interface SHAreaSettingViewController : SHViewController
 
