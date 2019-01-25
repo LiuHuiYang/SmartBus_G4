@@ -104,7 +104,7 @@ class SHOtherControlViewCell: UITableViewCell {
     }
     
     /// 执行其它控制
-    func executeOtherControl(_ isStop: Bool = true)  {
+    func executeOtherControl(_ isStop: Bool = false)  {
         
         guard let other = otherControl else {
             return

@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="1" id="KDo-BO-GzZ"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sequence" translatesAutoresizingMaskIntoConstraints="NO" id="eRL-X8-5LF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="otherControl" translatesAutoresizingMaskIntoConstraints="NO" id="eRL-X8-5LF">
                                 <rect key="frame" x="99" y="9.5" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="58U-vT-L7Y"/>
@@ -112,6 +112,6 @@
     </objects>
     <resources>
         <image name="cellline" width="640" height="2"/>
-        <image name="sequence" width="128" height="128"/>
+        <image name="otherControl" width="128" height="128"/>
     </resources>
 </document>
