@@ -224,7 +224,6 @@
 		0453EA4821A67C8400F666EF /* JHTableChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453EA3821A67C8400F666EF /* JHTableChart.m */; };
 		0453EA4921A67C8400F666EF /* JHScatterChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453EA3921A67C8400F666EF /* JHScatterChart.m */; };
 		04566DA621AFCB640099F548 /* SHZoneDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04566DA521AFCB640099F548 /* SHZoneDevicesViewController.swift */; };
-		045A9D9D209C0D980046EB45 /* SHZoneDmxGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A9D9C209C0D980046EB45 /* SHZoneDmxGroupViewController.m */; };
 		045DD37920A4341D00C37C7B /* SHDmxFunctionCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045DD37820A4341D00C37C7B /* SHDmxFunctionCustomView.xib */; };
 		04674097214BAB8900FFCCEA /* SMART-BUS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */; };
 		0471CAE921CB74BE007DC208 /* SHZoneHVACControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471CAE721CB74BD007DC208 /* SHZoneHVACControlViewController.xib */; };
@@ -391,6 +390,7 @@
 		04E739A121FA9C1A0032550D /* SHOtherControlViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E7399F21FA9C1A0032550D /* SHOtherControlViewCell.xib */; };
 		04E739A321FA9E030032550D /* SHOtherControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E739A221FA9E030032550D /* SHOtherControl.swift */; };
 		04E739A521FAA2120032550D /* SHDeviceArgsViewController +  OtherControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E739A421FAA2110032550D /* SHDeviceArgsViewController +  OtherControl.swift */; };
+		04E739A721FADFFC0032550D /* SHZoneDmxGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E739A621FADFFC0032550D /* SHZoneDmxGroupViewController.swift */; };
 		04E782C4218FDCEF00330AB5 /* SHZoneControlViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E782C3218FDCEF00330AB5 /* SHZoneControlViewCell.swift */; };
 		04EE15BC2178640500B92449 /* SHZoneTemperatureViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE15BA2178640400B92449 /* SHZoneTemperatureViewCell.swift */; };
 		04EE15BD2178640500B92449 /* SHZoneTemperatureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EE15BB2178640400B92449 /* SHZoneTemperatureViewCell.xib */; };
@@ -780,8 +780,6 @@
 		0453EA3921A67C8400F666EF /* JHScatterChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHScatterChart.m; sourceTree = "<group>"; };
 		0453EA3A21A67C8400F666EF /* JHChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChart.h; sourceTree = "<group>"; };
 		04566DA521AFCB640099F548 /* SHZoneDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneDevicesViewController.swift; sourceTree = "<group>"; };
-		045A9D9B209C0D980046EB45 /* SHZoneDmxGroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHZoneDmxGroupViewController.h; sourceTree = "<group>"; };
-		045A9D9C209C0D980046EB45 /* SHZoneDmxGroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHZoneDmxGroupViewController.m; sourceTree = "<group>"; };
 		045DD37820A4341D00C37C7B /* SHDmxFunctionCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDmxFunctionCustomView.xib; sourceTree = "<group>"; };
 		04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SMART-BUS.sqlite"; sourceTree = "<group>"; };
 		0471C68D211BE39C0067D731 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
@@ -954,6 +952,7 @@
 		04E7399F21FA9C1A0032550D /* SHOtherControlViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHOtherControlViewCell.xib; sourceTree = "<group>"; };
 		04E739A221FA9E030032550D /* SHOtherControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHOtherControl.swift; sourceTree = "<group>"; };
 		04E739A421FAA2110032550D /* SHDeviceArgsViewController +  OtherControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHDeviceArgsViewController +  OtherControl.swift"; sourceTree = "<group>"; };
+		04E739A621FADFFC0032550D /* SHZoneDmxGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneDmxGroupViewController.swift; sourceTree = "<group>"; };
 		04E782C3218FDCEF00330AB5 /* SHZoneControlViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneControlViewCell.swift; sourceTree = "<group>"; };
 		04EE15BA2178640400B92449 /* SHZoneTemperatureViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneTemperatureViewCell.swift; sourceTree = "<group>"; };
 		04EE15BB2178640400B92449 /* SHZoneTemperatureViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneTemperatureViewCell.xib; sourceTree = "<group>"; };
@@ -1752,8 +1751,7 @@
 		045A9D9A209C0D350046EB45 /* group */ = {
 			isa = PBXGroup;
 			children = (
-				045A9D9B209C0D980046EB45 /* SHZoneDmxGroupViewController.h */,
-				045A9D9C209C0D980046EB45 /* SHZoneDmxGroupViewController.m */,
+				04E739A621FADFFC0032550D /* SHZoneDmxGroupViewController.swift */,
 			);
 			path = group;
 			sourceTree = "<group>";
@@ -4947,6 +4945,7 @@
 				042450B821F00E4900C99512 /* SHScene.swift in Sources */,
 				0401BC752191935C0046BF18 /* SHCentralLight.swift in Sources */,
 				8B6B20192050C34100F1B943 /* SHSecurityControlViewController.m in Sources */,
+				04E739A721FADFFC0032550D /* SHZoneDmxGroupViewController.swift in Sources */,
 				0426735521C8E72E00FA597B /* SHSchedualWeekView.swift in Sources */,
 				0412E32F21F54F290084F3DB /* SHSQLiteManager + Light.swift in Sources */,
 				0401BC712191859E0046BF18 /* SHCurrentTransformer.swift in Sources */,
@@ -5137,7 +5136,6 @@
 				04CD3E31216B2AA8007010C6 /* SHMainViewController.swift in Sources */,
 				8B2461391EE4EA8B009574E3 /* main.m in Sources */,
 				0426734C21C8DB0400FA597B /* SHSchedual.m in Sources */,
-				045A9D9D209C0D980046EB45 /* SHZoneDmxGroupViewController.m in Sources */,
 				0426733A21C87EDF00FA597B /* SHZoneControlLightViewCell.swift in Sources */,
 				0448850F21E5D55100BA806C /* SHSchedualEditViewController.swift in Sources */,
 				0412E33D21F5A1CE0084F3DB /* SHSQLiteManager + Sequence.swift in Sources */,

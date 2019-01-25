@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHDmxFunctionViewController: SHViewController {
+class SHDmxFunctionViewController: SHViewController {
     
     /// 分组
     var dmxGroup: SHDmxGroup?

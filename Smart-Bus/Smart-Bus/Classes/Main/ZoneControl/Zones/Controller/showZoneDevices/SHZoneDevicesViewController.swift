@@ -185,10 +185,14 @@ extension SHZoneDevicesViewController: UICollectionViewDelegate {
             let dmxGroup =
                 allDevices[indexPath.row] as? SHDmxGroup
             
-            let dmxGroupController = SHZoneDmxGroupViewController(dmxGroup: dmxGroup)
+            let dmxGroupController =
+                SHZoneDmxGroupViewController()
+            
+            dmxGroupController.setupDmxGroupController(
+                dmxGroup: dmxGroup)
             
             navigationController?.pushViewController(
-                dmxGroupController!,
+                dmxGroupController,
                 animated: true
             )
             

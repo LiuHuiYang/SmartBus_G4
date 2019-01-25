@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class SHDmxPictureViewController: SHViewController {
+class SHDmxPictureViewController: SHViewController {
 
     /// 当前的dmx分组
     var dmxGroup: SHDmxGroup?

@@ -11,7 +11,7 @@ import UIKit
 private let zoneDmxChannelViewCellReuseIdentifier =
     "SHZoneDmxChannelViewCell"
 
-@objcMembers class SHDmxChannelViewController: SHViewController {
+class SHDmxChannelViewController: SHViewController {
     
     /// 当前的dmx分组
     var dmxGroup: SHDmxGroup?
