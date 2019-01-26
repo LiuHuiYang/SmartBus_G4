@@ -392,6 +392,7 @@
 		04E739A721FADFFC0032550D /* SHZoneDmxGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E739A621FADFFC0032550D /* SHZoneDmxGroupViewController.swift */; };
 		04E739A921FAF0DF0032550D /* SHAreaControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E739A821FAF0DF0032550D /* SHAreaControlViewController.swift */; };
 		04E739AB21FB02D80032550D /* SHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E739AA21FB02D80032550D /* SHTabBarController.swift */; };
+		04E739AF21FB0E380032550D /* SHAreaSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E739AE21FB0E380032550D /* SHAreaSettingViewController.swift */; };
 		04E782C4218FDCEF00330AB5 /* SHZoneControlViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E782C3218FDCEF00330AB5 /* SHZoneControlViewCell.swift */; };
 		04EE15BC2178640500B92449 /* SHZoneTemperatureViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE15BA2178640400B92449 /* SHZoneTemperatureViewCell.swift */; };
 		04EE15BD2178640500B92449 /* SHZoneTemperatureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EE15BB2178640400B92449 /* SHZoneTemperatureViewCell.xib */; };
@@ -509,7 +510,6 @@
 		8B99A775206E163200D97AA6 /* SHZoneControlSATView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B99A76B206E163100D97AA6 /* SHZoneControlSATView.xib */; };
 		8B99A786206E181700D97AA6 /* SHZoneControlSATChannel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B99A784206E181600D97AA6 /* SHZoneControlSATChannel.xib */; };
 		8BA6B4671FE11F4700C3156F /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6B4661FE11F4700C3156F /* UIDevice+DeviceType.m */; };
-		8BD24B8A206B657F00CFFE75 /* SHAreaSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD24B67206B657E00CFFE75 /* SHAreaSettingViewController.m */; };
 		8BD24B8B206B657F00CFFE75 /* SHAreaSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD24B68206B657E00CFFE75 /* SHAreaSettingViewController.xib */; };
 		8BD24B96206B657F00CFFE75 /* SHSystemDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD24B84206B657E00CFFE75 /* SHSystemDetailViewController.xib */; };
 		8BF9268E1EEE857D00EE5A54 /* SQL.sql in Resources */ = {isa = PBXBuildFile; fileRef = 8BF9268D1EEE857D00EE5A54 /* SQL.sql */; };
@@ -953,6 +953,7 @@
 		04E739A621FADFFC0032550D /* SHZoneDmxGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneDmxGroupViewController.swift; sourceTree = "<group>"; };
 		04E739A821FAF0DF0032550D /* SHAreaControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAreaControlViewController.swift; sourceTree = "<group>"; };
 		04E739AA21FB02D80032550D /* SHTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTabBarController.swift; sourceTree = "<group>"; };
+		04E739AE21FB0E380032550D /* SHAreaSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAreaSettingViewController.swift; sourceTree = "<group>"; };
 		04E782C3218FDCEF00330AB5 /* SHZoneControlViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneControlViewCell.swift; sourceTree = "<group>"; };
 		04EE15BA2178640400B92449 /* SHZoneTemperatureViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneTemperatureViewCell.swift; sourceTree = "<group>"; };
 		04EE15BB2178640400B92449 /* SHZoneTemperatureViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneTemperatureViewCell.xib; sourceTree = "<group>"; };
@@ -1133,9 +1134,7 @@
 		8B99A784206E181600D97AA6 /* SHZoneControlSATChannel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneControlSATChannel.xib; sourceTree = "<group>"; };
 		8BA6B4651FE11F4700C3156F /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
 		8BA6B4661FE11F4700C3156F /* UIDevice+DeviceType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceType.m"; sourceTree = "<group>"; };
-		8BD24B67206B657E00CFFE75 /* SHAreaSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAreaSettingViewController.m; sourceTree = "<group>"; };
 		8BD24B68206B657E00CFFE75 /* SHAreaSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHAreaSettingViewController.xib; sourceTree = "<group>"; };
-		8BD24B69206B657E00CFFE75 /* SHAreaSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAreaSettingViewController.h; sourceTree = "<group>"; };
 		8BD24B84206B657E00CFFE75 /* SHSystemDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSystemDetailViewController.xib; sourceTree = "<group>"; };
 		8BD399BD1FA31920006AD720 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8BF110522008874B0021CACD /* readme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readme.h; sourceTree = "<group>"; };
@@ -2311,10 +2310,10 @@
 		8B28E12B2024667E00267B90 /* ZoneControl */ = {
 			isa = PBXGroup;
 			children = (
+				044270C621ED902A00275398 /* Region */,
 				04E7399021FA99220032550D /* OtherControl */,
 				042450E721F063E200C99512 /* SequenceControl */,
 				04CD32D221EED3010041683A /* SceneControl */,
-				044270C621ED902A00275398 /* Region */,
 				8BD24B64206B657E00CFFE75 /* setZones */,
 				8B5D4FF7206C8EDF0028EEDB /* Projector */,
 				8B5D4FD2206C79E20028EEDB /* DVD */,
@@ -4487,9 +4486,8 @@
 		8BD24B66206B657E00CFFE75 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8BD24B67206B657E00CFFE75 /* SHAreaSettingViewController.m */,
 				8BD24B68206B657E00CFFE75 /* SHAreaSettingViewController.xib */,
-				8BD24B69206B657E00CFFE75 /* SHAreaSettingViewController.h */,
+				04E739AE21FB0E380032550D /* SHAreaSettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4925,7 +4923,6 @@
 				0412E33721F577E10084F3DB /* SHSQLiteManager + CentralClimate.swift in Sources */,
 				0453EA4621A67C8400F666EF /* JHPieItemsView.m in Sources */,
 				04978EE22182A26300FA1E65 /* SHSecurityLogCell.swift in Sources */,
-				8BD24B8A206B657F00CFFE75 /* SHAreaSettingViewController.m in Sources */,
 				0427E86D21E717F4000ED6AA /* SHSchduleAudioView.swift in Sources */,
 				042CD7C820AD2ED600061670 /* EZAudioFloatData.m in Sources */,
 				04EE15BC2178640500B92449 /* SHZoneTemperatureViewCell.swift in Sources */,
@@ -5070,6 +5067,7 @@
 				042CD7D120AD2ED600061670 /* EZRecorder.m in Sources */,
 				044270CF21ED902A00275398 /* SHRegion.swift in Sources */,
 				04A177DE215F610500BD9744 /* SHCommunityViewController.swift in Sources */,
+				04E739AF21FB0E380032550D /* SHAreaSettingViewController.swift in Sources */,
 				04F5B1CD217989450077BDAF /* SHChangeMoodImageViewController.swift in Sources */,
 				0429AC8E21C22F410051263A /* SHSocketTools + additional.swift in Sources */,
 				04F3C8BB21B65E1500BF5608 /* SHZoneShadeViewController.swift in Sources */,

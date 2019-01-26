@@ -22,7 +22,6 @@
 #import "SHAudioTools.h"
 #import "JHColumnChart.h"
 #import "SHAudioRecordControlButton.h"
-#import "SHAreaSettingViewController.h"
 #import "UIImageView+ReSizeImage.h"
 #import "SHZoneControlButton.h"
 #import "SHZoneAudioPlayControlViewController.h"
@@ -33,7 +32,6 @@
 #import "SHZoneControlSATChannelButton.h"
 #import "SHMediaSATCategoryViewController.h"
 #import "SHZoneHVACControlViewController.h"
-
 #import "SHMoodShadeStatusButton.h"
 #import "SHSchedualHVACViewController.h"
 #import "SHSchedualAudioViewController.h"
