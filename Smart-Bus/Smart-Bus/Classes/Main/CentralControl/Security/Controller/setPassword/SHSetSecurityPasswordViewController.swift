@@ -69,7 +69,7 @@ class SHSetSecurityPasswordViewController: SHViewController {
                 withSubTitle: "PROMPT_MESSAGE_3_0"
             ) as! String
         
-        defaultPasswordLabel.text = defaultTest
+        defaultPasswordLabel.text = defaultTest + " 8888 "
         
         let savePassword =
             UserDefaults.standard.object(
