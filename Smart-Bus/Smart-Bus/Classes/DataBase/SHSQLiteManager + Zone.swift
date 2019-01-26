@@ -18,9 +18,9 @@ extension SHSQLiteManager {
         let systems = getSystemIDs(zoneID)
         
         // 1.删除每种设备数据
-        for type in systems {
+        for deviceType in systems {
             
-            switch type {
+            switch deviceType {
                 
             case SHSystemDeviceType.light.rawValue:
                 _ = deleteLights(zoneID: zoneID)
