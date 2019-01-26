@@ -223,6 +223,8 @@
 		0453EA4721A67C8400F666EF /* JHPieForeBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453EA3721A67C8400F666EF /* JHPieForeBGView.m */; };
 		0453EA4821A67C8400F666EF /* JHTableChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453EA3821A67C8400F666EF /* JHTableChart.m */; };
 		0453EA4921A67C8400F666EF /* JHScatterChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453EA3921A67C8400F666EF /* JHScatterChart.m */; };
+		045464C621FBF89500FACDD5 /* SHReadSecurityLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045464C521FBF89500FACDD5 /* SHReadSecurityLogViewController.swift */; };
+		045464C821FC0B4C00FACDD5 /* SHSecurityControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045464C721FC0B4C00FACDD5 /* SHSecurityControlViewController.swift */; };
 		04566DA621AFCB640099F548 /* SHZoneDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04566DA521AFCB640099F548 /* SHZoneDevicesViewController.swift */; };
 		045DD37920A4341D00C37C7B /* SHDmxFunctionCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045DD37820A4341D00C37C7B /* SHDmxFunctionCustomView.xib */; };
 		04674097214BAB8900FFCCEA /* SMART-BUS.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */; };
@@ -451,7 +453,6 @@
 		8B5D5055206CBAE30028EEDB /* SHAudioSourceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5D5048206CBAE20028EEDB /* SHAudioSourceButton.m */; };
 		8B5D505F206CC3AC0028EEDB /* SHMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5D505D206CC3AC0028EEDB /* SHMusicViewController.xib */; };
 		8B687D171EEA2E1400B58314 /* UIImage+SaveAndGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B687D161EEA2E1400B58314 /* UIImage+SaveAndGet.m */; };
-		8B6B20192050C34100F1B943 /* SHSecurityControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B20162050C34100F1B943 /* SHSecurityControlViewController.m */; };
 		8B6B201A2050C34100F1B943 /* SHSecurityControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B20182050C34100F1B943 /* SHSecurityControlViewController.xib */; };
 		8B829540204E2ECD00F3AD41 /* SHLanguageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8294A5204E2ECC00F3AD41 /* SHLanguageTools.m */; };
 		8B829548204E2ECD00F3AD41 /* SHNetWorkServerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8294B8204E2ECC00F3AD41 /* SHNetWorkServerViewController.xib */; };
@@ -463,7 +464,6 @@
 		8B82961B204E30E700F3AD41 /* SHLightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829610204E30E700F3AD41 /* SHLightViewController.xib */; };
 		8B829620204E30E700F3AD41 /* SHCentralLightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B82961A204E30E700F3AD41 /* SHCentralLightCell.xib */; };
 		8B829664204E30EF00F3AD41 /* SHAudioRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829628204E30EF00F3AD41 /* SHAudioRecordViewController.xib */; };
-		8B8296A6204E30FA00F3AD41 /* SHReadSecurityLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B829684204E30FA00F3AD41 /* SHReadSecurityLogViewController.m */; };
 		8B8296A7204E30FA00F3AD41 /* SHReadSecurityLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829685204E30FA00F3AD41 /* SHReadSecurityLogViewController.xib */; };
 		8B8296A9204E30FA00F3AD41 /* SHSetSecurityPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829688204E30FA00F3AD41 /* SHSetSecurityPasswordViewController.xib */; };
 		8B8296AE204E30FA00F3AD41 /* SHSecurityLogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829698204E30FA00F3AD41 /* SHSecurityLogCell.xib */; };
@@ -779,6 +779,8 @@
 		0453EA3821A67C8400F666EF /* JHTableChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHTableChart.m; sourceTree = "<group>"; };
 		0453EA3921A67C8400F666EF /* JHScatterChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHScatterChart.m; sourceTree = "<group>"; };
 		0453EA3A21A67C8400F666EF /* JHChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChart.h; sourceTree = "<group>"; };
+		045464C521FBF89500FACDD5 /* SHReadSecurityLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHReadSecurityLogViewController.swift; sourceTree = "<group>"; };
+		045464C721FC0B4C00FACDD5 /* SHSecurityControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSecurityControlViewController.swift; sourceTree = "<group>"; };
 		04566DA521AFCB640099F548 /* SHZoneDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneDevicesViewController.swift; sourceTree = "<group>"; };
 		045DD37820A4341D00C37C7B /* SHDmxFunctionCustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDmxFunctionCustomView.xib; sourceTree = "<group>"; };
 		04674096214BAB8900FFCCEA /* SMART-BUS.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SMART-BUS.sqlite"; sourceTree = "<group>"; };
@@ -1061,8 +1063,6 @@
 		8B5D505D206CC3AC0028EEDB /* SHMusicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHMusicViewController.xib; sourceTree = "<group>"; };
 		8B687D151EEA2E1400B58314 /* UIImage+SaveAndGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SaveAndGet.h"; sourceTree = "<group>"; };
 		8B687D161EEA2E1400B58314 /* UIImage+SaveAndGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SaveAndGet.m"; sourceTree = "<group>"; };
-		8B6B20162050C34100F1B943 /* SHSecurityControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSecurityControlViewController.m; sourceTree = "<group>"; };
-		8B6B20172050C34100F1B943 /* SHSecurityControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSecurityControlViewController.h; sourceTree = "<group>"; };
 		8B6B20182050C34100F1B943 /* SHSecurityControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSecurityControlViewController.xib; sourceTree = "<group>"; };
 		8B8294A4204E2ECC00F3AD41 /* SHLanguageTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLanguageTools.h; sourceTree = "<group>"; };
 		8B8294A5204E2ECC00F3AD41 /* SHLanguageTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLanguageTools.m; sourceTree = "<group>"; };
@@ -1075,8 +1075,6 @@
 		8B829610204E30E700F3AD41 /* SHLightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLightViewController.xib; sourceTree = "<group>"; };
 		8B82961A204E30E700F3AD41 /* SHCentralLightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCentralLightCell.xib; sourceTree = "<group>"; };
 		8B829628204E30EF00F3AD41 /* SHAudioRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHAudioRecordViewController.xib; sourceTree = "<group>"; };
-		8B829683204E30FA00F3AD41 /* SHReadSecurityLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHReadSecurityLogViewController.h; sourceTree = "<group>"; };
-		8B829684204E30FA00F3AD41 /* SHReadSecurityLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHReadSecurityLogViewController.m; sourceTree = "<group>"; };
 		8B829685204E30FA00F3AD41 /* SHReadSecurityLogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHReadSecurityLogViewController.xib; sourceTree = "<group>"; };
 		8B829688204E30FA00F3AD41 /* SHSetSecurityPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSetSecurityPasswordViewController.xib; sourceTree = "<group>"; };
 		8B829698204E30FA00F3AD41 /* SHSecurityLogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSecurityLogCell.xib; sourceTree = "<group>"; };
@@ -2752,8 +2750,7 @@
 		8B6B20152050C34100F1B943 /* SecurityControl */ = {
 			isa = PBXGroup;
 			children = (
-				8B6B20172050C34100F1B943 /* SHSecurityControlViewController.h */,
-				8B6B20162050C34100F1B943 /* SHSecurityControlViewController.m */,
+				045464C721FC0B4C00FACDD5 /* SHSecurityControlViewController.swift */,
 				8B6B20182050C34100F1B943 /* SHSecurityControlViewController.xib */,
 			);
 			path = SecurityControl;
@@ -3393,8 +3390,7 @@
 		8B829682204E30FA00F3AD41 /* readLog */ = {
 			isa = PBXGroup;
 			children = (
-				8B829683204E30FA00F3AD41 /* SHReadSecurityLogViewController.h */,
-				8B829684204E30FA00F3AD41 /* SHReadSecurityLogViewController.m */,
+				045464C521FBF89500FACDD5 /* SHReadSecurityLogViewController.swift */,
 				8B829685204E30FA00F3AD41 /* SHReadSecurityLogViewController.xib */,
 			);
 			path = readLog;
@@ -4937,9 +4933,9 @@
 				04CD3E34216B3045007010C6 /* SHSettingViewController.swift in Sources */,
 				042450B821F00E4900C99512 /* SHScene.swift in Sources */,
 				0401BC752191935C0046BF18 /* SHCentralLight.swift in Sources */,
-				8B6B20192050C34100F1B943 /* SHSecurityControlViewController.m in Sources */,
 				04E739A721FADFFC0032550D /* SHZoneDmxGroupViewController.swift in Sources */,
 				0426735521C8E72E00FA597B /* SHSchedualWeekView.swift in Sources */,
+				045464C821FC0B4C00FACDD5 /* SHSecurityControlViewController.swift in Sources */,
 				0412E32F21F54F290084F3DB /* SHSQLiteManager + Light.swift in Sources */,
 				0401BC712191859E0046BF18 /* SHCurrentTransformer.swift in Sources */,
 				04B353E121C73184000A7D0B /* SHHVAC.swift in Sources */,
@@ -5002,7 +4998,6 @@
 				044269A321C9EA9B00A7A88B /* SHDmxChannelViewController.swift in Sources */,
 				04C583262192CC090017701A /* SHMediaProjector.swift in Sources */,
 				04A177E6215F724B00BD9744 /* SHIntercomViewController.swift in Sources */,
-				8B8296A6204E30FA00F3AD41 /* SHReadSecurityLogViewController.m in Sources */,
 				0484DA6121D0B22D005F33CC /* SHAudio.swift in Sources */,
 				0412E34321F5B5CC0084F3DB /* SHSQLiteManager + DryContact.swift in Sources */,
 				8B8298EC204E31F300F3AD41 /* SHZoneSelectDeviceButton.m in Sources */,
@@ -5237,6 +5232,7 @@
 				041436402170744300A3E5F6 /* SHChangeMacroImageViewCell.swift in Sources */,
 				042CD7C720AD2ED600061670 /* EZMicrophone.m in Sources */,
 				0427E86B21E7131E000ED6AA /* SHSchedualAudioCell.swift in Sources */,
+				045464C621FBF89500FACDD5 /* SHReadSecurityLogViewController.swift in Sources */,
 				042CD7D520AD2ED600061670 /* EZAudioDisplayLink.m in Sources */,
 				04B4CC7421F064BE0076B600 /* SHSequenceControlViewController.swift in Sources */,
 				0401BC622191437D0046BF18 /* SHZoneDeviceGroupSettingCell.swift in Sources */,

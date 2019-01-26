@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSecurityControlViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSecurityControlViewController" customModule="Smart_Bus" customModuleProvider="target">
             <connections>
                 <outlet property="ambulanceButton" destination="M8Y-q1-3qQ" id="rzD-5f-ASa"/>
                 <outlet property="ambulanceHolderView" destination="7IV-q7-yTO" id="guT-Pf-UEe"/>
@@ -112,7 +111,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bY5-Kj-Rx4" customClass="SHCommandButton">
-                            <rect key="frame" x="20" y="252" width="130" height="84"/>
+                            <rect key="frame" x="20" y="251.5" width="130" height="84"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <state key="normal" image="securityVacation_normal"/>
                             <state key="selected" image="securityVacation_highlighted">
@@ -126,7 +125,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnH-QD-7sK" customClass="SHCommandButton">
-                            <rect key="frame" x="20" y="378" width="130" height="84"/>
+                            <rect key="frame" x="20" y="377.5" width="130" height="84"/>
                             <gestureRecognizers/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <state key="normal" image="securityPanic_normal"/>
@@ -138,7 +137,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tO-uL-dls" customClass="SHCommandButton">
-                            <rect key="frame" x="170" y="252" width="130" height="84"/>
+                            <rect key="frame" x="170" y="251.5" width="130" height="84"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <state key="normal" image="securityDisarm_normal"/>
                             <state key="selected" image="securityDisarm_highlighted">
@@ -152,7 +151,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8Y-q1-3qQ" customClass="SHCommandButton">
-                            <rect key="frame" x="170" y="378" width="130" height="84"/>
+                            <rect key="frame" x="170" y="377.5" width="130" height="84"/>
                             <gestureRecognizers/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <state key="normal" image="securityAmbulance_normal"/>
@@ -172,27 +171,27 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBq-pf-abN" userLabel="holdView">
-                            <rect key="frame" x="20" y="341" width="130" height="17"/>
+                            <rect key="frame" x="20" y="340.5" width="130" height="17"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CyH-Qf-Phb" userLabel="holdView">
-                            <rect key="frame" x="170" y="215" width="130" height="17"/>
+                            <rect key="frame" x="170" y="215" width="130" height="16.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNr-yK-3gk" userLabel="holdView">
-                            <rect key="frame" x="170" y="341" width="130" height="17"/>
+                            <rect key="frame" x="170" y="340.5" width="130" height="17"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycd-h1-XAo" userLabel="holdView">
-                            <rect key="frame" x="20" y="467" width="130" height="17"/>
+                            <rect key="frame" x="20" y="466.5" width="130" height="16.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7IV-q7-yTO" userLabel="holdView">
-                            <rect key="frame" x="170" y="467" width="130" height="17"/>
+                            <rect key="frame" x="170" y="466.5" width="130" height="16.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3GB-TZ-O3S" userLabel="holdView">
-                            <rect key="frame" x="19.5" y="215" width="130" height="17"/>
+                            <rect key="frame" x="20" y="215" width="130" height="16.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUU-Gr-omM">

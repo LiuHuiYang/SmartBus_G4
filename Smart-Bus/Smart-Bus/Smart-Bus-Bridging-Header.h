@@ -13,7 +13,6 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "TYCustomAlertView.h"
 #import <AFNetworking/AFNetworking.h>
-#import "SHSecurityControlViewController.h"
 #import "UIImage+SaveAndGet.h"
 #import "SHNetWorkTools.h"
 #import "SHLoadProgressView.h"
