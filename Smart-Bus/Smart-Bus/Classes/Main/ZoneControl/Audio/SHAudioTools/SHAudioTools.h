@@ -33,9 +33,9 @@ typedef NS_ENUM(UInt8, SHAudioSoureNumber) {
 } ;
 
 
-/// miniZAudio的音乐来源切换 (用于请求数据， 但现在不支持, 下面的是假值)
+/// miniZAudio的音乐来源切换 (用于请求数据, 但现在不支持, 下面的是假值)
 typedef NS_ENUM(UInt8, SHMiniZAudioSourceType) {
-    SHMiniZAudioSourceTypeUnKnow     =   0,
+    SHMiniZAudioSourceTypeUnKnow     = 0,
     SHMiniZAudioSourceTypeSDCARD     = 1,
     SHMiniZAudioSourceTypeUDISK         ,
     SHMiniZAudioSourceTypeBLUETOOTH     ,
