@@ -683,7 +683,7 @@ UITableViewDelegate, UITableViewDataSource>
                         
                     case 0x31: {  // 列表号与列表总数
                         
-                        //                        printLog(@"1. 列表号与列表总数: %@", string);
+//                        printLog(@"1. 列表号与列表总数: %@", string);
                         
                         [SHPlayingSong.shared
                          setAlbumSerialNumber:string];
@@ -698,10 +698,20 @@ UITableViewDelegate, UITableViewDataSource>
                         
                         NSString *albumNumber = [string substringToIndex:range.location];
                         
-                       albumNumber = [albumNumber substringFromIndex:5];
+                       
+                        // 确定 : 的位置
+                        range =
+                            [albumNumber rangeOfString:@":"];
                         
+                        if (range.location == NSNotFound) {
+                            return;
+                        }
+                       
+                        // L:1
+                       albumNumber =
+                            [albumNumber substringFromIndex: range.location + 1];
+                  
                         SHPlayingSong.shared.albumNumber = albumNumber.integerValue;
-                        
                     }
                         break;
                         
@@ -715,7 +725,7 @@ UITableViewDelegate, UITableViewDataSource>
                         
                     case 0x33: {  // 歌曲号???/歌曲总数
                         
-                        //                        printLog(@"3. 歌曲号???/歌曲总数: %@", string);
+                        // printLog(@"3. 歌曲号???/歌曲总数: %@", string);
                         [SHPlayingSong.shared
                          setSongSerialNumber:string];
                         
@@ -730,7 +740,17 @@ UITableViewDelegate, UITableViewDataSource>
                         
                         NSString *songNumber = [string substringToIndex:range.location];
                         
-                        songNumber = [songNumber substringFromIndex:6];
+                        // 确定 : 的位置
+                        range =
+                            [songNumber rangeOfString:@":"];
+                        
+                        if (range.location == NSNotFound) {
+                            return;
+                        }
+                        
+                        // Track:4 / S:1 - FTP
+                        songNumber =
+                        [songNumber substringFromIndex: range.location + 1];
                         
                         SHPlayingSong.shared.songNumber =
                             songNumber.integerValue;

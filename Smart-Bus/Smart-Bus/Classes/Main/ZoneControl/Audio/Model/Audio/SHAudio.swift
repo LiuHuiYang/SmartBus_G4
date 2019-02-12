@@ -23,6 +23,7 @@ import UIKit
     
     /// 计划来源
     var schedualSourceType: SHAudioSourceType = .SDCARD
+    
     /// 计划状态
     var schedualPlayStatus: UInt8 = 0
     
@@ -69,7 +70,7 @@ import UIKit
     /// 录制成功的标示
     var recordSuccess = false
 
-    // MARK： - ====== 设备记号 ======   需要存储于数据库
+    // MARK: - ====== 设备记号 ======   需要存储于数据库
     
     /// 区域ID
     var id: UInt = 0
