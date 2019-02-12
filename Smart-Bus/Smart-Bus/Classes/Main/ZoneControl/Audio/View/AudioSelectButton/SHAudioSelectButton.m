@@ -57,7 +57,6 @@
     self.imageView.frame_height = self.imageView.frame_width;
     
     self.imageView.frame_y = (self.frame_height - self.imageView.frame_height) * 0.5;
-    
 }
 
 @end
