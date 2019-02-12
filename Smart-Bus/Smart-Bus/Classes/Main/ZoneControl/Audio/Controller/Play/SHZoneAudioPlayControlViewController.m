@@ -62,9 +62,6 @@ UITableViewDelegate, UITableViewDataSource>
 /// 接收到的拼接字符串【注意: 如果接收失败一定要清空】
 @property (nonatomic, copy) NSMutableString *recivedStringList;
 
-/// 拼接专辑与
-@property (nonatomic, strong) NSMutableArray *recivedAlubeAndSongNameCache;
-
 // MARK: - ============ 音乐设备相关的属性 ==========
 
 // MARK: - 播放控制的标记属性
@@ -259,7 +256,7 @@ UITableViewDelegate, UITableViewDataSource>
                 
                 if (recivedData[3] == self.totalPackages) {
                     
-                    // printLog(@"最终的专辑名称: %@", self.recivedStringList);
+                     printLog(@"最终的专辑名称: %@", self.recivedStringList);
                     
                     [SHAudioTools parseNameList:socketData.subNetID
                                        deviceID:socketData.deviceID
@@ -1153,17 +1150,25 @@ UITableViewDelegate, UITableViewDataSource>
         [self.albumListTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:(albumNumber - 1) inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
         
         // 设置标题
-        [self.selectAlbumButton setTitle:self.currentAudio.currentSelectAlbum.albumName forState:UIControlStateNormal];
+        [self.selectAlbumButton
+         setTitle:self.currentAudio.currentSelectAlbum.albumName
+         forState:UIControlStateNormal
+        ];
         
         if (readSong) {
             
-            [self showSongList:subNetID deviceID:deviceID sourceType:sourceType songAlbumNumber:1];
+            [self showSongList:subNetID
+                      deviceID:deviceID
+                    sourceType:sourceType
+               songAlbumNumber:1
+            ];
         }
         
     } else {
         
         // 1 ==== 请求数据
-        SHAudioSendData *sendData = [[SHAudioSendData alloc] init];
+        SHAudioSendData *sendData =
+            [[SHAudioSendData alloc] init];
         sendData.subNetID = subNetID;
         sendData.deviceID = deviceID;
         sendData.sourceType = sourceType;
