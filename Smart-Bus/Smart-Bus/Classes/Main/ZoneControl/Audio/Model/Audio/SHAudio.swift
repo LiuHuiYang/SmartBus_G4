@@ -69,6 +69,40 @@ import UIKit
     
     /// 录制成功的标示
     var recordSuccess = false
+    
+    // MARK: - ====== 请求数据使用的几个属性参数 ======
+    
+    /// 重发次数 - 最多3次
+    var reSendCount: UInt8 = 0
+ 
+    /// 是否接收到需要的音乐广播数据
+    var isReceivedAudioData = false
+
+    /// 取消发送请求数据
+    var cancelSendData = false
+    
+    /// 接收数据的状态
+    var receivedStatusType: SHAudioReceivedStatusType = .out
+    
+    /// 接收到的拼接字符串【注意: 如果接收失败一定要清空】
+    var recivedStringList: NSMutableString = NSMutableString()
+    
+    /// 总共包的数量
+    var totalPackages: UInt = 0
+    
+    /// 当前第几个包
+    var currentPackageNumber: UInt = 0
+    
+    /// 当前请求的第几个列表 专辑
+    var currentCategoryNumber: UInt = 0
+    
+    /// 拼接歌曲时的错误码值(最后一步拼接字符串时使用, 必须是有符号的数据)
+    var errorSongNameNumber: Int = 0
+    
+    /// 成功更新FTP数据
+    var isUpdateFtpSuccess = false
+
+
 
     // MARK: - ====== 设备记号 ======   需要存储于数据库
     
@@ -110,6 +144,8 @@ import UIKit
  
     ///  当前是否为miniZaudio
     var isMiniZAudio: UInt8 = 0
+    
+    // MARK: - 构造函数
     
     override init() {
         super.init()

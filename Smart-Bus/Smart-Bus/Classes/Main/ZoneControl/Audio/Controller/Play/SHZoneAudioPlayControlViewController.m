@@ -32,35 +32,7 @@ UITableViewDelegate, UITableViewDataSource>
 /// 整个音乐控制界面最底部的约束
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeightConstraint;
 
-/// 成功执行
-@property (assign, nonatomic) BOOL isUpdateFtpSuccess;
-
-/// 取消发送请求数据
-@property (assign, nonatomic) BOOL cancelSendData;
-
-/// 拼接歌曲时的错误码值(最后一步拼接字符串时使用, 必须是有符号的数据)
-@property (nonatomic, assign) NSInteger errorSongNameNumber;
-
-/// 当前请求的第几个列表 专辑
-@property (assign, nonatomic) NSUInteger currentCategoryNumber;
-
-/// 当前第几个包
-@property (assign, nonatomic) NSUInteger currentPackageNumber;
-
-/// 总共包的数量
-@property (assign, nonatomic) NSUInteger totalPackages;
-
-/// 接收数据的状态
-@property (assign, nonatomic) SHAudioReceivedStatusType receivedStatusType;
-
-/// 重发次数 - 最多3次
-@property (nonatomic, assign) Byte reSendCount;
-
-/// 是否接收到需要的音乐广播数据
-@property (assign, nonatomic) BOOL isReceivedAudioData;
-
-/// 接收到的拼接字符串【注意: 如果接收失败一定要清空】
-@property (nonatomic, copy) NSMutableString *recivedStringList;
+    
 
 // MARK: - ============ 音乐设备相关的属性 ==========
 
@@ -212,7 +184,7 @@ UITableViewDelegate, UITableViewDataSource>
         ([socketData.additionalData[i] integerValue]) & 0xFF;
     }
     
-    switch (self.receivedStatusType) {
+    switch (self.currentAudio.receivedStatusType) {
             
             /********* 读取专辑与歌曲部分 **********/
             
@@ -221,9 +193,9 @@ UITableViewDelegate, UITableViewDataSource>
             if (socketData.operatorCode == 0x02E1 &&
                 recivedData[0] == self.currentAudio.sourceType) {
                 
-                self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                self.totalPackages = recivedData[1];
-                self.isReceivedAudioData = YES;
+                self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                self.currentAudio.totalPackages = recivedData[1];
+                self.currentAudio.isReceivedAudioData = YES;
             }
         }
             break;  // OK
@@ -233,12 +205,12 @@ UITableViewDelegate, UITableViewDataSource>
             //11 源号  12大包号
             if (recivedData[2] == self.currentAudio.sourceType &&
                 socketData.operatorCode == 0x02E3      &&
-                recivedData[3] == self.currentPackageNumber) {
+                recivedData[3] == self.currentAudio.currentPackageNumber) {
                 
                 //                printLog(@"2.专辑总数: %d", recivedData[0 + 4]);
                 
-                self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                self.isReceivedAudioData = YES;
+                self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                self.currentAudio.isReceivedAudioData = YES;
                 
                 // 相关的名称从5开始
                 NSUInteger albumDataLength =
@@ -252,21 +224,21 @@ UITableViewDelegate, UITableViewDataSource>
                 
                 NSString *albumName = [albumNames componentsJoinedByString:@""];
                 
-                [self.recivedStringList appendFormat:@"%@",albumName];
+                [self.currentAudio.recivedStringList appendFormat:@"%@",albumName];
                 
-                if (recivedData[3] == self.totalPackages) {
+                if (recivedData[3] == self.currentAudio.totalPackages) {
                     
-                     printLog(@"最终的专辑名称: %@", self.recivedStringList);
+                     printLog(@"最终的专辑名称: %@", self.currentAudio.recivedStringList);
                     
                     [SHAudioTools parseNameList:socketData.subNetID
                                        deviceID:socketData.deviceID
                                      sourceType:recivedData[2]
-                                       nameList:self.recivedStringList
+                                       nameList:self.currentAudio.recivedStringList
                                         isAlbum:YES
                              currentAlbumNumber:0
                      ];
                     
-                    self.recivedStringList = nil;
+                    self.currentAudio.recivedStringList = [NSMutableString string];
                 }
             }
         }
@@ -275,11 +247,11 @@ UITableViewDelegate, UITableViewDataSource>
         case SHAudioReceivedStatusTypeReadSongPackages:{
             if (recivedData[0] == self.currentAudio.sourceType &&
                 socketData.operatorCode == 0x02E5 &&
-                self.currentCategoryNumber == recivedData[1]) {
+                self.currentAudio.currentCategoryNumber == recivedData[1]) {
                 
-                self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                self.totalPackages = recivedData[2];
-                self.isReceivedAudioData = YES;
+                self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                self.currentAudio.totalPackages = recivedData[2];
+                self.currentAudio.isReceivedAudioData = YES;
                 
                 // printLog(@"当前专辑一共有歌曲的包数: %d", recivedData[0 + 2]);
             }
@@ -291,22 +263,22 @@ UITableViewDelegate, UITableViewDataSource>
             // 确定是当前设备来源正在返回请求的歌曲名称
             if (recivedData[2] == self.currentAudio.sourceType &&
                 socketData.operatorCode == 0x02E7                                      &&
-                recivedData[3] == self.currentCategoryNumber
+                recivedData[3] == self.currentAudio.currentCategoryNumber
                 ) {
                 
                 // 请求包号与返回一致
-                if (recivedData[4] == self.currentPackageNumber) {
+                if (recivedData[4] == self.currentAudio.currentPackageNumber) {
                     
-                    self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                    self.isReceivedAudioData = YES;
+                    self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                    self.currentAudio.isReceivedAudioData = YES;
                     
                     NSUInteger songNameLength =
                     recivedData[0] * 0xFF + recivedData[1] - 6;
                     
                     if (songNameLength < 3 &&
-                        recivedData[4] != self.totalPackages) {
+                        recivedData[4] != self.currentAudio.totalPackages) {
                         
-                        self.isReceivedAudioData = NO;
+                        self.currentAudio.isReceivedAudioData = NO;
                         printLog(@"提前空包");
                         return;
                     }
@@ -322,31 +294,31 @@ UITableViewDelegate, UITableViewDataSource>
                     
                     NSString *songName = [songNames componentsJoinedByString:@""];
                     
-                    [self.recivedStringList appendFormat:@"%@",songName];
+                    [self.currentAudio.recivedStringList appendFormat:@"%@",songName];
                     
-                    // printLog(@"当前音乐名称: %@", self.recivedStringList);
+//                     printLog(@"当前音乐名称: %@", self.currentAudio.recivedStringList);
                     
                     /// 拼接完成
-                    if (recivedData[4] == self.totalPackages) {
+                    if (recivedData[4] == self.currentAudio.totalPackages) {
                         
                         //                        [SVProgressHUD showSuccessWithStatus:@"专辑所有音乐读取完成"];
                         [SHAudioTools parseNameList:socketData.subNetID
                                            deviceID:socketData.deviceID
                                          sourceType:recivedData[2]
-                                           nameList:self.recivedStringList
+                                           nameList:self.currentAudio.recivedStringList
                                             isAlbum:NO
                                  currentAlbumNumber:recivedData[3]
                          ];
                         
-                        self.recivedStringList = nil;
-                        self.errorSongNameNumber = 0;
+                        self.currentAudio.recivedStringList = [NSMutableString string];
+                        self.currentAudio.errorSongNameNumber = 0;
                         
                         //下面部分为了防止出现包拼接错误，和包内容错误
                         //后面还有包，判断包拼接是否正确
                         
                     } else {
                         
-                        self.errorSongNameNumber =
+                        self.currentAudio.errorSongNameNumber =
                         recivedData[5] +
                         recivedData[6] * 0xFF +
                         recivedData[7] + 3;
@@ -357,8 +329,8 @@ UITableViewDelegate, UITableViewDataSource>
                     printLog(@"====== 当前请求包号不一致 接收到信息========");
                     printLog(@"当前包号: %d\n请求包号: %zd\n总包号: %zd",
                              recivedData[4],
-                             self.currentPackageNumber,
-                             self.totalPackages
+                             self.currentAudio.currentPackageNumber,
+                             self.currentAudio.totalPackages
                              );
                     
                     // FIXME: - 音乐空包 以后如果出现其它情况，则可能需要修改固件
@@ -366,21 +338,21 @@ UITableViewDelegate, UITableViewDataSource>
                     // 空包时 固件返回的广播不完整，数据也不匹配
                     // 只能临时这样判断
                     if ((count == 4) &&
-                        (self.currentPackageNumber == self.totalPackages)) {
+                        (self.currentAudio.currentPackageNumber == self.currentAudio.totalPackages)) {
                         
-                        self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                        self.isReceivedAudioData = YES;
+                        self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                        self.currentAudio.isReceivedAudioData = YES;
                         
                         [SHAudioTools parseNameList:socketData.subNetID
                                            deviceID:socketData.deviceID
                                          sourceType:recivedData[2]
-                                           nameList:self.recivedStringList
+                                           nameList:self.currentAudio.recivedStringList
                                             isAlbum:NO
                                  currentAlbumNumber:recivedData[3]
                          ];
                         
-                        self.recivedStringList = nil;
-                        self.errorSongNameNumber = 0;
+                        self.currentAudio.recivedStringList = [NSMutableString string];
+                        self.currentAudio.errorSongNameNumber = 0;
                     }
                 }
             }
@@ -425,10 +397,10 @@ UITableViewDelegate, UITableViewDataSource>
                 if (status == SHAudioUpdateFtpServerDataStatusFinished) {
                     
                     // 设置状态
-                    self.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                    self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
                     
                     // 成功更新
-                    self.isUpdateFtpSuccess = YES;
+                    self.currentAudio.isUpdateFtpSuccess = YES;
                     [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@\n%@", [[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"UPDATE_FTP"], [[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"PROMPT_MESSAGE_8"]]];
                     
                     // 其它代码
@@ -831,7 +803,7 @@ UITableViewDelegate, UITableViewDataSource>
 /// 发送数据
 - (void)sendControlAudioData:(SHAudioSendData *)sendData {
     
-    if (self.cancelSendData) {
+    if (self.currentAudio.cancelSendData) {
         return;     // 取消发送消息
     }
     
@@ -844,7 +816,7 @@ UITableViewDelegate, UITableViewDataSource>
                                       isDMX:false
      ];
     
-    self.isReceivedAudioData = NO;
+    self.currentAudio.isReceivedAudioData = NO;
     
     [self performSelector:@selector(reSendControlAudioData:)
                withObject:sendData
@@ -855,22 +827,22 @@ UITableViewDelegate, UITableViewDataSource>
 -(void)reSendControlAudioData:(SHAudioSendData *)sendData{
     
     /// 取消发送消息
-    if (self.cancelSendData) {
+    if (self.currentAudio.cancelSendData) {
         return;
     }
     
-    if (self.isReceivedAudioData) {
+    if (self.currentAudio.isReceivedAudioData) {
         
-        self.reSendCount = 0;
-        self.isReceivedAudioData = NO;
+        self.currentAudio.reSendCount = 0;
+        self.currentAudio.isReceivedAudioData = NO;
         [self sendStartNewData:sendData];
         
     } else {
         
-        self.reSendCount++;
+        self.currentAudio.reSendCount++;
         
         // 超时
-        if (self.reSendCount > 3) { // 重发最多3次
+        if (self.currentAudio.reSendCount > 3) { // 重发最多3次
             
             TYCustomAlertView *alertView =
             [TYCustomAlertView alertViewWithTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"SYSTEM_PROMPT"] message:@"Sorry! Fail to read list, please check network and zone settings!" isCustom:YES];
@@ -878,7 +850,7 @@ UITableViewDelegate, UITableViewDataSource>
             [alertView addAction:[TYAlertAction actionWithTitle:SHLanguageText.ok style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
                 
                 self.view.userInteractionEnabled = YES; // 恢复交互
-                self.recivedStringList = nil; // 清空接收字符串的内容
+                self.currentAudio.recivedStringList = [NSMutableString string]; // 清空接收字符串的内容
                 
             }]];
             
@@ -890,11 +862,11 @@ UITableViewDelegate, UITableViewDataSource>
             
             [SVProgressHUD dismiss];
             
-            self.receivedStatusType =
+            self.currentAudio.receivedStatusType =
                 SHAudioReceivedStatusTypeOut;
             
-            self.reSendCount = 0;
-            self.isReceivedAudioData = NO;
+            self.currentAudio.reSendCount = 0;
+            self.currentAudio.isReceivedAudioData = NO;
             
         } else {
             
@@ -910,7 +882,7 @@ UITableViewDelegate, UITableViewDataSource>
             
         case 0x02E0:{
             
-            sendData.packageTotal = self.totalPackages;
+            sendData.packageTotal = self.currentAudio.totalPackages;
             sendData.packageNumber = 1;
             sendData.operatorCode = sendData.operatorCode+2;
             
@@ -918,10 +890,10 @@ UITableViewDelegate, UITableViewDataSource>
             @[ @(sendData.sourceType),
                @(sendData.packageNumber)];
             
-            self.currentPackageNumber = sendData.packageNumber;
+            self.currentAudio.currentPackageNumber = sendData.packageNumber;
             
-            self.reSendCount = 0;
-            self.receivedStatusType =
+            self.currentAudio.reSendCount = 0;
+            self.currentAudio.receivedStatusType =
                 SHAudioReceivedStatusTypeReadAlbumList;
             [self sendControlAudioData:sendData];
             
@@ -940,10 +912,10 @@ UITableViewDelegate, UITableViewDataSource>
                 
                 sendData.additionalData = @[@(sendData.sourceType), @(sendData.categoryNumber)];
                 
-                self.currentCategoryNumber = sendData.categoryNumber;
+                self.currentAudio.currentCategoryNumber = sendData.categoryNumber;
                 
-                self.reSendCount = 0;
-                self.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
+                self.currentAudio.reSendCount = 0;
+                self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
                 
                 [self sendControlAudioData:sendData];
                 
@@ -952,9 +924,9 @@ UITableViewDelegate, UITableViewDataSource>
                 
                 sendData.additionalData = @[@(sendData.sourceType),  @(sendData.packageNumber)];
                 
-                self.currentPackageNumber = sendData.packageNumber;
-                self.reSendCount = 0;
-                self.receivedStatusType = SHAudioReceivedStatusTypeReadAlbumList;
+                self.currentAudio.currentPackageNumber = sendData.packageNumber;
+                self.currentAudio.reSendCount = 0;
+                self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeReadAlbumList;
                 [self sendControlAudioData:sendData];  // OK
             }
             
@@ -963,7 +935,8 @@ UITableViewDelegate, UITableViewDataSource>
             
         case 0x02E4:{
             
-            sendData.packageTotal = self.totalPackages;
+            sendData.packageTotal =
+                self.currentAudio.totalPackages;
             sendData.packageNumber = 1;
             sendData.operatorCode = sendData.operatorCode+2;
             
@@ -971,11 +944,11 @@ UITableViewDelegate, UITableViewDataSource>
             @[ @(sendData.sourceType),
                @(sendData.categoryNumber),
                @(sendData.packageNumber)
-               ];
+            ];
             
-            self.currentPackageNumber = sendData.packageNumber;
-            self.reSendCount = 0;
-            self.receivedStatusType = SHAudioReceivedStatusTypeReadSongList;
+            self.currentAudio.currentPackageNumber = sendData.packageNumber;
+            self.currentAudio.reSendCount = 0;
+            self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeReadSongList;
             
             [self sendControlAudioData:sendData];
             
@@ -996,10 +969,10 @@ UITableViewDelegate, UITableViewDataSource>
                    @(sendData.packageNumber)
                    ];
                 
-                self.currentPackageNumber = sendData.packageNumber;
+                self.currentAudio.currentPackageNumber = sendData.packageNumber;
                 
-                self.reSendCount = 0;
-                self.receivedStatusType = SHAudioReceivedStatusTypeReadSongList;
+                self.currentAudio.reSendCount = 0;
+                self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeReadSongList;
                 
                 [self sendControlAudioData: sendData];
             }
@@ -1049,7 +1022,7 @@ UITableViewDelegate, UITableViewDataSource>
             
             [NSThread sleepForTimeInterval:0.5];
             
-            self.receivedStatusType = SHAudioReceivedStatusTypeOut;
+            self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
             
             // 读取状态
             [SHAudioOperatorTools readAudioStatusWithSubNetID:self.currentAudio.subnetID deviceID:self.currentAudio.deviceID];
@@ -1086,10 +1059,10 @@ UITableViewDelegate, UITableViewDataSource>
         sendData.additionalData =
         @[@(sourceType), @(songAlbumNumber)];
         
-        self.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
-        self.reSendCount = 0;
+        self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
+        self.currentAudio.reSendCount = 0;
         
-        self.currentCategoryNumber = songAlbumNumber;
+        self.currentAudio.currentCategoryNumber = songAlbumNumber;
         [self sendControlAudioData:sendData];
         
         // UI的处理上
@@ -1179,8 +1152,8 @@ UITableViewDelegate, UITableViewDataSource>
         
         sendData.additionalData = @[@(sourceType)];
         
-        self.receivedStatusType = SHAudioReceivedStatusTypeReadTotalPackages;
-        self.reSendCount = 0;
+        self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeReadTotalPackages;
+        self.currentAudio.reSendCount = 0;
         
         [self sendControlAudioData:sendData];
         
@@ -1206,7 +1179,6 @@ UITableViewDelegate, UITableViewDataSource>
 - (void)showAudioPlayModel {
     
     switch (self.currentAudio.playMode) {
-            
             
         case SHAudioPlayModeTypeNotRepeated: { // 单曲播放
             
@@ -1815,7 +1787,7 @@ UITableViewDelegate, UITableViewDataSource>
 - (void)readAudioStatus {
     
     
-    self.receivedStatusType = SHAudioReceivedStatusTypeOut;
+    self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
     
     [SHAudioOperatorTools readAudioStatusWithSubNetID:self.currentAudio.subnetID
                                              deviceID:self.currentAudio.deviceID
@@ -2240,14 +2212,14 @@ statusBarHeight: statusBarHeight * 0.5;
     
     [alertView addAction: [TYAlertAction actionWithTitle:SHLanguageText.ok style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
         
-        self.isUpdateFtpSuccess = NO;
+        self.currentAudio.isUpdateFtpSuccess = NO;
         
         // 1.切换音乐来源
         [SHAudioOperatorTools changeAudioSourceWithSubNetID:self.currentAudio.subnetID deviceID:self.currentAudio.deviceID musicSoureNumber:SHAudioSoureNumberFtpServer zoneFlag:self.currentAudio.zoneFlag
          ];
         
         // 2.设置状态
-        self.receivedStatusType = SHAudioReceivedStatusTypeUpdateList;
+        self.currentAudio.receivedStatusType = SHAudioReceivedStatusTypeUpdateList;
         
         // 3.发出更新指令
         [SHAudioOperatorTools updateAudioFtpServerDataWithSubNetID:self.currentAudio.subnetID deviceID:self.currentAudio.deviceID];
@@ -2268,7 +2240,7 @@ statusBarHeight: statusBarHeight * 0.5;
     
     [self resignFirstResponder];
     
-    self.cancelSendData = YES;
+    self.currentAudio.cancelSendData = YES;
 }
 
 /// 设置界面
@@ -2604,7 +2576,6 @@ statusBarHeight: statusBarHeight * 0.5;
         [self.sourceTypeScrollView addSubview:audioButton];
     }
     
-    
     // 5.Phone == 这个功能没有，为了避免产生其它问题，暂时直接不显示
     //    if (self.currentAudio.havePhone) {
     //
@@ -2628,16 +2599,6 @@ statusBarHeight: statusBarHeight * 0.5;
 }
 
 // MARK: - getter && setter
-
-- (NSMutableString *)recivedStringList {
-    
-    if (!_recivedStringList) {
-        
-        _recivedStringList = [NSMutableString string];
-    }
-    
-    return _recivedStringList;
-}
 
 - (NSMutableArray *)selectQueueSongs {
     

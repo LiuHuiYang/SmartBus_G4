@@ -30,6 +30,10 @@
               isAlbum:(BOOL)isAlbum
    currentAlbumNumber:(NSUInteger) currentAlbumNumber {
     
+    if (nameList.length == 0) {
+        return ;
+    }
+    
     // 1.获得文件夹
     NSString *folderName =
  
