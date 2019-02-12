@@ -79,7 +79,6 @@ static NSString *songCellReusableIdentifier =
 /// 总共包的数量
 @property (assign, nonatomic) NSUInteger totalPackages;
 
-
 /// 接收数据的状态
 @property (assign, nonatomic) SHAudioReceivedStatusType receivedStatusType;
 

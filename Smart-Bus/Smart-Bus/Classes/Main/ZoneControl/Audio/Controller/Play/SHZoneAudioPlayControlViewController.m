@@ -855,7 +855,8 @@ UITableViewDelegate, UITableViewDataSource>
         // 超时
         if (self.reSendCount > 3) { // 重发最多3次
             
-            TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"SYSTEM_PROMPT"] message:@"Sorry! Fail to read list, please check network and zone settings!" isCustom:YES];
+            TYCustomAlertView *alertView =
+            [TYCustomAlertView alertViewWithTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"SYSTEM_PROMPT"] message:@"Sorry! Fail to read list, please check network and zone settings!" isCustom:YES];
             
             [alertView addAction:[TYAlertAction actionWithTitle:SHLanguageText.ok style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
                 
@@ -872,7 +873,9 @@ UITableViewDelegate, UITableViewDataSource>
             
             [SVProgressHUD dismiss];
             
-            self.receivedStatusType = SHAudioReceivedStatusTypeOut;
+            self.receivedStatusType =
+                SHAudioReceivedStatusTypeOut;
+            
             self.reSendCount = 0;
             self.isReceivedAudioData = NO;
             
@@ -901,7 +904,8 @@ UITableViewDelegate, UITableViewDataSource>
             self.currentPackageNumber = sendData.packageNumber;
             
             self.reSendCount = 0;
-            self.receivedStatusType = SHAudioReceivedStatusTypeReadAlbumList;
+            self.receivedStatusType =
+                SHAudioReceivedStatusTypeReadAlbumList;
             [self sendControlAudioData:sendData];
             
         }  // OK
@@ -1157,7 +1161,7 @@ UITableViewDelegate, UITableViewDataSource>
         
         // 清空列表对应的歌曲
         self.currentAudio.currentSelectAlbum.totalAlbumSongs
-        = @[];
+            = @[];
         
         [self.currentAlbumSongsListTableView reloadData];
     }
@@ -1174,20 +1178,22 @@ UITableViewDelegate, UITableViewDataSource>
             
         case SHAudioPlayModeTypeNotRepeated: { // 单曲播放
             
-            //            [SVProgressHUD showInfoWithStatus:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"REPEAT_OFF"]];
+            // [SVProgressHUD showInfoWithStatus:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"REPEAT_OFF"]];
             
             // 设置图片
             [self.modelButton setImage:[UIImage imageNamed:@"playModelNotReated_normal"] forState:UIControlStateNormal];
+            
             [self.modelButton setImage:[UIImage imageNamed:@"playModelNotReated_highlighted"] forState:UIControlStateHighlighted];
         }
             break;
             
         case SHAudioPlayModeTypeRepeatOneSong: { // 单曲循环
             
-            //            [SVProgressHUD showInfoWithStatus:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"REPEAT_ONE"]];
+            // [SVProgressHUD showInfoWithStatus:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"REPEAT_ONE"]];
             
             // 设置图片
             [self.modelButton setImage:[UIImage imageNamed:@"playModelRepeatOne_normal"] forState:UIControlStateNormal];
+            
             [self.modelButton setImage:[UIImage imageNamed:@"playModelRepeatOne_highlighted"] forState:UIControlStateHighlighted];
             
         }
@@ -1205,7 +1211,7 @@ UITableViewDelegate, UITableViewDataSource>
             
         case SHAudioPlayModeTypeRepeatAllAlbum: { // 循环播放
             
-            //             [SVProgressHUD showInfoWithStatus:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"REPEAT_ALL"]];
+            // [SVProgressHUD showInfoWithStatus:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"REPEAT_ALL"]];
             
             // 设置图片
             [self.modelButton setImage:[UIImage imageNamed:@"playModelRepeatAllAlbum_normal"] forState:UIControlStateNormal];
@@ -1805,7 +1811,8 @@ UITableViewDelegate, UITableViewDataSource>
     // 开始选择专辑
     if (tableView == self.albumListTableView) {
         
-        self.currentAudio.currentSelectAlbum = self.currentAudio.allAlbums[indexPath.row];
+        self.currentAudio.currentSelectAlbum =
+            self.currentAudio.allAlbums[indexPath.row];
         
     } else if (tableView == self.currentAlbumSongsListTableView) {
         
@@ -1823,7 +1830,10 @@ UITableViewDelegate, UITableViewDataSource>
 /// 设置样式
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return (tableView == self.songQueueListTableView) ? UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleNone;
+    return
+        (tableView == self.songQueueListTableView) ?
+        UITableViewCellEditingStyleDelete :
+        UITableViewCellEditingStyleNone;
 }
 
 /// 样式操作
@@ -1835,13 +1845,18 @@ UITableViewDelegate, UITableViewDataSource>
     
     if (tableView == self.songQueueListTableView) {
         
-        TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:nil message:@"Are you sure to delete song ?" isCustom:YES];
+        TYCustomAlertView *alertView =
+            [TYCustomAlertView alertViewWithTitle:nil
+                                          message:@"Are you sure to delete song ?"
+                                         isCustom:YES
+            ];
         
         [alertView addAction: [TYAlertAction actionWithTitle:SHLanguageText.cancel style:TYAlertActionStyleDefault handler:nil]];
         
         [alertView addAction: [TYAlertAction actionWithTitle:SHLanguageText.ok style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
             
-            SHAudio *audio = self.selectQueueSongs[indexPath.row];
+            SHAudio *audio =
+                self.selectQueueSongs[indexPath.row];
             
             [self.selectQueueSongs removeObject:audio];
             
@@ -2161,6 +2176,7 @@ statusBarHeight: statusBarHeight * 0.5;
                0
                );
 }
+
 
 // MARK: ====== - UI 界面 ======
 
