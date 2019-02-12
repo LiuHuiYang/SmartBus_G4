@@ -1135,6 +1135,13 @@ UITableViewDelegate, UITableViewDataSource>
         self.currentAudio.allAlbums =
         [SHAudioTools readPlist:albumPlistFilePath];
         
+        if (self.currentAudio.allAlbums.count == 0) {
+            
+            printLog(@"测试专辑为空 albumPlistFilePath = %@",
+                     albumPlistFilePath);
+            return ;
+        }
+        
         // 刷新列表
         [self.albumListTableView reloadData];
         
