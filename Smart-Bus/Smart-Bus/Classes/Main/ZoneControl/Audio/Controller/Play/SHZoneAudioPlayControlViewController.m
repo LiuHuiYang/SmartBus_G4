@@ -2253,22 +2253,22 @@ statusBarHeight: statusBarHeight * 0.5;
     self.listScrollView.delegate = self;
     
     // 3. 设置中间右边
-    [self setUpLeftListView];
+    [self setupLeftListView];
     
     // 4. 左边的控件
-    [self setUpRightListView];
+    [self setupRightListView];
     
     // 5. 添加收音机
-    [self setUpRadioView];
+    [self setupRadioView];
     
     // 6.添加外接音乐
-    [self setUpAudioInView];
+    [self setupAudioInView];
     
     // 7. 添加声音控件
-    [self setUpVolumeView];
+    [self setupVolumeView];
     
     // 8. 添加状态显示栏
-    [self setUpPlayStatusView];
+    [self setupPlayStatusView];
     
     //  添加导航右侧的设置
     //    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"setting" hightlightedImageName:@"setting" addTarget:self action:@selector(updateFtpAudioDatas) isLeft:NO];
@@ -2284,7 +2284,7 @@ statusBarHeight: statusBarHeight * 0.5;
 
 
 /// 设置中间左边的列表视图
-- (void)setUpLeftListView {
+- (void)setupLeftListView {
     
     // 3.添加标题按钮
     // 3.1 左图中的区域列表按钮
@@ -2383,7 +2383,7 @@ statusBarHeight: statusBarHeight * 0.5;
 }
 
 /// 设置中间右边
-- (void)setUpRightListView {
+- (void)setupRightListView {
     
     // 3.4 播放队列按钮
     UIButton *playQueButton = [UIButton buttonWithTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"PLAY_QUE"]  font:([UIDevice is_iPad] ? [UIView suitFontForPad] : [UIFont systemFontOfSize:16]) normalTextColor:[UIView textWhiteColor] highlightedTextColor:[UIView highlightedTextColor]imageName:nil backgroundImageName:@"audioButtonbackground" addTarget:self action:@selector(playQueButtonClick)];
@@ -2422,7 +2422,7 @@ statusBarHeight: statusBarHeight * 0.5;
 }
 
 /// 设置声音控件
-- (void)setUpVolumeView {
+- (void)setupVolumeView {
     
     SHAudioVolumeView *volumeView =
     [SHAudioVolumeView volumeView];
@@ -2435,7 +2435,7 @@ statusBarHeight: statusBarHeight * 0.5;
 }
 
 /// 添加音乐播放状态的视图
-- (void)setUpPlayStatusView {
+- (void)setupPlayStatusView {
     
     SHAudioPlayStatusView *showPlayView =
     
@@ -2447,7 +2447,7 @@ statusBarHeight: statusBarHeight * 0.5;
 }
 
 /// 添加外接音乐
-- (void)setUpAudioInView {
+- (void)setupAudioInView {
     
     SHAudioInView *audioinImageView =
     [SHAudioInView audioInView];
@@ -2461,7 +2461,7 @@ statusBarHeight: statusBarHeight * 0.5;
 }
 
 /// 添加收音机
-- (void)setUpRadioView {
+- (void)setupRadioView {
     
     SHAudioRadioView *radioChannelButtonsView =
     [[SHAudioRadioView alloc] init];
