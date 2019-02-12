@@ -55,42 +55,9 @@ static NSString *songCellReusableIdentifier =
 /// 音乐来源 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sourceTypeSegmentedControl;
 
-
 /// 播放控制选项卡
 @property (weak, nonatomic) IBOutlet UISegmentedControl *playStatusSegmentedControl;
 
-// MARK: - 音乐操作的属性
-
-/// 取消发送请求数据
-@property (assign, nonatomic) BOOL cancelSendData;
-    
-/// 当前区域标识，默认是1
-@property (assign, nonatomic) Byte currentAudioZoneFlag;
-
-/// 拼接歌曲时的错误码值(最后一步拼接字符串时使用, 必须是有符号的数据)
-@property (nonatomic, assign) NSInteger errorSongNameNumber;
-
-/// 当前请求的第几个列表 专辑
-@property (assign, nonatomic) NSUInteger currentCategoryNumber;
-
-/// 当前第几个包
-@property (assign, nonatomic) NSUInteger currentPackageNumber;
-
-/// 总共包的数量
-@property (assign, nonatomic) NSUInteger totalPackages;
-
-/// 接收数据的状态
-@property (assign, nonatomic) SHAudioReceivedStatusType receivedStatusType;
-
-/// 重发次数 - 最多3次
-@property (nonatomic, assign) Byte reSendCount;
-
-/// 是否接收到需要的音乐广播数据
-@property (assign, nonatomic) BOOL isReceivedAudioData;
-
-/// 接收到的拼接字符串
-@property (nonatomic, copy) NSMutableString *recivedStringList;
-    
 @end
 
 @implementation SHSchedualAudioViewController
@@ -186,7 +153,7 @@ static NSString *songCellReusableIdentifier =
     
     [super viewWillDisappear:animated];
     
-    self.cancelSendData = YES;
+    self.schedualAudio.cancelSendData = YES;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -414,10 +381,10 @@ static NSString *songCellReusableIdentifier =
      
         sendData.additionalData = @[@(sourceType), @(songAlbumNumber)];
         
-        self.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
-        self.reSendCount = 0;
+        self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
+        self.schedualAudio.reSendCount = 0;
         
-        self.currentCategoryNumber = songAlbumNumber;
+        self.schedualAudio.currentCategoryNumber = songAlbumNumber;
         [self sendControlAudioData:sendData];
         
         // UI的处理上
@@ -510,8 +477,8 @@ static NSString *songCellReusableIdentifier =
         
         sendData.additionalData = @[@(sourceType)];
         
-        self.receivedStatusType = SHAudioReceivedStatusTypeReadTotalPackages;
-        self.reSendCount = 0;
+        self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeReadTotalPackages;
+        self.schedualAudio.reSendCount = 0;
         
         [self sendControlAudioData:sendData];
         
@@ -552,7 +519,7 @@ static NSString *songCellReusableIdentifier =
     }
     
     // 依据不同的状态来进行处理
-    switch (self.receivedStatusType) {
+    switch (self.schedualAudio.receivedStatusType) {
             
         case SHAudioReceivedStatusTypeReadTotalPackages:{
             
@@ -560,9 +527,9 @@ static NSString *songCellReusableIdentifier =
                 &&
                 socketData.operatorCode == 0x02E1) {
                 
-                self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                self.totalPackages = recivedData[1];
-                self.isReceivedAudioData = YES;
+                self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                self.schedualAudio.totalPackages = recivedData[1];
+                self.schedualAudio.isReceivedAudioData = YES;
             }
         }
             break;  // OK
@@ -571,10 +538,10 @@ static NSString *songCellReusableIdentifier =
             //11 源号  12大包号
             if (recivedData[2] == self.schedualAudio.sourceType &&
                 socketData.operatorCode == 0x02E3      &&
-                recivedData[3] == self.currentPackageNumber) {
+                recivedData[3] == self.schedualAudio.currentPackageNumber) {
                
-                self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                self.isReceivedAudioData = YES;
+                self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                self.schedualAudio.isReceivedAudioData = YES;
                 
                 NSUInteger albumDataLength =
                     recivedData[0] * 0XFF +recivedData[1] - 5;
@@ -587,19 +554,19 @@ static NSString *songCellReusableIdentifier =
                 
                 NSString *albumName = [albumNames componentsJoinedByString:@""];
                 
-                [self.recivedStringList appendFormat:@"%@",albumName];
+                [self.schedualAudio.recivedStringList appendFormat:@"%@",albumName];
                 
                 
-                if (recivedData[3] == self.totalPackages) {
+                if (recivedData[3] == self.schedualAudio.totalPackages) {
                     
                     [SHAudioTools parseNameList:socketData.subNetID
                                        deviceID:socketData.deviceID
                                      sourceType:recivedData[2]
-                                       nameList:self.recivedStringList isAlbum:YES
+                                       nameList:self.schedualAudio.recivedStringList isAlbum:YES
                              currentAlbumNumber:0];
                     
                     
-                    self.recivedStringList = nil;
+                    self.schedualAudio.recivedStringList = [NSMutableString string];
                 }
             }
         }
@@ -608,11 +575,11 @@ static NSString *songCellReusableIdentifier =
         case SHAudioReceivedStatusTypeReadSongPackages:{
             if (recivedData[0] == self.schedualAudio.sourceType &&
                 socketData.operatorCode == 0x02E5 &&
-                self.currentCategoryNumber == recivedData[1]) {
+                self.schedualAudio.currentCategoryNumber == recivedData[1]) {
                 
-                self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                self.totalPackages = recivedData[2];
-                self.isReceivedAudioData = YES;
+                self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                self.schedualAudio.totalPackages = recivedData[2];
+                self.schedualAudio.isReceivedAudioData = YES;
             }
         }
             break;  // OK
@@ -622,23 +589,23 @@ static NSString *songCellReusableIdentifier =
             // 确定是当前设备来源正在返回请求的歌曲名称
             if (recivedData[2] == self.schedualAudio.sourceType &&
                 socketData.operatorCode == 0x02E7                                      &&
-                recivedData[3] == self.currentCategoryNumber
+                recivedData[3] == self.schedualAudio.currentCategoryNumber
                 ) {
                 
                 // 请求包号与返回一致
-                if (recivedData[4] == self.currentPackageNumber) {
+                if (recivedData[4] == self.schedualAudio.currentPackageNumber) {
                     
-                    self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                    self.isReceivedAudioData = YES;
+                    self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                    self.schedualAudio.isReceivedAudioData = YES;
                     
                     NSUInteger songNameLength =
                     recivedData[0] * 0XFF + recivedData[1] - 6;
                     
                     if (songNameLength < 3 &&
-                        recivedData[4] != self.totalPackages) {
+                        recivedData[4] != self.schedualAudio.totalPackages) {
                         //还没完呢，包就空了，错误
                         
-                        self.isReceivedAudioData = NO;
+                        self.schedualAudio.isReceivedAudioData = NO;
                         printLog(@"提前空包");
                         return;
                     }
@@ -648,9 +615,9 @@ static NSString *songCellReusableIdentifier =
                         
                         if ((recivedData[6] * 0XFF +
                              recivedData[7]) -
-                            self.errorSongNameNumber > 5) {
+                            self.schedualAudio.errorSongNameNumber > 5) {
                             printLog(@"拼接不对");
-                            self.isReceivedAudioData = NO;
+                            self.schedualAudio.isReceivedAudioData = NO;
                             return;
                         }
                     }
@@ -665,24 +632,24 @@ static NSString *songCellReusableIdentifier =
                     
                     NSString *songName = [songNames componentsJoinedByString:@""];
                     
-                    [self.recivedStringList appendFormat:@"%@",songName];
+                    [self.schedualAudio.recivedStringList appendFormat:@"%@",songName];
                     
                     // printLog(@"当前音乐名称: %@", self.recivedStringList);
                     
                     /// 拼接完成
-                    if (recivedData[4] == self.totalPackages) {
+                    if (recivedData[4] == self.schedualAudio.totalPackages) {
                         
                         
                         [SHAudioTools parseNameList:socketData.subNetID
                                            deviceID:socketData.deviceID
                                          sourceType:recivedData[2]
-                                           nameList:self.recivedStringList
+                                           nameList:self.schedualAudio.recivedStringList
                                             isAlbum:NO
                                  currentAlbumNumber:recivedData[3]
                          ];
                         
-                        self.recivedStringList = nil;
-                        self.errorSongNameNumber = 0;
+                        self.schedualAudio.recivedStringList = [NSMutableString string];
+                        self.schedualAudio.errorSongNameNumber = 0;
                         
                         
                         //下面部分为了防止出现包拼接错误，和包内容错误
@@ -690,7 +657,7 @@ static NSString *songCellReusableIdentifier =
                         
                     } else {
                         
-                        self.errorSongNameNumber = recivedData[5] +
+                        self.schedualAudio.errorSongNameNumber = recivedData[5] +
                         recivedData[6] * 0xFF + recivedData[7] + 3;
                     }
                     
@@ -704,19 +671,19 @@ static NSString *songCellReusableIdentifier =
                     if (!recivedData[4]) {
                         
                         printLog(@"空包");
-                        self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-                        self.isReceivedAudioData = YES;
+                        self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+                        self.schedualAudio.isReceivedAudioData = YES;
                         
                         [SHAudioTools parseNameList:socketData.subNetID
                                            deviceID:socketData.deviceID
                                          sourceType:recivedData[2]
-                                           nameList:self.recivedStringList
+                                           nameList:self.schedualAudio.recivedStringList
                                             isAlbum:NO
                                  currentAlbumNumber:recivedData[3]
                          ];
                         
-                        self.recivedStringList = nil;
-                        self.errorSongNameNumber = 0;
+                        self.schedualAudio.recivedStringList = [NSMutableString string];
+                        self.schedualAudio.errorSongNameNumber = 0;
                     }
                 }
             }
@@ -734,13 +701,13 @@ static NSString *songCellReusableIdentifier =
 - (void)sendControlAudioData:(SHAudioSendData *)sendData {
     
     /// 取消发送消息
-    if (self.cancelSendData) {
+    if (self.schedualAudio.cancelSendData) {
         return;
     }
     
     [SHSocketTools sendDataWithOperatorCode:sendData.operatorCode subNetID:sendData.subNetID deviceID:sendData.deviceID additionalData:sendData.additionalData remoteMacAddress:SHSocketTools.remoteControlMacAddress needReSend:false isDMX:false];
     
-    self.isReceivedAudioData = NO;
+    self.schedualAudio.isReceivedAudioData = NO;
     
     [self performSelector:@selector(reSendControlAudioData:)
                withObject:sendData
@@ -752,21 +719,21 @@ static NSString *songCellReusableIdentifier =
 -(void)reSendControlAudioData:(SHAudioSendData *)sendData{
     
     /// 取消发送消息
-    if (self.cancelSendData) {
+    if (self.schedualAudio.cancelSendData) {
         return;
     }
     
-    if (self.isReceivedAudioData) {
+    if (self.schedualAudio.isReceivedAudioData) {
         
-        self.reSendCount = 0;
-        self.isReceivedAudioData = NO;
+        self.schedualAudio.reSendCount = 0;
+        self.schedualAudio.isReceivedAudioData = NO;
         [self sendStartNewData:sendData];
         
     } else {
         
-        self.reSendCount++;
+        self.schedualAudio.reSendCount++;
         
-        if (self.reSendCount > 3) {
+        if (self.schedualAudio.reSendCount > 3) {
             
             TYCustomAlertView *alertView =
                 [TYCustomAlertView alertViewWithTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"SYSTEM_PROMPT"]
@@ -777,7 +744,7 @@ static NSString *songCellReusableIdentifier =
             [alertView addAction: [TYAlertAction actionWithTitle:  SHLanguageText.ok style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
                 
                 self.view.userInteractionEnabled = YES; // 恢复交互
-                self.recivedStringList = nil; // 清空数据
+                self.schedualAudio.recivedStringList = [NSMutableString string]; // 清空数据
             }]];
             
             TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
@@ -786,9 +753,9 @@ static NSString *songCellReusableIdentifier =
             
             [SVProgressHUD dismiss];
             
-            self.receivedStatusType = SHAudioReceivedStatusTypeOut;
-            self.reSendCount = 0;
-            self.isReceivedAudioData = NO;
+            self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeOut;
+            self.schedualAudio.reSendCount = 0;
+            self.schedualAudio.isReceivedAudioData = NO;
             
         } else {
             
@@ -804,7 +771,7 @@ static NSString *songCellReusableIdentifier =
         
         case 0x02E0:{
             
-            sendData.packageTotal = self.totalPackages;
+            sendData.packageTotal = self.schedualAudio.totalPackages;
             sendData.packageNumber = 1;
             sendData.operatorCode = sendData.operatorCode+2;
              
@@ -812,10 +779,10 @@ static NSString *songCellReusableIdentifier =
                 @[@(sendData.sourceType),
                   @(sendData.packageNumber)];
             
-            self.currentPackageNumber = sendData.packageNumber;
+            self.schedualAudio.currentPackageNumber = sendData.packageNumber;
             
-            self.reSendCount = 0;
-            self.receivedStatusType = SHAudioReceivedStatusTypeReadAlbumList;
+            self.schedualAudio.reSendCount = 0;
+            self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeReadAlbumList;
             
             [self sendControlAudioData:sendData];
             
@@ -836,10 +803,10 @@ static NSString *songCellReusableIdentifier =
                     @[@(sendData.sourceType),
                       @(sendData.categoryNumber)];
                 
-                self.currentCategoryNumber = sendData.categoryNumber;
+                self.schedualAudio.currentCategoryNumber = sendData.categoryNumber;
                 
-                self.reSendCount = 0;
-                self.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
+                self.schedualAudio.reSendCount = 0;
+                self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
                 
                 [self sendControlAudioData:sendData];
                 
@@ -850,9 +817,9 @@ static NSString *songCellReusableIdentifier =
                     @[ @(sendData.sourceType),
                        @(sendData.packageNumber)];
                 
-                self.currentPackageNumber = sendData.packageNumber;
-                self.reSendCount = 0;
-                self.receivedStatusType = SHAudioReceivedStatusTypeReadAlbumList;
+                self.schedualAudio.currentPackageNumber = sendData.packageNumber;
+                self.schedualAudio.reSendCount = 0;
+                self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeReadAlbumList;
                 [self sendControlAudioData:sendData];  // OK
             }
             
@@ -861,16 +828,16 @@ static NSString *songCellReusableIdentifier =
         
         case 0x02E4:{
             
-            sendData.packageTotal = self.totalPackages;
+            sendData.packageTotal = self.schedualAudio.totalPackages;
             sendData.packageNumber = 1;
             sendData.operatorCode = sendData.operatorCode+2;
     
             sendData.additionalData =
                 @[  @(sendData.sourceType), @(sendData.categoryNumber), @(sendData.packageNumber)];
             
-            self.currentPackageNumber = sendData.packageNumber;
-            self.reSendCount = 0;
-            self.receivedStatusType = SHAudioReceivedStatusTypeReadSongList;
+            self.schedualAudio.currentPackageNumber = sendData.packageNumber;
+            self.schedualAudio.reSendCount = 0;
+            self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeReadSongList;
             
             [self sendControlAudioData:sendData];
             
@@ -888,10 +855,10 @@ static NSString *songCellReusableIdentifier =
                 sendData.additionalData =
                     @[  @(sendData.sourceType), @(sendData.categoryNumber), @(sendData.packageNumber)];
                 
-                self.currentPackageNumber = sendData.packageNumber;
+                self.schedualAudio.currentPackageNumber = sendData.packageNumber;
                 
-                self.reSendCount = 0;
-                self.receivedStatusType = SHAudioReceivedStatusTypeReadSongList;
+                self.schedualAudio.reSendCount = 0;
+                self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeReadSongList;
                 
                 [self sendControlAudioData: sendData];
             }
@@ -899,19 +866,5 @@ static NSString *songCellReusableIdentifier =
         break;
     }
 }
-
-// MARK: - getter && setter
-
-/// 实例化懒加载
-- (NSMutableString *)recivedStringList {
-    
-    if (!_recivedStringList) {
-        
-        _recivedStringList = [NSMutableString string];
-    }
-    
-    return _recivedStringList;
-}
- 
 
 @end
