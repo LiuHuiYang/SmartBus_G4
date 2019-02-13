@@ -1536,7 +1536,6 @@ UITableViewDelegate, UITableViewDataSource>
     }
 }
 
-
 /// 选择专辑列表
 - (void)selectAlbumButtonClick {
     
@@ -1885,7 +1884,8 @@ UITableViewDelegate, UITableViewDataSource>
         
         SHAudioAlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:albumCellReusableIdentifier forIndexPath:indexPath];
         
-        cell.album = self.currentAudio.allAlbums[indexPath.row];
+        cell.album =
+            self.currentAudio.allAlbums[indexPath.row];
         
         return cell;
         
@@ -1923,7 +1923,6 @@ UITableViewDelegate, UITableViewDataSource>
     } else if (tableView == self.songQueueListTableView) { // 队列列表
         
         return self.selectQueueSongs.count;
-        
     }
     
     return 0;

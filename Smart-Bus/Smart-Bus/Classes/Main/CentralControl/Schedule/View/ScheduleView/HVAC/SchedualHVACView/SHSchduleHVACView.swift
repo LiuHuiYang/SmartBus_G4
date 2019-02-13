@@ -31,11 +31,7 @@ class SHSchduleHVACView: UIView, loadNibView {
                     SHSQLiteManager.shared.getSchedualCommands(
                         plan.scheduleID
                 )
-                
-                if commands.isEmpty {
-                    return
-                }
-                
+               
                 hvacs =
                     SHSQLiteManager.shared.getHVACs(
                         plan.zoneID

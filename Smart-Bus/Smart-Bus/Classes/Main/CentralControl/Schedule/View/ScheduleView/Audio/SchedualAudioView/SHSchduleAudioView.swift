@@ -33,10 +33,6 @@ class SHSchduleAudioView: UIView, loadNibView {
                         plan.scheduleID
                     )
                 
-                if commands.isEmpty {
-                    return
-                }
-                
                 allAudios =
                     SHSQLiteManager.shared.getAudios(
                         plan.zoneID

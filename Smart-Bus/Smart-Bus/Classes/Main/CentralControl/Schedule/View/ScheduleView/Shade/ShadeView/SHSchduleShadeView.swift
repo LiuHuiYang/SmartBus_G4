@@ -28,15 +28,7 @@ class SHSchduleShadeView: UIView, loadNibView {
                 SHSQLiteManager.shared.getSchedualCommands(
                     plan.scheduleID
             )
-            
-            if commands.isEmpty {
-                
-                SVProgressHUD.showInfo(
-                    withStatus: SHLanguageText.noData
-                )
-                return
-            }
-            
+             
             allShades = SHSQLiteManager.shared.getShades(plan.zoneID)
             
             for command in commands {

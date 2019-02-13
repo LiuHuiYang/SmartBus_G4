@@ -31,11 +31,7 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
                     SHSQLiteManager.shared.getSchedualCommands(
                         plan.scheduleID
                 )
-                
-                if commands.isEmpty {
-                    return
-                }
-                
+               
                 floorHeatings =
                     SHSQLiteManager.shared.getFloorHeatings(
                     plan.zoneID
