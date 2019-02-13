@@ -32,7 +32,6 @@ UITableViewDelegate, UITableViewDataSource>
 /// 整个音乐控制界面最底部的约束
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeightConstraint;
 
-    
 
 // MARK: - ============ 音乐设备相关的属性 ==========
 
@@ -326,7 +325,7 @@ UITableViewDelegate, UITableViewDataSource>
                     
                 } else {
                     
-                    printLog(@"====== 当前请求包号不一致 接收到信息========");
+                    printLog(@"=== 当前请求包号不一致 接收到信息===");
                     printLog(@"当前包号: %d\n请求包号: %zd\n总包号: %zd",
                              recivedData[4],
                              self.currentAudio.currentPackageNumber,
@@ -509,8 +508,8 @@ UITableViewDelegate, UITableViewDataSource>
                 self.volumeView.bass = bass;
                 self.volumeView.treble = treble;
                 
-                //                printLog(@"高音与低音： %@ - %@",
-                //                         @(bass), @(treble));
+                // printLog(@"高音与低音： %@ - %@",
+                // @(bass), @(treble));
             }
             
             /*********  播放时间与状态信息  ***********/
@@ -728,7 +727,7 @@ UITableViewDelegate, UITableViewDataSource>
                         
                     case 0x34: {  // 歌曲名
                         
-                        //                    printLog(@"4. 歌曲名: %@", string);
+                        // printLog(@"4. 歌曲名: %@", string);
                         [SHPlayingSong.shared
                          setSongName:string];
                     }
@@ -820,7 +819,7 @@ UITableViewDelegate, UITableViewDataSource>
     
     [self performSelector:@selector(reSendControlAudioData:)
                withObject:sendData
-               afterDelay:1.2];
+               afterDelay:1.5];
 }
 
 /// 重新发送数据
