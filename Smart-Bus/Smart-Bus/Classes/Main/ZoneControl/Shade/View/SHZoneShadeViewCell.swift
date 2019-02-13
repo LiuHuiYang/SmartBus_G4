@@ -113,6 +113,7 @@ class SHZoneShadeViewCell: UITableViewCell {
                 additionalData: G4Curtain
             )
             
+            
             SHSocketTools.sendData(
                 operatorCode: 0xE3E0,
                 subNetID: curtain.subnetID,
@@ -197,7 +198,7 @@ class SHZoneShadeViewCell: UITableViewCell {
             return
         }
         
-        switch curtain.controlType{
+        switch curtain.controlType {
         case .defaultControl:
             
             let G4Curtain = [

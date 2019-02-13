@@ -51,8 +51,9 @@ extension SHSocketTools {
             
             index += 1
         }
-        // 2.比较生成的crc与接收的crc是否相同
         
+        // 2.比较生成的crc与接收的crc是否相同
+
         return (
             ptr[index]     == UInt8(crc >> 8) &&
             ptr[index + 1] == UInt8(crc & 0xFF)
