@@ -122,7 +122,6 @@ class SHZoneShadeViewCell: UITableViewCell {
                     [curtain.openChannel, curtain.openingRatio]
             )
             
-            break
            
         case .universalSwitch:
            
@@ -223,7 +222,6 @@ class SHZoneShadeViewCell: UITableViewCell {
                                  curtain.closingRatio]
             )
             
-            break
             
         case .universalSwitch:
             
