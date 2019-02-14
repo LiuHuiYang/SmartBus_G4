@@ -20,7 +20,7 @@ typedef NS_ENUM(UInt8, SHAudioSourceType) {
     SHAudioSourceTypeFTP        =   2,
     SHAudioSourceTypeAUDIOIN    =   3,
     SHAudioSourceTypeRADIO      =   4,
-    SHAudioSourceTypePONE            // 这个功能是没有的
+    SHAudioSourceTypePHONE      // 这个功能是没有的
 };
 
 /// 普通Audio的来源切换
