@@ -2,7 +2,7 @@
 //  SHDeviceViewCell.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/11/2.
+//  Created by Mark Liu on 2017/11/2.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

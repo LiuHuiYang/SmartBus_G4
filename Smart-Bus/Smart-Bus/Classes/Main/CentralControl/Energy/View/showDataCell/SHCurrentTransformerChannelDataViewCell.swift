@@ -2,7 +2,7 @@
 //  SHCurrentTransformerChannelDataViewCell.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2018/11/14.
+//  Created by Mark Liu on 2018/11/14.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

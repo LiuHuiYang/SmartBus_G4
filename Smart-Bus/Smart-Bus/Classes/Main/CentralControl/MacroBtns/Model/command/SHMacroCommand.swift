@@ -2,7 +2,7 @@
 //  SHMacroCommand.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/11/6.
+//  Created by Mark Liu on 2017/11/6.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

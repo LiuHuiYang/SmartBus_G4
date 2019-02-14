@@ -2,7 +2,7 @@
 //  SHEditMoodCommandViewController.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/10/30.
+//  Created by Mark Liu on 2017/10/30.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

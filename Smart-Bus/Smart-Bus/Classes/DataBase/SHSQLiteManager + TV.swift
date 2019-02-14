@@ -2,7 +2,7 @@
 //  SHSQLiteManager + TV.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2019/1/22.
+//  Created by Mark Liu on 2019/1/22.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 

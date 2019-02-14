@@ -2,7 +2,7 @@
 //  SHZoneControlViewCell.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/11/5.
+//  Created by Mark Liu on 2017/11/5.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

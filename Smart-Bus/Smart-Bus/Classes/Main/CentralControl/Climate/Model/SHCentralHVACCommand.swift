@@ -2,7 +2,7 @@
 //  SHCentralHVACCommand.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/11/8.
+//  Created by Mark Liu on 2017/11/8.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

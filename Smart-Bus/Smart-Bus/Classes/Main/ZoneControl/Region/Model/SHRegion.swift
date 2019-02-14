@@ -2,7 +2,7 @@
 //  SHRegion.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2019/1/15.
+//  Created by Mark Liu on 2019/1/15.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 

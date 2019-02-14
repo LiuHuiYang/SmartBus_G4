@@ -2,7 +2,7 @@
 //  SHSettingViewCell.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/10/22.
+//  Created by Mark Liu on 2017/10/22.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

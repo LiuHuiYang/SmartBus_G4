@@ -2,7 +2,7 @@
 //  SHChangeMoodImageViewController.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/10/19.
+//  Created by Mark Liu on 2017/10/19.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

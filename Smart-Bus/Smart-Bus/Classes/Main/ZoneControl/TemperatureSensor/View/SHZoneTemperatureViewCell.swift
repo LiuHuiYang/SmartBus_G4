@@ -2,7 +2,7 @@
 //  SHZoneTemperatureViewCell.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/10/18.
+//  Created by Mark Liu on 2017/10/18.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

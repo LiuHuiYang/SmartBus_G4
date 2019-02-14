@@ -2,7 +2,7 @@
 //  SHDeviceArgsViewController + SAT.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2019/1/17.
+//  Created by Mark Liu on 2019/1/17.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 

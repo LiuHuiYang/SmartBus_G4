@@ -2,7 +2,7 @@
 //  SHModifyPasswordViewController.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/10/25.
+//  Created by Mark Liu on 2017/10/25.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

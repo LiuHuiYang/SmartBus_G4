@@ -2,7 +2,7 @@
 //  SHSchedualCommand.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/11/27.
+//  Created by Mark Liu on 2017/11/27.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

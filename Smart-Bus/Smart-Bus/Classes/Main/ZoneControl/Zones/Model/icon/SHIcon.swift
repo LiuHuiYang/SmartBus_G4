@@ -2,7 +2,7 @@
 //  SHIcon.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/11/7.
+//  Created by Mark Liu on 2017/11/7.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  SHSchedualFloorHeatingController.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2019/1/10.
+//  Created by Mark Liu on 2019/1/10.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 

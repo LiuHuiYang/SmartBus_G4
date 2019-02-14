@@ -2,7 +2,7 @@
 //  SHAlarmViewController.swift
 //  Smart-Bus
 //
-//  Created by Mac on 2017/10/29.
+//  Created by Mark Liu on 2017/10/29.
 //  Copyright © 2018 SmartHome. All rights reserved.
 //
 
