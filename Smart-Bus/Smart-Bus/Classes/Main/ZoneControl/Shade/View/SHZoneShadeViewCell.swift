@@ -31,6 +31,7 @@ class SHZoneShadeViewCell: UITableViewCell {
         }
     }
     
+    /// 行高
     static var rowHeight: CGFloat {
         
         if UIDevice.is_iPad() {
@@ -63,7 +64,9 @@ class SHZoneShadeViewCell: UITableViewCell {
     @IBAction func openButtonTouchDown() {
     
         guard let curtain = shade else {
-            SVProgressHUD.showError(withStatus: SHLanguageText.noData)
+            SVProgressHUD.showError(withStatus:
+                SHLanguageText.noData
+            )
             return
         }
         
@@ -83,7 +86,13 @@ class SHZoneShadeViewCell: UITableViewCell {
                 additionalData: G4Curtain
             )
             
-            SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(openButton.currentTitle ?? "")")
+            SVProgressHUD.showSuccess(withStatus:
+                curtain.shadeName            +
+                " "                          +
+                SHLanguageText.shadeExecuted +
+                " "                          +
+                (openButton.currentTitle ?? "")
+            )
         }
     }
     
@@ -94,6 +103,7 @@ class SHZoneShadeViewCell: UITableViewCell {
             SVProgressHUD.showError(withStatus: SHLanguageText.noData)
             return
         }
+        
         
         switch curtain.controlType {
         
@@ -119,7 +129,10 @@ class SHZoneShadeViewCell: UITableViewCell {
                 subNetID: curtain.subnetID,
                 deviceID: curtain.deviceID,
                 additionalData:
-                    [curtain.openChannel, curtain.openingRatio]
+                    [
+                        curtain.openChannel,
+                        curtain.openingRatio
+                    ]
             )
             
            
@@ -130,7 +143,7 @@ class SHZoneShadeViewCell: UITableViewCell {
                 subNetID: curtain.subnetID,
                 deviceID: curtain.deviceID,
                 additionalData: [UInt8(curtain.switchIDforOpen),
-                                 UInt8(curtain.switchIDStatusforOpen)]
+                     UInt8(curtain.switchIDStatusforOpen)]
             )
             
         case .pushOnReleaseOff:
@@ -149,7 +162,13 @@ class SHZoneShadeViewCell: UITableViewCell {
                 additionalData: G4Curtain
             )
             
-            SVProgressHUD.showSuccess(withStatus: SHLanguageText.shadeStop)
+            SVProgressHUD.showSuccess(withStatus:
+                (curtain.shadeName +
+                    " "            +
+                    SHLanguageText.shadeStop
+                )
+            )
+            
             return
             
         default:
@@ -158,14 +177,22 @@ class SHZoneShadeViewCell: UITableViewCell {
         
         curtain.currentStatus = .open
         
-        SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(openButton.currentTitle ?? "")")
+        SVProgressHUD.showSuccess(withStatus:
+            curtain.shadeName            +
+            " "                          +
+            SHLanguageText.shadeExecuted +
+            " "                          +
+            (openButton.currentTitle ?? "")
+        )
     }
     
     /// 关闭按钮按下
     @IBAction func closeButtonTouchDown() {
     
         guard let curtain = shade else {
-            SVProgressHUD.showError(withStatus: SHLanguageText.noData)
+            SVProgressHUD.showError(withStatus:
+                SHLanguageText.noData
+            )
             return
         }
         
@@ -185,7 +212,12 @@ class SHZoneShadeViewCell: UITableViewCell {
                 additionalData: G4Curtain
             )
             
-             SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(closeButton.currentTitle ?? "")")
+            SVProgressHUD.showSuccess(withStatus: curtain.shadeName            +
+                " "                          +
+                SHLanguageText.shadeExecuted +
+                " "                          +
+                (closeButton.currentTitle ?? "")
+            )
         }
     }
     
@@ -193,7 +225,8 @@ class SHZoneShadeViewCell: UITableViewCell {
     @IBAction func closeButtonClick() {
 
         guard let curtain = shade else {
-            SVProgressHUD.showError(withStatus: SHLanguageText.noData)
+            SVProgressHUD.showError(withStatus:
+                SHLanguageText.noData)
             return
         }
         
@@ -251,7 +284,11 @@ class SHZoneShadeViewCell: UITableViewCell {
                 additionalData: G4Curtain
             )
             
-            SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeStop)")
+            SVProgressHUD.showSuccess(withStatus:
+                curtain.shadeName +
+                " "               +
+                SHLanguageText.shadeStop
+            )
             
             return
         
@@ -261,8 +298,13 @@ class SHZoneShadeViewCell: UITableViewCell {
         
         curtain.currentStatus = .close
         
-        SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(closeButton.currentTitle ?? "")")
-       
+        SVProgressHUD.showSuccess(withStatus:
+            curtain.shadeName            +
+            " "                          +
+            SHLanguageText.shadeExecuted +
+            " "                          +
+            (closeButton.currentTitle ?? "")
+        )
     }
     
     /// 停止
@@ -270,7 +312,10 @@ class SHZoneShadeViewCell: UITableViewCell {
 
         guard let curtain = shade else {
             
-            SVProgressHUD.showError(withStatus: SHLanguageText.noData)
+            SVProgressHUD.showError(withStatus:
+                SHLanguageText.noData
+            )
+            
             return
         }
         
@@ -345,7 +390,13 @@ class SHZoneShadeViewCell: UITableViewCell {
             break
         }
         
-        SVProgressHUD.showSuccess(withStatus: "\(SHLanguageText.shadeExecuted) \(stopButton.currentTitle ?? "")")
+        SVProgressHUD.showSuccess(withStatus:
+            curtain.shadeName            +
+            " "                          +
+            SHLanguageText.shadeExecuted +
+            " "                          +
+            (stopButton.currentTitle ?? "")
+        )
     }
 }
 
