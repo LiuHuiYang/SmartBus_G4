@@ -1,0 +1,171 @@
+//
+//  SHScheduleMacroViewController.swift
+//  Smart-Bus
+//
+//  Created by Mark Liu on 2019/2/15.
+//  Copyright © 2019 SmartHome. All rights reserved.
+//
+
+import UIKit
+
+/// 重用标示
+private let schduleMacroCellReuseIdentifier =
+"SHSchduleMacroCell"
+
+class SHScheduleMacroViewController: SHViewController {
+    
+    /// 计划
+    var schedule: SHSchedual? {
+        
+        didSet {
+            
+            guard let plan = schedule else {
+                
+                return
+            }
+            
+            macros =  SHSQLiteManager.shared.getMacros()
+            
+            if macros.isEmpty {
+                
+                SVProgressHUD.showInfo(
+                    withStatus: SHLanguageText.noData
+                )
+            }
+            
+//            macroListView.reloadData()
+            
+            // ===== 命令部分 =====
+            
+            // 查找要的计划具体的指令
+            guard let command = SHSQLiteManager.shared.getSchedualCommands(plan.scheduleID).last else {
+                
+                return
+            }
+            
+            for macro in macros.enumerated() {
+                
+                if macro.element.macroID == command.parameter1 {
+                    
+                    let index =
+                        IndexPath(
+                            row: macro.offset,
+                            section: 0
+                    )
+                    
+                    macroListView.selectRow(
+                        at: index,
+                        animated: true,
+                        scrollPosition: .top
+                    )
+                    
+                    self.tableView(macroListView,
+                                   didSelectRowAt: index
+                    )
+                }
+            }
+        }
+    }
+    
+    /// 所有的宏命令
+    private lazy var macros  = [SHMacro]()
+    
+    /// 当前选择的宏命令
+    private lazy var selectMacros = NSMutableArray()
+    
+    /// 宏列表
+    @IBOutlet weak var macroListView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 设置导航
+        navigationItem.title = "Macro"
+        
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(
+                imageName: "back",
+                hightlightedImageName: "back",
+                addTarget: self,
+                action: #selector(saveMacros),
+                isLeft: false
+        )
+        
+        macroListView.allowsMultipleSelection = true
+        
+        // 注册 cell
+        macroListView.register(
+            UINib(
+                nibName: schduleMacroCellReuseIdentifier,
+                bundle: nil),
+            forCellReuseIdentifier:
+            schduleMacroCellReuseIdentifier
+        )
+        
+        macroListView.rowHeight = SHSchduleMacroCell.rowHeight
+    }
+ 
+}
+
+
+// MARK: - 保存选择的macro
+extension SHScheduleMacroViewController {
+    
+    /// 保存数据
+    @objc private func saveMacros() {
+        
+        print(selectMacros.count)
+        
+        // schedule 中的 macro 部分保存到内存中
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+extension SHScheduleMacroViewController: UITableViewDelegate {
+    
+    /// 取消选择
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        let macro = macros[indexPath.row]
+        
+        if selectMacros.contains(macro) {
+   
+            selectMacros.remove(macro)
+        }
+    }
+    
+    /// 选择
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let macro = macros[indexPath.row]
+        
+        if selectMacros.contains(macro) == false {
+            
+            selectMacros.add(macro)
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension SHScheduleMacroViewController: UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return macros.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell =
+            tableView.dequeueReusableCell(
+                withIdentifier: schduleMacroCellReuseIdentifier,
+                for: indexPath
+                ) as! SHSchduleMacroCell
+        
+        cell.macro = macros[indexPath.row]
+        
+        return cell
+    }
+}

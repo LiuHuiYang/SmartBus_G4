@@ -28,14 +28,14 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="w9J-wO-cxo">
-                                <rect key="frame" x="0.0" y="12.5" width="49" height="49"/>
+                                <rect key="frame" x="15" y="12.5" width="49" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="LIr-dy-1jF"/>
                                     <constraint firstAttribute="width" constant="49" id="O3g-E3-VDV"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="ZS3-RJ-hMX">
-                                <rect key="frame" x="64" y="27" width="192" height="19.5"/>
+                                <rect key="frame" x="79" y="27" width="162" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                             <constraint firstAttribute="trailing" secondItem="a7O-ON-ZBe" secondAttribute="trailing" id="dwU-zu-zcq"/>
                             <constraint firstItem="a7O-ON-ZBe" firstAttribute="leading" secondItem="8ox-WE-kGK" secondAttribute="leading" id="gEe-HW-PGW"/>
                             <constraint firstAttribute="trailing" secondItem="ubc-yZ-GUw" secondAttribute="trailing" constant="15" id="rcd-cW-KXL"/>
-                            <constraint firstItem="w9J-wO-cxo" firstAttribute="leading" secondItem="8ox-WE-kGK" secondAttribute="leading" id="xok-Qj-Ldt"/>
+                            <constraint firstItem="w9J-wO-cxo" firstAttribute="leading" secondItem="8ox-WE-kGK" secondAttribute="leading" constant="15" id="xok-Qj-Ldt"/>
                         </constraints>
                     </view>
                 </subviews>

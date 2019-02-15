@@ -28,14 +28,14 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rk3-UF-Ms7">
-                                <rect key="frame" x="0.0" y="17" width="49" height="49"/>
+                                <rect key="frame" x="15" y="17" width="49" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="7nX-3F-0F8"/>
                                     <constraint firstAttribute="width" constant="49" id="Chs-IE-hfl"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6Z-WS-gXu">
-                                <rect key="frame" x="64" y="19.5" width="42.5" height="44"/>
+                                <rect key="frame" x="79" y="19.5" width="42.5" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="76a-kf-GZ3"/>
                                 </constraints>
@@ -61,7 +61,7 @@
                             <constraint firstAttribute="trailing" secondItem="tKx-6y-P7C" secondAttribute="trailing" constant="15" id="c9h-Xw-mds"/>
                             <constraint firstAttribute="bottom" secondItem="odP-60-hnR" secondAttribute="bottom" id="eTL-yb-FOW"/>
                             <constraint firstItem="e6Z-WS-gXu" firstAttribute="centerY" secondItem="Rk3-UF-Ms7" secondAttribute="centerY" id="iLb-pE-lc6"/>
-                            <constraint firstItem="Rk3-UF-Ms7" firstAttribute="leading" secondItem="mjA-cM-PhJ" secondAttribute="leading" id="ojO-hH-sGj"/>
+                            <constraint firstItem="Rk3-UF-Ms7" firstAttribute="leading" secondItem="mjA-cM-PhJ" secondAttribute="leading" constant="15" id="ojO-hH-sGj"/>
                         </constraints>
                     </view>
                 </subviews>

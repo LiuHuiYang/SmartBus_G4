@@ -19,25 +19,21 @@ class SHSchedualEditViewController: SHViewController {
     /// 编辑的计划
     var schedual: SHSchedual?
     
-    /// 所有的区域
-    private lazy var allZones = [SHZone]()
     
     /// 不同的控制类型
-    private lazy var controlItems: [String] = [
-        "Macro buttons",
-        "Moods",
-        "Lights",
-        "HVAC",
-        "Music",
-        "Shades",
-        "Floor heating"
-    ]
+    private lazy var controlItemView: SHScheduleControlItemView = {
+        
+        let item = SHScheduleControlItemView()
+        
+        itemsView.addSubview(item)
+        
+        item.delegate = self
+    
+        return item
+    }()
+    
     
     // MARK: - 不同的计划部分
-    
-    /// 宏命令展示
-    var macroView: SHSchduleMacroView =
-        SHSchduleMacroView.loadFromNib()
     
     /// mood展示
     var moodView: SHSchduleMoodView =
@@ -63,6 +59,8 @@ class SHSchedualEditViewController: SHViewController {
     var floorheatingView: SHSchedualFloorHeatingView =
         SHSchedualFloorHeatingView.loadFromNib()
     
+    /// 类型列表
+    @IBOutlet weak var itemsView: UIView!
     // MARK: - 布局约束
     
     /// 向上移动的基础约束
@@ -80,31 +78,9 @@ class SHSchedualEditViewController: SHViewController {
     /// 计划名称textField
     @IBOutlet weak var scheduleNameTextField: UITextField!
     
-    /// 控制类型的提示Label
-    @IBOutlet weak var controlItemLabel: UILabel!
-    
-    /// 控制类型按钮
-    @IBOutlet weak var controlItemButton: SHCommandButton!
-    
-    /// 控制类型列表
-    @IBOutlet weak var controlItemListView: UITableView!
-    
-    // MARK: - 控制区域
-    
-    /// 区域控制Label
-    @IBOutlet weak var controlZoneLabel: UILabel!
-    
-    /// 区域按钮
-    @IBOutlet weak var controlZoneButton: SHCommandButton!
-    
-    /// 控制区域列表
-    @IBOutlet weak var controlZoneListView: UITableView!
-
+  
     // MARK: - 显示需要控制的内容
-    
-    /// 选择区域展示列表
-    @IBOutlet weak var showControlScheduleView: UIView!
-    
+
     /// 执行频率
     @IBOutlet weak var frequencyLabel: UILabel!
     
@@ -131,6 +107,45 @@ class SHSchedualEditViewController: SHViewController {
     }
 }
 
+
+// MARK: - SHScheduleControlItemViewDelegate
+extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
+   
+    func schedueleControlItemChoice(_ controlType: SHSchdualControlItemType) {
+        
+        switch controlType {
+        case .marco:
+            
+            let macroController = SHScheduleMacroViewController()
+            
+            macroController.schedule = schedual
+            
+            navigationController?.pushViewController(
+                macroController,
+                animated: true
+            )
+        
+        case .mood:
+            print("mood")
+            
+        case .light:
+            print("灯光")
+            
+        case .HVAC:
+            print("空调")
+            
+        case .audio:
+            print("音乐")
+            
+        case .shade:
+            print("窗帘")
+            
+        case .floorHeating:
+            print("地热")
+            
+        }
+    }
+}
 
 // MARK: - 点击事件
 extension SHSchedualEditViewController {
@@ -169,7 +184,7 @@ extension SHSchedualEditViewController {
     @IBAction func timeButtonClick() {
      
         let scale: CGFloat =
-            UIDevice.is_iPad() ?  1.8 : 1.3
+            UIDevice.is_iPad() ? 1.8 : 1.15
         
         let moveMarign = pickerViewHeight * scale
         
@@ -317,21 +332,6 @@ extension SHSchedualEditViewController {
         }
     }
     
-    
-    /// 控制类型按钮点击
-
-    @IBAction func controlItemButtonClick() {
-
-        controlItemListView.isHidden =
-            !controlItemListView.isHidden
-    }
-
-    /// 区域点击
-    @IBAction func controlZoneButtonClick() {
-
-        controlZoneListView.isHidden =
-            !controlZoneListView.isHidden
-    }
     
     /// 显示时间
     private func showTime() {
@@ -513,14 +513,14 @@ extension SHSchedualEditViewController {
         }
         
         // 不同的控制项的显示
-        macroView.frame = showControlScheduleView.bounds
-        moodView.frame = showControlScheduleView.bounds
-        lightView.frame = showControlScheduleView.bounds
-        hvacView.frame = showControlScheduleView.bounds
-        shadeView.frame = showControlScheduleView.bounds
-        audioView.frame = showControlScheduleView.bounds
-        floorheatingView.frame =
-            showControlScheduleView.bounds
+//        macroView.frame = showControlScheduleView.bounds
+//        moodView.frame = showControlScheduleView.bounds
+//        lightView.frame = showControlScheduleView.bounds
+//        hvacView.frame = showControlScheduleView.bounds
+//        shadeView.frame = showControlScheduleView.bounds
+//        audioView.frame = showControlScheduleView.bounds
+//        floorheatingView.frame =
+//            showControlScheduleView.bounds
 
     }
     
@@ -531,55 +531,16 @@ extension SHSchedualEditViewController {
             return
         }
         
-       
-        // 选中第一个
-        self.tableView(
-            controlItemListView,
-            didSelectRowAt: IndexPath(row: 0,
-                                      section: 0)
-        )
-        
         setExecutionFrequency(plan.frequencyID)
         
         soundButton.isSelected = plan.haveSound
         
-        if (plan.controlledItemID != SHSchdualControlItemType.marco) &&
-            !isAddSedual {
-            
-            let count = allZones.count
-            
-            for i in 0 ..< count {
-                
-                let zoneID = allZones[i].zoneID
-                
-                if zoneID == plan.zoneID {
-                    
-                    let index =
-                        IndexPath(row: i, section: 0)
-                    
-                    controlZoneListView.selectRow(
-                        at: index,
-                        animated: true,
-                        scrollPosition: .top
-                    )
-                    
-                    self.tableView(
-                        controlZoneListView,
-                        didSelectRowAt: index
-                    )
-                    
-                    break
-                }
-                
-            }
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 初始化表格
-        setupTableView()
+        controlItemView.schedule = schedual
 
         // 文字适配
         navigationItem.title =
@@ -595,21 +556,11 @@ extension SHSchedualEditViewController {
             for: .normal
         )
         
-        controlZoneLabel.text =
-            SHLanguageText.controlZone
-        
-        controlItemLabel.text =
-            SHLanguageText.controlItem
-        
         frequencyLabel.text = SHLanguageText.frequency
         
         saveButton.setTitle(SHLanguageText.save,
                             for: .normal
         )
-        
-        controlZoneButton.titleLabel?.numberOfLines = 0
-        controlZoneButton.titleLabel?.textAlignment
-            = .center
         
         timeButton.titleLabel?.numberOfLines = 0
         timeButton.titleLabel?.textAlignment = .center
@@ -619,8 +570,7 @@ extension SHSchedualEditViewController {
         )
         
         scheduleNameTextField.setRoundedRectangleBorder()
-        controlItemButton.setRoundedRectangleBorder()
-        controlZoneButton.setRoundedRectangleBorder()
+        
         timeButton.setRoundedRectangleBorder()
         frequencyButton.setRoundedRectangleBorder()
         selectWeekButton.setRoundedRectangleBorder()
@@ -679,126 +629,17 @@ extension SHSchedualEditViewController {
             let font = UIView.suitFontForPad()
             
             scheduleNameTextField.font = font
-            controlItemLabel.font = font
-            controlZoneLabel.font = font
             frequencyLabel.font = font
         }
     }
 
-    
-    /// 初始化表格
-    private func setupTableView() {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
-        controlZoneListView.register(
-            UINib(
-                nibName: schdualContolItemAndZoneCellReusableIdentifier,
-                bundle: nil),
-            forCellReuseIdentifier:
-            schdualContolItemAndZoneCellReusableIdentifier
-        )
-        
-        controlZoneListView.rowHeight = SHSchdualContolItemAndZoneCell.rowHeight
-        
-        controlZoneListView.isHidden = true
-        
-        
-        controlItemListView.register(
-            UINib(
-                nibName: schdualContolItemAndZoneCellReusableIdentifier,
-                bundle: nil),
-            forCellReuseIdentifier:
-            schdualContolItemAndZoneCellReusableIdentifier
-        )
-        
-        controlItemListView.rowHeight = SHSchdualContolItemAndZoneCell.rowHeight
-        
-        controlItemListView.isHidden = true
-        
-    }
-}
-
-
-// MARK: - UITableViewDelegate
-extension SHSchedualEditViewController: UITableViewDelegate {
-    
-    /// 选择
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // 选择控制项
-        if tableView == controlItemListView {
-          
-            schedual?.controlledItemID =
-                SHSchdualControlItemType(
-                    rawValue: UInt(indexPath.row + 1)
-                ) ?? .marco
-            
-            
-            controlItemButton.setTitle(
-                controlItems[indexPath.row],
-                for: .normal
-            )
-            
-            tableView.isHidden = true
-            
-            setControlZoneView()
-        
-        // 选择类型
-        } else if tableView == controlZoneListView {
-            
-            let zone = allZones[indexPath.row]
-            
-            controlZoneButton.setTitle(zone.zoneName,
-                                       for: .normal
-            )
-            
-            schedual?.zoneID = zone.zoneID
-            
-            tableView.isHidden = true
-            
-            setDifferentControlItemZoneView()
-        }
-    }
-}
-
-// MARK: - UITableViewDataSource
-extension SHSchedualEditViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
-        if tableView == controlItemListView {
-
-            return controlItems.count
-    
-        } else if tableView == controlZoneListView {
-
-            return allZones.count
-    
-        }
-
-        return 0
-
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: schdualContolItemAndZoneCellReusableIdentifier, for: indexPath) as! SHSchdualContolItemAndZoneCell
-        
-        
-        if tableView == controlItemListView {
-            
-            cell.controlItemName =
-                controlItems[indexPath.row]
-        
-        } else if tableView == controlZoneListView {
-            
-            cell.currentZone = allZones[indexPath.row]
-        }
-        
-        return cell
+        controlItemView.frame = itemsView.bounds
     }
     
 }
-
 
 // MARK: - 不同的控制模块
 extension SHSchedualEditViewController {
@@ -810,50 +651,6 @@ extension SHSchedualEditViewController {
             return
         }
         
-        // 显示与隐藏其他的视图
-        macroView.isHidden =
-            plan.controlledItemID !=  .marco
-        
-        moodView.isHidden =
-            plan.controlledItemID != .mood
-        
-        lightView.isHidden =
-            plan.controlledItemID != .light
-        
-        hvacView.isHidden =
-            plan.controlledItemID != .HVAC
-        
-        audioView.isHidden =
-            plan.controlledItemID != .audio
-        
-        shadeView.isHidden =
-            plan.controlledItemID != .shade
-        
-        floorheatingView.isHidden =
-            plan.controlledItemID != .floorHeating
-        
-        // 处理区域按钮
-        
-        controlZoneButton.isUserInteractionEnabled =
-            plan.controlledItemID != .marco
-        
-        // 如果是宏命令
-        if plan.controlledItemID == .marco {
-            
-            if macroView.window == nil {
-                
-                showControlScheduleView.addSubview(
-                    macroView
-                )
-            }
-            
-            controlZoneButton.setTitle("N/A", for: .normal)
-            
-            macroView.schedual = plan
-            
-            return
-        }
-        
         /// 区域数组
         var zones: [SHZone]?
 
@@ -861,27 +658,13 @@ extension SHSchedualEditViewController {
         
         case .mood:
             
-            if moodView.window == nil {
-                
-                showControlScheduleView.addSubview(
-                    moodView
-                )
-            }
-            
             zones =
             SHSQLiteManager.shared.getZones(
                 deviceType: SHSystemDeviceType.mood.rawValue)
             
             
         case .light:
-            
-            if lightView.window == nil {
-                
-                showControlScheduleView.addSubview(
-                    lightView
-                )
-            }
-            
+         
             zones =
             SHSQLiteManager.shared.getZones(
                 deviceType:
@@ -889,14 +672,7 @@ extension SHSchedualEditViewController {
             )
              
         case .HVAC:
-            
-            if hvacView.window == nil {
-                
-                showControlScheduleView.addSubview(
-                    hvacView
-                )
-            }
-            
+         
             zones =
             SHSQLiteManager.shared.getZones(
                 deviceType:
@@ -904,13 +680,6 @@ extension SHSchedualEditViewController {
             )
             
         case .audio:
-            
-            if audioView.window == nil {
-                
-                showControlScheduleView.addSubview(
-                    audioView
-                )
-            }
             
             zones =
             SHSQLiteManager.shared.getZones(
@@ -920,13 +689,6 @@ extension SHSchedualEditViewController {
             
         case .shade:
             
-            if shadeView.window == nil {
-                
-                showControlScheduleView.addSubview(
-                    shadeView
-                )
-            }
-            
             zones =
             SHSQLiteManager.shared.getZones(
                 deviceType:
@@ -934,14 +696,7 @@ extension SHSchedualEditViewController {
             )
             
         case .floorHeating:
-            
-            if floorheatingView.window == nil {
-                
-                showControlScheduleView.addSubview(
-                    floorheatingView
-                )
-            }
-            
+       
             zones =
             
             SHSQLiteManager.shared.getZones(
@@ -958,100 +713,8 @@ extension SHSchedualEditViewController {
             SVProgressHUD.showInfo(
                 withStatus: SHLanguageText.noData
             )
-        
-             controlZoneButton.isUserInteractionEnabled =
-                false
-            
-            controlZoneButton.setTitle("N/A", for: .normal)
             
             return
-        }
-        
-        allZones = zones!
-        
-        controlZoneButton.isUserInteractionEnabled =
-            (allZones.count != 0)
-        
-        // 刷新区域列表
-        controlZoneListView.reloadData()
-        
-        // 如果新增的，选择第一个，否则选择其它的
-        if isAddSedual {
-            
-            let index = IndexPath(row: 0, section: 0)
-            
-            controlZoneListView.selectRow(
-                at: index,
-                animated: true,
-                scrollPosition: .top
-            )
-            
-            self.tableView(
-                controlZoneListView,
-                didSelectRowAt: index
-            )
-            
-        } else {
-            
-            let count = allZones.count
-            
-            for i in 0 ..< count {
-                
-                let zone = allZones[i]
-                
-                if zone.zoneID == plan.zoneID {
-                    
-                    let index =
-                        IndexPath(row: i, section: 0)
-                    
-                    controlZoneListView.selectRow(
-                        at: index,
-                        animated: true,
-                        scrollPosition: .top
-                    )
-                    
-                    self.tableView(
-                        controlZoneListView,
-                        didSelectRowAt: index
-                    )
-                    
-                    break
-                }
-            }
-            
-        }
-        
-    }
-    
-    /// 设置不同的区域
-    func setDifferentControlItemZoneView() {
-        
-        guard let plan = schedual else {
-            return
-        }
-        
-        switch plan.controlledItemID {
-        
-        case .mood:
-            moodView.schedual = plan
-            
-        case .light:
-            lightView.schedual = plan
-            
-        case .shade:
-            shadeView.schedual = plan
-            
-        case .HVAC:
-            hvacView.schedual = plan
-            
-        case .audio:
-            audioView.schedual = plan
-            
-        case .floorHeating:
-            floorheatingView.schedual = plan
-            
-        default:
-            break
         }
     }
 }
