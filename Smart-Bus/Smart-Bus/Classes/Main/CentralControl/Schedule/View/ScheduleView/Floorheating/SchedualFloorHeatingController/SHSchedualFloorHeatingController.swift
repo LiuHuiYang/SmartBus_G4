@@ -77,7 +77,7 @@ extension SHSchedualFloorHeatingController {
                 return
         }
        
-        _ = SHSQLiteManager.shared.deleteSchedualeCommand(plan)
+        _ = SHSQLiteManager.shared.deleteSchedualeCommands(plan)
         
         if floorHeating.schedualEnable == false {
             

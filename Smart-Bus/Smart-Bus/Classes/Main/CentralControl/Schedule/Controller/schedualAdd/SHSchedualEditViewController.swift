@@ -17,7 +17,59 @@ class SHSchedualEditViewController: SHViewController {
     var isAddSedual = false
     
     /// 编辑的计划
-    var schedual: SHSchedual?
+    var schedual: SHSchedual? {
+        
+        didSet {
+            
+            guard let plan = schedual else {
+                return
+            }
+            
+            let commands =
+                SHSQLiteManager.shared.getSchedualCommands(
+                    plan.scheduleID
+            )
+            
+            plan.commands = NSMutableArray(array: commands)
+            
+            for command in commands {
+                
+                switch command.typeID {
+                    
+                case SHSchdualControlItemType.marco.rawValue:
+                    print(command)
+//                    plan.macroCommands.add(command)
+                    
+                case SHSchdualControlItemType.mood.rawValue:
+                    
+                    print("mood")
+                    
+                case SHSchdualControlItemType.light.rawValue:
+                    
+                    print("light")
+                    
+                case SHSchdualControlItemType.HVAC.rawValue:
+                    
+                    print("HVAC")
+                    
+                case SHSchdualControlItemType.audio.rawValue:
+                    
+                    print("audio")
+                    
+                case SHSchdualControlItemType.shade.rawValue:
+                    
+                    print("shade")
+                    
+                case SHSchdualControlItemType.floorHeating.rawValue:
+                    
+                    print("地热")
+                    
+                default:
+                    break
+                }
+            }
+        }
+    }
     
     
     /// 不同的控制类型
@@ -72,7 +124,6 @@ class SHSchedualEditViewController: SHViewController {
     /// 子控件的高度约束
     @IBOutlet weak var basseViewHeightConstraint: NSLayoutConstraint!
 
-
     // MARK： - 计划名称 与 控制类型
     
     /// 计划名称textField
@@ -112,6 +163,7 @@ class SHSchedualEditViewController: SHViewController {
 extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
    
     func schedueleControlItemChoice(_ controlType: SHSchdualControlItemType) {
+         
         
         switch controlType {
         case .marco:
@@ -124,8 +176,8 @@ extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
                 
                 self.schedual?.macroCommands = NSMutableArray(array: macroCommans)
                 
+                print(self.schedual?.macroCommands.count ?? 0)
                 print("保存数据 ")
-                print(self.schedual?.macroCommands)
             }
             
             navigationController?.pushViewController(
@@ -436,10 +488,15 @@ extension SHSchedualEditViewController {
         
         if let commands = plan.commands as? [SHSchedualCommand] {
             
-            for command: SHSchedualCommand in commands {
-                
-                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
-            }
+            print("最后保存的数据")
+            print(commands)
+            
+            
+            
+//            for command: SHSchedualCommand in commands {
+//
+//                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
+//            }
         }
         
         // 保存命令
@@ -448,9 +505,11 @@ extension SHSchedualEditViewController {
         if let macroCommands = plan.macroCommands as? [SHSchedualCommand] {
             
             // 先删除以前的命令
-            _ = SHSQLiteManager.shared.deleteSchedualeCommand(
+            _ = SHSQLiteManager.shared.deleteSchedualeCommands(
                 plan
             )
+            
+            print(plan.commands)
             
             for command in macroCommands {
                 

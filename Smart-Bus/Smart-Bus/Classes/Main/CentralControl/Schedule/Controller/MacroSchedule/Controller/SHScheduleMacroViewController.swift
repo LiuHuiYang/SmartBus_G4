@@ -15,63 +15,13 @@ private let schduleMacroCellReuseIdentifier =
 class SHScheduleMacroViewController: SHViewController {
     
     /// 计划
-    var schedule: SHSchedual? {
-        
-        didSet {
-            
-            guard let plan = schedule else {
-                
-                return
-            }
-            
-            macros =  SHSQLiteManager.shared.getMacros()
-            
-            if macros.isEmpty {
-                
-                SVProgressHUD.showInfo(
-                    withStatus: SHLanguageText.noData
-                )
-            }
-            
-//            macroListView.reloadData()
-            
-            // ===== 命令部分 =====
-            
-            // 查找要的计划具体的指令
-            guard let command = SHSQLiteManager.shared.getSchedualCommands(plan.scheduleID).last else {
-                
-                return
-            }
-            
-            for macro in macros.enumerated() {
-                
-                if macro.element.macroID == command.parameter1 {
-                    
-                    let index =
-                        IndexPath(
-                            row: macro.offset,
-                            section: 0
-                    )
-                    
-                    macroListView.selectRow(
-                        at: index,
-                        animated: true,
-                        scrollPosition: .top
-                    )
-                    
-                    self.tableView(macroListView,
-                                   didSelectRowAt: index
-                    )
-                }
-            }
-        }
-    }
+    var schedule: SHSchedual?
     
     /// 保存的闭包回调
     var saveMacroCommands: ((_ macroCommand: [SHSchedualCommand]) -> ())?
     
     /// 计划命令集
-    private lazy var commands = [SHSchedualCommand]()
+//    private lazy var commands = [SHSchedualCommand]()
     
     /// 所有的宏命令
     private lazy var macros  = [SHMacro]()
@@ -81,6 +31,69 @@ class SHScheduleMacroViewController: SHViewController {
     
     /// 宏列表
     @IBOutlet weak var macroListView: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let plan = schedule else {
+            
+            return
+        }
+        
+        macros =  SHSQLiteManager.shared.getMacros()
+        
+        if macros.isEmpty {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+        }
+        
+        macroListView.reloadData()
+        
+        guard let commands = plan.commands as? [SHSchedualCommand] else {
+            
+            return
+        }
+        
+        // ===== 命令部分 =====
+        
+        // 查找要的计划具体的指令
+//        let commands =
+//            SHSQLiteManager.shared.getSchedualCommands(
+//                plan.scheduleID
+//        )
+        
+        for command in commands {
+            
+            if command.typeID != SHSchdualControlItemType.marco.rawValue {
+                
+                continue
+            }
+            
+            for macro in macros.enumerated() {
+            
+            if macro.element.macroID == command.parameter1 {
+                
+                let index =
+                    IndexPath(
+                        row: macro.offset,
+                        section: 0
+                )
+                
+                macroListView.selectRow(
+                    at: index,
+                    animated: true,
+                    scrollPosition: .top
+                )
+                
+                self.tableView(macroListView,
+                               didSelectRowAt: index
+                )
+            }
+        }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,14 +135,39 @@ extension SHScheduleMacroViewController {
     @objc private func saveMacros() {
         
         guard let saveMacros = selectMacros as? [SHMacro],
-            let plan = schedule else {
+            let plan = schedule,
+            var commands = plan.commands as? [SHSchedualCommand] else {
             return
         }
         
-        commands.removeAll()
+//        commands.removeAll()
+//
+//        // schedule 中的 macro 部分保存到内存中
+//
+//        for macro in saveMacros {
+//
+//            let macroCommand = SHSchedualCommand()
+//            macroCommand.typeID =
+//                SHSchdualControlItemType.marco.rawValue
+//            macroCommand.scheduleID = plan.scheduleID
+//            macroCommand.parameter1 = macro.macroID
+//
+////            commands.append(macroCommand)
+//        }
+//
+//        print(commands.count)
+//
+//        // 执行闭包回调
+//        saveMacroCommands?(commands)
         
-        // schedule 中的 macro 部分保存到内存中
+        // 删除同类型的数据
+        _ =
+            SHSQLiteManager.shared.deleteSchedualeCommand(
+                plan.scheduleID,
+                controlType: .marco
+        )
         
+        var macroCommands = [SHSchedualCommand]()
         for macro in saveMacros {
             
             let macroCommand = SHSchedualCommand()
@@ -138,13 +176,14 @@ extension SHScheduleMacroViewController {
             macroCommand.scheduleID = plan.scheduleID
             macroCommand.parameter1 = macro.macroID
             
+            macroCommands.append(macroCommand)
             commands.append(macroCommand)
         }
         
-        print(commands.count)
-        
         // 执行闭包回调
-        saveMacroCommands?(commands)
+//        saveMacroCommands?(macroCommands)
+        
+        print(plan.commands.count)
         
         _ = navigationController?.popViewController(
             animated: true

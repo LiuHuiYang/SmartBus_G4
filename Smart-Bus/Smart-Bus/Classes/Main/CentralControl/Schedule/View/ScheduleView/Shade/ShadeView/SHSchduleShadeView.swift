@@ -93,7 +93,7 @@ class SHSchduleShadeView: UIView, loadNibView {
         if type == .shade {
             
             // 先删除以前的命令
-            _ = SHSQLiteManager.shared.deleteSchedualeCommand(
+            _ = SHSQLiteManager.shared.deleteSchedualeCommands(
                 plan
             )
             
