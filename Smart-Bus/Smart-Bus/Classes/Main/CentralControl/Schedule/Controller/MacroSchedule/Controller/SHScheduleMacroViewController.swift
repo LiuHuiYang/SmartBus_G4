@@ -67,6 +67,12 @@ class SHScheduleMacroViewController: SHViewController {
         }
     }
     
+    /// 保存的闭包回调
+    var saveMacroCommands: ((_ macroCommand: [SHSchedualCommand]) -> ())?
+    
+    /// 计划命令集
+    private lazy var commands = [SHSchedualCommand]()
+    
     /// 所有的宏命令
     private lazy var macros  = [SHMacro]()
     
@@ -111,12 +117,38 @@ class SHScheduleMacroViewController: SHViewController {
 // MARK: - 保存选择的macro
 extension SHScheduleMacroViewController {
     
+   
     /// 保存数据
     @objc private func saveMacros() {
         
-        print(selectMacros.count)
+        guard let saveMacros = selectMacros as? [SHMacro],
+            let plan = schedule else {
+            return
+        }
+        
+        commands.removeAll()
         
         // schedule 中的 macro 部分保存到内存中
+        
+        for macro in saveMacros {
+            
+            let macroCommand = SHSchedualCommand()
+            macroCommand.typeID =
+                SHSchdualControlItemType.marco.rawValue
+            macroCommand.scheduleID = plan.scheduleID
+            macroCommand.parameter1 = macro.macroID
+            
+            commands.append(macroCommand)
+        }
+        
+        print(commands.count)
+        
+        // 执行闭包回调
+        saveMacroCommands?(commands)
+        
+        _ = navigationController?.popViewController(
+            animated: true
+        )
     }
 }
 

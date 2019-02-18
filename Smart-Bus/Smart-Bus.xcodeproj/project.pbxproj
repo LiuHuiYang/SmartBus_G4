@@ -1530,6 +1530,14 @@
 			path = showDataCell;
 			sourceTree = "<group>";
 		};
+		042A957C221A979A00A5ED12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			path = "Smart-Bus/Classes/Main/CentralControl/Schedule/Controller/MoodSchedule/Controller";
+			sourceTree = SOURCE_ROOT;
+		};
 		042AC886209462A200F4D040 /* DMX */ = {
 			isa = PBXGroup;
 			children = (
@@ -1730,7 +1738,6 @@
 			isa = PBXGroup;
 			children = (
 				0455FEAD2216AF88001046D2 /* Controller */,
-				0455FEAE2216AF88001046D2 /* Model */,
 				0455FEAF2216AF88001046D2 /* View */,
 			);
 			path = MacroSchedule;
@@ -1745,13 +1752,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		0455FEAE2216AF88001046D2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		0455FEAF2216AF88001046D2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1764,25 +1764,10 @@
 		0455FEB82216BD15001046D2 /* MoodSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				0455FEB92216BD15001046D2 /* Controller */,
-				0455FEBA2216BD15001046D2 /* Model */,
+				042A957C221A979A00A5ED12 /* Controller */,
 				0455FEBB2216BD15001046D2 /* View */,
 			);
 			path = MoodSchedule;
-			sourceTree = "<group>";
-		};
-		0455FEB92216BD15001046D2 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		0455FEBA2216BD15001046D2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0455FEBB2216BD15001046D2 /* View */ = {

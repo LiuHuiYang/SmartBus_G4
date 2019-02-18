@@ -50,6 +50,10 @@ typedef NS_ENUM(NSInteger, SHSchdualWeek) {
 
 @interface SHSchedual : NSObject
 
+
+/// macro 命令集
+@property (strong, nonatomic) NSMutableArray *macroCommands;
+
 /// 所有指令
 @property (strong, nonatomic) NSMutableArray *commands;
 

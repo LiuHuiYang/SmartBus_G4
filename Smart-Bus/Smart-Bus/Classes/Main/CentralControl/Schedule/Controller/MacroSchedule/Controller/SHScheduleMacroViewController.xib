@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,10 +21,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="3CS-fh-WEA">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="emD-8l-hEj">
-                    <rect key="frame" x="0.0" y="40" width="375" height="578"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="76Z-Jl-NWr"/>
@@ -36,15 +35,14 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="emD-8l-hEj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5DF-I2-JdX"/>
-                <constraint firstItem="3CS-fh-WEA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6WM-Ra-7LW"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3CS-fh-WEA" secondAttribute="trailing" id="IuZ-ZK-Xxe"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="emD-8l-hEj" secondAttribute="bottom" constant="49" id="MVu-9f-Bmm"/>
-                <constraint firstItem="3CS-fh-WEA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Osp-09-S5n"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="emD-8l-hEj" secondAttribute="trailing" id="blQ-bB-aVr"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3CS-fh-WEA" secondAttribute="bottom" id="nrW-wR-9kL"/>
-                <constraint firstItem="emD-8l-hEj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="vg3-Wg-8GK"/>
+                <constraint firstItem="3CS-fh-WEA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6WM-Ra-7LW"/>
+                <constraint firstAttribute="trailing" secondItem="3CS-fh-WEA" secondAttribute="trailing" id="IuZ-ZK-Xxe"/>
+                <constraint firstAttribute="bottom" secondItem="emD-8l-hEj" secondAttribute="bottom" constant="49" id="MVu-9f-Bmm"/>
+                <constraint firstItem="3CS-fh-WEA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Osp-09-S5n"/>
+                <constraint firstAttribute="trailing" secondItem="emD-8l-hEj" secondAttribute="trailing" id="blQ-bB-aVr"/>
+                <constraint firstAttribute="bottom" secondItem="3CS-fh-WEA" secondAttribute="bottom" id="nrW-wR-9kL"/>
+                <constraint firstItem="emD-8l-hEj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="vg3-Wg-8GK"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
     <resources>

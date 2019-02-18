@@ -120,6 +120,14 @@ extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
             
             macroController.schedule = schedual
             
+            macroController.saveMacroCommands = { macroCommans in
+                
+                self.schedual?.macroCommands = NSMutableArray(array: macroCommans)
+                
+                print("保存数据 ")
+                print(self.schedual?.macroCommands)
+            }
+            
             navigationController?.pushViewController(
                 macroController,
                 animated: true
@@ -433,6 +441,23 @@ extension SHSchedualEditViewController {
                 _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
             }
         }
+        
+        // 保存命令
+       
+        // Macro
+        if let macroCommands = plan.macroCommands as? [SHSchedualCommand] {
+            
+            // 先删除以前的命令
+            _ = SHSQLiteManager.shared.deleteSchedualeCommand(
+                plan
+            )
+            
+            for command in macroCommands {
+                
+                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
+            }
+        }
+        
         
         SHSchedualExecuteTools.shared.updateSchduals()
         
