@@ -167,7 +167,14 @@ extension SHScheduleMacroViewController {
                 controlType: .marco
         )
         
-        var macroCommands = [SHSchedualCommand]()
+        // 删除原来的command
+        commands =
+            SHSQLiteManager.shared.getSchedualCommands(
+                plan.scheduleID
+        )
+        
+        plan.commands = NSMutableArray(array: commands)
+        
         for macro in saveMacros {
             
             let macroCommand = SHSchedualCommand()
@@ -176,10 +183,12 @@ extension SHScheduleMacroViewController {
             macroCommand.scheduleID = plan.scheduleID
             macroCommand.parameter1 = macro.macroID
             
-            macroCommands.append(macroCommand)
-            commands.append(macroCommand)
+            
+//            commands.append(macroCommand)
+            plan.commands.add(macroCommand)
         }
         
+       
         // 执行闭包回调
 //        saveMacroCommands?(macroCommands)
         

@@ -70,7 +70,6 @@
 		041C005521B4DDDA0003CB49 /* SHSchedualAudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041C000121B4DDD90003CB49 /* SHSchedualAudioCell.xib */; };
 		041C005621B4DDDA0003CB49 /* SHSchedualAudioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041C000421B4DDD90003CB49 /* SHSchedualAudioViewController.xib */; };
 		041C005721B4DDDA0003CB49 /* SHSchedualAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041C000621B4DDD90003CB49 /* SHSchedualAudioViewController.m */; };
-		041C005821B4DDDA0003CB49 /* SHSchduleMacroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041C000A21B4DDD90003CB49 /* SHSchduleMacroView.xib */; };
 		041C005D21B4DDDA0003CB49 /* SHSchduleShadeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041C001421B4DDD90003CB49 /* SHSchduleShadeCell.xib */; };
 		041C005F21B4DDDA0003CB49 /* SHSchduleShadeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041C001821B4DDD90003CB49 /* SHSchduleShadeView.xib */; };
 		041C006121B4DDDA0003CB49 /* SHSchduleLightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041C001D21B4DDD90003CB49 /* SHSchduleLightCell.xib */; };
@@ -197,7 +196,6 @@
 		044270D221EDAC1E00275398 /* SHRegionSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044270D021EDAC1E00275398 /* SHRegionSettingViewController.swift */; };
 		044270D321EDAC1E00275398 /* SHRegionSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044270D121EDAC1E00275398 /* SHRegionSettingViewController.xib */; };
 		0448850F21E5D55100BA806C /* SHSchedualEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448850E21E5D55100BA806C /* SHSchedualEditViewController.swift */; };
-		0448851121E5FB4500BA806C /* SHSchduleMacroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448851021E5FB4500BA806C /* SHSchduleMacroView.swift */; };
 		044C545121DD9B6D00749526 /* SHAudioOperatorTools + path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C545021DD9B6D00749526 /* SHAudioOperatorTools + path.swift */; };
 		044C545321DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C545221DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift */; };
 		044E435021DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E434F21DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift */; };
@@ -579,7 +577,6 @@
 		041C000421B4DDD90003CB49 /* SHSchedualAudioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchedualAudioViewController.xib; sourceTree = "<group>"; };
 		041C000521B4DDD90003CB49 /* SHSchedualAudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSchedualAudioViewController.h; sourceTree = "<group>"; };
 		041C000621B4DDD90003CB49 /* SHSchedualAudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSchedualAudioViewController.m; sourceTree = "<group>"; };
-		041C000A21B4DDD90003CB49 /* SHSchduleMacroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchduleMacroView.xib; sourceTree = "<group>"; };
 		041C001421B4DDD90003CB49 /* SHSchduleShadeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchduleShadeCell.xib; sourceTree = "<group>"; };
 		041C001821B4DDD90003CB49 /* SHSchduleShadeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchduleShadeView.xib; sourceTree = "<group>"; };
 		041C001D21B4DDD90003CB49 /* SHSchduleLightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSchduleLightCell.xib; sourceTree = "<group>"; };
@@ -738,7 +735,6 @@
 		044270D021EDAC1E00275398 /* SHRegionSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegionSettingViewController.swift; sourceTree = "<group>"; };
 		044270D121EDAC1E00275398 /* SHRegionSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHRegionSettingViewController.xib; sourceTree = "<group>"; };
 		0448850E21E5D55100BA806C /* SHSchedualEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSchedualEditViewController.swift; sourceTree = "<group>"; };
-		0448851021E5FB4500BA806C /* SHSchduleMacroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSchduleMacroView.swift; sourceTree = "<group>"; };
 		044C545021DD9B6D00749526 /* SHAudioOperatorTools + path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + path.swift"; sourceTree = "<group>"; };
 		044C545221DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + queueSongs.swift"; sourceTree = "<group>"; };
 		044E434F21DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + asc.swift"; sourceTree = "<group>"; };
@@ -1185,23 +1181,6 @@
 			path = schedualAudioController;
 			sourceTree = "<group>";
 		};
-		041C000721B4DDD90003CB49 /* Macro */ = {
-			isa = PBXGroup;
-			children = (
-				041C000821B4DDD90003CB49 /* MarcoView */,
-			);
-			path = Macro;
-			sourceTree = "<group>";
-		};
-		041C000821B4DDD90003CB49 /* MarcoView */ = {
-			isa = PBXGroup;
-			children = (
-				0448851021E5FB4500BA806C /* SHSchduleMacroView.swift */,
-				041C000A21B4DDD90003CB49 /* SHSchduleMacroView.xib */,
-			);
-			path = MarcoView;
-			sourceTree = "<group>";
-		};
 		041C001021B4DDD90003CB49 /* Shade */ = {
 			isa = PBXGroup;
 			children = (
@@ -1392,7 +1371,6 @@
 				0427E86E21E72129000ED6AA /* Floorheating */,
 				041CFFED21B4DDD90003CB49 /* HVAC */,
 				041CFFFA21B4DDD90003CB49 /* Audio */,
-				041C000721B4DDD90003CB49 /* Macro */,
 				041C001021B4DDD90003CB49 /* Shade */,
 				041C001921B4DDD90003CB49 /* Light */,
 				041C002221B4DDD90003CB49 /* Mood */,
@@ -4718,7 +4696,6 @@
 				8B6B201A2050C34100F1B943 /* SHSecurityControlViewController.xib in Resources */,
 				0441DDDF216C927B00952CE4 /* SHAdvanceViewController.xib in Resources */,
 				0414365121708B0100A3E5F6 /* SHSecurityViewController.xib in Resources */,
-				041C005821B4DDDA0003CB49 /* SHSchduleMacroView.xib in Resources */,
 				04C94DFD216D9BF400EF069E /* SHAuthorizationViewController.xib in Resources */,
 				04E739A121FA9C1A0032550D /* SHOtherControlViewCell.xib in Resources */,
 				8B829903204E31F300F3AD41 /* SHZoneTemperatureSensorViewController.xib in Resources */,
@@ -5194,7 +5171,6 @@
 				0453EA4721A67C8400F666EF /* JHPieForeBGView.m in Sources */,
 				0421B68221F83D4D00C42F65 /* SHSQLiteManager + DVD.swift in Sources */,
 				8B99A757206E15BC00D97AA6 /* SHMediaSATCategoryViewController.m in Sources */,
-				0448851121E5FB4500BA806C /* SHSchduleMacroView.swift in Sources */,
 				04D49FDE21B0CFC20054E226 /* SHZoneAppleTVControlViewController.swift in Sources */,
 				04566DA621AFCB640099F548 /* SHZoneDevicesViewController.swift in Sources */,
 				0453EA3D21A67C8400F666EF /* JHWaveChart.m in Sources */,

@@ -488,10 +488,14 @@ extension SHSchedualEditViewController {
         
         if let commands = plan.commands as? [SHSchedualCommand] {
             
-            print("最后保存的数据")
-            print(commands)
+           
+             print(commands)
+             print("最后保存的数据")
             
-            
+            for command in commands {
+                
+                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
+            }
             
 //            for command: SHSchedualCommand in commands {
 //
@@ -501,21 +505,21 @@ extension SHSchedualEditViewController {
         
         // 保存命令
        
-        // Macro
-        if let macroCommands = plan.macroCommands as? [SHSchedualCommand] {
-            
-            // 先删除以前的命令
-            _ = SHSQLiteManager.shared.deleteSchedualeCommands(
-                plan
-            )
-            
-            print(plan.commands)
-            
-            for command in macroCommands {
-                
-                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
-            }
-        }
+//        // Macro
+//        if let macroCommands = plan.macroCommands as? [SHSchedualCommand] {
+//
+//            // 先删除以前的命令
+//            _ = SHSQLiteManager.shared.deleteSchedualeCommands(
+//                plan
+//            )
+//
+//            print(plan.commands)
+//
+//            for command in macroCommands {
+//
+//                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
+//            }
+//        }
         
         
         SHSchedualExecuteTools.shared.updateSchduals()
