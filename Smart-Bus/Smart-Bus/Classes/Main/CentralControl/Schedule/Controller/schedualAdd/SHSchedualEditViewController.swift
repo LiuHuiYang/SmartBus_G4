@@ -32,42 +32,6 @@ class SHSchedualEditViewController: SHViewController {
             
             plan.commands = NSMutableArray(array: commands)
             
-            for command in commands {
-                
-                switch command.typeID {
-                    
-                case SHSchdualControlItemType.marco.rawValue:
-                    print(command)
-//                    plan.macroCommands.add(command)
-                    
-                case SHSchdualControlItemType.mood.rawValue:
-                    
-                    print("mood")
-                    
-                case SHSchdualControlItemType.light.rawValue:
-                    
-                    print("light")
-                    
-                case SHSchdualControlItemType.HVAC.rawValue:
-                    
-                    print("HVAC")
-                    
-                case SHSchdualControlItemType.audio.rawValue:
-                    
-                    print("audio")
-                    
-                case SHSchdualControlItemType.shade.rawValue:
-                    
-                    print("shade")
-                    
-                case SHSchdualControlItemType.floorHeating.rawValue:
-                    
-                    print("地热")
-                    
-                default:
-                    break
-                }
-            }
         }
     }
     
@@ -171,14 +135,6 @@ extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
             let macroController = SHScheduleMacroViewController()
             
             macroController.schedule = schedual
-            
-            macroController.saveMacroCommands = { macroCommans in
-                
-                self.schedual?.macroCommands = NSMutableArray(array: macroCommans)
-                
-                print(self.schedual?.macroCommands.count ?? 0)
-                print("保存数据 ")
-            }
             
             navigationController?.pushViewController(
                 macroController,
@@ -486,42 +442,30 @@ extension SHSchedualEditViewController {
             _ = SHSQLiteManager.shared.updateSchedule(plan)
         }
         
+        let beforeCommands =
+            SHSQLiteManager.shared.getSchedualCommands(
+                plan.scheduleID
+        )
+        
+        print("1. 保存前的数据 \(beforeCommands)")
+        
         if let commands = plan.commands as? [SHSchedualCommand] {
             
            
-             print(commands)
-             print("最后保存的数据")
+             print("2. 将要保存的数据 \(commands)")
             
             for command in commands {
                 
                 _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
             }
-            
-//            for command: SHSchedualCommand in commands {
-//
-//                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
-//            }
         }
         
-        // 保存命令
-       
-//        // Macro
-//        if let macroCommands = plan.macroCommands as? [SHSchedualCommand] {
-//
-//            // 先删除以前的命令
-//            _ = SHSQLiteManager.shared.deleteSchedualeCommands(
-//                plan
-//            )
-//
-//            print(plan.commands)
-//
-//            for command in macroCommands {
-//
-//                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
-//            }
-//        }
+        let savedCommands =   SHSQLiteManager.shared.getSchedualCommands(
+            plan.scheduleID
+        )
         
-        
+        print("3. 保存后的数据 \(savedCommands)")
+
         SHSchedualExecuteTools.shared.updateSchduals()
         
         NotificationCenter.default.post(

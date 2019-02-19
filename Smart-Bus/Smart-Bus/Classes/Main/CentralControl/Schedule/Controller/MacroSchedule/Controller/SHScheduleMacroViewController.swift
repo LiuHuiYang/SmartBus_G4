@@ -130,7 +130,6 @@ class SHScheduleMacroViewController: SHViewController {
 // MARK: - 保存选择的macro
 extension SHScheduleMacroViewController {
     
-   
     /// 保存数据
     @objc private func saveMacros() {
         
@@ -140,26 +139,6 @@ extension SHScheduleMacroViewController {
             return
         }
         
-//        commands.removeAll()
-//
-//        // schedule 中的 macro 部分保存到内存中
-//
-//        for macro in saveMacros {
-//
-//            let macroCommand = SHSchedualCommand()
-//            macroCommand.typeID =
-//                SHSchdualControlItemType.marco.rawValue
-//            macroCommand.scheduleID = plan.scheduleID
-//            macroCommand.parameter1 = macro.macroID
-//
-////            commands.append(macroCommand)
-//        }
-//
-//        print(commands.count)
-//
-//        // 执行闭包回调
-//        saveMacroCommands?(commands)
-        
         // 删除同类型的数据
         _ =
             SHSQLiteManager.shared.deleteSchedualeCommand(
@@ -167,7 +146,7 @@ extension SHScheduleMacroViewController {
                 controlType: .marco
         )
         
-        // 删除原来的command
+        // 删除原来的相同类型 command
         commands =
             SHSQLiteManager.shared.getSchedualCommands(
                 plan.scheduleID
@@ -182,17 +161,9 @@ extension SHScheduleMacroViewController {
                 SHSchdualControlItemType.marco.rawValue
             macroCommand.scheduleID = plan.scheduleID
             macroCommand.parameter1 = macro.macroID
-            
-            
-//            commands.append(macroCommand)
+
             plan.commands.add(macroCommand)
         }
-        
-       
-        // 执行闭包回调
-//        saveMacroCommands?(macroCommands)
-        
-        print(plan.commands.count)
         
         _ = navigationController?.popViewController(
             animated: true
