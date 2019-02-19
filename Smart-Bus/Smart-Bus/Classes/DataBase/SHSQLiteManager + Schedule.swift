@@ -182,9 +182,8 @@ extension SHSQLiteManager {
     func deleteSchedualeCommands(_ schedule: SHSchedual) -> Bool {
         
         let sql =
-            "delete from ScheduleCommands      where " +
-            "ScheduleID = \(schedule.scheduleID) and " +
-            "typeID = \(schedule.controlledItemID.rawValue);"
+            "delete from ScheduleCommands where   " +
+            "ScheduleID = \(schedule.scheduleID); "
         
         return executeSql(sql)
     }

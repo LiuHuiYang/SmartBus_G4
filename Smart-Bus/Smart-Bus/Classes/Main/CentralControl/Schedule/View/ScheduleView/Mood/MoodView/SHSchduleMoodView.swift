@@ -65,55 +65,8 @@ class SHSchduleMoodView: UIView, loadNibView {
             }
         }
     }
-    
-    /// 所有的宏命令
-    private lazy var allMoods: [SHMood] = [SHMood]()
-    
-    /// 当前修改的宏命令
-    private var selectMood: SHMood?
-    
-    /// 宏列表
-    @IBOutlet weak var moodListView: UITableView!
-    
-    
-    /// 保存数据
-    @objc func saveMood(_ notification: Notification?) {
-        
-        guard let type = notification?.object as? SHSchdualControlItemType,
-            let plan = schedual else {
-                return
-        }
-        
-        if type == .mood {
-            
-            if selectMood == nil {
-                
-                return
-            }
-            
-            // 先删除以前的命令
-            _ = SHSQLiteManager.shared.deleteSchedualeCommands(
-                plan
-            )
-            
-            // 保存到数据库
-            let command = SHSchedualCommand()
-            command.typeID =
-                SHSchdualControlItemType.mood.rawValue
-            command.scheduleID = plan.scheduleID
-            command.parameter1 = selectMood!.moodID
-            command.parameter2 = selectMood!.zoneID
-            
-            _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
-        }
-    }
+  
  */
 }
 
-
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        selectMood = allMoods[indexPath.row]
-//    }
 

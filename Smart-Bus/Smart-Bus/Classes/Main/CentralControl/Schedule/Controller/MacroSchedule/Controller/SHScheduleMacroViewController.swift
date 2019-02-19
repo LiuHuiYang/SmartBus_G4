@@ -33,11 +33,10 @@ class SHScheduleMacroViewController: SHViewController {
 extension SHScheduleMacroViewController {
     
     /// 保存数据
-    @objc private func saveMacros() {
+    @objc private func saveMacrosClick() {
         
         guard let saveMacros = selectMacros as? [SHMacro],
-            let plan = schedule,
-            var commands = plan.commands as? [SHSchedualCommand] else {
+            let plan = schedule else {
             return
         }
         
@@ -48,8 +47,8 @@ extension SHScheduleMacroViewController {
                 controlType: .marco
         )
         
-        // 删除原来的相同类型 command
-        commands =
+        // 更新 plan 中的 命令
+        let commands =
             SHSQLiteManager.shared.getSchedualCommands(
                 plan.scheduleID
         )
@@ -63,7 +62,7 @@ extension SHScheduleMacroViewController {
                 SHSchdualControlItemType.marco.rawValue
             macroCommand.scheduleID = plan.scheduleID
             macroCommand.parameter1 = macro.macroID
-
+            
             plan.commands.add(macroCommand)
         }
         
@@ -146,7 +145,7 @@ extension SHScheduleMacroViewController {
                 imageName: "back",
                 hightlightedImageName: "back",
                 addTarget: self,
-                action: #selector(saveMacros),
+                action: #selector(saveMacrosClick),
                 isLeft: false
         )
         
@@ -194,7 +193,6 @@ extension SHScheduleMacroViewController: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 extension SHScheduleMacroViewController: UITableViewDataSource {
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
