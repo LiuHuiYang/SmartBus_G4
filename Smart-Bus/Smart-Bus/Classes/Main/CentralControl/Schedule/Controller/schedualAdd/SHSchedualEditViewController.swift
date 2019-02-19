@@ -51,10 +51,6 @@ class SHSchedualEditViewController: SHViewController {
     
     // MARK: - 不同的计划部分
     
-    /// mood展示
-    var moodView: SHSchduleMoodView =
-        SHSchduleMoodView.loadFromNib()
-    
     /// light展示
     var lightView: SHSchduleLightView =
         SHSchduleLightView.loadFromNib()
@@ -142,7 +138,16 @@ extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
             )
         
         case .mood:
-            print("mood")
+            
+            let moodController =
+                SHScheduleMoodViewController()
+            
+            moodController.schedule = schedual
+            
+            navigationController?.pushViewController(
+                moodController,
+                animated: true
+            )
             
         case .light:
             print("灯光")

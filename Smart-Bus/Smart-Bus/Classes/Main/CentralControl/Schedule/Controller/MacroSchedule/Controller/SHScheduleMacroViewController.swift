@@ -10,120 +10,22 @@ import UIKit
 
 /// 重用标示
 private let schduleMacroCellReuseIdentifier =
-"SHSchduleMacroCell"
+    "SHSchduleMacroCell"
 
 class SHScheduleMacroViewController: SHViewController {
     
     /// 计划
     var schedule: SHSchedual?
     
-    /// 保存的闭包回调
-    var saveMacroCommands: ((_ macroCommand: [SHSchedualCommand]) -> ())?
-    
-    /// 计划命令集
-//    private lazy var commands = [SHSchedualCommand]()
-    
-    /// 所有的宏命令
+    /// 所有的宏
     private lazy var macros  = [SHMacro]()
     
-    /// 当前选择的宏命令
+    /// 当前选择的宏
     private lazy var selectMacros = NSMutableArray()
     
     /// 宏列表
     @IBOutlet weak var macroListView: UITableView!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let plan = schedule else {
-            
-            return
-        }
-        
-        macros =  SHSQLiteManager.shared.getMacros()
-        
-        if macros.isEmpty {
-            
-            SVProgressHUD.showInfo(
-                withStatus: SHLanguageText.noData
-            )
-        }
-        
-        macroListView.reloadData()
-        
-        guard let commands = plan.commands as? [SHSchedualCommand] else {
-            
-            return
-        }
-        
-        // ===== 命令部分 =====
-        
-        // 查找要的计划具体的指令
-//        let commands =
-//            SHSQLiteManager.shared.getSchedualCommands(
-//                plan.scheduleID
-//        )
-        
-        for command in commands {
-            
-            if command.typeID != SHSchdualControlItemType.marco.rawValue {
-                
-                continue
-            }
-            
-            for macro in macros.enumerated() {
-            
-            if macro.element.macroID == command.parameter1 {
-                
-                let index =
-                    IndexPath(
-                        row: macro.offset,
-                        section: 0
-                )
-                
-                macroListView.selectRow(
-                    at: index,
-                    animated: true,
-                    scrollPosition: .top
-                )
-                
-                self.tableView(macroListView,
-                               didSelectRowAt: index
-                )
-            }
-        }
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // 设置导航
-        navigationItem.title = "Macro"
-        
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(
-                imageName: "back",
-                hightlightedImageName: "back",
-                addTarget: self,
-                action: #selector(saveMacros),
-                isLeft: false
-        )
-        
-        macroListView.allowsMultipleSelection = true
-        
-        // 注册 cell
-        macroListView.register(
-            UINib(
-                nibName: schduleMacroCellReuseIdentifier,
-                bundle: nil),
-            forCellReuseIdentifier:
-            schduleMacroCellReuseIdentifier
-        )
-        
-        macroListView.rowHeight = SHSchduleMacroCell.rowHeight
-    }
- 
+   
 }
 
 
@@ -168,6 +70,98 @@ extension SHScheduleMacroViewController {
         _ = navigationController?.popViewController(
             animated: true
         )
+    }
+}
+
+
+// MARK: - UI 初始化
+extension SHScheduleMacroViewController {
+    
+    /// 视图出现展示已配置数据
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let plan = schedule else {
+            
+            return
+        }
+        
+        macros =  SHSQLiteManager.shared.getMacros()
+        
+        if macros.isEmpty {
+            
+            SVProgressHUD.showInfo(
+                withStatus: SHLanguageText.noData
+            )
+        }
+        
+        macroListView.reloadData()
+        
+        // ===== 命令部分 =====
+        
+        guard let commands = plan.commands as? [SHSchedualCommand] else {
+            
+            return
+        }
+        
+        for command in commands {
+            
+            if command.typeID != SHSchdualControlItemType.marco.rawValue {
+                
+                continue
+            }
+            
+            for macro in macros.enumerated() {
+                
+                if macro.element.macroID == command.parameter1 {
+                    
+                    let index =
+                        IndexPath(
+                            row: macro.offset,
+                            section: 0
+                    )
+                    
+                    macroListView.selectRow(
+                        at: index,
+                        animated: true,
+                        scrollPosition: .top
+                    )
+                    
+                    self.tableView(macroListView,
+                                   didSelectRowAt: index
+                    )
+                }
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 设置导航
+        navigationItem.title = "Macro"
+        
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(
+                imageName: "back",
+                hightlightedImageName: "back",
+                addTarget: self,
+                action: #selector(saveMacros),
+                isLeft: false
+        )
+        
+        macroListView.allowsMultipleSelection = true
+        
+        // 注册 cell
+        macroListView.register(
+            UINib(
+                nibName: schduleMacroCellReuseIdentifier,
+                bundle: nil),
+            forCellReuseIdentifier:
+            schduleMacroCellReuseIdentifier
+        )
+        
+        macroListView.rowHeight = SHSchduleMacroCell.rowHeight
     }
 }
 

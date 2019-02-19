@@ -383,6 +383,8 @@
 		04DF642121AD21110033A083 /* SHLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF642021AD21110033A083 /* SHLight.swift */; };
 		04E074612186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E074602186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift */; };
 		04E074652186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E074642186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift */; };
+		04E1D135221B94DC0059DE46 /* SHScheduleMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E1D133221B94DC0059DE46 /* SHScheduleMoodViewController.swift */; };
+		04E1D136221B94DC0059DE46 /* SHScheduleMoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E1D134221B94DC0059DE46 /* SHScheduleMoodViewController.xib */; };
 		04E50BE621BE06E7002AAEDC /* SHZoneControlEditMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E50BE521BE06E7002AAEDC /* SHZoneControlEditMoodViewController.swift */; };
 		04E7399821FA9B420032550D /* SHOtherControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7399621FA9B420032550D /* SHOtherControlViewController.swift */; };
 		04E7399921FA9B420032550D /* SHOtherControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E7399721FA9B420032550D /* SHOtherControlViewController.xib */; };
@@ -943,6 +945,8 @@
 		04DF642021AD21110033A083 /* SHLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHLight.swift; sourceTree = "<group>"; };
 		04E074602186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneDryContactViewCell.swift; sourceTree = "<group>"; };
 		04E074642186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneDmxGroupSettingViewController.swift; sourceTree = "<group>"; };
+		04E1D133221B94DC0059DE46 /* SHScheduleMoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHScheduleMoodViewController.swift; sourceTree = "<group>"; };
+		04E1D134221B94DC0059DE46 /* SHScheduleMoodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHScheduleMoodViewController.xib; sourceTree = "<group>"; };
 		04E50BE521BE06E7002AAEDC /* SHZoneControlEditMoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneControlEditMoodViewController.swift; sourceTree = "<group>"; };
 		04E7399621FA9B420032550D /* SHOtherControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHOtherControlViewController.swift; sourceTree = "<group>"; };
 		04E7399721FA9B420032550D /* SHOtherControlViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHOtherControlViewController.xib; sourceTree = "<group>"; };
@@ -1511,6 +1515,8 @@
 		042A957C221A979A00A5ED12 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04E1D133221B94DC0059DE46 /* SHScheduleMoodViewController.swift */,
+				04E1D134221B94DC0059DE46 /* SHScheduleMoodViewController.xib */,
 			);
 			name = Controller;
 			path = "Smart-Bus/Classes/Main/CentralControl/Schedule/Controller/MoodSchedule/Controller";
@@ -4809,6 +4815,7 @@
 				8BF9268E1EEE857D00EE5A54 /* SQL.sql in Resources */,
 				8B99A756206E15BC00D97AA6 /* SHMediaSATCategoryViewController.xib in Resources */,
 				8B829900204E31F300F3AD41 /* SHZoneShadeViewCell.xib in Resources */,
+				04E1D136221B94DC0059DE46 /* SHScheduleMoodViewController.xib in Resources */,
 				8B8298E2204E31F300F3AD41 /* SHEditRecordShadeCell.xib in Resources */,
 				0499C9E721D5D1A000E15569 /* SHAudioVolumeView.xib in Resources */,
 				041C006321B4DDDA0003CB49 /* SHSchduleLightView.xib in Resources */,
@@ -5065,6 +5072,7 @@
 				043642C8214A33BC0044040D /* Regular.m in Sources */,
 				042450CE21F016D100C99512 /* SHDeviceArgsViewController + DVD.swift in Sources */,
 				0412E34521F5BC2B0084F3DB /* SHSQLiteManager + CT24.swift in Sources */,
+				04E1D135221B94DC0059DE46 /* SHScheduleMoodViewController.swift in Sources */,
 				0455FEB72216B4E0001046D2 /* SHSchduleMacroCell.swift in Sources */,
 				0427E86621E6F1A4000ED6AA /* SHSchedualHVACCell.swift in Sources */,
 				04FFCFA92174384D00684CFA /* SHNetWorkRealIPViewController.swift in Sources */,

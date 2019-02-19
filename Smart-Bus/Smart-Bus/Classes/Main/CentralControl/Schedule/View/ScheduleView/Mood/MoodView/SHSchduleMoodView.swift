@@ -8,11 +8,10 @@
 
 import UIKit
 
-/// mood重用标示
-private let schduleMoodCellReuseIdentifier =
-    "SHSchduleMoodCell"
 
 class SHSchduleMoodView: UIView, loadNibView {
+    
+    /*
 
     /// 计划模型
     var schedual: SHSchedual? {
@@ -76,30 +75,6 @@ class SHSchduleMoodView: UIView, loadNibView {
     /// 宏列表
     @IBOutlet weak var moodListView: UITableView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        moodListView.register(
-            UINib(
-                nibName: schduleMoodCellReuseIdentifier,
-                bundle: nil),
-            forCellReuseIdentifier:
-            schduleMoodCellReuseIdentifier
-        )
-        
-        moodListView.rowHeight = SHSchduleMoodCell.rowHeight
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(saveMood(_:)),
-            name: NSNotification.Name.SHSchedualSaveData,
-            object: nil
-        )
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
     
     /// 保存数据
     @objc func saveMood(_ notification: Notification?) {
@@ -132,32 +107,13 @@ class SHSchduleMoodView: UIView, loadNibView {
             _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
         }
     }
+ */
 }
 
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
-extension SHSchduleMoodView: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        selectMood = allMoods[indexPath.row]
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return allMoods.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: schduleMoodCellReuseIdentifier,
-                for: indexPath
-                ) as! SHSchduleMoodCell
-        
-        cell.mood = allMoods[indexPath.row]
-        
-        return cell
-    }
-}
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        selectMood = allMoods[indexPath.row]
+//    }
+
