@@ -20,27 +20,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mi3-qT-wxy">
-                    <rect key="frame" x="0.0" y="0.0" width="333" height="228"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="iN0-l3-epB" id="FoM-jg-t9Z"/>
-                        <outlet property="delegate" destination="iN0-l3-epB" id="BJx-do-BB5"/>
-                    </connections>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="mi3-qT-wxy" secondAttribute="bottom" id="4c0-PV-OOc"/>
-                <constraint firstItem="mi3-qT-wxy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Oh2-mf-H9D"/>
-                <constraint firstAttribute="trailing" secondItem="mi3-qT-wxy" secondAttribute="trailing" id="g0X-Dm-xMg"/>
-                <constraint firstItem="mi3-qT-wxy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tFl-QT-UpB"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="allHVACListView" destination="mi3-qT-wxy" id="lBk-11-Iec"/>
-            </connections>
             <point key="canvasLocation" x="-3.5" y="-100"/>
         </view>
     </objects>

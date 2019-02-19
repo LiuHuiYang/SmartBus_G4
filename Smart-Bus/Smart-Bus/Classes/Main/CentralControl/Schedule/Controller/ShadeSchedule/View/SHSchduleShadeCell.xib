@@ -22,25 +22,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="88.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shade" translatesAutoresizingMaskIntoConstraints="NO" id="vAR-Ur-tna">
-                                <rect key="frame" x="0.0" y="9" width="80" height="70.5"/>
+                                <rect key="frame" x="15" y="9" width="80" height="70.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6p-xz-3q0" customClass="SHMoodShadeStatusButton">
-                                <rect key="frame" x="210" y="9" width="110" height="70.5"/>
+                                <rect key="frame" x="225" y="12.5" width="80" height="63.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <state key="normal" backgroundImage="operatorButtonBackground"/>
                                 <connections>
                                     <action selector="homeButtonClick" destination="M1a-AY-yem" eventType="touchUpInside" id="jjv-bg-FIV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djh-dq-NCk">
-                                <rect key="frame" x="85" y="9" width="120" height="70.5"/>
+                                <rect key="frame" x="100" y="9" width="120" height="70.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellline" translatesAutoresizingMaskIntoConstraints="NO" id="qjr-Zc-eJP">
-                                <rect key="frame" x="0.0" y="87.5" width="640" height="1"/>
+                                <rect key="frame" x="0.0" y="87.5" width="320" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ah3-jW-ngO"/>
                                 </constraints>
@@ -51,11 +50,12 @@
                             <constraint firstItem="vAR-Ur-tna" firstAttribute="width" secondItem="mVm-Z4-HAX" secondAttribute="width" multiplier="0.25" id="2FC-pz-IwU"/>
                             <constraint firstAttribute="bottom" secondItem="qjr-Zc-eJP" secondAttribute="bottom" id="6bQ-ak-Y52"/>
                             <constraint firstItem="Djh-dq-NCk" firstAttribute="height" secondItem="vAR-Ur-tna" secondAttribute="height" id="BWx-QY-TQL"/>
-                            <constraint firstItem="f6p-xz-3q0" firstAttribute="height" secondItem="vAR-Ur-tna" secondAttribute="height" id="OQu-MY-kIt"/>
+                            <constraint firstItem="f6p-xz-3q0" firstAttribute="height" secondItem="vAR-Ur-tna" secondAttribute="height" multiplier="0.9" id="OQu-MY-kIt"/>
                             <constraint firstItem="vAR-Ur-tna" firstAttribute="height" secondItem="mVm-Z4-HAX" secondAttribute="height" multiplier="0.8" id="PAU-RL-1xi"/>
                             <constraint firstItem="vAR-Ur-tna" firstAttribute="centerY" secondItem="mVm-Z4-HAX" secondAttribute="centerY" id="YSe-Qa-yOu"/>
-                            <constraint firstItem="vAR-Ur-tna" firstAttribute="leading" secondItem="mVm-Z4-HAX" secondAttribute="leading" id="bom-Oy-6uO"/>
-                            <constraint firstAttribute="trailing" secondItem="f6p-xz-3q0" secondAttribute="trailing" id="deC-nu-7Lm"/>
+                            <constraint firstItem="vAR-Ur-tna" firstAttribute="leading" secondItem="mVm-Z4-HAX" secondAttribute="leading" constant="15" id="bom-Oy-6uO"/>
+                            <constraint firstAttribute="trailing" secondItem="qjr-Zc-eJP" secondAttribute="trailing" id="d55-Mm-hJn"/>
+                            <constraint firstAttribute="trailing" secondItem="f6p-xz-3q0" secondAttribute="trailing" constant="15" id="deC-nu-7Lm"/>
                             <constraint firstItem="f6p-xz-3q0" firstAttribute="leading" secondItem="Djh-dq-NCk" secondAttribute="trailing" constant="5" id="mNg-7c-0Ji"/>
                             <constraint firstItem="qjr-Zc-eJP" firstAttribute="leading" secondItem="mVm-Z4-HAX" secondAttribute="leading" id="pIV-aY-QLC"/>
                             <constraint firstItem="Djh-dq-NCk" firstAttribute="centerY" secondItem="vAR-Ur-tna" secondAttribute="centerY" id="rgO-26-n9J"/>
@@ -83,7 +83,6 @@
     </objects>
     <resources>
         <image name="cellline" width="640" height="2"/>
-        <image name="operatorButtonBackground" width="1275" height="379"/>
         <image name="shade" width="128" height="105"/>
     </resources>
 </document>

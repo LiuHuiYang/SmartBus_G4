@@ -427,9 +427,7 @@
     
     self.schedualHVAC.schedualTemperature = temperature;
     
-    [self dismissViewControllerAnimated:YES
-                             completion:nil
-    ];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -544,9 +542,16 @@
     
     self.isCelsius = YES;
   
-    self.navigationItem.title = @"Schedule HVAC";
+    self.navigationItem.title = self.schedualHVAC.acRemark;
     
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"close" hightlightedImageName:@"close" addTarget:self action:@selector(close) isLeft:YES];
+    self.navigationItem.leftBarButtonItem =
+        [UIBarButtonItem
+         barButtonItemWithImageName:@"navigationbarback"
+              hightlightedImageName:@"navigationbarback"
+                          addTarget:self
+                             action:@selector(close)
+                             isLeft:YES
+        ];
   
    
     [self.lowFanButton setTitle:

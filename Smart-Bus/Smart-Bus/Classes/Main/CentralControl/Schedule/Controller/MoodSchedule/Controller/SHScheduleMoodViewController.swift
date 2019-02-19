@@ -2,7 +2,7 @@
 //  SHScheduleMoodViewController.swift
 //  Smart-Bus
 //
-//  Created by 刘辉扬 on 2019/2/19.
+//  Created by Mark Liu on 2019/2/19.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 
@@ -222,19 +222,21 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
         print(selectMoods)
     }
     
+    
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return defaultHeight
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let customView = UIView()
-        
-        customView.backgroundColor = UIColor.red
-        
-        return customView
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//
+//        let customView = UIView()
+//
+//        customView.backgroundColor = UIColor.red
+//
+//        return customView
+//    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         

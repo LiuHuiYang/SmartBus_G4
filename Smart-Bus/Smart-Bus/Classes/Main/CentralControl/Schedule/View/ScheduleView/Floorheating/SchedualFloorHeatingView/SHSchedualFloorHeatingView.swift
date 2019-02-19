@@ -8,12 +8,8 @@
 
 import UIKit
 
-/// 重用标示
-private let schduleFloorHeatingCellReuseIdentifier =
-    "SHSchedualFloorHeatingCell"
-
-class SHSchedualFloorHeatingView: UIView, loadNibView {
-
+class SHSchedualFloorHeatingView: UIView {
+/*
     /// 计划模型
     var schedual: SHSchedual? {
         
@@ -67,38 +63,6 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
         }
     }
   
-    /// 列表
-    @IBOutlet weak var listView: UITableView!
-    
-    /// 所有的地热供暖
-    private lazy var floorHeatings: [SHFloorHeating] =
-        [SHFloorHeating]()
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        listView.register(
-            UINib(
-                nibName: schduleFloorHeatingCellReuseIdentifier,
-                bundle: nil),
-            forCellReuseIdentifier:
-            schduleFloorHeatingCellReuseIdentifier
-        )
-        
-        listView.rowHeight =
-            SHSchedualFloorHeatingCell.rowHeight
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(saveFloorHeating(_:)),
-            name: NSNotification.Name.SHSchedualSaveData,
-            object: nil
-        )
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
     
     /// 保存数据
     @objc func saveFloorHeating(_ notification: Notification?) {
@@ -149,31 +113,6 @@ class SHSchedualFloorHeatingView: UIView, loadNibView {
             }
         }
     }
-
+*/
 }
 
-
-// MARK: - UITableViewDataSource
-extension SHSchedualFloorHeatingView: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return floorHeatings.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: schduleFloorHeatingCellReuseIdentifier,
-                for: indexPath
-                ) as! SHSchedualFloorHeatingCell
-        
-        cell.schedualFloorHeating =
-            floorHeatings[indexPath.row]
-        
-        cell.schedual = self.schedual
-        
-        return cell
-    }
-}

@@ -8,17 +8,15 @@
 
 import UIKit
 
-/// light生用标标
-private let schduleLightCellReuseIdentifier =
-    "SHSchduleLightCell"
 
 class SHSchduleLightView: UIView, loadNibView {
-    
+     /*
     /// 计划模型
     var schedual: SHSchedual? {
         
+       
         didSet {
-            
+         
             guard let plan = schedual else {
                 return
             }
@@ -74,47 +72,14 @@ class SHSchduleLightView: UIView, loadNibView {
                     }
                 }
             }
-             
-            lightsListView.reloadData()
+            
         }
+ 
     }
 
-    /// 灯光列表
-    @IBOutlet weak var lightsListView: UITableView!
-    
-    /// 所有的灯泡
-    private lazy var allLights: [SHLight] = [SHLight]()
- 
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        lightsListView.register(
-            UINib(
-                nibName: schduleLightCellReuseIdentifier,
-                bundle: nil),
-            forCellReuseIdentifier:
-            schduleLightCellReuseIdentifier
-        )
-        
-        lightsListView.rowHeight = SHSchduleLightCell.rowHeight
-        
-        lightsListView.allowsMultipleSelection = true
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(saveLight(_:)),
-            name: NSNotification.Name.SHSchedualSaveData,
-            object: nil
-        )
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
+   
     /// 保存数据
-    @objc func saveLight(_ notification: Notification?) {
+    @objc func saveLight(_ notification: Notification?){
         
         guard let type = notification?.object as? SHSchdualControlItemType,
             let plan = schedual else {
@@ -164,33 +129,6 @@ class SHSchduleLightView: UIView, loadNibView {
             }
         }
     }
-
+*/
 }
-
-
-// MARK: - UITableViewDelegate, UITableViewDataSource
-extension SHSchduleLightView: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // ...
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return allLights.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: schduleLightCellReuseIdentifier,
-                for: indexPath
-                ) as! SHSchduleLightCell
-        
-        cell.light = allLights[indexPath.row]
-        
-        return cell
-    }
-}
+ 

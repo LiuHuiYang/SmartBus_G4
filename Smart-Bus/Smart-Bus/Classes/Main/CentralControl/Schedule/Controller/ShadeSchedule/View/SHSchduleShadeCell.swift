@@ -85,6 +85,8 @@ class SHSchduleShadeCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .clear
         
+        homeButton.setRoundedRectangleBorder()
+        
         if UIDevice.is_iPad() {
             
             let font = UIView.suitFontForPad()

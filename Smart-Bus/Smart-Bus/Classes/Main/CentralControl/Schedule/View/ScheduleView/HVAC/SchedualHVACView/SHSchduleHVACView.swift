@@ -7,13 +7,10 @@
 //
 
 import UIKit
-
-/// hvac重用标示
-private let schduleHVACCellReuseIdentifier =
-    "SHSchedualHVACCell"
+ 
 
 class SHSchduleHVACView: UIView, loadNibView {
-    
+    /*
     /// 计划模型
     var schedual: SHSchedual? {
         
@@ -69,39 +66,7 @@ class SHSchduleHVACView: UIView, loadNibView {
             allHVACListView.reloadData()
         }
     }
-
-    /// 所有的空调
-    private lazy var hvacs: [SHHVAC] = [SHHVAC]()
-    
-    /// 所有的空调列表
-    @IBOutlet weak var allHVACListView: UITableView!
-
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        allHVACListView.register(
-            UINib(
-                nibName: schduleHVACCellReuseIdentifier,
-                bundle: nil),
-            forCellReuseIdentifier:
-            schduleHVACCellReuseIdentifier
-        )
-        
-        allHVACListView.rowHeight = SHSchedualHVACCell.rowHeight
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(saveHVAC(_:)),
-            name: NSNotification.Name.SHSchedualSaveData,
-            object: nil
-        )
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
+ 
     /// 保存数据
     @objc func saveHVAC(_ notification: Notification?) {
         
@@ -145,27 +110,8 @@ class SHSchduleHVACView: UIView, loadNibView {
             }
         }
     }
+
+ */
+    
 }
 
-
-// MARK: - UITableViewDataSource
-extension SHSchduleHVACView: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return hvacs.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: schduleHVACCellReuseIdentifier,
-                for: indexPath
-                ) as! SHSchedualHVACCell
-        
-        cell.schedualHVAC = hvacs[indexPath.row]
-        
-        return cell
-    }
-}

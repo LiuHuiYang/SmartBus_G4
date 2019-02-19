@@ -42,8 +42,6 @@ class SHSchedualHVACCell: UITableViewCell {
     /// 开启按钮
     @IBOutlet weak var enableButton: UIButton!
 
-    /// 图片
-    @IBOutlet weak var iconView: UIImageView!
     
     /// 需要配置的空调
     @IBOutlet weak var schedualHVACButton: UIButton!
@@ -68,8 +66,6 @@ class SHSchedualHVACCell: UITableViewCell {
         
         backgroundColor = .clear
         selectionStyle = .none
-        
-        iconView.setRoundedRectangleBorder()
         
         if UIDevice.is_iPad() {
             
@@ -109,31 +105,5 @@ extension SHSchedualHVACCell {
         
         schedualHVAC?.schedualEnable =
             enableButton.isSelected
-    }
-
-    /// 点击相关的空调
-    @IBAction func schedualHVACButtonClick() {
-        
-        if let hvac = schedualHVAC {
-            
-            let schedualController =
-                SHSchedualHVACViewController()
-            
-            schedualController.schedualHVAC = hvac
-            
-            let schedualNavigationController =
-                SHNavigationController(
-                    rootViewController: schedualController
-            )
-            
-            let rootViewController =
-                UIApplication.shared.keyWindow?.rootViewController
-            
-            rootViewController?.present(
-                schedualNavigationController,
-                animated: true,
-                completion: nil
-            )
-        }
     }
 }

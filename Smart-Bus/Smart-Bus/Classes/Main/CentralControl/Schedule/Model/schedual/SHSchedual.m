@@ -10,14 +10,6 @@
 
 @implementation SHSchedual
 
-- (void)setZoneID:(NSUInteger)zoneID {
-
-    self.isDifferentZoneSchedual = (_zoneID != zoneID);
-    
-    _zoneID = zoneID;
-}
-
-
 /// 字典转换为模型
 + (instancetype)schedualWithDictionary:(NSDictionary *)dictionary {
 

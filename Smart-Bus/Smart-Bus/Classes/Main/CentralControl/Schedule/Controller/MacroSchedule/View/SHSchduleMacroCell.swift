@@ -66,7 +66,6 @@ class SHSchduleMacroCell: UITableViewCell {
 // MARK: - UI初始化
 extension SHSchduleMacroCell {
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -103,7 +102,7 @@ extension SHSchduleMacroCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        selectFlagView.isHidden = !selected
+        selectFlagView.isHighlighted = selected
 
     }
 }

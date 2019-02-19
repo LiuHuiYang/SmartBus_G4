@@ -8,11 +8,11 @@
 
 import UIKit
 
-/// light生用标标
-private let schduleShadeCellReuseIdentifier =
-    "SHSchduleShadeCell"
+
 
 class SHSchduleShadeView: UIView, loadNibView {
+    
+    /*
  
     /// 计划模型
     var schedual: SHSchedual? {
@@ -46,41 +46,13 @@ class SHSchduleShadeView: UIView, loadNibView {
                 }
             }
             
-            shadeListView.reloadData()
+     
         }
     }
     
     /// 所有的窗帘
     private lazy var allShades: [SHShade] = [SHShade]()
     
-    /// 窗帘列表
-    @IBOutlet weak var shadeListView: UITableView!
- 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        shadeListView.register(
-            UINib(
-                nibName: schduleShadeCellReuseIdentifier,
-                bundle: nil),
-            forCellReuseIdentifier:
-            schduleShadeCellReuseIdentifier
-        )
-        
-        shadeListView.rowHeight = SHSchduleShadeCell.rowHeight
-        
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(saveShade(_:)),
-            name: NSNotification.Name.SHSchedualSaveData,
-            object: nil
-        )
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
     
     /// 保存数据
     @objc func saveShade(_ notification: Notification?) {
@@ -115,58 +87,6 @@ class SHSchduleShadeView: UIView, loadNibView {
             }
         }
     }
-}
-
-
-// MARK: - UITableViewDataSource
-extension SHSchduleShadeView: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return allShades.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: schduleShadeCellReuseIdentifier,
-                for: indexPath
-            ) as! SHSchduleShadeCell
-        
-        cell.shade = allShades[indexPath.row]
-        
-        cell.delegate = self
-        
-        return cell
-    }
-}
-
-
-// MARK: - SHEditRecordShadeStatusDelegate
-extension SHSchduleShadeView: SHEditRecordShadeStatusDelegate {
-    
-    func edit(shade: SHShade, status: String) {
-        
-        for curtain in allShades {
-            
-            if (curtain.shadeID == shade.shadeID) &&
-               (curtain.subnetID == shade.subnetID) &&
-               (curtain.deviceID == shade.deviceID)  {
-                
-                if status == SHLanguageText.shadeOpen {
-                    
-                    shade.currentStatus = .open
-                
-                } else if status == SHLanguageText.shadeClose {
-                    
-                    shade.currentStatus = .close
-                
-                } else {
-                
-                    shade.currentStatus = .unKnow
-                }
-            }
-        }
-    }
+ 
+ */
 }

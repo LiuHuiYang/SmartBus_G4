@@ -65,8 +65,6 @@ UIKIT_EXTERN NSString * const authorChangeDeviceisAllow;
 /// 启与关闭修改设备配置的密码的key
 UIKIT_EXTERN NSString * const authorChangeDevicePasswordKey;
 
-/// 计划保存的通知
-UIKIT_EXTERN NSString * const SHSchedualSaveDataNotification;
 
 /// 计划执行的通知
 UIKIT_EXTERN NSString * const SHSchedualPrepareExecuteNotification;

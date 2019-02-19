@@ -14,28 +14,9 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SHSchduleLightView" customModule="Smart_Bus" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="343"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MHr-xr-pVZ">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="343"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="iN0-l3-epB" id="xe9-mg-PEY"/>
-                        <outlet property="delegate" destination="iN0-l3-epB" id="h4X-dr-6U5"/>
-                    </connections>
-                </tableView>
-            </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="MHr-xr-pVZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P5G-vZ-FIe"/>
-                <constraint firstAttribute="trailing" secondItem="MHr-xr-pVZ" secondAttribute="trailing" id="T6q-Tw-sOh"/>
-                <constraint firstItem="MHr-xr-pVZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YZL-V0-WFB"/>
-                <constraint firstAttribute="bottom" secondItem="MHr-xr-pVZ" secondAttribute="bottom" id="wgv-h5-ONF"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="lightsListView" destination="MHr-xr-pVZ" id="kxL-6V-gbz"/>
-            </connections>
             <point key="canvasLocation" x="29.5" y="-208.5"/>
         </view>
     </objects>

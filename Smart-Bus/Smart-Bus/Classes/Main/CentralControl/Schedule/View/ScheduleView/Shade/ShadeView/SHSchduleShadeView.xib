@@ -14,27 +14,9 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SHSchduleShadeView" customModule="Smart_Bus" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DWJ-BV-21o">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="iN0-l3-epB" id="1Z4-3P-SNF"/>
-                    </connections>
-                </tableView>
-            </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="DWJ-BV-21o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AI2-dn-dhd"/>
-                <constraint firstAttribute="trailing" secondItem="DWJ-BV-21o" secondAttribute="trailing" id="RkY-bl-ZyX"/>
-                <constraint firstItem="DWJ-BV-21o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dEV-Tq-QHy"/>
-                <constraint firstAttribute="bottom" secondItem="DWJ-BV-21o" secondAttribute="bottom" id="eur-Bk-nm9"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="shadeListView" destination="DWJ-BV-21o" id="o0j-Jw-2L7"/>
-            </connections>
             <point key="canvasLocation" x="25.5" y="-140"/>
         </view>
     </objects>

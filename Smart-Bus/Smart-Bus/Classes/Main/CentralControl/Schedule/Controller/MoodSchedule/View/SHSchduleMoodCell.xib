@@ -43,7 +43,7 @@
                                 <color key="textColor" red="0.97647058819999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="tKx-6y-P7C">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedualButton_normal" highlightedImage="schedualButton_highlighted" translatesAutoresizingMaskIntoConstraints="NO" id="tKx-6y-P7C">
                                 <rect key="frame" x="273" y="25.5" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="OYH-wX-Qup"/>
@@ -88,6 +88,7 @@
     </objects>
     <resources>
         <image name="cellline" width="640" height="2"/>
-        <image name="check" width="32" height="32"/>
+        <image name="schedualButton_highlighted" width="64" height="64"/>
+        <image name="schedualButton_normal" width="64" height="64"/>
     </resources>
 </document>

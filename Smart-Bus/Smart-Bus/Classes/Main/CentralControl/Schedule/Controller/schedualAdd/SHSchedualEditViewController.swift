@@ -8,9 +8,6 @@
 
 import UIKit
 
-/// 控制区域重用标示符
-private let schdualContolItemAndZoneCellReusableIdentifier = "SHSchdualContolItemAndZoneCell"
-
 class SHSchedualEditViewController: SHViewController {
 
     /// 是否为增加的计算
@@ -50,26 +47,6 @@ class SHSchedualEditViewController: SHViewController {
     
     
     // MARK: - 不同的计划部分
-    
-    /// light展示
-    var lightView: SHSchduleLightView =
-        SHSchduleLightView.loadFromNib()
-    
-    /// HVAC展示
-    var hvacView: SHSchduleHVACView =
-        SHSchduleHVACView.loadFromNib()
-    
-    /// audio展示
-    var audioView: SHSchduleAudioView =
-        SHSchduleAudioView.loadFromNib()
-    
-    /// shade展示
-    var shadeView: SHSchduleShadeView =
-        SHSchduleShadeView.loadFromNib()
-    
-    /// 地热展示
-    var floorheatingView: SHSchedualFloorHeatingView =
-        SHSchedualFloorHeatingView.loadFromNib()
     
     /// 类型列表
     @IBOutlet weak var itemsView: UIView!
@@ -150,19 +127,64 @@ extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
             )
             
         case .light:
-            print("灯光")
+            
+            let lightController =
+                SHScheduleLightViewController()
+            
+            lightController.schedule = schedual
+            
+            navigationController?.pushViewController(
+                lightController,
+                animated: true
+            )
             
         case .HVAC:
-            print("空调")
+            
+            let hvacController =
+                SHScheduleHVACViewController()
+            
+            hvacController.schedule = schedual
+            
+            navigationController?.pushViewController(
+                hvacController,
+                animated: true
+            )
             
         case .audio:
-            print("音乐")
+            
+            let audioController =
+                SHScheduleAudioViewController()
+            
+            audioController.schedule = schedual
+            
+            navigationController?.pushViewController(
+                audioController,
+                animated: true
+            )
             
         case .shade:
-            print("窗帘")
+            
+            let shadeController =
+                SHScheduleShadeViewController()
+            
+            shadeController.schedule = schedual
+            
+            navigationController?.pushViewController(
+                shadeController,
+                animated: true
+            )
             
         case .floorHeating:
-            print("地热")
+            
+            let floorHeatingController =
+                SHScheduleFloorheatingViewController()
+            
+            floorHeatingController.schedule = schedual
+            
+            navigationController?.pushViewController(
+                floorHeatingController,
+                animated: true
+            )
             
         }
     }
@@ -477,11 +499,6 @@ extension SHSchedualEditViewController {
         print("3. 保存后的数据 \(savedCommands.count)")
 
         SHSchedualExecuteTools.shared.updateSchduals()
-        
-        NotificationCenter.default.post(
-            name: NSNotification.Name.SHSchedualSaveData,
-            object: plan.controlledItemID
-        )
         
         navigationController?.popViewController(
             animated: true

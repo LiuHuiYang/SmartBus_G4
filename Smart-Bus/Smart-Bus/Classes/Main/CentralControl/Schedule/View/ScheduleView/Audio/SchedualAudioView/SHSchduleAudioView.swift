@@ -7,13 +7,10 @@
 //
 
 import UIKit
+ 
+class SHSchduleAudioView: UIView {
 
-/// audio的重用标示
-private let schduleAudioCellReuseIdentifier =
-    "SHSchedualAudioCell"
-
-class SHSchduleAudioView: UIView, loadNibView {
-
+    /*
     /// 计划模型
     var schedual: SHSchedual? {
         
@@ -70,38 +67,7 @@ class SHSchduleAudioView: UIView, loadNibView {
             allAudioListView.reloadData()
         }
     }
-
-    /// 所有的音乐
-    private lazy var allAudios: [SHAudio] = [SHAudio]()
-    
-    /// 所有音乐列表
-    @IBOutlet weak var allAudioListView: UITableView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        allAudioListView.register(
-            UINib(
-                nibName: schduleAudioCellReuseIdentifier,
-                bundle: nil),
-            forCellReuseIdentifier:
-            schduleAudioCellReuseIdentifier
-        )
-        
-        allAudioListView.rowHeight = SHSchedualAudioCell.rowHeight
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(saveAudio(_:)),
-            name: NSNotification.Name.SHSchedualSaveData,
-            object: nil
-        )
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
+ 
     
     /// 保存数据
     @objc func saveAudio(_ notification: Notification?) {
@@ -153,25 +119,8 @@ class SHSchduleAudioView: UIView, loadNibView {
             }
         }
     }
+ 
+ */
 }
 
-extension SHSchduleAudioView: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return allAudios.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: schduleAudioCellReuseIdentifier,
-                for: indexPath
-                ) as! SHSchedualAudioCell
-        
-        cell.schedualAudio = allAudios[indexPath.row]
-        
-        return cell
-    }
-}
+

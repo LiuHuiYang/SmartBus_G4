@@ -21,18 +21,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xxw-iz-ACQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fRv-oR-PN1">
-                                <rect key="frame" x="0.0" y="3" width="320" height="72.5"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEX-hS-Tle">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEX-hS-Tle">
                                 <rect key="frame" x="15" y="17.5" width="243" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="K03-DF-kFK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <connections>
-                                    <action selector="schedualHVACButtonClick" destination="2ut-qo-gqi" eventType="touchUpInside" id="duf-6b-AVQ"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktp-zP-aPC">
                                 <rect key="frame" x="273" y="23.5" width="32" height="32"/>
@@ -47,18 +41,23 @@
                                     <action selector="enableButtonClick" destination="2ut-qo-gqi" eventType="touchUpInside" id="8Pf-CM-AeC"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellline" translatesAutoresizingMaskIntoConstraints="NO" id="hvp-zD-1wa">
+                                <rect key="frame" x="0.0" y="77.5" width="320" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Xq4-Ix-kge"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fRv-oR-PN1" firstAttribute="top" secondItem="Xxw-iz-ACQ" secondAttribute="top" constant="3" id="6fU-JY-Kmf"/>
+                            <constraint firstItem="hvp-zD-1wa" firstAttribute="leading" secondItem="Xxw-iz-ACQ" secondAttribute="leading" id="7zf-mO-waQ"/>
                             <constraint firstItem="zEX-hS-Tle" firstAttribute="leading" secondItem="Xxw-iz-ACQ" secondAttribute="leading" constant="15" id="9Ey-WQ-sNt"/>
-                            <constraint firstItem="Ktp-zP-aPC" firstAttribute="centerY" secondItem="fRv-oR-PN1" secondAttribute="centerY" id="CUg-tu-1Vb"/>
-                            <constraint firstItem="fRv-oR-PN1" firstAttribute="leading" secondItem="Xxw-iz-ACQ" secondAttribute="leading" id="FLo-S8-HDL"/>
+                            <constraint firstAttribute="trailing" secondItem="hvp-zD-1wa" secondAttribute="trailing" id="HuX-Ai-dTU"/>
+                            <constraint firstItem="zEX-hS-Tle" firstAttribute="centerY" secondItem="Xxw-iz-ACQ" secondAttribute="centerY" id="L3L-e5-Rpp"/>
                             <constraint firstItem="Ktp-zP-aPC" firstAttribute="leading" secondItem="zEX-hS-Tle" secondAttribute="trailing" constant="15" id="Rul-Lq-7gw"/>
-                            <constraint firstAttribute="trailing" secondItem="fRv-oR-PN1" secondAttribute="trailing" id="XV2-HB-FRP"/>
-                            <constraint firstItem="zEX-hS-Tle" firstAttribute="centerY" secondItem="fRv-oR-PN1" secondAttribute="centerY" id="g4f-Vi-UPV"/>
+                            <constraint firstItem="Ktp-zP-aPC" firstAttribute="centerY" secondItem="zEX-hS-Tle" secondAttribute="centerY" id="Uxc-OC-9KA"/>
                             <constraint firstAttribute="trailing" secondItem="Ktp-zP-aPC" secondAttribute="trailing" constant="15" id="owR-EC-FHL"/>
-                            <constraint firstAttribute="bottom" secondItem="fRv-oR-PN1" secondAttribute="bottom" constant="3" id="tPq-by-7CI"/>
+                            <constraint firstAttribute="bottom" secondItem="hvp-zD-1wa" secondAttribute="bottom" id="wqd-nI-Vcp"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -76,13 +75,13 @@
                 <outlet property="flagViewHeightConstraint" destination="7DB-ee-z5v" id="KoN-tX-Wtw"/>
                 <outlet property="flagViewWidthConstraint" destination="vsq-T5-uVt" id="mi0-NO-iXa"/>
                 <outlet property="hvacButtonHeightConstraint" destination="K03-DF-kFK" id="1NO-RH-JwO"/>
-                <outlet property="iconView" destination="fRv-oR-PN1" id="ta7-qH-LcY"/>
                 <outlet property="schedualHVACButton" destination="zEX-hS-Tle" id="6hR-pM-oKc"/>
             </connections>
             <point key="canvasLocation" x="18" y="40.5"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="cellline" width="640" height="2"/>
         <image name="schedualButton_highlighted" width="64" height="64"/>
         <image name="schedualButton_normal" width="64" height="64"/>
     </resources>

@@ -66,7 +66,9 @@ extension SHSchedualFloorHeatingController {
      
         saveSchedualFloorHeating()
         
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(
+            animated: true
+        )
     }
     
     /// 保存数据
@@ -257,12 +259,13 @@ extension SHSchedualFloorHeatingController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Schedule floorHeating"
+        navigationItem.title =
+           schedualFloorHeating?.floorHeatingRemark  
         
         navigationItem.leftBarButtonItem =
             UIBarButtonItem(
-                imageName: "close",
-                hightlightedImageName: "close",
+                imageName: "navigationbarback",
+                hightlightedImageName: "navigationbarback",
                 addTarget: self,
                 action: #selector(close),
                 isLeft: true

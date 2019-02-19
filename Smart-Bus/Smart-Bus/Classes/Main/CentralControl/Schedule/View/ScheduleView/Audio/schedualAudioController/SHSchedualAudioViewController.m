@@ -137,7 +137,8 @@ static NSString *songCellReusableIdentifier =
 /// 关闭界面
 - (void)close {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.navigationController popViewControllerAnimated:true];
 }
     
 /// 设置导航栏
@@ -145,7 +146,7 @@ static NSString *songCellReusableIdentifier =
  
     self.navigationItem.title = @"Schedule Audio";
     
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"close" hightlightedImageName:@"close" addTarget:self action:@selector(close) isLeft:YES];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"navigationbarback" hightlightedImageName:@"navigationbarback" addTarget:self action:@selector(close) isLeft:YES];
 }
 
 /// 退出界面时 不要再请求音乐数据

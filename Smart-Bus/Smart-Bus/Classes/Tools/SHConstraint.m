@@ -71,10 +71,6 @@ NSString * const authorChangeDeviceisAllow = @"SHAuthorChangeDeviceisAllow";
 NSString * const authorChangeDevicePasswordKey =
     @"SHAuthorChangeDevicePasswordKey";
 
-/// 计划保存的值
-NSString * const SHSchedualSaveDataNotification =
-    @"SHSchedualSaveDataNotification";
-
 /// 计划执行的通知
 NSString * const SHSchedualPrepareExecuteNotification =
     @"SHSchedualPrepareExecuteNotification";

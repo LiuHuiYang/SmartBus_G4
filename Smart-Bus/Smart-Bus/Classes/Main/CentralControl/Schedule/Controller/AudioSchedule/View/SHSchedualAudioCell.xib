@@ -21,17 +21,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPM-4k-h44">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BzT-la-eNP">
-                                <rect key="frame" x="0.0" y="3" width="320" height="72.5"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH7-aW-4Q0">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH7-aW-4Q0">
                                 <rect key="frame" x="15" y="17.5" width="243" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="loc-Du-P0g"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="schedualAudioButtonClick" destination="O7Z-dR-eWT" eventType="touchUpInside" id="odP-wC-d9U"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msp-Ef-3nd">
                                 <rect key="frame" x="273" y="23.5" width="32" height="32"/>
@@ -46,16 +40,21 @@
                                     <action selector="enableButtonClick" destination="O7Z-dR-eWT" eventType="touchUpInside" id="ld3-uu-o3T"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellline" translatesAutoresizingMaskIntoConstraints="NO" id="Rb8-5W-XN4">
+                                <rect key="frame" x="0.0" y="77.5" width="320" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Hyv-TD-EBX"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BzT-la-eNP" firstAttribute="leading" secondItem="gPM-4k-h44" secondAttribute="leading" id="10K-eo-6DW"/>
-                            <constraint firstItem="BzT-la-eNP" firstAttribute="top" secondItem="gPM-4k-h44" secondAttribute="top" constant="3" id="1jU-57-1Xq"/>
-                            <constraint firstItem="msp-Ef-3nd" firstAttribute="centerY" secondItem="BzT-la-eNP" secondAttribute="centerY" id="GPb-Gb-uBJ"/>
+                            <constraint firstItem="msp-Ef-3nd" firstAttribute="centerY" secondItem="gH7-aW-4Q0" secondAttribute="centerY" id="8o1-4b-gg0"/>
+                            <constraint firstItem="Rb8-5W-XN4" firstAttribute="leading" secondItem="gPM-4k-h44" secondAttribute="leading" id="FOV-iD-q5f"/>
+                            <constraint firstAttribute="trailing" secondItem="Rb8-5W-XN4" secondAttribute="trailing" id="Hr4-3s-Rel"/>
                             <constraint firstItem="msp-Ef-3nd" firstAttribute="leading" secondItem="gH7-aW-4Q0" secondAttribute="trailing" constant="15" id="Jdy-xh-bfT"/>
-                            <constraint firstAttribute="trailing" secondItem="BzT-la-eNP" secondAttribute="trailing" id="Siv-va-Led"/>
-                            <constraint firstItem="gH7-aW-4Q0" firstAttribute="centerY" secondItem="BzT-la-eNP" secondAttribute="centerY" id="gce-IL-3Qp"/>
-                            <constraint firstAttribute="bottom" secondItem="BzT-la-eNP" secondAttribute="bottom" constant="3" id="q5f-PR-abO"/>
+                            <constraint firstItem="gH7-aW-4Q0" firstAttribute="centerY" secondItem="gPM-4k-h44" secondAttribute="centerY" id="Svd-f8-VBh"/>
+                            <constraint firstAttribute="bottom" secondItem="Rb8-5W-XN4" secondAttribute="bottom" id="ZMH-Dx-R3w"/>
                             <constraint firstItem="gH7-aW-4Q0" firstAttribute="leading" secondItem="gPM-4k-h44" secondAttribute="leading" constant="15" id="qZg-jp-BTH"/>
                             <constraint firstAttribute="trailing" secondItem="msp-Ef-3nd" secondAttribute="trailing" constant="15" id="t1Q-bx-bSR"/>
                         </constraints>
@@ -74,13 +73,13 @@
                 <outlet property="enableButton" destination="msp-Ef-3nd" id="bks-5P-bZ4"/>
                 <outlet property="flagViewHeightConstraint" destination="3Gr-WP-qoI" id="bfl-El-YVe"/>
                 <outlet property="flagViewWidthConstraint" destination="Eyd-3K-Ojl" id="tLK-B4-eOd"/>
-                <outlet property="iconView" destination="BzT-la-eNP" id="Qzw-EZ-Hdx"/>
                 <outlet property="schedualAudioButton" destination="gH7-aW-4Q0" id="iG1-Bp-qMO"/>
             </connections>
             <point key="canvasLocation" x="34" y="-107"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="cellline" width="640" height="2"/>
         <image name="schedualButton_highlighted" width="64" height="64"/>
         <image name="schedualButton_normal" width="64" height="64"/>
     </resources>
