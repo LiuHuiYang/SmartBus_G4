@@ -23,13 +23,13 @@ extension SHSQLiteManager {
             "CommandTypeID, FirstParameter, "            +
             "SecondParameter, ThirdParameter,"           +
             "DelayMillisecondAfterSend) values "         +
-            "(\(command.macroID), "                   +
-            "'\(command.remark ?? "Macro Command" )', " +
-            "\(command.subnetID), \(command.deviceID)," +
+            "(\(command.macroID), "                    +
+            "'\(command.remark ?? "Macro Command" )', "  +
+            "\(command.subnetID), \(command.deviceID),"  +
             "\(command.commandTypeID), "                +
             "\(command.firstParameter), "               +
             "\(command.secondParameter), "              +
-            "\(command.thirdParameter),  "              +
+            "\(command.thirdParameter), "              +
             "\(command.delayMillisecondAfterSend));"
         
         if executeSql(sql) == false {
@@ -41,9 +41,8 @@ extension SHSQLiteManager {
             "select max(ID) from MacroButtonCommands;"
         
         guard let dict = selectProprty(idSQL).last,
-            let resID = dict["max(ID)"] as? String,
-            let maxID = UInt(resID) else {
-            
+            let maxID = dict["max(ID)"] as? UInt else {
+                
             return 0
         }
         
@@ -95,14 +94,17 @@ extension SHSQLiteManager {
         
         let array = selectProprty(sql)
         
-        var commands = [SHMacroCommand]()
+        var macroCommands = [SHMacroCommand]()
         
         for dict in array {
             
-            commands.append(SHMacroCommand(dict: dict))
+            let comand = SHMacroCommand(dict: dict)
+            print(comand.deviceID)
+            
+            macroCommands.append(SHMacroCommand(dict: dict))
         }
         
-        return commands
+        return macroCommands
     }
     
     

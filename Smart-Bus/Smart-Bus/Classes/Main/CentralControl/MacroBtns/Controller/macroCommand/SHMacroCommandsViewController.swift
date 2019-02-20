@@ -130,6 +130,7 @@ class SHMacroCommandsViewController: SHViewController {
         
         allCommands =  SHSQLiteManager.shared.getMacroCommands(macro!)
         
+        
        
         commandsListView.reloadData()
     }

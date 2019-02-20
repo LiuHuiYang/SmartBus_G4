@@ -23,13 +23,13 @@ class SHMacroViewController: SHViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let title =
-            (SHLanguageTools.share()?.getTextFromPlist(
-                "MARCO_ACTION_BUTTON",
-                withSubTitle: "TITLE_NAME")
-            ) as! String
+//        let title =
+//            (SHLanguageTools.share()?.getTextFromPlist(
+//                "MARCO_ACTION_BUTTON",
+//                withSubTitle: "TITLE_NAME")
+//            ) as! String
         
-        navigationItem.title = title
+        navigationItem.title = "Marco Actions"
         
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(
