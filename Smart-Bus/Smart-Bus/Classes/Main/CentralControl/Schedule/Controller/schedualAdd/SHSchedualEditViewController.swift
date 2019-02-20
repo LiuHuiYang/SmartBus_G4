@@ -476,15 +476,11 @@ extension SHSchedualEditViewController {
         
         print("1. 保存前的数据 \(beforeCommands.count)")
         
-        if let commands = plan.commands as? [SHSchedualCommand] {
+        print("2. 将要保存的数据 \(plan.commands.count)")
+        
+        for command in plan.commands {
             
-           
-             print("2. 将要保存的数据 \(commands.count)")
-            
-            for command in commands {
-                
-                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
-            }
+            _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
         }
         
         let savedCommands =   SHSQLiteManager.shared.getSchedualCommands(

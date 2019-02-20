@@ -29,7 +29,7 @@ class SHMacroViewController: SHViewController {
 //                withSubTitle: "TITLE_NAME")
 //            ) as! String
         
-        navigationItem.title = "Marco Actions"
+        navigationItem.title = "Macro Actions"
         
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(

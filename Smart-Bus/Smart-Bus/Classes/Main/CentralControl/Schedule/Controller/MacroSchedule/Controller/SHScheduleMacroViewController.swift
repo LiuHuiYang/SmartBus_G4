@@ -18,14 +18,13 @@ class SHScheduleMacroViewController: SHViewController {
     var schedule: SHSchedule?
     
     /// 所有的宏
-    private lazy var macros  = [SHMacro]()
+    private lazy var macros = [SHMacro]()
     
     /// 当前选择的宏
-    private lazy var selectMacros = NSMutableArray()
+    private lazy var selectMacros = [SHMacro]()
     
     /// 宏列表
     @IBOutlet weak var macroListView: UITableView!
-   
 }
 
 
@@ -35,8 +34,7 @@ extension SHScheduleMacroViewController {
     /// 保存数据
     @objc private func saveMacrosClick() {
         
-        guard let saveMacros = selectMacros as? [SHMacro],
-            let plan = schedule else {
+        guard let plan = schedule else {
             return
         }
         
@@ -48,14 +46,12 @@ extension SHScheduleMacroViewController {
         )
         
         // 更新 plan 中的 命令
-        let commands =
+        plan.commands =
             SHSQLiteManager.shared.getSchedualCommands(
                 plan.scheduleID
         )
         
-        plan.commands = commands
-        
-        for macro in saveMacros {
+        for macro in selectMacros {
             
             let macroCommand = SHSchedualCommand()
             macroCommand.typeID =
@@ -98,12 +94,7 @@ extension SHScheduleMacroViewController {
         
         // ===== 命令部分 =====
         
-        guard let commands = plan.commands as? [SHSchedualCommand] else {
-            
-            return
-        }
-        
-        for command in commands {
+        for command in plan.commands {
             
             if command.typeID != SHSchdualControlItemType.marco.rawValue {
                 
@@ -171,23 +162,32 @@ extension SHScheduleMacroViewController: UITableViewDelegate {
     /// 取消选择
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-        let macro = macros[indexPath.row]
+        let selectMacro = macros[indexPath.row]
         
-        if selectMacros.contains(macro) {
-   
-            selectMacros.remove(macro)
+        for macro in selectMacros.enumerated() {
+            
+            if macro.element.macroID == selectMacro.macroID {
+                
+                selectMacros.remove(at: macro.offset)
+            }
         }
     }
     
     /// 选择
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let macro = macros[indexPath.row]
+        let selectMacro = macros[indexPath.row]
         
-        if selectMacros.contains(macro) == false {
+        for macro in selectMacros {
             
-            selectMacros.add(macro)
+            if macro.macroID == selectMacro.macroID {
+                
+                return
+            }
         }
+        
+        // 来到这里肯定是不存在
+        selectMacros.append(selectMacro)
     }
 }
 
