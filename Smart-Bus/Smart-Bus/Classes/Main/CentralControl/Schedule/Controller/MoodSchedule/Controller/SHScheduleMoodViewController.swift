@@ -63,8 +63,7 @@ extension SHScheduleMoodViewController {
         for mood in saveMoods {
             
             let command = SHSchedualCommand()
-            command.typeID =
-                SHSchdualControlItemType.mood.rawValue
+            command.typeID = .mood
             command.scheduleID = plan.scheduleID
             command.parameter1 = mood.moodID
             command.parameter2 = mood.zoneID
@@ -103,8 +102,7 @@ extension SHScheduleMoodViewController {
         
         for command in commands {
             
-            if command.typeID !=
-                SHSchdualControlItemType.mood.rawValue {
+            if command.typeID != .mood {
                 
                 continue
             }

@@ -17,7 +17,7 @@ import UIKit
     var scheduleID: UInt = 0
     
     /// 控制类型
-    var typeID: UInt = 0
+    var typeID: SHSchdualControlItemType = .none 
     
     // MARK: - 6个可变参数，因场景而异
     

@@ -64,29 +64,29 @@ import UIKit
                 
                 switch command.typeID {
                     
-                case SHSchdualControlItemType.marco.rawValue :
+                case .marco :
                     
                     exectuSchedualMacro(command)
                     
-                case SHSchdualControlItemType.mood.rawValue:
+                case .mood :
                     
                     exectuSchedualMood(command)
                     
-                case SHSchdualControlItemType.light.rawValue:
+                case .light :
                     
                     exectuSchedualLight(command)
                     
-                case SHSchdualControlItemType.hvac.rawValue :
+                case .hvac :
                     exectuSchedualHVAC(command)
                     
-                case SHSchdualControlItemType.floorHeating.rawValue :
+                case .floorHeating :
                     
                     exectuSchedualFloorHeating(command)
                     
-                case SHSchdualControlItemType.shade.rawValue:
+                case .shade :
                     exectuSchedualShade(command)
                     
-                case SHSchdualControlItemType.audio.rawValue:
+                case .audio :
                     exectuSchedualAudio(command)
                     
                     

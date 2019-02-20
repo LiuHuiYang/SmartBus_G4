@@ -89,8 +89,7 @@ extension SHSchedualFloorHeatingController {
         let command = SHSchedualCommand()
         
         command.scheduleID = plan.scheduleID
-        command.typeID =
-            SHSchdualControlItemType.floorHeating.rawValue
+        command.typeID = .floorHeating
         
         command.parameter1 =
             UInt(floorHeating.subnetID)

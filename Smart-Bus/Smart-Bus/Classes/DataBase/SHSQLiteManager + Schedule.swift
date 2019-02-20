@@ -170,12 +170,15 @@ extension SHSQLiteManager {
         let maxID = getMaxIDForSchedualCommand() + 1
         
         let sql =
-            "insert into ScheduleCommands values(          " +
-            "\(maxID), \(command.scheduleID),              " +
-            "\(command.typeID), \(command.parameter1),     " +
-            "\(command.parameter2), \(command.parameter3), " +
-            "\(command.parameter4), \(command.parameter5), " +
-            "\(command.parameter6));"
+            "insert into ScheduleCommands values( " +
+            "\(maxID), \(command.scheduleID),   " +
+            "\(command.typeID.rawValue),         " +
+            "\(command.parameter1),              " +
+            "\(command.parameter2),              " +
+            "\(command.parameter3),              " +
+            "\(command.parameter4),              " +
+            "\(command.parameter5),              " +
+            "\(command.parameter6));             "
         
         return executeSql(sql)
     }

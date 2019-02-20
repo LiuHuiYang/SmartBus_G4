@@ -54,8 +54,7 @@ extension SHScheduleMacroViewController {
         for macro in selectMacros {
             
             let macroCommand = SHSchedualCommand()
-            macroCommand.typeID =
-                SHSchdualControlItemType.marco.rawValue
+            macroCommand.typeID = .marco
             macroCommand.scheduleID = plan.scheduleID
             macroCommand.parameter1 = macro.macroID
             
@@ -96,7 +95,7 @@ extension SHScheduleMacroViewController {
         
         for command in plan.commands {
             
-            if command.typeID != SHSchdualControlItemType.marco.rawValue {
+            if command.typeID != .marco {
                 
                 continue
             }
