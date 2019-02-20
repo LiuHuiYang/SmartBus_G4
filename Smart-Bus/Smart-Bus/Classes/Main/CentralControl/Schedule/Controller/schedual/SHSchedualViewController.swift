@@ -51,7 +51,7 @@ class SHSchedualViewController: SHViewController {
         schedual.scheduleID =
             SHSQLiteManager.shared.getMaxSchedualID() + 1
         schedual.scheduleName = "new schedule"
-        schedual.controlledItemID = .marco
+        schedual.controlledItemID = .none
         schedual.frequencyID = .oneTime
         
         editViewController.schedual = schedual

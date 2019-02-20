@@ -22,13 +22,10 @@ class SHSchedualEditViewController: SHViewController {
                 return
             }
             
-            let commands =
+            plan.commands =
                 SHSQLiteManager.shared.getSchedualCommands(
                     plan.scheduleID
             )
-            
-            plan.commands = NSMutableArray(array: commands)
-            
         }
     }
     
@@ -138,7 +135,7 @@ extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
                 animated: true
             )
             
-        case .HVAC:
+        case .hvac:
             
             let hvacController =
                 SHScheduleHVACViewController()
@@ -186,6 +183,8 @@ extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
                 animated: true
             )
             
+        case .none:
+            break
         }
     }
 }
@@ -440,12 +439,8 @@ extension SHSchedualEditViewController {
                        plan.executionHours,
                        plan.executionMins
             )
-            
-            
         }
-        
     }
-    
     
     /// 保存数据
     @IBAction func saveButtonClick() {
@@ -683,82 +678,4 @@ extension SHSchedualEditViewController {
         }
     }
  
-}
-
-// MARK: - 不同的控制模块
-extension SHSchedualEditViewController {
-    
-    /// 设置区域界面
-    func setControlZoneView() {
-        
-        guard let plan = schedual else {
-            return
-        }
-        
-        /// 区域数组
-        var zones: [SHZone]?
-
-        switch plan.controlledItemID {
-        
-        case .mood:
-            
-            zones =
-            SHSQLiteManager.shared.getZones(
-                deviceType: SHSystemDeviceType.mood.rawValue)
-            
-            
-        case .light:
-         
-            zones =
-            SHSQLiteManager.shared.getZones(
-                deviceType:
-                SHSystemDeviceType.light.rawValue
-            )
-             
-        case .HVAC:
-         
-            zones =
-            SHSQLiteManager.shared.getZones(
-                deviceType:
-                SHSystemDeviceType.hvac.rawValue
-            )
-            
-        case .audio:
-            
-            zones =
-            SHSQLiteManager.shared.getZones(
-                deviceType:
-                SHSystemDeviceType.audio.rawValue
-            )
-            
-        case .shade:
-            
-            zones =
-            SHSQLiteManager.shared.getZones(
-                deviceType:
-                SHSystemDeviceType.shade.rawValue
-            )
-            
-        case .floorHeating:
-       
-            zones =
-            
-            SHSQLiteManager.shared.getZones(
-                deviceType:
-                    SHSystemDeviceType.floorHeating.rawValue
-            )
-            
-        default:
-            break
-        }
-        
-        if zones?.isEmpty ?? true {
-            
-            SVProgressHUD.showInfo(
-                withStatus: SHLanguageText.noData
-            )
-            
-            return
-        }
-    }
 }

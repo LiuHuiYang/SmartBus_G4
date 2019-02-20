@@ -53,7 +53,7 @@ extension SHScheduleMacroViewController {
                 plan.scheduleID
         )
         
-        plan.commands = NSMutableArray(array: commands)
+        plan.commands = commands
         
         for macro in saveMacros {
             
@@ -63,7 +63,7 @@ extension SHScheduleMacroViewController {
             macroCommand.scheduleID = plan.scheduleID
             macroCommand.parameter1 = macro.macroID
             
-            plan.commands.add(macroCommand)
+            plan.commands.append(macroCommand)
         }
         
         _ = navigationController?.popViewController(

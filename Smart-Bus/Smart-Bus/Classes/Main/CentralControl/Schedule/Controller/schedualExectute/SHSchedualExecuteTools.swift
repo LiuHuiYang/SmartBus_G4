@@ -76,7 +76,7 @@ import UIKit
                     
                     exectuSchedualLight(command)
                     
-                case SHSchdualControlItemType.HVAC.rawValue :
+                case SHSchdualControlItemType.hvac.rawValue :
                     exectuSchedualHVAC(command)
                     
                 case SHSchdualControlItemType.floorHeating.rawValue :
@@ -192,7 +192,7 @@ extension SHSchedualExecuteTools {
                     return
                 }
                 
-                switch weekday {
+                switch UInt8(weekday) {
                     
                 case SHSchdualWeek.sunday.rawValue:
                     

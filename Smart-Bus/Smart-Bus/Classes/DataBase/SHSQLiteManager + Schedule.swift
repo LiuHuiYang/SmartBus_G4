@@ -14,29 +14,42 @@ extension SHSQLiteManager {
     /// 增加 schedule
     func insertSchedule(_ schedule: SHSchedule) -> Bool {
         
-        let maxID = getMaxSchedualID() + 1
+        let maxID = getMaxIDForSchedules() + 1
         
         let sql =
-            "insert into Schedules values (            " +
-            "\(maxID), \(schedule.scheduleID),         " +
-            "'\(schedule.scheduleName ?? "schedule")', " +
-            "\((schedule.enabledSchedule ? 1 : 0)),    " +
-            "\(schedule.controlledItemID.rawValue),    " +
-            "\(schedule.zoneID),                       " +
-            "\(schedule.frequencyID.rawValue),         " +
-            "\(schedule.withSunday),                   " +
-            "\(schedule.withMonday),                   " +
-            "\(schedule.withTuesday),                  " +
-            "\(schedule.withWednesday),                " +
-            "\(schedule.withThursday),                 " +
-            "\(schedule.withFriday),                   " +
-            "\(schedule.withSaturday),                 " +
-            "\(schedule.executionHours),               " +
-            "\(schedule.executionMins),                " +
-            "'\(schedule.executionDate ?? "")',        " +
+            "insert into Schedules values (           " +
+            "\(maxID), \(schedule.scheduleID),      " +
+            "'\(schedule.scheduleName)',             " +
+            "\((schedule.enabledSchedule ? 1 : 0)), " +
+            "\(schedule.controlledItemID.rawValue),  " +
+            "\(schedule.zoneID),                     " +
+            "\(schedule.frequencyID.rawValue),       " +
+            "\(schedule.withSunday ? 1 : 0),         " +
+            "\(schedule.withMonday ? 1 : 0),         " +
+            "\(schedule.withTuesday ? 1 : 0),        " +
+            "\(schedule.withWednesday ? 1 : 0),     " +
+            "\(schedule.withThursday ? 1 : 0),       " +
+            "\(schedule.withFriday ? 1 : 0),         " +
+            "\(schedule.withSaturday ? 1 : 0),       " +
+            "\(schedule.executionHours),             " +
+            "\(schedule.executionMins),              " +
+            "'\(schedule.executionDate)',            " +
             "\(schedule.haveSound ? 1 : 0)); "
         
         return executeSql(sql)
+    }
+    
+    /// 获得 ID
+    private func getMaxIDForSchedules() -> UInt {
+        
+        let sql = "select max(ID) from Schedules;"
+        
+        guard let dict = selectProprty(sql).last,
+            let id = dict["max(ID)"] as? UInt else {
+                return 0
+        }
+        
+        return id
     }
     
     /// 获得Schedual中的最大的ID
@@ -45,11 +58,11 @@ extension SHSQLiteManager {
         let sql = "select max(scheduleID) from Schedules;"
         
         guard let dict = selectProprty(sql).last,
-        let id = dict["max(scheduleID)"] as? UInt else {
+        let scheduleID = dict["max(scheduleID)"] as? UInt else {
             return 0
         }
         
-        return id
+        return scheduleID
     }
     
     /// 更新 schedule
@@ -57,26 +70,26 @@ extension SHSQLiteManager {
         
         let sql =
             "update Schedules set ScheduleName = " +
-            "'\(schedule.scheduleName ?? "schedule")', " +
+            "'\(schedule.scheduleName)', " +
             "EnabledSchedule = " +
-            "\(schedule.enabledSchedule), " +
+            "\(schedule.enabledSchedule ? 1 : 0), " +
             "ControlledItemID = " +
             "\(schedule.controlledItemID.rawValue), " +
             "ZoneID = \(schedule.zoneID), " +
             "FrequencyID = " +
             "\(schedule.frequencyID.rawValue), " +
-            "WithSunday = \(schedule.withSunday), " +
-            "WithMonday = \(schedule.withMonday), " +
-            "WithTuesday = \(schedule.withTuesday), " +
-            "WithWednesday = \(schedule.withWednesday), " +
-            "WithThursday = \(schedule.withThursday), " +
-            "WithFriday = \(schedule.withFriday), " +
-            "WithSaturday = \(schedule.withSaturday), " +
+            "WithSunday = \(schedule.withSunday ? 1 : 0), " +
+            "WithMonday = \(schedule.withMonday ? 1 : 0), " +
+            "WithTuesday = \(schedule.withTuesday ? 1 : 0), " +
+            "WithWednesday = \(schedule.withWednesday ? 1 : 0), " +
+            "WithThursday = \(schedule.withThursday ? 1 : 0), " +
+            "WithFriday = \(schedule.withFriday ? 1 : 0), " +
+            "WithSaturday = \(schedule.withSaturday ? 1 : 0), " +
             "ExecutionHours = \(schedule.executionHours), " +
             "ExecutionMins = \(schedule.executionMins), " +
             "ExecutionDate = " +
-            "'\(schedule.executionDate ?? "")', " +
-            "HaveSound = \(schedule.haveSound) where " +
+            "'\(schedule.executionDate)', " +
+            "HaveSound = \(schedule.haveSound ? 1 : 0) where " +
             "ScheduleID = \(schedule.scheduleID);"
         
         return executeSql(sql)

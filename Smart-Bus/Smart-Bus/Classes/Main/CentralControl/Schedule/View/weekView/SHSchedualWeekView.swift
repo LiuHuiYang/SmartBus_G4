@@ -32,8 +32,10 @@ extension SHSchedualWeekView: UITableViewDelegate {
         cell?.isSelected = true
         
         selectWeekDay(
-            weekDay: SHSchdualWeek(
-                rawValue: indexPath.row + 1) ?? .none,
+            weekDay: SHSchdualWeek(rawValue:
+                UInt8(indexPath.row + 1)
+                ) ?? .none,
+            
             isSelected: true)
     }
     
@@ -44,8 +46,11 @@ extension SHSchedualWeekView: UITableViewDelegate {
         cell?.isSelected = false
         
         selectWeekDay(
-            weekDay: SHSchdualWeek(
-                rawValue: indexPath.row + 1) ?? .none,
+            weekDay:
+                SHSchdualWeek(rawValue:
+                    UInt8(indexPath.row + 1)
+                ) ?? .none,
+            
             isSelected: false)
     }
     
@@ -97,10 +102,10 @@ extension SHSchedualWeekView: UITableViewDataSource {
                 for: indexPath
             ) as! SHScheduleWeekCell
         
-        let day = UInt(indexPath.row + 1)
+        let day = UInt8(indexPath.row + 1)
        
         cell.weekDay =
-            SHSchdualWeek(rawValue: Int(day)) ?? .none
+            SHSchdualWeek(rawValue: day) ?? .none
         
         return cell
     }
@@ -129,17 +134,18 @@ extension SHSchedualWeekView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
-      
-        guard let plan = schedual,
-            let days = plan.getExecutWeekDays() as? [Int]
-            else {
+        
+        guard let plan = schedual else {
             return
         }
         
+        let days = plan.getExecutWeekDays()
+        
+  
         for day in days {
-           
+
             listView.selectRow(
-                at: IndexPath(row: day - 1, section: 0),
+                at: IndexPath(row: Int(day.rawValue - 1), section: 0),
                 animated: true,
                 scrollPosition: .middle
             )

@@ -109,7 +109,7 @@ extension SHSchedualFloorHeatingController {
         // 手动模式温度
         command.parameter6 = UInt(floorHeating.schedualTemperature)
     
-        plan.commands.add(command)
+        plan.commands.append(command)
     }
 }
 

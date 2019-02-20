@@ -57,7 +57,7 @@ extension SHScheduleMoodViewController {
                 plan.scheduleID
         )
         
-        plan.commands = NSMutableArray(array: commands)
+        plan.commands = commands
         
         // 创建命令集合
         for mood in saveMoods {
@@ -69,7 +69,7 @@ extension SHScheduleMoodViewController {
             command.parameter1 = mood.moodID
             command.parameter2 = mood.zoneID
             
-            plan.commands.add(command)
+            plan.commands.append(command)
         }
         
         _ = navigationController?.popViewController(
