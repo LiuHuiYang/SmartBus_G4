@@ -564,23 +564,14 @@ extension SHSchedualEditViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        controlItemView.frame = itemsView.bounds
+        
         if UIDevice.is_iPad() {
             
             basseViewHeightConstraint.constant =
                 isPortrait ? (navigationBarHeight + statusBarHeight):
             navigationBarHeight
         }
-        
-        // 不同的控制项的显示
-//        macroView.frame = showControlScheduleView.bounds
-//        moodView.frame = showControlScheduleView.bounds
-//        lightView.frame = showControlScheduleView.bounds
-//        hvacView.frame = showControlScheduleView.bounds
-//        shadeView.frame = showControlScheduleView.bounds
-//        audioView.frame = showControlScheduleView.bounds
-//        floorheatingView.frame =
-//            showControlScheduleView.bounds
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -691,13 +682,7 @@ extension SHSchedualEditViewController {
             frequencyLabel.font = font
         }
     }
-
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        controlItemView.frame = itemsView.bounds
-    }
-    
+ 
 }
 
 // MARK: - 不同的控制模块

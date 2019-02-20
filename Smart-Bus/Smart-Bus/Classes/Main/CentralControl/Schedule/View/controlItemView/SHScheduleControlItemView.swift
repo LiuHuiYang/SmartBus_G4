@@ -112,16 +112,21 @@ extension SHScheduleControlItemView {
         }
     }
     
+    
+   
     override func layoutSubviews() {
         super.layoutSubviews()
         
+      
         scrollView.frame = bounds
         
-        let buttonMaignX = statusBarHeight
+        let buttonMaignX =
+            UIDevice.is_iPhone() ? statusBarHeight :
+            defaultHeight
+        
         let buttonMaignY = buttonMaignX
         
-        let totoalCols =
-            UIDevice.is_iPhone() ? 2 : 4
+        let totoalCols = UIDevice.is_iPhone() ? 2 : 3
         
         let buttonWidth =
             (frame_width - CGFloat(totoalCols - 1) * buttonMaignX) / CGFloat(totoalCols)

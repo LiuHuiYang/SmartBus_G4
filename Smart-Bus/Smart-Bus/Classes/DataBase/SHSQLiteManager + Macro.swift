@@ -18,12 +18,12 @@ extension SHSQLiteManager {
     func insertMacroCommand(_ command: SHMacroCommand) -> UInt {
         
         let sql =
-            "insert into MacroButtonCommands "          +
-            "(MacroID, Remark, SubnetID, DeviceID, "    +
-            "CommandTypeID, FirstParameter, "           +
-            "SecondParameter, ThirdParameter,"          +
-            "DelayMillisecondAfterSend) values "        +
-            "(\(command.macroID), "                     +
+            "insert into MacroButtonCommands "           +
+            "(MacroID, Remark, SubnetID, DeviceID, "      +
+            "CommandTypeID, FirstParameter, "            +
+            "SecondParameter, ThirdParameter,"           +
+            "DelayMillisecondAfterSend) values "         +
+            "(\(command.macroID), "                   +
             "'\(command.remark ?? "Macro Command" )', " +
             "\(command.subnetID), \(command.deviceID)," +
             "\(command.commandTypeID), "                +
@@ -146,8 +146,8 @@ extension SHSQLiteManager {
             "insert into MacroButtons " +
             "(MacroID, MacroName, MacroIconName) " +
             "values(\(macro.macroID), " +
-            "'\(macro.macroName ?? "Macro" )', '  " +
-            "\(macro.macroIconName ?? "Romatic" )');"
+            "'\(macro.macroName ?? "Macro" )',   " +
+            "'\(macro.macroIconName ?? "Romatic" )');"
         
         return executeSql(sql)
     }
