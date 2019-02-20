@@ -15,7 +15,7 @@ private let schduleMacroCellReuseIdentifier =
 class SHScheduleMacroViewController: SHViewController {
     
     /// 计划
-    var schedule: SHSchedual?
+    var schedule: SHSchedule?
     
     /// 所有的宏
     private lazy var macros  = [SHMacro]()

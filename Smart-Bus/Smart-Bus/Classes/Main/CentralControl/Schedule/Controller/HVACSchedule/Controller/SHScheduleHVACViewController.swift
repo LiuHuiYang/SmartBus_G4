@@ -15,7 +15,7 @@ private let schduleHVACCellReuseIdentifier =
 class SHScheduleHVACViewController: SHViewController {
 
     /// 计划
-    var schedule: SHSchedual?
+    var schedule: SHSchedule?
     
     /// 包含HVAC的所有区域
     private lazy var hvacZones =

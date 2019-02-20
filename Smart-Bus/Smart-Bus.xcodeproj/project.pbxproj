@@ -119,7 +119,7 @@
 		0426733E21C8966700FA597B /* SHSelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426733D21C8966700FA597B /* SHSelectColorViewController.swift */; };
 		0426734021C89D9200FA597B /* SHColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426733F21C89D9200FA597B /* SHColorWheelView.swift */; };
 		0426734521C8A7B300FA597B /* SHMacroButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426734421C8A7B300FA597B /* SHMacroButton.m */; };
-		0426734C21C8DB0400FA597B /* SHSchedual.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426734A21C8DB0400FA597B /* SHSchedual.m */; };
+		0426734C21C8DB0400FA597B /* SHSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426734A21C8DB0400FA597B /* SHSchedule.m */; };
 		0426735121C8DD4500FA597B /* SHScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426735021C8DD4500FA597B /* SHScheduleViewCell.swift */; };
 		0426735321C8E3A200FA597B /* SHScheduleWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426735221C8E3A200FA597B /* SHScheduleWeekCell.swift */; };
 		0426735521C8E72E00FA597B /* SHSchedualWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426735421C8E72E00FA597B /* SHSchedualWeekView.swift */; };
@@ -643,8 +643,8 @@
 		0426733F21C89D9200FA597B /* SHColorWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHColorWheelView.swift; sourceTree = "<group>"; };
 		0426734321C8A7B200FA597B /* SHMacroButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMacroButton.h; sourceTree = "<group>"; };
 		0426734421C8A7B300FA597B /* SHMacroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMacroButton.m; sourceTree = "<group>"; };
-		0426734A21C8DB0400FA597B /* SHSchedual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSchedual.m; sourceTree = "<group>"; };
-		0426734B21C8DB0400FA597B /* SHSchedual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSchedual.h; sourceTree = "<group>"; };
+		0426734A21C8DB0400FA597B /* SHSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSchedule.m; sourceTree = "<group>"; };
+		0426734B21C8DB0400FA597B /* SHSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSchedule.h; sourceTree = "<group>"; };
 		0426735021C8DD4500FA597B /* SHScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHScheduleViewCell.swift; sourceTree = "<group>"; };
 		0426735221C8E3A200FA597B /* SHScheduleWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHScheduleWeekCell.swift; sourceTree = "<group>"; };
 		0426735421C8E72E00FA597B /* SHSchedualWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSchedualWeekView.swift; sourceTree = "<group>"; };
@@ -1274,8 +1274,8 @@
 		041C004021B4DDDA0003CB49 /* schedual */ = {
 			isa = PBXGroup;
 			children = (
-				0426734B21C8DB0400FA597B /* SHSchedual.h */,
-				0426734A21C8DB0400FA597B /* SHSchedual.m */,
+				0426734B21C8DB0400FA597B /* SHSchedule.h */,
+				0426734A21C8DB0400FA597B /* SHSchedule.m */,
 			);
 			path = schedual;
 			sourceTree = "<group>";
@@ -5244,7 +5244,7 @@
 				04CD3E31216B2AA8007010C6 /* SHMainViewController.swift in Sources */,
 				8B2461391EE4EA8B009574E3 /* main.m in Sources */,
 				04E1D16C221BF8EE0059DE46 /* SHSchedualAudioCell.swift in Sources */,
-				0426734C21C8DB0400FA597B /* SHSchedual.m in Sources */,
+				0426734C21C8DB0400FA597B /* SHSchedule.m in Sources */,
 				0426733A21C87EDF00FA597B /* SHZoneControlLightViewCell.swift in Sources */,
 				0448850F21E5D55100BA806C /* SHSchedualEditViewController.swift in Sources */,
 				0412E33D21F5A1CE0084F3DB /* SHSQLiteManager + Sequence.swift in Sources */,

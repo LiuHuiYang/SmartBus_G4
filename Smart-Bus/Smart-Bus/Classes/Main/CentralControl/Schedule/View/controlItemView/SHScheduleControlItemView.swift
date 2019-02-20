@@ -21,7 +21,7 @@ protocol SHScheduleControlItemViewDelegate {
 class SHScheduleControlItemView: UIView {
     
     /// 计划
-    var schedule: SHSchedual?
+    var schedule: SHSchedule?
     
     /// 代理
     var delegate: SHScheduleControlItemViewDelegate?

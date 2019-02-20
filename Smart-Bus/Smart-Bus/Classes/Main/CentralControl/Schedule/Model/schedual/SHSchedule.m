@@ -1,19 +1,19 @@
 //
-//  SHSchedual.m
+//  SHSchedule.m
 //  Smart-Bus
 //
 //  Created by Mark Liu on 2017/11/20.
 //  Copyright © 2017年 SmartHome. All rights reserved.
 //
 
-#import "SHSchedual.h"
+#import "SHSchedule.h"
 
-@implementation SHSchedual
+@implementation SHSchedule
 
 /// 字典转换为模型
-+ (instancetype)schedualWithDictionary:(NSDictionary *)dictionary {
++ (instancetype)scheduleWithDictionary:(NSDictionary *)dictionary {
 
-    SHSchedual *schedual = [[self alloc] init];
+    SHSchedule *schedual = [[self alloc] init];
     
     schedual.id = [dictionary[@"ID"] integerValue];
     schedual.scheduleID = [dictionary[@"ScheduleID"] integerValue];

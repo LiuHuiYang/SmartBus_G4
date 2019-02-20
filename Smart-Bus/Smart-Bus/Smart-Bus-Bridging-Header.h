@@ -35,4 +35,4 @@
 #import "SHSchedualHVACViewController.h"
 #import "SHSchedualAudioViewController.h"
 
-#import "SHSchedual.h"
+#import "SHSchedule.h"

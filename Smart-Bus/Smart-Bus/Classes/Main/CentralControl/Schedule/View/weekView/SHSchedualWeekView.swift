@@ -14,7 +14,7 @@ private let scheduleWeekCelleuseIdentifier = "SHScheduleWeekCell"
 @objcMembers class SHSchedualWeekView: UIView {
 
     /// 计划
-    var schedual: SHSchedual?
+    var schedual: SHSchedule?
     
     /// 星期
     @IBOutlet weak var listView: UITableView!
@@ -112,7 +112,7 @@ extension SHSchedualWeekView: UITableViewDataSource {
 extension SHSchedualWeekView {
     
     /// 实例化View
-    class func schedualWeekView(_ schedual: SHSchedual?) -> SHSchedualWeekView {
+    class func schedualWeekView(_ schedual: SHSchedule?) -> SHSchedualWeekView {
         
         let weeekView = Bundle.main.loadNibNamed("\(self)", owner: nil, options: nil)?.first as! SHSchedualWeekView
         

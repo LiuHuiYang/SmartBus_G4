@@ -15,7 +15,7 @@ private let schduleFloorHeatingCellReuseIdentifier =
 class SHScheduleFloorheatingViewController: SHViewController {
 
     /// 计划
-    var schedule: SHSchedual?
+    var schedule: SHSchedule?
     
     /// 包含floorHeating的所有区域
     private lazy var floorHeatingZones =

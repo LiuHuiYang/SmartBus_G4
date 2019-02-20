@@ -14,7 +14,7 @@ private let schedualViewCellReuseIdentifier = "SHScheduleViewCell"
 class SHSchedualViewController: SHViewController {
 
     ///所有的计划列表
-    private lazy var allSchedules = [SHSchedual]()
+    private lazy var allSchedules = [SHSchedule]()
     
     /// 高度约束
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
@@ -47,7 +47,7 @@ class SHSchedualViewController: SHViewController {
         
         editViewController.isAddSedual = true
         
-        let schedual = SHSchedual()
+        let schedual = SHSchedule()
         schedual.scheduleID =
             SHSQLiteManager.shared.getMaxSchedualID() + 1
         schedual.scheduleName = "new schedule"

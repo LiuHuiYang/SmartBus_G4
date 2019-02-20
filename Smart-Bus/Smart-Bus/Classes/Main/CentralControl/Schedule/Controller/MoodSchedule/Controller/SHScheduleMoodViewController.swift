@@ -15,7 +15,7 @@ private let schduleMoodCellReuseIdentifier =
 class SHScheduleMoodViewController: SHViewController {
 
     /// 计划
-    var schedule: SHSchedual?
+    var schedule: SHSchedule?
     
     /// 当前选择的宏
     private lazy var selectMoods = [SHMood]()

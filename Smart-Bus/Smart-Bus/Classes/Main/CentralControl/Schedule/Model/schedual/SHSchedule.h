@@ -1,5 +1,5 @@
 //
-//  SHSchedual.h
+//  SHSchedule.h
 //  Smart-Bus
 //
 //  Created by Mark Liu on 2017/11/20.
@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, SHSchdualWeek) {
     SHSchdualWeekSaturday
 };
 
-@interface SHSchedual : NSObject
+@interface SHSchedule : NSObject
 
 /// 所有指令
 @property (strong, nonatomic) NSMutableArray *commands;
@@ -109,7 +109,7 @@ typedef NS_ENUM(NSInteger, SHSchdualWeek) {
 
  
 /// 字典转换为模型
-+ (instancetype)schedualWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)scheduleWithDictionary:(NSDictionary *)dictionary;
 
 /// 获得需要执行的星期
 - (NSMutableArray *)getExecutWeekDays;

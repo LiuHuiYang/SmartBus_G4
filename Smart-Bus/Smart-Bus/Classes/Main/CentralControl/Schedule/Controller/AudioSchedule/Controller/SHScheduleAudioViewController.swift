@@ -15,7 +15,7 @@ private let schduleAudioCellReuseIdentifier =
 class SHScheduleAudioViewController: SHViewController {
 
     /// 计划
-    var schedule: SHSchedual?
+    var schedule: SHSchedule?
     
     /// 包含audio的所有区域
     private lazy var audioZones =

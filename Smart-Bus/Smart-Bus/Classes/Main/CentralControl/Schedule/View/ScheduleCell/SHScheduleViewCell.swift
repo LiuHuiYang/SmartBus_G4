@@ -11,7 +11,7 @@ import UIKit
 class SHScheduleViewCell: UITableViewCell {
     
     /// 计划的模型对象
-    var schedual: SHSchedual? {
+    var schedual: SHSchedule? {
         
         didSet {
             

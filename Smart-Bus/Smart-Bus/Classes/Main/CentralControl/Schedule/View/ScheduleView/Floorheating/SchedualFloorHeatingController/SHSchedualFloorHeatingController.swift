@@ -11,7 +11,7 @@ import UIKit
 class SHSchedualFloorHeatingController: SHViewController {
 
     /// 计划模型
-    var schedual: SHSchedual?
+    var schedual: SHSchedule?
     
     /// 地热
     var schedualFloorHeating: SHFloorHeating?

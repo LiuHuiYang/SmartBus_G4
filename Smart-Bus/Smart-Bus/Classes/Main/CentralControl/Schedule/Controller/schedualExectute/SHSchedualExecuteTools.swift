@@ -23,7 +23,7 @@ import UIKit
     static let shared = SHSchedualExecuteTools()
     
     /// 可执行的schedual
-    private lazy var schedulesActivate = [SHSchedual]()
+    private lazy var schedulesActivate = [SHSchedule]()
     
     /// 定时器
     private var schedualTimer: Timer?
@@ -38,7 +38,7 @@ import UIKit
     /// 执行计划命令
     ///
     /// - Parameter schdule: 需要被执行的计划
-    static func executeSchdule(_ schdule: SHSchedual) {
+    static func executeSchdule(_ schdule: SHSchedule) {
         
         /// 子线程中执行
         DispatchQueue.global().async {

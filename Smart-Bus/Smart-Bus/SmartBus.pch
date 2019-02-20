@@ -35,7 +35,7 @@
 #import "SHNetWorkTools.h"
 #import <SAMKeychain/SAMKeychain.h>
 #import "SHAudioTools.h"
-#import "SHSchedual.h"
+#import "SHSchedule.h"
 
 #import "AppDelegate.h"
 

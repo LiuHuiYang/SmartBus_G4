@@ -14,7 +14,7 @@ class SHSchedualEditViewController: SHViewController {
     var isAddSedual = false
     
     /// 编辑的计划
-    var schedual: SHSchedual? {
+    var schedual: SHSchedule? {
         
         didSet {
             

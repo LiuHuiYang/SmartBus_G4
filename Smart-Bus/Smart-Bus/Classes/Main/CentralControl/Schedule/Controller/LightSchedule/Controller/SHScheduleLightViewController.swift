@@ -15,7 +15,7 @@ private let schduleLightCellReuseIdentifier =
 class SHScheduleLightViewController: SHViewController {
 
     /// 计划
-    var schedule: SHSchedual?
+    var schedule: SHSchedule?
     
     /// 包含light的所有区域
     private lazy var lightZones =

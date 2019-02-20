@@ -12,7 +12,7 @@ import Foundation
 extension SHSQLiteManager {
     
     /// 增加 schedule
-    func insertSchedule(_ schedule: SHSchedual) -> Bool {
+    func insertSchedule(_ schedule: SHSchedule) -> Bool {
         
         let maxID = getMaxSchedualID() + 1
         
@@ -53,7 +53,7 @@ extension SHSQLiteManager {
     }
     
     /// 更新 schedule
-    func updateSchedule(_ schedule: SHSchedual) -> Bool {
+    func updateSchedule(_ schedule: SHSchedule) -> Bool {
         
         let sql =
             "update Schedules set ScheduleName = " +
@@ -83,7 +83,7 @@ extension SHSQLiteManager {
     }
     
     /// 删除 schedule (包含命令集)
-    func deleteScheduale(_ schedule: SHSchedual) -> Bool {
+    func deleteScheduale(_ schedule: SHSchedule) -> Bool {
         
         // 删除命令
         let commandSQL =
@@ -102,7 +102,7 @@ extension SHSQLiteManager {
         return executeSql(scheduleSQL)
     }
     
-    func getSchedule(_ schedualID: UInt) -> SHSchedual? {
+    func getSchedule(_ schedualID: UInt) -> SHSchedule? {
         
         let schedules = getSchedules()
         
@@ -123,7 +123,7 @@ extension SHSQLiteManager {
     }
     
     /// 获得所有的 schedule
-    func getSchedules() -> [SHSchedual] {
+    func getSchedules() -> [SHSchedule] {
         
         let sql =
             "select ID, ScheduleID, ScheduleName,    " +
@@ -136,11 +136,11 @@ extension SHSQLiteManager {
         
         let array = selectProprty(sql)
         
-        var schedules = [SHSchedual]()
+        var schedules = [SHSchedule]()
         
         for dict in array {
             
-            schedules.append(SHSchedual(dictionary: dict))
+            schedules.append(SHSchedule(dictionary: dict))
         }
         
         return schedules
@@ -179,7 +179,7 @@ extension SHSQLiteManager {
     }
     
     /// 删除 Schedule 中的 所有command == 这个方法将要删除
-    func deleteSchedualeCommands(_ schedule: SHSchedual) -> Bool {
+    func deleteSchedualeCommands(_ schedule: SHSchedule) -> Bool {
         
         let sql =
             "delete from ScheduleCommands where   " +
