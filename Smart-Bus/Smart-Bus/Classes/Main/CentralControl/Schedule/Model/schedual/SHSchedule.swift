@@ -66,14 +66,14 @@ enum SHSchdualWeek: UInt8 {
     /// 是否开启计划
     var enabledSchedule: Bool = false
     
+    /// 控制类型 (这个参数也没有什么用, 兼容旧版本, 类型控制会在command中体现)
     var controlledItemID: SHSchdualControlItemType = .none
     
-    /// 区域ID (数据库使用的是 TEXT)
+    /// 区域ID (数据库使用的是 TEXT, 兼容旧版本, 这个参数没有什么用)
     var zoneID: UInt = 0
     
     /// 执行频率 (数据库使用的是 TEXT)
     var frequencyID: SHSchdualFrequency = .oneTime
-    
     
     /// 执行的是星期天
     var withSunday: Bool = false
