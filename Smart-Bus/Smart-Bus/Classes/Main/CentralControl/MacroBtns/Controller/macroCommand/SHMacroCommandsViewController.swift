@@ -167,7 +167,7 @@ extension SHMacroCommandsViewController {
         command.id =
             SHSQLiteManager.shared.insertMacroCommand(
                 command
-            ) + 1
+            )  
         
         detailViewController.macroCommand = command
         

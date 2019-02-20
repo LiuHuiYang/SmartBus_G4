@@ -97,10 +97,7 @@ extension SHSQLiteManager {
         var macroCommands = [SHMacroCommand]()
         
         for dict in array {
-            
-            let comand = SHMacroCommand(dict: dict)
-            print(comand.deviceID)
-            
+           
             macroCommands.append(SHMacroCommand(dict: dict))
         }
         
