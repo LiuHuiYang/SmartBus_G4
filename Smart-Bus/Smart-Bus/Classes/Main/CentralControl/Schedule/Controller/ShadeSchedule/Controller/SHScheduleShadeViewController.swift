@@ -17,6 +17,9 @@ class SHScheduleShadeViewController: SHViewController {
     /// 计划
     var schedule: SHSchedule?
     
+    /// 选择的窗帘
+    private lazy var selectShades = [SHShade]()
+    
     /// 包含shade的所有区域
     private lazy var shadeZones =
         SHSQLiteManager.shared.getZones(
@@ -29,6 +32,66 @@ class SHScheduleShadeViewController: SHViewController {
 }
 
 
+// MARK: - 保存窗帘数据
+extension SHScheduleShadeViewController {
+    
+    @objc private func saveShadesClick() {
+        
+        guard let plan = schedule else {
+            return
+        }
+        
+        // 删除同类型的数据
+        _ =
+            SHSQLiteManager.shared.deleteSchedualeCommand(
+                plan.scheduleID,
+                controlType: .shade
+        )
+        
+        // 更新 plan 中的 命令
+        plan.commands =
+            SHSQLiteManager.shared.getSchedualCommands(
+                plan.scheduleID
+        )
+        
+        // 创建命令
+        for shadeZone in shadeZones {
+            
+            let shades =
+                SHSQLiteManager.shared.getShades(
+                    shadeZone.zoneID
+            )
+            
+            // 每组的窗帘
+            for shade in shades {
+                
+                if shade.currentStatus == .unKnow {
+                    continue
+                }
+                
+                let command = SHSchedualCommand()
+                
+                command.typeID = .shade
+                
+                command.scheduleID = plan.scheduleID
+                
+                command.parameter1 = shade.shadeID
+                command.parameter2 = shade.zoneID
+                command.parameter3 =
+                    shade.currentStatus.rawValue
+                
+                plan.commands.append(command)
+            }
+            
+            _ = navigationController?.popViewController(
+                animated: true
+            )
+            
+        }
+    }
+}
+
+
 // MARK: - UI初始化
 extension SHScheduleShadeViewController {
     
@@ -38,14 +101,14 @@ extension SHScheduleShadeViewController {
         // 设置导航
         navigationItem.title = "Shade"
         
-        //        navigationItem.rightBarButtonItem =
-        //            UIBarButtonItem(
-        //                imageName: "back",
-        //                hightlightedImageName: "back",
-        //                addTarget: self,
-        //                action: #selector(saveMoodsClick),
-        //                isLeft: false
-        //        )
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(
+                imageName: "back",
+                hightlightedImageName: "back",
+                addTarget: self,
+                action: #selector(saveShadesClick),
+                isLeft: false
+        )
         
         // 注册cell
         shadeListView.register(
@@ -93,6 +156,9 @@ extension SHScheduleShadeViewController: SHEditRecordShadeStatusDelegate {
                     }
                 }
             }
+            
+            
+            
         }
     }
 }

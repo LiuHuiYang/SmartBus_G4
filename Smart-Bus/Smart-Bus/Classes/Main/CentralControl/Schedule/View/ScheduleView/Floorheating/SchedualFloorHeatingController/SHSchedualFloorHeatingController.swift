@@ -81,10 +81,6 @@ extension SHSchedualFloorHeatingController {
        
         _ = SHSQLiteManager.shared.deleteSchedualeCommands(plan)
         
-        if floorHeating.schedualEnable == false {
-            
-            return
-        }
         
         let command = SHSchedualCommand()
         
@@ -102,6 +98,7 @@ extension SHSchedualFloorHeatingController {
         
         command.parameter4 =
             floorHeating.schedualIsTurnOn ? 1 : 0
+     
         
         command.parameter5 = UInt(floorHeating.schedualModeType.rawValue)
         

@@ -50,43 +50,6 @@ class SHSchduleShadeView: UIView, loadNibView {
         }
     }
     
-    /// 所有的窗帘
-    private lazy var allShades: [SHShade] = [SHShade]()
-    
-    
-    /// 保存数据
-    @objc func saveShade(_ notification: Notification?) {
-        
-        guard let type = notification?.object as? SHSchdualControlItemType,
-            let plan = schedual else {
-                return
-        }
-        
-        if type == .shade {
-            
-            // 先删除以前的命令
-            _ = SHSQLiteManager.shared.deleteSchedualeCommands(
-                plan
-            )
-            
-            for shade in allShades {
-                
-                let command = SHSchedualCommand()
-                
-                command.typeID =
-                    SHSchdualControlItemType.shade.rawValue
-                
-                command.scheduleID = plan.scheduleID
-                
-                command.parameter1 = shade.shadeID
-                command.parameter2 = shade.zoneID
-                command.parameter3 =
-                    shade.currentStatus.rawValue
-           
-                _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
-            }
-        }
-    }
- 
+   
  */
 }

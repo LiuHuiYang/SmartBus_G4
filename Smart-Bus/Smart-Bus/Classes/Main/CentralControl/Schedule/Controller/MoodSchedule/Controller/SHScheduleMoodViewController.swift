@@ -39,8 +39,7 @@ extension SHScheduleMoodViewController {
     /// 保存选择的mood
     @objc private func saveMoodsClick() {
         
-        guard let saveMoods = selectMoods as? [SHMood],
-            let plan = schedule else {
+        guard let plan = schedule else {
             return
         }
         
@@ -52,15 +51,14 @@ extension SHScheduleMoodViewController {
         )
         
         // 更新 plan 中的 命令
-        let commands =
+        plan.commands =
             SHSQLiteManager.shared.getSchedualCommands(
                 plan.scheduleID
         )
-        
-        plan.commands = commands
+         
         
         // 创建命令集合
-        for mood in saveMoods {
+        for mood in selectMoods {
             
             let command = SHSchedualCommand()
             command.typeID = .mood
@@ -69,6 +67,7 @@ extension SHScheduleMoodViewController {
             command.parameter2 = mood.zoneID
             
             plan.commands.append(command)
+            
         }
         
         _ = navigationController?.popViewController(
@@ -95,12 +94,7 @@ extension SHScheduleMoodViewController {
         
         // ===== 命令部分 =====
         
-        guard let commands = plan.commands as? [SHSchedualCommand] else {
-            
-            return
-        }
-        
-        for command in commands {
+        for command in plan.commands {
             
             if command.typeID != .mood {
                 
@@ -210,36 +204,41 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
         let sectionMoods =
             SHSQLiteManager.shared.getMoods(moodZone.zoneID)
         
-        let mood = sectionMoods[indexPath.row]
+        let selectMood = sectionMoods[indexPath.row]
         
-        if selectMoods.contains(mood) == false {
+        
+        for mood in selectMoods {
             
-            selectMoods.append(mood)
+            if mood.moodID == selectMood.moodID &&
+               mood.zoneID == selectMood.zoneID {
+               
+                return
+            }
         }
         
-        print(selectMoods)
+        selectMoods.append(selectMood)
     }
     
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return defaultHeight
+        return SHScheduleSectionHeader.rowHeight
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let headerView = SHScheduleSectionHeader.loadFromNib()
+
+        headerView.sectionZone = moodZones[section]
+
+        return headerView
+    }
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //
-//        let customView = UIView()
-//
-//        customView.backgroundColor = UIColor.red
-//
-//        return customView
+//        return moodZones[section].zoneName ?? "zone"
 //    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return moodZones[section].zoneName ?? "zone"
-    }
 }
 
 // MARK: - UITableViewDataSource

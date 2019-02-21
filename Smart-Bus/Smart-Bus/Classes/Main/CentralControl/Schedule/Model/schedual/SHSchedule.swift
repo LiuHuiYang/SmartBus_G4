@@ -10,7 +10,7 @@ import UIKit
 
 
 /// 计划执行类型
-enum SHSchdualControlItemType: UInt {
+@objc enum SHSchdualControlItemType: UInt {
     
     case none
     case marco
@@ -28,7 +28,7 @@ enum SHSchdualControlItemType: UInt {
 /// - oneTime: 执行一次
 /// - dayily: 每天执行
 /// - weekly: 按星期执行
-enum SHSchdualFrequency: UInt {
+enum SHSchdualFrequency: UInt8 {
     
     case oneTime
     case dayily
@@ -134,10 +134,10 @@ enum SHSchdualWeek: UInt8 {
             zoneID = value as? UInt ?? 0
             
         case "FrequencyID":
-              
+            
            frequencyID =
             SHSchdualFrequency(rawValue:
-                UInt(value as? String ?? "") ?? 0
+                UInt8(value as? String ?? "") ?? 0
             ) ?? .oneTime
             
         default:

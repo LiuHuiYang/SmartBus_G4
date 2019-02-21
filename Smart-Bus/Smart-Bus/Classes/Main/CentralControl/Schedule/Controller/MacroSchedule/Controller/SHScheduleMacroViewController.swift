@@ -59,6 +59,7 @@ extension SHScheduleMacroViewController {
             macroCommand.parameter1 = macro.macroID
             
             plan.commands.append(macroCommand)
+            
         }
         
         _ = navigationController?.popViewController(

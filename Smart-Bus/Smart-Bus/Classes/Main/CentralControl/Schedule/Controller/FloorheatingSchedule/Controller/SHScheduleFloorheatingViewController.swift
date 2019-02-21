@@ -79,16 +79,17 @@ extension SHScheduleFloorheatingViewController: UITableViewDelegate {
         )
         
         
-        // 获得具体的hvac
-        let hvac = sectionFloorHeatings[indexPath.row]
+        // 获得具体的floorHeating
+        let floorHeating = sectionFloorHeatings[indexPath.row]
         
-        let floorHeating =
+        let floorHeatingController =
             SHSchedualFloorHeatingController()
         
-        floorHeating.schedualFloorHeating = hvac
+        floorHeatingController.schedual = schedule
+        floorHeatingController.schedualFloorHeating = floorHeating
         
         navigationController?.pushViewController(
-            floorHeating,
+            floorHeatingController,
             animated: true
         )
     }
