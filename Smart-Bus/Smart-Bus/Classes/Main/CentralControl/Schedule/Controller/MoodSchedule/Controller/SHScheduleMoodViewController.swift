@@ -17,7 +17,7 @@ class SHScheduleMoodViewController: SHViewController {
     /// 计划
     var schedule: SHSchedule?
     
-    /// 当前选择的宏
+    /// 当前选择的Mood
     private lazy var selectMoods = [SHMood]()
     
     /// 包含mood的所有区域
@@ -25,6 +25,9 @@ class SHScheduleMoodViewController: SHViewController {
         SHSQLiteManager.shared.getZones(
             deviceType: SHSystemDeviceType.mood.rawValue
     )
+    
+    /// 所有mood
+    private lazy var scheduleMoods = [[SHMood]]()
     
     /// mood 列表
     @IBOutlet weak var moodListView: UITableView!
@@ -55,7 +58,6 @@ extension SHScheduleMoodViewController {
             command.parameter2 = mood.zoneID
             
             plan.commands.append(command)
-            
         }
     }
 }
@@ -86,23 +88,17 @@ extension SHScheduleMoodViewController {
         
         for command in plan.commands where command.typeID == .mood {
             
-            // 查询所有的区域
-            for moodZone in moodZones.enumerated() {
+            for (zoneIndex, sectionMoods) in scheduleMoods.enumerated() {
                 
-                let sectionMoods =
-                    SHSQLiteManager.shared.getMoods(
-                        moodZone.element.zoneID
-                )
-                
-                for (index, mood) in sectionMoods.enumerated() {
+                for (moodIndex, mood) in sectionMoods.enumerated() {
                     
                     if mood.moodID == command.parameter1 &&
-                       mood.zoneID == command.parameter2 {
+                        mood.zoneID == command.parameter2 {
                         
                         let indexPath =
                             IndexPath(
-                                row: index,
-                                section: moodZone.offset
+                                row: moodIndex,
+                                section: zoneIndex
                         )
                         
                         moodListView.selectRow(
@@ -118,15 +114,21 @@ extension SHScheduleMoodViewController {
                 }
             }
         }
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for zone in moodZones {
+            
+            let sectionMoods =
+                SHSQLiteManager.shared.getMoods(zone.zoneID)
+            
+            scheduleMoods.append(sectionMoods)
+        }
+        
         // 设置导航
         navigationItem.title = "Mood"
-        
         
         // 注册cell
         moodListView.register(
@@ -149,36 +151,24 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
     /// 取消选择
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-        // 获得每个区域
-        let moodZone = moodZones[indexPath.section]
+        let deSelectMood =
+            scheduleMoods[indexPath.section][indexPath.row]
         
-        // 获得每组的mood
-        let sectionMoods =
-            SHSQLiteManager.shared.getMoods(moodZone.zoneID)
-        
-        let selectMood = sectionMoods[indexPath.row]
-        
-        for mood in sectionMoods.enumerated() {
+        for (index, mood) in selectMoods.enumerated() {
             
-            if mood.element.moodID == selectMood.moodID {
-                
-                selectMoods.remove(at: mood.offset)
+            if mood.moodID == deSelectMood.moodID &&
+               mood.zoneID == deSelectMood.zoneID {
+               
+                selectMoods.remove(at: index)
             }
         }
     }
     
     /// 选择
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // 获得每个区域
-        let moodZone = moodZones[indexPath.section]
-        
-        // 获得每组的mood
-        let sectionMoods =
-            SHSQLiteManager.shared.getMoods(moodZone.zoneID)
-        
-        let selectMood = sectionMoods[indexPath.row]
-        
+      
+        let selectMood =
+            scheduleMoods[indexPath.section][indexPath.row]
         
         for mood in selectMoods {
             
@@ -193,13 +183,9 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
     }
     
     
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        let zone = moodZones[section]
-        
-        let sectionMoods =
-            SHSQLiteManager.shared.getMoods(zone.zoneID)
+       
+        let sectionMoods = scheduleMoods[section]
         
         return sectionMoods.isEmpty ? 0 :
             SHScheduleSectionHeader.rowHeight
@@ -219,19 +205,13 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
 extension SHScheduleMoodViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return moodZones.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // 获得每个区域
-        let moodZone = moodZones[section]
-        
-        // 获得每组的mood
-        let sectionMoods =
-            SHSQLiteManager.shared.getMoods(moodZone.zoneID)
-        
-        return sectionMoods.count
+        return scheduleMoods[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -242,12 +222,7 @@ extension SHScheduleMoodViewController: UITableViewDataSource {
                 for: indexPath
                 ) as! SHSchduleMoodCell
         
-        // 获得每个区域
-        let moodZone = moodZones[indexPath.section]
-        
-        // 获得每组的mood
-        let sectionMoods =
-            SHSQLiteManager.shared.getMoods(moodZone.zoneID)
+        let sectionMoods = scheduleMoods[indexPath.section]
         
         cell.mood = sectionMoods[indexPath.row]
         
