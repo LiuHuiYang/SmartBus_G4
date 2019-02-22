@@ -31,7 +31,7 @@ class SHScheduleMacroViewController: SHViewController {
 // MARK: - 保存选择的macro
 extension SHScheduleMacroViewController {
     
-    /// 保存数据
+    /// 更新macro command 数据
     private func updateScheduleMacroCommands() {
         
         guard let plan = schedule else {

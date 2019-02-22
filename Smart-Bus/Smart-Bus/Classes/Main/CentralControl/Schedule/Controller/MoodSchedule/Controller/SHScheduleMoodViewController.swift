@@ -35,27 +35,15 @@ class SHScheduleMoodViewController: SHViewController {
 // MARK: - 保存数据
 extension SHScheduleMoodViewController {
     
-    
-    /// 保存选择的mood
-    @objc private func saveMoodsClick() {
+
+    /// 更新选择的mood命令数据
+    private func updateScheduleMoodCommands() {
         
         guard let plan = schedule else {
             return
         }
         
-        // 删除同类型的数据
-        _ =
-            SHSQLiteManager.shared.deleteSchedualeCommand(
-                plan.scheduleID,
-                controlType: .mood
-        )
-        
-        // 更新 plan 中的 命令
-        plan.commands =
-            SHSQLiteManager.shared.getSchedualCommands(
-                plan.scheduleID
-        )
-         
+        plan.deleteShceduleCommands(.mood)
         
         // 创建命令集合
         for mood in selectMoods {
@@ -69,10 +57,6 @@ extension SHScheduleMoodViewController {
             plan.commands.append(command)
             
         }
-        
-        _ = navigationController?.popViewController(
-            animated: true
-        )
     }
 }
 
@@ -80,6 +64,12 @@ extension SHScheduleMoodViewController {
 // MARK: - UI 初始化
 extension SHScheduleMoodViewController {
     
+    /// 视图消失保存数据
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        updateScheduleMoodCommands()
+    }
     
     /// 设置已配置的信息
     override func viewWillAppear(_ animated: Bool) {
@@ -94,12 +84,7 @@ extension SHScheduleMoodViewController {
         
         // ===== 命令部分 =====
         
-        for command in plan.commands {
-            
-            if command.typeID != .mood {
-                
-                continue
-            }
+        for command in plan.commands where command.typeID == .mood {
             
             // 查询所有的区域
             for moodZone in moodZones.enumerated() {
@@ -109,29 +94,25 @@ extension SHScheduleMoodViewController {
                         moodZone.element.zoneID
                 )
                 
-                for mood in sectionMoods.enumerated() {
+                for (index, mood) in sectionMoods.enumerated() {
                     
-                    if mood.element.moodID ==
-                            command.parameter1
-                        &&
+                    if mood.moodID == command.parameter1 &&
+                       mood.zoneID == command.parameter2 {
                         
-                        mood.element.zoneID ==
-                            command.parameter2 {
-                        
-                        let index =
+                        let indexPath =
                             IndexPath(
-                                row: mood.offset,
+                                row: index,
                                 section: moodZone.offset
                         )
                         
                         moodListView.selectRow(
-                            at: index,
+                            at: indexPath,
                             animated: true,
                             scrollPosition: .top
                         )
                         
                         self.tableView(moodListView,
-                                       didSelectRowAt: index
+                                       didSelectRowAt: indexPath
                         )
                     }
                 }
@@ -146,14 +127,6 @@ extension SHScheduleMoodViewController {
         // 设置导航
         navigationItem.title = "Mood"
         
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(
-                imageName: "back",
-                hightlightedImageName: "back",
-                addTarget: self,
-                action: #selector(saveMoodsClick),
-                isLeft: false
-        )
         
         // 注册cell
         moodListView.register(
