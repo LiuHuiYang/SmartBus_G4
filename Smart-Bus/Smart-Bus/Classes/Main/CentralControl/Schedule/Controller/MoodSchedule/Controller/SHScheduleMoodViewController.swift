@@ -196,7 +196,13 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return SHScheduleSectionHeader.rowHeight
+        let zone = moodZones[section]
+        
+        let sectionMoods =
+            SHSQLiteManager.shared.getMoods(zone.zoneID)
+        
+        return sectionMoods.isEmpty ? 0 :
+            SHScheduleSectionHeader.rowHeight
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -207,11 +213,6 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
 
         return headerView
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//        return moodZones[section].zoneName ?? "zone"
-//    }
 }
 
 // MARK: - UITableViewDataSource

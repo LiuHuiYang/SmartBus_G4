@@ -23,29 +23,133 @@ class SHScheduleLightViewController: SHViewController {
             deviceType: SHSystemDeviceType.light.rawValue
     )
     
+    /// 所有可计划的灯泡
+    private lazy var scheduleLights = [[SHLight]]()
+    
     /// 灯泡列表
     @IBOutlet weak var lightListView: UITableView!
     
 }
 
 
+// MARK: - 保存数据
+extension SHScheduleLightViewController {
+    
+    /// 更新
+    private func updateScheduleLightCommands() {
+        
+        guard let plan = schedule else {
+            return
+        }
+        
+        plan.deleteShceduleCommands(.light)
+        
+        for sectionLights in scheduleLights {
+            
+            for light in sectionLights where light.schedualEnable {
+                
+                let command = SHSchedualCommand()
+                
+                command.scheduleID = plan.scheduleID
+                command.typeID = .light
+                
+                command.parameter1 = light.lightID
+                command.parameter2 = light.zoneID
+                
+                if light.lightTypeID == .led {
+                    
+                    command.parameter3 = UInt(light.schedualRedColor)
+                    
+                    command.parameter4 = UInt(light.schedualGreenColor)
+                    
+                    command.parameter5 = UInt(light.schedualBlueColor)
+                    
+                    command.parameter6 = UInt(light.schedualWhiteColor)
+                    
+                    
+                } else {
+                    
+                    command.parameter3 =
+                        UInt(light.schedualBrightness)
+                }
+                
+                plan.commands.append(command)
+            }
+        }
+  
+    }
+}
+
 // MARK: - UI初始化
 extension SHScheduleLightViewController {
+    
+    /// 更新数据
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        updateScheduleLightCommands()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let plan = schedule else {
+            
+            return
+        }
+        
+        // ===== 命令部分 =====
+        
+        for command in plan.commands where command.typeID == .light {
+            
+            for sectionLights in scheduleLights {
+                
+                for light in sectionLights {
+                    
+                    if (light.lightID == command.parameter1) &&
+                        (light.zoneID == command.parameter2) {
+                        
+                        // 只要是存在的命令就一定是选中的
+                        light.schedualEnable = true
+                        
+                        if light.lightTypeID == .led {
+                            
+                            light.schedualRedColor = UInt8(command.parameter3)
+                            
+                            light.schedualGreenColor = UInt8(command.parameter4)
+                            
+                            light.schedualBlueColor = UInt8(command.parameter5)
+                            
+                            light.schedualWhiteColor = UInt8(command.parameter6)
+                            
+                        } else {
+                            
+                            light.schedualBrightness = UInt8(command.parameter3)
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+        lightListView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 加载所有区域的所有数据
+        for zone in lightZones {
+            
+            let lights =
+                SHSQLiteManager.shared.getLights(zone.zoneID)
+            
+            scheduleLights.append(lights)
+        }
+        
         // 设置导航
         navigationItem.title = "Light"
-        
-//        navigationItem.rightBarButtonItem =
-//            UIBarButtonItem(
-//                imageName: "back",
-//                hightlightedImageName: "back",
-//                addTarget: self,
-//                action: #selector(saveMoodsClick),
-//                isLeft: false
-//        )
         
         // 注册cell
         lightListView.register(
@@ -66,21 +170,19 @@ extension SHScheduleLightViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return defaultHeight
+        let sectionLights = scheduleLights[section]
+        
+        return sectionLights.isEmpty ? 0 :
+            SHScheduleSectionHeader.rowHeight
     }
     
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //
-    //        let customView = UIView()
-    //
-    //        customView.backgroundColor = UIColor.red
-    //
-    //        return customView
-    //    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return lightZones[section].zoneName ?? "zone"
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let headerView = SHScheduleSectionHeader.loadFromNib()
+
+        headerView.sectionZone = lightZones[section]
+
+        return headerView
     }
 }
 
@@ -88,19 +190,13 @@ extension SHScheduleLightViewController: UITableViewDelegate {
 extension SHScheduleLightViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return lightZones.count
+        
+        return scheduleLights.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // 获得每个区域
-        let lightZone = lightZones[section]
-        
-        // 获得每组的Light
-        let sectionLights =
-            SHSQLiteManager.shared.getLights(lightZone.zoneID)
-        
-        return sectionLights.count
+        return  scheduleLights[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,12 +207,7 @@ extension SHScheduleLightViewController: UITableViewDataSource {
                 for: indexPath
                 ) as! SHSchduleLightCell
         
-        // 获得每个区域
-        let lightZone = lightZones[indexPath.section]
-        
-        // 获得每组的Light
-        let sectionLights =
-            SHSQLiteManager.shared.getLights(lightZone.zoneID)
+        let sectionLights = scheduleLights[indexPath.section]
         
         cell.light = sectionLights[indexPath.row]
         

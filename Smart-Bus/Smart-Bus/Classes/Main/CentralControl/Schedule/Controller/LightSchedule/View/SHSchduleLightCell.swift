@@ -36,7 +36,7 @@ class SHSchduleLightCell: UITableViewCell {
                 Float(zoneLight.schedualBrightness)
             
             brightnessLabel.text =
-                "\(zoneLight.schedualBrightness)"
+                "\(zoneLight.schedualBrightness)%"
             
             let iconName =
                 SHLight.lightImageName(
