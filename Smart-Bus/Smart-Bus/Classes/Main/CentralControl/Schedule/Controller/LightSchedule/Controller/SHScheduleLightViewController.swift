@@ -23,7 +23,7 @@ class SHScheduleLightViewController: SHViewController {
             deviceType: SHSystemDeviceType.light.rawValue
     )
     
-    /// 所有可计划的灯泡
+    /// 所有的灯泡
     private lazy var scheduleLights = [[SHLight]]()
     
     /// 灯泡列表
@@ -139,7 +139,7 @@ extension SHScheduleLightViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 加载所有区域的所有数据
+        // 加载所有的区域的灯泡数据
         for zone in lightZones {
             
             let lights =

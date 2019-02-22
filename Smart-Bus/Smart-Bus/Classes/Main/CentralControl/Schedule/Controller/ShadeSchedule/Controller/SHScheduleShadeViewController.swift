@@ -17,14 +17,14 @@ class SHScheduleShadeViewController: SHViewController {
     /// 计划
     var schedule: SHSchedule?
     
-    /// 选择的窗帘
-    private lazy var selectShades = [SHShade]()
-    
     /// 包含shade的所有区域
     private lazy var shadeZones =
         SHSQLiteManager.shared.getZones(
             deviceType: SHSystemDeviceType.shade.rawValue
     )
+    
+    /// 所有的窗帘
+    private lazy var scheduleShades = [[SHShade]]()
     
     /// 窗帘列表
     @IBOutlet weak var shadeListView: UITableView!
@@ -35,58 +35,29 @@ class SHScheduleShadeViewController: SHViewController {
 // MARK: - 保存窗帘数据
 extension SHScheduleShadeViewController {
     
-    @objc private func saveShadesClick() {
+    private func updateScheduleShadeCommands() {
         
         guard let plan = schedule else {
             return
         }
         
-        // 删除同类型的数据
-        _ =
-            SHSQLiteManager.shared.deleteSchedualeCommand(
-                plan.scheduleID,
-                controlType: .shade
-        )
+        plan.deleteShceduleCommands(.shade)
         
-        // 更新 plan 中的 命令
-        plan.commands =
-            SHSQLiteManager.shared.getSchedualCommands(
-                plan.scheduleID
-        )
-        
-        // 创建命令
-        for shadeZone in shadeZones {
+        for sectionShades in scheduleShades {
             
-            let shades =
-                SHSQLiteManager.shared.getShades(
-                    shadeZone.zoneID
-            )
-            
-            // 每组的窗帘
-            for shade in shades {
-                
-                if shade.currentStatus == .unKnow {
-                    continue
-                }
+            for shade in sectionShades where shade.currentStatus != .unKnow {
                 
                 let command = SHSchedualCommand()
                 
                 command.typeID = .shade
-                
                 command.scheduleID = plan.scheduleID
                 
                 command.parameter1 = shade.shadeID
                 command.parameter2 = shade.zoneID
-                command.parameter3 =
-                    shade.currentStatus.rawValue
+                command.parameter3 = shade.currentStatus.rawValue
                 
                 plan.commands.append(command)
             }
-            
-            _ = navigationController?.popViewController(
-                animated: true
-            )
-            
         }
     }
 }
@@ -95,20 +66,58 @@ extension SHScheduleShadeViewController {
 // MARK: - UI初始化
 extension SHScheduleShadeViewController {
     
+    /// 更新数据
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        updateScheduleShadeCommands()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let plan = schedule else {
+            
+            return
+        }
+        
+        // === 命令处理
+        
+        for command in plan.commands where command.typeID == .shade {
+            
+            for sectionShades in scheduleShades {
+                
+                for shade in sectionShades {
+                    
+                    if shade.shadeID == command.parameter1 &&
+                        shade.zoneID == command.parameter2 {
+                        
+                        shade.currentStatus =
+                            SHShadeStatus( rawValue:
+                                command.parameter3
+                            ) ?? .unKnow
+                    }
+                }
+            }
+        }
+        
+        shadeListView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 加载所有的区域的窗帘数据
+        for zone in shadeZones {
+            
+            let shades =
+                SHSQLiteManager.shared.getShades(zone.zoneID)
+            
+            scheduleShades.append(shades)
+        }
+        
         // 设置导航
         navigationItem.title = "Shade"
-        
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(
-                imageName: "back",
-                hightlightedImageName: "back",
-                addTarget: self,
-                action: #selector(saveShadesClick),
-                isLeft: false
-        )
         
         // 注册cell
         shadeListView.register(
@@ -131,10 +140,7 @@ extension SHScheduleShadeViewController: SHEditRecordShadeStatusDelegate {
     func edit(shade: SHShade, status: String) {
         
         /// 遍历所有的区域
-        for zone in shadeZones {
-            
-            let sectionShades =
-                SHSQLiteManager.shared.getShades(zone.zoneID)
+        for sectionShades in scheduleShades {
             
             for curtain in sectionShades {
                 
@@ -156,9 +162,6 @@ extension SHScheduleShadeViewController: SHEditRecordShadeStatusDelegate {
                     }
                 }
             }
-            
-            
-            
         }
     }
 }
@@ -169,41 +172,34 @@ extension SHScheduleShadeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return defaultHeight
-    }
-    
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //
-    //        let customView = UIView()
-    //
-    //        customView.backgroundColor = UIColor.red
-    //
-    //        return customView
-    //    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionShades = scheduleShades[section]
         
-        return shadeZones[section].zoneName ?? "zone"
+        return sectionShades.isEmpty ? 0 :
+            SHScheduleSectionHeader.rowHeight
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = SHScheduleSectionHeader.loadFromNib()
+        
+        headerView.sectionZone = shadeZones[section]
+        
+        return headerView
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
 extension SHScheduleShadeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return shadeZones.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // 获得每个区域
-        let shadeZone = shadeZones[section]
-        
-        // 获得每组的shade
-        let sectionShades =
-            SHSQLiteManager.shared.getShades(shadeZone.zoneID)
-        
-        return sectionShades.count
+        return scheduleShades[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -214,14 +210,8 @@ extension SHScheduleShadeViewController: UITableViewDataSource {
                 for: indexPath
                 ) as! SHSchduleShadeCell
         
-        // 获得每个区域
-        let shadeZone = shadeZones[indexPath.section]
-        
-        // 获得每组的shade
-        let sectionShades =
-            SHSQLiteManager.shared.getShades(shadeZone.zoneID)
-        
-        cell.shade = sectionShades[indexPath.row]
+        cell.shade =
+            scheduleShades[indexPath.section][indexPath.row]
         
         cell.delegate = self
         
