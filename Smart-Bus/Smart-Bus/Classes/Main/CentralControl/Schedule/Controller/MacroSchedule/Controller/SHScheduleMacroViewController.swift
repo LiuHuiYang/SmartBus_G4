@@ -32,45 +32,37 @@ class SHScheduleMacroViewController: SHViewController {
 extension SHScheduleMacroViewController {
     
     /// 保存数据
-    @objc private func saveMacrosClick() {
+    private func updateScheduleMacroCommands() {
         
         guard let plan = schedule else {
             return
         }
-        
-        // 删除同类型的数据
-        _ =
-            SHSQLiteManager.shared.deleteSchedualeCommand(
-                plan.scheduleID,
-                controlType: .marco
-        )
-        
-        // 更新 plan 中的 命令
-        plan.commands =
-            SHSQLiteManager.shared.getSchedualCommands(
-                plan.scheduleID
-        )
+ 
+        plan.deleteShceduleCommands(.macro)
         
         for macro in selectMacros {
             
             let macroCommand = SHSchedualCommand()
-            macroCommand.typeID = .marco
+            macroCommand.typeID = .macro
             macroCommand.scheduleID = plan.scheduleID
             macroCommand.parameter1 = macro.macroID
             
             plan.commands.append(macroCommand)
-            
         }
-        
-        _ = navigationController?.popViewController(
-            animated: true
-        )
+   
     }
 }
 
 
 // MARK: - UI 初始化
 extension SHScheduleMacroViewController {
+    
+    /// 视图消失保存数据
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        updateScheduleMacroCommands()
+    }
     
     /// 视图出现展示已配置数据
     override func viewWillAppear(_ animated: Bool) {
@@ -94,31 +86,26 @@ extension SHScheduleMacroViewController {
         
         // ===== 命令部分 =====
         
-        for command in plan.commands {
+        for command in plan.commands where command.typeID == .macro {
             
-            if command.typeID != .marco {
+            for (index, macro) in macros.enumerated() {
                 
-                continue
-            }
-            
-            for macro in macros.enumerated() {
-                
-                if macro.element.macroID == command.parameter1 {
+                if macro.macroID == command.parameter1 {
                     
-                    let index =
+                    let indexPath =
                         IndexPath(
-                            row: macro.offset,
+                            row: index,
                             section: 0
                     )
                     
                     macroListView.selectRow(
-                        at: index,
+                        at: indexPath,
                         animated: true,
                         scrollPosition: .top
                     )
                     
                     self.tableView(macroListView,
-                                   didSelectRowAt: index
+                                   didSelectRowAt: indexPath
                     )
                 }
             }
@@ -130,15 +117,6 @@ extension SHScheduleMacroViewController {
         
         // 设置导航
         navigationItem.title = "Macro"
-        
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(
-                imageName: "back",
-                hightlightedImageName: "back",
-                addTarget: self,
-                action: #selector(saveMacrosClick),
-                isLeft: false
-        )
         
         macroListView.allowsMultipleSelection = true
         

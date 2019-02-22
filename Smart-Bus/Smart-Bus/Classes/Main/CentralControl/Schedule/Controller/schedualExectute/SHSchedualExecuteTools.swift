@@ -64,7 +64,7 @@ import UIKit
                 
                 switch command.typeID {
                     
-                case .marco :
+                case .macro :
                     
                     exectuSchedualMacro(command)
                     

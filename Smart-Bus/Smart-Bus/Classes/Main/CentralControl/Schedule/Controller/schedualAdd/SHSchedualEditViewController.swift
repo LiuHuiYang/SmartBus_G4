@@ -100,7 +100,7 @@ extension SHSchedualEditViewController: SHScheduleControlItemViewDelegate {
          
         
         switch controlType {
-        case .marco:
+        case .macro:
             
             let macroController = SHScheduleMacroViewController()
             

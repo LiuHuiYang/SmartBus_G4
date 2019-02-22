@@ -13,7 +13,7 @@ import UIKit
 @objc enum SHSchdualControlItemType: UInt {
     
     case none
-    case marco
+    case macro
     case mood
     case light
     case hvac
@@ -150,6 +150,22 @@ enum SHSchdualWeek: UInt8 {
     }
 }
 
+
+// MARK: - 清除指定类型的command
+extension SHSchedule {
+    
+    /// 清除同类型的命令集合
+    func deleteShceduleCommands(_ controlType: SHSchdualControlItemType) {
+        
+        for command in commands where command.typeID == controlType {
+            
+            if let index = commands.firstIndex(of: command) {
+                
+                commands.remove(at: index)
+            }
+        }
+    }
+}
 
 // MARK: - 获得执行的星期
 extension SHSchedule {
