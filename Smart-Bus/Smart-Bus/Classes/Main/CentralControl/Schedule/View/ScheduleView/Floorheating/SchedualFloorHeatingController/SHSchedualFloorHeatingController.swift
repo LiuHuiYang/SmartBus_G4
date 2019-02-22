@@ -11,7 +11,7 @@ import UIKit
 class SHSchedualFloorHeatingController: SHViewController {
 
     /// 计划模型
-    var schedual: SHSchedule?
+//    var schedual: SHSchedule?
     
     /// 地热
     var schedualFloorHeating: SHFloorHeating?
@@ -57,57 +57,6 @@ class SHSchedualFloorHeatingController: SHViewController {
     @IBOutlet weak var timerButton: SHCommandButton!
 }
 
-
-// MARK: - 保存数据
-extension SHSchedualFloorHeatingController {
-    
-    /// 关闭控制器
-    @objc private func close() {
-     
-        saveSchedualFloorHeating()
-        
-        navigationController?.popViewController(
-            animated: true
-        )
-    }
-    
-    /// 保存数据
-    private func saveSchedualFloorHeating() {
-        
-        guard let plan = schedual,
-            let floorHeating = schedualFloorHeating else {
-                return
-        }
-       
-        _ = SHSQLiteManager.shared.deleteSchedualeCommands(plan)
-        
-        
-        let command = SHSchedualCommand()
-        
-        command.scheduleID = plan.scheduleID
-        command.typeID = .floorHeating
-        
-        command.parameter1 =
-            UInt(floorHeating.subnetID)
-        
-        command.parameter2 =
-            UInt(floorHeating.deviceID)
-        
-        command.parameter3 =
-            UInt(floorHeating.channelNo)
-        
-        command.parameter4 =
-            floorHeating.schedualIsTurnOn ? 1 : 0
-     
-        
-        command.parameter5 = UInt(floorHeating.schedualModeType.rawValue)
-        
-        // 手动模式温度
-        command.parameter6 = UInt(floorHeating.schedualTemperature)
-    
-        plan.commands.append(command)
-    }
-}
 
 // MARK: - 点击
 extension SHSchedualFloorHeatingController {
@@ -252,20 +201,36 @@ extension SHSchedualFloorHeatingController {
 // MARK: - UI初始化
 extension SHSchedualFloorHeatingController {
     
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let floorHeating = schedualFloorHeating,
+            floorHeating.schedualEnable else {
+            
+            return
+        }
+        
+        turnFloorHeatingButton.isSelected = floorHeating.schedualIsTurnOn
+        
+        changeFloorHeatingModel(model: floorHeating.schedualModeType)
+        
+        if floorHeating.schedualModeType == .manual {
+            
+            modelTemperatureLabel.text =
+                temperatureShow(celsiusTemperature:
+                    floorHeating.schedualTemperature
+            )
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        schedualFloorHeating?.isUpdateSchedualCommand = false
+        
         navigationItem.title =
            schedualFloorHeating?.floorHeatingRemark  
-        
-        navigationItem.leftBarButtonItem =
-            UIBarButtonItem(
-                imageName: "navigationbarback",
-                hightlightedImageName: "navigationbarback",
-                addTarget: self,
-                action: #selector(close),
-                isLeft: true
-        )
         
         addTemperatureButton.setRoundedRectangleBorder()
         

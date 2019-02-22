@@ -46,6 +46,9 @@ import UIKit
 
 @objcMembers class SHFloorHeating: NSObject {
     
+    /// 是否同步scheduleCommand (这个参数是为了在页面切换的时间保持更新)
+    var isUpdateSchedualCommand = true
+    
     /// 启动配置计划
     var schedualEnable = false
     

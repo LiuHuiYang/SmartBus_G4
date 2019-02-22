@@ -194,7 +194,7 @@ extension SHSQLiteManager {
         return executeSql(sql)
     }
     
-    /// 删除 Schedule 中的 所有command == 这个方法将要删除
+    /// 删除 Schedule 中的 所有command 
     func deleteSchedualeCommands(_ schedule: SHSchedule) -> Bool {
         
         let sql =

@@ -24,30 +24,132 @@ class SHScheduleFloorheatingViewController: SHViewController {
                 SHSystemDeviceType.floorHeating.rawValue
     )
     
+    /// 所有的地热
+    private lazy var scheduleFloorHeatings = [[SHFloorHeating]]()
+    
     /// 地热列表
     @IBOutlet weak var floorheatingListView: UITableView!
     
 }
 
+extension SHScheduleFloorheatingViewController {
+    
+    /// 更新数据
+    @objc private func updateScheduleFloorHeatingCommands() {
+        
+        guard let plan = schedule else {
+            return
+        }
+        
+        plan.deleteShceduleCommands(.floorHeating)
+        
+        for sectionFloorHeatings in scheduleFloorHeatings {
+            
+            for floorHeating in sectionFloorHeatings where floorHeating.schedualEnable {
+                
+                let command = SHSchedualCommand()
+                
+                command.scheduleID = plan.scheduleID
+                command.typeID = .floorHeating
+                
+                command.parameter1 =
+                    UInt(floorHeating.subnetID)
+                
+                command.parameter2 =
+                    UInt(floorHeating.deviceID)
+                
+                command.parameter3 =
+                    UInt(floorHeating.channelNo)
+                
+                command.parameter4 =
+                    floorHeating.schedualIsTurnOn ? 1 : 0
+                
+                command.parameter5 = UInt(floorHeating.schedualModeType.rawValue)
+                
+                // 手动模式温度
+                command.parameter6 = UInt(floorHeating.schedualTemperature)
+                
+                plan.commands.append(command)
 
+            }
+        }
+        
+        _ = navigationController?.popViewController(
+            animated: true
+        )
+    }
+}
 
 // MARK: - UI初始化
 extension SHScheduleFloorheatingViewController {
     
+    /// 设置schedule
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let plan = schedule else {
+            return
+        }
+        
+        // 命令处理
+        
+        for command in plan.commands where command.typeID == .floorHeating {
+            
+            for sectionFloorHeatings in scheduleFloorHeatings {
+                
+                for floorHeating in sectionFloorHeatings {
+                    
+                    if floorHeating.subnetID == command.parameter1 &&
+                       floorHeating.deviceID == command.parameter2 &&
+                        floorHeating.channelNo == command.parameter3 {
+                        
+                        if !floorHeating.isUpdateSchedualCommand {
+                            continue
+                        }
+                         
+                        floorHeating.schedualEnable = true
+                        
+                        floorHeating.schedualIsTurnOn =
+                            command.parameter4 != 0
+                        
+                        floorHeating.schedualModeType =
+                            SHFloorHeatingModeType(rawValue:
+                                UInt8(command.parameter5)
+                        ) ?? .manual
+                        
+                        floorHeating.schedualTemperature =
+                            Int(command.parameter6)
+                    }
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 加载 所有的数据
+        for zone in floorHeatingZones {
+            
+            let floorHeatings =
+                SHSQLiteManager.shared.getFloorHeatings(
+                    zone.zoneID
+            )
+            
+            scheduleFloorHeatings.append(floorHeatings)
+        }
         
         // 设置导航
         navigationItem.title = "Floor heating"
         
-        //        navigationItem.rightBarButtonItem =
-        //            UIBarButtonItem(
-        //                imageName: "back",
-        //                hightlightedImageName: "back",
-        //                addTarget: self,
-        //                action: #selector(saveMoodsClick),
-        //                isLeft: false
-        //        )
+        navigationItem.leftBarButtonItem =
+            UIBarButtonItem(
+                imageName: "navigationbarback",
+                hightlightedImageName: "navigationbarback",
+                addTarget: self,
+                action: #selector(updateScheduleFloorHeatingCommands),
+                isLeft: true
+        )
         
         // 注册 cell
         floorheatingListView.register(
@@ -68,25 +170,12 @@ extension SHScheduleFloorheatingViewController {
 extension SHScheduleFloorheatingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // 获得每个区域
-        let floorHeatingZone = floorHeatingZones[indexPath.section]
-        
-        // 获得每组的floorHeating
-        let sectionFloorHeatings =
-            SHSQLiteManager.shared.getFloorHeatings(
-                floorHeatingZone.zoneID
-        )
-        
-        
-        // 获得具体的floorHeating
-        let floorHeating = sectionFloorHeatings[indexPath.row]
-        
+      
         let floorHeatingController =
             SHSchedualFloorHeatingController()
-        
-        floorHeatingController.schedual = schedule
-        floorHeatingController.schedualFloorHeating = floorHeating
+ 
+        floorHeatingController.schedualFloorHeating =
+            scheduleFloorHeatings[indexPath.section][indexPath.row]
         
         navigationController?.pushViewController(
             floorHeatingController,
@@ -96,17 +185,20 @@ extension SHScheduleFloorheatingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return defaultHeight
+        let sectionLights = scheduleFloorHeatings[section]
+        
+        return sectionLights.isEmpty ? 0 :
+            SHScheduleSectionHeader.rowHeight
     }
     
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //
-    //        let customView = UIView()
-    //
-    //        customView.backgroundColor = UIColor.red
-    //
-    //        return customView
-    //    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = SHScheduleSectionHeader.loadFromNib()
+        
+        headerView.sectionZone = floorHeatingZones[section]
+        
+        return headerView
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
@@ -126,16 +218,7 @@ extension SHScheduleFloorheatingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // 获得每个区域
-        let floorHeatingZone = floorHeatingZones[section]
-        
-        // 获得每组的floorHeating
-        let sectionFloorHeatings =
-            SHSQLiteManager.shared.getFloorHeatings(
-                floorHeatingZone.zoneID
-        )
-        
-        return sectionFloorHeatings.count
+        return scheduleFloorHeatings[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,19 +229,8 @@ extension SHScheduleFloorheatingViewController: UITableViewDataSource {
                 for: indexPath
                 ) as! SHSchedualFloorHeatingCell
         
-        
-        // 获得每个区域
-        let floorHeatingZone =
-            floorHeatingZones[indexPath.section]
-        
-        // 获得每组的floorHeating
-        let sectionFloorHeatings =
-            SHSQLiteManager.shared.getFloorHeatings(
-                floorHeatingZone.zoneID
-        )
-        
         cell.schedualFloorHeating =
-            sectionFloorHeatings[indexPath.row]
+            scheduleFloorHeatings[indexPath.section][indexPath.row]
        
         return cell
     }
