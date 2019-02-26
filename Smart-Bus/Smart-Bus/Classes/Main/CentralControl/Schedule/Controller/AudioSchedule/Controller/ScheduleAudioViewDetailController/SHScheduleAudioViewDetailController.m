@@ -140,14 +140,6 @@ static NSString *songCellReusableIdentifier =
     
     [self.navigationController popViewControllerAnimated:true];
 }
-    
-/// 设置导航栏
-- (void)setNavigationBar {
- 
-    self.navigationItem.title = @"Schedule Audio";
-    
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"navigationbarback" hightlightedImageName:@"navigationbarback" addTarget:self action:@selector(close) isLeft:YES];
-}
 
 /// 退出界面时 不要再请求音乐数据
 - (void)viewWillDisappear:(BOOL)animated {
@@ -172,12 +164,12 @@ static NSString *songCellReusableIdentifier =
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    [self setNavigationBar];
+    self.navigationItem.title = @"Schedule Audio";
     
     // 替换图片
-    [self.volumeSlider setThumbImage:[UIImage getClearColorImage:CGSizeMake(5, 15)] forState:UIControlStateNormal];
+    [self.volumeSlider setThumbImage:[UIImage getClearColorImage:CGSizeMake(7, 15)] forState:UIControlStateNormal];
     
-    [self.volumeSlider setThumbImage:[UIImage getClearColorImage:CGSizeMake(5, 15)] forState:UIControlStateHighlighted];
+    [self.volumeSlider setThumbImage:[UIImage getClearColorImage:CGSizeMake(7, 15)] forState:UIControlStateHighlighted];
     
     self.volumeSlider.transform = CGAffineTransformMakeScale(1.0, [UIDevice is_iPad] ? 15.0 : 5.0);
     
@@ -236,8 +228,6 @@ static NSString *songCellReusableIdentifier =
         
         [self sourceSegmentedControlClick];
     }
-    
-    
 }
 
     
