@@ -9,13 +9,13 @@
 import UIKit
 
 class SHSchedualFloorHeatingController: SHViewController {
-
+    
     /// 计划模型
-//    var schedual: SHSchedule?
+    //    var schedual: SHSchedule?
     
     /// 地热
     var schedualFloorHeating: SHFloorHeating?
-
+    
     // MARK: - 约束条件
     
     /// 分组基准高度
@@ -125,7 +125,7 @@ extension SHSchedualFloorHeatingController {
         )
         
         let string =
-            "\(celsiusTemperature) °C\n\(fahrenheit) °F"
+        "\(celsiusTemperature) °C\n\(fahrenheit) °F"
         
         return string
     }
@@ -168,7 +168,7 @@ extension SHSchedualFloorHeatingController {
     ///
     /// - Parameter model: 模式
     private func changeFloorHeatingModel(model: SHFloorHeatingModeType){
- 
+        
         // 显示控制温度按钮
         reduceTemperatureButton.isHidden =
             model != .manual
@@ -193,44 +193,46 @@ extension SHSchedualFloorHeatingController {
             model == .timer
         
         schedualFloorHeating?.schedualModeType = model
+        
+        if model == .manual {
+            
+            modelTemperatureLabel.text =
+                temperatureShow(
+                    celsiusTemperature: schedualFloorHeating?.schedualTemperature ?? 0)
+        
+        } else {
+            
+            modelTemperatureLabel.text = "N/A"
+        }
     }
-    
 }
 
 
 // MARK: - UI初始化
 extension SHSchedualFloorHeatingController {
     
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        guard let floorHeating = schedualFloorHeating,
-            floorHeating.schedualEnable else {
-            
+      
+        guard let floorheating = schedualFloorHeating else {
             return
         }
         
-        turnFloorHeatingButton.isSelected = floorHeating.schedualIsTurnOn
+        floorheating.isUpdateSchedualCommand = false
         
-        changeFloorHeatingModel(model: floorHeating.schedualModeType)
+        turnFloorHeatingButton.isSelected =
+            floorheating.schedualIsTurnOn
         
-        if floorHeating.schedualModeType == .manual {
-            
-            modelTemperatureLabel.text =
-                temperatureShow(celsiusTemperature:
-                    floorHeating.schedualTemperature
-            )
-        }
+        changeFloorHeatingModel(model: floorheating.schedualModeType)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        schedualFloorHeating?.isUpdateSchedualCommand = false
         
         navigationItem.title =
-           schedualFloorHeating?.floorHeatingRemark  
+            schedualFloorHeating?.floorHeatingRemark
         
         addTemperatureButton.setRoundedRectangleBorder()
         
@@ -246,19 +248,6 @@ extension SHSchedualFloorHeatingController {
             let font = UIView.suitFontForPad()
             modelTemperatureLabel.font = font
         }
-        
-        // 临时设置模式温度为固定值
-        let celsiusTemperature = 20
-        
-        modelTemperatureLabel.text =
-            temperatureShow(
-                celsiusTemperature: celsiusTemperature
-        )
-        schedualFloorHeating?.schedualTemperature =
-            celsiusTemperature
-        
-        addTemperatureButton.isHidden = true
-        reduceTemperatureButton.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -276,21 +265,21 @@ extension SHSchedualFloorHeatingController {
         } else
             
             if UIDevice.is_iPad() {
-            
-            groupViewHeightConstraint.constant =
-                isPortrait ?
-                    (navigationBarHeight + navigationBarHeight) :
-                (tabBarHeight + tabBarHeight)
-            
-            controlButtonHeightConstraint.constant =
-                isPortrait ?
-                    (navigationBarHeight + statusBarHeight) :
-                (tabBarHeight + statusBarHeight)
-            
-            controlButtonWidthConstraint.constant =
-                isPortrait ?
-                    (navigationBarHeight + statusBarHeight) :
-                (tabBarHeight + statusBarHeight)
+                
+                groupViewHeightConstraint.constant =
+                    isPortrait ?
+                        (navigationBarHeight + navigationBarHeight) :
+                    (tabBarHeight + tabBarHeight)
+                
+                controlButtonHeightConstraint.constant =
+                    isPortrait ?
+                        (navigationBarHeight + statusBarHeight) :
+                    (tabBarHeight + statusBarHeight)
+                
+                controlButtonWidthConstraint.constant =
+                    isPortrait ?
+                        (navigationBarHeight + statusBarHeight) :
+                    (tabBarHeight + statusBarHeight)
         }
     }
 }

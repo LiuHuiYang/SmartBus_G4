@@ -375,13 +375,19 @@ extension SHZoneControlViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//       let title =
-//            (SHLanguageTools.share()?.getTextFromPlist(
-//                "MAIN_PAGE",
-//                withSubTitle: "MAIN_LABEL"
-//            ) as! [String]).first ?? ""
+       let title =
+            (SHLanguageTools.share()?.getTextFromPlist(
+                "MAIN_PAGE",
+                withSubTitle: "MAIN_LABEL"
+            ) as! [String]).first ?? ""
         
         navigationItem.title = "Zones"
+        
+//        let titleView = UIView()
+//        titleView.backgroundColor = UIColor.red
+//        titleView.bounds = CGRect(x: 0, y: 0, width: 220, height: 64)
+//        
+//        navigationItem.titleView = titleView
         
         if let rightItems = self.navigationItem.rightBarButtonItems {
         

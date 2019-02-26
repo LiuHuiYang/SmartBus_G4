@@ -122,8 +122,6 @@
 		0426735521C8E72E00FA597B /* SHSchedualWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426735421C8E72E00FA597B /* SHSchedualWeekView.swift */; };
 		0427E86921E6F590000ED6AA /* SHSchduleHVACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427E86821E6F590000ED6AA /* SHSchduleHVACView.swift */; };
 		0427E86D21E717F4000ED6AA /* SHSchduleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427E86C21E717F4000ED6AA /* SHSchduleAudioView.swift */; };
-		0427E87621E7226C000ED6AA /* SHSchedualFloorHeatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427E87521E7226C000ED6AA /* SHSchedualFloorHeatingView.swift */; };
-		0427E87821E7227E000ED6AA /* SHSchedualFloorHeatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0427E87721E7227E000ED6AA /* SHSchedualFloorHeatingView.xib */; };
 		042864E6219C19FC00351285 /* SHCurrentTransformerShowDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042864E4219C19FC00351285 /* SHCurrentTransformerShowDataViewController.swift */; };
 		042864E7219C19FC00351285 /* SHCurrentTransformerShowDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042864E5219C19FC00351285 /* SHCurrentTransformerShowDataViewController.xib */; };
 		042864F1219C1B4C00351285 /* SHCurrentTransformerChannelDataViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042864EF219C1B4C00351285 /* SHCurrentTransformerChannelDataViewCell.swift */; };
@@ -644,8 +642,6 @@
 		0426735421C8E72E00FA597B /* SHSchedualWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSchedualWeekView.swift; sourceTree = "<group>"; };
 		0427E86821E6F590000ED6AA /* SHSchduleHVACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSchduleHVACView.swift; sourceTree = "<group>"; };
 		0427E86C21E717F4000ED6AA /* SHSchduleAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSchduleAudioView.swift; sourceTree = "<group>"; };
-		0427E87521E7226C000ED6AA /* SHSchedualFloorHeatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSchedualFloorHeatingView.swift; sourceTree = "<group>"; };
-		0427E87721E7227E000ED6AA /* SHSchedualFloorHeatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSchedualFloorHeatingView.xib; sourceTree = "<group>"; };
 		042864E4219C19FC00351285 /* SHCurrentTransformerShowDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHCurrentTransformerShowDataViewController.swift; sourceTree = "<group>"; };
 		042864E5219C19FC00351285 /* SHCurrentTransformerShowDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCurrentTransformerShowDataViewController.xib; sourceTree = "<group>"; };
 		042864EF219C1B4C00351285 /* SHCurrentTransformerChannelDataViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHCurrentTransformerChannelDataViewCell.swift; sourceTree = "<group>"; };
@@ -1410,18 +1406,8 @@
 			isa = PBXGroup;
 			children = (
 				049151E821E73AFA00BAE939 /* SchedualFloorHeatingController */,
-				0427E87021E7215D000ED6AA /* SchedualFloorHeatingView */,
 			);
 			path = Floorheating;
-			sourceTree = "<group>";
-		};
-		0427E87021E7215D000ED6AA /* SchedualFloorHeatingView */ = {
-			isa = PBXGroup;
-			children = (
-				0427E87521E7226C000ED6AA /* SHSchedualFloorHeatingView.swift */,
-				0427E87721E7227E000ED6AA /* SHSchedualFloorHeatingView.xib */,
-			);
-			path = SchedualFloorHeatingView;
 			sourceTree = "<group>";
 		};
 		042864E8219C1ADA00351285 /* showDataCell */ = {
@@ -4273,7 +4259,6 @@
 			children = (
 				8B82994A204E31FB00F3AD41 /* Controller */,
 				8B82994F204E31FB00F3AD41 /* Model */,
-				8B829954204E31FB00F3AD41 /* View */,
 			);
 			path = HVAC;
 			sourceTree = "<group>";
@@ -4293,13 +4278,6 @@
 				04B353E021C73184000A7D0B /* SHHVAC.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		8B829954204E31FB00F3AD41 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		8B829978204E33B700F3AD41 /* Base */ = {
@@ -4859,7 +4837,6 @@
 				041C007621B4DE950003CB49 /* SHSchedualSettingViewController.xib in Resources */,
 				04FFCFB42174787F00684CFA /* SHSetSystemViewCell.xib in Resources */,
 				0441DDEF216C9CB000952CE4 /* SHApplianceViewController.xib in Resources */,
-				0427E87821E7227E000ED6AA /* SHSchedualFloorHeatingView.xib in Resources */,
 				04E1D159221BDBBF0059DE46 /* SHScheduleAudioViewController.xib in Resources */,
 				0441DDE7216C97D800952CE4 /* SHCentralControlViewCell.xib in Resources */,
 				8B5D4FFF206C8EF00028EEDB /* SHZoneProjectorViewController.xib in Resources */,
@@ -5204,7 +5181,6 @@
 				042450C821F0161800C99512 /* SHDeviceArgsViewController + DryContact.swift in Sources */,
 				0429AC9521C23E3D0051263A /* SHZoneLightViewController.swift in Sources */,
 				0453EA4421A67C8400F666EF /* JHShowInfoView.m in Sources */,
-				0427E87621E7226C000ED6AA /* SHSchedualFloorHeatingView.swift in Sources */,
 				04CF6F482193DC440052A8A9 /* SHFan.swift in Sources */,
 				049A9C5421D75A5500F79EE5 /* SHAudioOperatorTools + vol.swift in Sources */,
 				8B5D504C206CBAE30028EEDB /* SHAuioPlayTypeButton.m in Sources */,

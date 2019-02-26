@@ -104,6 +104,7 @@ extension SHScheduleFloorheatingViewController {
                         floorHeating.channelNo == command.parameter3 {
                         
                         if !floorHeating.isUpdateSchedualCommand {
+                            
                             continue
                         }
                          

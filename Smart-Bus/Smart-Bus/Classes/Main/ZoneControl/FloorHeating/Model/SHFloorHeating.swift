@@ -53,7 +53,8 @@ import UIKit
     var schedualEnable = false
     
     /// 计划执行的手动模式温度 
-    var schedualTemperature: Int = 0
+    var schedualTemperature: Int =
+        Int(SHFloorHeatingManualTemperatureRange.centigradeMinimumValue.rawValue)
     
     /// 计划执行的模式
     var schedualModeType: SHFloorHeatingModeType = .manual
