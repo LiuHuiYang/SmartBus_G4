@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHSchedualFloorHeatingController" customModule="Smart_Bus" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHScheduleFloorHeatingDetailController">
             <connections>
                 <outlet property="addTemperatureButton" destination="KEo-dj-evy" id="cYo-I1-6cP"/>
                 <outlet property="awayButton" destination="bfz-yA-au8" id="u86-yw-P6M"/>

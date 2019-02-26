@@ -182,18 +182,7 @@ extension SHSQLiteManager {
         
         return executeSql(sql)
     }
-    
-    /// 删除 指定类型的 SHSchedualCommand
-    func deleteSchedualeCommand(_ scheduleID: UInt, controlType: SHSchdualControlItemType) -> Bool {
-        
-        let sql =
-            "delete from ScheduleCommands where " +
-            "ScheduleID = \(scheduleID) and     " +
-            "typeID = \(controlType.rawValue);"
-        
-        return executeSql(sql)
-    }
-    
+     
     /// 删除 Schedule 中的 所有command 
     func deleteSchedualeCommands(_ schedule: SHSchedule) -> Bool {
         

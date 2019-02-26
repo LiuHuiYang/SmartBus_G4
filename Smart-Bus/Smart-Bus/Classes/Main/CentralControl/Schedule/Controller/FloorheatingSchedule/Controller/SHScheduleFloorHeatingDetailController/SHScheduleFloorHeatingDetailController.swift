@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SHSchedualFloorHeatingController: SHViewController {
+class SHScheduleFloorHeatingDetailController: SHViewController {
     
     /// 计划模型
     //    var schedual: SHSchedule?
@@ -59,7 +59,7 @@ class SHSchedualFloorHeatingController: SHViewController {
 
 
 // MARK: - 点击
-extension SHSchedualFloorHeatingController {
+extension SHScheduleFloorHeatingDetailController {
     
     /// 地热的开启与关闭
     @IBAction func turnOnButtonClick() {
@@ -73,7 +73,7 @@ extension SHSchedualFloorHeatingController {
 
 
 // MARK: - 设置手动温度
-extension SHSchedualFloorHeatingController {
+extension SHScheduleFloorHeatingDetailController {
     
     /// 降低地热手动模式温度
     @IBAction func reduceTemperatureButtonClick() {
@@ -132,7 +132,7 @@ extension SHSchedualFloorHeatingController {
 }
 
 // MARK: - 切换模式
-extension SHSchedualFloorHeatingController {
+extension SHScheduleFloorHeatingDetailController {
     
     /// 手动模式
     @IBAction func manualButtonClick() {
@@ -209,7 +209,7 @@ extension SHSchedualFloorHeatingController {
 
 
 // MARK: - UI初始化
-extension SHSchedualFloorHeatingController {
+extension SHScheduleFloorHeatingDetailController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

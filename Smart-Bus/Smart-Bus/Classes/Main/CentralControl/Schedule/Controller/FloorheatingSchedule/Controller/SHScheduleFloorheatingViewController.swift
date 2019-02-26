@@ -101,7 +101,7 @@ extension SHScheduleFloorheatingViewController {
                     
                     if floorHeating.subnetID == command.parameter1 &&
                        floorHeating.deviceID == command.parameter2 &&
-                        floorHeating.channelNo == command.parameter3 {
+                       floorHeating.channelNo == command.parameter3 {
                         
                         if !floorHeating.isUpdateSchedualCommand {
                             
@@ -173,7 +173,7 @@ extension SHScheduleFloorheatingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
         let floorHeatingController =
-            SHSchedualFloorHeatingController()
+            SHScheduleFloorHeatingDetailController()
  
         floorHeatingController.schedualFloorHeating =
             scheduleFloorHeatings[indexPath.section][indexPath.row]
