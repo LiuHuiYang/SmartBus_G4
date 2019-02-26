@@ -6,9 +6,9 @@
 //  Copyright © 2018年 SmartHome. All rights reserved.
 //
 
-#import "SHSchedualHVACViewController.h"
+#import "SHScheduleHVACViewDetailController.h"
 
-@interface SHSchedualHVACViewController ()
+@interface SHScheduleHVACViewDetailController ()
 
 /// 分组视图高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *groupViewHeightConstraint;
@@ -77,7 +77,7 @@
 
 @end
 
-@implementation SHSchedualHVACViewController
+@implementation SHScheduleHVACViewDetailController
     
 // MARK: - 解析
 
@@ -110,7 +110,7 @@
             break;
             
             // 获得不同模式的温度范围
-        case 0x1901: {
+        case 0x1901: { 
             
             // 说明：由于协议中没有与温度传感器正负，而是使用了补码的方式来表示
             
@@ -412,23 +412,7 @@
     // 2.读取空调的温度范围
     [SHSocketTools sendDataWithOperatorCode:0x1900 subNetID:self.schedualHVAC.subnetID deviceID:self.schedualHVAC.deviceID additionalData:@[] remoteMacAddress:SHSocketTools.remoteControlMacAddress needReSend:false isDMX:false];
 }
-    
-    /// 关闭界面
-- (void)close {
-    
-    // 模式温度必须是最后离开时显示的哪个
-    NSRange range = [self.modelTemperatureLabel.text rangeOfString:@"°"];
-    
-    if (range.location == NSNotFound) {
-        return;
-    }
-    
-    NSInteger temperature =  [[self.modelTemperatureLabel.text substringToIndex:range.location] integerValue];
-    
-    self.schedualHVAC.schedualTemperature = temperature;
-    
-    [self.navigationController popViewControllerAnimated:true];
-}
+
 
 - (void)viewDidLayoutSubviews {
     
@@ -449,6 +433,23 @@
         
     }
 }
+
+/// 离开页面时保存模式温度
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    // 模式温度必须是最后离开时显示的哪个
+    NSRange range = [self.modelTemperatureLabel.text rangeOfString:@"°"];
+    
+    if (range.location == NSNotFound) {
+        return;
+    }
+    
+    NSInteger temperature =  [[self.modelTemperatureLabel.text substringToIndex:range.location] integerValue];
+    
+    self.schedualHVAC.schedualTemperature = temperature;
+}
     
 /// 配置空调只获得有关操作的数据，其它数据一律不要
 - (void)viewWillAppear:(BOOL)animated {
@@ -456,15 +457,10 @@
     [super viewWillAppear:animated];
     
     [self readDevicesStatus];
-}
-    
-- (void)viewDidAppear:(BOOL)animated {
-
-    [super viewDidAppear:animated];
-    
-    if (!self.schedualHVAC.schedualEnable) {
-        return ;
-    }
+ 
+    // ======  设置界面 ======
+     
+    self.schedualHVAC.isUpdateSchedualCommand = false;
     
     // 设置默认值
     self.turnAcButton.selected = self.schedualHVAC.schedualIsTurnOn;
@@ -543,16 +539,6 @@
     self.isCelsius = YES;
   
     self.navigationItem.title = self.schedualHVAC.acRemark;
-    
-    self.navigationItem.leftBarButtonItem =
-        [UIBarButtonItem
-         barButtonItemWithImageName:@"navigationbarback"
-              hightlightedImageName:@"navigationbarback"
-                          addTarget:self
-                             action:@selector(close)
-                             isLeft:YES
-        ];
-  
    
     [self.lowFanButton setTitle:
      [SHHVAC getFanSpeedName:SHAirConditioningFanSpeedTypeLow]

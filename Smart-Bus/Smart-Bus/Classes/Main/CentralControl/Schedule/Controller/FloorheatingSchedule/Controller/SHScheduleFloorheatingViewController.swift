@@ -200,13 +200,7 @@ extension SHScheduleFloorheatingViewController: UITableViewDelegate {
         
         return headerView
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return floorHeatingZones[section].zoneName ?? "zone"
-    }
 }
-
 
 // MARK: - UITableViewDataSource
 extension SHScheduleFloorheatingViewController: UITableViewDataSource {

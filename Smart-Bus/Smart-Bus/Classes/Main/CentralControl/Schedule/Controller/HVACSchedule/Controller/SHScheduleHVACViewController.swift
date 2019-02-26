@@ -23,29 +23,125 @@ class SHScheduleHVACViewController: SHViewController {
             deviceType: SHSystemDeviceType.hvac.rawValue
     )
     
+    /// 所有的HVAC
+    private lazy var scheduleHVACs = [[SHHVAC]]()
+    
     /// 空调列表
     @IBOutlet weak var hvacListView: UITableView!
 
 }
 
 
+// MARK: - 保存数据
+extension SHScheduleHVACViewController {
+    
+    /// 更新数据
+    @objc private func updateScheduleHVACCommands() {
+        
+        guard let plan = schedule else {
+            return
+        }
+        
+        plan.deleteShceduleCommands(.hvac)
+        
+        for sectionHVACs in scheduleHVACs {
+            
+            for hvac in sectionHVACs where hvac.schedualEnable {
+                
+                let command = SHSchedualCommand()
+                
+                command.scheduleID = plan.scheduleID
+                command.typeID = .hvac
+                
+                command.parameter1 = UInt(hvac.subnetID)
+                command.parameter2 = UInt(hvac.deviceID)
+                
+                command.parameter3 =
+                    hvac.schedualIsTurnOn ? 1 : 0
+                command.parameter4 = UInt(hvac.schedualFanSpeed.rawValue)
+                command.parameter5 = UInt(hvac.schedualMode.rawValue)
+                
+                // 模式温度 -> 具体是哪种模式温度 取决于 parameter5
+                command.parameter6 = UInt(hvac.schedualTemperature)
+                
+                plan.commands.append(command)
+            }
+        }
+        
+        _ = navigationController?.popViewController(
+            animated: true
+        )
+    }
+}
+
+
 // MARK: - UI初始化
 extension SHScheduleHVACViewController {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let plan = schedule else {
+            return
+        }
+        
+        // 命令处理
+        
+        for command in plan.commands where command.typeID == .hvac {
+            
+            for sectionHVACs in scheduleHVACs {
+                
+                for hvac in sectionHVACs {
+                    
+                    if hvac.subnetID == command.parameter1 &&
+                       hvac.deviceID == command.parameter2 {
+                        
+                        if !hvac.isUpdateSchedualCommand {
+                            
+                            continue
+                        }
+                        
+                        // 只要是存在的命令就一定是选中的
+                        hvac.schedualEnable = true
+                        
+                        hvac.schedualIsTurnOn = (command.parameter3 != 0)
+                        
+                        hvac.schedualFanSpeed = SHAirConditioningFanSpeedType(rawValue: UInt8(command.parameter4)) ?? .auto;
+                        
+                        hvac.schedualMode = SHAirConditioningModeType(rawValue: UInt8(command.parameter5)) ?? .cool;
+                        
+                        hvac.schedualTemperature = Int(command.parameter6);
+                    }
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 加载 所有的数据
+        for zone in hvacZones {
+            
+            let hvacs =
+                SHSQLiteManager.shared.getHVACs(
+                    zone.zoneID
+            )
+            
+            scheduleHVACs.append(hvacs)
+        }
+        
         // 设置导航
         navigationItem.title = "HVAC"
         
-        //        navigationItem.rightBarButtonItem =
-        //            UIBarButtonItem(
-        //                imageName: "back",
-        //                hightlightedImageName: "back",
-        //                addTarget: self,
-        //                action: #selector(saveMoodsClick),
-        //                isLeft: false
-        //        )
+        navigationItem.leftBarButtonItem =
+            UIBarButtonItem(
+                imageName: "navigationbarback",
+                hightlightedImageName: "navigationbarback",
+                addTarget: self,
+                action: #selector(updateScheduleHVACCommands),
+                isLeft: true
+        )
         
         // 注册cell
         hvacListView.register(
@@ -67,20 +163,11 @@ extension SHScheduleHVACViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // 获得每个区域
-        let hvacZone = hvacZones[indexPath.section]
-        
-        // 获得每组的hvac
-        let sectionHVACs =
-            SHSQLiteManager.shared.getHVACs(hvacZone.zoneID)
-        
-        // 获得具体的hvac
-        let hvac = sectionHVACs[indexPath.row]
-        
         let hvacController =
-            SHSchedualHVACViewController()
+            SHScheduleHVACViewDetailController()
         
-        hvacController.schedualHVAC = hvac
+        hvacController.schedualHVAC =
+            scheduleHVACs[indexPath.section][indexPath.row]
         
         navigationController?.pushViewController(
             hvacController,
@@ -90,21 +177,19 @@ extension SHScheduleHVACViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return defaultHeight
+        let sectionHVACs = scheduleHVACs[section]
+        
+        return sectionHVACs.isEmpty ? 0 :
+            SHScheduleSectionHeader.rowHeight
     }
     
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //
-    //        let customView = UIView()
-    //
-    //        customView.backgroundColor = UIColor.red
-    //
-    //        return customView
-    //    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        return hvacZones[section].zoneName ?? "zone"
+        let headerView = SHScheduleSectionHeader.loadFromNib()
+        
+        headerView.sectionZone = hvacZones[section]
+        
+        return headerView
     }
 }
 
@@ -117,14 +202,7 @@ extension SHScheduleHVACViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // 获得每个区域
-        let hvacZone = hvacZones[section]
-        
-        // 获得每组的hvac
-        let sectionHVACs =
-            SHSQLiteManager.shared.getHVACs(hvacZone.zoneID)
-        
-        return sectionHVACs.count
+        return scheduleHVACs[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -135,14 +213,8 @@ extension SHScheduleHVACViewController: UITableViewDataSource {
                 for: indexPath
                 ) as! SHSchedualHVACCell
         
-        // 获得每个区域
-        let hvacZone = hvacZones[indexPath.section]
-        
-        // 获得每组的hvac
-        let sectionHVACs =
-            SHSQLiteManager.shared.getHVACs(hvacZone.zoneID)
-        
-        cell.schedualHVAC = sectionHVACs[indexPath.row]
+        cell.schedualHVAC =
+            scheduleHVACs[indexPath.section][indexPath.row]
         
         return cell
     }

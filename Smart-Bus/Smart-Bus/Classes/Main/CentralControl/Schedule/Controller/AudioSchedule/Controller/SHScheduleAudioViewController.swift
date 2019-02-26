@@ -76,7 +76,7 @@ extension SHScheduleAudioViewController: UITableViewDelegate {
         let audio = sectionAudios[indexPath.row]
         
         let audioController =
-            SHSchedualAudioViewController()
+            SHScheduleAudioViewDetailController()
         
         audioController.schedualAudio = audio
         

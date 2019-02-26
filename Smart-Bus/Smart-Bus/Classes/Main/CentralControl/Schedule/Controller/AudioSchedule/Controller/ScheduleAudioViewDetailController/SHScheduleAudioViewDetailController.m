@@ -6,7 +6,7 @@
 //  Copyright © 2018年 SmartHome. All rights reserved.
 //
 
-#import "SHSchedualAudioViewController.h"
+#import "SHScheduleAudioViewDetailController.h"
 #import "SHAudioSelectButton.h"
 
 /// 专辑重用标示符
@@ -17,7 +17,7 @@ static NSString *albumCellReusableIdentifier =
 static NSString *songCellReusableIdentifier =
     @"SHAudioAlbumSongCell";
 
-@interface SHSchedualAudioViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SHScheduleAudioViewDetailController () <UITableViewDelegate, UITableViewDataSource>
 
 /// 顶部分组的视图高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topGroupViewHeightConstraint;
@@ -60,7 +60,7 @@ static NSString *songCellReusableIdentifier =
 
 @end
 
-@implementation SHSchedualAudioViewController
+@implementation SHScheduleAudioViewDetailController
     
 
 // MARK: - 音乐专辑的处理

@@ -8,7 +8,7 @@
 
 #import "SHViewController.h"
 
-@interface SHSchedualAudioViewController : SHViewController
+@interface SHScheduleAudioViewDetailController : SHViewController
 
 /// 计划音乐
 @property (strong, nonatomic) SHAudio *schedualAudio;

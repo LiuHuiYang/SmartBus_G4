@@ -9,7 +9,7 @@
 #import "SHViewController.h"
 @class SHHVAC;
 
-@interface SHSchedualHVACViewController : SHViewController
+@interface SHScheduleHVACViewDetailController : SHViewController
     
 /// 计划空调
 @property (strong, nonatomic) SHHVAC *schedualHVAC;
