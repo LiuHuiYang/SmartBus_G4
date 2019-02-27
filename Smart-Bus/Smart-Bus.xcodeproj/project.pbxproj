@@ -166,8 +166,6 @@
 		044269A321C9EA9B00A7A88B /* SHDmxChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044269A221C9EA9B00A7A88B /* SHDmxChannelViewController.swift */; };
 		044269A521C9F06700A7A88B /* SHDmxColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044269A421C9F06700A7A88B /* SHDmxColorViewController.swift */; };
 		044269AA21CA153C00A7A88B /* SHDmxFunctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044269A821CA153C00A7A88B /* SHDmxFunctionViewController.xib */; };
-		044270CD21ED902A00275398 /* SHRegionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044270C821ED902A00275398 /* SHRegionViewController.xib */; };
-		044270CE21ED902A00275398 /* SHRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044270C921ED902A00275398 /* SHRegionViewController.swift */; };
 		044270CF21ED902A00275398 /* SHRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044270CB21ED902A00275398 /* SHRegion.swift */; };
 		044270D221EDAC1E00275398 /* SHRegionSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044270D021EDAC1E00275398 /* SHRegionSettingViewController.swift */; };
 		044270D321EDAC1E00275398 /* SHRegionSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044270D121EDAC1E00275398 /* SHRegionSettingViewController.xib */; };
@@ -706,8 +704,6 @@
 		044269A221C9EA9B00A7A88B /* SHDmxChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDmxChannelViewController.swift; sourceTree = "<group>"; };
 		044269A421C9F06700A7A88B /* SHDmxColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDmxColorViewController.swift; sourceTree = "<group>"; };
 		044269A821CA153C00A7A88B /* SHDmxFunctionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDmxFunctionViewController.xib; sourceTree = "<group>"; };
-		044270C821ED902A00275398 /* SHRegionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHRegionViewController.xib; sourceTree = "<group>"; };
-		044270C921ED902A00275398 /* SHRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHRegionViewController.swift; sourceTree = "<group>"; };
 		044270CB21ED902A00275398 /* SHRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHRegion.swift; sourceTree = "<group>"; };
 		044270D021EDAC1E00275398 /* SHRegionSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegionSettingViewController.swift; sourceTree = "<group>"; };
 		044270D121EDAC1E00275398 /* SHRegionSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHRegionSettingViewController.xib; sourceTree = "<group>"; };
@@ -1459,8 +1455,6 @@
 		044270C721ED902A00275398 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				044270C921ED902A00275398 /* SHRegionViewController.swift */,
-				044270C821ED902A00275398 /* SHRegionViewController.xib */,
 				044270D021EDAC1E00275398 /* SHRegionSettingViewController.swift */,
 				044270D121EDAC1E00275398 /* SHRegionSettingViewController.xib */,
 			);
@@ -4703,7 +4697,6 @@
 				04A177CF215F5E1400BD9744 /* SHAlarmViewController.xib in Resources */,
 				8B99A770206E163200D97AA6 /* SHMediaSATCategoryEditViewCell.xib in Resources */,
 				04E1D155221BD0310059DE46 /* SHScheduleFloorheatingViewController.xib in Resources */,
-				044270CD21ED902A00275398 /* SHRegionViewController.xib in Resources */,
 				8B8298D6204E31F300F3AD41 /* SHChangeMoodImageViewController.xib in Resources */,
 				04FFCFAA2174384D00684CFA /* SHNetWorkRealIPViewController.xib in Resources */,
 				8BD24B8B206B657F00CFFE75 /* SHAreaSettingViewController.xib in Resources */,
@@ -4954,7 +4947,6 @@
 				042CD7D020AD2ED600061670 /* EZAudioUtilities.m in Sources */,
 				047812AC216F210E007A7162 /* SHCurrentTransformerViewController.swift in Sources */,
 				04CF6F442193CF660052A8A9 /* SHDryContact.swift in Sources */,
-				044270CE21ED902A00275398 /* SHRegionViewController.swift in Sources */,
 				04184E2C21F1BAFB0002E491 /* SHSQLiteManager + Region.swift in Sources */,
 				0499C9EF21D6002500E15569 /* SHAudioRadioView.swift in Sources */,
 				042CD7CD20AD2ED600061670 /* EZAudioPlayer.m in Sources */,
