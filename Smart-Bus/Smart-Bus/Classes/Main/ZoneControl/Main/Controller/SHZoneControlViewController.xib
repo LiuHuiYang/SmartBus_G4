@@ -44,10 +44,10 @@
                     </connections>
                 </collectionView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hs6-7X-xKb">
-                    <rect key="frame" x="20" y="35" width="335" height="568"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l5S-53-lw3">
-                            <rect key="frame" x="0.0" y="0.0" width="335" height="444"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="474"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="nzx-yq-y5u"/>
@@ -55,7 +55,7 @@
                             </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUm-Is-xpB">
-                            <rect key="frame" x="67" y="464" width="201" height="84"/>
+                            <rect key="frame" x="75" y="494" width="225" height="84"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="84" id="95S-rN-7wQ"/>
                             </constraints>
@@ -90,13 +90,13 @@
                 <constraint firstItem="98o-Gd-atW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BoM-EW-M6U"/>
                 <constraint firstItem="BNT-Ap-uy9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="D6B-2n-ql2"/>
                 <constraint firstAttribute="bottom" secondItem="BNT-Ap-uy9" secondAttribute="bottom" constant="49" id="DE7-Yb-6IM"/>
-                <constraint firstItem="Hs6-7X-xKb" firstAttribute="top" secondItem="Wkf-jf-rKr" secondAttribute="top" constant="15" id="IVh-Rk-goz"/>
+                <constraint firstItem="Hs6-7X-xKb" firstAttribute="top" secondItem="Wkf-jf-rKr" secondAttribute="top" id="IVh-Rk-goz"/>
                 <constraint firstAttribute="trailing" secondItem="BNT-Ap-uy9" secondAttribute="trailing" id="Jh9-Xu-boL"/>
-                <constraint firstItem="Wkf-jf-rKr" firstAttribute="trailing" secondItem="Hs6-7X-xKb" secondAttribute="trailing" constant="20" id="NuN-GC-2A0"/>
+                <constraint firstItem="Wkf-jf-rKr" firstAttribute="trailing" secondItem="Hs6-7X-xKb" secondAttribute="trailing" id="NuN-GC-2A0"/>
                 <constraint firstAttribute="trailing" secondItem="98o-Gd-atW" secondAttribute="trailing" id="RTR-Vh-uFn"/>
-                <constraint firstItem="Hs6-7X-xKb" firstAttribute="height" secondItem="BNT-Ap-uy9" secondAttribute="height" multiplier="0.95" id="SOE-c5-daF"/>
+                <constraint firstItem="Hs6-7X-xKb" firstAttribute="height" secondItem="BNT-Ap-uy9" secondAttribute="height" id="SOE-c5-daF"/>
                 <constraint firstItem="98o-Gd-atW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Unf-pG-eJS"/>
-                <constraint firstItem="Hs6-7X-xKb" firstAttribute="leading" secondItem="Wkf-jf-rKr" secondAttribute="leading" constant="20" id="WqT-bG-zY2"/>
+                <constraint firstItem="Hs6-7X-xKb" firstAttribute="leading" secondItem="Wkf-jf-rKr" secondAttribute="leading" id="WqT-bG-zY2"/>
                 <constraint firstAttribute="bottom" secondItem="98o-Gd-atW" secondAttribute="bottom" id="eIi-Lx-oxU"/>
                 <constraint firstItem="BNT-Ap-uy9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rNQ-G7-D6s"/>
             </constraints>

@@ -333,8 +333,8 @@ extension SHZoneControlViewController {
                 isLeft: false
         )
         
-        navigationItem.rightBarButtonItems =
-            [addItem, searchItem] as? [UIBarButtonItem]
+        navigationItem.leftBarButtonItem = searchItem
+        navigationItem.rightBarButtonItem = addItem
         
         listView.register(
             UINib(nibName: zoneControlCellReuseIdentifier,
@@ -381,32 +381,8 @@ extension SHZoneControlViewController {
                 withSubTitle: "MAIN_LABEL"
             ) as! [String]).first ?? ""
         
-        navigationItem.title = "Zones"
-        
-//        let titleView = UIView()
-//        titleView.backgroundColor = UIColor.red
-//        titleView.bounds = CGRect(x: 0, y: 0, width: 220, height: 64)
-//        
-//        navigationItem.titleView = titleView
-        
-        if let rightItems = self.navigationItem.rightBarButtonItems {
-        
-            let itemSize =
-                UIDevice.is_iPad() ?
-                    (navigationBarHeight + statusBarHeight) :
-                    tabBarHeight
-        
-            for i in 0 ..< rightItems.count {
-            
-                let itemView = rightItems[i].customView
-                itemView?.bounds =
-                    CGRect(x: 0,
-                           y: 0,
-                           width: itemSize,
-                           height: itemSize
-                )
-            }
-        }
+        navigationItem.title = title
+         
         
         guard let area = region else {
             
