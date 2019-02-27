@@ -10,22 +10,43 @@ import UIKit
 
 /// cell重用标示符
 private let zoneControlCellReuseIdentifier =
-    "SHZoneControlViewCell"
+"SHZoneControlViewCell"
 
 /// deviceCell重用标标
 private let deviceCellReuseIdentifier = "SHDeviceViewCell"
+
+/// regionCell重用标示
+private let regionCellReuseIdentifier = "SHRegionViewCell"
 
 class SHZoneControlViewController: SHViewController {
     
     /// 地区
     var region: SHRegion?
     
-    /// 所有的区域
-    private lazy var allZones = [SHZone]()
+    /// 所有的分组
+    private lazy var groups = [SHRegion]()
+    
+    /// 当前分组的所有区域
+    private lazy var zones = [SHZone]()
     
     /// 所有在线设备
     private lazy var devices = [SHDevice]()
-
+    
+    /// 导航栏上中间视图
+    private lazy var titleView: UIButton = {
+        
+        let button = UIButton()
+        
+        button.titleLabel?.font = navigationBarFont
+        button.titleLabel?.textColor = UIView.textWhiteColor()
+        button.addTarget(self,
+                         action: #selector(sectionButtonClick),
+                         for: .touchUpInside
+        )
+        
+        return button
+    }()
+    
     /// 区域列表
     @IBOutlet weak var listView: UICollectionView!
     
@@ -41,12 +62,15 @@ class SHZoneControlViewController: SHViewController {
     /// 搜索设备视图
     @IBOutlet weak var serchView: UIView!
     
-    /// 设备列表
+    /// 搜索设备列表
     @IBOutlet weak var deviceListView: UITableView!
+    
+    /// 区域列表
+    @IBOutlet weak var regionListView: UITableView!
     
     /// 点击确定
     @IBAction func sureButtonClick() {
-    
+        
         serchView.isHidden = true
     }
 }
@@ -59,7 +83,7 @@ extension SHZoneControlViewController {
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
         
         if socketData.operatorCode != 0x000F {
-        
+            
             return
         }
         
@@ -79,7 +103,7 @@ extension SHZoneControlViewController {
             
             if dev.subNetID == device.subNetID &&
                 dev.deviceID == device.deviceID {
-            
+                
                 break
             }
             
@@ -121,6 +145,14 @@ extension SHZoneControlViewController {
 // MARK: - 设置增加与删除
 extension SHZoneControlViewController {
     
+    
+    /// 分组按钮点击
+    @objc private func sectionButtonClick() {
+        
+        serchView.isHidden = true
+        regionListView.isHidden = !regionListView.isHidden
+    }
+    
     /// 设置区域
     @objc private func addNewZones() {
         
@@ -128,23 +160,67 @@ extension SHZoneControlViewController {
             return
         }
         
-        let zone = SHZone()
-        zone.zoneID =
-            SHSQLiteManager.shared.getMaxZoneID() + 1
-        zone.zoneName = "New Zone"
-        zone.zoneIconName = "Demokit"
-        zone.regionID = region?.regionID ?? 1 // 默认是1
-        
-        _ = SHSQLiteManager.shared.insertZone(zone)
-        
-        let systemViewController = SHAreaSettingViewController()
-        
-        systemViewController.currentZone = zone
-        
-        navigationController?.pushViewController(
-            systemViewController,
-            animated: true
+        let alertView =
+            TYCustomAlertView(title: nil,
+                              message: nil,
+                              isCustom: true
         )
+        
+        let addSectionAction = TYAlertAction(title: "Add Section", style: .default) { (action) in
+            
+            let region = SHRegion()
+            region.regionID =
+                SHSQLiteManager.shared.getMaxRegionID()
+                + 1
+            region.regionName = "New Region"
+            region.regionIconName = "regionIcon"
+            
+            _ = SHSQLiteManager.shared.insertRegion(region)
+            
+            let detailController =
+                SHRegionSettingViewController()
+            
+            detailController.region = region
+            
+            self.navigationController?.pushViewController(
+                detailController,
+                animated: true
+            )
+        }
+        
+        alertView?.add(addSectionAction)
+        
+        let addZoneAction = TYAlertAction(title: "Add Zone", style: .default) { (action) in
+            
+            let zone = SHZone()
+            zone.zoneID =
+                SHSQLiteManager.shared.getMaxZoneID() + 1
+            zone.zoneName = "New Zone"
+            zone.zoneIconName = "Demokit"
+            zone.regionID = self.region?.regionID ?? 1 // 默认是1
+            
+            _ = SHSQLiteManager.shared.insertZone(zone)
+            
+            let systemViewController = SHAreaSettingViewController()
+            
+            systemViewController.currentZone = zone
+            
+            self.navigationController?.pushViewController(
+                systemViewController,
+                animated: true
+            )
+        }
+        
+        alertView?.add(addZoneAction)
+        
+        let alertController =
+            TYAlertController(alert: alertView,
+                              preferredStyle: .alert,
+                              transitionAnimation: .dropDown
+        )
+        
+        present(alertController!, animated: true, completion: nil)
+        
     }
     
     /// 设置区域
@@ -178,7 +254,7 @@ extension SHZoneControlViewController {
                 title: SHLanguageText.edit,
                 style: .default) { (action) in
                     
-                    let zone = self.allZones[index.item]
+                    let zone = self.zones[index.item]
                     
                     let systemViewController = SHAreaSettingViewController()
                     
@@ -197,8 +273,8 @@ extension SHZoneControlViewController {
             TYAlertAction(title: SHLanguageText.delete,
                           style: .destructive) { (action) in
                             
-                            let zone = self.allZones[index.item]
-                            self.allZones.remove(at: index.item)
+                            let zone = self.zones[index.item]
+                            self.zones.remove(at: index.item)
                             
                             _ = SHSQLiteManager.shared.deleteZone(zone.zoneID)
                             
@@ -232,12 +308,12 @@ extension SHZoneControlViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let currentZone = allZones[indexPath.item]
+        let currentZone = zones[indexPath.item]
         
         let systemDevices =  SHSQLiteManager.shared.getSystemIDs(
-                currentZone.zoneID
+            currentZone.zoneID
         )
-    
+        
         if systemDevices.isEmpty {
             
             let systemViewController =
@@ -270,7 +346,7 @@ extension SHZoneControlViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return allZones.count
+        return zones.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -279,11 +355,100 @@ extension SHZoneControlViewController: UICollectionViewDataSource {
             collectionView.dequeueReusableCell(
                 withReuseIdentifier: zoneControlCellReuseIdentifier,
                 for: indexPath
-            ) as! SHZoneControlViewCell
+                ) as! SHZoneControlViewCell
         
-        cell.currentZone = allZones[indexPath.item]
+        cell.currentZone = zones[indexPath.item]
         
         return cell
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+extension SHZoneControlViewController: UITableViewDelegate {
+    
+    /// 选择指定的区域
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableView == regionListView {
+            
+            let area = groups[indexPath.row]
+            
+            region = area
+            
+            zones = SHSQLiteManager.shared.getZones(regionID: area.regionID)
+            
+            var title =
+                (SHLanguageTools.share()?.getTextFromPlist(
+                    "MAIN_PAGE",
+                    withSubTitle: "MAIN_LABEL"
+                    ) as! [String]).first ?? ""
+            
+            let isSingleRegion = groups.count == 1
+            
+            title =
+                isSingleRegion ?
+                    title :
+                    (area.regionName + " ▼ ")
+            
+            titleView.isUserInteractionEnabled = !isSingleRegion
+            
+            titleView.setTitle(title, for: .normal)
+            
+            listView.reloadData()
+            
+            tableView.isHidden = true
+        }
+    }
+    
+    // ======  编辑与删除地区 =====
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        guard tableView == regionListView else {
+            
+            return false
+        }
+        
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        guard tableView == regionListView else {
+            
+            return nil
+        }
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "\t\(SHLanguageText.delete)\t") { (action, indexPath) in
+            
+            tableView.setEditing(false, animated: true)
+            
+            let region = self.groups[indexPath.row]
+            self.groups.remove(at: indexPath.row)
+            
+            _ = SHSQLiteManager.shared.deleteRegion(region.regionID)
+            
+            self.regionListView.reloadData()
+        }
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "\t\(SHLanguageText.edit)\t") { (action, indexPath) in
+            
+            tableView.setEditing(false, animated: true)
+            
+            let area = self.groups[indexPath.row]
+            
+            let detailController =
+                SHRegionSettingViewController()
+            
+            detailController.region = area
+            self.navigationController?.pushViewController(
+                detailController,
+                animated: true
+            )
+        }
+        
+        return [deleteAction, editAction]
     }
 }
 
@@ -291,29 +456,56 @@ extension SHZoneControlViewController: UICollectionViewDataSource {
 extension SHZoneControlViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-  
-        return devices.count
+        
+        if tableView == deviceListView {
+            
+            return devices.count
+            
+        } else if tableView == regionListView {
+            
+            return groups.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: deviceCellReuseIdentifier,
-                for: indexPath
-                ) as! SHDeviceViewCell
+        if tableView == deviceListView {
+            
+            let cell =
+                tableView.dequeueReusableCell(
+                    withIdentifier: deviceCellReuseIdentifier,
+                    for: indexPath
+                    ) as! SHDeviceViewCell
+            
+            cell.device = devices[indexPath.row]
+            
+            return cell
+        } else if tableView == regionListView {
+            
+            let cell =
+                tableView.dequeueReusableCell(
+                    withIdentifier: regionCellReuseIdentifier,
+                    for: indexPath
+                ) as! SHRegionViewCell
+            
+            cell.region = groups[indexPath.row]
+            
+            return cell
+        }
         
-        cell.device = devices[indexPath.row]
-       
-        return cell
+        return UITableViewCell()
     }
 }
 
 // MARK: - UI设置
 extension SHZoneControlViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.titleView = titleView
         
         let addItem =
             UIBarButtonItem(
@@ -323,7 +515,6 @@ extension SHZoneControlViewController {
                 action: #selector(addNewZones),
                 isLeft: false
         )
-        
         let searchItem =
             UIBarButtonItem(
                 imageName: "searchDevice_navigationbar",
@@ -352,6 +543,15 @@ extension SHZoneControlViewController {
         
         deviceListView.rowHeight = SHDeviceViewCell.rowHeight
         
+        regionListView.register(
+            UINib(nibName: regionCellReuseIdentifier,
+                  bundle: nil),
+            forCellReuseIdentifier: regionCellReuseIdentifier
+        )
+        
+        regionListView.rowHeight =
+            SHRegionViewCell.rowHeight
+        
         // 添加手势
         let longPress =
             UILongPressGestureRecognizer(
@@ -375,42 +575,31 @@ extension SHZoneControlViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-       let title =
-            (SHLanguageTools.share()?.getTextFromPlist(
-                "MAIN_PAGE",
-                withSubTitle: "MAIN_LABEL"
-            ) as! [String]).first ?? ""
+        groups = SHSQLiteManager.shared.getRegions()
         
-        navigationItem.title = title
-         
+        regionListView.reloadData()
         
-        guard let area = region else {
-            
-            return
-        }
-        
-        allZones = SHSQLiteManager.shared.getZones(regionID: area.regionID)
-        
-        if allZones.isEmpty {
-            
-            SVProgressHUD.showInfo(
-                withStatus: SHLanguageText.noData
-            )
-            
-            return
-        }
-        
-        listView.reloadData()
+        self.tableView(regionListView,
+                       didSelectRowAt: IndexPath(row: 0,
+                                                 section: 0)
+        )
     }
     
     /// 布局
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        navigationItem.titleView?.bounds =
+            CGRect(x: 0,
+                   y: 0,
+                   width: view.frame_width,
+                   height: navigationBarHeight
+        )
+        
         if UIDevice.is_iPhoneX_More() {
             
             listViewBottomConstraint.constant =
-                tabBarHeight_iPhoneX_more
+            tabBarHeight_iPhoneX_more
         }
         
         let itemMarignX: CGFloat = 1
@@ -418,7 +607,7 @@ extension SHZoneControlViewController {
         var totalCols = isPortrait ? 4 : 6
         
         if UIDevice.is_iPhone() {
-        
+            
             sureButtonHeghtConstraint.constant = tabBarHeight
             
             totalCols -= 1
@@ -431,7 +620,7 @@ extension SHZoneControlViewController {
         let itemMarignY = (listView.frame_height - (CGFloat(countForVerticalDirection) * itemWidth)) / CGFloat(countForVerticalDirection)
         
         let flowLayout = listView.collectionViewLayout as! UICollectionViewFlowLayout
-
+        
         flowLayout.itemSize =
             CGSize(width: itemWidth, height: itemWidth)
         flowLayout.minimumLineSpacing = itemMarignY

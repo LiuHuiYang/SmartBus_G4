@@ -15,6 +15,7 @@
                 <outlet property="deviceListView" destination="l5S-53-lw3" id="FVt-DI-iY1"/>
                 <outlet property="listView" destination="BNT-Ap-uy9" id="mWc-K4-7uZ"/>
                 <outlet property="listViewBottomConstraint" destination="DE7-Yb-6IM" id="yNg-Cr-33m"/>
+                <outlet property="regionListView" destination="2nT-gf-xcM" id="mE9-Hg-Goi"/>
                 <outlet property="serchView" destination="Hs6-7X-xKb" id="Wth-cD-5dm"/>
                 <outlet property="sureButton" destination="YUm-Is-xpB" id="ibn-Vh-VDW"/>
                 <outlet property="sureButtonHeghtConstraint" destination="95S-rN-7wQ" id="rQ2-ms-Gj9"/>
@@ -84,6 +85,14 @@
                         <constraint firstItem="YUm-Is-xpB" firstAttribute="width" secondItem="Hs6-7X-xKb" secondAttribute="width" multiplier="0.6" id="wFA-WT-DvY"/>
                     </constraints>
                 </view>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2nT-gf-xcM">
+                    <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                    <color key="backgroundColor" red="0.44705882352941173" green="0.41960784313725491" blue="0.43137254901960786" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="jLV-fs-B1X"/>
+                        <outlet property="delegate" destination="-1" id="jUm-QH-VyV"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -92,13 +101,17 @@
                 <constraint firstAttribute="bottom" secondItem="BNT-Ap-uy9" secondAttribute="bottom" constant="49" id="DE7-Yb-6IM"/>
                 <constraint firstItem="Hs6-7X-xKb" firstAttribute="top" secondItem="Wkf-jf-rKr" secondAttribute="top" id="IVh-Rk-goz"/>
                 <constraint firstAttribute="trailing" secondItem="BNT-Ap-uy9" secondAttribute="trailing" id="Jh9-Xu-boL"/>
+                <constraint firstItem="2nT-gf-xcM" firstAttribute="centerX" secondItem="Hs6-7X-xKb" secondAttribute="centerX" id="McT-Cx-wWs"/>
                 <constraint firstItem="Wkf-jf-rKr" firstAttribute="trailing" secondItem="Hs6-7X-xKb" secondAttribute="trailing" id="NuN-GC-2A0"/>
                 <constraint firstAttribute="trailing" secondItem="98o-Gd-atW" secondAttribute="trailing" id="RTR-Vh-uFn"/>
                 <constraint firstItem="Hs6-7X-xKb" firstAttribute="height" secondItem="BNT-Ap-uy9" secondAttribute="height" id="SOE-c5-daF"/>
                 <constraint firstItem="98o-Gd-atW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Unf-pG-eJS"/>
                 <constraint firstItem="Hs6-7X-xKb" firstAttribute="leading" secondItem="Wkf-jf-rKr" secondAttribute="leading" id="WqT-bG-zY2"/>
+                <constraint firstItem="2nT-gf-xcM" firstAttribute="width" secondItem="Hs6-7X-xKb" secondAttribute="width" id="XEq-pu-zMh"/>
                 <constraint firstAttribute="bottom" secondItem="98o-Gd-atW" secondAttribute="bottom" id="eIi-Lx-oxU"/>
+                <constraint firstItem="2nT-gf-xcM" firstAttribute="centerY" secondItem="Hs6-7X-xKb" secondAttribute="centerY" id="m5D-1u-H31"/>
                 <constraint firstItem="BNT-Ap-uy9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rNQ-G7-D6s"/>
+                <constraint firstItem="2nT-gf-xcM" firstAttribute="height" secondItem="Hs6-7X-xKb" secondAttribute="height" id="xWR-Bs-CzP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Wkf-jf-rKr"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>

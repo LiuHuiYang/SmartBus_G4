@@ -8,6 +8,10 @@
 
 import UIKit
 
+/// 导航栏的字体
+let navigationBarFont: UIFont =
+    (UIDevice.is_iPad() ? UIView.suitFontForPad() : UIFont.boldSystemFont(ofSize: 20))
+
 class SHNavigationController: UINavigationController {
 
     override func viewDidLoad() {
@@ -20,7 +24,7 @@ class SHNavigationController: UINavigationController {
         )
         
         navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: (UIDevice.is_iPad() ? UIView.suitFontForPad() : UIFont.boldSystemFont(ofSize: 20)),
+            NSAttributedString.Key.font: navigationBarFont,
             
             NSAttributedString.Key.foregroundColor:
                 UIView.textWhiteColor()
