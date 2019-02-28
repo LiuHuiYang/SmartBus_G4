@@ -24,7 +24,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UTX-37-wex">
-                    <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="90Q-YC-K3w"/>
@@ -37,7 +37,7 @@
                 <constraint firstAttribute="trailing" secondItem="b10-G4-5Cu" secondAttribute="trailing" id="9xj-1U-2hD"/>
                 <constraint firstItem="b10-G4-5Cu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="J8F-bj-r0S"/>
                 <constraint firstAttribute="bottom" secondItem="UTX-37-wex" secondAttribute="bottom" constant="49" id="K80-gI-8K7"/>
-                <constraint firstItem="UTX-37-wex" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="UJi-oW-dSa"/>
+                <constraint firstItem="UTX-37-wex" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UJi-oW-dSa"/>
                 <constraint firstItem="UTX-37-wex" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WqF-yk-SjQ"/>
                 <constraint firstAttribute="bottom" secondItem="b10-G4-5Cu" secondAttribute="bottom" id="Yib-q3-NiP"/>
                 <constraint firstAttribute="trailing" secondItem="UTX-37-wex" secondAttribute="trailing" id="ft1-pF-Xg9"/>

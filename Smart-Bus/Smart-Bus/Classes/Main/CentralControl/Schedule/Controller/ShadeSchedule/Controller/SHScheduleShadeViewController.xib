@@ -24,7 +24,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Za-VB-vAk">
-                    <rect key="frame" x="0.0" y="29" width="375" height="589"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="eCy-ur-bGb"/>
@@ -37,7 +37,7 @@
                 <constraint firstAttribute="trailing" secondItem="2Za-VB-vAk" secondAttribute="trailing" id="6GI-KU-m17"/>
                 <constraint firstAttribute="bottom" secondItem="hn8-sh-w0P" secondAttribute="bottom" id="Cth-pJ-2vz"/>
                 <constraint firstAttribute="bottom" secondItem="2Za-VB-vAk" secondAttribute="bottom" constant="49" id="Rar-DJ-rfL"/>
-                <constraint firstItem="2Za-VB-vAk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="29" id="VJo-0x-9dV"/>
+                <constraint firstItem="2Za-VB-vAk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VJo-0x-9dV"/>
                 <constraint firstItem="hn8-sh-w0P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="byb-Qh-Wvy"/>
                 <constraint firstAttribute="trailing" secondItem="hn8-sh-w0P" secondAttribute="trailing" id="m7F-eG-gGV"/>
                 <constraint firstItem="hn8-sh-w0P" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nGO-Oa-0Cu"/>

@@ -16,12 +16,13 @@ import UIKit
         // 添加所有的子控制器
         addChildControllers()
         
-        if #available(iOS 12.0, *) {
+        if #available(iOS 12.1, *) {
             
             // 解决 iOS 12.1 开始， pop返回时 tabBar 子控件抖动
             tabBar.isTranslucent = false
             tabBar.barTintColor =
                 UIColor(hex: 0x5c493d, alpha: 1.0)
+            
         } else {
             
             // 设置背景
