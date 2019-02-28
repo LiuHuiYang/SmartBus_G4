@@ -9,22 +9,25 @@
 import UIKit
 
 @objcMembers class SHMainViewController: SHTabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 添加所有的子控制器
         addChildControllers()
         
-        // 设置背景
-//        tabBar.backgroundImage =
-//            UIImage(named: "tabBarbackground")
-       
-        // 解决 iOS 12.1 开始， pop返回时 tabBar 子控件抖动
-        tabBar.isTranslucent = false
-        tabBar.barTintColor =
-            UIColor(hex: 0x5c493d, alpha: 1.0)
-       
+        if #available(iOS 12.0, *) {
+            
+            // 解决 iOS 12.1 开始， pop返回时 tabBar 子控件抖动
+            tabBar.isTranslucent = false
+            tabBar.barTintColor =
+                UIColor(hex: 0x5c493d, alpha: 1.0)
+        } else {
+            
+            // 设置背景
+            tabBar.backgroundImage =
+                UIImage(named: "tabBarbackground")
+        }
     }
 }
 
@@ -43,7 +46,7 @@ extension SHMainViewController {
             title: titleArray[0],
             imageName: "zones_tabBar"
         )
-         
+        
         // 中心控制
         setChildViewController(
             viewController: SHCentralControlViewController(),
@@ -80,16 +83,18 @@ extension SHMainViewController {
         title: String,
         imageName: String) {
         
-//        viewController.title = title
+        //        viewController.title = title
         
-        viewController.tabBarItem.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
+        viewController.tabBarItem.image =
+            UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
         
-        viewController.tabBarItem.selectedImage = UIImage(named: "\(imageName)_highlighted")?.withRenderingMode(.alwaysOriginal)
+        viewController.tabBarItem.selectedImage =
+            UIImage(named: "\(imageName)_highlighted")?.withRenderingMode(.alwaysOriginal)
         
         let childNaviationViewController =
             SHNavigationController(rootViewController: viewController)
         
-        viewController.tabBarItem.imageInsets = UIEdgeInsets.init(top: 4, left: 0, bottom: -4, right: 0)
+        viewController.tabBarItem.imageInsets = UIEdgeInsets.init(top: 3, left: 0, bottom: -3, right: 0)
         
         addChild(childNaviationViewController)
     }

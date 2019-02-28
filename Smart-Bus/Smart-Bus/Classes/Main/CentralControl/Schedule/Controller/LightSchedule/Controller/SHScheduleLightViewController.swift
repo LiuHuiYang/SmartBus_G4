@@ -148,10 +148,9 @@ extension SHScheduleLightViewController {
             scheduleLights.append(lights)
         }
         
-        // 设置导航
-        navigationItem.title = "Light"
         
-        // 注册cell
+        navigationItem.title = "Light"
+      
         lightListView.register(
             UINib(
                 nibName: schduleLightCellReuseIdentifier,
@@ -167,6 +166,7 @@ extension SHScheduleLightViewController {
 
 // MARK: - UITableViewDelegate
 extension SHScheduleLightViewController: UITableViewDelegate {
+    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
@@ -207,9 +207,8 @@ extension SHScheduleLightViewController: UITableViewDataSource {
                 for: indexPath
                 ) as! SHSchduleLightCell
         
-        let sectionLights = scheduleLights[indexPath.section]
-        
-        cell.light = sectionLights[indexPath.row]
+        cell.light =
+            scheduleLights[indexPath.section][indexPath.row]
         
         return cell
     }
