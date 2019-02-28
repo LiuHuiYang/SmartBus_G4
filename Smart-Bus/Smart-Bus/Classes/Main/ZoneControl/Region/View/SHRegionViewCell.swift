@@ -32,12 +32,6 @@ class SHRegionViewCell: UITableViewCell {
         }
     }
     
-    /// 图片
-    @IBOutlet weak var iconView: UIImageView!
-    
-    /// 名称
-    @IBOutlet weak var nameLabel: UILabel!
-    
     /// 行高
     static var rowHeight: CGFloat {
         
@@ -49,6 +43,19 @@ class SHRegionViewCell: UITableViewCell {
         return (navigationBarHeight + statusBarHeight)
     }
 
+    /// 图片
+    @IBOutlet weak var iconView: UIImageView!
+    
+    /// 名称
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    /// 高度约束
+    @IBOutlet weak var iconViewHeightConstraint: NSLayoutConstraint!
+    
+    /// 宽度约束
+    @IBOutlet weak var iconViewWidthConstraint: NSLayoutConstraint!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -58,6 +65,19 @@ class SHRegionViewCell: UITableViewCell {
         if UIDevice.is_iPad() {
             
             nameLabel.font = UIView.suitFontForPad()
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if UIDevice.is_iPad() {
+            
+            iconViewWidthConstraint.constant =
+                tabBarHeight + tabBarHeight
+            
+            iconViewHeightConstraint.constant =
+                tabBarHeight + tabBarHeight
         }
     }
 

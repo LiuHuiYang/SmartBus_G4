@@ -67,6 +67,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="iconView" destination="Ddq-wC-oVt" id="ajZ-z0-40Z"/>
+                <outlet property="iconViewHeightConstraint" destination="FdS-SX-Joe" id="tba-0w-aA2"/>
+                <outlet property="iconViewWidthConstraint" destination="WV2-Kt-jiR" id="U4p-u9-9ek"/>
                 <outlet property="nameLabel" destination="srz-YO-MeE" id="CCm-Es-h1I"/>
             </connections>
             <point key="canvasLocation" x="104" y="76.46176911544228"/>
