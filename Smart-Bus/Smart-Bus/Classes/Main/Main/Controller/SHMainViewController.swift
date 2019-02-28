@@ -43,14 +43,7 @@ extension SHMainViewController {
             title: titleArray[0],
             imageName: "zones_tabBar"
         )
-        
-//        // 多区域控制
-//        setChildViewController(
-//            viewController: SHRegionViewController(),
-//            title: titleArray[0],
-//            imageName: "zones_tabBar"
-//        )
-        
+         
         // 中心控制
         setChildViewController(
             viewController: SHCentralControlViewController(),
