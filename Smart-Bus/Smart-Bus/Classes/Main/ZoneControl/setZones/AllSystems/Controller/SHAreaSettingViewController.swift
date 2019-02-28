@@ -10,12 +10,30 @@ import UIKit
 
 /// cell 重用标示
 private let systemCellReusableIdentifier =
-    "SHSetSystemViewCell"
+"SHSetSystemViewCell"
 
 class SHAreaSettingViewController: SHViewController {
     
+    /// 设置区域
+    var region: SHRegion? {
+        
+        didSet {
+            
+            isSetupZone = region == nil
+        }
+    }
+    
     /// 当前区域
-    var currentZone: SHZone?
+    var currentZone: SHZone? {
+        
+        didSet {
+            
+            isSetupZone = currentZone != nil
+        }
+    }
+    
+    /// 是否是设置Zone
+    private var isSetupZone = true
     
     /// 设置名称
     private lazy var deviceNames =
@@ -23,7 +41,7 @@ class SHAreaSettingViewController: SHViewController {
     
     /// 区域中包含的所有开启功能的系统设备
     private lazy var allSystems = [UInt]()
- 
+    
     /// 区域高度
     @IBOutlet weak var zoneViewHeightConstraint: NSLayoutConstraint!
     
@@ -41,100 +59,6 @@ class SHAreaSettingViewController: SHViewController {
     
     /// 设置列表
     @IBOutlet weak var deviceListView: UITableView!
-    
-    /// 保存配置好的数据
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if currentZone == nil {
-            
-            return
-        }
-        
-        _ = SHSQLiteManager.shared.saveSystemIDs(
-            allSystems,
-            zoneID: currentZone!.zoneID
-        )
-        
-        view.endEditing(true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        allSystems =
-            SHSQLiteManager.shared.getSystemIDs(
-                currentZone?.zoneID ?? 0)
-        
-        deviceListView.reloadData()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.title = "System Setting"
-        
-        deviceListView.rowHeight =
-            SHSetSystemViewCell.rowHeight
-        
-        deviceListView.register(
-            UINib(nibName: systemCellReusableIdentifier,
-                  bundle: nil),
-            forCellReuseIdentifier:
-                systemCellReusableIdentifier
-        )
-        
-        
-        // 名称
-        nameTextField.text = currentZone?.zoneName
-        
-        if UIDevice.is_iPad() {
-            
-            nameTextField.font = UIView.suitFontForPad()
-        }
-        
-        // 图片
-        guard let zoneIconName = currentZone?.zoneIconName,
-            let icon =
-                SHSQLiteManager.shared.getIcon(zoneIconName),
-            let image =
-                (icon.iconData == nil) ?
-                    UIImage(named: zoneIconName) :
-                    UIImage(data: icon.iconData!)
-            
-            else {
-                
-                let defaultImage =
-                    UIImage(named: "Ceooffice")
-                
-                iconButton.setImage(defaultImage,
-                                    for: .normal
-                )
-                
-                return
-        }
-        
-        iconButton.setImage(image, for: .normal)
-    }
-    
-    /// 布局
-    override func viewDidLayoutSubviews() {
-
-        super.viewDidLayoutSubviews()
-
-        if UIDevice.is_iPad() {
-
-            zoneViewHeightConstraint.constant =
-                navigationBarHeight * 2 + statusBarHeight
-
-            iconButtonWidthConstraint.constant =
-                navigationBarHeight * 2
-            
-            iconButtonHeightConstraint.constant =
-                navigationBarHeight * 2
-        }
-    }
-
 }
 
 // MARK: - 图片切换问题
@@ -146,7 +70,7 @@ extension SHAreaSettingViewController : UINavigationControllerDelegate, UIImageP
         let alertView =
             TYCustomAlertView(
                 title: nil,
-                message: "Change zone picture?",
+                message: "Change picture?",
                 isCustom: true
         )
         
@@ -157,12 +81,6 @@ extension SHAreaSettingViewController : UINavigationControllerDelegate, UIImageP
             
             zoneIconViewController.selectImage =
                 { (icon: SHIcon) -> () in
-                    
-                    guard let zone = self.currentZone,
-                        icon.iconName != zone.zoneIconName else {
-                            
-                            return
-                    }
                     
                     var image: UIImage?
                     
@@ -193,11 +111,25 @@ extension SHAreaSettingViewController : UINavigationControllerDelegate, UIImageP
                         for: .normal
                     )
                     
-                    zone.zoneIconName = icon.iconName!
+                    // 设置区域
+                    if self.isSetupZone {
+                        
+                        self.currentZone!.zoneIconName = icon.iconName!
+                        
+                        _ = SHSQLiteManager.shared.updateZone(
+                            self.currentZone!
+                        )
                     
-                    _ = SHSQLiteManager.shared.updateZone(
-                        zone
-                    )
+                    // 设置分区
+                    } else {
+                        
+                        self.region!.regionIconName = icon.iconName!
+                        
+                        _ = SHSQLiteManager.shared.updateRegion(
+                            self.region!
+                        )
+                    }
+                    
             }
             
             let navigationIconViewController =
@@ -302,9 +234,7 @@ extension SHAreaSettingViewController : UINavigationControllerDelegate, UIImageP
         )
         
         // 图片数据
-        guard let zone = currentZone,
-            
-            let sourceImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+        guard let sourceImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
             
             let image =
             iconButton.imageView?.reSizeImage(sourceImage, to: iconSize),
@@ -344,9 +274,20 @@ extension SHAreaSettingViewController : UINavigationControllerDelegate, UIImageP
         
         _ = SHSQLiteManager.shared.insertIcon(icon)
         
-        zone.zoneIconName = iconName
+        // 区域还是分组
+        if isSetupZone {
+            
+            currentZone!.zoneIconName = iconName
+            
+            _ = SHSQLiteManager.shared.updateZone(currentZone!)
         
-        _ = SHSQLiteManager.shared.updateZone(zone)
+        } else {
+            
+            region!.regionIconName = iconName
+            
+            _ = SHSQLiteManager.shared.updateRegion(region!)
+        }
+        
     }
 }
 
@@ -369,18 +310,22 @@ extension SHAreaSettingViewController: UITextFieldDelegate {
         textField.backgroundColor = UIColor.clear
         textField.textColor = UIColor.white
         
-        guard let zone = currentZone,
-            let name = textField.text,
-            name != zone.zoneName else {
-                
-                textField.text = currentZone?.zoneName
-                
-                return
+        
+        guard let name = textField.text else {
+            return
         }
         
-        zone.zoneName = name
+        if isSetupZone {
+            
+            currentZone?.zoneName = name
+            _ = SHSQLiteManager.shared.updateZone(currentZone!)
+            
+        } else {
+            
+            region?.regionName = name
+            _ = SHSQLiteManager.shared.updateRegion(region!)
+        }
         
-        _ = SHSQLiteManager.shared.updateZone(zone)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -406,7 +351,7 @@ extension SHAreaSettingViewController: UITableViewDataSource {
             tableView.dequeueReusableCell(
                 withIdentifier: systemCellReusableIdentifier,
                 for: indexPath
-            ) as! SHSetSystemViewCell
+                ) as! SHSetSystemViewCell
         
         cell.deviceName = deviceNames[indexPath.row]
         
@@ -428,7 +373,7 @@ extension SHAreaSettingViewController: UITableViewDataSource {
                         break
                     }
                 }
-            
+                
             } else if isHaveDevice &&
                 !self.allSystems.contains(systemID) {
                 
@@ -441,3 +386,104 @@ extension SHAreaSettingViewController: UITableViewDataSource {
 }
 
 
+extension SHAreaSettingViewController {
+    
+    /// 保存配置好的数据
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if isSetupZone {
+        
+            _ = SHSQLiteManager.shared.saveSystemIDs(
+                allSystems,
+                zoneID: currentZone!.zoneID
+            )
+        }
+        
+        view.endEditing(true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isSetupZone {
+            allSystems =
+                SHSQLiteManager.shared.getSystemIDs(
+                    currentZone?.zoneID ?? 0)
+            
+            deviceListView.reloadData()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = "Area Setting"
+        
+        deviceListView.isHidden = !isSetupZone
+        
+        deviceListView.rowHeight =
+            SHSetSystemViewCell.rowHeight
+        
+        deviceListView.register(
+            UINib(nibName: systemCellReusableIdentifier,
+                  bundle: nil),
+            forCellReuseIdentifier:
+            systemCellReusableIdentifier
+        )
+        
+        
+        // 名称
+        nameTextField.text =
+            isSetupZone ? currentZone?.zoneName : region?.regionName
+        
+        if UIDevice.is_iPad() {
+            
+            nameTextField.font = UIView.suitFontForPad()
+        }
+        
+        // 图片
+        let areaIconName =
+            isSetupZone ? currentZone?.zoneIconName :
+                region?.regionIconName
+        
+        guard let iconName = areaIconName,
+                let icon =
+                    SHSQLiteManager.shared.getIcon(iconName),
+                let image = (icon.iconData == nil) ?
+                    UIImage(named: iconName) :
+                    UIImage(data: icon.iconData!) else {
+            
+            let defaultImage =
+                isSetupZone ?
+                    UIImage(named: "Ceooffice") :
+                    UIImage(named: "regionIcon")
+            
+            iconButton.setImage(defaultImage,
+                                for: .normal
+            )
+            
+            return
+        }
+        
+        iconButton.setImage(image, for: .normal)
+    }
+    
+    /// 布局
+    override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+        if UIDevice.is_iPad() {
+            
+            zoneViewHeightConstraint.constant =
+                navigationBarHeight * 2 + statusBarHeight
+            
+            iconButtonWidthConstraint.constant =
+                navigationBarHeight * 2
+            
+            iconButtonHeightConstraint.constant =
+                navigationBarHeight * 2
+        }
+    }
+}

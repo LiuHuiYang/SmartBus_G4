@@ -160,6 +160,9 @@ extension SHZoneControlViewController {
             return
         }
         
+        serchView.isHidden = true
+        regionListView.isHidden = true
+        
         let alertView =
             TYCustomAlertView(title: nil,
                               message: nil,
@@ -178,7 +181,7 @@ extension SHZoneControlViewController {
             _ = SHSQLiteManager.shared.insertRegion(region)
             
             let detailController =
-                SHRegionSettingViewController()
+                SHAreaSettingViewController()
             
             detailController.region = region
             
@@ -439,7 +442,7 @@ extension SHZoneControlViewController: UITableViewDelegate {
             let area = self.groups[indexPath.row]
             
             let detailController =
-                SHRegionSettingViewController()
+                SHAreaSettingViewController()
             
             detailController.region = area
             self.navigationController?.pushViewController(
