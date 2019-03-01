@@ -18,10 +18,8 @@ class SHScheduleMacroViewController: SHViewController {
     var schedule: SHSchedule?
     
     /// 所有的宏
-    private lazy var macros = [SHMacro]()
-    
-    /// 当前选择的宏
-    private lazy var selectMacros = [SHMacro]()
+    private lazy var macros =
+        SHSQLiteManager.shared.getMacros()
     
     /// 宏列表
     @IBOutlet weak var macroListView: UITableView!
@@ -40,7 +38,7 @@ extension SHScheduleMacroViewController {
  
         plan.deleteShceduleCommands(.macro)
         
-        for macro in selectMacros {
+        for macro in macros where macro.scheduleEnable {
             
             let macroCommand = SHSchedualCommand()
             macroCommand.typeID = .macro
@@ -49,7 +47,6 @@ extension SHScheduleMacroViewController {
             
             plan.commands.append(macroCommand)
         }
-   
     }
 }
 
@@ -73,17 +70,6 @@ extension SHScheduleMacroViewController {
             return
         }
         
-        macros =  SHSQLiteManager.shared.getMacros()
-        
-        if macros.isEmpty {
-            
-            SVProgressHUD.showInfo(
-                withStatus: SHLanguageText.noData
-            )
-        }
-        
-        macroListView.reloadData()
-        
         // ===== 命令部分 =====
         
         for command in plan.commands where command.typeID == .macro {
@@ -92,18 +78,20 @@ extension SHScheduleMacroViewController {
                 
                 if macro.macroID == command.parameter1 {
                     
+                    macro.scheduleEnable = true
+                    
                     let indexPath =
                         IndexPath(
                             row: index,
                             section: 0
                     )
-                    
+
                     macroListView.selectRow(
                         at: indexPath,
                         animated: true,
                         scrollPosition: .top
                     )
-                    
+
                     self.tableView(macroListView,
                                    didSelectRowAt: indexPath
                     )
@@ -140,32 +128,13 @@ extension SHScheduleMacroViewController: UITableViewDelegate {
     /// 取消选择
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-        let selectMacro = macros[indexPath.row]
-        
-        for macro in selectMacros.enumerated() {
-            
-            if macro.element.macroID == selectMacro.macroID {
-                
-                selectMacros.remove(at: macro.offset)
-            }
-        }
+        macros[indexPath.row].scheduleEnable = false
     }
     
     /// 选择
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let selectMacro = macros[indexPath.row]
-        
-        for macro in selectMacros {
-            
-            if macro.macroID == selectMacro.macroID {
-                
-                return
-            }
-        }
-        
-        // 来到这里肯定是不存在
-        selectMacros.append(selectMacro)
+        macros[indexPath.row].scheduleEnable = true
     }
 }
 

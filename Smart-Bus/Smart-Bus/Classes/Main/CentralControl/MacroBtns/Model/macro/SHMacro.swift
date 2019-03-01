@@ -10,6 +10,9 @@ import Foundation
 
 @objcMembers class SHMacro: NSObject {
     
+    /// 启动配置计划
+    var scheduleEnable = false
+    
     /// id号
     var id: UInt = 0
     

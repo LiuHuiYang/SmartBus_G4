@@ -17,6 +17,9 @@ class SHScheduleAudioViewController: SHViewController {
     /// 计划
     var schedule: SHSchedule?
     
+    /// 标记分组是否打开的状态标记
+    private lazy var isExpandStauts = [false]
+    
     /// 包含audio的所有区域
     private lazy var audioZones =
         SHSQLiteManager.shared.getZones(
@@ -127,6 +130,10 @@ extension SHScheduleAudioViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 初始化所有的是否展开标记
+        isExpandStauts =
+            [Bool](repeating: false, count: audioZones.count)
+        
         // 加载 所有的数据
         for zone in audioZones {
             
@@ -194,6 +201,16 @@ extension SHScheduleAudioViewController: UITableViewDelegate {
         
         headerView.sectionZone = audioZones[section]
         
+        headerView.isExpand = isExpandStauts[section]
+        
+        headerView.callBack = { (status) -> () in
+            
+            self.isExpandStauts[section] = status
+            
+            let index = IndexSet(integer: section)
+            tableView.reloadSections(index, with: UITableView.RowAnimation.fade)
+        }
+        
         return headerView
     }
 }
@@ -208,8 +225,9 @@ extension SHScheduleAudioViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return scheduleAudios[section].count
+       
+        return  isExpandStauts[section] ?
+                scheduleAudios[section].count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

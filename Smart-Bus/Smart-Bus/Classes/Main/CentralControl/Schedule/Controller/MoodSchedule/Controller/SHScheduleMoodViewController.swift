@@ -17,6 +17,9 @@ class SHScheduleMoodViewController: SHViewController {
     /// 计划
     var schedule: SHSchedule?
     
+    /// 标记分组是否打开的状态标记
+    private lazy var isExpandStauts = [false]
+    
     /// 当前选择的Mood
     private lazy var selectMoods = [SHMood]()
     
@@ -84,29 +87,33 @@ extension SHScheduleMoodViewController {
         
         moodListView.reloadData()
         
+    
         // ===== 命令部分 =====
         
         for command in plan.commands where command.typeID == .mood {
             
-            for (zoneIndex, sectionMoods) in scheduleMoods.enumerated() {
+            for (zoneSection, sectionMoods) in scheduleMoods.enumerated() {
                 
                 for (moodIndex, mood) in sectionMoods.enumerated() {
                     
                     if mood.moodID == command.parameter1 &&
                         mood.zoneID == command.parameter2 {
                         
+                        mood.schedleEnable = true
+                        
                         let indexPath =
                             IndexPath(
                                 row: moodIndex,
-                                section: zoneIndex
+                                section: zoneSection
                         )
+                        print("找到了\(indexPath)")
                         
-                        moodListView.selectRow(
-                            at: indexPath,
-                            animated: true,
-                            scrollPosition: .top
-                        )
-                        
+//                        moodListView.selectRow(
+//                            at: indexPath,
+//                            animated: true,
+//                            scrollPosition: .top
+//                        )
+
                         self.tableView(moodListView,
                                        didSelectRowAt: indexPath
                         )
@@ -119,6 +126,9 @@ extension SHScheduleMoodViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isExpandStauts =
+            [Bool](repeating: false, count: moodZones.count)
+        
         for zone in moodZones {
             
             let sectionMoods =
@@ -127,7 +137,7 @@ extension SHScheduleMoodViewController {
             scheduleMoods.append(sectionMoods)
         }
         
-        // 设置导航
+
         navigationItem.title = "Mood"
         
         // 注册cell
@@ -166,20 +176,27 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
     
     /// 选择
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        cell?.isSelected = true
       
         let selectMood =
             scheduleMoods[indexPath.section][indexPath.row]
         
-        for mood in selectMoods {
-            
-            if mood.moodID == selectMood.moodID &&
-               mood.zoneID == selectMood.zoneID {
-               
-                return
-            }
-        }
         
-        selectMoods.append(selectMood)
+        print(selectMood.moodName)
+//
+//        for mood in selectMoods {
+//
+//            if mood.moodID == selectMood.moodID &&
+//               mood.zoneID == selectMood.zoneID {
+//
+//                return
+//            }
+//        }
+//
+//        selectMoods.append(selectMood)
     }
     
     
@@ -196,6 +213,16 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
         let headerView = SHScheduleSectionHeader.loadFromNib()
 
         headerView.sectionZone = moodZones[section]
+        
+        headerView.isExpand = isExpandStauts[section]
+        
+        headerView.callBack = { (status) -> () in
+            
+            self.isExpandStauts[section] = status
+            
+            let index = IndexSet(integer: section)
+            tableView.reloadSections(index, with: UITableView.RowAnimation.fade)
+        }
 
         return headerView
     }
@@ -210,8 +237,9 @@ extension SHScheduleMoodViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return scheduleMoods[section].count
+         
+        return isExpandStauts[section] ?
+               scheduleMoods[section].count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -222,9 +250,10 @@ extension SHScheduleMoodViewController: UITableViewDataSource {
                 for: indexPath
                 ) as! SHSchduleMoodCell
         
-        let sectionMoods = scheduleMoods[indexPath.section]
+        cell.mood =
+            scheduleMoods[indexPath.section][indexPath.row]
         
-        cell.mood = sectionMoods[indexPath.row]
+        cell.isSelected = true
         
         return cell
     }

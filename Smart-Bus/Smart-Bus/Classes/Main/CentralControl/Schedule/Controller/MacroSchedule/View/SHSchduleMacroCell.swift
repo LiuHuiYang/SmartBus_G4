@@ -13,7 +13,7 @@ class SHSchduleMacroCell: UITableViewCell {
     /// 宏命令模型
     var macro: SHMacro? {
         
-        didSet {
+        didSet { 
             
             let iconName =
                 macro?.macroIconName ?? "Romatic"

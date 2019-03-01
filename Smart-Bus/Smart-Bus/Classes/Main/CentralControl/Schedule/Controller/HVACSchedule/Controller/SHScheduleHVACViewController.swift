@@ -17,6 +17,9 @@ class SHScheduleHVACViewController: SHViewController {
     /// 计划
     var schedule: SHSchedule?
     
+    /// 是否展开的状态
+    private lazy var isExpandStauts = [false]
+    
     /// 包含HVAC的所有区域
     private lazy var hvacZones =
         SHSQLiteManager.shared.getZones(
@@ -120,6 +123,9 @@ extension SHScheduleHVACViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isExpandStauts =
+            [Bool](repeating: false, count: hvacZones.count)
+        
         // 加载 所有的数据
         for zone in hvacZones {
             
@@ -189,6 +195,16 @@ extension SHScheduleHVACViewController: UITableViewDelegate {
         
         headerView.sectionZone = hvacZones[section]
         
+        headerView.isExpand = isExpandStauts[section]
+        
+        headerView.callBack = { (status) -> () in
+            
+            self.isExpandStauts[section] = status
+            
+            let index = IndexSet(integer: section)
+            tableView.reloadSections(index, with: UITableView.RowAnimation.fade)
+        }
+        
         return headerView
     }
 }
@@ -202,7 +218,8 @@ extension SHScheduleHVACViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return scheduleHVACs[section].count
+        return isExpandStauts[section] ?
+               scheduleHVACs[section].count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -17,6 +17,9 @@ class SHScheduleShadeViewController: SHViewController {
     /// 计划
     var schedule: SHSchedule?
     
+    /// 标记分组是否打开的状态标记
+    private lazy var isExpandStauts = [false]
+    
     /// 包含shade的所有区域
     private lazy var shadeZones =
         SHSQLiteManager.shared.getZones(
@@ -107,6 +110,10 @@ extension SHScheduleShadeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 初始化所有的是否展开标记
+        isExpandStauts =
+            [Bool](repeating: false, count: shadeZones.count)
+        
         // 加载所有的区域的窗帘数据
         for zone in shadeZones {
             
@@ -184,6 +191,16 @@ extension SHScheduleShadeViewController: UITableViewDelegate {
         
         headerView.sectionZone = shadeZones[section]
         
+        headerView.isExpand = isExpandStauts[section]
+        
+        headerView.callBack = { (status) -> () in
+            
+            self.isExpandStauts[section] = status
+            
+            let index = IndexSet(integer: section)
+            tableView.reloadSections(index, with: UITableView.RowAnimation.fade)
+        }
+        
         return headerView
     }
     
@@ -199,7 +216,8 @@ extension SHScheduleShadeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return scheduleShades[section].count
+        return  isExpandStauts[section] ?
+                scheduleShades[section].count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
