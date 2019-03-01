@@ -29,7 +29,7 @@ class SHSchduleMacroCell: UITableViewCell {
         
         if UIDevice.is_iPad() {
 
-            return tabBarHeight + tabBarHeight
+            return navigationBarHeight + statusBarHeight
             
         } else if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
 

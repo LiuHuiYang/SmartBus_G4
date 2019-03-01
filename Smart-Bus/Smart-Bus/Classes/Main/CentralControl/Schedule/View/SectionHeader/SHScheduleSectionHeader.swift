@@ -22,7 +22,7 @@ class SHScheduleSectionHeader: UIView, loadNibView {
             if isExpand {
                 
                 sectionLabel.text =
-                    " ▼ " + (sectionZone?.zoneName ?? "")
+                    " ▼  " + (sectionZone?.zoneName ?? "")
             }
         }
     }
@@ -36,7 +36,7 @@ class SHScheduleSectionHeader: UIView, loadNibView {
         didSet {
     
             sectionLabel.text =
-                " ▶︎ " + (sectionZone?.zoneName ?? "")
+                " ▶︎  " + (sectionZone?.zoneName ?? "")
         }
     }
     
