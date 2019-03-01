@@ -74,27 +74,12 @@ extension SHScheduleMacroViewController {
         
         for command in plan.commands where command.typeID == .macro {
             
-            for (index, macro) in macros.enumerated() {
+            for macro in macros {
                 
                 if macro.macroID == command.parameter1 {
                     
                     macro.scheduleEnable = true
                     
-                    let indexPath =
-                        IndexPath(
-                            row: index,
-                            section: 0
-                    )
-
-                    macroListView.selectRow(
-                        at: indexPath,
-                        animated: true,
-                        scrollPosition: .top
-                    )
-
-                    self.tableView(macroListView,
-                                   didSelectRowAt: indexPath
-                    )
                 }
             }
         }
@@ -122,21 +107,6 @@ extension SHScheduleMacroViewController {
 }
 
 
-// MARK: - UITableViewDelegate
-extension SHScheduleMacroViewController: UITableViewDelegate {
-    
-    /// 取消选择
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-        macros[indexPath.row].scheduleEnable = false
-    }
-    
-    /// 选择
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        macros[indexPath.row].scheduleEnable = true
-    }
-}
 
 // MARK: - UITableViewDataSource
 extension SHScheduleMacroViewController: UITableViewDataSource {

@@ -20,9 +20,6 @@ class SHScheduleMoodViewController: SHViewController {
     /// 标记分组是否打开的状态标记
     private lazy var isExpandStauts = [false]
     
-    /// 当前选择的Mood
-    private lazy var selectMoods = [SHMood]()
-    
     /// 包含mood的所有区域
     private lazy var moodZones =
         SHSQLiteManager.shared.getZones(
@@ -52,16 +49,16 @@ extension SHScheduleMoodViewController {
         plan.deleteShceduleCommands(.mood)
         
         // 创建命令集合
-        for mood in selectMoods {
-            
-            let command = SHSchedualCommand()
-            command.typeID = .mood
-            command.scheduleID = plan.scheduleID
-            command.parameter1 = mood.moodID
-            command.parameter2 = mood.zoneID
-            
-            plan.commands.append(command)
-        }
+//        for mood in selectMoods {
+//            
+//            let command = SHSchedualCommand()
+//            command.typeID = .mood
+//            command.scheduleID = plan.scheduleID
+//            command.parameter1 = mood.moodID
+//            command.parameter2 = mood.zoneID
+//            
+//            plan.commands.append(command)
+//        }
     }
 }
 
@@ -161,42 +158,20 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
     /// 取消选择
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-        let deSelectMood =
+        let selectMood =
             scheduleMoods[indexPath.section][indexPath.row]
         
-        for (index, mood) in selectMoods.enumerated() {
-            
-            if mood.moodID == deSelectMood.moodID &&
-               mood.zoneID == deSelectMood.zoneID {
-               
-                selectMoods.remove(at: index)
-            }
-        }
+        selectMood.schedleEnable = false
     }
     
     /// 选择
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath)
-        
-        cell?.isSelected = true
-      
         let selectMood =
             scheduleMoods[indexPath.section][indexPath.row]
         
+        selectMood.schedleEnable = true
         
-        print(selectMood.moodName)
-//
-//        for mood in selectMoods {
-//
-//            if mood.moodID == selectMood.moodID &&
-//               mood.zoneID == selectMood.zoneID {
-//
-//                return
-//            }
-//        }
-//
-//        selectMoods.append(selectMood)
     }
     
     
@@ -221,6 +196,7 @@ extension SHScheduleMoodViewController: UITableViewDelegate {
             self.isExpandStauts[section] = status
             
             let index = IndexSet(integer: section)
+            
             tableView.reloadSections(index, with: UITableView.RowAnimation.fade)
         }
 
@@ -252,8 +228,6 @@ extension SHScheduleMoodViewController: UITableViewDataSource {
         
         cell.mood =
             scheduleMoods[indexPath.section][indexPath.row]
-        
-        cell.isSelected = true
         
         return cell
     }

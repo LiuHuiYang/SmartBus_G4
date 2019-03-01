@@ -13,7 +13,10 @@ class SHSchduleMacroCell: UITableViewCell {
     /// 宏命令模型
     var macro: SHMacro? {
         
-        didSet { 
+        didSet {
+            
+            enableButton.isSelected =
+                macro?.scheduleEnable ?? false
             
             let iconName =
                 macro?.macroIconName ?? "Romatic"
@@ -43,23 +46,32 @@ class SHSchduleMacroCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     /// 选择标志
-    @IBOutlet weak var selectFlagView: UIImageView!
+    @IBOutlet weak var enableButton: UIButton!
     
     /// 图片
     @IBOutlet weak var iconView: UIImageView!
     
     /// 图片高度
-    @IBOutlet weak var flagViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
     
     /// 图片宽度
-    @IBOutlet weak var flagViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
     /// 图片高度
     @IBOutlet weak var iconViewHeightConstraint: NSLayoutConstraint!
     
     /// 图片宽度
     @IBOutlet weak var iconViewWidthConstraint: NSLayoutConstraint!
- 
+    
+    /// 按钮点击
+    @IBAction func enableButtonClick() {
+        
+        enableButton.isSelected =
+            !enableButton.isSelected
+        
+        macro?.scheduleEnable =
+            enableButton.isSelected
+    }
 }
 
 
@@ -89,8 +101,8 @@ extension SHSchduleMacroCell {
             iconViewHeightConstraint.constant =
                 navigationBarHeight
 
-            flagViewHeightConstraint.constant = defaultHeight
-            flagViewWidthConstraint.constant = defaultHeight
+            buttonHeightConstraint.constant = defaultHeight
+            buttonWidthConstraint.constant = defaultHeight
         
         } else if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
 
@@ -102,7 +114,6 @@ extension SHSchduleMacroCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        selectFlagView.isHighlighted = selected
 
     }
 }

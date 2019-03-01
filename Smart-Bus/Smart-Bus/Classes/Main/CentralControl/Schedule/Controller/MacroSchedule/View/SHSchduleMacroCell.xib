@@ -40,25 +40,30 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedualButton_normal" highlightedImage="schedualButton_highlighted" translatesAutoresizingMaskIntoConstraints="NO" id="ubc-yZ-GUw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcP-1D-YK5">
                                 <rect key="frame" x="273" y="21" width="32" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="a3w-Un-qUL"/>
-                                    <constraint firstAttribute="width" constant="32" id="gBV-b7-f4s"/>
+                                    <constraint firstAttribute="width" constant="32" id="L9P-zM-8rE"/>
+                                    <constraint firstAttribute="height" constant="32" id="MVK-Ra-ocv"/>
                                 </constraints>
-                            </imageView>
+                                <state key="normal" image="schedualButton_normal"/>
+                                <state key="selected" image="schedualButton_highlighted"/>
+                                <connections>
+                                    <action selector="enableButtonClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vHg-He-3Xx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="a7O-ON-ZBe" secondAttribute="bottom" id="BBd-Kl-bZc"/>
                             <constraint firstItem="ZS3-RJ-hMX" firstAttribute="centerX" secondItem="8ox-WE-kGK" secondAttribute="centerX" id="EaX-g5-CJt"/>
+                            <constraint firstItem="fcP-1D-YK5" firstAttribute="centerY" secondItem="ZS3-RJ-hMX" secondAttribute="centerY" id="M8k-s6-etn"/>
+                            <constraint firstAttribute="trailing" secondItem="fcP-1D-YK5" secondAttribute="trailing" constant="15" id="Whu-jz-rf3"/>
                             <constraint firstItem="ZS3-RJ-hMX" firstAttribute="centerY" secondItem="8ox-WE-kGK" secondAttribute="centerY" id="YGK-W9-vUh"/>
                             <constraint firstItem="ZS3-RJ-hMX" firstAttribute="leading" secondItem="w9J-wO-cxo" secondAttribute="trailing" constant="15" id="YIG-qI-GT3"/>
                             <constraint firstItem="w9J-wO-cxo" firstAttribute="centerY" secondItem="8ox-WE-kGK" secondAttribute="centerY" id="cmu-zB-tSk"/>
-                            <constraint firstItem="ubc-yZ-GUw" firstAttribute="centerY" secondItem="ZS3-RJ-hMX" secondAttribute="centerY" id="d9k-hc-lj3"/>
                             <constraint firstAttribute="trailing" secondItem="a7O-ON-ZBe" secondAttribute="trailing" id="dwU-zu-zcq"/>
                             <constraint firstItem="a7O-ON-ZBe" firstAttribute="leading" secondItem="8ox-WE-kGK" secondAttribute="leading" id="gEe-HW-PGW"/>
-                            <constraint firstAttribute="trailing" secondItem="ubc-yZ-GUw" secondAttribute="trailing" constant="15" id="rcd-cW-KXL"/>
                             <constraint firstItem="w9J-wO-cxo" firstAttribute="leading" secondItem="8ox-WE-kGK" secondAttribute="leading" constant="15" id="xok-Qj-Ldt"/>
                         </constraints>
                     </view>
@@ -73,13 +78,13 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="flagViewHeightConstraint" destination="a3w-Un-qUL" id="5p3-y9-QbW"/>
-                <outlet property="flagViewWidthConstraint" destination="gBV-b7-f4s" id="PUJ-i6-HcJ"/>
+                <outlet property="buttonHeightConstraint" destination="MVK-Ra-ocv" id="Eh5-xA-eL2"/>
+                <outlet property="buttonWidthConstraint" destination="L9P-zM-8rE" id="kc0-SI-jwz"/>
+                <outlet property="enableButton" destination="fcP-1D-YK5" id="gws-ZX-30d"/>
                 <outlet property="iconView" destination="w9J-wO-cxo" id="C6A-Ii-cr1"/>
                 <outlet property="iconViewHeightConstraint" destination="LIr-dy-1jF" id="REr-AB-xtK"/>
                 <outlet property="iconViewWidthConstraint" destination="O3g-E3-VDV" id="hiG-L3-BMT"/>
                 <outlet property="nameLabel" destination="ZS3-RJ-hMX" id="hTz-Y0-jIt"/>
-                <outlet property="selectFlagView" destination="ubc-yZ-GUw" id="DS3-v4-oR7"/>
             </connections>
             <point key="canvasLocation" x="2" y="-23"/>
         </tableViewCell>
