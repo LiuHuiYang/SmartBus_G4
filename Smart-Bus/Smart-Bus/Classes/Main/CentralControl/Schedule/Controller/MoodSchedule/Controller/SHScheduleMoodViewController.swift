@@ -48,17 +48,19 @@ extension SHScheduleMoodViewController {
         
         plan.deleteShceduleCommands(.mood)
         
-        // 创建命令集合
-//        for mood in selectMoods {
-//            
-//            let command = SHSchedualCommand()
-//            command.typeID = .mood
-//            command.scheduleID = plan.scheduleID
-//            command.parameter1 = mood.moodID
-//            command.parameter2 = mood.zoneID
-//            
-//            plan.commands.append(command)
-//        }
+        for sectionMoods in scheduleMoods {
+            
+            for mood in sectionMoods where mood.scheduleEnable {
+                
+                let command = SHSchedualCommand()
+                command.typeID = .mood
+                command.scheduleID = plan.scheduleID
+                command.parameter1 = mood.moodID
+                command.parameter2 = mood.zoneID
+                
+                plan.commands.append(command)
+            }
+        }
     }
 }
 
@@ -82,42 +84,25 @@ extension SHScheduleMoodViewController {
             return
         }
         
-        moodListView.reloadData()
-        
     
         // ===== 命令部分 =====
         
         for command in plan.commands where command.typeID == .mood {
             
-            for (zoneSection, sectionMoods) in scheduleMoods.enumerated() {
+            for sectionMoods in scheduleMoods {
                 
-                for (moodIndex, mood) in sectionMoods.enumerated() {
+                for mood in sectionMoods {
                     
                     if mood.moodID == command.parameter1 &&
                         mood.zoneID == command.parameter2 {
                         
-                        mood.schedleEnable = true
-                        
-                        let indexPath =
-                            IndexPath(
-                                row: moodIndex,
-                                section: zoneSection
-                        )
-                        print("找到了\(indexPath)")
-                        
-//                        moodListView.selectRow(
-//                            at: indexPath,
-//                            animated: true,
-//                            scrollPosition: .top
-//                        )
-
-                        self.tableView(moodListView,
-                                       didSelectRowAt: indexPath
-                        )
+                        mood.scheduleEnable = true
                     }
                 }
             }
         }
+        
+//        moodListView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -154,25 +139,6 @@ extension SHScheduleMoodViewController {
 
 // MARK: - UITableViewDelegate
 extension SHScheduleMoodViewController: UITableViewDelegate {
-    
-    /// 取消选择
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-        let selectMood =
-            scheduleMoods[indexPath.section][indexPath.row]
-        
-        selectMood.schedleEnable = false
-    }
-    
-    /// 选择
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let selectMood =
-            scheduleMoods[indexPath.section][indexPath.row]
-        
-        selectMood.schedleEnable = true
-        
-    }
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

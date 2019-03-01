@@ -17,6 +17,9 @@ class SHSchduleMoodCell: UITableViewCell {
             
             if mood != nil {
                 
+                enableButton.isSelected =
+                    mood!.scheduleEnable
+                
                 nameLabel.text = mood!.moodName
                 
                 let iconName =
@@ -56,10 +59,10 @@ class SHSchduleMoodCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     
     /// 图片高度
-    @IBOutlet weak var flagViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
     
     /// 图片宽度
-    @IBOutlet weak var flagViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
     
     /// 图片高度
     @IBOutlet weak var iconViewHeightConstraint: NSLayoutConstraint!
@@ -67,6 +70,18 @@ class SHSchduleMoodCell: UITableViewCell {
     /// 图片宽度
     @IBOutlet weak var iconViewWidthConstraint: NSLayoutConstraint!
 
+    /// 选择标志
+    @IBOutlet weak var enableButton: UIButton!
+    
+    /// 按钮点击
+    @IBAction func enableButtonClick() {
+        
+        enableButton.isSelected =
+            !enableButton.isSelected
+        
+        mood?.scheduleEnable =
+            enableButton.isSelected
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -91,8 +106,8 @@ class SHSchduleMoodCell: UITableViewCell {
             iconViewHeightConstraint.constant =
                 navigationBarHeight
 
-            flagViewHeightConstraint.constant = defaultHeight
-            flagViewWidthConstraint.constant = defaultHeight
+            buttonWidthConstraint.constant = defaultHeight
+            buttonHeightConstraint.constant = defaultHeight
             
         } else if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
 
@@ -104,8 +119,6 @@ class SHSchduleMoodCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        flagView.isHighlighted = selected
+ 
     }
-
 }

@@ -11,7 +11,7 @@ import UIKit
 @objcMembers class SHMood: NSObject {
     
     /// 配置schedule开启
-    var schedleEnable = false
+    var scheduleEnable = false
     
     /// 区域ID
     var zoneID: UInt = 0

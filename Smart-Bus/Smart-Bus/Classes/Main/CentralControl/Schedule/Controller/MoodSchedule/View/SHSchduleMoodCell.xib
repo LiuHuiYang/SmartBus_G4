@@ -43,22 +43,27 @@
                                 <color key="textColor" red="0.97647058819999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedualButton_normal" highlightedImage="schedualButton_highlighted" translatesAutoresizingMaskIntoConstraints="NO" id="tKx-6y-P7C">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsk-ZB-G04">
                                 <rect key="frame" x="273" y="25.5" width="32" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="OYH-wX-Qup"/>
-                                    <constraint firstAttribute="height" constant="32" id="sr2-YX-vgu"/>
+                                    <constraint firstAttribute="width" constant="32" id="awP-Bi-1xg"/>
+                                    <constraint firstAttribute="height" constant="32" id="wpE-LU-4dy"/>
                                 </constraints>
-                            </imageView>
+                                <state key="normal" image="schedualButton_normal"/>
+                                <state key="selected" image="schedualButton_highlighted"/>
+                                <connections>
+                                    <action selector="enableButtonClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Gpt-Nq-v1P"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Rk3-UF-Ms7" firstAttribute="centerY" secondItem="mjA-cM-PhJ" secondAttribute="centerY" id="8xx-1w-HQw"/>
                             <constraint firstItem="odP-60-hnR" firstAttribute="leading" secondItem="mjA-cM-PhJ" secondAttribute="leading" id="AN3-pr-dyg"/>
-                            <constraint firstItem="tKx-6y-P7C" firstAttribute="centerY" secondItem="mjA-cM-PhJ" secondAttribute="centerY" id="GeO-8y-4XK"/>
                             <constraint firstAttribute="trailing" secondItem="odP-60-hnR" secondAttribute="trailing" id="HT5-ul-1RT"/>
+                            <constraint firstItem="Xsk-ZB-G04" firstAttribute="centerY" secondItem="e6Z-WS-gXu" secondAttribute="centerY" id="Q7W-q3-5UX"/>
                             <constraint firstItem="e6Z-WS-gXu" firstAttribute="leading" secondItem="Rk3-UF-Ms7" secondAttribute="trailing" constant="15" id="REf-aw-ZsO"/>
-                            <constraint firstAttribute="trailing" secondItem="tKx-6y-P7C" secondAttribute="trailing" constant="15" id="c9h-Xw-mds"/>
+                            <constraint firstAttribute="trailing" secondItem="Xsk-ZB-G04" secondAttribute="trailing" constant="15" id="Xhb-Bj-GZN"/>
                             <constraint firstAttribute="bottom" secondItem="odP-60-hnR" secondAttribute="bottom" id="eTL-yb-FOW"/>
                             <constraint firstItem="e6Z-WS-gXu" firstAttribute="centerY" secondItem="Rk3-UF-Ms7" secondAttribute="centerY" id="iLb-pE-lc6"/>
                             <constraint firstItem="Rk3-UF-Ms7" firstAttribute="leading" secondItem="mjA-cM-PhJ" secondAttribute="leading" constant="15" id="ojO-hH-sGj"/>
@@ -75,9 +80,9 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="flagView" destination="tKx-6y-P7C" id="aVz-7L-MKN"/>
-                <outlet property="flagViewHeightConstraint" destination="sr2-YX-vgu" id="kty-2w-sQd"/>
-                <outlet property="flagViewWidthConstraint" destination="OYH-wX-Qup" id="ylj-LB-yuG"/>
+                <outlet property="buttonHeightConstraint" destination="wpE-LU-4dy" id="ys2-eT-Ypl"/>
+                <outlet property="buttonWidthConstraint" destination="awP-Bi-1xg" id="Njk-Ua-XYG"/>
+                <outlet property="enableButton" destination="Xsk-ZB-G04" id="3DV-k6-l65"/>
                 <outlet property="iconView" destination="Rk3-UF-Ms7" id="M5A-ds-0Vv"/>
                 <outlet property="iconViewHeightConstraint" destination="7nX-3F-0F8" id="oPb-vf-1ai"/>
                 <outlet property="iconViewWidthConstraint" destination="Chs-IE-hfl" id="Eoj-nP-7nl"/>
