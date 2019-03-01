@@ -222,8 +222,9 @@ extension SHZoneControlViewController {
                               transitionAnimation: .dropDown
         )
         
-        present(alertController!, animated: true, completion: nil)
+        alertController?.backgoundTapDismissEnable = true
         
+        present(alertController!, animated: true, completion: nil)
     }
     
     /// 设置区域

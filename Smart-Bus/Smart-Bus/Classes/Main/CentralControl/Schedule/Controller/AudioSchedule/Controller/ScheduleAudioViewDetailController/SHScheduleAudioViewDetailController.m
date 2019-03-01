@@ -4,7 +4,15 @@
 //
 //  Created by Mark Liu on 2018/1/9.
 //  Copyright © 2018年 SmartHome. All rights reserved.
-//
+/*
+    主要解决几个问题
+    1> 声音的保存与同步
+    2> 播放状态的保存与同步
+    3> 音乐来源的保存与同步
+    4> 专辑的保存与同步
+    5> 歌曲的保存与同步
+    6> 这部分读取音乐列表不能使用?
+ */
 
 #import "SHScheduleAudioViewDetailController.h"
 #import "SHAudioSelectButton.h"
@@ -126,9 +134,11 @@ static NSString *songCellReusableIdentifier =
     
     self.volumeLabel.text = [NSString stringWithFormat:@"%d%%", volum];
     
-    self.volumeButton.selected = volum ? YES : NO;
+    self.volumeButton.selected = volum != 0;
     
     self.schedualAudio.schedualVolumeRatio = volum;
+    
+    [self testSchedul];
 }
 
     
@@ -141,12 +151,38 @@ static NSString *songCellReusableIdentifier =
     [self.navigationController popViewControllerAnimated:true];
 }
 
+
+/**
+ 测试验证
+ */
+- (void)testSchedul {
+    
+    printLog("配置的音乐选项: src: %d - P/S:%d - vol: %d\n album: %d - No: %zd",
+             self.schedualAudio.schedualSourceType,
+             self.schedualAudio.schedualPlayStatus,
+             self.schedualAudio.schedualVolumeRatio,
+             self.schedualAudio.schedualPlayAlbumNumber,
+             self.schedualAudio.schedualPlaySongNumber);
+}
+
 /// 退出界面时 不要再请求音乐数据
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
     
     self.schedualAudio.cancelSendData = YES;
+    
+    [self testSchedul];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self testSchedul];
+    
+    [self setDefaultStatus];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -160,6 +196,7 @@ static NSString *songCellReusableIdentifier =
         self.subViewHeightConstraint.constant = navigationBarHeight;
     }
 }
+
     
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -186,7 +223,7 @@ static NSString *songCellReusableIdentifier =
     
     [self.songListView registerNib:[UINib nibWithNibName:songCellReusableIdentifier bundle:nil] forCellReuseIdentifier:songCellReusableIdentifier];
     
-    [self setDefaultStatus];
+    
     
     if ([UIDevice is_iPad]) {
         
@@ -230,11 +267,7 @@ static NSString *songCellReusableIdentifier =
     }
 }
 
-    
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 // MARK: - 数据源与代理
 
@@ -413,37 +446,15 @@ static NSString *songCellReusableIdentifier =
         // 获得所有的专辑
         self.schedualAudio.allAlbums = [SHAudioTools readPlist:albumPlistFilePath];
 
-        // 刷新列表
-        [self.albumListView reloadData];
-
-        // 如果有值就选择，如果没有选择第一个
-        if (self.schedualAudio.schedualPlayAlbumNumber) {
+        //  选择第一个
+        self.schedualAudio.schedualAlbum =
+        self.schedualAudio.allAlbums[albumNumber - 1];
         
-            //  选择第一个
-            self.schedualAudio.schedualAlbum =
-                self.schedualAudio.allAlbums[albumNumber - 1];
-            
-            // 默认选择第一个cell 动画效果 -- 不会触发 didSelect..代理方法
-            [self.albumListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:(albumNumber - 1) inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
-            
-            // 设置标题
-            [self.selectAlbumButton setTitle:self.schedualAudio.schedualAlbum.albumName forState:UIControlStateNormal];
-            
-            // 默认选择第一个
-        } else {
+        // 默认选择第一个cell 动画效果 -- 不会触发 didSelect..代理方法
+        [self.albumListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:(albumNumber - 1) inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
         
-            TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"SYSTEM_PROMPT"] message:@"Please choose a music album" isCustom:YES];
-            
-            [alertView addAction: [TYAlertAction actionWithTitle: SHLanguageText.ok style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
-                
-                self.albumListBackgroundView.hidden = NO;
-                
-            }]];
-            
-            TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
-            
-            [self presentViewController:alertController animated:YES completion:nil];
-        }
+        // 设置标题
+        [self.selectAlbumButton setTitle:self.schedualAudio.schedualAlbum.albumName forState:UIControlStateNormal];
         
         if (readSong) {
             

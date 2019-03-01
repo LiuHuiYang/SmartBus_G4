@@ -119,10 +119,8 @@ extension SHScheduleMoodViewController {
             scheduleMoods.append(sectionMoods)
         }
         
-
         navigationItem.title = "Mood"
         
-        // 注册cell
         moodListView.register(
             UINib(
                 nibName: schduleMoodCellReuseIdentifier,
