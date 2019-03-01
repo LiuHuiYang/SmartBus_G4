@@ -468,26 +468,11 @@ extension SHSchedualEditViewController {
         _ = SHSQLiteManager.shared.deleteSchedualeCommands(
             plan
         )
-        
-        let beforeCommands =
-            SHSQLiteManager.shared.getSchedualCommands(
-                plan.scheduleID
-        )
-        
-        print("1. 保存前的数据 \(beforeCommands.count)")
-        
-        print("2. 将要保存的数据 \(plan.commands.count)")
-        
+         
         for command in plan.commands {
             
             _ = SHSQLiteManager.shared.insertSchedualeCommand(command)
-        }
-        
-        let savedCommands =   SHSQLiteManager.shared.getSchedualCommands(
-            plan.scheduleID
-        )
-        
-        print("3. 保存后的数据 \(savedCommands.count)")
+        } 
 
         SHSchedualExecuteTools.shared.updateSchduals()
         

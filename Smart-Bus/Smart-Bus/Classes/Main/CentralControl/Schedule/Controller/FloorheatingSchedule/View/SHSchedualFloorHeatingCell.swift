@@ -38,7 +38,7 @@ class SHSchedualFloorHeatingCell: UITableViewCell {
             
             return navigationBarHeight + statusBarHeight
             
-        } else if UIDevice.is4_0inch() {
+        } else if UIDevice.is4_0inch() || UIDevice.is3_5inch() {
             
             return tabBarHeight
         }

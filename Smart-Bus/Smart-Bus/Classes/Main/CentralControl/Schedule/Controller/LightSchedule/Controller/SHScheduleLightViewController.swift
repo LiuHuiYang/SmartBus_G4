@@ -23,6 +23,9 @@ class SHScheduleLightViewController: SHViewController {
             deviceType: SHSystemDeviceType.light.rawValue
     )
     
+    /// 标记分组是否打开的状态标记
+    private lazy var isExpandStauts = [false]
+    
     /// 所有的灯泡
     private lazy var scheduleLights = [[SHLight]]()
     
@@ -139,6 +142,10 @@ extension SHScheduleLightViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 初始化所有的是否展开标记
+        isExpandStauts =
+            [Bool](repeating: false, count: lightZones.count)
+        
         // 加载所有的区域的灯泡数据
         for zone in lightZones {
             
@@ -181,6 +188,15 @@ extension SHScheduleLightViewController: UITableViewDelegate {
         let headerView = SHScheduleSectionHeader.loadFromNib()
 
         headerView.sectionZone = lightZones[section]
+        headerView.isExpand = isExpandStauts[section]
+        
+        headerView.callBack = { (status) -> () in
+            
+            self.isExpandStauts[section] = status
+            
+            let index = IndexSet(integer: section)
+            tableView.reloadSections(index, with: UITableView.RowAnimation.fade)
+        }
 
         return headerView
     }
@@ -196,7 +212,8 @@ extension SHScheduleLightViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return  scheduleLights[section].count
+        return  isExpandStauts[section] ?
+                scheduleLights[section].count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

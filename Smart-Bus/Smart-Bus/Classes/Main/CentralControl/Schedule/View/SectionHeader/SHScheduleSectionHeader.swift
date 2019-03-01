@@ -10,31 +10,50 @@ import UIKit
 
 class SHScheduleSectionHeader: UIView, loadNibView {
 
+    /// 线条
+    @IBOutlet weak var lineView: UIView!
     /// 展开
-    var isUnfold: Bool = false
+    var isExpand: Bool = false {
+        
+        didSet {
+            
+            lineView.isHidden = isExpand
+            
+            if isExpand {
+                
+                sectionLabel.text =
+                    " ▼ " + (sectionZone?.zoneName ?? "")
+            }
+        }
+    }
+    
+    /// 回调
+    var callBack: ((_ isExpand: Bool) -> ())?
     
     /// 分组名称
     var sectionZone: SHZone? {
         
         didSet {
     
-            sectionLabel.text = sectionZone?.zoneName
+            sectionLabel.text =
+                " ▶︎ " + (sectionZone?.zoneName ?? "")
         }
     }
-    
-    
     
     /// 高度
     static var rowHeight: CGFloat {
         
         if UIDevice.is_iPad() {
             
+            return navigationBarHeight + statusBarHeight
+            
+        } else if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
+            
             return tabBarHeight
         }
         
-        return defaultHeight
+        return navigationBarHeight
     }
-    
     
     /// 分组标签
     @IBOutlet weak var sectionLabel: UILabel!
@@ -60,6 +79,7 @@ extension SHScheduleSectionHeader {
     /// 点击打开与关闭
     @objc private func headerClick() {
         
-        print("点击分组")
+        isExpand = !isExpand
+        callBack?(isExpand)
     }
 }

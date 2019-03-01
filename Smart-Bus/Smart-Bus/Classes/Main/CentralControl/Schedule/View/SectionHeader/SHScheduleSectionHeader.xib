@@ -21,10 +21,20 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iny-xM-lgt">
+                    <rect key="frame" x="0.0" y="77" width="375" height="1"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="xn7-H3-Ozn"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.792156862745098" green="0.77254901960784317" blue="0.77254901960784317" alpha="0.90485007230000003" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.44705882352941173" green="0.41960784313725491" blue="0.43137254901960786" alpha="0.90485007230000003" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="iny-xM-lgt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1A6-bq-dfu"/>
+                <constraint firstAttribute="bottom" secondItem="iny-xM-lgt" secondAttribute="bottom" id="2si-c0-Ezd"/>
                 <constraint firstItem="uwS-rr-tmD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="GLZ-3E-NdP"/>
+                <constraint firstAttribute="trailing" secondItem="iny-xM-lgt" secondAttribute="trailing" id="O31-8k-ehb"/>
                 <constraint firstAttribute="bottom" secondItem="uwS-rr-tmD" secondAttribute="bottom" id="fZ5-ir-eCh"/>
                 <constraint firstItem="uwS-rr-tmD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="oFm-fQ-vgu"/>
                 <constraint firstAttribute="trailing" secondItem="uwS-rr-tmD" secondAttribute="trailing" constant="15" id="ydT-SJ-RDT"/>
@@ -33,9 +43,10 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="lineView" destination="iny-xM-lgt" id="iAU-PS-lZG"/>
                 <outlet property="sectionLabel" destination="uwS-rr-tmD" id="4qo-6n-fwf"/>
             </connections>
-            <point key="canvasLocation" x="189.59999999999999" y="94.452773613193415"/>
+            <point key="canvasLocation" x="65" y="-67"/>
         </view>
     </objects>
 </document>
