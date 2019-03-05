@@ -63,8 +63,9 @@ extension SHScheduleAudioViewController {
                     UInt(audio.schedualVolumeRatio)
                 
                 // ((状态 & 0xFF) << 8 ) | (来源 & 0xFF)
-                command.parameter4 =   UInt(((audio.schedualPlayStatus & 0xFF) << 8) |
-                    (audio.schedualSourceType.rawValue & 0xFF))
+                command.parameter4 =
+                (UInt(audio.schedualPlayStatus & 0xFF) << 8) |
+                (UInt(audio.schedualSourceType.rawValue & 0xFF))
                 
                 // 专辑号
                 command.parameter5 =

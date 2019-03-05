@@ -6,9 +6,6 @@
 //  Copyright © 2018年 SmartHome. All rights reserved.
 /*
     主要解决几个问题
-    1> 声音的保存与同步
-    2> 播放状态的保存与同步
-    3> 音乐来源的保存与同步
     4> 专辑的保存与同步
     5> 歌曲的保存与同步
  */
@@ -180,6 +177,8 @@ static NSString *songCellReusableIdentifier =
     [super viewWillAppear:animated];
     
     [self testSchedul];
+    
+    self.schedualAudio.isUpdateSchedualCommand = false;
     
     [self setDefaultStatus];
 }
