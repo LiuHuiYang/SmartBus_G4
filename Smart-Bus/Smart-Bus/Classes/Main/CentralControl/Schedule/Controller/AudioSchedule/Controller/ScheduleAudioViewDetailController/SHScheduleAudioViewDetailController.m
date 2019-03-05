@@ -5,8 +5,6 @@
 //  Created by Mark Liu on 2018/1/9.
 //  Copyright © 2018年 SmartHome. All rights reserved.
 /*
-    主要解决几个问题
-    4> 专辑的保存与同步
     5> 歌曲的保存与同步
  */
 
@@ -109,7 +107,14 @@ static NSString *songCellReusableIdentifier =
     self.schedualAudio.schedualSourceType = (!self.sourceTypeSegmentedControl.selectedSegmentIndex) ? SHAudioSourceTypeSDCARD : SHAudioSourceTypeFTP;
     
     // 显示专辑数据
-    [self showAlbumList:self.schedualAudio.subnetID deviceID:self.schedualAudio.deviceID sourceType:self.schedualAudio.schedualSourceType albumNumber:1 readSong:YES];
+//    [self showAlbumList:self.schedualAudio.subnetID deviceID:self.schedualAudio.deviceID sourceType:self.schedualAudio.schedualSourceType albumNumber:1 readSong:YES];
+    
+    [self showAlbumList:self.schedualAudio.subnetID
+               deviceID:self.schedualAudio.deviceID
+             sourceType:self.schedualAudio.schedualSourceType
+            albumNumber:self.schedualAudio.schedualPlayAlbumNumber
+               readSong:YES
+    ];
 }
 
 /// 点击声音按钮
@@ -358,7 +363,10 @@ static NSString *songCellReusableIdentifier =
  @param sourceType 音乐类型
  @param songAlbumNumber 歌曲的专辑号序号
  */
-- (void)showSongList:(Byte)subNetID deviceID:(Byte)deviceID sourceType:(Byte)sourceType songAlbumNumber:(Byte)songAlbumNumber {
+- (void)showSongList:(Byte)subNetID
+            deviceID:(Byte)deviceID
+          sourceType:(Byte)sourceType
+     songAlbumNumber:(Byte)songAlbumNumber {
     
     [SVProgressHUD showWithStatus:@"Loading Data ..."];
     
@@ -381,7 +389,10 @@ static NSString *songCellReusableIdentifier =
         if (self.schedualAudio.schedualPlaySongNumber) {
             
             //  选择第一个
-            self.schedualAudio.schedualAlbum.currentSelectSong = self.schedualAudio.schedualAlbum.totalAlbumSongs[self.schedualAudio.schedualPlaySongNumber - 1];
+            self.schedualAudio.schedualAlbum.currentSelectSong =
+            self.schedualAudio.schedualAlbum.totalAlbumSongs
+                [self.schedualAudio.schedualPlaySongNumber - 1];
+            
             
             // 默认选择第一个cell 动画效果
             [self.songListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:(self.schedualAudio.schedualPlaySongNumber - 1) inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
@@ -444,14 +455,21 @@ static NSString *songCellReusableIdentifier =
         self.schedualAudio.allAlbums = [SHAudioTools readPlist:albumPlistFilePath];
         
         [self.albumListView reloadData];
-
-        //  选择第一个
+        
+        
+        if (albumNumber == 0) {
+            
+            albumNumber = 1; // 默认就是第一个
+        }
+        
         self.schedualAudio.schedualAlbum =
         self.schedualAudio.allAlbums[albumNumber - 1];
-        
+
         // 默认选择第一个cell 动画效果 -- 不会触发 didSelect..代理方法
         [self.albumListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:(albumNumber - 1) inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
         
+        [self tableView:self.albumListView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:(albumNumber - 1) inSection:0]];
+
         // 设置标题
         [self.selectAlbumButton setTitle:self.schedualAudio.schedualAlbum.albumName forState:UIControlStateNormal];
         
