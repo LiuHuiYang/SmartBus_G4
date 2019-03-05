@@ -5401,7 +5401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "89305ce0-8982-404a-9a81-2f2a02c025c8";
-				PROVISIONING_PROFILE_SPECIFIER = SmartBus2019_Development;
+				PROVISIONING_PROFILE_SPECIFIER = Smart_Bus_Development;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Smart-Bus/Smart-Bus-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -5419,7 +5419,7 @@
 				ASSETCATALOG_OTHER_FLAGS = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Smart-Bus/Smart-Bus.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
@@ -5438,7 +5438,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "01765ce1-a27e-45e6-bac9-ced94437e321";
-				PROVISIONING_PROFILE_SPECIFIER = SmartBus2019_Distribution;
+				PROVISIONING_PROFILE_SPECIFIER = SmartBus_Distribution;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Smart-Bus/Smart-Bus-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;

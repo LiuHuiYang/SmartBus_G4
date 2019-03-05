@@ -823,7 +823,7 @@ UITableViewDelegate, UITableViewDataSource>
 }
 
 /// 重新发送数据
--(void)reSendControlAudioData:(SHAudioSendData *)sendData{
+- (void)reSendControlAudioData:(SHAudioSendData *)sendData{
     
     /// 取消发送消息
     if (self.currentAudio.cancelSendData) {
@@ -875,7 +875,7 @@ UITableViewDelegate, UITableViewDataSource>
 }
 
 /// 成功接收到旧信息，开始发送新信息
--(void)sendStartNewData:(SHAudioSendData *)sendData{
+- (void)sendStartNewData:(SHAudioSendData *)sendData{
     
     switch (sendData.operatorCode) {
             
