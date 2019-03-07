@@ -89,7 +89,12 @@ static NSString *songCellReusableIdentifier =
     
     self.schedualAudio.schedualAlbum = nil;
     
-    [self showAlbumList:self.schedualAudio.subnetID deviceID:self.schedualAudio.deviceID sourceType:self.schedualAudio.schedualSourceType albumNumber:1 readSong:YES];
+    [self showAlbumList:self.schedualAudio.subnetID
+               deviceID:self.schedualAudio.deviceID
+             sourceType:self.schedualAudio.schedualSourceType
+            albumNumber:1
+               readSong:YES
+     ];
 }
 
 
@@ -105,9 +110,6 @@ static NSString *songCellReusableIdentifier =
 - (IBAction)sourceSegmentedControlClick {
     
     self.schedualAudio.schedualSourceType = (!self.sourceTypeSegmentedControl.selectedSegmentIndex) ? SHAudioSourceTypeSDCARD : SHAudioSourceTypeFTP;
-    
-    // 显示专辑数据
-//    [self showAlbumList:self.schedualAudio.subnetID deviceID:self.schedualAudio.deviceID sourceType:self.schedualAudio.schedualSourceType albumNumber:1 readSong:YES];
     
     [self showAlbumList:self.schedualAudio.subnetID
                deviceID:self.schedualAudio.deviceID
@@ -270,38 +272,33 @@ static NSString *songCellReusableIdentifier =
 }
 
 
-
 // MARK: - 数据源与代理
-
-//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    if (tableView == self.songListView) {
-//        
-//        // 获得选择中的cell
-//        SHAudioAlbumSongCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//        
-//        cell.selected = NO;
-//    }
-//    
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (tableView == self.albumListView) {
-        
+     
         // 获得选择的专辑
-        self.schedualAudio.schedualAlbum = self.schedualAudio.allAlbums[indexPath.row];
+        self.schedualAudio.schedualAlbum =
+            self.schedualAudio.allAlbums[indexPath.row];
         
         // 修改选择中的专辑
-        self.schedualAudio.schedualPlayAlbumNumber = self.schedualAudio.schedualAlbum.albumNumber;
+        self.schedualAudio.schedualPlayAlbumNumber =
+            self.schedualAudio.schedualAlbum.albumNumber;
+        
+        [self.selectAlbumButton
+            setTitle:self.schedualAudio.schedualAlbum.albumName
+            forState:UIControlStateNormal
+        ];
         
         // 不要没有选择任何歌曲
-        self.schedualAudio.schedualPlaySongNumber = 0;
-        
-        [self.selectAlbumButton setTitle:self.schedualAudio.schedualAlbum.albumName forState:UIControlStateNormal];
-        
+//        self.schedualAudio.schedualPlaySongNumber = 0;
+ 
         // 加载歌曲
-        [self showSongList:self.schedualAudio.subnetID deviceID:self.schedualAudio.deviceID sourceType:self.schedualAudio.schedualSourceType songAlbumNumber:self.schedualAudio.schedualAlbum.albumNumber];
+        [self showSongList:self.schedualAudio.subnetID
+                  deviceID:self.schedualAudio.deviceID
+                sourceType:self.schedualAudio.schedualSourceType songAlbumNumber:self.schedualAudio.schedualPlayAlbumNumber
+        ];
         
         self.albumListBackgroundView.hidden = YES;
         
@@ -310,7 +307,15 @@ static NSString *songCellReusableIdentifier =
         // 获得选择的歌曲
         self.schedualAudio.schedualAlbum.currentSelectSong = self.schedualAudio.schedualAlbum.totalAlbumSongs[indexPath.row];
         
+        SHSong *song = self.schedualAudio.schedualAlbum.currentSelectSong;
+     
         self.schedualAudio.schedualPlaySongNumber = self.schedualAudio.schedualAlbum.currentSelectSong.songNumber;
+        
+        
+        printLog(@"音乐名称： %@, %zd %zd",
+                 song.songName,
+                 song.songNumber,
+                 self.schedualAudio.schedualPlaySongNumber);
     }
 }
 
@@ -333,7 +338,6 @@ static NSString *songCellReusableIdentifier =
         cell.song = self.schedualAudio.schedualAlbum.totalAlbumSongs[indexPath.row];
         
         return cell;
-        
     }
     
     return nil;
@@ -371,32 +375,48 @@ static NSString *songCellReusableIdentifier =
     [SVProgressHUD showWithStatus:@"Loading Data ..."];
     
     NSString *songPath =
-        [SHAudioOperatorTools getAudioPathWithSubNetID:subNetID deviceID:deviceID sourceType:sourceType fileType:SHAudioSourceFileTypeSongs serialNumber:songAlbumNumber
+        [SHAudioOperatorTools getAudioPathWithSubNetID:subNetID
+                                              deviceID:deviceID
+                                            sourceType:sourceType
+                                              fileType:SHAudioSourceFileTypeSongs
+                                          serialNumber:songAlbumNumber
         ];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:songPath]) {
         
         // 读取出歌曲
         self.schedualAudio.schedualAlbum.totalAlbumSongs = [SHAudioTools  readPlist:songPath];
-
+        
+        printLog(@"音乐的总歌曲数: %zd",
+                 self.schedualAudio.schedualAlbum.totalAlbumSongs.count);
+        
         [self.songListView reloadData];
         
         [SVProgressHUD dismiss];
         
         self.view.userInteractionEnabled = YES;
         
-        // 如果有值就选择，如果没有选择第一个
-        if (self.schedualAudio.schedualPlaySongNumber) {
-            
-            //  选择第一个
-            self.schedualAudio.schedualAlbum.currentSelectSong =
-            self.schedualAudio.schedualAlbum.totalAlbumSongs
-                [self.schedualAudio.schedualPlaySongNumber - 1];
-            
-            
-            // 默认选择第一个cell 动画效果
-            [self.songListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:(self.schedualAudio.schedualPlaySongNumber - 1) inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        
+        if (!self.schedualAudio.schedualPlaySongNumber) {
+            return;
         }
+        
+        NSIndexPath *indexPath =
+        
+        [NSIndexPath indexPathForRow:(self.schedualAudio.schedualPlaySongNumber - 1)
+                           inSection:0
+         ];
+        
+        [self.songListView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        
+        [self tableView:self.songListView didSelectRowAtIndexPath:indexPath];
+        
+        /*
+         //  选择第一个
+         self.schedualAudio.schedualAlbum.currentSelectSong =
+         self.schedualAudio.schedualAlbum.totalAlbumSongs
+         [self.schedualAudio.schedualPlaySongNumber - 1];
+         */
         
     } else {
         
@@ -411,18 +431,18 @@ static NSString *songCellReusableIdentifier =
         
         sendData.categoryNumber = songAlbumNumber;
      
-        sendData.additionalData = @[@(sourceType), @(songAlbumNumber)];
+        sendData.additionalData =
+            @[@(sourceType), @(songAlbumNumber)];
         
         self.schedualAudio.receivedStatusType = SHAudioReceivedStatusTypeReadSongPackages;
         self.schedualAudio.reSendCount = 0;
         
         self.schedualAudio.currentCategoryNumber = songAlbumNumber;
+        
         [self sendControlAudioData:sendData];
         
         // UI的处理上
- 
         self.schedualAudio.schedualAlbum.totalAlbumSongs = @[];
-        
         [self.songListView reloadData];
     }
 }
@@ -436,7 +456,11 @@ static NSString *songCellReusableIdentifier =
  @param albumNumber 专辑序号，从1开始
  @param readSong 读取音乐
  */
-- (void)showAlbumList:(Byte)subNetID deviceID:(Byte)deviceID sourceType:(Byte)sourceType albumNumber:(Byte)albumNumber readSong:(BOOL)readSong {
+- (void)showAlbumList:(Byte)subNetID
+             deviceID:(Byte)deviceID
+           sourceType:(Byte)sourceType
+          albumNumber:(Byte)albumNumber
+             readSong:(BOOL)readSong {
     
     [SVProgressHUD showWithStatus:@"Loading Data ..."];
     
@@ -452,34 +476,32 @@ static NSString *songCellReusableIdentifier =
     if ([[NSFileManager defaultManager] fileExistsAtPath:albumPlistFilePath]) {
         
         // 获得所有的专辑
-        self.schedualAudio.allAlbums = [SHAudioTools readPlist:albumPlistFilePath];
+        self.schedualAudio.allAlbums =
+            [SHAudioTools readPlist:albumPlistFilePath];
         
         [self.albumListView reloadData];
-        
         
         if (albumNumber == 0) {
             
             albumNumber = 1; // 默认就是第一个
         }
         
-        self.schedualAudio.schedualAlbum =
-        self.schedualAudio.allAlbums[albumNumber - 1];
-
-        // 默认选择第一个cell 动画效果 -- 不会触发 didSelect..代理方法
-        [self.albumListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:(albumNumber - 1) inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        NSIndexPath *indexPath =
+            [NSIndexPath indexPathForRow:(albumNumber - 1)
+                               inSection:0
+            ];
         
-        [self tableView:self.albumListView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:(albumNumber - 1) inSection:0]];
-
-        // 设置标题
-        [self.selectAlbumButton setTitle:self.schedualAudio.schedualAlbum.albumName forState:UIControlStateNormal];
+        [self.albumListView selectRowAtIndexPath:indexPath animated:false scrollPosition:UITableViewScrollPositionNone];
         
+        [self tableView:self.albumListView didSelectRowAtIndexPath:indexPath];
+ 
         if (readSong) {
             
-            [self showSongList:subNetID
-                      deviceID:deviceID
-                    sourceType:sourceType
-               songAlbumNumber:1
-            ];
+//            [self showSongList:subNetID
+//                      deviceID:deviceID
+//                    sourceType:sourceType
+//               songAlbumNumber:self.schedualAudio.schedualPlaySongNumber
+//            ];
         }
         
     } else {
@@ -725,7 +747,7 @@ static NSString *songCellReusableIdentifier =
 
 // MARK: - 请求数据的重发机制
     
-    /// 发送数据
+/// 发送数据
 - (void)sendControlAudioData:(SHAudioSendData *)sendData {
     
     if (self.schedualAudio.cancelSendData) {
@@ -749,7 +771,7 @@ static NSString *songCellReusableIdentifier =
 }
     
 /// 重新发送数据
--(void)reSendControlAudioData:(SHAudioSendData *)sendData{
+-(void)reSendControlAudioData:(SHAudioSendData *)sendData {
     
     /// 取消发送消息
     if (self.schedualAudio.cancelSendData) {
@@ -800,8 +822,8 @@ static NSString *songCellReusableIdentifier =
     }
 }
     
-    /// 成功接收到旧信息，开始发送新信息
-- (void)sendStartNewData:(SHAudioSendData *)sendData{
+/// 成功接收到旧信息，开始发送新信息
+- (void)sendStartNewData:(SHAudioSendData *)sendData {
     
     switch (sendData.operatorCode) {
         
@@ -905,6 +927,5 @@ static NSString *songCellReusableIdentifier =
         break;
     }
 }
-
 
 @end
