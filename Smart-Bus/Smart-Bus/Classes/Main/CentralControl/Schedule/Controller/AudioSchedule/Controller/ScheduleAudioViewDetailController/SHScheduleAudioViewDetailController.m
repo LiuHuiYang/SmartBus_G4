@@ -109,7 +109,15 @@ static NSString *songCellReusableIdentifier =
 /// 选择音乐来源
 - (IBAction)sourceSegmentedControlClick {
     
-    self.schedualAudio.schedualSourceType = (!self.sourceTypeSegmentedControl.selectedSegmentIndex) ? SHAudioSourceTypeSDCARD : SHAudioSourceTypeFTP;
+    SHAudioSourceType sourceType = (!self.sourceTypeSegmentedControl.selectedSegmentIndex) ? SHAudioSourceTypeSDCARD : SHAudioSourceTypeFTP;
+    
+    if (sourceType != self.schedualAudio.schedualSourceType) {
+        
+        self.schedualAudio.schedualPlayAlbumNumber = 0;
+        self.schedualAudio.schedualPlaySongNumber = 0;
+    }
+    
+    self.schedualAudio.schedualSourceType = sourceType;
     
     [self showAlbumList:self.schedualAudio.subnetID
                deviceID:self.schedualAudio.deviceID
@@ -297,7 +305,11 @@ static NSString *songCellReusableIdentifier =
         self.schedualAudio.currentSelectAlbum = album;
         
         // 加载当前选择专辑的歌曲
-        [self showSongList:self.schedualAudio.subnetID deviceID:self.schedualAudio.deviceID sourceType:self.schedualAudio.schedualSourceType songAlbumNumber:album.albumNumber];
+        [self showSongList:self.schedualAudio.subnetID
+                  deviceID:self.schedualAudio.deviceID
+                sourceType:self.schedualAudio.schedualSourceType
+           songAlbumNumber:album.albumNumber
+         ];
  
         
     } else if (tableView == self.songListView) {
