@@ -21,6 +21,8 @@ static NSString *songCellReusableIdentifier =
 
 @interface SHScheduleAudioViewDetailController () <UITableViewDelegate, UITableViewDataSource>
 
+// MARK: - 约束
+
 /// 顶部分组的视图高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topGroupViewHeightConstraint;
 
@@ -86,8 +88,6 @@ static NSString *songCellReusableIdentifier =
     
     // 删除数据
     [SHAudioOperatorTools deletePlistWithSubNetID:self.schedualAudio.subnetID deviceID:self.schedualAudio.deviceID sourceType:self.schedualAudio.schedualSourceType];
-    
-    self.schedualAudio.schedualAlbum = nil;
     
     [self showAlbumList:self.schedualAudio.subnetID
                deviceID:self.schedualAudio.deviceID
@@ -174,6 +174,12 @@ static NSString *songCellReusableIdentifier =
     [super viewWillDisappear:animated];
     
     self.schedualAudio.cancelSendData = YES;
+    
+    self.schedualAudio.schedualPlayAlbumNumber =
+        self.schedualAudio.currentSelectAlbum.albumNumber;
+    
+    self.schedualAudio.schedualPlaySongNumber = self.schedualAudio.currentSelectAlbum.currentSelectSong.songNumber;
+    
     
     [self testSchedul];
 }
@@ -277,45 +283,35 @@ static NSString *songCellReusableIdentifier =
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (tableView == self.albumListView) {
-     
-        // 获得选择的专辑
-        self.schedualAudio.schedualAlbum =
-            self.schedualAudio.allAlbums[indexPath.row];
-        
-        // 修改选择中的专辑
-        self.schedualAudio.schedualPlayAlbumNumber =
-            self.schedualAudio.schedualAlbum.albumNumber;
-        
-        [self.selectAlbumButton
-            setTitle:self.schedualAudio.schedualAlbum.albumName
-            forState:UIControlStateNormal
-        ];
-        
-        // 不要没有选择任何歌曲
-//        self.schedualAudio.schedualPlaySongNumber = 0;
- 
-        // 加载歌曲
-        [self showSongList:self.schedualAudio.subnetID
-                  deviceID:self.schedualAudio.deviceID
-                sourceType:self.schedualAudio.schedualSourceType songAlbumNumber:self.schedualAudio.schedualPlayAlbumNumber
-        ];
         
         self.albumListBackgroundView.hidden = YES;
         
+        // 当前选择专辑
+        SHAlbum *album =
+            self.schedualAudio.allAlbums[indexPath.row];
+        
+        [self.selectAlbumButton setTitle:album.albumName
+                                forState:UIControlStateNormal
+        ];
+        
+        self.schedualAudio.currentSelectAlbum = album;
+        
+        // 加载当前选择专辑的歌曲
+        [self showSongList:self.schedualAudio.subnetID deviceID:self.schedualAudio.deviceID sourceType:self.schedualAudio.schedualSourceType songAlbumNumber:album.albumNumber];
+ 
+        
     } else if (tableView == self.songListView) {
         
-        // 获得选择的歌曲
-        self.schedualAudio.schedualAlbum.currentSelectSong = self.schedualAudio.schedualAlbum.totalAlbumSongs[indexPath.row];
+        // 当前选择的歌曲
+        SHSong *song =
+        self.schedualAudio.currentSelectAlbum.totalAlbumSongs[indexPath.row];
+       
+       self.schedualAudio.currentSelectAlbum.currentSelectSong =
+        song;
         
-        SHSong *song = self.schedualAudio.schedualAlbum.currentSelectSong;
-     
-        self.schedualAudio.schedualPlaySongNumber = self.schedualAudio.schedualAlbum.currentSelectSong.songNumber;
-        
-        
-        printLog(@"音乐名称： %@, %zd %zd",
+        printLog(@"音乐名称： %@, %zd",
                  song.songName,
-                 song.songNumber,
-                 self.schedualAudio.schedualPlaySongNumber);
+                 song.songNumber);
     }
 }
 
@@ -335,7 +331,7 @@ static NSString *songCellReusableIdentifier =
         
         SHAudioAlbumSongCell *cell = [tableView dequeueReusableCellWithIdentifier:songCellReusableIdentifier forIndexPath:indexPath];
         
-        cell.song = self.schedualAudio.schedualAlbum.totalAlbumSongs[indexPath.row];
+        cell.song = self.schedualAudio.currentSelectAlbum.totalAlbumSongs[indexPath.row];
         
         return cell;
     }
@@ -351,7 +347,7 @@ static NSString *songCellReusableIdentifier =
         
     } else if (tableView == self.songListView) {  // 专辑歌曲列表
         
-        return self.schedualAudio.schedualAlbum.totalAlbumSongs.count;
+        return self.schedualAudio.currentSelectAlbum.totalAlbumSongs.count;
     }
     
     return 0;
@@ -384,11 +380,8 @@ static NSString *songCellReusableIdentifier =
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:songPath]) {
         
-        // 读取出歌曲
-        self.schedualAudio.schedualAlbum.totalAlbumSongs = [SHAudioTools  readPlist:songPath];
-        
-        printLog(@"音乐的总歌曲数: %zd",
-                 self.schedualAudio.schedualAlbum.totalAlbumSongs.count);
+        self.schedualAudio.currentSelectAlbum.totalAlbumSongs =
+            [SHAudioTools  readPlist:songPath];
         
         [self.songListView reloadData];
         
@@ -442,7 +435,7 @@ static NSString *songCellReusableIdentifier =
         [self sendControlAudioData:sendData];
         
         // UI的处理上
-        self.schedualAudio.schedualAlbum.totalAlbumSongs = @[];
+        self.schedualAudio.currentSelectAlbum.totalAlbumSongs = @[];
         [self.songListView reloadData];
     }
 }
@@ -481,28 +474,27 @@ static NSString *songCellReusableIdentifier =
         
         [self.albumListView reloadData];
         
-        if (albumNumber == 0) {
-            
-            albumNumber = 1; // 默认就是第一个
-        }
-        
+        // 如果有配置，显示配置，如果没有配置，选择第一个
+        albumNumber =
+            albumNumber ? (albumNumber - 1) : albumNumber;
+
         NSIndexPath *indexPath =
-            [NSIndexPath indexPathForRow:(albumNumber - 1)
+            [NSIndexPath indexPathForRow:albumNumber
                                inSection:0
             ];
-        
+
         [self.albumListView selectRowAtIndexPath:indexPath animated:false scrollPosition:UITableViewScrollPositionNone];
-        
+
         [self tableView:self.albumListView didSelectRowAtIndexPath:indexPath];
  
-        if (readSong) {
-            
+//        if (readSong) {
+//
 //            [self showSongList:subNetID
 //                      deviceID:deviceID
 //                    sourceType:sourceType
-//               songAlbumNumber:self.schedualAudio.schedualPlaySongNumber
+//               songAlbumNumber:1
 //            ];
-        }
+//        }
         
     } else {
         
@@ -526,16 +518,15 @@ static NSString *songCellReusableIdentifier =
         // 2 ===== UI上的处理
         [self.selectAlbumButton setTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"Z_AUDIO" withSubTitle:@"ALBUMS_LIST"] forState:UIControlStateNormal];
         
-        // 清空列表
+        // 清空数据
         self.schedualAudio.allAlbums = @[];
         self.schedualAudio.schedualPlaySongNumber = 0;
         self.schedualAudio.schedualPlayAlbumNumber = 0;
-        self.schedualAudio.schedualAlbum = nil;
         
         [self.albumListView reloadData];
 
         // 清空列表对应的歌曲
-       self.schedualAudio.schedualAlbum.totalAlbumSongs = @[];
+        self.schedualAudio.currentSelectAlbum.totalAlbumSongs = @[];
         [self.songListView reloadData];
     }
 }

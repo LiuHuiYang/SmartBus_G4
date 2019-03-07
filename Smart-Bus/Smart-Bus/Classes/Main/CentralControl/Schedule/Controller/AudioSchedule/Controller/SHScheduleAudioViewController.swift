@@ -69,10 +69,10 @@ extension SHScheduleAudioViewController {
                 
                 // 专辑号
                 command.parameter5 =
-                    UInt(audio.schedualAlbum?.albumNumber ?? 1)
+                    UInt(audio.schedualPlayAlbumNumber)
                 
                 // 歌曲号
-                command.parameter6 = audio.schedualAlbum?.currentSelectSong?.songNumber ?? 1
+                command.parameter6 = audio.schedualPlaySongNumber
                 
                 plan.commands.append(command)
             }

@@ -36,9 +36,6 @@ import UIKit
     /// 计划播放的歌曲号码
     var schedualPlaySongNumber: UInt = 0
     
-    /// 计划专辑(中间参数)
-    var schedualAlbum: SHAlbum?
-    
     // MARK: - ====== 读取相关的专辑数控制相关属性 ======   存储于内存中
     
     /// 当前选中的音乐来源(SD卡，FTP, RADIO，AUDIOIN)
