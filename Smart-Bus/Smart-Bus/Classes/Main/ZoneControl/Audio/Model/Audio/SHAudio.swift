@@ -102,8 +102,6 @@ import UIKit
     /// 成功更新FTP数据
     var isUpdateFtpSuccess = false
 
-
-
     // MARK: - ====== 设备记号 ======   需要存储于数据库
     
     /// 区域ID

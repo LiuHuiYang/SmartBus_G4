@@ -390,6 +390,12 @@ static NSString *songCellReusableIdentifier =
         self.view.userInteractionEnabled = YES;
         
         
+        // 如果不是同一个专辑不要显示已选歌曲
+        if (self.schedualAudio.schedualPlayAlbumNumber != self.schedualAudio.currentSelectAlbum.albumNumber) {
+            
+            return;
+        }
+        
         if (!self.schedualAudio.schedualPlaySongNumber) {
             return;
         }
