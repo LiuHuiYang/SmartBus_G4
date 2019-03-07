@@ -399,8 +399,9 @@ static NSString *songCellReusableIdentifier =
         
         [SVProgressHUD dismiss];
         
-        self.view.userInteractionEnabled = YES;
+        self.schedualAudio.cancelSendData = YES;
         
+        self.view.userInteractionEnabled = YES;
         
         // 如果不是同一个专辑不要显示已选歌曲
         if (self.schedualAudio.schedualPlayAlbumNumber != self.schedualAudio.currentSelectAlbum.albumNumber) {
@@ -430,6 +431,8 @@ static NSString *songCellReusableIdentifier =
          */
         
     } else {
+        
+        self.schedualAudio.cancelSendData = NO;
         
         // 1.请求数据
         SHAudioSendData *sendData = [[SHAudioSendData alloc] init];
@@ -515,6 +518,8 @@ static NSString *songCellReusableIdentifier =
 //        }
         
     } else {
+        
+        self.schedualAudio.cancelSendData = NO;
         
         // 1 ==== 请求数据
         SHAudioSendData *sendData = [[SHAudioSendData alloc] init];
@@ -780,7 +785,7 @@ static NSString *songCellReusableIdentifier =
 }
     
 /// 重新发送数据
--(void)reSendControlAudioData:(SHAudioSendData *)sendData {
+- (void)reSendControlAudioData:(SHAudioSendData *)sendData {
     
     /// 取消发送消息
     if (self.schedualAudio.cancelSendData) {
