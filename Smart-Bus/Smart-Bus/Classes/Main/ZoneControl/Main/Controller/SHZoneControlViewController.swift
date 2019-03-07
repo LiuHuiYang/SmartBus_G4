@@ -434,6 +434,13 @@ extension SHZoneControlViewController: UITableViewDelegate {
             _ = SHSQLiteManager.shared.deleteRegion(region.regionID)
             
             self.regionListView.reloadData()
+            
+            if SHSQLiteManager.shared.getRegions().count == 1 {
+                
+                self.tableView(self.regionListView,
+                               didSelectRowAt: IndexPath(row: 0, section: 0)
+                )
+            }
         }
         
         let editAction = UITableViewRowAction(style: .normal, title: "\t\(SHLanguageText.edit)\t") { (action, indexPath) in
