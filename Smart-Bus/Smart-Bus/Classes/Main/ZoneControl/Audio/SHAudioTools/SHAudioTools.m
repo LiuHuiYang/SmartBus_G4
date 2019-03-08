@@ -272,7 +272,7 @@
             }
         }
         
-    } else if([arrayKeySub count] == 4){//为歌曲列表
+    } else if([arrayKeySub count] == 4){ //为歌曲列表
         
         NSArray *plistSongArray = [dictPlist objectForKey:dictKey];
         

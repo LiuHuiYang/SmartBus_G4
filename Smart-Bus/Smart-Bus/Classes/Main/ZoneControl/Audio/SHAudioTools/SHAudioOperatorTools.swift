@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// 高音与低音的最大值
 let audioMaxTrebleBass = 7
 

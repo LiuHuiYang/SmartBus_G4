@@ -1904,7 +1904,6 @@ UITableViewDelegate, UITableViewDataSource>
         cell.song = self.selectQueueSongs[indexPath.row];
         
         return cell;
-        
     }
     
     return nil;
