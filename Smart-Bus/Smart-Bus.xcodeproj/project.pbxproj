@@ -150,6 +150,8 @@
 		043615BA218BFEB300FA7436 /* SHDeviceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043615B9218BFEB300FA7436 /* SHDeviceViewCell.swift */; };
 		043642C8214A33BC0044040D /* Regular.m in Sources */ = {isa = PBXBuildFile; fileRef = 043642C7214A33BC0044040D /* Regular.m */; };
 		0436AA012118305A00292877 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B34A64D1F5962DB008AAC2E /* libsqlite3.tbd */; };
+		04372F252237425C00CF9839 /* SHZoneHVACControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04372F242237425C00CF9839 /* SHZoneHVACControlViewController.swift */; };
+		04372F2722379CEB00CF9839 /* SHScheduleHVACViewDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04372F2622379CEB00CF9839 /* SHScheduleHVACViewDetailController.swift */; };
 		043B4C9A210726C60075E5EA /* Languages in Resources */ = {isa = PBXBuildFile; fileRef = 043B4C99210726C50075E5EA /* Languages */; };
 		043CD66221E330EA00622320 /* SHAudioOperatorTools + time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CD66121E330EA00622320 /* SHAudioOperatorTools + time.swift */; };
 		0441DDDE216C927B00952CE4 /* SHAdvanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441DDDC216C927B00952CE4 /* SHAdvanceViewController.swift */; };
@@ -203,7 +205,6 @@
 		046ACA7A221E7F36006EFD5E /* SHScheduleSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046ACA79221E7F36006EFD5E /* SHScheduleSectionHeader.swift */; };
 		046ACA7C221E7F4D006EFD5E /* SHScheduleSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046ACA7B221E7F4D006EFD5E /* SHScheduleSectionHeader.xib */; };
 		0471CAE921CB74BE007DC208 /* SHZoneHVACControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471CAE721CB74BD007DC208 /* SHZoneHVACControlViewController.xib */; };
-		0471CAEA21CB74BE007DC208 /* SHZoneHVACControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0471CAE821CB74BE007DC208 /* SHZoneHVACControlViewController.m */; };
 		0474EFAE22266BF200C9F510 /* SHRegionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474EFAC22266BF200C9F510 /* SHRegionViewCell.swift */; };
 		0474EFAF22266BF200C9F510 /* SHRegionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0474EFAD22266BF200C9F510 /* SHRegionViewCell.xib */; };
 		047812AB216F210E007A7162 /* SHCurrentTransformerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047812A3216F210E007A7162 /* SHCurrentTransformerViewController.xib */; };
@@ -357,7 +358,6 @@
 		04D86CDD22250BF60036B45A /* SHScheduleFloorHeatingDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D86CDB22250BF60036B45A /* SHScheduleFloorHeatingDetailController.swift */; };
 		04D86CDE22250BF60036B45A /* SHScheduleFloorHeatingDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D86CDC22250BF60036B45A /* SHScheduleFloorHeatingDetailController.xib */; };
 		04D86CE322250C080036B45A /* SHScheduleHVACViewDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D86CE022250C080036B45A /* SHScheduleHVACViewDetailController.xib */; };
-		04D86CE422250C080036B45A /* SHScheduleHVACViewDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D86CE222250C080036B45A /* SHScheduleHVACViewDetailController.m */; };
 		04DF642121AD21110033A083 /* SHLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF642021AD21110033A083 /* SHLight.swift */; };
 		04E074612186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E074602186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift */; };
 		04E074652186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E074642186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift */; };
@@ -686,6 +686,8 @@
 		0436A9C521182B2400292877 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0436A9C721182B2E00292877 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		0436A9CA21182B4400292877 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		04372F242237425C00CF9839 /* SHZoneHVACControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneHVACControlViewController.swift; sourceTree = "<group>"; };
+		04372F2622379CEB00CF9839 /* SHScheduleHVACViewDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHScheduleHVACViewDetailController.swift; sourceTree = "<group>"; };
 		043B4C99210726C50075E5EA /* Languages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Languages; sourceTree = "<group>"; };
 		043CD66121E330EA00622320 /* SHAudioOperatorTools + time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + time.swift"; sourceTree = "<group>"; };
 		0441DDDC216C927B00952CE4 /* SHAdvanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAdvanceViewController.swift; sourceTree = "<group>"; };
@@ -755,9 +757,7 @@
 		046ACA79221E7F36006EFD5E /* SHScheduleSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHScheduleSectionHeader.swift; sourceTree = "<group>"; };
 		046ACA7B221E7F4D006EFD5E /* SHScheduleSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHScheduleSectionHeader.xib; sourceTree = "<group>"; };
 		0471C68D211BE39C0067D731 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
-		0471CAE621CB74BD007DC208 /* SHZoneHVACControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHZoneHVACControlViewController.h; sourceTree = "<group>"; };
 		0471CAE721CB74BD007DC208 /* SHZoneHVACControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneHVACControlViewController.xib; sourceTree = "<group>"; };
-		0471CAE821CB74BE007DC208 /* SHZoneHVACControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHZoneHVACControlViewController.m; sourceTree = "<group>"; };
 		0474EFAC22266BF200C9F510 /* SHRegionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegionViewCell.swift; sourceTree = "<group>"; };
 		0474EFAD22266BF200C9F510 /* SHRegionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHRegionViewCell.xib; sourceTree = "<group>"; };
 		047812A3216F210E007A7162 /* SHCurrentTransformerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCurrentTransformerViewController.xib; sourceTree = "<group>"; };
@@ -915,8 +915,6 @@
 		04D86CDB22250BF60036B45A /* SHScheduleFloorHeatingDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHScheduleFloorHeatingDetailController.swift; sourceTree = "<group>"; };
 		04D86CDC22250BF60036B45A /* SHScheduleFloorHeatingDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHScheduleFloorHeatingDetailController.xib; sourceTree = "<group>"; };
 		04D86CE022250C080036B45A /* SHScheduleHVACViewDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHScheduleHVACViewDetailController.xib; sourceTree = "<group>"; };
-		04D86CE122250C080036B45A /* SHScheduleHVACViewDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHScheduleHVACViewDetailController.h; sourceTree = "<group>"; };
-		04D86CE222250C080036B45A /* SHScheduleHVACViewDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHScheduleHVACViewDetailController.m; sourceTree = "<group>"; };
 		04DF642021AD21110033A083 /* SHLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHLight.swift; sourceTree = "<group>"; };
 		04E074602186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneDryContactViewCell.swift; sourceTree = "<group>"; };
 		04E074642186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneDmxGroupSettingViewController.swift; sourceTree = "<group>"; };
@@ -1892,9 +1890,8 @@
 		04D86CDF22250C080036B45A /* ScheduleHVACViewDetailController */ = {
 			isa = PBXGroup;
 			children = (
+				04372F2622379CEB00CF9839 /* SHScheduleHVACViewDetailController.swift */,
 				04D86CE022250C080036B45A /* SHScheduleHVACViewDetailController.xib */,
-				04D86CE122250C080036B45A /* SHScheduleHVACViewDetailController.h */,
-				04D86CE222250C080036B45A /* SHScheduleHVACViewDetailController.m */,
 			);
 			path = ScheduleHVACViewDetailController;
 			sourceTree = "<group>";
@@ -4540,8 +4537,7 @@
 		8BF8026520522ED4002179F8 /* HVACControl */ = {
 			isa = PBXGroup;
 			children = (
-				0471CAE621CB74BD007DC208 /* SHZoneHVACControlViewController.h */,
-				0471CAE821CB74BE007DC208 /* SHZoneHVACControlViewController.m */,
+				04372F242237425C00CF9839 /* SHZoneHVACControlViewController.swift */,
 				0471CAE721CB74BD007DC208 /* SHZoneHVACControlViewController.xib */,
 			);
 			path = HVACControl;
@@ -4931,7 +4927,6 @@
 				0421B68021F8186E00C42F65 /* SHSQLiteManager + System.swift in Sources */,
 				0429AC9321C22F410051263A /* SHSocketTools + receive.swift in Sources */,
 				04913C8B218165AE00704F3D /* SHDeviceList.swift in Sources */,
-				0471CAEA21CB74BE007DC208 /* SHZoneHVACControlViewController.m in Sources */,
 				04C583222192C7190017701A /* SHMediaSAT.swift in Sources */,
 				042CD7CF20AD2ED600061670 /* EZAudio.m in Sources */,
 				0441DDE2216C956C00952CE4 /* SHResetPasswordViewController.swift in Sources */,
@@ -5081,9 +5076,9 @@
 				0498350A21C3937000C57223 /* SHZoneNineInOneControlViewController.swift in Sources */,
 				0453EA4021A67C8400F666EF /* JHChart.m in Sources */,
 				04D49FE021B0E0230054E226 /* SHLanguageText.swift in Sources */,
+				04372F252237425C00CF9839 /* SHZoneHVACControlViewController.swift in Sources */,
 				04E074652186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift in Sources */,
 				04CD32D821EED3180041683A /* SHSceneControlViewController.swift in Sources */,
-				04D86CE422250C080036B45A /* SHScheduleHVACViewDetailController.m in Sources */,
 				8B2582091FD7C0380000CD73 /* UIImage+ReSize.m in Sources */,
 				8B2581F21FD79A580000CD73 /* NSDate+Date.m in Sources */,
 				04F3C8BD21B6642A00BF5608 /* SHZoneFanViewController.swift in Sources */,
@@ -5199,6 +5194,7 @@
 				049A9C5A21D769F900F79EE5 /* SHAudioOperatorTools + ftpUpdate.swift in Sources */,
 				04C94DFC216D9BF400EF069E /* SHAuthorizationViewController.swift in Sources */,
 				04E739AB21FB02D80032550D /* SHTabBarController.swift in Sources */,
+				04372F2722379CEB00CF9839 /* SHScheduleHVACViewDetailController.swift in Sources */,
 				041436342170412E00A3E5F6 /* SHChangeMacroImageViewController.swift in Sources */,
 				04913C992181921E00704F3D /* SHNetWorkServerViewController.swift in Sources */,
 				049A9C5E21D7755700F79EE5 /* SHAudioOperatorTools + playControl.swift in Sources */,

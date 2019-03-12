@@ -25,12 +25,10 @@
 #import "SHZoneControlButton.h"
 #import "SHZoneAudioPlayControlViewController.h"
 #import "SHAudioRecordControlButton.h"
-#import "SHScheduleHVACViewDetailController.h"
 #import "SHZoneControlRecordMoodViewController.h"
 #import "SoundTools.h"
 #import "SHZoneControlSATChannelButton.h"
 #import "SHMediaSATCategoryViewController.h"
-#import "SHZoneHVACControlViewController.h"
 #import "SHMoodShadeStatusButton.h"
 #import "SHScheduleAudioViewDetailController.h"
 

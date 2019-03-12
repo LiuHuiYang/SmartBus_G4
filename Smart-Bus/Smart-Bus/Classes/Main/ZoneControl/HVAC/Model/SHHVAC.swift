@@ -16,18 +16,15 @@ import UIKit
     case coolMaster // RS232桥接模块
 }
 
-//// 温度范围
-//typedef NS_ENUM(Byte, SHAirConditioningTemperatureRange) {
-//
-//    SHAirConditioningTemperatureRangeCentigradeMinimumValue = 0,
-//
-//    SHAirConditioningTemperatureRangeCentigradeMaximumValue = 30,
-//
-//    SHAirConditioningTemperatureRangeFahrenheitMinimumValue = 32,
-//
-//    SHAirConditioningTemperatureRangeFahrenheitMaximumValue = 86,
-//
-//} ;
+/// 温度的默认范围
+@objc enum SHAirConditioningTemperatureDefaultRange: UInt8 {
+    
+    case centigradeMinimumValue = 0
+    case centigradeMaximumValue = 30
+    
+    case fahrenheitMinimumValue = 32
+    case fahrenheitMaximumValue = 86
+}
 
 /// 空调的控制方式
 @objc enum SHAirConditioningControlType: UInt8 {
