@@ -397,38 +397,40 @@ extension SHZoneHVACControlViewController {
                     break
                 }
                 
-                // 风速
-                fanSpeedList.removeAll()
+                print("=== 收到了广播  ===")
                 
-                let speedLength = Int(socketData.additionalData[0])
+                print(socketData.additionalData)
                 
+                // 风速模式的有效长度
+                let fanSpeedLength =
+                    Int(socketData.additionalData[0])
                 
-                for index in 1 ... speedLength {
+                var fanSpeedList =
+                    [SHAirConditioningFanSpeedType]()
+                
+                for fanIndex in 1 ... fanSpeedLength {
                     
-                    if let speed = SHAirConditioningFanSpeedType(rawValue: socketData.additionalData[index]) {
+                    if let speed = SHAirConditioningFanSpeedType(rawValue: socketData.additionalData[fanIndex]
+                        ) {
                         
                         fanSpeedList.append(speed)
-                        
-                        let fanSpeedButton =
-                            fanSpeedButtons[index]
-                        
-//                        fanSpeedButton.isEnabled = true
-                        
                     }
                 }
                 
-                // 模式
-                acModelList.removeAll()
+                print("获得风速结果: \(fanSpeedList)")
                 
+                // 模式部分
                 let modelLength = Int(socketData.additionalData[5])
                 
-                for index in 1 ... modelLength {
+                var modelList = [UInt8]()
+                for modelIndex in 1 ... modelLength {
                     
-                    if let model = SHAirConditioningModeType(rawValue: socketData.additionalData[index + 5]) {
-                        
-                        acModelList.append(model)
-                    }
+                    modelList.append(
+                        socketData.additionalData[modelIndex + 5]
+                    )
                 }
+                
+                print("获得模式结果: \(modelList)")
                 
                 // 读取状态
                 readHVACStatus()
@@ -969,8 +971,6 @@ extension SHZoneHVACControlViewController {
             return
         }
         
-        print("单位状态: \(hvac.isCelsius)")
-        
         // 温度单位
         let unit = hvac.isCelsius ? "°C" : "°F"
         
@@ -1021,8 +1021,7 @@ extension SHZoneHVACControlViewController {
             "\(showAmbientTemperature) \(unit)"
         
         print("当前风速 \(hvac.fanSpeed.rawValue)")
-        
-        
+         
         // 3.设置风速等级
         let fanIndex = Int(hvac.fanSpeed.rawValue)
         
