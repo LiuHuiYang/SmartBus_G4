@@ -270,7 +270,7 @@ extension SHZoneHVACControlViewController {
                 
             // DDP控制面板发出的数据 而HVAC/IR/Relay得到的响应
             case 0x193B :
-                return
+                
                 if socketData.subNetID != hvac.subnetID ||
                     socketData.deviceID != hvac.deviceID {
                     
