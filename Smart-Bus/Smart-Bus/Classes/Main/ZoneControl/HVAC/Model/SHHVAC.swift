@@ -20,7 +20,7 @@ import UIKit
 @objc enum SHAirConditioningTemperatureDefaultRange: UInt8 {
     
     case centigradeMinimumValue = 0
-    case centigradeMaximumValue = 30
+    case centigradeMaximumValue = 40
     
     case fahrenheitMinimumValue = 32
     case fahrenheitMaximumValue = 86
@@ -86,6 +86,9 @@ import UIKit
     
     /// 录制成功标示
     var recordSuccess = false
+    
+    /// 当前是华氏还是摄氏
+    var isCelsius = true
     
     /// 打开状态
     var isTurnOn = false
@@ -193,6 +196,16 @@ import UIKit
         if key == "ACRemark" {
             
             acRemark = value as? String ?? "ac"
+            return
+        }
+        
+        if key == "ACTypeID" {
+            
+            acTypeID =
+                SHAirConditioningType(
+                    rawValue: value as? UInt8 ?? 0
+                ) ?? .hvac
+            
             return
         }
         

@@ -19,7 +19,7 @@
 
 /// 程序加载完成
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+     
     // 1.准备语言适配文件
     [[SHLanguageTools shareLanguageTools] copyLanguagePlist];
     

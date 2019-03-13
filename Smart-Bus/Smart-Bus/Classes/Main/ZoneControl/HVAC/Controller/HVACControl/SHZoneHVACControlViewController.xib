@@ -33,14 +33,14 @@
                 <outlet property="turnAcButton" destination="wdT-eX-wBn" id="ZYB-Lc-BS0"/>
                 <outlet property="view" destination="iN0-l3-epB" id="OFV-jY-uVN"/>
                 <outlet property="warmFastControlButton" destination="pJK-TV-9fM" id="Gcs-L2-uWi"/>
-                <outletCollection property="fanSppedButtons" destination="B6x-aw-dbs" id="QwI-bR-pBb"/>
-                <outletCollection property="fanSppedButtons" destination="G5a-y1-Cbr" id="0ac-TD-L2M"/>
-                <outletCollection property="fanSppedButtons" destination="Qcu-kx-6aa" id="gR9-sC-pt8"/>
-                <outletCollection property="fanSppedButtons" destination="0n2-FW-eMv" id="aP4-Oc-nj0"/>
-                <outletCollection property="acModelButtons" destination="P0v-8c-8eJ" id="KyO-NR-ELB"/>
-                <outletCollection property="acModelButtons" destination="ok9-ab-6Yh" id="IEo-G8-FbZ"/>
-                <outletCollection property="acModelButtons" destination="fGQ-LB-ogP" id="atJ-YE-JRS"/>
-                <outletCollection property="acModelButtons" destination="n8w-oZ-4T2" id="PVJ-SU-las"/>
+                <outletCollection property="fanSpeedButtons" destination="B6x-aw-dbs" collectionClass="NSMutableArray" id="QwI-bR-pBb"/>
+                <outletCollection property="fanSpeedButtons" destination="G5a-y1-Cbr" collectionClass="NSMutableArray" id="0ac-TD-L2M"/>
+                <outletCollection property="fanSpeedButtons" destination="Qcu-kx-6aa" collectionClass="NSMutableArray" id="gR9-sC-pt8"/>
+                <outletCollection property="fanSpeedButtons" destination="0n2-FW-eMv" collectionClass="NSMutableArray" id="aP4-Oc-nj0"/>
+                <outletCollection property="acModelButtons" destination="P0v-8c-8eJ" collectionClass="NSMutableArray" id="KyO-NR-ELB"/>
+                <outletCollection property="acModelButtons" destination="ok9-ab-6Yh" collectionClass="NSMutableArray" id="IEo-G8-FbZ"/>
+                <outletCollection property="acModelButtons" destination="fGQ-LB-ogP" collectionClass="NSMutableArray" id="atJ-YE-JRS"/>
+                <outletCollection property="acModelButtons" destination="n8w-oZ-4T2" collectionClass="NSMutableArray" id="PVJ-SU-las"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -301,7 +301,7 @@
                                         <action selector="fanSpeedChange:" destination="-1" eventType="touchUpInside" id="0bJ-jD-2Mw"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhf-xX-pix">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhf-xX-pix">
                                     <rect key="frame" x="15" y="194" width="46.5" height="49"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <state key="normal" title="16°C"/>
@@ -318,7 +318,7 @@
                                         <action selector="coldFastControlButtonClick" destination="-1" eventType="touchUpInside" id="JK8-Bq-7ai"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdZ-CK-tRl">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdZ-CK-tRl">
                                     <rect key="frame" x="76.5" y="194" width="46.5" height="49"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <state key="normal" title="22°C"/>
@@ -335,7 +335,7 @@
                                         <action selector="coolFastControlButtonClick" destination="-1" eventType="touchUpInside" id="u8l-2C-bJ9"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJK-TV-9fM">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJK-TV-9fM">
                                     <rect key="frame" x="197" y="194" width="46.5" height="49"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <state key="normal" title="26°C"/>
@@ -352,7 +352,7 @@
                                         <action selector="warmFastControlButtonClick" destination="-1" eventType="touchUpInside" id="xsr-r1-nJc"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOP-yy-8Sw">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOP-yy-8Sw">
                                     <rect key="frame" x="258.5" y="194" width="46.5" height="49"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <state key="normal" title="30°C"/>

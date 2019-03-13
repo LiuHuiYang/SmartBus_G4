@@ -12,9 +12,6 @@ class SHScheduleHVACViewDetailController: SHViewController {
 
     /// 计划空调
     var schedualHVAC: SHHVAC?
-    
-    /// 使用摄氏温度
-    private var isCelsius = true
 
     /// 分组视图高度
     @IBOutlet weak var groupViewHeightConstraint: NSLayoutConstraint!
@@ -104,7 +101,7 @@ extension SHScheduleHVACViewDetailController {
                 return
         }
         
-        let range = string.range(of: "°C")
+        let range = string.range(of: " °C")
         
         if range.location == NSNotFound {
             return
@@ -141,7 +138,7 @@ extension SHScheduleHVACViewDetailController {
             return
         }
         
-        let range = string.range(of: "°")
+        let range = string.range(of: " °")
         
         if range.location == NSNotFound {
             return
@@ -469,7 +466,14 @@ extension SHScheduleHVACViewDetailController {
         
         navigationItem.title = schedualHVAC?.acRemark
         
-        // 设置默认的温度范围
+        // 设置默认的温度范围 (统一使用 摄氏) 临时指定范围 0 ~ 36
+        schedualHVAC?.startHeatTemperatureRange = 0
+        schedualHVAC?.startAutoTemperatureRange = 0
+        schedualHVAC?.startCoolTemperatureRange = 0
+        
+        schedualHVAC?.endHeatTemperatureRange = 36
+        schedualHVAC?.endAutoTemperatureRange = 36
+        schedualHVAC?.endCoolTemperatureRange = 36
         
         // 风扇
         lowFanButton.setTitle(

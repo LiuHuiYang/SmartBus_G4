@@ -6,6 +6,19 @@
 //  Copyright © 2017年 Mark Liu. All rights reserved.
 //
 
+/*
+ 说明：模式与风速模式中
+ 1.HVAC控制的指令中，只有193B会显示实际值
+ 2.其它的操作指令只返回目标值
+ 
+ E0ED中的模式坐标，只是模式/风速列表中的下标索引
+ 193B中的返回是真实的值和目标值
+ 
+ 状态的显示
+ 快速按钮的状态的匹配
+ 没有返回时，再读取一次状态
+ */
+
 import UIKit
 
 class SHZoneHVACControlViewController: SHViewController {
@@ -20,13 +33,6 @@ class SHZoneHVACControlViewController: SHViewController {
     /// 有效的 acModel
     private var acModelList: [SHAirConditioningModeType] =
         [.cool, .heat, .fan, .auto]
-    
-    /// 红外控制
-    private var isIREmitter = false
-    
-    /// 红外控制空调的的所有设备
-    private var iREmitterControlACDevices: [UInt] =
-        [300, 301, 302, 303, 304, 305, 309, 319, 320];
     
     /// 空调的基本配置信息
     private var hvacSetupInfo: SHHVACSetUpInfo? =
@@ -107,7 +113,7 @@ class SHZoneHVACControlViewController: SHViewController {
     @IBOutlet weak var fanImageView: UIImageView!
     
     /// 风速指示按钮数组
-    @IBOutlet var fanSppedButtons: [UIButton]!
+    @IBOutlet var fanSpeedButtons: [UIButton]!
 
     /// 工作模式图片
     @IBOutlet weak var modelImageView: UIImageView!
@@ -165,21 +171,28 @@ extension SHZoneHVACControlViewController {
             // 空调部分 (coolmaster固件修改以后再将注释恢复)
         } else /*if ((subNetID == hvac.subnetID)  &&
              (deviceID == hvac.deviceID)) */ {
-        
-            // 判断设备类型 (后续版本直接要求用户设置数据库中的acType为IR)
-            isIREmitter ==
-                (hvac.acTypeID == .ir) || (iREmitterControlACDevices.contains(UInt(socketData?.deviceType ?? 0)))
-                
+         
             switch socketData.operatorCode {
                 
+                // 配合 9in1 控制空调增加
             case 0xE01D:
                 if socketData.subNetID != hvac.subnetID  ||
                     socketData.deviceID != hvac.deviceID {
                     break
                 }
                 
-                print("获得相关的结果???")
+                let isPowerOn =
+                    SHAirConditioningSwitchType.on.rawValue
                 
+                // 设置成功为1，否则是0
+                if socketData.additionalData[1] != isPowerOn {
+                    return
+                }
+                
+                hvac.isTurnOn =
+                    socketData.additionalData[0] == isPowerOn
+                
+                setAirConditionerStatus()
                 
                 // 返回状态
             case 0xE0ED:
@@ -229,7 +242,6 @@ extension SHZoneHVACControlViewController {
                 if fanIndex < fanSpeedList.count {
                     hvac.fanSpeed = fanSpeedList[fanIndex]
                 }
-               
                 
                 let modelIndex =
                     Int((socketData.additionalData[2] & 0xF0) >> 4)
@@ -254,12 +266,11 @@ extension SHZoneHVACControlViewController {
                         Int(socketData.additionalData[7])
                 )
                 
-                // 读取温度范围
-                readHVACTemperatureRange()
+                setAirConditionerStatus()
                 
             // DDP控制面板发出的数据 而HVAC/IR/Relay得到的响应
             case 0x193B :
-                
+                return
                 if socketData.subNetID != hvac.subnetID ||
                     socketData.deviceID != hvac.deviceID {
                     
@@ -287,12 +298,8 @@ extension SHZoneHVACControlViewController {
                 }
                 
                 // 获得温度单位 是否为摄氏温度
-                let isCelsius = socketData.additionalData[1] == 0
-                hvacSetupInfo?.isCelsius = isCelsius
-                _ = SHSQLiteManager.shared.updateHvacSetUpInfo(
-                    isCelsius
-                )
-                
+                hvac.isCelsius = socketData.additionalData[1] == 0
+                  
                 hvac.indoorTemperature =
                     SHHVAC.realTemperature(
                         Int(socketData.additionalData[2])
@@ -325,10 +332,12 @@ extension SHZoneHVACControlViewController {
                         rawValue: socketData.additionalData[10]
                     ) ?? .auto
                 
+                setAirConditionerStatus()
+                
             case 0xE3D9:
                 
                 if socketData.subNetID != hvac.subnetID ||
-                    socketData.deviceType != hvac.deviceID {
+                    socketData.deviceID != hvac.deviceID {
                     
                     break
                 }
@@ -346,7 +355,6 @@ extension SHZoneHVACControlViewController {
                         SHAirConditioningFanSpeedType(
                             rawValue: socketData.additionalData[1]
                     ) ?? .auto
-                    
                     
                 case SHAirConditioningControlType.acModeSet.rawValue:
                     
@@ -379,6 +387,8 @@ extension SHZoneHVACControlViewController {
                     break
                 }
                 
+                setAirConditionerStatus()
+                
                 // 模式
             case 0xE125:
                 if socketData.subNetID != hvac.subnetID ||
@@ -392,16 +402,22 @@ extension SHZoneHVACControlViewController {
                 
                 let speedLength = Int(socketData.additionalData[0])
                 
+                
                 for index in 1 ... speedLength {
                     
                     if let speed = SHAirConditioningFanSpeedType(rawValue: socketData.additionalData[index]) {
                         
                         fanSpeedList.append(speed)
+                        
+                        let fanSpeedButton =
+                            fanSpeedButtons[index]
+                        
+//                        fanSpeedButton.isEnabled = true
+                        
                     }
                 }
                 
                 // 模式
-                
                 acModelList.removeAll()
                 
                 let modelLength = Int(socketData.additionalData[5])
@@ -463,63 +479,20 @@ extension SHZoneHVACControlViewController {
                     break
                 }
                 
-                let isCelsius =
-                    (isIREmitter || hvac.acTypeID == .ir) ?
-                    socketData.additionalData[0] != 0 :
-                    socketData.additionalData[0] == 0
+                hvac.isCelsius =
+                    (hvac.acTypeID == .ir) ?
+                        socketData.additionalData[0] != 0 :
+                        socketData.additionalData[0] == 0
                 
-                hvacSetupInfo?.isCelsius = isCelsius
-                
-                _ = SHSQLiteManager.shared.updateHvacSetUpInfo(
-                    isCelsius
-                )
-                
-                // 设置默认温度范围
-                setAirConditionerDefaultTemperatureRange(isCelsius)
+                setAirConditionerStatus()
                 
             default:
                 break
             }
-                
-           // 设置空调状态
-           setAirConditionerStatus()
         }
-        
     }
     
-    // MARK: - 读取状态
-    
-    /// 读取设备的状态
-    private func readDevicesStatus() {
-        
-        guard let hvac = currentHVAC else {
-            return
-        }
-        
-        // 读取温度单位
-        SHSocketTools.sendData(
-            operatorCode: 0xE120,
-            subNetID: hvac.subnetID,
-            deviceID: hvac.deviceID,
-            additionalData: []
-        )
-        
-        // 读取传感器的温度
-        SHSocketTools.sendData(
-            operatorCode: 0xE3E7,
-            subNetID: hvac.temperatureSensorSubNetID,
-            deviceID: hvac.temperatureSensorDeviceID,
-            additionalData: [1]
-        )
-        
-        // 读取空调的工作模式与风速模式
-        SHSocketTools.sendData(
-            operatorCode: 0xE124,
-            subNetID: hvac.subnetID,
-            deviceID: hvac.deviceID,
-            additionalData: []
-        )
-    }
+    // MARK: - 读取空调的相关状态
     
     /// 读取HVAC的温度范围
     private func readHVACTemperatureRange() {
@@ -568,54 +541,6 @@ extension SHZoneHVACControlViewController {
 
 // MARK: - 控制HVAC的
 extension SHZoneHVACControlViewController {
-    
-    // MARK: - 设置默认温度
-    
-    /// 设置默认温度范围，避免没有读时都是0.
-    private func setAirConditionerDefaultTemperatureRange(_ isCelsius: Bool = true) {
-        
-        guard let hvac = currentHVAC else {
-            return
-        }
-        
-        if isCelsius {
-            
-            let minDefulteValue = Int(SHAirConditioningTemperatureDefaultRange.centigradeMinimumValue.rawValue)
-            
-            let maxDefulteValue = Int(SHAirConditioningTemperatureDefaultRange.centigradeMaximumValue.rawValue)
-            
-            hvac.startHeatTemperatureRange =
-            minDefulteValue
-            
-            hvac.startAutoTemperatureRange =
-            minDefulteValue
-            hvac.startCoolTemperatureRange =
-            minDefulteValue
-            
-            hvac.endAutoTemperatureRange = maxDefulteValue
-            hvac.endCoolTemperatureRange = maxDefulteValue
-            hvac.endHeatTemperatureRange = maxDefulteValue
-            
-        } else {
-            
-            let minDefulteValue = Int(SHAirConditioningTemperatureDefaultRange.fahrenheitMinimumValue.rawValue)
-            
-            let maxDefulteValue = Int(SHAirConditioningTemperatureDefaultRange.fahrenheitMaximumValue.rawValue)
-            
-            
-            hvac.startHeatTemperatureRange =
-            minDefulteValue
-            
-            hvac.startAutoTemperatureRange =
-            minDefulteValue
-            hvac.startCoolTemperatureRange =
-            minDefulteValue
-            
-            hvac.endAutoTemperatureRange = maxDefulteValue
-            hvac.endCoolTemperatureRange = maxDefulteValue
-            hvac.endHeatTemperatureRange = maxDefulteValue
-        }
-    }
     
     // MARK: - 开关控制
     
@@ -680,21 +605,21 @@ extension SHZoneHVACControlViewController {
                 return
         }
         
-        let range = string.range(of: "°")
+        let range = string.range(of: " °") // 注意空格的问题
         
         if range.location == NSNotFound {
             return
         }
         
-        if var temperature = Int(string.substring(to: range.location)) {
-            
-            increase ?  (temperature += 1) : (temperature -= 1)
-            
-            changeAirConditionerModelTemperature(
-                hvac.acMode,
-                temperature: temperature
-            )
-        }
+        var temperature =
+            Int(string.substring(to: range.location)) ?? 0
+        
+        increase ?  (temperature += 1) : (temperature -= 1)
+        
+        changeAirConditionerModelTemperature(
+            hvac.acMode,
+            temperature: temperature
+        )
     }
     
     /// 修改模式温度
@@ -761,7 +686,7 @@ extension SHZoneHVACControlViewController {
         
         modelTemperatureLabel.text =
             "\(temperature) " +
-            "\((hvacSetupInfo?.isCelsius ?? true) ? "°C" : "°F")"
+            "\((hvac.isCelsius) ? "°C" : "°F")"
         
         controlAirConditioner(
             controType,
@@ -785,7 +710,7 @@ extension SHZoneHVACControlViewController {
     @IBAction func fanSpeedChange(_ fanSpeedButton: UIButton) {
         
         guard let index =
-                fanSppedButtons.index(of: fanSpeedButton),
+                fanSpeedButtons.index(of: fanSpeedButton),
             
             let fanSpeed =
                 SHAirConditioningFanSpeedType(
@@ -807,10 +732,10 @@ extension SHZoneHVACControlViewController {
             return
         }
         
-        fanSppedButtons?[Int(hvac.fanSpeed.rawValue)].isSelected
+        fanSpeedButtons?[Int(hvac.fanSpeed.rawValue)].isSelected
             = false
         
-        fanSppedButtons?[Int(fanSpeed.rawValue)].isSelected
+        fanSpeedButtons?[Int(fanSpeed.rawValue)].isSelected
             = true
         
         if hvac.acTypeID == .coolMaster {
@@ -997,7 +922,7 @@ extension SHZoneHVACControlViewController {
             UInt8((hvac.channelNo == 0) ? hvac.acNumber : 1)
         
         additionalData[1] =
-            hvacSetupInfo?.isCelsius ?? true ? 1 : 0
+            hvac.isCelsius ? 0 : 1
         
         additionalData[2] = UInt8(hvac.indoorTemperature)
         additionalData[3] = UInt8(hvac.coolTemperture)
@@ -1034,10 +959,8 @@ extension SHZoneHVACControlViewController {
             additionalData: additionalData
         )
     }
-}
-
-// MARK: - UI初始化
-extension SHZoneHVACControlViewController {
+    
+    // MARK: - 设置空调的状态
     
     /// 设置空调的状态
     private func setAirConditionerStatus() {
@@ -1045,103 +968,154 @@ extension SHZoneHVACControlViewController {
         guard let hvac = currentHVAC else {
             return
         }
-
+        
+        print("单位状态: \(hvac.isCelsius)")
+        
         // 温度单位
-        let isCelsius = hvacSetupInfo?.isCelsius ?? true
-        let unit = isCelsius ? "°C" : "°F"
+        let unit = hvac.isCelsius ? "°C" : "°F"
         
         // 1.设置显示开和关
         controlView.isHidden = !hvac.isTurnOn
         turnAcButton.isSelected = hvac.isTurnOn
         
         // 2.设置环境温度
-        
-        var showTemperature = 0
-        
+        var showAmbientTemperature = 0
+
         // 都有值求平均
         if hvac.indoorTemperature != 0 &&
-           hvac.sensorTemperature != 0 {
-            
-            if isCelsius {
-                
-                showTemperature =
+            hvac.sensorTemperature != 0 {
+
+            if hvac.isCelsius {
+
+                showAmbientTemperature =
                     hvac.indoorTemperature + hvac.sensorTemperature
-            
+
             } else {
-                
-                showTemperature =
+
+                showAmbientTemperature =
                     hvac.indoorTemperature +
                     SHHVAC.centigradeConvert(toFahrenheit:
                         hvac.sensorTemperature
                 )
             }
-            
-            showTemperature =
-                Int(CGFloat(showTemperature) * 0.5)
-            
-            
+
+            showAmbientTemperature =
+                Int(CGFloat(showAmbientTemperature) * 0.5)
+
             // 只有空调本身的值
         } else if hvac.indoorTemperature != 0 {
-            
-            showTemperature = hvac.indoorTemperature
-            
+
+            showAmbientTemperature = hvac.indoorTemperature
+
         } else if hvac.sensorTemperature != 0 {
-            
-            showTemperature =
-                isCelsius ?
-                hvac.sensorTemperature :
+
+            showAmbientTemperature =
+                hvac.isCelsius ?
+                    hvac.sensorTemperature :
                 SHHVAC.centigradeConvert(toFahrenheit:
                     hvac.sensorTemperature
             )
         }
-        
+
         currentTempertureLabel.text =
-            "\(showTemperature) \(unit)"
+            "\(showAmbientTemperature) \(unit)"
+        
+        print("当前风速 \(hvac.fanSpeed.rawValue)")
+        
         
         // 3.设置风速等级
-        fanImageView.image = UIImage(named:
-            fanSpeedImageName[Int(hvac.fanSpeed.rawValue)]
-        )
+        let fanIndex = Int(hvac.fanSpeed.rawValue)
         
-        for fanSpeedButton in fanSppedButtons {
-            
-            if let index =
-                fanSppedButtons.index(of: fanSpeedButton),
-                let speed = SHAirConditioningFanSpeedType(
-                    rawValue: UInt8(index)) {
-                
-                fanSpeedButton.isEnabled =
-                    fanSpeedList.contains(speed)
-                
-                fanSpeedButton.setTitleColor(
-                    UIColor.darkGray,
-                    for: .normal
-                )
-                
-                if fanSpeedButton.isEnabled {
-                    
-                    fanSpeedButton.isEnabled = true
-                    fanSpeedButton.setTitleColor(
-                        UIView.textWhiteColor(),
-                        for: .normal
-                    )
-                }
-            }
+        for fanSpeedButton in fanSpeedButtons {
+            fanSpeedButton.isEnabled = true
+            fanSpeedButton.isSelected = false
         }
         
-        fanSppedButtons[Int(hvac.fanSpeed.rawValue)].isSelected =
-            true
+        fanImageView.image = UIImage(named:
+            fanSpeedImageName[fanIndex]
+        )
         
+        fanSpeedButtons[fanIndex].isSelected = true
+        
+        // 4.模式温度
+        let modelIndex = Int(hvac.acMode.rawValue)
+        
+        for modelButton in acModelButtons {
+            modelButton.isEnabled = true
+            modelButton.isSelected = false
+        }
+        
+        modelImageView.image = UIImage(named:
+            acModelImageName[modelIndex]
+        )
+        
+        acModelButtons[modelIndex].isSelected = true
+        
+        // 模式温度
+        var showModelTemperature = 0
+        
+        switch hvac.acMode {
+            
+        case .cool, .fan:
+             showModelTemperature = hvac.coolTemperture
+            
+        case .heat:
+            showModelTemperature = hvac.heatTemperture
+            
+        case .auto:
+            showModelTemperature = hvac.autoTemperture
+         
+        }
+        
+        modelTemperatureLabel.text =
+            "\(showModelTemperature) \(unit)"
+        
+        // 设置快速设置是否有用
     }
+}
+
+// MARK: - UI初始化
+extension SHZoneHVACControlViewController {
     
+  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // 设置状态
-        setAirConditionerStatus()
+        guard let hvac = currentHVAC else {
+            return
+        }
         
-        // 读取状态
-        readDevicesStatus()
+        // 读取温度单位
+        SHSocketTools.sendData(
+            operatorCode: 0xE120,
+            subNetID: hvac.subnetID,
+            deviceID: hvac.deviceID,
+            additionalData: []
+        )
+        
+        // 读取传感器的温度 内部温度统一使用摄氏
+        SHSocketTools.sendData(
+            operatorCode: 0xE3E7,
+            subNetID: hvac.temperatureSensorSubNetID,
+            deviceID: hvac.temperatureSensorDeviceID,
+            additionalData: [1]
+        )
+        
+        // 读取空调的工作模式与风速模式(有些固件不支持)
+        SHSocketTools.sendData(
+            operatorCode: 0xE124,
+            subNetID: hvac.subnetID,
+            deviceID: hvac.deviceID,
+            additionalData: []
+        )
+        
+        Thread.sleep(forTimeInterval: 0.3)
+        
+        readHVACTemperatureRange()
+        
+        Thread.sleep(forTimeInterval: 0.3)
+        
+        readHVACStatus()
     }
     
     override func viewDidLoad() {
@@ -1157,11 +1131,6 @@ extension SHZoneHVACControlViewController {
             currentHVAC?.temperatureSensorChannelNo = 1
         }
         
-        // 设置默认温度范围
-        setAirConditionerDefaultTemperatureRange(
-            hvacSetupInfo?.isCelsius ?? true
-        )
-        
         let font = UIView.suitLargerFontForPad()
         
         // 设置风速按钮
@@ -1171,13 +1140,13 @@ extension SHZoneHVACControlViewController {
                 withSubTitle: "FAN_BUTTON_NAMES"
         ) as! [String]
         
-        for fanSpeedButton in fanSppedButtons {
+        for fanSpeedButton in fanSpeedButtons {
             
             fanSpeedButton.isEnabled = false
             fanSpeedButton.setRoundedRectangleBorder()
             
             if let index =
-                fanSppedButtons.index(of: fanSpeedButton) {
+                fanSpeedButtons.index(of: fanSpeedButton) {
                 
                 fanSpeedButton.setTitle(
                     fanSpeedNames[index],
@@ -1200,7 +1169,6 @@ extension SHZoneHVACControlViewController {
         
         for acModelButton in acModelButtons {
             
-            acModelButton.isEnabled = false
             acModelButton.setRoundedRectangleBorder()
             
             if let index =
@@ -1218,10 +1186,29 @@ extension SHZoneHVACControlViewController {
             }
         }
         
-        
         // 设置快速控制  -- 新版本改成数字显示
         
+        let unit = (hvacSetupInfo?.isCelsius ?? true) ? "°C" : "°F"
         
+        coldFastControlButton.setTitle(
+            "\(hvacSetupInfo?.tempertureOfCold ?? 16) \(unit)",
+            for: .normal
+        )
+        
+        coolFastControlButton.setTitle(
+            "\(hvacSetupInfo?.tempertureOfCool ?? 22) \(unit)",
+            for: .normal
+        )
+        
+        warmFastControlButton.setTitle(
+            "\(hvacSetupInfo?.tempertureOfWarm ?? 26) \(unit)",
+            for: .normal
+        )
+        
+        hotFastControlButton.setTitle(
+            "\(hvacSetupInfo?.tempertureOfHot ?? 30) \(unit)",
+            for: .normal
+        )
         
         // 设置圆角
         addTemperatureButton.setRoundedRectangleBorder()
