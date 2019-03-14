@@ -239,6 +239,8 @@ extension SHZoneHVACControlViewController {
                 let fanIndex =
                     Int(socketData.additionalData[2] & 0x0F)
                 
+                print("=== 获得风速下标是 \(fanIndex) \(fanSpeedList)")
+                
                 if fanIndex < fanSpeedList.count {
                     hvac.fanSpeed = fanSpeedList[fanIndex]
                 }
@@ -275,6 +277,11 @@ extension SHZoneHVACControlViewController {
                     socketData.deviceID != hvac.deviceID {
                     
                     break
+                }
+                
+                if hvac.acTypeID == .hvac ||
+                   hvac.acTypeID == .ir {
+                   return
                 }
                 
                 // 在增加单个继电器控制空调的功能前,
@@ -418,6 +425,7 @@ extension SHZoneHVACControlViewController {
                 }
                 
                 print("获得风速结果: \(fanSpeedList)")
+                self.fanSpeedList = fanSpeedList
                 
                 // 模式部分
                 let modelLength = Int(socketData.additionalData[5])
@@ -555,7 +563,7 @@ extension SHZoneHVACControlViewController {
         
         controlView.isHidden = !hvac.isTurnOn
         
-        // 因9in1增加 - 发送 0xE01C 1 - 开 2 -关
+        // 因9in1增加 - 发送 0xE01C 1 - 开 2 - 关
         let switchNo: UInt8 = !hvac.isTurnOn ? 1 : 2
         SHSocketTools.sendData(
             operatorCode: 0xE01C,
@@ -916,6 +924,12 @@ extension SHZoneHVACControlViewController {
             return
         }
         
+        // 如果支持 0xE3E8 为了减少指令发送 取消 0x193A的发送
+        if hvac.acTypeID == .ir ||
+           hvac.acTypeID == .hvac {
+           return
+        }
+        
         // 一共有14个参数
         var additionalData = [UInt8](repeating: 0, count: 14)
         
@@ -1020,21 +1034,25 @@ extension SHZoneHVACControlViewController {
         currentTempertureLabel.text =
             "\(showAmbientTemperature) \(unit)"
         
-        print("当前风速 \(hvac.fanSpeed.rawValue)")
-         
+        
         // 3.设置风速等级
         let fanIndex = Int(hvac.fanSpeed.rawValue)
+    
+        print("当前风速 \(hvac.fanSpeed.rawValue)")
         
+        // 恢复默认状态
         for fanSpeedButton in fanSpeedButtons {
             fanSpeedButton.isEnabled = true
             fanSpeedButton.isSelected = false
         }
         
+        
+        // 设置当前风速状态
+        fanSpeedButtons[fanIndex].isSelected = true
+        
         fanImageView.image = UIImage(named:
             fanSpeedImageName[fanIndex]
         )
-        
-        fanSpeedButtons[fanIndex].isSelected = true
         
         // 4.模式温度
         let modelIndex = Int(hvac.acMode.rawValue)
@@ -1114,7 +1132,7 @@ extension SHZoneHVACControlViewController {
         
         Thread.sleep(forTimeInterval: 0.3)
         
-        readHVACStatus()
+//        readHVACStatus() // 暂时不读取状态，观察9in1的问题
     }
     
     override func viewDidLoad() {
@@ -1139,6 +1157,7 @@ extension SHZoneHVACControlViewController {
                 withSubTitle: "FAN_BUTTON_NAMES"
         ) as! [String]
         
+        
         for fanSpeedButton in fanSpeedButtons {
             
             fanSpeedButton.isEnabled = false
@@ -1148,7 +1167,7 @@ extension SHZoneHVACControlViewController {
                 fanSpeedButtons.index(of: fanSpeedButton) {
                 
                 fanSpeedButton.setTitle(
-                    fanSpeedNames[index],
+                    fanSpeedNames[fanSpeedNames.count - 1 - index],
                     for: .normal
                 )
             }

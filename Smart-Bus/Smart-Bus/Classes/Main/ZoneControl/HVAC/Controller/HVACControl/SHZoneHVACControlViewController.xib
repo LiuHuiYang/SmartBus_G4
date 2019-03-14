@@ -34,14 +34,14 @@
                 <outlet property="turnAcButton" destination="wdT-eX-wBn" id="ZYB-Lc-BS0"/>
                 <outlet property="view" destination="iN0-l3-epB" id="OFV-jY-uVN"/>
                 <outlet property="warmFastControlButton" destination="pJK-TV-9fM" id="Gcs-L2-uWi"/>
-                <outletCollection property="fanSpeedButtons" destination="B6x-aw-dbs" collectionClass="NSMutableArray" id="QwI-bR-pBb"/>
-                <outletCollection property="fanSpeedButtons" destination="G5a-y1-Cbr" collectionClass="NSMutableArray" id="0ac-TD-L2M"/>
-                <outletCollection property="fanSpeedButtons" destination="Qcu-kx-6aa" collectionClass="NSMutableArray" id="gR9-sC-pt8"/>
-                <outletCollection property="fanSpeedButtons" destination="0n2-FW-eMv" collectionClass="NSMutableArray" id="aP4-Oc-nj0"/>
                 <outletCollection property="acModelButtons" destination="P0v-8c-8eJ" collectionClass="NSMutableArray" id="KyO-NR-ELB"/>
                 <outletCollection property="acModelButtons" destination="ok9-ab-6Yh" collectionClass="NSMutableArray" id="IEo-G8-FbZ"/>
                 <outletCollection property="acModelButtons" destination="fGQ-LB-ogP" collectionClass="NSMutableArray" id="atJ-YE-JRS"/>
                 <outletCollection property="acModelButtons" destination="n8w-oZ-4T2" collectionClass="NSMutableArray" id="PVJ-SU-las"/>
+                <outletCollection property="fanSpeedButtons" destination="B6x-aw-dbs" collectionClass="NSMutableArray" id="r1B-iF-8Zd"/>
+                <outletCollection property="fanSpeedButtons" destination="G5a-y1-Cbr" collectionClass="NSMutableArray" id="1zi-qK-j27"/>
+                <outletCollection property="fanSpeedButtons" destination="Qcu-kx-6aa" collectionClass="NSMutableArray" id="wcU-mq-Jps"/>
+                <outletCollection property="fanSpeedButtons" destination="0n2-FW-eMv" collectionClass="NSMutableArray" id="IDO-Ax-aUh"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
