@@ -82,7 +82,6 @@ class SHZoneHVACControlViewController: SHViewController {
     
     /// 所有的操作空调的按钮
     @IBOutlet weak var controlButtonHeightConstraint: NSLayoutConstraint!
-
     
     // MARK: - 中间UI部分
 
@@ -1296,11 +1295,11 @@ extension SHZoneHVACControlViewController {
             // 控制空调部分
             controlButtonSuperViewBaseHeightConstraint.constant =
                 navigationBarHeight +
-                (isPortrait ? navigationBarHeight : tabBarHeight)
+                (isPortrait ? tabBarHeight : tabBarHeight)
 
             controlButtonHeightConstraint.constant =
                 navigationBarHeight +
-                (isPortrait ? statusBarHeight : 0)
+                (isPortrait ? tabBarHeight : 0)
 
         } else {
             
