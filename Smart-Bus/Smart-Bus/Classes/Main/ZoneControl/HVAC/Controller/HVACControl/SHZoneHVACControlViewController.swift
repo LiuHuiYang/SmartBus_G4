@@ -402,10 +402,6 @@ extension SHZoneHVACControlViewController {
                     break
                 }
                 
-                print("=== 收到了广播  ===")
-                
-                print(socketData.additionalData)
-                
                 // 风速模式的有效长度
                 let fanSpeedLength =
                     Int(socketData.additionalData[0])
@@ -551,7 +547,7 @@ extension SHZoneHVACControlViewController {
 }
 
 
-// MARK: - 控制HVAC的
+// MARK: - 控制HVAC
 extension SHZoneHVACControlViewController {
     
     // MARK: - 开关控制
@@ -1096,6 +1092,18 @@ extension SHZoneHVACControlViewController {
             "\(showModelTemperature) \(unit)"
         
         // 设置快速设置是否有用
+        
+        hotFastControlButton.isEnabled =
+            acModelList.contains(.heat)
+
+        warmFastControlButton.isEnabled =
+            acModelList.contains(.heat)
+
+        coldFastControlButton.isEnabled =
+            acModelList.contains(.cool)
+
+        coolFastControlButton.isEnabled =
+            acModelList.contains(.cool)
     }
 }
 
@@ -1134,11 +1142,11 @@ extension SHZoneHVACControlViewController {
             additionalData: []
         )
         
-        Thread.sleep(forTimeInterval: 0.3)
+        Thread.sleep(forTimeInterval: 0.5)
         
         readHVACTemperatureRange()
         
-        Thread.sleep(forTimeInterval: 0.3)
+//        Thread.sleep(forTimeInterval: 0.3)
         
 //        readHVACStatus() // 暂时不读取状态，观察9in1的问题
     }
