@@ -363,7 +363,7 @@ extension SHSecurityControlViewController {
         // 急救
         if commandButton.securityType == .ambulance {
             
-            // 抓包数所据 : 01 0A 【01 08 00 00 01】 9A 25
+            // 抓包数据 : 01 0A 【01 08 00 00 01】 9A 25
             SHSocketTools.sendData(
                 operatorCode: 0x010C,
                 subNetID: zone.subnetID,
@@ -381,7 +381,7 @@ extension SHSecurityControlViewController {
                 additionalData: [zoneID, 4,  0, 0, zoneID]
             )
         
-        // 普通字防
+        // 普通安防
         } else {
         
             SHSocketTools.sendData(

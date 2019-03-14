@@ -239,8 +239,6 @@ extension SHZoneHVACControlViewController {
                 let fanIndex =
                     Int(socketData.additionalData[2] & 0x0F)
                 
-                print("=== 获得风速下标是 \(fanIndex) \(fanSpeedList)")
-                
                 if fanIndex < fanSpeedList.count {
                     hvac.fanSpeed = fanSpeedList[fanIndex]
                 }
@@ -412,7 +410,7 @@ extension SHZoneHVACControlViewController {
                 let fanSpeedLength =
                     Int(socketData.additionalData[0])
                 
-                var fanSpeedList =
+                var fanList =
                     [SHAirConditioningFanSpeedType]()
                 
                 for fanIndex in 1 ... fanSpeedLength {
@@ -420,25 +418,29 @@ extension SHZoneHVACControlViewController {
                     if let speed = SHAirConditioningFanSpeedType(rawValue: socketData.additionalData[fanIndex]
                         ) {
                         
-                        fanSpeedList.append(speed)
+                        fanList.append(speed)
                     }
                 }
                 
-                print("获得风速结果: \(fanSpeedList)")
-                self.fanSpeedList = fanSpeedList
+                fanSpeedList = fanList
                 
                 // 模式部分
                 let modelLength = Int(socketData.additionalData[5])
                 
-                var modelList = [UInt8]()
+                var modelList = [SHAirConditioningModeType]()
+                
                 for modelIndex in 1 ... modelLength {
                     
-                    modelList.append(
-                        socketData.additionalData[modelIndex + 5]
-                    )
+                    if let model =
+                        SHAirConditioningModeType(rawValue:
+                            socketData.additionalData[modelIndex + 5]
+                        ) {
+                        
+                        modelList.append(model)
+                    }
                 }
                 
-                print("获得模式结果: \(modelList)")
+                acModelList = modelList
                 
                 // 读取状态
                 readHVACStatus()
@@ -447,7 +449,7 @@ extension SHZoneHVACControlViewController {
             case 0x1901:
                 
                 if socketData.subNetID != hvac.subnetID ||
-                    socketData.deviceID != hvac.deviceID {
+                   socketData.deviceID != hvac.deviceID {
                     
                     break
                 }
@@ -1034,39 +1036,45 @@ extension SHZoneHVACControlViewController {
         currentTempertureLabel.text =
             "\(showAmbientTemperature) \(unit)"
         
-        
         // 3.设置风速等级
         let fanIndex = Int(hvac.fanSpeed.rawValue)
-    
-        print("当前风速 \(hvac.fanSpeed.rawValue)")
-        
-        // 恢复默认状态
-        for fanSpeedButton in fanSpeedButtons {
-            fanSpeedButton.isEnabled = true
-            fanSpeedButton.isSelected = false
-        }
-        
-        
-        // 设置当前风速状态
-        fanSpeedButtons[fanIndex].isSelected = true
-        
+     
         fanImageView.image = UIImage(named:
             fanSpeedImageName[fanIndex]
         )
         
-        // 4.模式温度
-        let modelIndex = Int(hvac.acMode.rawValue)
-        
-        for modelButton in acModelButtons {
-            modelButton.isEnabled = true
-            modelButton.isSelected = false
+        for fanSpeed in fanSpeedButtons.enumerated() {
+            
+            fanSpeed.element.isEnabled =
+                fanSpeedList.contains(
+                    SHAirConditioningFanSpeedType(
+                        rawValue: UInt8(fanSpeed.offset)
+                    ) ?? .auto)
+            
+            fanSpeed.element.isSelected =
+                fanIndex == fanSpeed.offset
         }
+        
+        
+        // 4.设置空调模式
+        let modelIndex = Int(hvac.acMode.rawValue)
         
         modelImageView.image = UIImage(named:
             acModelImageName[modelIndex]
         )
         
-        acModelButtons[modelIndex].isSelected = true
+        for model in acModelButtons.enumerated() {
+            
+            model.element.isEnabled =
+                acModelList.contains(
+                    SHAirConditioningModeType(
+                        rawValue: UInt8(model.offset)
+                        ) ?? .cool)
+            
+            model.element.isSelected =
+                modelIndex == model.offset
+        }
+         
         
         // 模式温度
         var showModelTemperature = 0
@@ -1160,7 +1168,6 @@ extension SHZoneHVACControlViewController {
         
         for fanSpeedButton in fanSpeedButtons {
             
-            fanSpeedButton.isEnabled = false
             fanSpeedButton.setRoundedRectangleBorder()
             
             if let index =
