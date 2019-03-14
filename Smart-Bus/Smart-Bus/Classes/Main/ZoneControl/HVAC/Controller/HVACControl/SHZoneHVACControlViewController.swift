@@ -17,6 +17,8 @@
  状态的显示
  快速按钮的状态的匹配
  没有返回时，再读取一次状态
+ 
+ 温度单位是一个永恒的话题
  */
 
 import UIKit
@@ -25,6 +27,11 @@ class SHZoneHVACControlViewController: SHViewController {
     
     /// 当前的空调
     var currentHVAC: SHHVAC?
+    
+    /// 特殊设备类型与HVAC的温度单位是一样的
+    private lazy var iRAsSameAsHVAC: [UInt16] = [
+        299
+    ]
     
     /// 有效的 fanModel
     private var fanSpeedList: [SHAirConditioningFanSpeedType] =
@@ -56,8 +63,7 @@ class SHZoneHVACControlViewController: SHViewController {
 
     // MARK: - 约束条件
     
-    /// 控制按钮的起始位置
-    @IBOutlet weak var controlButtonStartY: NSLayoutConstraint!
+
     
     /// 空调标志基准高度
     @IBOutlet weak var acflagHeightConstraint: NSLayoutConstraint!
@@ -486,6 +492,13 @@ extension SHZoneHVACControlViewController {
                     (hvac.acTypeID == .ir) ?
                         socketData.additionalData[0] != 0 :
                         socketData.additionalData[0] == 0
+                
+                // 如果固件修改，代码再整理
+                if iRAsSameAsHVAC.contains(socketData.deviceType) {
+                    
+                    hvac.isCelsius = socketData.additionalData[0] == 0
+                }
+                
                 
                 setAirConditionerStatus()
                 
@@ -1267,6 +1280,13 @@ extension SHZoneHVACControlViewController {
         
         if UIDevice.is_iPad() {
             
+            // 中心小图标
+            controlMiddleIconViewWidthConstraint.constant =
+                navigationBarHeight + statusBarHeight
+            
+            controlMiddleIconViewHeightConstraint.constant =
+                navigationBarHeight + statusBarHeight
+            
             acflagWidthConstraint.constant =
                 navigationBarHeight
             
@@ -1275,43 +1295,26 @@ extension SHZoneHVACControlViewController {
             
             // 控制空调部分
             controlButtonSuperViewBaseHeightConstraint.constant =
-                navigationBarHeight + navigationBarHeight
+                navigationBarHeight +
+                (isPortrait ? navigationBarHeight : tabBarHeight)
 
             controlButtonHeightConstraint.constant =
                 navigationBarHeight +
-                (isPortrait ? tabBarHeight : statusBarHeight)
-
- 
-            // 中心小图标
-            controlMiddleIconViewWidthConstraint.constant =
-                navigationBarHeight + statusBarHeight
-            
-            controlMiddleIconViewHeightConstraint.constant =
-                navigationBarHeight + statusBarHeight
+                (isPortrait ? statusBarHeight : 0)
 
         } else {
-         
-            if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
+            
+            if !(UIDevice.is3_5inch() || UIDevice.is4_0inch()) {
                 
-                acflagWidthConstraint.constant = defaultHeight
-                acflagHeightConstraint.constant = defaultHeight
-                
-                controlButtonHeightConstraint.constant =
-                    defaultHeight
-
-                controlButtonSuperViewBaseHeightConstraint.constant
-                    = navigationBarHeight
-
-                controlButtonStartY.constant = statusBarHeight
-
-            } else {
-                
-                controlButtonSuperViewBaseHeightConstraint.constant
-                    = navigationBarHeight + statusBarHeight
+                acflagWidthConstraint.constant = tabBarHeight
+                acflagHeightConstraint.constant = tabBarHeight
 
                 controlButtonHeightConstraint.constant =
                     navigationBarHeight
 
+//                controlButtonSuperViewBaseHeightConstraint.constant
+//                    = navigationBarHeight
+ 
             }
         }
     }
