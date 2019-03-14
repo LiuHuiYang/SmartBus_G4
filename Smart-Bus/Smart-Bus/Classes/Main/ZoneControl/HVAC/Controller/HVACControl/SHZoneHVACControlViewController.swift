@@ -277,11 +277,6 @@ extension SHZoneHVACControlViewController {
                     break
                 }
                 
-                if hvac.acTypeID == .hvac ||
-                   hvac.acTypeID == .ir {
-                   return
-                }
-                
                 // 在增加单个继电器控制空调的功能前,
                 // HVAC中,0X193B的返回长度是13
                 // IR 中 0X193B的返回长度是14 且顺序与HVAC保持一致,后面多出来的参数暂时没用上
