@@ -917,7 +917,7 @@ extension SHZoneHVACControlViewController {
             return
         }
         
-        // 如果支持 0xE3E8 为了减少指令发送 取消 0x193A的发送
+        // 如果支持 0xE3D8 为了减少指令发送 取消 0x193A的发送
         if hvac.acTypeID == .ir ||
            hvac.acTypeID == .hvac {
            return
@@ -1291,7 +1291,7 @@ extension SHZoneHVACControlViewController {
 
         } else {
          
-            if UIDevice.is3_5inch() {
+            if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
                 
                 acflagWidthConstraint.constant = defaultHeight
                 acflagHeightConstraint.constant = defaultHeight
