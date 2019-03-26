@@ -61,7 +61,20 @@
     // 1.屏幕旋转
     [self viewWillTransitionToSize:self.view.bounds.size withTransitionCoordinator:self.transitionCoordinator];
     
-    // 2.设置指示器
+    [self setupSVProgressHUD];
+    
+    // 接收数据广播
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self
+           selector:@selector(receiveBroadcastMessages:)
+               name:SHSocketTools.broadcastNotificationName
+             object:nil
+    ];
+}
+
+//// 设置指示器
+- (void)setupSVProgressHUD {
+    
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setBackgroundColor:[UIColor colorWithHex:0x726B6E alpha:1.0]];
     
@@ -89,15 +102,7 @@
         
         [SVProgressHUD setMinimumSize:CGSizeMake(self.view.frame_width * 0.4, self.view.frame_height * 0.4)];
     }
-    
-    // 接收数据广播
-    [[NSNotificationCenter defaultCenter]
-        addObserver:self
-           selector:@selector(receiveBroadcastMessages:)
-               name:SHSocketTools.broadcastNotificationName
-             object:nil
-    ];
-} 
+}
 
 /// 接收到了数据
 - (void)receiveBroadcastMessages:(NSNotification *)notification {

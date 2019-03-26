@@ -4611,7 +4611,7 @@
 					8B2461331EE4EA8B009574E3 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = TMD6A3D429;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
@@ -4623,7 +4623,7 @@
 			};
 			buildConfigurationList = 8B24612F1EE4EA8B009574E3 /* Build configuration list for PBXProject "Smart-Bus" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -5401,8 +5401,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Smart-Bus/Smart-Bus-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -5437,8 +5436,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = SmartBus_Distribution;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Smart-Bus/Smart-Bus-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

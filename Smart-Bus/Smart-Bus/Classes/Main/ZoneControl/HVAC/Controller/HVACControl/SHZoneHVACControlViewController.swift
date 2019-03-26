@@ -498,7 +498,6 @@ extension SHZoneHVACControlViewController {
                     hvac.isCelsius = socketData.additionalData[0] == 0
                 }
                 
-                
                 setAirConditionerStatus()
                 
             default:
@@ -725,7 +724,7 @@ extension SHZoneHVACControlViewController {
     @IBAction func fanSpeedChange(_ fanSpeedButton: UIButton) {
         
         guard let index =
-                fanSpeedButtons.index(of: fanSpeedButton),
+                fanSpeedButtons.firstIndex(of: fanSpeedButton),
             
             let fanSpeed =
                 SHAirConditioningFanSpeedType(
@@ -778,7 +777,7 @@ extension SHZoneHVACControlViewController {
     @IBAction func acModelChange(_ acModelButton: UIButton) {
         
         guard let index =
-            acModelButtons.index(of: acModelButton),
+            acModelButtons.firstIndex(of: acModelButton),
             
             let model =
             SHAirConditioningModeType(
@@ -1186,7 +1185,7 @@ extension SHZoneHVACControlViewController {
             fanSpeedButton.setRoundedRectangleBorder()
             
             if let index =
-                fanSpeedButtons.index(of: fanSpeedButton) {
+                fanSpeedButtons.firstIndex(of: fanSpeedButton) {
                 
                 fanSpeedButton.setTitle(
                     fanSpeedNames[fanSpeedNames.count - 1 - index],
@@ -1212,7 +1211,7 @@ extension SHZoneHVACControlViewController {
             acModelButton.setRoundedRectangleBorder()
             
             if let index =
-                acModelButtons.index(of: acModelButton) {
+                acModelButtons.firstIndex(of: acModelButton) {
                 
                 acModelButton.setTitle(
                     acModelNames[index],
