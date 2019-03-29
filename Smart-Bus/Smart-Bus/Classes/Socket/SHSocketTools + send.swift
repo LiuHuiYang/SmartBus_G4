@@ -78,7 +78,8 @@ extension SHSocketTools {
                          isDMX: isDMX
                 )
                 
-                Thread.sleep(forTimeInterval: 0.7)
+                // 保证固件红外码操作完成响应时间足够
+                Thread.sleep(forTimeInterval: 1.2)
                 
                 // 查询缓存
                 if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
