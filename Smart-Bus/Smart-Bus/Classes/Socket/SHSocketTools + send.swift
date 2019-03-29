@@ -79,7 +79,7 @@ extension SHSocketTools {
                 )
                 
                 // 保证固件红外码操作完成响应时间足够
-                Thread.sleep(forTimeInterval: 1.2)
+                Thread.sleep(forTimeInterval: 1.5)
                 
                 // 查询缓存
                 if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
