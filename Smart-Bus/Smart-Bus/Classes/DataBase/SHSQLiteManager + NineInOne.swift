@@ -244,6 +244,7 @@ extension SHSQLiteManager {
             "\(nineInOne.switchIDforNumberAsterisk),        " +
             "SwitchIDforNumberPound =                       " +
             "\(nineInOne.switchIDforNumberPound),           " +
+            
             "SwitchNameforSpare1 =                          " +
             "'\(nineInOne.switchNameforSpare1 ?? "Spare_1")',"
                                                               +

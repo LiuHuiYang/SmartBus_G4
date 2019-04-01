@@ -112,6 +112,81 @@ import UIKit
     
     /// IR5
     var iRMacroNumberForTVStart5: UInt = 0
+    
+    
+    // 备用面板
+    
+    /// 备用键1 的名称
+    var switchNameforSpare1: String?
+    
+    /// 备用键1 的 指令号码
+    var switchIDforSpare1: UInt = 0
+    
+    /// 备用键2 的名称
+    var switchNameforSpare2: String?
+    
+    /// 备用键2 的 指令号码
+    var switchIDforSpare2: UInt = 0
+    
+    /// 备用键3 的名称
+    var switchNameforSpare3: String?
+    
+    /// 备用键3 的 指令号码
+    var switchIDforSpare3: UInt = 0
+    
+    /// 备用键4 的名称
+    var switchNameforSpare4: String?
+    
+    /// 备用键4 的 指令号码
+    var switchIDforSpare4: UInt = 0
+    
+    /// 备用键5 的名称
+    var switchNameforSpare5: String?
+    
+    /// 备用键5 的 指令号码
+    var switchIDforSpare5: UInt = 0
+    
+    /// 备用键6 的名称
+    var switchNameforSpare6: String?
+    
+    /// 备用键6 的 指令号码
+    var switchIDforSpare6: UInt = 0
+    
+    /// 备用键7 的名称
+    var switchNameforSpare7: String?
+    
+    /// 备用键7 的 指令号码
+    var switchIDforSpare7: UInt = 0
+    
+    /// 备用键8 的名称
+    var switchNameforSpare8: String?
+    
+    /// 备用键8 的 指令号码
+    var switchIDforSpare8: UInt = 0
+    
+    /// 备用键9 的名称
+    var switchNameforSpare9: String?
+    
+    /// 备用键9 的 指令号码
+    var switchIDforSpare9: UInt = 0
+    
+    /// 备用键10 的名称
+    var switchNameforSpare10: String?
+    
+    /// 备用键10 的 指令号码
+    var switchIDforSpare10: UInt = 0
+    
+    /// 备用键11 的名称
+    var switchNameforSpare11: String?
+    
+    /// 备用键11 的 指令号码
+    var switchIDforSpare11: UInt = 0
+    
+    /// 备用键12 的名称
+    var switchNameforSpare12: String?
+    
+    /// 备用键12 的 指令号码
+    var switchIDforSpare12: UInt = 0
 
     override init() {
         super.init()

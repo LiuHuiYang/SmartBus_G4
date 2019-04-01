@@ -45,7 +45,33 @@ extension SHSQLiteManager {
             "IRMacroNumberForTVStart2,             " +
             "IRMacroNumberForTVStart3,             " +
             "IRMacroNumberForTVStart4,             " +
-            "IRMacroNumberForTVStart5)             " +
+            "IRMacroNumberForTVStart5,             " +
+              
+            "SwitchNameforSpare1,                  " +
+            "SwitchIDforSpare1,                    " +
+            "SwitchNameforSpare2,                  " +
+            "SwitchIDforSpare2,                    " +
+            "SwitchNameforSpare3,                  " +
+            "SwitchIDforSpare3,                    " +
+            "SwitchNameforSpare4,                  " +
+            "SwitchIDforSpare4,                    " +
+            "SwitchNameforSpare5,                  " +
+            "SwitchIDforSpare5,                    " +
+            "SwitchNameforSpare6,                  " +
+            "SwitchIDforSpare6,                    " +
+            "SwitchNameforSpare7,                  " +
+            "SwitchIDforSpare7,                    " +
+            "SwitchNameforSpare8,                  " +
+            "SwitchIDforSpare8,                    " +
+            "SwitchNameforSpare9,                  " +
+            "SwitchIDforSpare9,                    " +
+            "SwitchNameforSpare10,                 " +
+            "SwitchIDforSpare10,                   " +
+            "SwitchNameforSpare11,                 " +
+            "SwitchIDforSpare11,                   " +
+            "SwitchNameforSpare12,                 " +
+            "SwitchIDforSpare12 )                  " +
+                
             "values('\(tv.remark ?? "tv")',        " +
             "\(tv.zoneID), \(tv.subnetID),         " +
             "\(tv.deviceID),                       " +
@@ -76,7 +102,32 @@ extension SHSQLiteManager {
             "\(tv.iRMacroNumberForTVStart2),       " +
             "\(tv.iRMacroNumberForTVStart3),       " +
             "\(tv.iRMacroNumberForTVStart4),       " +
-            "\(tv.iRMacroNumberForTVStart5));      "
+            "\(tv.iRMacroNumberForTVStart5),       " +
+        
+            "'\(tv.switchNameforSpare1 ?? "Spare_1")',   " +
+            "\(tv.switchIDforSpare1),                    " +
+            "'\(tv.switchNameforSpare2 ?? "Spare_2")',   " +
+            "\(tv.switchIDforSpare2),                    " +
+            "'\(tv.switchNameforSpare3 ?? "Spare_3")',   " +
+            "\(tv.switchIDforSpare3),                    " +
+            "'\(tv.switchNameforSpare4 ?? "Spare_4")',   " +
+            "\(tv.switchIDforSpare4),                    " +
+            "'\(tv.switchNameforSpare5 ?? "Spare_5")',   " +
+            "\(tv.switchIDforSpare5),                    " +
+            "'\(tv.switchNameforSpare6 ?? "Spare_6")',   " +
+            "\(tv.switchIDforSpare6),                    " +
+            "'\(tv.switchNameforSpare7 ?? "Spare_7" )',  " +
+            "\(tv.switchIDforSpare7),                    " +
+            "'\(tv.switchNameforSpare8 ?? "Spare_8")',   " +
+            "\(tv.switchIDforSpare8),                    " +
+            "'\(tv.switchNameforSpare9 ?? "Spare_9")',   " +
+            "\(tv.switchIDforSpare9),                    " +
+            "'\(tv.switchNameforSpare10 ?? "Spare_10")', " +
+            "\(tv.switchIDforSpare10),                   " +
+            "'\(tv.switchNameforSpare11 ?? "Spare_11")', " +
+            "\(tv.switchIDforSpare11),                   " +
+            "'\(tv.switchNameforSpare12 ?? "Spare_12")', " +
+            "\(tv.switchIDforSpare12));"
         
         _ = executeSql(sql)
         
@@ -154,7 +205,57 @@ extension SHSQLiteManager {
             "IRMacroNumberForTVStart4 = "         +
             "\(tv.iRMacroNumberForTVStart4), "    +
             "IRMacroNumberForTVStart5 = "         +
-            "\(tv.iRMacroNumberForTVStart5) "     +
+            "\(tv.iRMacroNumberForTVStart5), "    +
+                
+            "SwitchNameforSpare1 =                       " +
+            "'\(tv.switchNameforSpare1 ?? "Spare_1")',   " +
+            "SwitchIDforSpare1 =                         " +
+            "\(tv.switchIDforSpare1),                    " +
+            "SwitchNameforSpare2 =                       " +
+            "'\(tv.switchNameforSpare2 ?? "Spare_2")',   " +
+            "SwitchIDforSpare2 =                         " +
+            "\(tv.switchIDforSpare2),                    " +
+            "SwitchNameforSpare3 =                       " +
+            "'\(tv.switchNameforSpare3 ?? "Spare_3")',   " +
+            "SwitchIDforSpare3 =                         " +
+            "\(tv.switchIDforSpare3),                    " +
+            "SwitchNameforSpare4 =                       " +
+            "'\(tv.switchNameforSpare4 ?? "Spare_4")',   " +
+            "SwitchIDforSpare4 =                         " +
+            "\(tv.switchIDforSpare4),                    " +
+            "SwitchNameforSpare5 =                       " +
+            "'\(tv.switchNameforSpare5 ?? "Spare_5")',   " +
+            "SwitchIDforSpare5 =                         " +
+            "\(tv.switchIDforSpare5),                    " +
+            "SwitchNameforSpare6 =                       " +
+            "'\(tv.switchNameforSpare6 ?? "Spare_6")',   " +
+            "SwitchIDforSpare6 =                         " +
+            "\(tv.switchIDforSpare6),                    " +
+            "SwitchNameforSpare7 =                       " +
+            "'\(tv.switchNameforSpare7 ?? "Spare_7")',   " +
+            "SwitchIDforSpare7 =                         " +
+            "\(tv.switchIDforSpare7),                    " +
+            "SwitchNameforSpare8 =                       " +
+            "'\(tv.switchNameforSpare8 ?? "Spare_8")',   " +
+            "SwitchIDforSpare8 =                         " +
+            "\(tv.switchIDforSpare8),                    " +
+            "SwitchNameforSpare9 =                       " +
+            "'\(tv.switchNameforSpare9 ?? "Spare_9")',   " +
+            "SwitchIDforSpare9 =                         " +
+            "\(tv.switchIDforSpare9),                    " +
+            "SwitchNameforSpare10 =                      " +
+            "'\(tv.switchNameforSpare10 ?? "Spare_10")', " +
+            "SwitchIDforSpare10 =                        " +
+            "\(tv.switchIDforSpare10),                   " +
+            "SwitchNameforSpare11 =                      " +
+            "'\(tv.switchNameforSpare11 ?? "Spare_11")', " +
+            "SwitchIDforSpare11 =                        " +
+            "\(tv.switchIDforSpare11),                   " +
+            "SwitchNameforSpare12 =                      " +
+            "'\(tv.switchNameforSpare12 ?? "Spare_12")', " +
+            "SwitchIDforSpare12 =                        " +
+            "\(tv.switchIDforSpare12)                    " +
+                
             "Where zoneID = \(tv.zoneID) and id = \(tv.id);"
         
         return executeSql(sql)
@@ -213,8 +314,33 @@ extension SHSQLiteManager {
             "IRMacroNumberForTVStart2,            " +
             "IRMacroNumberForTVStart3,            " +
             "IRMacroNumberForTVStart4,            " +
-            "IRMacroNumberForTVStart5             " +
-            "from TVInZone where                  " +
+            "IRMacroNumberForTVStart5,            " +
+                
+            "SwitchNameforSpare1,                    " +
+            "SwitchIDforSpare1,                      " +
+            "SwitchNameforSpare2,                    " +
+            "SwitchIDforSpare2,                      " +
+            "SwitchNameforSpare3,                    " +
+            "SwitchIDforSpare3,                      " +
+            "SwitchNameforSpare4,                    " +
+            "SwitchIDforSpare4,                      " +
+            "SwitchNameforSpare5,                    " +
+            "SwitchIDforSpare5,                      " +
+            "SwitchNameforSpare6,                    " +
+            "SwitchIDforSpare6,                      " +
+            "SwitchNameforSpare7,                    " +
+            "SwitchIDforSpare7,                      " +
+            "SwitchNameforSpare8,                    " +
+            "SwitchIDforSpare8,                      " +
+            "SwitchNameforSpare9,                    " +
+            "SwitchIDforSpare9,                      " +
+            "SwitchNameforSpare10,                   " +
+            "SwitchIDforSpare10,                     " +
+            "SwitchNameforSpare11,                   " +
+            "SwitchIDforSpare11,                     " +
+            "SwitchNameforSpare12,                   " +
+            "SwitchIDforSpare12                      " +
+            "from TVInZone where                     " +
             "ZoneID = \(zoneID) order by id;"
         
         let array = selectProprty(sql)
@@ -232,6 +358,36 @@ extension SHSQLiteManager {
 
 // MARK: - 增加字段
 extension SHSQLiteManager {
+    
+    /// 增加电视的更多参数
+    func addMediaTVParameter() -> Bool {
+        
+        if isColumnName(
+            "SwitchNameforSpare1",
+            consistinTable: "TVInZone"
+            ) == false {
+            
+            for index in 1 ... 12 {
+                
+                let nameSQL =
+                    "ALTER TABLE TVInZone ADD "   +
+                    "SwitchNameforSpare\(index) " +
+                    "TEXT DEFAULT  'Spare_\(index)';"
+                
+                let valueSQL =
+                    "ALTER TABLE TVInZone ADD " +
+                    "SwitchIDforSpare\(index) " +
+                    "INTEGER DEFAULT  0;"
+                
+                _ = executeSql(nameSQL)
+                _ = executeSql(valueSQL)
+            }
+            
+            return true
+        }
+        
+        return true
+    }
     
     /// 增加媒体设备标签
     func addMediaDeviceRemark() {

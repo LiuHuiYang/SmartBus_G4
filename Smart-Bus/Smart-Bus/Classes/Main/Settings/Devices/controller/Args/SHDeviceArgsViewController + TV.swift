@@ -50,7 +50,32 @@ extension SHDeviceArgsViewController {
             "IRReserved_2",
             "IRReserved_3",
             "IRReserved_4",
-            "IRReserved_5"
+            "IRReserved_5",
+            
+            "Spare_1 Name",
+            "Spare_1 commandID",
+            "Spare_2 Name",
+            "Spare_2 commandID",
+            "Spare_3 Name",
+            "Spare_3 commandID",
+            "Spare_4 Name",
+            "Spare_4 commandID",
+            "Spare_5 Name",
+            "Spare_5 commandID",
+            "Spare_6 Name",
+            "Spare_6 commandID",
+            "Spare_7 Name",
+            "Spare_7 commandID",
+            "Spare_8 Name",
+            "Spare_8 commandID",
+            "Spare_9 Name",
+            "Spare_9 commandID",
+            "Spare_10 Name",
+            "Spare_10 commandID",
+            "Spare_11 Name",
+            "Spare_11 commandID",
+            "Spare_12 Name",
+            "Spare_12 commandID"
         ]
         
         argsValues = [
@@ -90,7 +115,32 @@ extension SHDeviceArgsViewController {
             "\(mediaTV?.iRMacroNumberForTVStart2 ?? 0)",
             "\(mediaTV?.iRMacroNumberForTVStart3 ?? 0)",
             "\(mediaTV?.iRMacroNumberForTVStart4 ?? 0)",
-            "\(mediaTV?.iRMacroNumberForTVStart5 ?? 0)"
+            "\(mediaTV?.iRMacroNumberForTVStart5 ?? 0)",
+            
+            "\(mediaTV?.switchNameforSpare1 ?? "Spare_1")",
+            "\(mediaTV?.switchIDforSpare1 ?? 0)",
+            "\(mediaTV?.switchNameforSpare2 ?? "Spare_2")",
+            "\(mediaTV?.switchIDforSpare2 ?? 0)",
+            "\(mediaTV?.switchNameforSpare3 ?? "Spare_3")",
+            "\(mediaTV?.switchIDforSpare3 ?? 0)",
+            "\(mediaTV?.switchNameforSpare4 ?? "Spare_4")",
+            "\(mediaTV?.switchIDforSpare4 ?? 0)",
+            "\(mediaTV?.switchNameforSpare5 ?? "Spare_5")",
+            "\(mediaTV?.switchIDforSpare5 ?? 0)",
+            "\(mediaTV?.switchNameforSpare6 ?? "Spare_6")",
+            "\(mediaTV?.switchIDforSpare6 ?? 0)",
+            "\(mediaTV?.switchNameforSpare7 ?? "Spare_7")",
+            "\(mediaTV?.switchIDforSpare7 ?? 0)",
+            "\(mediaTV?.switchNameforSpare8 ?? "Spare_8")",
+            "\(mediaTV?.switchIDforSpare8 ?? 0)",
+            "\(mediaTV?.switchNameforSpare9 ?? "Spare_9")",
+            "\(mediaTV?.switchIDforSpare9 ?? 0)",
+            "\(mediaTV?.switchNameforSpare10 ?? "Spare_10")",
+            "\(mediaTV?.switchIDforSpare10 ?? 0)",
+            "\(mediaTV?.switchNameforSpare11 ?? "Spare_11")",
+            "\(mediaTV?.switchIDforSpare11 ?? 0)",
+            "\(mediaTV?.switchNameforSpare12 ?? "Spare_12")",
+            "\(mediaTV?.switchIDforSpare12 ?? 0)"
         ]
     }
     
@@ -194,6 +244,79 @@ extension SHDeviceArgsViewController {
             
         case 30:
             tv.iRMacroNumberForTVStart5 = UInt(value) ?? 0
+            
+        case 31:
+            tv.switchNameforSpare1 = value
+            
+        case 32:
+            tv.switchIDforSpare1 = UInt(value) ?? 0
+            
+        case 33:
+            tv.switchNameforSpare2 = value
+            
+        case 34:
+            tv.switchIDforSpare2 = UInt(value) ?? 0
+            
+        case 35:
+            tv.switchNameforSpare3 = value
+            
+        case 36:
+            tv.switchIDforSpare3 = UInt(value) ?? 0
+            
+        case 37:
+            tv.switchNameforSpare4 = value
+            
+        case 38:
+            tv.switchIDforSpare4 = UInt(value) ?? 0
+            
+        case 39:
+            tv.switchNameforSpare5 = value
+            
+        case 40:
+            tv.switchIDforSpare5 = UInt(value) ?? 0
+            
+        case 41:
+            tv.switchNameforSpare6 = value
+            
+        case 42:
+            tv.switchIDforSpare6 = UInt(value) ?? 0
+            
+        case 43:
+            tv.switchNameforSpare7 = value
+            
+        case 44:
+            tv.switchIDforSpare7 = UInt(value) ?? 0
+            
+        case 45:
+            tv.switchNameforSpare8 = value
+            
+        case 46:
+            tv.switchIDforSpare8 = UInt(value) ?? 0
+            
+        case 47:
+            tv.switchNameforSpare9 = value
+            
+        case 48:
+            tv.switchIDforSpare9 = UInt(value) ?? 0
+            
+        case 49:
+            tv.switchNameforSpare10 = value
+            
+        case 50:
+            tv.switchIDforSpare10 = UInt(value) ?? 0
+            
+        case 51:
+            tv.switchNameforSpare11 = value
+            
+        case 52:
+            tv.switchIDforSpare11 = UInt(value) ?? 0
+            
+        case 53:
+            tv.switchNameforSpare12 = value
+            
+        case 54:
+            tv.switchIDforSpare12 = UInt(value) ?? 0
+            
             
         default:
             break

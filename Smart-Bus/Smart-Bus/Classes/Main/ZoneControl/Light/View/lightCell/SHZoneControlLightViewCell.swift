@@ -79,7 +79,6 @@ class SHZoneControlLightViewCell: UITableViewCell {
                 statusButton.isHidden = false
 
             case .led:
-                
                 brightnessSlider.isHidden = true
                 brightnessLabel.isHidden = true
                 statusButton.isHidden = false

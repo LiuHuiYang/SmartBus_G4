@@ -1,28 +1,28 @@
 //
-//  SHZoneNineInOneSparePadView.swift
+//  SHZoneTVSpareView.swift
 //  Smart-Bus
 //
-//  Created by Mark Liu on 2017/12/21.
-//  Copyright © 2017年 SmartHome. All rights reserved.
+//  Created by Apple on 2019/4/1.
+//  Copyright © 2019 SmartHome. All rights reserved.
 //
 
 import UIKit
 
-class SHZoneNineInOneSparePadView: UIView, loadNibView {
+class SHZoneTVSpareView: UIView, loadNibView {
 
-    /// 9in1模型
-    var nineInOne: SHNineInOne? {
+    /// TV模型
+    var mediaTV: SHMediaTV? {
         
         didSet {
             
-            guard let buttons = buttonsView.subviews as? [UIButton] else {
+            guard let buttons = listView.subviews as? [UIButton] else {
                 return
             }
             
             for button in buttons{
                 
                 let key = "switchNameforSpare" + "\(button.tag)"
-                let title = nineInOne?.value(forKey: key) as? String
+                let title = mediaTV?.value(forKey: key) as? String
                 button.setTitle(title ?? "Spare_key",
                                 for: .normal
                 )
@@ -30,28 +30,27 @@ class SHZoneNineInOneSparePadView: UIView, loadNibView {
         }
     }
     
-    /// 所有的按钮父视图
-    @IBOutlet weak var buttonsView: UIView!
- 
+    /// 视图列表
+    @IBOutlet weak var listView: UIView!
     
     /// 按钮点击
     @objc private func numpadButtonClick(_ controlButton: UIButton?) {
         
         guard let button = controlButton,
-            let nine = nineInOne else {
+            let nine = mediaTV else {
                 return
         }
         
         SoundTools.share().playSound(withName: "click.wav")
         
         var controlType: UInt8 = 0;
-     
+        
         let text =
             "switchIDforSpare" + "\(button.tag)"
         
         controlType =
             (nine.value(forKey: text) as? UInt8) ?? 0
-    
+        
         SHSocketTools.sendData(
             operatorCode: 0xE01C,
             subNetID: nine.subnetID,
@@ -59,11 +58,12 @@ class SHZoneNineInOneSparePadView: UIView, loadNibView {
             additionalData: [controlType, 0xFF]
         )
     }
+
 }
 
 
 // MARK: - UI
-extension SHZoneNineInOneSparePadView {
+extension SHZoneTVSpareView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -93,7 +93,7 @@ extension SHZoneNineInOneSparePadView {
             button?.titleLabel?.numberOfLines = 0
             button?.titleLabel?.lineBreakMode = .byTruncatingMiddle
             button?.showsTouchWhenHighlighted = true
-            buttonsView.addSubview(button!)
+            listView.addSubview(button!)
         }
     }
     
@@ -105,12 +105,12 @@ extension SHZoneNineInOneSparePadView {
                 (navigationBarHeight + statusBarHeight):
                 navigationBarHeight
         
-        if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
+        if UIDevice.is3_5inch() {
             
             buttonHeight = tabBarHeight
         }
         
-        let count = buttonsView.subviews.count
+        let count = listView.subviews.count
         let totalCols = 3
         
         let realRows = CGFloat(count) / CGFloat(totalCols)
@@ -125,11 +125,11 @@ extension SHZoneNineInOneSparePadView {
         
         let marignY: CGFloat = (frame_height - buttonHeight * CGFloat(totalRows)) / CGFloat(totalRows + 1)
         
-        let buttonWidth = (buttonsView.frame_width - marignX * CGFloat(totalCols + 1)) / CGFloat(totalCols)
+        let buttonWidth = (listView.frame_width - marignX * CGFloat(totalCols + 1)) / CGFloat(totalCols)
         
         for i in 0 ..< count {
             
-            let button = buttonsView.subviews[i]
+            let button = listView.subviews[i]
             
             let row: Int = i / totalCols
             let col: Int = i % totalCols

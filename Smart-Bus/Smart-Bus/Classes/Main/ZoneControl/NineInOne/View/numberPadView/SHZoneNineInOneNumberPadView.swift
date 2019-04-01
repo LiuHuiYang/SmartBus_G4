@@ -110,7 +110,7 @@ extension SHZoneNineInOneNumberPadView {
         var buttonSize: CGFloat =
             UIDevice.is_iPad() ?
                 (navigationBarHeight + statusBarHeight) :
-        navigationBarHeight
+                navigationBarHeight
         
         if UIDevice.is3_5inch() {
             

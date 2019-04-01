@@ -207,6 +207,8 @@
 		0471CAE921CB74BE007DC208 /* SHZoneHVACControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471CAE721CB74BD007DC208 /* SHZoneHVACControlViewController.xib */; };
 		0474EFAE22266BF200C9F510 /* SHRegionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474EFAC22266BF200C9F510 /* SHRegionViewCell.swift */; };
 		0474EFAF22266BF200C9F510 /* SHRegionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0474EFAD22266BF200C9F510 /* SHRegionViewCell.xib */; };
+		047775332251A2ED00A95AF3 /* SHZoneTVSpareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047775322251A2ED00A95AF3 /* SHZoneTVSpareView.swift */; };
+		047775352251A41000A95AF3 /* SHZoneTVSpareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047775342251A41000A95AF3 /* SHZoneTVSpareView.xib */; };
 		047812AB216F210E007A7162 /* SHCurrentTransformerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047812A3216F210E007A7162 /* SHCurrentTransformerViewController.xib */; };
 		047812AC216F210E007A7162 /* SHCurrentTransformerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047812A4216F210E007A7162 /* SHCurrentTransformerViewController.swift */; };
 		047812AD216F210E007A7162 /* SHCurrentTransformerRealTimeDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047812A7216F210E007A7162 /* SHCurrentTransformerRealTimeDataViewController.xib */; };
@@ -760,6 +762,8 @@
 		0471CAE721CB74BD007DC208 /* SHZoneHVACControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneHVACControlViewController.xib; sourceTree = "<group>"; };
 		0474EFAC22266BF200C9F510 /* SHRegionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegionViewCell.swift; sourceTree = "<group>"; };
 		0474EFAD22266BF200C9F510 /* SHRegionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHRegionViewCell.xib; sourceTree = "<group>"; };
+		047775322251A2ED00A95AF3 /* SHZoneTVSpareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneTVSpareView.swift; sourceTree = "<group>"; };
+		047775342251A41000A95AF3 /* SHZoneTVSpareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHZoneTVSpareView.xib; sourceTree = "<group>"; };
 		047812A3216F210E007A7162 /* SHCurrentTransformerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCurrentTransformerViewController.xib; sourceTree = "<group>"; };
 		047812A4216F210E007A7162 /* SHCurrentTransformerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHCurrentTransformerViewController.swift; sourceTree = "<group>"; };
 		047812A7216F210E007A7162 /* SHCurrentTransformerRealTimeDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHCurrentTransformerRealTimeDataViewController.xib; sourceTree = "<group>"; };
@@ -1630,6 +1634,15 @@
 				0474EFAD22266BF200C9F510 /* SHRegionViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		047775312251A2CA00A95AF3 /* TVSpareView */ = {
+			isa = PBXGroup;
+			children = (
+				047775322251A2ED00A95AF3 /* SHZoneTVSpareView.swift */,
+				047775342251A41000A95AF3 /* SHZoneTVSpareView.xib */,
+			);
+			path = TVSpareView;
 			sourceTree = "<group>";
 		};
 		047812A2216F210E007A7162 /* showDevice */ = {
@@ -4323,6 +4336,7 @@
 		8B99A725206DC65C00D97AA6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				047775312251A2CA00A95AF3 /* TVSpareView */,
 				8B99A72F206E07D400D97AA6 /* TVbuttonView */,
 				8B99A72B206E07D400D97AA6 /* TVNumberPad */,
 			);
@@ -4682,6 +4696,7 @@
 				8BD24B96206B657F00CFFE75 /* SHSystemDetailViewController.xib in Resources */,
 				04A177D3215F5EEF00BD9744 /* SHWeatherViewController.xib in Resources */,
 				8B8296A7204E30FA00F3AD41 /* SHReadSecurityLogViewController.xib in Resources */,
+				047775352251A41000A95AF3 /* SHZoneTVSpareView.xib in Resources */,
 				041C007F21B4DFAF0003CB49 /* SHScheduleViewCell.xib in Resources */,
 				04E1D160221BE6A80059DE46 /* SHSchduleShadeCell.xib in Resources */,
 				04A177CF215F5E1400BD9744 /* SHAlarmViewController.xib in Resources */,
@@ -5153,6 +5168,7 @@
 				04C58308219292A10017701A /* SHMood.swift in Sources */,
 				8B8298ED204E31F300F3AD41 /* SHZoneControlButton.m in Sources */,
 				04C583122192B71A0017701A /* SHDmxGroup.swift in Sources */,
+				047775332251A2ED00A95AF3 /* SHZoneTVSpareView.swift in Sources */,
 				8B2581FC1FD79CC00000CD73 /* UIDevice+IPAddresses.m in Sources */,
 				04C5831C2192C45D0017701A /* SHTemperatureSensor.swift in Sources */,
 				047812B2216F212B007A7162 /* SHCurrentTransformerCollectionViewCell.swift in Sources */,

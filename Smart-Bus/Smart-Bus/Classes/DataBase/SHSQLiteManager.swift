@@ -195,6 +195,9 @@ let maxIconIDForDataBase = 10
    
         // 增加场景模式的延时功能
         _ = addMoodCommandDelaytime()
+        
+        // 增加电视的更多参数
+        _ = addMediaTVParameter()
     }
 }
 

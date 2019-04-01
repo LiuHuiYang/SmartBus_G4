@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,6 +14,7 @@
                 <outlet property="controlButton" destination="8JZ-cC-lty" id="4RI-bO-fmV"/>
                 <outlet property="controlView" destination="dNR-u8-mch" id="LXh-D7-PKc"/>
                 <outlet property="numberButton" destination="WpE-g8-cdw" id="CAf-cQ-NCd"/>
+                <outlet property="spareButton" destination="hHd-a0-QUO" id="a1H-5Y-LW7"/>
                 <outlet property="topViewHeightConstraint" destination="vPR-eg-gzT" id="8mj-A3-gTf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,7 +31,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="49"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JZ-cC-lty">
-                            <rect key="frame" x="28" y="0.0" width="131.5" height="49"/>
+                            <rect key="frame" x="15" y="0.0" width="105" height="49"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                             <state key="normal" title="控制" backgroundImage="operatorButtonBackground"/>
                             <state key="selected">
@@ -44,9 +45,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WpE-g8-cdw">
-                            <rect key="frame" x="215.5" y="0.0" width="131.5" height="49"/>
+                            <rect key="frame" x="135" y="0.0" width="105" height="49"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                            <state key="normal" title="控制" backgroundImage="operatorButtonBackground"/>
+                            <state key="normal" title="数字" backgroundImage="operatorButtonBackground"/>
                             <state key="selected">
                                 <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -57,18 +58,37 @@
                                 <action selector="numberButtonClick" destination="-1" eventType="touchUpInside" id="xdX-J0-GKK"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHd-a0-QUO">
+                            <rect key="frame" x="255" y="0.0" width="105" height="49"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <state key="normal" title="增加" backgroundImage="operatorButtonBackground"/>
+                            <state key="selected">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" red="1" green="0.55294117649999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="numberButtonClick" destination="-1" eventType="touchUpInside" id="IWa-gd-Nxn"/>
+                                <action selector="spareButtonClick" destination="-1" eventType="touchUpInside" id="mIn-Xv-JvI"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="WpE-g8-cdw" firstAttribute="width" secondItem="8JZ-cC-lty" secondAttribute="width" id="5xM-23-dmf"/>
-                        <constraint firstItem="WpE-g8-cdw" firstAttribute="height" secondItem="8JZ-cC-lty" secondAttribute="height" id="BhB-lI-D74"/>
-                        <constraint firstItem="8JZ-cC-lty" firstAttribute="centerY" secondItem="pf7-3S-JCQ" secondAttribute="centerY" id="TAI-V2-5Ns"/>
-                        <constraint firstItem="WpE-g8-cdw" firstAttribute="centerY" secondItem="8JZ-cC-lty" secondAttribute="centerY" id="gsW-ec-zuE"/>
-                        <constraint firstItem="8JZ-cC-lty" firstAttribute="centerX" secondItem="pf7-3S-JCQ" secondAttribute="centerX" multiplier="0.5" id="mRG-a8-VdJ"/>
-                        <constraint firstItem="WpE-g8-cdw" firstAttribute="centerX" secondItem="pf7-3S-JCQ" secondAttribute="centerX" multiplier="1.5" id="n0E-tq-dX8"/>
-                        <constraint firstItem="8JZ-cC-lty" firstAttribute="width" secondItem="pf7-3S-JCQ" secondAttribute="width" multiplier="0.35" id="rvr-0Z-oAy"/>
-                        <constraint firstItem="8JZ-cC-lty" firstAttribute="height" secondItem="pf7-3S-JCQ" secondAttribute="height" id="vIy-1a-H7C"/>
+                        <constraint firstItem="WpE-g8-cdw" firstAttribute="height" secondItem="8JZ-cC-lty" secondAttribute="height" id="NxN-FB-KoW"/>
+                        <constraint firstItem="8JZ-cC-lty" firstAttribute="height" secondItem="pf7-3S-JCQ" secondAttribute="height" id="PHf-BM-g1t"/>
+                        <constraint firstItem="WpE-g8-cdw" firstAttribute="centerY" secondItem="8JZ-cC-lty" secondAttribute="centerY" id="X94-mB-4ft"/>
+                        <constraint firstItem="hHd-a0-QUO" firstAttribute="leading" secondItem="WpE-g8-cdw" secondAttribute="trailing" constant="15" id="Xgy-2o-LZP"/>
+                        <constraint firstItem="hHd-a0-QUO" firstAttribute="centerY" secondItem="8JZ-cC-lty" secondAttribute="centerY" id="bA5-Cu-1Fw"/>
+                        <constraint firstItem="hHd-a0-QUO" firstAttribute="width" secondItem="8JZ-cC-lty" secondAttribute="width" id="jYO-YB-a4H"/>
+                        <constraint firstItem="8JZ-cC-lty" firstAttribute="leading" secondItem="pf7-3S-JCQ" secondAttribute="leading" constant="15" id="k4A-Iv-gAq"/>
+                        <constraint firstAttribute="trailing" secondItem="hHd-a0-QUO" secondAttribute="trailing" constant="15" id="lWM-KB-hr0"/>
+                        <constraint firstItem="WpE-g8-cdw" firstAttribute="leading" secondItem="8JZ-cC-lty" secondAttribute="trailing" constant="15" id="q4W-K8-TNX"/>
+                        <constraint firstItem="hHd-a0-QUO" firstAttribute="height" secondItem="8JZ-cC-lty" secondAttribute="height" id="tgC-SH-fV6"/>
                         <constraint firstAttribute="height" constant="49" id="vPR-eg-gzT"/>
+                        <constraint firstItem="WpE-g8-cdw" firstAttribute="width" secondItem="8JZ-cC-lty" secondAttribute="width" id="yQC-Gg-kUx"/>
+                        <constraint firstItem="8JZ-cC-lty" firstAttribute="centerY" secondItem="pf7-3S-JCQ" secondAttribute="centerY" id="zSD-4g-j9K"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNR-u8-mch">
@@ -90,7 +110,7 @@
                 <constraint firstItem="VOy-ue-EtR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ti3-wT-bsE"/>
                 <constraint firstAttribute="bottom" secondItem="dNR-u8-mch" secondAttribute="bottom" constant="49" id="w2r-JS-GBI"/>
             </constraints>
-            <point key="canvasLocation" x="26.5" y="52.5"/>
+            <point key="canvasLocation" x="26.399999999999999" y="51.724137931034484"/>
         </view>
     </objects>
     <resources>

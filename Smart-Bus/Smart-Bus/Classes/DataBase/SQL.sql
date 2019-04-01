@@ -206,7 +206,44 @@ CREATE TABLE IF NOT EXISTS TVInZone (
     IRMacroNumberForTVStart2 INTEGER DEFAULT 0,
     IRMacroNumberForTVStart3 INTEGER DEFAULT 0,
     IRMacroNumberForTVStart4 INTEGER DEFAULT 0,
-    IRMacroNumberForTVStart5 INTEGER DEFAULT 0
+    IRMacroNumberForTVStart5 INTEGER DEFAULT 0,
+
+    -- 12个保留参数的名称与指令
+    SwitchNameforSpare1 TEXT DEFAULT  'Spare_1' ,
+    SwitchIDforSpare1 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare2 TEXT DEFAULT  'Spare_2' ,
+    SwitchIDforSpare2 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare3 TEXT DEFAULT  'Spare_3' ,
+    SwitchIDforSpare3 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare4 TEXT DEFAULT  'Spare_4' ,
+    SwitchIDforSpare4 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare5 TEXT DEFAULT  'Spare_5' ,
+    SwitchIDforSpare5 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare6 TEXT DEFAULT  'Spare_6' ,
+    SwitchIDforSpare6 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare7 TEXT DEFAULT  'Spare_7' ,
+    SwitchIDforSpare7 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare8 TEXT DEFAULT  'Spare_8' ,
+    SwitchIDforSpare8 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare9 TEXT DEFAULT  'Spare_9' ,
+    SwitchIDforSpare9 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare10 TEXT DEFAULT  'Spare_10' ,
+    SwitchIDforSpare10 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare11 TEXT DEFAULT  'Spare_11' ,
+    SwitchIDforSpare11 INTEGER DEFAULT  0 ,
+
+    SwitchNameforSpare12 TEXT DEFAULT  'Spare_12' ,
+    SwitchIDforSpare12 INTEGER DEFAULT  0
 );
 
 

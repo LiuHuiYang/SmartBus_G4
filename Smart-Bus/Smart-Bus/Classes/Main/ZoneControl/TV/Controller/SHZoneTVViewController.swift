@@ -19,6 +19,9 @@ class SHZoneTVViewController: SHViewController {
     /// 数字键盘
     var controlNumberPad: SHZoneControlTVNumberPad?
     
+    /// 备用键盘
+    var spareView: SHZoneTVSpareView?
+    
     /// 顶部分组的视图高度
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     
@@ -28,6 +31,9 @@ class SHZoneTVViewController: SHViewController {
     /// 数字按钮
     @IBOutlet weak var numberButton: UIButton!
     
+    /// 备用面板按钮
+    @IBOutlet weak var spareButton: UIButton!
+    
     /// 控制视图
     @IBOutlet weak var controlView: UIView!
     
@@ -35,6 +41,7 @@ class SHZoneTVViewController: SHViewController {
     @IBAction func controlButtonClick() {
    
         controlButton.isSelected = true
+        spareButton.isSelected = false
         numberButton.isSelected = false
         
         if zoneControlTVView?.window == nil {
@@ -48,6 +55,7 @@ class SHZoneTVViewController: SHViewController {
         
         controlNumberPad?.isHidden = true
         zoneControlTVView?.isHidden = false
+        spareView?.isHidden = true
     }
     
     /// 数字按钮点击
@@ -55,6 +63,7 @@ class SHZoneTVViewController: SHViewController {
     
         controlButton.isSelected = false
         numberButton.isSelected = true
+        spareButton.isSelected = false
         
         if controlNumberPad?.window == nil {
             
@@ -67,6 +76,28 @@ class SHZoneTVViewController: SHViewController {
         
         controlNumberPad?.isHidden = false
         zoneControlTVView?.isHidden = true
+        spareView?.isHidden = true
+    }
+    
+    /// 备用按钮点击
+    @IBAction func spareButtonClick() {
+        
+        controlButton.isSelected = false
+        numberButton.isSelected = false
+        spareButton.isSelected = true
+        
+        if spareView?.window == nil {
+            
+            spareView = SHZoneTVSpareView.loadFromNib()
+            controlView.addSubview(spareView!)
+            spareView?.frame = controlView.bounds
+        }
+        
+        spareView?.mediaTV = zoneTV
+        
+        controlNumberPad?.isHidden = true
+        zoneControlTVView?.isHidden = true
+        spareView?.isHidden = false
     }
 }
 
@@ -100,12 +131,22 @@ extension SHZoneTVViewController {
             for: .selected
         )
         
+        spareButton.setTitle(
+            SHLanguageText.add,
+            for: .normal
+        )
+        
+        spareButton.setTitleColor(
+            UIView.highlightedTextColor(),
+            for: .selected
+        )
         
         if UIDevice.is_iPad() {
             
             let font = UIView.suitFontForPad()
             controlButton.titleLabel?.font = font
             numberButton.titleLabel?.font = font
+            spareButton.titleLabel?.font = font
         }
     }
     

@@ -72,7 +72,7 @@ class SHSchedualSettingViewController: SHViewController {
                              height: CGFloat(MAXFLOAT)),
                 options: .usesLineFragmentOrigin,
                 attributes:
-                    [NSAttributedString.Key.font: operatorLabel.font],
+                [NSAttributedString.Key.font: operatorLabel.font as Any],
                 context: nil
             ).size.height)!
         

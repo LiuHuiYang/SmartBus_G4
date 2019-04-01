@@ -27,7 +27,7 @@ class SHNavigationController: UINavigationController {
             NSAttributedString.Key.font: navigationBarFont,
 
             NSAttributedString.Key.foregroundColor:
-                UIView.textWhiteColor()
+                UIView.textWhiteColor() as Any
         ]
     }
     
