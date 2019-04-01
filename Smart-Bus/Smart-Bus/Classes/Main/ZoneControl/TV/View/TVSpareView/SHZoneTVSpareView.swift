@@ -105,7 +105,7 @@ extension SHZoneTVSpareView {
                 (navigationBarHeight + statusBarHeight):
                 navigationBarHeight
         
-        if UIDevice.is3_5inch() {
+        if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
             
             buttonHeight = tabBarHeight
         }

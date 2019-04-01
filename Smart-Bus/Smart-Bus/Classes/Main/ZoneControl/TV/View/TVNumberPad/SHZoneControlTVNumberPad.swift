@@ -62,7 +62,7 @@ extension SHZoneControlTVNumberPad {
         
         let font =
             UIDevice.is_iPad() ? UIView.suitFontForPad() :
-            UIFont.boldSystemFont(ofSize: 16)
+            UIFont.boldSystemFont(ofSize: 14)
         
         let textColor = UIView.textWhiteColor()
         
@@ -103,7 +103,7 @@ extension SHZoneControlTVNumberPad {
                 (navigationBarHeight + statusBarHeight) :
                 navigationBarHeight
         
-        if UIDevice.is3_5inch() {
+        if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
         
             buttonSize = tabBarHeight
         }

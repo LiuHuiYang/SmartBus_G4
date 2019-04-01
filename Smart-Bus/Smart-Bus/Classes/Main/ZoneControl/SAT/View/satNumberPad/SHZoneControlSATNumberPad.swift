@@ -103,7 +103,7 @@ extension SHZoneControlSATNumberPad {
                 (navigationBarHeight + statusBarHeight) :
         navigationBarHeight
         
-        if UIDevice.is3_5inch() {
+        if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
             
             buttonSize = tabBarHeight
         }

@@ -482,7 +482,7 @@ extension SHSocketTools {
                     UInt8(command.firstParameter),
                     UInt8(command.secondParameter)
                 ]
-                
+                  
             } else { // 地热
                 
                 controlData = [
@@ -503,6 +503,8 @@ extension SHSocketTools {
         Thread.sleep(forTimeInterval:
             TimeInterval(command.delayMillisecondAfterSend) * 0.001
         )
+        
+        
     }
 }
 

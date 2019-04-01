@@ -60,6 +60,18 @@ import UIKit
     /// 源
     var universalSwitchIDforSource: UInt = 0
     
+    /// 左
+    var universalSwitchIDforLeft: UInt = 0
+    
+    /// 右
+    var universalSwitchIDforRight: UInt = 0
+    
+    /// 上
+    var universalSwitchIDforUp: UInt = 0
+    
+    /// 下
+    var universalSwitchIDforDown: UInt = 0
+    
     /// 确定
     var universalSwitchIDforOK: UInt = 0
     

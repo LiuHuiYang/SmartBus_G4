@@ -28,7 +28,7 @@ class SHZoneControlTVView: UIView, loadNibView {
     /// 源
     @IBOutlet weak var sourceButton: UIButton!
     
-    /// 源
+    /// 静音
     @IBOutlet weak var stopVoiceButton: UIButton!
     
     // MARK: - 约束
@@ -161,9 +161,11 @@ class SHZoneControlTVView: UIView, loadNibView {
 
 extension SHZoneControlTVView {
     
+ 
     override func awakeFromNib() {
         
         super.awakeFromNib()
+         
         
         sourceButton.titleLabel?.textAlignment = .center
         sourceButton.titleLabel?.numberOfLines = 0
@@ -210,19 +212,19 @@ extension SHZoneControlTVView {
             stopVoiceButton.titleLabel?.font = font
         }
     }
-    
+   
     override func layoutSubviews() {
         super.layoutSubviews()
         
         let scale:CGFloat =
-            (frame_width < frame_height) ? 0.65 : 0.6
+            (frame_width < frame_height) ? 0.5 : 0.6
         
         let baseSize = min(frame_width, frame_height) * scale
         
         viewWidthConstraint.constant = baseSize
         viewHeightConstraint.constant = baseSize
         
-        if UIDevice.is3_5inch() {
+        if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
             
             buttonWidthConstraint.constant = tabBarHeight
             buttonHeightConstraint.constant = tabBarHeight
@@ -236,5 +238,7 @@ extension SHZoneControlTVView {
                 (navigationBarHeight + statusBarHeight)
         }
         
+    
     }
-}
+ 
+ }
