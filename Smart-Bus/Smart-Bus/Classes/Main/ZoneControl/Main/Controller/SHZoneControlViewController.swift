@@ -124,12 +124,16 @@ extension SHZoneControlViewController {
         
         devices.removeAll()
         
+        deviceListView.reloadData()
+        
         SHSocketTools.sendData(
             operatorCode: 0x000E,
             subNetID: 0xFF,
             deviceID: 0xFF,
             additionalData: []
         )
+        
+        Thread.sleep(forTimeInterval: 1.0)
         
         // 同时搜索DMX
         SHSocketTools.sendData(

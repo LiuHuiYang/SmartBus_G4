@@ -109,8 +109,10 @@ extension SHSocketTools {
         deviceID: UInt8,
         additionalData:[UInt8],
         remoteMacAddress: String =
-        SHSocketTools.remoteControlMacAddress(),
+            SHSocketTools.remoteControlMacAddress(),
         isDMX: Bool = false ) {
+        
+        // 发送时 53.04.00.00.00.00.28.0C 测试网卡地址
      
         let data = packingData(
             operatorCode: operatorCode,
@@ -409,6 +411,6 @@ extension SHSocketTools {
         return
             (UserDefaults.standard.object(
                 forKey: localWifiKey
-                ) as? String) ?? ""
+            ) as? String) ?? ""
     }
 }

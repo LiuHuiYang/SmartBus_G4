@@ -60,6 +60,7 @@ extension SHZoneControlTVNumberPad {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
         let font =
             UIDevice.is_iPad() ? UIView.suitFontForPad() :
             UIFont.boldSystemFont(ofSize: 14)

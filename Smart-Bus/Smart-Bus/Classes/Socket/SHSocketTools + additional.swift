@@ -503,8 +503,6 @@ extension SHSocketTools {
         Thread.sleep(forTimeInterval:
             TimeInterval(command.delayMillisecondAfterSend) * 0.001
         )
-        
-        
     }
 }
 
