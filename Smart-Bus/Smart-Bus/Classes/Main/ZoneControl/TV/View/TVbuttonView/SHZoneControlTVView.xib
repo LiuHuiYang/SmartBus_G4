@@ -61,21 +61,27 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRB-jM-Nu2">
                             <rect key="frame" x="6" y="426.5" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                            <state key="normal" title="back " backgroundImage="mediaMenubuttonbackground">
+                            <state key="normal" image="back_tv" backgroundImage="mediaMenubuttonbackground">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="backButtonClick" destination="Ee2-FG-uVH" eventType="touchUpInside" id="CZu-FJ-P6y"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ax1-OA-Oye">
                             <rect key="frame" x="84" y="426.5" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                            <state key="normal" title="屏显" backgroundImage="mediaMenubuttonbackground">
+                            <state key="normal" image="other_tv" backgroundImage="mediaMenubuttonbackground">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="otherButtonClick" destination="Ee2-FG-uVH" eventType="touchUpInside" id="8nv-1l-cSl"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1J-XJ-Z4Q">
                             <rect key="frame" x="290" y="426.5" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                            <state key="normal" title="菜单" backgroundImage="mediaMenubuttonbackground">
+                            <state key="normal" image="menu_tv" backgroundImage="mediaMenubuttonbackground">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -93,21 +99,33 @@
                             <rect key="frame" x="148" y="201.5" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" backgroundImage="up_TV_media"/>
+                            <connections>
+                                <action selector="upButtonClick" destination="Ee2-FG-uVH" eventType="touchUpInside" id="cWv-n9-v7x"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqx-I0-jrb">
                             <rect key="frame" x="70" y="279.5" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" backgroundImage="left_TV_media"/>
+                            <connections>
+                                <action selector="leftButtonClick" destination="Ee2-FG-uVH" eventType="touchUpInside" id="qGo-Yx-rE7"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qN-cp-1kF">
                             <rect key="frame" x="226" y="279.5" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" backgroundImage="right_TV_media"/>
+                            <connections>
+                                <action selector="rightButtonClick" destination="Ee2-FG-uVH" eventType="touchUpInside" id="MLu-xN-V05"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxl-Wc-xcE">
                             <rect key="frame" x="148" y="357.5" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" backgroundImage="down_TV_media"/>
+                            <connections>
+                                <action selector="downButtonClick" destination="Ee2-FG-uVH" eventType="touchUpInside" id="v1h-y9-SJ6"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IxA-hl-NdL">
                             <rect key="frame" x="148" y="279.5" width="64" height="64"/>
@@ -126,9 +144,12 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGy-2C-27z">
                             <rect key="frame" x="212" y="426.5" width="64" height="64"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                            <state key="normal" title="主页" backgroundImage="mediaMenubuttonbackground">
+                            <state key="normal" image="mainpage_tv" backgroundImage="mediaMenubuttonbackground">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="mainPageButtonClick" destination="Ee2-FG-uVH" eventType="touchUpInside" id="EQW-Dp-BaS"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGn-wg-y8l">
                             <rect key="frame" x="6" y="201.5" width="64" height="64"/>
@@ -293,10 +314,14 @@
         </view>
     </objects>
     <resources>
+        <image name="back_tv" width="28" height="22"/>
         <image name="down_TV_media" width="58" height="58"/>
         <image name="left_TV_media" width="58" height="58"/>
+        <image name="mainpage_tv" width="36" height="32"/>
         <image name="mediaCenterControlbuttonbackground" width="256" height="256"/>
         <image name="mediaMenubuttonbackground" width="64" height="64"/>
+        <image name="menu_tv" width="30" height="24"/>
+        <image name="other_tv" width="32" height="31"/>
         <image name="right_TV_media" width="58" height="58"/>
         <image name="up_TV_media" width="58" height="58"/>
     </resources>

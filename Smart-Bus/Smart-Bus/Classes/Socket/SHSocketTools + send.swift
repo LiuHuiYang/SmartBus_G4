@@ -380,7 +380,7 @@ extension SHSocketTools {
     ///
     /// - Returns: MAC地址
     static func remoteControlMacAddress() -> String {
-        
+     
         let path =
             FileTools.documentPath() + "/" + selectMacAddress
         

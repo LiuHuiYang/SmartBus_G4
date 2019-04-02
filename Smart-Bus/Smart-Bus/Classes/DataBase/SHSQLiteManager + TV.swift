@@ -46,6 +46,14 @@ extension SHSQLiteManager {
             "IRMacroNumberForTVStart3,             " +
             "IRMacroNumberForTVStart4,             " +
             "IRMacroNumberForTVStart5,             " +
+                
+            "UniversalSwitchIDforLeft,             " +
+            "UniversalSwitchIDforRight,            " +
+            "UniversalSwitchIDforUp,               " +
+            "UniversalSwitchIDforDown,             " +
+            "UniversalSwitchIDforBack,             " +
+            "UniversalSwitchIDforOther,            " +
+            "UniversalSwitchIDforMainPage,         " +
               
             "SwitchNameforSpare1,                  " +
             "SwitchIDforSpare1,                    " +
@@ -103,6 +111,14 @@ extension SHSQLiteManager {
             "\(tv.iRMacroNumberForTVStart3),       " +
             "\(tv.iRMacroNumberForTVStart4),       " +
             "\(tv.iRMacroNumberForTVStart5),       " +
+                
+            "\(tv.universalSwitchIDforLeft),       " +
+            "\(tv.universalSwitchIDforRight),      " +
+            "\(tv.universalSwitchIDforUp),         " +
+            "\(tv.universalSwitchIDforDown),       " +
+            "\(tv.universalSwitchIDforBack),       " +
+            "\(tv.universalSwitchIDforOther),      " +
+            "\(tv.universalSwitchIDforMainPage),   " +
         
             "'\(tv.switchNameforSpare1 ?? "Spare_1")',   " +
             "\(tv.switchIDforSpare1),                    " +
@@ -206,6 +222,21 @@ extension SHSQLiteManager {
             "\(tv.iRMacroNumberForTVStart4), "    +
             "IRMacroNumberForTVStart5 = "         +
             "\(tv.iRMacroNumberForTVStart5), "    +
+                
+            "UniversalSwitchIDforLeft =         " +
+            "\(tv.universalSwitchIDforLeft),    " +
+            "UniversalSwitchIDforRight =        " +
+            "\(tv.universalSwitchIDforRight),   " +
+            "UniversalSwitchIDforUp =           " +
+            "\(tv.universalSwitchIDforUp),      " +
+            "UniversalSwitchIDforDown =         " +
+            "\(tv.universalSwitchIDforDown),    " +
+            "UniversalSwitchIDforBack =         " +
+            "\(tv.universalSwitchIDforBack),    " +
+            "UniversalSwitchIDforOther =        " +
+            "\(tv.universalSwitchIDforOther),   " +
+            "UniversalSwitchIDforMainPage =     " +
+            "\(tv.universalSwitchIDforMainPage)," +
                 
             "SwitchNameforSpare1 =                       " +
             "'\(tv.switchNameforSpare1 ?? "Spare_1")',   " +
@@ -316,6 +347,14 @@ extension SHSQLiteManager {
             "IRMacroNumberForTVStart4,            " +
             "IRMacroNumberForTVStart5,            " +
                 
+            "UniversalSwitchIDforLeft,               " +
+            "UniversalSwitchIDforRight,              " +
+            "UniversalSwitchIDforUp,                 " +
+            "UniversalSwitchIDforDown,               " +
+            "UniversalSwitchIDforBack,               " +
+            "UniversalSwitchIDforOther,              " +
+            "UniversalSwitchIDforMainPage,           " +
+                
             "SwitchNameforSpare1,                    " +
             "SwitchIDforSpare1,                      " +
             "SwitchNameforSpare2,                    " +
@@ -367,6 +406,7 @@ extension SHSQLiteManager {
             consistinTable: "TVInZone"
             ) == false {
             
+            // 12个备用参数
             for index in 1 ... 12 {
                 
                 let nameSQL =
@@ -382,6 +422,49 @@ extension SHSQLiteManager {
                 _ = executeSql(nameSQL)
                 _ = executeSql(valueSQL)
             }
+            
+            // 7个参数扩展
+            _ = executeSql(
+                "ALTER TABLE TVInZone ADD " +
+                "UniversalSwitchIDforLeft " +
+                "INTEGER DEFAULT  0;"
+            )
+            
+            _ = executeSql(
+                "ALTER TABLE TVInZone ADD " +
+                "UniversalSwitchIDforRight " +
+                "INTEGER DEFAULT  0;"
+            )
+            
+            _ = executeSql(
+                "ALTER TABLE TVInZone ADD " +
+                "UniversalSwitchIDforUp " +
+                "INTEGER DEFAULT  0;"
+            )
+            
+            _ = executeSql(
+                "ALTER TABLE TVInZone ADD " +
+                "UniversalSwitchIDforDown " +
+                "INTEGER DEFAULT  0;"
+            )
+            
+            _ = executeSql(
+                "ALTER TABLE TVInZone ADD " +
+                "UniversalSwitchIDforBack " +
+                "INTEGER DEFAULT  0;"
+            )
+            
+            _ = executeSql(
+                "ALTER TABLE TVInZone ADD " +
+                "UniversalSwitchIDforOther " +
+                "INTEGER DEFAULT  0;"
+            )
+            
+            _ = executeSql(
+                "ALTER TABLE TVInZone ADD " +
+                "UniversalSwitchIDforMainPage " +
+                "INTEGER DEFAULT  0;"
+            )
             
             return true
         }

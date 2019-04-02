@@ -189,6 +189,14 @@ CREATE TABLE IF NOT EXISTS TVInZone (
     UniversalSwitchIDforSource INTEGER DEFAULT 0,
     UniversalSwitchIDforOK INTEGER DEFAULT 0,
 
+    UniversalSwitchIDforLeft INTEGER DEFAULT 0,
+    UniversalSwitchIDforRight INTEGER DEFAULT 0,
+    UniversalSwitchIDforUp INTEGER DEFAULT 0,
+    UniversalSwitchIDforDown INTEGER DEFAULT 0,
+    UniversalSwitchIDforBack INTEGER DEFAULT 0,
+    UniversalSwitchIDforOther INTEGER DEFAULT 0,
+    UniversalSwitchIDforMainPage INTEGER DEFAULT 0,
+
     UniversalSwitchIDfor0 INTEGER DEFAULT 0,
     UniversalSwitchIDfor1 INTEGER DEFAULT 0,
     UniversalSwitchIDfor2 INTEGER DEFAULT 0,

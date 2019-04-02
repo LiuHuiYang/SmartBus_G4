@@ -19,9 +19,9 @@ extension SHDeviceArgsViewController {
             "Subnet ID",
             "Device ID",
             
-            "turnOn ID",
+            "TurnOn ID",
             "StatusforOn",
-            "turnOff ID",
+            "TurnOff ID",
             "StatusforOff",
             
             "CH+",
@@ -51,6 +51,14 @@ extension SHDeviceArgsViewController {
             "IRReserved_3",
             "IRReserved_4",
             "IRReserved_5",
+            
+            "Up",
+            "Down",
+            "Left",
+            "Right",
+            "Back",
+            "Other",
+            "MainPage",
             
             "Spare_1 Name",
             "Spare_1 commandID",
@@ -116,6 +124,14 @@ extension SHDeviceArgsViewController {
             "\(mediaTV?.iRMacroNumberForTVStart3 ?? 0)",
             "\(mediaTV?.iRMacroNumberForTVStart4 ?? 0)",
             "\(mediaTV?.iRMacroNumberForTVStart5 ?? 0)",
+            
+            "\(mediaTV?.universalSwitchIDforUp ?? 0)",
+            "\(mediaTV?.universalSwitchIDforDown ?? 0)",
+            "\(mediaTV?.universalSwitchIDforLeft ?? 0)",
+            "\(mediaTV?.universalSwitchIDforRight ?? 0)",
+            "\(mediaTV?.universalSwitchIDforBack ?? 0)",
+            "\(mediaTV?.universalSwitchIDforOther ?? 0)",
+            "\(mediaTV?.universalSwitchIDforMainPage ?? 0)",
             
             "\(mediaTV?.switchNameforSpare1 ?? "Spare_1")",
             "\(mediaTV?.switchIDforSpare1 ?? 0)",
@@ -246,77 +262,97 @@ extension SHDeviceArgsViewController {
             tv.iRMacroNumberForTVStart5 = UInt(value) ?? 0
             
         case 31:
-            tv.switchNameforSpare1 = value
+            tv.universalSwitchIDforUp = UInt(value) ?? 0
             
         case 32:
-            tv.switchIDforSpare1 = UInt(value) ?? 0
+            tv.universalSwitchIDforDown = UInt(value) ?? 0
             
         case 33:
-            tv.switchNameforSpare2 = value
+            tv.universalSwitchIDforLeft = UInt(value) ?? 0
             
         case 34:
-            tv.switchIDforSpare2 = UInt(value) ?? 0
+            tv.universalSwitchIDforRight = UInt(value) ?? 0
             
         case 35:
-            tv.switchNameforSpare3 = value
+            tv.universalSwitchIDforBack = UInt(value) ?? 0
             
         case 36:
-            tv.switchIDforSpare3 = UInt(value) ?? 0
+            tv.universalSwitchIDforOther = UInt(value) ?? 0
             
         case 37:
-            tv.switchNameforSpare4 = value
+            tv.universalSwitchIDforMainPage = UInt(value) ?? 0
             
         case 38:
-            tv.switchIDforSpare4 = UInt(value) ?? 0
+            tv.switchNameforSpare1 = value
             
         case 39:
-            tv.switchNameforSpare5 = value
+            tv.switchIDforSpare1 = UInt(value) ?? 0
             
         case 40:
-            tv.switchIDforSpare5 = UInt(value) ?? 0
+            tv.switchNameforSpare2 = value
             
         case 41:
-            tv.switchNameforSpare6 = value
+            tv.switchIDforSpare2 = UInt(value) ?? 0
             
         case 42:
-            tv.switchIDforSpare6 = UInt(value) ?? 0
+            tv.switchNameforSpare3 = value
             
         case 43:
-            tv.switchNameforSpare7 = value
+            tv.switchIDforSpare3 = UInt(value) ?? 0
             
         case 44:
-            tv.switchIDforSpare7 = UInt(value) ?? 0
+            tv.switchNameforSpare4 = value
             
         case 45:
-            tv.switchNameforSpare8 = value
+            tv.switchIDforSpare4 = UInt(value) ?? 0
             
         case 46:
-            tv.switchIDforSpare8 = UInt(value) ?? 0
+            tv.switchNameforSpare5 = value
             
         case 47:
-            tv.switchNameforSpare9 = value
+            tv.switchIDforSpare5 = UInt(value) ?? 0
             
         case 48:
-            tv.switchIDforSpare9 = UInt(value) ?? 0
+            tv.switchNameforSpare6 = value
             
         case 49:
-            tv.switchNameforSpare10 = value
+            tv.switchIDforSpare6 = UInt(value) ?? 0
             
         case 50:
-            tv.switchIDforSpare10 = UInt(value) ?? 0
+            tv.switchNameforSpare7 = value
             
         case 51:
-            tv.switchNameforSpare11 = value
+            tv.switchIDforSpare7 = UInt(value) ?? 0
             
         case 52:
-            tv.switchIDforSpare11 = UInt(value) ?? 0
+            tv.switchNameforSpare8 = value
             
         case 53:
-            tv.switchNameforSpare12 = value
+            tv.switchIDforSpare8 = UInt(value) ?? 0
             
         case 54:
-            tv.switchIDforSpare12 = UInt(value) ?? 0
+            tv.switchNameforSpare9 = value
             
+        case 55:
+            tv.switchIDforSpare9 = UInt(value) ?? 0
+            
+        case 56:
+            tv.switchNameforSpare10 = value
+            
+        case 57:
+            tv.switchIDforSpare10 = UInt(value) ?? 0
+            
+        case 58:
+            tv.switchNameforSpare11 = value
+            
+        case 59:
+            tv.switchIDforSpare11 = UInt(value) ?? 0
+            
+        case 60:
+            tv.switchNameforSpare12 = value
+            
+        case 61:
+            tv.switchIDforSpare12 = UInt(value) ?? 0
             
         default:
             break

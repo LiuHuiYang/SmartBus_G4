@@ -60,6 +60,9 @@ import UIKit
     /// 源
     var universalSwitchIDforSource: UInt = 0
     
+    /// 确定
+    var universalSwitchIDforOK: UInt = 0
+    
     /// 左
     var universalSwitchIDforLeft: UInt = 0
     
@@ -72,8 +75,14 @@ import UIKit
     /// 下
     var universalSwitchIDforDown: UInt = 0
     
-    /// 确定
-    var universalSwitchIDforOK: UInt = 0
+    /// 返回
+    var universalSwitchIDforBack: UInt = 0
+    
+    /// 其它
+    var universalSwitchIDforOther: UInt = 0
+    
+    /// 主页
+    var universalSwitchIDforMainPage: UInt = 0
     
     
     /// 数字按键0

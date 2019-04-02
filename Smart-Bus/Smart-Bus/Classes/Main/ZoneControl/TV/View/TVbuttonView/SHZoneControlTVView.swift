@@ -135,6 +135,71 @@ class SHZoneControlTVView: UIView, loadNibView {
         )
     }
     
+    
+    @IBAction func upButtonClick() {
+        
+        controlTV(
+            controlType: mediaTV?.universalSwitchIDforUp,
+            controlValue: mediaTV?.universalSwitchStatusforOn
+        )
+    }
+    
+   
+    /// 向下
+    @IBAction func downButtonClick() {
+        
+        controlTV(
+            controlType: mediaTV?.universalSwitchIDforDown,
+            controlValue: mediaTV?.universalSwitchStatusforOn
+        )
+    }
+    
+    /// 向左
+    @IBAction func leftButtonClick() {
+        
+        controlTV(
+            controlType: mediaTV?.universalSwitchIDforLeft,
+            controlValue: mediaTV?.universalSwitchStatusforOn
+        )
+    }
+    
+    /// 向右
+    @IBAction func rightButtonClick() {
+        
+        controlTV(
+            controlType: mediaTV?.universalSwitchIDforRight,
+            controlValue: mediaTV?.universalSwitchStatusforOn
+        )
+    }
+    
+    /// 返回
+    @IBAction func backButtonClick() {
+        
+        controlTV(
+            controlType: mediaTV?.universalSwitchIDforBack,
+            controlValue: mediaTV?.universalSwitchStatusforOn
+        )
+    }
+    
+    /// 其它
+    @IBAction func otherButtonClick() {
+        
+        controlTV(
+            controlType: mediaTV?.universalSwitchIDforOther,
+            controlValue: mediaTV?.universalSwitchStatusforOn
+        )
+    }
+    
+    
+    /// 主页
+    @IBAction func mainPageButtonClick() {
+        
+        controlTV(
+            controlType: mediaTV?.universalSwitchIDforMainPage,
+            controlValue: mediaTV?.universalSwitchStatusforOn
+        )
+    }
+    
     /// 发送控制数据
     private func controlTV(controlType: UInt?, controlValue: UInt?) {
         
@@ -156,6 +221,8 @@ class SHZoneControlTVView: UIView, loadNibView {
             deviceID: tv.deviceID,
             additionalData: controlData
         )
+        
+        SoundTools.share().playSound(withName: "click.wav")
     }
 }
 
@@ -180,10 +247,10 @@ extension SHZoneControlTVView {
             for: .normal
         )
         
-        menuButton.setTitle(
-            SHLanguageText.menu,
-            for: .normal
-        )
+//        menuButton.setTitle(
+//            SHLanguageText.menu,
+//            for: .normal
+//        )
         
         sureButton.setTitle(
             SHLanguageText.ok,
