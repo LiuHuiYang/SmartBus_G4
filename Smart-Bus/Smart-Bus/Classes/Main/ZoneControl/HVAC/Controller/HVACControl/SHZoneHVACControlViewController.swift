@@ -28,11 +28,6 @@ class SHZoneHVACControlViewController: SHViewController {
     /// 当前的空调
     var currentHVAC: SHHVAC?
     
-    /// 特殊设备类型与HVAC的温度单位是一样的
-    private lazy var iRAsSameAsHVAC: [UInt16] = [
-        299
-    ]
-    
     /// 有效的 fanModel
     private var fanSpeedList: [SHAirConditioningFanSpeedType] =
         [.auto, .high, .medial, .low]
@@ -488,15 +483,7 @@ extension SHZoneHVACControlViewController {
                 }
                 
                 hvac.isCelsius =
-                    (hvac.acTypeID == .ir) ?
-                        socketData.additionalData[0] != 0 :
                         socketData.additionalData[0] == 0
-                
-                // 如果固件修改，代码再整理
-                if iRAsSameAsHVAC.contains(socketData.deviceType) {
-                    
-                    hvac.isCelsius = socketData.additionalData[0] == 0
-                }
                 
                 setAirConditionerStatus()
                 

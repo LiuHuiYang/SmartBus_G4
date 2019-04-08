@@ -264,6 +264,8 @@ class SHZoneControlSATView: UIView, loadNibView {
             UInt8(value)
         ]
         
+        SoundTools.share().playSound(withName: "click.wav")
+        
         SHSocketTools.sendData(
             operatorCode: 0xE01C,
             subNetID: sat.subnetID,

@@ -24,8 +24,6 @@ class SHZoneControlSATNumberPad: UIView, loadNibView {
                 return
         }
         
-        SoundTools.share().playSound(withName: "click.wav")
-        
         var controlType: UInt8 = 0
         
         if button.currentTitle == SHLanguageText.ok {
@@ -41,8 +39,9 @@ class SHZoneControlSATNumberPad: UIView, loadNibView {
             
             controlType =
                 (sat.value(forKey: text) as? UInt8) ?? 0
-            
         }
+        
+        SoundTools.share().playSound(withName: "click.wav")
         
         SHSocketTools.sendData(
             operatorCode: 0xE01C,

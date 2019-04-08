@@ -109,8 +109,8 @@ class SHZoneControlSATChannel: UIView, loadNibView {
         
         let alertView =
             TYCustomAlertView(
-                title: title,
-                message: nil,
+                title: nil,
+                message: title,
                 isCustom: true
         )
         
@@ -124,7 +124,7 @@ class SHZoneControlSATChannel: UIView, loadNibView {
 
             let time = UserDefaults.standard.integer(
                 forKey: delayIRTimekey
-            )
+            ) 
             
             textField?.text = "\(time)"
             

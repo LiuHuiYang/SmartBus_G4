@@ -228,11 +228,9 @@ class SHZoneControlTVView: UIView, loadNibView {
 
 extension SHZoneControlTVView {
     
- 
     override func awakeFromNib() {
         
         super.awakeFromNib()
-         
         
         sourceButton.titleLabel?.textAlignment = .center
         sourceButton.titleLabel?.numberOfLines = 0
