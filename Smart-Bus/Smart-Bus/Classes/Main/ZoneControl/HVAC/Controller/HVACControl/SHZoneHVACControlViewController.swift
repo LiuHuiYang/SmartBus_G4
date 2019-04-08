@@ -191,7 +191,7 @@ extension SHZoneHVACControlViewController {
                 
                 hvac.isTurnOn =
                     socketData.additionalData[0] == isPowerOn
-                
+
                 setAirConditionerStatus()
                 
                 // 返回状态
@@ -554,6 +554,11 @@ extension SHZoneHVACControlViewController {
         
         controlView.isHidden = !hvac.isTurnOn
         
+        // 普通方式 HVAC
+        controlAirConditioner(
+            SHAirConditioningControlType.onAndOff.rawValue,
+            value: !hvac.isTurnOn ? 1 : 0)
+      
         // 因9in1增加 - 发送 0xE01C 1 - 开 2 - 关
         let switchNo: UInt8 = !hvac.isTurnOn ? 1 : 2
         SHSocketTools.sendData(
@@ -562,11 +567,6 @@ extension SHZoneHVACControlViewController {
             deviceID: hvac.deviceID,
             additionalData: [switchNo, 0xFF]
         )
-        
-        // 普通方式
-        controlAirConditioner(
-            SHAirConditioningControlType.onAndOff.rawValue,
-            value: !hvac.isTurnOn ? 1 : 0)
         
         Thread.sleep(forTimeInterval: 0.12)
         
