@@ -58,8 +58,6 @@ class SHZoneHVACControlViewController: SHViewController {
 
     // MARK: - 约束条件
     
-
-    
     /// 空调标志基准高度
     @IBOutlet weak var acflagHeightConstraint: NSLayoutConstraint!
     
@@ -554,11 +552,6 @@ extension SHZoneHVACControlViewController {
         
         controlView.isHidden = !hvac.isTurnOn
         
-        // 普通方式 HVAC
-        controlAirConditioner(
-            SHAirConditioningControlType.onAndOff.rawValue,
-            value: !hvac.isTurnOn ? 1 : 0)
-      
         // 因9in1增加 - 发送 0xE01C 1 - 开 2 - 关
         let switchNo: UInt8 = !hvac.isTurnOn ? 1 : 2
         SHSocketTools.sendData(
@@ -568,6 +561,11 @@ extension SHZoneHVACControlViewController {
             additionalData: [switchNo, 0xFF]
         )
         
+        // 普通方式 HVAC
+        controlAirConditioner(
+            SHAirConditioningControlType.onAndOff.rawValue,
+            value: !hvac.isTurnOn ? 1 : 0)
+      
         Thread.sleep(forTimeInterval: 0.12)
         
         // 继电器控制方式 && 通用方式
