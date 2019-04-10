@@ -8,14 +8,14 @@
 
 import UIKit
 
-/// 分类重用标示符
-private let  mediaSATCategoryCellReuseIdentifier = "SHMediaSATCategoryCell"
 
-/// 通道重用标标符
+/// 分类重用标示符
+private let mediaSATCategoryCollectionCellReuseIdentifier =
+    "SHMediaSATCategoryCollectionCell"
+
+/// 通道重用标示符
 private let mediaSATChannelCellReuseIdentifier = "SHMediaSATChannelCell"
 
-/// 卫星电视的IR延时时间
-let delayIRTimekey = "SHMediaSATChannelDelayIRTime"
 
 class SHZoneControlSATChannel: UIView, loadNibView {
     
@@ -34,20 +34,9 @@ class SHZoneControlSATChannel: UIView, loadNibView {
     /// 分组视图的高度
     @IBOutlet weak var groupViewHeightConstraint: NSLayoutConstraint!
     
-    /// 显示分类
-    @IBOutlet weak var categoryShowButton: SHZoneControlSATChannelButton!
-    
-    /// 编辑分类
-    @IBOutlet weak var categoryEditButton: SHZoneControlSATChannelButton!
-    
-    /// 通道按钮
-    @IBOutlet weak var channelButton: SHZoneControlSATChannelButton!
-    
-    /// 延时按钮
-    @IBOutlet weak var delayForIRButton: SHZoneControlSATChannelButton!
     
     /// 分类列表
-    @IBOutlet weak var categoryListView: UITableView!
+    @IBOutlet weak var categoryListView: UICollectionView!
     
     /// 频道视图
     @IBOutlet weak var channelListView: UICollectionView!
@@ -56,144 +45,7 @@ class SHZoneControlSATChannel: UIView, loadNibView {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
-    /// 分类编辑
-    @IBAction func categoryEditButtonClick() {
-    
-        let editController = SHMediaSATCategoryViewController()
-        
-        let editNavigationController =
-            SHNavigationController(
-                rootViewController: editController
-        )
-        
-        let rootViewController =
-            UIApplication.shared.keyWindow?.rootViewController
-        
-        rootViewController!.present(
-            editNavigationController,
-            animated: true,
-            completion: nil
-        )
-    }
 
-    
-    /// 通道编辑
-    @IBAction func channelButtonClick() {
-        
-        let editController = SHMediaSATChannelViewController()
-        
-        let editNavigationController =
-            SHNavigationController(
-                rootViewController: editController
-        )
-        
-        let rootViewController =
-            UIApplication.shared.keyWindow?.rootViewController
-        
-        rootViewController!.present(
-            editNavigationController,
-            animated: true,
-            completion: nil
-        )
-    }
-    
-    /// 点击延时IR
-    @IBAction func delayForIRButtonClick() {
-        
-        let title =
-            SHLanguageTools.share()?.getTextFromPlist(
-                "MEDIA_IN_ZONE",
-                withSubTitle: "PROMPT_MESSAGE_3"
-            ) as! String
-        
-        let alertView =
-            TYCustomAlertView(
-                title: nil,
-                message: title,
-                isCustom: true
-        )
-        
-        alertView?.addTextField(configurationHandler: { (textField) in
-            
-            textField?.becomeFirstResponder()
-            
-            textField?.keyboardType = .numberPad
-            textField?.clearButtonMode = .whileEditing
-            textField?.textAlignment = .center
-
-            let time = UserDefaults.standard.integer(
-                forKey: delayIRTimekey
-            ) 
-            
-            textField?.text = "\(time)"
-            
-            self.delayTextField = textField
-        })
-        
-        let cancelAction =
-            TYAlertAction(title: SHLanguageText.cancel,
-                          style: .cancel,
-                          
-                          handler: nil)
- 
-        alertView?.add(cancelAction)
-        
-        let saveAction = TYAlertAction(
-            title: SHLanguageText.save,
-            style: .destructive) { (action) in
-                            
-                
-                let time = Int(self.delayTextField?.text ?? "0") ?? 200
-                
-                
-                if time >= 50 && time <= 5000 {
-                    
-                let error =
-                    SHLanguageTools.share()?.getTextFromPlist(
-                        "MEDIA_IN_ZONE",
-                        withSubTitle: "PROMPT_MESSAGE_3"
-                    ) as! String
-                    
-                    SVProgressHUD.showError(withStatus: error)
-                    
-                    return
-                }
-                
-                UserDefaults.standard.set(time,
-                                          forKey: delayIRTimekey
-                )
-                
-                UserDefaults.standard.synchronize()
-
-                SVProgressHUD.showSuccess(
-                    withStatus: SHLanguageText.done
-                )
-        }
-        
-        alertView?.add(saveAction)
-        
-        let alertController =
-            TYAlertController(
-                alert: alertView,
-                preferredStyle: .alert,
-                transitionAnimation: .scaleFade
-        )
-        
-        if UIDevice.is4_0inch() || UIDevice.is3_5inch() {
-
-            alertController?.alertViewOriginY =
-                navigationBarHeight + statusBarHeight
-        }
-
-        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-        
-        rootViewController?.present(
-            alertController!,
-            animated: true,
-            completion: nil
-        )
-    }
 }
 
 // MARK: - UI初始始化
@@ -202,54 +54,20 @@ extension SHZoneControlSATChannel {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        categoryListView.rowHeight = SHMediaSATCategoryCell.rowHeight
+       categoryListView.register(
+        UINib(
+            nibName: mediaSATCategoryCollectionCellReuseIdentifier,
+            bundle: nil),
         
-        categoryListView.register(
-            UINib(nibName: mediaSATCategoryCellReuseIdentifier,
-                  bundle: nil),
-            forCellReuseIdentifier:
-                mediaSATCategoryCellReuseIdentifier
+            forCellWithReuseIdentifier:
+                mediaSATCategoryCollectionCellReuseIdentifier
         )
-        
+ 
         channelListView.register(
             UINib(nibName: mediaSATChannelCellReuseIdentifier,
                   bundle: nil),
             forCellWithReuseIdentifier:
                 mediaSATChannelCellReuseIdentifier
-        )
-        
-        channelButton.setTitle(SHLanguageText.channel,
-                               for: .normal
-        )
-        
-        let delayTitle =
-            SHLanguageTools.share()?.getTextFromPlist(
-                "MEDIA_IN_ZONE",
-                withSubTitle: "DELAY_FOR_IR"
-            ) as! String
-        
-        delayForIRButton.setTitle(delayTitle,
-                                  for: .normal
-        )
-        
-        let categoryShowTitle =
-            SHLanguageTools.share()?.getTextFromPlist(
-                "MEDIA_IN_ZONE",
-                withSubTitle: "CATEGORY"
-            ) as! String
-        
-        categoryShowButton.setTitle(categoryShowTitle,
-                                  for: .normal
-        )
-        
-        let categoryEditTitle =
-            SHLanguageTools.share()?.getTextFromPlist(
-                "MEDIA_IN_ZONE",
-                withSubTitle: "CATEGORY_SETTINGS_TITLE"
-            ) as! String
-        
-        categoryEditButton.setTitle(categoryEditTitle,
-                                    for: .normal
         )
 
         // 注册通知处理分类编辑完成
@@ -262,21 +80,11 @@ extension SHZoneControlSATChannel {
         
         loadCategoryData()
         
-        if UIDevice.is_iPad() {
-            
-            let font = UIView.suitFontForPad()
-            
-            delayForIRButton.titleLabel?.font = font
-            channelButton.titleLabel?.font = font
-            categoryEditButton.titleLabel?.font = font
-            
-            categoryShowButton.titleLabel?.font =
-                UIFont.boldSystemFont(ofSize: 32)
-        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         
         // 1.2 计算每个item的大小
         var itemMarign: CGFloat = min(channelListView.frame_width, channelListView.frame_height) * 0.1
@@ -321,82 +129,86 @@ extension SHZoneControlSATChannel {
             return
         }
         
-        // 默认选择第一个 - UI效果
-        categoryListView.selectRow(
-            at: IndexPath(row: 0, section: 0), animated: true,
-            scrollPosition: .top
+        // 默认执行第一个
+        let indexPath = IndexPath(item: 0, section: 0)
+        categoryListView.selectItem(
+            at: indexPath,
+            animated: false,
+            scrollPosition:
+                UICollectionView.ScrollPosition.bottom
         )
         
-        // 触发一下代理
-        self.tableView(
-            categoryListView,
-            didSelectRowAt: IndexPath(row: 0, section: 0)
+        self.collectionView(categoryListView,
+                            didSelectItemAt: indexPath
         )
     }
 }
 
 
-// MARK: - UITableViewDelegate
-extension SHZoneControlSATChannel: UITableViewDelegate {
+// MARK: - UICollectionViewDelegate
+extension SHZoneControlSATChannel: UICollectionViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        SVProgressHUD.dismiss()
-        
-        let category = categories[indexPath.row]
-        
-        channels =
-            SHSQLiteManager.shared.getSatChannels(category)
-        
-        if channels.isEmpty {
+        if collectionView == categoryListView {
             
-            SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
-           
+            SVProgressHUD.dismiss()
+            
+            let category = categories[indexPath.row]
+            
+            channels =
+                SHSQLiteManager.shared.getSatChannels(category)
+            
+            if channels.isEmpty {
+                
+                SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
+                
+            }
+            
+            channelListView.reloadData()
         }
-        
-        channelListView.reloadData()
     }
 }
-
-// MARK: - UITableViewDataSource
-extension SHZoneControlSATChannel: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return categories.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: mediaSATCategoryCellReuseIdentifier,
-                for: indexPath
-            ) as! SHMediaSATCategoryCell
-        
-        cell.category = categories[indexPath.row]
-        
-        return cell
-    }
-}
-
 
 // MARK: - UICollectionViewDataSource
 extension SHZoneControlSATChannel: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return channels.count
+        if collectionView == channelListView {
+            
+             return channels.count
+        
+        } else if collectionView == categoryListView {
+        
+            return categories.count
+        }
+        
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mediaSATChannelCellReuseIdentifier, for: indexPath) as! SHMediaSATChannelCell
+        if collectionView == channelListView {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mediaSATChannelCellReuseIdentifier, for: indexPath) as! SHMediaSATChannelCell
+            
+            cell.channel = channels[indexPath.item]
+            cell.mediaSAT = self.mediaSAT
+            
+            return cell
         
-        cell.channel = channels[indexPath.item]
-        cell.mediaSAT = self.mediaSAT
+        } else if collectionView == categoryListView {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+                mediaSATCategoryCollectionCellReuseIdentifier, for: indexPath) as! SHMediaSATCategoryCollectionCell
+            
+            cell.category = categories[indexPath.item];
+            
+            return cell
+        }
         
-        return cell
+        return UICollectionViewCell()
     }
     
     

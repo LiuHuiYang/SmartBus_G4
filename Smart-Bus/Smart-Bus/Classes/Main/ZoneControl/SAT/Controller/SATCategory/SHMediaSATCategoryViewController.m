@@ -169,71 +169,20 @@
 
 // MARK: - UI初始化
 
-- (void)viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
-    
-    NSArray *categories =
-        SHSQLiteManager.shared.getSatCategory;
-    
-    // 取出所有的分类
-    self.categories = [NSMutableArray arrayWithArray:categories];
-    
-    
-    if (!self.categories.count) {
-        
-        [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@ %@", [[SHLanguageTools shareLanguageTools] getTextFromPlist:@"MEDIA_IN_ZONE" withSubTitle:@"CATEGORY"], SHLanguageText.noData]];
-        
-        return;
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 设置名称按钮
-    [self.nameButton setTitle:[[SHLanguageTools shareLanguageTools] getTextFromPlist:@"MEDIA_IN_ZONE" withSubTitle:@"CATEGORY"] forState:UIControlStateNormal];
-   
-    // 设置导航栏
-    [self setNavigationBar];
-    
     // 初始化列表
-    [self setUpListView];
+    self.categoryListView.rowHeight = navigationBarHeight;
+    self.categoryListView.backgroundColor = [UIColor clearColor];
+    self.categoryListView.separatorStyle = UITableViewCellSeparatorStyleNone;
  
     // 增加通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToNewLocation:) name:UIKeyboardWillShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveBack:) name:UIKeyboardWillHideNotification object:nil];
-    
-    if ([UIDevice is_iPad]) {
-        
-        self.nameButton.titleLabel.font = [UIView suitFontForPad];
-    }
 }
 
-
-/// 初始化列表
-- (void)setUpListView {
-    
-    self.categoryListView.rowHeight = navigationBarHeight;
-    self.categoryListView.backgroundColor = [UIColor clearColor];
-    self.categoryListView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [self.categoryListView registerNib:[UINib nibWithNibName:@"SHMediaSATCategoryEditViewCell"bundle:nil] forCellReuseIdentifier:@"SHMediaSATCategoryEditViewCell"];
-}
-
-/// 设置导航栏
-- (void)setNavigationBar {
-    
-    // 1.设置标题
-    self.navigationItem.title = [[SHLanguageTools shareLanguageTools] getTextFromPlist:@"MEDIA_IN_ZONE" withSubTitle:@"CATEGORY_SETTINGS_TITLE"];
-    
-    // 2.设置返回
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"close" hightlightedImageName:@"close" addTarget:self action:@selector(close) isLeft:YES];
-    
-    // 3.设置右边
-//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"setting" hightlightedImageName:@"setting" addTarget:self action:@selector(setCategoryData) isLeft:NO];
-}
 
 /// 设置分类数据
 - (void)setCategoryData {
@@ -263,17 +212,6 @@
     
     // 刷新表格
     [self.categoryListView reloadData];
-}
-
-/// 关闭图形界面
-- (void)close {
-    
-    // 发出界面消息的通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHMediaSATCategoryEditCategoryFinishedNotification object:nil];
-    
-    // 界面消失
-    [self.view endEditing:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

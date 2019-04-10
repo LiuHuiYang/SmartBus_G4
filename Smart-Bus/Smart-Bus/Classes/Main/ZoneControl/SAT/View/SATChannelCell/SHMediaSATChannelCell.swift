@@ -43,6 +43,10 @@ class SHMediaSATChannelCell: UICollectionViewCell {
             
             nameLabel.font = UIView.suitFontForPad()
         }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(sendChannelData))
+        
+        addGestureRecognizer(tap)
     }
 }
 
@@ -58,7 +62,7 @@ extension SHMediaSATChannelCell {
             return
         }
         
-        // 获得延时时间
+        // 获得延时
         let time = UserDefaults.standard.integer(
             forKey: delayIRTimekey
         )

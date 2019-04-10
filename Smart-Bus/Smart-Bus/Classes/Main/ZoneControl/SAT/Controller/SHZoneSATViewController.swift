@@ -60,6 +60,9 @@ class SHZoneSATViewController: SHViewController {
         controlNumberPad?.isHidden = false
         zoneControlSATView?.isHidden = true
         controlChannel?.isHidden = true
+        
+        navigationItem.rightBarButtonItem?.customView?.isHidden
+            = true
     }
    
     /// 通道按钮点击
@@ -84,6 +87,9 @@ class SHZoneSATViewController: SHViewController {
         controlNumberPad?.isHidden = true
         zoneControlSATView?.isHidden = true
         controlChannel?.isHidden = false
+        
+        navigationItem.rightBarButtonItem?.customView?.isHidden
+            = false
     }
     
     /// 控制按钮点击
@@ -108,6 +114,23 @@ class SHZoneSATViewController: SHViewController {
         controlNumberPad?.isHidden = true
         zoneControlSATView?.isHidden = false
         controlChannel?.isHidden = true
+        navigationItem.rightBarButtonItem?.customView?.isHidden
+            = true
+    }
+    
+    
+    /// 电视频道设置
+    @objc private func channelSetting() {
+        
+        let viewController =
+            SHMediaSATChannelSettingViewController()
+     
+        viewController.mediaSAT = zoneSAT;
+        
+        navigationController?.pushViewController(
+            viewController,
+            animated: true
+        )
     }
 }
 
@@ -119,6 +142,14 @@ extension SHZoneSATViewController {
         super.viewDidLoad()
         
         navigationItem.title = zoneSAT?.remark
+        
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(imageName: "setting",
+                            hightlightedImageName: "setting",
+                            addTarget: self,
+                            action: #selector(channelSetting),
+                            isLeft: false
+        )
         
         let selectColor = UIView.highlightedTextColor()
         
@@ -154,13 +185,11 @@ extension SHZoneSATViewController {
             channelButton.titleLabel?.font = font
             numberButton.titleLabel?.font = font
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         controlButtonClick()
     }
+    
+  
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

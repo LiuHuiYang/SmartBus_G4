@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHMediaSATChannelSettingViewController" customModule="Smart_Bus" customModuleProvider="target">
+            <connections>
+                <outlet property="listView" destination="3cT-A4-qsh" id="zgq-qv-5UK"/>
+                <outlet property="timeTextField" destination="74G-uA-cMA" id="eQ7-z1-2Ol"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="jzo-ik-Y0Z">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIz-vf-HGV">
+                    <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="74G-uA-cMA">
+                            <rect key="frame" x="20" y="10" width="374" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="UGi-pL-guM"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="rnL-dd-f42"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="8GX-Vn-fwT"/>
+                        <constraint firstItem="74G-uA-cMA" firstAttribute="centerY" secondItem="PIz-vf-HGV" secondAttribute="centerY" id="Abq-pg-4dn"/>
+                        <constraint firstAttribute="trailing" secondItem="74G-uA-cMA" secondAttribute="trailing" constant="20" id="Qfb-wq-10r"/>
+                        <constraint firstItem="74G-uA-cMA" firstAttribute="leading" secondItem="PIz-vf-HGV" secondAttribute="leading" constant="20" id="fO4-Zz-Hcd"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3cT-A4-qsh">
+                    <rect key="frame" x="20" y="128" width="374" height="685"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="85j-zv-a5z"/>
+                        <outlet property="delegate" destination="-1" id="hTF-fW-UNc"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PIz-vf-HGV" firstAttribute="leading" secondItem="64Y-hQ-N2a" secondAttribute="leading" id="3ha-ca-hs6"/>
+                <constraint firstItem="64Y-hQ-N2a" firstAttribute="trailing" secondItem="3cT-A4-qsh" secondAttribute="trailing" constant="20" id="6ju-l8-s40"/>
+                <constraint firstItem="3cT-A4-qsh" firstAttribute="leading" secondItem="64Y-hQ-N2a" secondAttribute="leading" constant="20" id="7jD-cP-3ZD"/>
+                <constraint firstItem="PIz-vf-HGV" firstAttribute="top" secondItem="64Y-hQ-N2a" secondAttribute="top" id="Cp9-wr-CbZ"/>
+                <constraint firstItem="64Y-hQ-N2a" firstAttribute="bottom" secondItem="3cT-A4-qsh" secondAttribute="bottom" constant="49" id="E0w-il-qgW"/>
+                <constraint firstItem="jzo-ik-Y0Z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ii6-U9-u1z"/>
+                <constraint firstItem="jzo-ik-Y0Z" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RwN-wH-Kih"/>
+                <constraint firstItem="64Y-hQ-N2a" firstAttribute="trailing" secondItem="PIz-vf-HGV" secondAttribute="trailing" id="bDw-D6-BBI"/>
+                <constraint firstAttribute="bottom" secondItem="jzo-ik-Y0Z" secondAttribute="bottom" id="bJA-DV-HHO"/>
+                <constraint firstAttribute="trailing" secondItem="jzo-ik-Y0Z" secondAttribute="trailing" id="j3i-SQ-FXF"/>
+                <constraint firstItem="3cT-A4-qsh" firstAttribute="top" secondItem="PIz-vf-HGV" secondAttribute="bottom" constant="20" id="ugf-ED-OGD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="64Y-hQ-N2a"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="320" height="480"/>
+    </resources>
+</document>

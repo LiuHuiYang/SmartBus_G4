@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SHMediaSATCategoryCollectionCell" id="gTV-IL-0wX" customClass="SHMediaSATCategoryCollectionCell" customModule="Smart_Bus" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="219" height="127"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="219" height="127"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BW8-Ba-4H4">
+                        <rect key="frame" x="0.0" y="0.0" width="219" height="127"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GzT-O1-ikS" userLabel="holdView">
+                                <rect key="frame" x="22" y="12.5" width="175" height="102"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pPS-xx-wQQ">
+                                <rect key="frame" x="22" y="12.5" width="175" height="102"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMw-q8-lHV">
+                                <rect key="frame" x="22" y="12.5" width="175" height="102"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.97647058819999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GzT-O1-ikS" firstAttribute="centerX" secondItem="BW8-Ba-4H4" secondAttribute="centerX" id="6lI-p7-UFf"/>
+                            <constraint firstItem="bMw-q8-lHV" firstAttribute="centerY" secondItem="GzT-O1-ikS" secondAttribute="centerY" id="M3R-0r-kZh"/>
+                            <constraint firstItem="pPS-xx-wQQ" firstAttribute="centerY" secondItem="GzT-O1-ikS" secondAttribute="centerY" id="Rq3-gM-xvQ"/>
+                            <constraint firstItem="bMw-q8-lHV" firstAttribute="centerX" secondItem="GzT-O1-ikS" secondAttribute="centerX" id="TXP-e6-GdF"/>
+                            <constraint firstItem="bMw-q8-lHV" firstAttribute="height" secondItem="GzT-O1-ikS" secondAttribute="height" id="Tz8-uF-foW"/>
+                            <constraint firstItem="bMw-q8-lHV" firstAttribute="width" secondItem="GzT-O1-ikS" secondAttribute="width" id="WWa-ol-hhK"/>
+                            <constraint firstItem="GzT-O1-ikS" firstAttribute="height" secondItem="BW8-Ba-4H4" secondAttribute="height" multiplier="0.8" id="bNr-hi-PH2"/>
+                            <constraint firstItem="pPS-xx-wQQ" firstAttribute="centerX" secondItem="GzT-O1-ikS" secondAttribute="centerX" id="djh-MS-w5t"/>
+                            <constraint firstItem="GzT-O1-ikS" firstAttribute="width" secondItem="BW8-Ba-4H4" secondAttribute="width" multiplier="0.8" id="fgl-sc-Qy0"/>
+                            <constraint firstItem="pPS-xx-wQQ" firstAttribute="width" secondItem="GzT-O1-ikS" secondAttribute="width" id="hTd-U6-sja"/>
+                            <constraint firstItem="GzT-O1-ikS" firstAttribute="centerY" secondItem="BW8-Ba-4H4" secondAttribute="centerY" id="hvz-SK-1Tf"/>
+                            <constraint firstItem="pPS-xx-wQQ" firstAttribute="height" secondItem="GzT-O1-ikS" secondAttribute="height" id="sdC-iG-9eo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="BW8-Ba-4H4" secondAttribute="bottom" id="VZN-2I-QmR"/>
+                <constraint firstAttribute="trailing" secondItem="BW8-Ba-4H4" secondAttribute="trailing" id="alg-2Q-dja"/>
+                <constraint firstItem="BW8-Ba-4H4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="m7k-ai-kTj"/>
+                <constraint firstItem="BW8-Ba-4H4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="u8E-Ob-Srq"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="219" height="127"/>
+            <connections>
+                <outlet property="iconView" destination="pPS-xx-wQQ" id="GMM-pe-j5N"/>
+                <outlet property="nameLabel" destination="bMw-q8-lHV" id="Rty-NT-Gu4"/>
+            </connections>
+            <point key="canvasLocation" x="160.1449275362319" y="60.602678571428569"/>
+        </collectionViewCell>
+    </objects>
+</document>
