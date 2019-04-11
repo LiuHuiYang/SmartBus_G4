@@ -45,9 +45,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iok-a3-Flg">
                     <rect key="frame" x="0.0" y="64" width="320" height="489"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Vew-wO-oCZ">
-                            <rect key="frame" x="0.0" y="0.0" width="280" height="489"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Vew-wO-oCZ">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="489"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MZt-MQ-LFE">
                                 <size key="itemSize" width="50" height="50"/>
@@ -61,6 +60,12 @@
                         </collectionView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Vew-wO-oCZ" secondAttribute="trailing" id="0VV-mp-HmJ"/>
+                        <constraint firstAttribute="bottom" secondItem="Vew-wO-oCZ" secondAttribute="bottom" id="ELP-q8-mAL"/>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="leading" secondItem="Iok-a3-Flg" secondAttribute="leading" id="djq-NH-6XG"/>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="top" secondItem="Iok-a3-Flg" secondAttribute="top" id="e9w-00-PYL"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

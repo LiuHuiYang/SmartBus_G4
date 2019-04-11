@@ -209,6 +209,13 @@ import UIKit
             return
         }
         
+        if key == "ACNumber" {
+            
+            acNumber = (value as? UInt) ?? 0
+            
+            return
+        }
+        
         super.setValue(value, forKey: key)
     }
     

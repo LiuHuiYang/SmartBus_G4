@@ -80,10 +80,11 @@ extension SHSQLiteManager {
         
         let sql =
             "delete from HVACInZone    Where " +
-            "zoneID = \(hvac.zoneID)     and " +
+            "ZoneID = \(hvac.zoneID)     and " +
             "SubnetID = \(hvac.subnetID) and " +
             "DeviceID = \(hvac.deviceID) and " +
-            "ACNumber = \(hvac.acNumber) ;"
+            "ACNumber = \(hvac.acNumber) and " +
+            "channelNo = \(hvac.channelNo);"
         
         return executeSql(sql)
     }
