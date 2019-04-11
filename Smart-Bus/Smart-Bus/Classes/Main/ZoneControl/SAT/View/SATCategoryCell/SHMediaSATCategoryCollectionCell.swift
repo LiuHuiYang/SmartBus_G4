@@ -36,16 +36,14 @@ class SHMediaSATCategoryCollectionCell: UICollectionViewCell {
             nameLabel.font = UIView.suitFontForPad()
         }
     }
-    
-    
-    
-    override func select(_ sender: Any?) {
-        
-        super.select(sender)
-    
-        print("这里会有吗")
-        nameLabel.textColor = isSelected ? UIView.highlightedTextColor() :
-            UIView.textWhiteColor()
-    }
-
+     
+//    override func select(_ sender: Any?) {
+//
+//        super.select(sender)
+//
+//        print("这里会有吗")
+//        nameLabel.textColor = isSelected ? UIView.highlightedTextColor() :
+//            UIView.textWhiteColor()
+//    }
+ 
 }

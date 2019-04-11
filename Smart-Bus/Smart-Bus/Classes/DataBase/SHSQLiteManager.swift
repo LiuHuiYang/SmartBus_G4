@@ -198,6 +198,9 @@ let maxIconIDForDataBase = 10
         
         // 增加电视的更多参数
         _ = addMediaTVParameter()
+        
+        // 增加卫星电视的参数
+        _ = addMediaSATCategoryParameter()
     }
 }
 

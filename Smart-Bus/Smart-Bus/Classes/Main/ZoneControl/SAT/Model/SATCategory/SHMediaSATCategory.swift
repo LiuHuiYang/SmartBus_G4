@@ -13,6 +13,12 @@ import UIKit
     /// 分类ID
     var categoryID: UInt = 0
     
+    /// 子网ID
+    var subnetID: UInt8 = 0
+    
+    /// 设备ID
+    var deviceID: UInt8 = 0
+    
     /// 场景序号
     var sequenceNo: UInt = 0
     

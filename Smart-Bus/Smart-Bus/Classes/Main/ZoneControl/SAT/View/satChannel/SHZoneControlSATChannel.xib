@@ -16,67 +16,71 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="But-rA-9kC" userLabel="groupView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                    <rect key="frame" x="15" y="0.0" width="290" height="64"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xpB-0o-UKH">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                            <rect key="frame" x="0.0" y="0.0" width="290" height="64"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u0U-sF-NGn">
-                                <size key="itemSize" width="50" height="50"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="u0U-sF-NGn">
+                                <size key="itemSize" width="0.0" height="0.0"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <connections>
-                                <outlet property="dataSource" destination="ifv-6b-Jn7" id="Kkh-J0-1o9"/>
-                                <outlet property="delegate" destination="ifv-6b-Jn7" id="JlY-4G-1TH"/>
+                                <outlet property="dataSource" destination="ifv-6b-Jn7" id="pf3-km-Zty"/>
+                                <outlet property="delegate" destination="ifv-6b-Jn7" id="1na-3h-2pu"/>
                             </connections>
                         </collectionView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="xpB-0o-UKH" firstAttribute="width" secondItem="But-rA-9kC" secondAttribute="width" id="4pm-qg-faS"/>
                         <constraint firstItem="xpB-0o-UKH" firstAttribute="centerX" secondItem="But-rA-9kC" secondAttribute="centerX" id="5I2-Yu-tcD"/>
                         <constraint firstItem="xpB-0o-UKH" firstAttribute="centerY" secondItem="But-rA-9kC" secondAttribute="centerY" id="9Ez-bu-BH3"/>
                         <constraint firstItem="xpB-0o-UKH" firstAttribute="height" secondItem="But-rA-9kC" secondAttribute="height" id="FW6-kO-ebh"/>
                         <constraint firstItem="xpB-0o-UKH" firstAttribute="width" secondItem="But-rA-9kC" secondAttribute="width" id="Ybh-wd-RwL"/>
-                        <constraint firstAttribute="height" constant="49" id="teb-D3-g8G"/>
+                        <constraint firstItem="xpB-0o-UKH" firstAttribute="height" secondItem="But-rA-9kC" secondAttribute="height" id="jz7-3A-CFp"/>
+                        <constraint firstItem="xpB-0o-UKH" firstAttribute="centerY" secondItem="But-rA-9kC" secondAttribute="centerY" id="mSm-iA-Mpv"/>
+                        <constraint firstItem="xpB-0o-UKH" firstAttribute="centerX" secondItem="But-rA-9kC" secondAttribute="centerX" id="pm8-vt-4p7"/>
+                        <constraint firstAttribute="height" constant="64" id="teb-D3-g8G"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iok-a3-Flg">
-                    <rect key="frame" x="0.0" y="64" width="320" height="489"/>
+                    <rect key="frame" x="15" y="79" width="290" height="474"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Vew-wO-oCZ">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="489"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MZt-MQ-LFE">
-                                <size key="itemSize" width="50" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="290" height="474"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="MZt-MQ-LFE">
+                                <size key="itemSize" width="0.0" height="0.0"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                             <connections>
-                                <outlet property="dataSource" destination="ifv-6b-Jn7" id="8ei-dU-GUa"/>
+                                <outlet property="dataSource" destination="ifv-6b-Jn7" id="6NK-DG-6mq"/>
                             </connections>
                         </collectionView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.58823529409999997" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Vew-wO-oCZ" secondAttribute="trailing" id="0VV-mp-HmJ"/>
-                        <constraint firstAttribute="bottom" secondItem="Vew-wO-oCZ" secondAttribute="bottom" id="ELP-q8-mAL"/>
-                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="leading" secondItem="Iok-a3-Flg" secondAttribute="leading" id="djq-NH-6XG"/>
-                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="top" secondItem="Iok-a3-Flg" secondAttribute="top" id="e9w-00-PYL"/>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="centerY" secondItem="Iok-a3-Flg" secondAttribute="centerY" id="1x6-E3-LBF"/>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="height" secondItem="Iok-a3-Flg" secondAttribute="height" id="S9e-Cu-mnU"/>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="width" secondItem="Iok-a3-Flg" secondAttribute="width" id="h3D-cN-4wH"/>
+                        <constraint firstItem="Vew-wO-oCZ" firstAttribute="centerX" secondItem="Iok-a3-Flg" secondAttribute="centerX" id="lgm-uf-pIQ"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Iok-a3-Flg" secondAttribute="bottom" constant="15" id="FLK-J2-PTH"/>
-                <constraint firstItem="Iok-a3-Flg" firstAttribute="trailing" secondItem="But-rA-9kC" secondAttribute="trailing" id="TOa-2R-nVu"/>
-                <constraint firstItem="Iok-a3-Flg" firstAttribute="leading" secondItem="But-rA-9kC" secondAttribute="leading" id="bhK-Lp-gcl"/>
-                <constraint firstItem="But-rA-9kC" firstAttribute="leading" secondItem="ifv-6b-Jn7" secondAttribute="leading" id="qVK-sP-uuj"/>
+                <constraint firstItem="Iok-a3-Flg" firstAttribute="top" secondItem="But-rA-9kC" secondAttribute="bottom" constant="15" id="KKA-rB-31M"/>
+                <constraint firstAttribute="trailing" secondItem="Iok-a3-Flg" secondAttribute="trailing" constant="15" id="VI3-Jw-5ei"/>
+                <constraint firstItem="Iok-a3-Flg" firstAttribute="leading" secondItem="ifv-6b-Jn7" secondAttribute="leading" constant="15" id="VOi-dR-Szc"/>
+                <constraint firstItem="But-rA-9kC" firstAttribute="leading" secondItem="ifv-6b-Jn7" secondAttribute="leading" constant="15" id="qVK-sP-uuj"/>
                 <constraint firstItem="But-rA-9kC" firstAttribute="top" secondItem="ifv-6b-Jn7" secondAttribute="top" id="v7I-XC-gAT"/>
-                <constraint firstItem="Iok-a3-Flg" firstAttribute="top" secondItem="But-rA-9kC" secondAttribute="bottom" constant="15" id="v7o-kP-3NR"/>
-                <constraint firstAttribute="trailing" secondItem="But-rA-9kC" secondAttribute="trailing" id="vuz-mV-jhy"/>
+                <constraint firstAttribute="bottom" secondItem="Iok-a3-Flg" secondAttribute="bottom" constant="15" id="vdd-c9-P0Z"/>
+                <constraint firstAttribute="trailing" secondItem="But-rA-9kC" secondAttribute="trailing" constant="15" id="vuz-mV-jhy"/>
             </constraints>
             <connections>
                 <outlet property="categoryListView" destination="xpB-0o-UKH" id="O4J-RY-Ngc"/>

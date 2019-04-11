@@ -19,8 +19,7 @@ class SHMediaSATChannelSettingViewController: SHViewController {
     /// 卫星电视
     var mediaSAT: SHMediaSAT?
     
-    private lazy var categories =
-        SHSQLiteManager.shared.getSatCategory()
+    private var categories = [SHMediaSATCategory]()
     
     /// 延时
     @IBOutlet weak var timeTextField: UITextField!
@@ -33,6 +32,15 @@ class SHMediaSATChannelSettingViewController: SHViewController {
         super.viewDidLoad()
 
         navigationItem.title = "Settings"
+        
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(
+                imageName: "addDevice_navigationbar",
+                hightlightedImageName: "addDevice_navigationbar",
+                addTarget: self,
+                action: #selector(addMoreSatCategory),
+                isLeft: false
+        )
         
         // 设置 textField
         
@@ -70,17 +78,114 @@ class SHMediaSATChannelSettingViewController: SHViewController {
             "SHMediaSATCategoryEditViewCell"
         )
         
-//        listView.rowHeight = SHMediaSATCategoryEditViewCell.rowHeight
+        
+        listView.rowHeight = SHMediaSATCategoryEditViewCell.rowHeight
         
         if UIDevice.is_iPad() {
             
             timeTextField.font = UIView.suitFontForPad()
         }
+        
+        
     }
  
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        categories =
+            SHSQLiteManager.shared.getSatCategory(mediaSAT!)
+        
+        listView.reloadData()
+    }
 }
 
+
+// MARK: - 添加新的分析
+extension SHMediaSATChannelSettingViewController {
+    
+    /// 添加新的分类
+    @objc private func addMoreSatCategory() {
+        
+        if SHAuthorizationViewController.isOperatorDisable() {
+            return;
+        }
+        
+        let category = SHMediaSATCategory()
+        category.subnetID = mediaSAT!.subnetID
+        category.deviceID = mediaSAT!.deviceID
+        category.zoneID = mediaSAT!.zoneID
+        category.categoryID = SHSQLiteManager.shared.getMaxCategoryID(
+                category.zoneID
+            ) + 1
+        
+        category.categoryName = "new category"
+        
+        _ = SHSQLiteManager.shared.insertSatCategory(category)
+        
+        
+        let detailViewController =
+            SHMediaSatCategoryDetailViewController()
+        
+        detailViewController.satCategory = category
+        
+        navigationController?.pushViewController(
+            detailViewController,
+            animated: true
+        )
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+extension SHMediaSATChannelSettingViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "\t\(SHLanguageText.delete)\t") { (action, indexPath) in
+            
+            tableView.setEditing(false, animated: true)
+            
+            let category = self.categories[indexPath.row]
+            
+            self.categories.remove(at: indexPath.row)
+            
+            _ = SHSQLiteManager.shared.deleteSatCategory(
+                category
+            )
+            
+            tableView.reloadData()
+        }
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "\t\(SHLanguageText.edit)\t") { (action, indexPath) in
+            
+            tableView.setEditing(false, animated: true)
+            
+            self.tableView(self.listView,
+                           didSelectRowAt: indexPath
+            )
+        }
+        
+        return [deleteAction, editAction]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailViewController =
+            SHMediaSatCategoryDetailViewController()
+        
+        detailViewController.satCategory =
+            categories[indexPath.row]
+        
+        navigationController?.pushViewController(
+            detailViewController,
+            animated: true
+        )
+    }
+}
 
 extension SHMediaSATChannelSettingViewController: UITableViewDataSource {
     

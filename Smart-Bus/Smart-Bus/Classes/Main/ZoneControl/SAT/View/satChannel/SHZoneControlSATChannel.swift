@@ -4,7 +4,6 @@
 //
 //  Created by Mark Liu on 2017/9/27.
 //  Copyright © 2017年 SmartHome. All rights reserved.
-//
 
 import UIKit
 
@@ -23,17 +22,16 @@ class SHZoneControlSATChannel: UIView, loadNibView {
     var mediaSAT: SHMediaSAT?
     
     /// 所有的分类
-    private lazy var categories = [SHMediaSATCategory]()
+    private var categories = [SHMediaSATCategory]()
     
     /// 所有的频道
-    private lazy var channels = [SHMediaSATChannel]()
+    private var channels = [SHMediaSATChannel]()
     
     /// 引导输入框
     weak var delayTextField: UITextField?
 
     /// 分组视图的高度
     @IBOutlet weak var groupViewHeightConstraint: NSLayoutConstraint!
-    
     
     /// 分类列表
     @IBOutlet weak var categoryListView: UICollectionView!
@@ -84,40 +82,85 @@ extension SHZoneControlSATChannel {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        
-        // 1.2 计算每个item的大小
-        var itemMarign: CGFloat = min(channelListView.frame_width, channelListView.frame_height) * 0.1
-        
-        // 总列数
-        let totalCols: Int = 2
-        
-        let itemWidth = (channelListView.frame_width - (CGFloat((totalCols + 1)) * itemMarign)) / CGFloat(totalCols)
-        
-        let itemSize: CGFloat =
-            min(itemWidth, channelListView.frame_height)
-
-        itemMarign = (channelListView.frame_width - CGFloat(totalCols) * itemSize) / CGFloat(totalCols + 1)
-
-        let flowLayout = channelListView.collectionViewLayout as! UICollectionViewFlowLayout
-        
-        flowLayout.itemSize =
-            CGSize(width: itemSize, height: itemSize)
-        flowLayout.minimumLineSpacing = itemMarign
-        flowLayout.minimumInteritemSpacing = itemMarign
-
+  
         if UIDevice.is_iPad() {
 
             groupViewHeightConstraint.constant =
                 navigationBarHeight + statusBarHeight
         }
+        
+        let isPortrait = frame_height > frame_width
+        
+        if isPortrait {
+            
+            print("当前是竖屏")
+        } else {
+            print("当前是横屏")
+        }
+        
+       
+        
+        let totalCategoryCols = 3;
+ 
+        let itemMarign =
+            UIDevice.is_iPad() ?
+                statusBarHeight :
+                statusBarHeight * 0.5
+        
+        let itemHeight =
+            groupViewHeightConstraint.constant - statusBarHeight
+        
+        let categoryItemWidth =
+            (categoryListView.frame_width -
+                CGFloat(totalCategoryCols + 1) * itemMarign) /
+                CGFloat(totalCategoryCols)
+ 
+ 
+        let categoryFlowLayout = categoryListView.collectionViewLayout as! UICollectionViewFlowLayout
 
+        categoryFlowLayout.itemSize =
+            CGSize(width: categoryItemWidth,
+                   height: itemHeight
+        )
+
+        categoryFlowLayout.minimumLineSpacing =
+            isPortrait ? itemMarign : 0
+        
+        categoryFlowLayout.minimumInteritemSpacing =
+            isPortrait ? 0 : 0
+     
+        // 详细频道列表
+       
+        let channelTotalCols = isPortrait ? 3 : 5
+        
+        let channelItemWidth =
+            (channelListView.frame_width -
+                CGFloat(channelTotalCols + 1) * itemMarign) /
+                CGFloat(channelTotalCols)
+        
+        let channelFlowLayout = channelListView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        channelFlowLayout.itemSize =
+            CGSize(width: channelItemWidth,
+                   height: itemHeight
+        )
+        
+        channelFlowLayout.minimumLineSpacing =
+            isPortrait ? itemMarign : itemMarign
+        
+        channelFlowLayout.minimumInteritemSpacing =
+            isPortrait ? 0 : itemMarign
     }
     
     /// 加载数据
     @objc private func loadCategoryData() {
         
-        categories = SHSQLiteManager.shared.getSatCategory()
+        guard let sat = self.mediaSAT else {
+            return
+        }
+        
+        categories = SHSQLiteManager.shared.getSatCategory(sat)
+        
         categoryListView.reloadData()
         
         if categories.isEmpty {
@@ -154,7 +197,7 @@ extension SHZoneControlSATChannel: UICollectionViewDelegate {
             
             SVProgressHUD.dismiss()
             
-            let category = categories[indexPath.row]
+            let category = categories[indexPath.item]
             
             channels =
                 SHSQLiteManager.shared.getSatChannels(category)
@@ -164,6 +207,7 @@ extension SHZoneControlSATChannel: UICollectionViewDelegate {
                 SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
                 
             }
+            
             
             channelListView.reloadData()
         }

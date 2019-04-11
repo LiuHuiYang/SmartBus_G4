@@ -391,16 +391,36 @@ extension SHSQLiteManager {
 // MARK: - Sat Category 操作
 extension SHSQLiteManager {
     
+
+    /// 获得当前区域最大的 categoryID
+    func getMaxCategoryID(_ zoneID: UInt) -> UInt {
+        
+        let sql =
+            "select max(CategoryID) from SATCategory " +
+        "where ZoneID = \(zoneID);"
+        
+        guard let dict = selectProprty(sql).last,
+            let categoryID = dict["max(CategoryID)"] as? UInt else {
+                
+                return 0
+        }
+        
+        return categoryID
+    }
     
     /// 增加 sat category
     func insertSatCategory(_ category: SHMediaSATCategory) -> Bool {
         
         let sql =
             "insert into SATCategory(CategoryID,       " +
-            "CategoryName, SequenceNo, ZoneID)         " +
+            "CategoryName, SequenceNo, ZoneID,         " +
+            "SubnetID, DeviceID)                       " +
             "values(\(category.categoryID),            " +
             "'\(category.categoryName ?? "category")', " +
-            "\(category.sequenceNo), \(category.zoneID));"
+            "\(category.sequenceNo),                   " +
+            "\(category.zoneID),                       " +
+            "\(category.subnetID),                     " +
+            "\(category.deviceID));"
         
         return executeSql(sql)
     }
@@ -409,8 +429,10 @@ extension SHSQLiteManager {
     func updateSatCategory(_ category: SHMediaSATCategory) -> Bool {
         
         let sql =
-            "update SATCategory set CategoryName =    " +
-            "'\(category.categoryName ?? "category")' " +
+            "update SATCategory set CategoryName =     " +
+            "'\(category.categoryName ?? "category")', " +
+            "SubnetID = \(category.subnetID),          " +
+            "DeviceID = \(category.deviceID)           " +
             "Where CategoryID = \(category.categoryID);"
         
         return executeSql(sql)
@@ -418,6 +440,12 @@ extension SHSQLiteManager {
     
     /// 删除 category
     func deleteSatCategory(_ category: SHMediaSATCategory) -> Bool {
+        
+        // 清除里面的频道
+        if deleteSatChannels(category) == false {
+            
+            return false
+        }
         
         let sql =
             "delete from SATCategory           Where " +
@@ -428,11 +456,14 @@ extension SHSQLiteManager {
     }
     
     /// 获得 Sat Category
-    func getSatCategory() -> [SHMediaSATCategory] {
+    func getSatCategory(_ sat: SHMediaSAT) -> [SHMediaSATCategory] {
         
         let sql =
-            "select CategoryID, CategoryName, " +
-            "SequenceNo, ZoneID from SATCategory;"
+            "select CategoryID, CategoryName,    " +
+            "SequenceNo, ZoneID , SubnetID,      " +
+            "DeviceID from SATCategory           " +
+            "where SubnetID = \(sat.subnetID)    " +
+            "and DeviceID = \(sat.deviceID);"
         
         let array = selectProprty(sql)
         
@@ -445,11 +476,54 @@ extension SHSQLiteManager {
         
         return categories
     }
+    
+    /// 增加SAT的分类参数
+    func addMediaSATCategoryParameter() -> Bool {
+        
+        if isColumnName(
+            "SubnetID",
+            consistinTable: "SATCategory"
+            ) == false {
+            
+            // 清除 satcategory中的所有数据
+            _ = executeSql("delete from SATCategory;")
+            
+            _ = executeSql("delete from SATChannels;");
+            
+            _ = executeSql("delete form SATChannelIconList;");
+            
+            // 清除 satchannel中所有数据
+                
+            let subNetIDSQL =
+                "ALTER TABLE SATCategory ADD " +
+                "SubnetID INTEGER DEFAULT 0;"
+            
+            let deviceIDSQL =
+                "ALTER TABLE SATCategory ADD " +
+                "DeviceID INTEGER DEFAULT 0;"
+            
+            return executeSql(subNetIDSQL) &&
+                   executeSql(deviceIDSQL)
+        }
+        
+        return true
+    }
 }
 
 
 // MARK: - sat channel
 extension SHSQLiteManager {
+    
+    /// 删除所有的频道
+    func deleteSatChannels(_ category: SHMediaSATCategory) -> Bool {
+        
+        let sql =
+            "delete from SATChannels where " +
+            "CategoryID = \(category.categoryID) " +
+            "and ZoneID = \(category.zoneID);"
+        
+        return executeSql(sql)
+    }
     
     /// 获得SAT 指定分类中的所有频道
     func getSatChannels(_ category: SHMediaSATCategory) -> [SHMediaSATChannel] {
@@ -458,7 +532,8 @@ extension SHSQLiteManager {
             "select CategoryID, ChannelID, ChannelNo,  " +
             "ChannelName, iconName, SequenceNo, ZoneID " +
             "from SATChannels where CategoryID =       " +
-            "\(category.categoryID);"
+            "\(category.categoryID)                    " +
+            "and ZoneID = \(category.zoneID);"
         
         let array = selectProprty(sql)
         var channels = [SHMediaSATChannel]()

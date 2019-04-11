@@ -82,6 +82,7 @@ class SHZoneSATViewController: SHViewController {
             controlChannel?.frame = controlView.bounds
         }
         
+        
         controlChannel?.mediaSAT = zoneSAT
         
         controlNumberPad?.isHidden = true

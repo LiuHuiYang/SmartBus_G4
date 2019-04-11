@@ -565,8 +565,6 @@ extension SHZoneHVACControlViewController {
         controlAirConditioner(
             SHAirConditioningControlType.onAndOff.rawValue,
             value: !hvac.isTurnOn ? 1 : 0)
-      
-        Thread.sleep(forTimeInterval: 0.12)
         
         // 继电器控制方式 && 通用方式
         controlAirConditioner(
@@ -691,8 +689,6 @@ extension SHZoneHVACControlViewController {
             controType,
             value: UInt8(SHHVAC.realTemperature(temperature))
         )
-        
-        Thread.sleep(forTimeInterval: 0.12)
         
         controlAirConditioner(
             isPowerOn: hvac.isTurnOn,

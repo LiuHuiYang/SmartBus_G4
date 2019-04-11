@@ -132,7 +132,7 @@ extension SHZoneControlViewController {
             deviceID: 0xFF,
             additionalData: []
         )
-        
+         
         Thread.sleep(forTimeInterval: 1.0)
         
         // 同时搜索DMX

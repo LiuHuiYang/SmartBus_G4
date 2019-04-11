@@ -18,48 +18,42 @@ class SHMediaSATChannelCell: UICollectionViewCell {
         
         didSet {
             
-            iconView.image =
-                UIImage(named: channel?.iconName ?? "mediaSATChannelDefault")
+//            iconView.image =
+//                UIImage(named: channel?.iconName ?? "mediaSATChannelDefault")
             
-            nameLabel.text = channel?.channelName
+            channelButton.setTitle(
+                channel?.channelName,
+                for: .normal
+            )
         }
     }
     
-    /// 图片
-    @IBOutlet weak var iconView: UIImageView!
     
-    /// 名称
-    @IBOutlet weak var nameLabel: UILabel!
-
+    /// channelButton
+    @IBOutlet weak var channelButton: UIButton!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        iconView.image = UIImage(named: "mediaSATChannelDefault")
         
         backgroundColor = UIColor.clear
         
         if UIDevice.is_iPad() {
             
-            nameLabel.font = UIView.suitFontForPad()
+            channelButton.titleLabel?.font =
+                UIView.suitFontForPad()
         }
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(sendChannelData))
-        
-        addGestureRecognizer(tap)
     }
-}
-
-
-// MARK: - 发送控制数据
-extension SHMediaSATChannelCell {
     
-    @objc private func sendChannelData() {
+    
+    /// 频道按钮点击
+    @IBAction func channelButtonClick() {
         
         guard let sat = mediaSAT,
-              let controlChannel = channel,
-         controlChannel.channelNo != 0 else {
-            return
+            let controlChannel = channel,
+            controlChannel.channelNo != 0 else {
+                return
         }
         
         // 获得延时
@@ -71,33 +65,35 @@ extension SHMediaSATChannelCell {
         
         let string: NSString =
             "\(controlChannel.channelNo)" as NSString
-         
+        
         let count = string.length
- 
+        
+        
         for i in 0 ..< count {
             
-            
-            let single = string.substring(
-                with: NSRange(location: i, length: 1)
-            )
-            
-            // 取出对应的操作码
-            let text =
-                "universalSwitchIDfor" + single
-            
-            let controlType =
-                (sat.value(forKey: text) as? UInt8) ?? 0
-            
-            print("准备发送的指令是 \(text) - \(controlType)")
-       
-            SHSocketTools.sendData(
-                operatorCode: 0xE01C,
-                subNetID: sat.subnetID,
-                deviceID: sat.deviceID,
-                additionalData: [controlType, 0xFF]
-            )
-            
-            Thread.sleep(forTimeInterval: dalayIrTime)
+            DispatchQueue.global().asyncAfter(deadline: .now() + dalayIrTime) {
+                
+                let single = string.substring(
+                    with: NSRange(location: i, length: 1)
+                )
+                
+                // 取出对应的操作码
+                let text =
+                    "universalSwitchIDfor" + single
+                
+                let controlType =
+                    (sat.value(forKey: text) as? UInt8) ?? 0
+                
+                print("准备发送的指令是 \(Thread.current) - \(controlType)")
+                 
+                SHSocketTools.sendData(
+                    operatorCode: 0xE01C,
+                    subNetID: sat.subnetID,
+                    deviceID: sat.deviceID,
+                    additionalData: [controlType, 0xFF]
+                )
+            }
         }
     }
 }
+ 

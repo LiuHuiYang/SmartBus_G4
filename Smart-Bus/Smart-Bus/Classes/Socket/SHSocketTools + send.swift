@@ -49,10 +49,12 @@ extension SHSocketTools {
         needReSend: Bool = true,
         isDMX: Bool = false ) {
         
-        DispatchQueue.global().async {
+        // 所有的指令都要延时 0.1秒执行 (0.1是依据产品固件计算出来的平均值)
+        // 实际给定 120ms
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.12) {
             
             var count = needReSend ? 3 : 1
-
+            
             let socketData =
                 SHSocketData(operatorCode: operatorCode,
                              subNetID: subNetID,
@@ -62,14 +64,14 @@ extension SHSocketTools {
             )
             
             if needReSend {
-             
+                
                 SHSocketTools.addSocketData(
                     socketData: socketData
                 )
             }
             
             while count > 0 {
-               
+                
                 sendData(operatorCode: operatorCode,
                          subNetID: subNetID,
                          deviceID: deviceID,
@@ -86,21 +88,18 @@ extension SHSocketTools {
                     
                     return
                 }
- 
+                
                 count -= 1
             }
             
             // 重发超过三次
             if (count == 0) {
-              
+                
                 SHSocketTools.removeSocketData(
                     socketData: socketData
                 )
             }
         }
-        
-        // 所有的指令都要延时 0.1秒执行 (0.1是依据产品固件计算出来的平均值)
-        Thread.sleep(forTimeInterval: 0.12) // 实际给定 120ms
     }
     
     private static func sendData(
@@ -111,8 +110,7 @@ extension SHSocketTools {
         remoteMacAddress: String =
             SHSocketTools.remoteControlMacAddress(),
         isDMX: Bool = false ) {
-        
-        // 发送时 53.04.00.00.00.00.28.0C 测试网卡地址
+         
      
         let data = packingData(
             operatorCode: operatorCode,

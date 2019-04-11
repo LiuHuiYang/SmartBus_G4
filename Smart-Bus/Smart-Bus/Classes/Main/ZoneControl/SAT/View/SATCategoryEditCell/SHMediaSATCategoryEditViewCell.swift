@@ -15,8 +15,19 @@ import UIKit
         
         didSet {
             
-            nameTextField.text = category?.categoryName
+           _ = category?.categoryName
         }
+    }
+    
+    /// 行高
+    static var rowHeight: CGFloat {
+        
+        if UIDevice.is_iPad() {
+            
+            return (navigationBarHeight + statusBarHeight)
+        }
+        
+        return tabBarHeight
     }
     
     /// 是新增加的
@@ -30,6 +41,8 @@ import UIKit
             nameTextField.becomeFirstResponder()
         }
     }
+    
+    
 
     /// 开始移动的回调
     var cellMove: (() -> Void)?
@@ -47,7 +60,7 @@ import UIKit
 
         if UIDevice.is_iPad() {
 
-            nameTextField.font = UIView.suitFontForPad()
+            
         }
 
     }

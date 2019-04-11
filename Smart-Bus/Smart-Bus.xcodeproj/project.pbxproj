@@ -302,7 +302,6 @@
 		04B353E721C747F2000A7D0B /* SHZoneControlSATChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B353E621C747F2000A7D0B /* SHZoneControlSATChannel.swift */; };
 		04B353E921C74885000A7D0B /* SHMediaSATChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B353E821C74885000A7D0B /* SHMediaSATChannelCell.swift */; };
 		04B353ED21C74A8F000A7D0B /* SHMediaSATCategoryEditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B353EC21C74A8F000A7D0B /* SHMediaSATCategoryEditViewCell.swift */; };
-		04B353EF21C77138000A7D0B /* SHZoneSATViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B353EE21C77138000A7D0B /* SHZoneSATViewController.swift */; };
 		04B4CC7421F064BE0076B600 /* SHSequenceControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CC7321F064BE0076B600 /* SHSequenceControlViewController.swift */; };
 		04B4CC7621F064E80076B600 /* SHSequenceControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B4CC7521F064E80076B600 /* SHSequenceControlViewController.xib */; };
 		04B4CC7821F065380076B600 /* SHSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CC7721F065380076B600 /* SHSequence.swift */; };
@@ -357,6 +356,10 @@
 		04D49FE021B0E0230054E226 /* SHLanguageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D49FDF21B0E0230054E226 /* SHLanguageText.swift */; };
 		04D4A02621B1302A0054E226 /* SHAudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4A02521B1302A0054E226 /* SHAudioRecordViewController.swift */; };
 		04D4A02A21B133C80054E226 /* SHMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4A02921B133C80054E226 /* SHMusicViewController.swift */; };
+		04D681EA225F4442004FD1C4 /* SHZoneSATViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D681E8225F4442004FD1C4 /* SHZoneSATViewController.xib */; };
+		04D681EB225F4442004FD1C4 /* SHZoneSATViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D681E9225F4442004FD1C4 /* SHZoneSATViewController.swift */; };
+		04D681F4225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D681F2225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.swift */; };
+		04D681F5225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D681F3225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.xib */; };
 		04D86CD822250B720036B45A /* SHScheduleAudioViewDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D86CD622250B720036B45A /* SHScheduleAudioViewDetailController.m */; };
 		04D86CD922250B720036B45A /* SHScheduleAudioViewDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D86CD722250B720036B45A /* SHScheduleAudioViewDetailController.xib */; };
 		04D86CDD22250BF60036B45A /* SHScheduleFloorHeatingDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D86CDB22250BF60036B45A /* SHScheduleFloorHeatingDetailController.swift */; };
@@ -500,11 +503,8 @@
 		8B829967204E31FB00F3AD41 /* SHZoneDryContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B82992B204E31FA00F3AD41 /* SHZoneDryContactViewController.xib */; };
 		8B82996A204E31FB00F3AD41 /* SHZoneDryContactViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829932204E31FA00F3AD41 /* SHZoneDryContactViewCell.xib */; };
 		8B829981204E33B700F3AD41 /* SHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B82997B204E33B700F3AD41 /* SHViewController.m */; };
-		8B99A721206DC54100D97AA6 /* SHZoneSATViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B99A71F206DC54100D97AA6 /* SHZoneSATViewController.xib */; };
 		8B99A733206E07D400D97AA6 /* SHZoneControlTVNumberPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B99A72C206E07D400D97AA6 /* SHZoneControlTVNumberPad.xib */; };
 		8B99A736206E07D400D97AA6 /* SHZoneControlTVView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B99A732206E07D400D97AA6 /* SHZoneControlTVView.xib */; };
-		8B99A756206E15BC00D97AA6 /* SHMediaSATCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B99A750206E15BC00D97AA6 /* SHMediaSATCategoryViewController.xib */; };
-		8B99A757206E15BC00D97AA6 /* SHMediaSATCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B99A751206E15BC00D97AA6 /* SHMediaSATCategoryViewController.m */; };
 		8B99A76E206E163200D97AA6 /* SHMediaSATChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B99A75D206E163000D97AA6 /* SHMediaSATChannelCell.xib */; };
 		8B99A770206E163200D97AA6 /* SHMediaSATCategoryEditViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B99A761206E163000D97AA6 /* SHMediaSATCategoryEditViewCell.xib */; };
 		8B99A773206E163200D97AA6 /* SHZoneControlSATChannelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B99A768206E163100D97AA6 /* SHZoneControlSATChannelButton.m */; };
@@ -860,7 +860,6 @@
 		04B353E621C747F2000A7D0B /* SHZoneControlSATChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneControlSATChannel.swift; sourceTree = "<group>"; };
 		04B353E821C74885000A7D0B /* SHMediaSATChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMediaSATChannelCell.swift; sourceTree = "<group>"; };
 		04B353EC21C74A8F000A7D0B /* SHMediaSATCategoryEditViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMediaSATCategoryEditViewCell.swift; sourceTree = "<group>"; };
-		04B353EE21C77138000A7D0B /* SHZoneSATViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneSATViewController.swift; sourceTree = "<group>"; };
 		04B4CC7321F064BE0076B600 /* SHSequenceControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSequenceControlViewController.swift; sourceTree = "<group>"; };
 		04B4CC7521F064E80076B600 /* SHSequenceControlViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSequenceControlViewController.xib; sourceTree = "<group>"; };
 		04B4CC7721F065380076B600 /* SHSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSequence.swift; sourceTree = "<group>"; };
@@ -915,6 +914,10 @@
 		04D49FDF21B0E0230054E226 /* SHLanguageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHLanguageText.swift; sourceTree = "<group>"; };
 		04D4A02521B1302A0054E226 /* SHAudioRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAudioRecordViewController.swift; sourceTree = "<group>"; };
 		04D4A02921B133C80054E226 /* SHMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMusicViewController.swift; sourceTree = "<group>"; };
+		04D681E8225F4442004FD1C4 /* SHZoneSATViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneSATViewController.xib; sourceTree = "<group>"; };
+		04D681E9225F4442004FD1C4 /* SHZoneSATViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneSATViewController.swift; sourceTree = "<group>"; };
+		04D681F2225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMediaSatCategoryDetailViewController.swift; sourceTree = "<group>"; };
+		04D681F3225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHMediaSatCategoryDetailViewController.xib; sourceTree = "<group>"; };
 		04D86CD522250B720036B45A /* SHScheduleAudioViewDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHScheduleAudioViewDetailController.h; sourceTree = "<group>"; };
 		04D86CD622250B720036B45A /* SHScheduleAudioViewDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHScheduleAudioViewDetailController.m; sourceTree = "<group>"; };
 		04D86CD722250B720036B45A /* SHScheduleAudioViewDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHScheduleAudioViewDetailController.xib; sourceTree = "<group>"; };
@@ -1117,12 +1120,8 @@
 		8B829932204E31FA00F3AD41 /* SHZoneDryContactViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneDryContactViewCell.xib; sourceTree = "<group>"; };
 		8B82997B204E33B700F3AD41 /* SHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewController.m; sourceTree = "<group>"; };
 		8B82997D204E33B700F3AD41 /* SHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewController.h; sourceTree = "<group>"; };
-		8B99A71F206DC54100D97AA6 /* SHZoneSATViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHZoneSATViewController.xib; sourceTree = "<group>"; };
 		8B99A72C206E07D400D97AA6 /* SHZoneControlTVNumberPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneControlTVNumberPad.xib; sourceTree = "<group>"; };
 		8B99A732206E07D400D97AA6 /* SHZoneControlTVView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneControlTVView.xib; sourceTree = "<group>"; };
-		8B99A74F206E15BC00D97AA6 /* SHMediaSATCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMediaSATCategoryViewController.h; sourceTree = "<group>"; };
-		8B99A750206E15BC00D97AA6 /* SHMediaSATCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMediaSATCategoryViewController.xib; sourceTree = "<group>"; };
-		8B99A751206E15BC00D97AA6 /* SHMediaSATCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMediaSATCategoryViewController.m; sourceTree = "<group>"; };
 		8B99A75D206E163000D97AA6 /* SHMediaSATChannelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMediaSATChannelCell.xib; sourceTree = "<group>"; };
 		8B99A761206E163000D97AA6 /* SHMediaSATCategoryEditViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMediaSATCategoryEditViewCell.xib; sourceTree = "<group>"; };
 		8B99A767206E163100D97AA6 /* SHZoneControlSATChannelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHZoneControlSATChannelButton.h; sourceTree = "<group>"; };
@@ -1879,6 +1878,24 @@
 				04CD32DD21EED4610041683A /* SHSceneControlViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		04D681E7225F4442004FD1C4 /* Sat */ = {
+			isa = PBXGroup;
+			children = (
+				04D681E8225F4442004FD1C4 /* SHZoneSATViewController.xib */,
+				04D681E9225F4442004FD1C4 /* SHZoneSATViewController.swift */,
+			);
+			path = Sat;
+			sourceTree = "<group>";
+		};
+		04D681EC225F446A004FD1C4 /* CategoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				04D681F2225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.swift */,
+				04D681F3225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.xib */,
+			);
+			path = CategoryDetail;
 			sourceTree = "<group>";
 		};
 		04D86CD422250B720036B45A /* ScheduleAudioViewDetailController */ = {
@@ -4274,9 +4291,8 @@
 		8B99A71A206DC51E00D97AA6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8B99A74E206E15BC00D97AA6 /* SATCategory */,
-				04B353EE21C77138000A7D0B /* SHZoneSATViewController.swift */,
-				8B99A71F206DC54100D97AA6 /* SHZoneSATViewController.xib */,
+				04D681EC225F446A004FD1C4 /* CategoryDetail */,
+				04D681E7225F4442004FD1C4 /* Sat */,
 				0491FAF0225DC4900025CF14 /* SHMediaSATChannelSettingViewController.swift */,
 				0491FAF1225DC4900025CF14 /* SHMediaSATChannelSettingViewController.xib */,
 			);
@@ -4296,13 +4312,13 @@
 		8B99A71C206DC51E00D97AA6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8B99A766206E163100D97AA6 /* ChannelSetButton */,
+				8B99A769206E163100D97AA6 /* satControlView */,
 				0480399E21B7CC15009D9A32 /* satNumberPad */,
 				8B99A782206E181600D97AA6 /* satChannel */,
-				8B99A766206E163100D97AA6 /* ChannelSetButton */,
 				8B99A762206E163100D97AA6 /* SATCategoryCell */,
 				8B99A75E206E163000D97AA6 /* SATCategoryEditCell */,
 				8B99A75A206E163000D97AA6 /* SATChannelCell */,
-				8B99A769206E163100D97AA6 /* satControlView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4374,16 +4390,6 @@
 			isa = PBXGroup;
 			children = (
 				04C5831D2192C5910017701A /* SHMediaSATCategory.swift */,
-			);
-			path = SATCategory;
-			sourceTree = "<group>";
-		};
-		8B99A74E206E15BC00D97AA6 /* SATCategory */ = {
-			isa = PBXGroup;
-			children = (
-				8B99A74F206E15BC00D97AA6 /* SHMediaSATCategoryViewController.h */,
-				8B99A750206E15BC00D97AA6 /* SHMediaSATCategoryViewController.xib */,
-				8B99A751206E15BC00D97AA6 /* SHMediaSATCategoryViewController.m */,
 			);
 			path = SATCategory;
 			sourceTree = "<group>";
@@ -4690,6 +4696,7 @@
 				8B8296A7204E30FA00F3AD41 /* SHReadSecurityLogViewController.xib in Resources */,
 				047775352251A41000A95AF3 /* SHZoneTVSpareView.xib in Resources */,
 				041C007F21B4DFAF0003CB49 /* SHScheduleViewCell.xib in Resources */,
+				04D681F5225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.xib in Resources */,
 				04E1D160221BE6A80059DE46 /* SHSchduleShadeCell.xib in Resources */,
 				04A177CF215F5E1400BD9744 /* SHAlarmViewController.xib in Resources */,
 				8B99A770206E163200D97AA6 /* SHMediaSATCategoryEditViewCell.xib in Resources */,
@@ -4701,7 +4708,6 @@
 				04FADE6E2105DEFC007E81CC /* SHDmxChannelViewController.xib in Resources */,
 				8B2461471EE4EA8B009574E3 /* LaunchScreen.storyboard in Resources */,
 				0490407D20A1918F00E53AD7 /* SHZoneDmxGroupSettingViewController.xib in Resources */,
-				8B99A721206DC54100D97AA6 /* SHZoneSATViewController.xib in Resources */,
 				0401BC6D21916E160046BF18 /* SHMacroCell.xib in Resources */,
 				042E191121DF410700BCE8F6 /* SHAudioPlayStatusView.xib in Resources */,
 				0408BB872175772B0087483E /* SHZoneIconViewController.xib in Resources */,
@@ -4775,6 +4781,7 @@
 				04FFCFB42174787F00684CFA /* SHSetSystemViewCell.xib in Resources */,
 				0441DDEF216C9CB000952CE4 /* SHApplianceViewController.xib in Resources */,
 				04E1D159221BDBBF0059DE46 /* SHScheduleAudioViewController.xib in Resources */,
+				04D681EA225F4442004FD1C4 /* SHZoneSATViewController.xib in Resources */,
 				0441DDE7216C97D800952CE4 /* SHCentralControlViewCell.xib in Resources */,
 				8B5D4FFF206C8EF00028EEDB /* SHZoneProjectorViewController.xib in Resources */,
 				0455FEB62216B4E0001046D2 /* SHSchduleMacroCell.xib in Resources */,
@@ -4790,7 +4797,6 @@
 				04526C3020A2F58B00B39597 /* SHDmxColorViewController.xib in Resources */,
 				043B4C9A210726C60075E5EA /* Languages in Resources */,
 				8BF9268E1EEE857D00EE5A54 /* SQL.sql in Resources */,
-				8B99A756206E15BC00D97AA6 /* SHMediaSATCategoryViewController.xib in Resources */,
 				8B829900204E31F300F3AD41 /* SHZoneShadeViewCell.xib in Resources */,
 				04E1D136221B94DC0059DE46 /* SHScheduleMoodViewController.xib in Resources */,
 				8B8298E2204E31F300F3AD41 /* SHEditRecordShadeCell.xib in Resources */,
@@ -4963,7 +4969,6 @@
 				04E1D14C221BCFCF0059DE46 /* SHScheduleShadeViewController.swift in Sources */,
 				8B8298F0204E31F300F3AD41 /* SHLoadProgressView.m in Sources */,
 				042CD7CB20AD2ED600061670 /* EZPlot.m in Sources */,
-				04B353EF21C77138000A7D0B /* SHZoneSATViewController.swift in Sources */,
 				04CD3E27216B0967007010C6 /* SHNavigationController.swift in Sources */,
 				041C007321B4DDDA0003CB49 /* SHSchedualCommand.swift in Sources */,
 				04E1D15D221BDD310059DE46 /* SHSchduleLightCell.swift in Sources */,
@@ -4986,6 +4991,7 @@
 				04A177E2215F61A000BD9744 /* SHPhotosViewController.swift in Sources */,
 				04C583102192B5580017701A /* SHMediaDVD.swift in Sources */,
 				04184DFB21F16DB30002E491 /* SHDmxFunctionCustomView.swift in Sources */,
+				04D681F4225F449F004FD1C4 /* SHMediaSatCategoryDetailViewController.swift in Sources */,
 				044269A321C9EA9B00A7A88B /* SHDmxChannelViewController.swift in Sources */,
 				04C583262192CC090017701A /* SHMediaProjector.swift in Sources */,
 				04A177E6215F724B00BD9744 /* SHIntercomViewController.swift in Sources */,
@@ -5149,7 +5155,6 @@
 				8B5D504B206CBAE30028EEDB /* SHAudioRecordControlButton.m in Sources */,
 				0453EA4721A67C8400F666EF /* JHPieForeBGView.m in Sources */,
 				0421B68221F83D4D00C42F65 /* SHSQLiteManager + DVD.swift in Sources */,
-				8B99A757206E15BC00D97AA6 /* SHMediaSATCategoryViewController.m in Sources */,
 				04D49FDE21B0CFC20054E226 /* SHZoneAppleTVControlViewController.swift in Sources */,
 				04566DA621AFCB640099F548 /* SHZoneDevicesViewController.swift in Sources */,
 				0453EA3D21A67C8400F666EF /* JHWaveChart.m in Sources */,
@@ -5158,6 +5163,7 @@
 				042450C021F0155500C99512 /* SHDeviceArgsViewController + Macro.swift in Sources */,
 				0498350C21C3A0B200C57223 /* SHZoneNineInOneNumberPadView.swift in Sources */,
 				04C58308219292A10017701A /* SHMood.swift in Sources */,
+				04D681EB225F4442004FD1C4 /* SHZoneSATViewController.swift in Sources */,
 				8B8298ED204E31F300F3AD41 /* SHZoneControlButton.m in Sources */,
 				04C583122192B71A0017701A /* SHDmxGroup.swift in Sources */,
 				047775332251A2ED00A95AF3 /* SHZoneTVSpareView.swift in Sources */,

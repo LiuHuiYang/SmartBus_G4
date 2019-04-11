@@ -28,7 +28,6 @@
 #import "SHZoneControlRecordMoodViewController.h"
 #import "SoundTools.h"
 #import "SHZoneControlSATChannelButton.h"
-#import "SHMediaSATCategoryViewController.h"
 #import "SHMoodShadeStatusButton.h"
 #import "SHScheduleAudioViewDetailController.h"
 
