@@ -57,6 +57,12 @@ class SHDeviceArgsViewController: SHViewController {
     /// sat.
     var mediaSAT: SHMediaSAT?
     
+    /// 卫电视频道分类
+    var mediaSatCategory: SHMediaSATCategory?
+    
+    /// 卫星电视频道
+    var mediaSatChannel: SHMediaSATChannel?
+    
     /// appleTV
     var mediaAppleTV: SHMediaAppleTV?
     
@@ -296,7 +302,18 @@ extension SHDeviceArgsViewController {
             refreshMediaSAT()
         }
         
-        // sat.
+        if mediaSatCategory != nil {
+            
+            refreshMediaSatCategory()
+        }
+        
+        // sat.Channel
+        if mediaSatChannel != nil {
+            
+            refreshMediaSatChannel()
+        }
+        
+        // appleTV.
         if mediaAppleTV != nil {
             
             refreshMediaAppleTV()
@@ -439,6 +456,18 @@ extension SHDeviceArgsViewController {
         if mediaSAT != nil {
             
             updateMediaSAT(value: value, index: index)
+        }
+        
+        // 保存sat频道分类
+        if mediaSatCategory != nil {
+            
+            updateMediaSatCategory(value: value, index: index)
+        }
+        
+        // // 保存sat 具体的频道
+        if mediaSatChannel != nil {
+            
+            updateMediaSatChannel(value: value, index: index)
         }
         
         // 保存 Apple TV

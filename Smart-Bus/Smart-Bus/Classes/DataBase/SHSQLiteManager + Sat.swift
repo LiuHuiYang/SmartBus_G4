@@ -8,6 +8,20 @@
 
 import Foundation
 
+/*
+ 涉及到的数据表格的关系
+    同一个区域有 很多 电视
+ 
+    每个电视 有很多组频道 category
+        对应关系: zoneID && subetID && deviceID
+ 
+    每组 category 有很多个频道
+        对应关系: zoneID && categoryID
+ 
+    找到组中的 每个频道
+        channelID
+ */
+
 
 // MARK: - Sat 操作
 extension SHSQLiteManager {
@@ -397,7 +411,7 @@ extension SHSQLiteManager {
         
         let sql =
             "select max(CategoryID) from SATCategory " +
-        "where ZoneID = \(zoneID);"
+            "where ZoneID = \(zoneID);"
         
         guard let dict = selectProprty(sql).last,
             let categoryID = dict["max(CategoryID)"] as? UInt else {
@@ -433,7 +447,8 @@ extension SHSQLiteManager {
             "'\(category.categoryName ?? "category")', " +
             "SubnetID = \(category.subnetID),          " +
             "DeviceID = \(category.deviceID)           " +
-            "Where CategoryID = \(category.categoryID);"
+            "Where CategoryID = \(category.categoryID) " +
+            "and ZoneID = \(category.zoneID);"
         
         return executeSql(sql)
     }
@@ -463,7 +478,8 @@ extension SHSQLiteManager {
             "SequenceNo, ZoneID , SubnetID,      " +
             "DeviceID from SATCategory           " +
             "where SubnetID = \(sat.subnetID)    " +
-            "and DeviceID = \(sat.deviceID);"
+            "and DeviceID = \(sat.deviceID)      " +
+            "order by CategoryID;"
         
         let array = selectProprty(sql)
         
@@ -514,6 +530,18 @@ extension SHSQLiteManager {
 // MARK: - sat channel
 extension SHSQLiteManager {
     
+    /// 删除 指定的频道
+    func deleteSatChannel(_ channel: SHMediaSATChannel) -> Bool {
+        
+        let sql =
+            "delete from SATChannels where " +
+                "CategoryID = \(channel.categoryID) " +
+                "and ZoneID = \(channel.zoneID)     " +
+                "and ChannelNo = \(channel.channelNo) ;"
+        
+        return executeSql(sql)
+    }
+    
     /// 删除所有的频道
     func deleteSatChannels(_ category: SHMediaSATCategory) -> Bool {
         
@@ -544,5 +572,57 @@ extension SHSQLiteManager {
         }
         
         return channels
+    }
+    
+    /// 更新卫星电视频道
+    func updateSatChannel(_ channel: SHMediaSATChannel) -> Bool {
+        
+        let sql = "update SATChannels set ChannelName = " +
+            "'\(channel.channelName ?? "channel")',     " +
+            "ChannelNo = \(channel.channelNo) where     " +
+            "ZoneID = \(channel.zoneID) and             " +
+            "CategoryID = \(channel.categoryID) and     " +
+            "ChannelID = \(channel.channelID); "
+        
+        return executeSql(sql)
+    }
+    
+    
+    /// 增加电视频道
+    ///
+    /// - Parameter channel: <#channel description#>
+    /// - Returns: <#return value description#>
+    func insertSatChannel(_ channel: SHMediaSATChannel) -> Bool {
+        
+        let sql =
+            "insert into SATChannels(CategoryID,        " +
+            "ChannelID, ChannelNo, ChannelName,         " +
+            "iconName, SequenceNo, ZoneID)              " +
+            "Values ( \(channel.categoryID),            " +
+            "\(channel.channelID),                      " +
+            "\(channel.channelNo),                      " +
+            "'\(channel.channelName ?? "channelName")', " +
+            "'\(channel.iconName ?? "iconName")',       " +
+            "\(channel.sequenceNo), \(channel.zoneID));"
+        
+        
+        return executeSql(sql)
+    }
+    
+    /// 获得当前分组最大的channelID
+    func getMaxChannelID(_ category: SHMediaSATCategory) -> UInt {
+        
+        let sql =
+            "select max(ChannelID) from SATChannels " +
+            "where ZoneID = \(category.zoneID) and  " +
+            "CategoryID = \(category.categoryID);"
+        
+        guard let dict = selectProprty(sql).last,
+            let channelID = dict["max(ChannelID)"] as? UInt else {
+                
+                return 0
+        }
+        
+        return channelID
     }
 }

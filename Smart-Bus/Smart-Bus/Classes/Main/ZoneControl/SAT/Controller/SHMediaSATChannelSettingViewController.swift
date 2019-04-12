@@ -70,12 +70,12 @@ class SHMediaSATChannelSettingViewController: SHViewController {
             timeTextField.text = delayTitle + ": \(time) ms"
         }
         
-        
+         
         listView.register(
-            UINib(nibName: "SHMediaSATCategoryEditViewCell",
+            UINib(nibName: mediaSatCategoryEditCellReuseIdentifier,
                   bundle: nil),
             forCellReuseIdentifier:
-            "SHMediaSATCategoryEditViewCell"
+                mediaSatCategoryEditCellReuseIdentifier
         )
         
         
@@ -124,9 +124,9 @@ extension SHMediaSATChannelSettingViewController {
         
         
         let detailViewController =
-            SHMediaSatCategoryDetailViewController()
+            SHDeviceArgsViewController()
         
-        detailViewController.satCategory = category
+        detailViewController.mediaSatCategory = category
         
         navigationController?.pushViewController(
             detailViewController,
@@ -164,9 +164,17 @@ extension SHMediaSATChannelSettingViewController: UITableViewDelegate {
             
             tableView.setEditing(false, animated: true)
             
-            self.tableView(self.listView,
-                           didSelectRowAt: indexPath
+            
+            let detailViewController =
+                SHDeviceArgsViewController()
+            
+            detailViewController.mediaSatCategory = self.categories[indexPath.row]
+            
+            self.navigationController?.pushViewController(
+                detailViewController,
+                animated: true
             )
+            
         }
         
         return [deleteAction, editAction]
@@ -197,13 +205,19 @@ extension SHMediaSATChannelSettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SHMediaSATCategoryEditViewCell", for: indexPath) as! SHMediaSATCategoryEditViewCell
+        let cell =
+            tableView.dequeueReusableCell(
+                withIdentifier:
+                mediaSatCategoryEditCellReuseIdentifier,
+                for: indexPath
+            ) as! SHMediaSATCategoryEditViewCell
         
         cell.category = categories[indexPath.row];
         
         return cell
     }
     
+   
 }
 
 // MARK: - UITextFieldDelegate

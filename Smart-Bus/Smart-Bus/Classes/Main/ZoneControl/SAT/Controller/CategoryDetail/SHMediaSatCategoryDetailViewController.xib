@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHMediaSatCategoryDetailViewController" customModule="Smart_Bus" customModuleProvider="target">
             <connections>
+                <outlet property="listView" destination="sDo-2Y-RpC" id="2QE-OJ-zCa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,15 +24,28 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="p0n-Ts-FrW">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                 </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sDo-2Y-RpC">
+                    <rect key="frame" x="15" y="44" width="384" height="769"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="H6i-V3-ChD"/>
+                        <outlet property="delegate" destination="-1" id="hov-UZ-oOa"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="p0n-Ts-FrW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="0fj-Jf-kaG"/>
+                <constraint firstItem="sDo-2Y-RpC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="1zl-mr-gJZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="p0n-Ts-FrW" secondAttribute="bottom" id="HYR-Uf-ScE"/>
                 <constraint firstItem="p0n-Ts-FrW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Kkg-HN-PI1"/>
+                <constraint firstItem="sDo-2Y-RpC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UeD-2f-uZa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sDo-2Y-RpC" secondAttribute="bottom" constant="49" id="kYe-D2-HXe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sDo-2Y-RpC" secondAttribute="trailing" constant="15" id="u2I-TE-Nh5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="p0n-Ts-FrW" secondAttribute="trailing" id="vk7-2o-6lc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="79.710144927536234" y="122.54464285714285"/>
         </view>
     </objects>
     <resources>

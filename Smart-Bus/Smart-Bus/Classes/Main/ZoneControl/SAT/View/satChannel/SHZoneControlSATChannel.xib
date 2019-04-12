@@ -63,7 +63,7 @@
                             </connections>
                         </collectionView>
                     </subviews>
-                    <color key="backgroundColor" red="0.93725490199999995" green="0.58823529409999997" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Vew-wO-oCZ" firstAttribute="centerY" secondItem="Iok-a3-Flg" secondAttribute="centerY" id="1x6-E3-LBF"/>
                         <constraint firstItem="Vew-wO-oCZ" firstAttribute="height" secondItem="Iok-a3-Flg" secondAttribute="height" id="S9e-Cu-mnU"/>

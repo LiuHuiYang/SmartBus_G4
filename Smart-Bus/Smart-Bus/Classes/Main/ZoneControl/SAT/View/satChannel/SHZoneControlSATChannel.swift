@@ -19,10 +19,19 @@ private let mediaSATChannelCellReuseIdentifier = "SHMediaSATChannelCell"
 class SHZoneControlSATChannel: UIView, loadNibView {
     
     /// 卫星电视
-    var mediaSAT: SHMediaSAT?
+    var mediaSAT: SHMediaSAT? {
+        
+        didSet {
+            
+            if mediaSAT != nil {
+             
+                loadCategoryData()
+            }
+        }
+    }
     
     /// 所有的分类
-    private var categories = [SHMediaSATCategory]()
+    private lazy var categories = [SHMediaSATCategory]()
     
     /// 所有的频道
     private var channels = [SHMediaSATChannel]()
@@ -75,9 +84,7 @@ extension SHZoneControlSATChannel {
             name: NSNotification.Name.SHMediaSATCategoryEditCategoryFinished,
             object: nil
         )
-        
-        loadCategoryData()
-        
+         
     }
     
     override func layoutSubviews() {

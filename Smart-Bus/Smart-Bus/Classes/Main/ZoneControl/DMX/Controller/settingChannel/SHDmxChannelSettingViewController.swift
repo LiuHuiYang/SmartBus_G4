@@ -88,7 +88,6 @@ class SHDmxChannelSettingViewController: SHViewController {
             animated: true
         )
     }
-
 }
 
 

@@ -11,6 +11,36 @@ import Foundation
 // MARK: - SAT.
 extension SHDeviceArgsViewController {
     
+    /// 刷新sat频道
+    func refreshMediaSatChannel() {
+        
+        argsNames = [
+        
+            "Channel Name",
+            "Channel No"
+        ]
+        
+        argsValues = [
+        
+            mediaSatChannel?.channelName ?? "channel name",
+            "\(mediaSatChannel?.channelNo ?? 0)"
+        ]
+    }
+    
+    /// 刷新频道分类
+    func refreshMediaSatCategory() {
+        
+        argsNames = [
+            
+            "Category Name"
+        ]
+        
+        argsValues = [
+            
+            mediaSatCategory?.categoryName ?? "category name"
+        ]
+    }
+    
     /// 刷新SAT.
     func refreshMediaSAT() {
         
@@ -124,6 +154,47 @@ extension SHDeviceArgsViewController {
             "\(mediaSAT?.switchNameforControl6 ?? "C6")",
             "\(mediaSAT?.switchIDforControl6 ?? 0)"
         ]
+    }
+    
+    /// 更新电视频道
+    func updateMediaSatChannel(value: String, index: Int) {
+        
+        guard let satChannel = self.mediaSatChannel  else {
+            return
+        }
+        
+        switch index {
+        case 0:
+            satChannel.channelName = value
+            
+        case 1:
+            satChannel.channelNo = UInt(value) ?? 0
+            
+        default:
+            break
+        }
+        
+        _ = SHSQLiteManager.shared.updateSatChannel(satChannel)
+    }
+    
+    /// 更新电视频道
+    func updateMediaSatCategory(value: String, index: Int) {
+        
+        guard let satCategory = self.mediaSatCategory  else {
+            return
+        }
+        
+        switch index {
+            
+        case 0:
+            satCategory.categoryName = value
+       
+            
+        default:
+            break
+        }
+         
+        _ = SHSQLiteManager.shared.updateSatCategory(satCategory)
     }
     
     /// 保存sat.
