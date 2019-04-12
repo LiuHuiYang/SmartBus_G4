@@ -41,10 +41,10 @@ let mediaSatCategoryEditCellReuseIdentifier =  "SHMediaSATCategoryEditViewCell"
         
         if UIDevice.is_iPad() {
             
-            return (navigationBarHeight + statusBarHeight)
+            return (navigationBarHeight * 2 + statusBarHeight)
         }
         
-        return tabBarHeight
+        return (navigationBarHeight + statusBarHeight)
     }
      
     

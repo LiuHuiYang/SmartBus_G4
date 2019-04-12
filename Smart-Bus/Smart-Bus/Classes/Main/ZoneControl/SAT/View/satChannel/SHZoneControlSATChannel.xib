@@ -16,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="But-rA-9kC" userLabel="groupView">
-                    <rect key="frame" x="15" y="0.0" width="290" height="64"/>
+                    <rect key="frame" x="20" y="0.0" width="280" height="64"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xpB-0o-UKH">
-                            <rect key="frame" x="0.0" y="0.0" width="290" height="64"/>
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="64"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="u0U-sF-NGn">
                                 <size key="itemSize" width="0.0" height="0.0"/>
@@ -47,10 +47,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iok-a3-Flg">
-                    <rect key="frame" x="15" y="79" width="290" height="474"/>
+                    <rect key="frame" x="20" y="79" width="280" height="474"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Vew-wO-oCZ">
-                            <rect key="frame" x="0.0" y="0.0" width="290" height="474"/>
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="474"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="MZt-MQ-LFE">
                                 <size key="itemSize" width="0.0" height="0.0"/>
@@ -74,13 +74,13 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Iok-a3-Flg" firstAttribute="leading" secondItem="But-rA-9kC" secondAttribute="leading" id="2kX-qH-tuS"/>
+                <constraint firstItem="Iok-a3-Flg" firstAttribute="trailing" secondItem="But-rA-9kC" secondAttribute="trailing" id="FOw-mR-0xN"/>
                 <constraint firstItem="Iok-a3-Flg" firstAttribute="top" secondItem="But-rA-9kC" secondAttribute="bottom" constant="15" id="KKA-rB-31M"/>
-                <constraint firstAttribute="trailing" secondItem="Iok-a3-Flg" secondAttribute="trailing" constant="15" id="VI3-Jw-5ei"/>
-                <constraint firstItem="Iok-a3-Flg" firstAttribute="leading" secondItem="ifv-6b-Jn7" secondAttribute="leading" constant="15" id="VOi-dR-Szc"/>
-                <constraint firstItem="But-rA-9kC" firstAttribute="leading" secondItem="ifv-6b-Jn7" secondAttribute="leading" constant="15" id="qVK-sP-uuj"/>
+                <constraint firstItem="But-rA-9kC" firstAttribute="leading" secondItem="ifv-6b-Jn7" secondAttribute="leading" constant="20" id="qVK-sP-uuj"/>
                 <constraint firstItem="But-rA-9kC" firstAttribute="top" secondItem="ifv-6b-Jn7" secondAttribute="top" id="v7I-XC-gAT"/>
                 <constraint firstAttribute="bottom" secondItem="Iok-a3-Flg" secondAttribute="bottom" constant="15" id="vdd-c9-P0Z"/>
-                <constraint firstAttribute="trailing" secondItem="But-rA-9kC" secondAttribute="trailing" constant="15" id="vuz-mV-jhy"/>
+                <constraint firstAttribute="trailing" secondItem="But-rA-9kC" secondAttribute="trailing" constant="20" id="vuz-mV-jhy"/>
             </constraints>
             <connections>
                 <outlet property="categoryListView" destination="xpB-0o-UKH" id="O4J-RY-Ngc"/>

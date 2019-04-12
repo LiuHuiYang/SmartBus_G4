@@ -58,8 +58,6 @@ extension SHZoneControlSATChannel {
             return
         }
         
-        print("移动了 \(newWindow)")
-        
         loadCategoryData()
     }
     
@@ -94,16 +92,8 @@ extension SHZoneControlSATChannel {
         
         let isPortrait = frame_height > frame_width
         
-        if isPortrait {
-            
-            print("当前是竖屏")
-        } else {
-            print("当前是横屏")
-        }
-        
-       
-        
-        let totalCategoryCols = 3;
+        let totalCols =
+            UIDevice.is_iPad() ? (isPortrait ? 3 : 4) : 2
  
         let itemMarign =
             UIDevice.is_iPad() ?
@@ -113,52 +103,43 @@ extension SHZoneControlSATChannel {
         let itemHeight =
             groupViewHeightConstraint.constant - statusBarHeight
         
-        let categoryItemWidth =
-            (categoryListView.frame_width -
-                CGFloat(totalCategoryCols + 1) * itemMarign) /
-                CGFloat(totalCategoryCols)
- 
- 
+        let itemWidth =
+            (frame_width - statusBarHeight * 2 -
+                CGFloat(totalCols + 1) * itemMarign) /
+                CGFloat(totalCols)
+  
         let categoryFlowLayout = categoryListView.collectionViewLayout as! UICollectionViewFlowLayout
 
         categoryFlowLayout.itemSize =
-            CGSize(width: categoryItemWidth,
+            CGSize(width: itemWidth,
                    height: itemHeight
         )
 
         categoryFlowLayout.minimumLineSpacing =
-            isPortrait ? itemMarign : 0
+            itemMarign
         
         categoryFlowLayout.minimumInteritemSpacing =
-            isPortrait ? 0 : 0
+            itemMarign
      
         // 详细频道列表
-       
-        let channelTotalCols = isPortrait ? 3 : 5
-        
-        let channelItemWidth =
-            (channelListView.frame_width -
-                CGFloat(channelTotalCols + 1) * itemMarign) /
-                CGFloat(channelTotalCols)
         
         let channelFlowLayout = channelListView.collectionViewLayout as! UICollectionViewFlowLayout
         
         channelFlowLayout.itemSize =
-            CGSize(width: channelItemWidth,
+            CGSize(width: itemWidth,
                    height: itemHeight
         )
         
         channelFlowLayout.minimumLineSpacing =
-            isPortrait ? itemMarign : itemMarign
-        
+            itemMarign
+
         channelFlowLayout.minimumInteritemSpacing =
-            isPortrait ? 0 : itemMarign
+            itemMarign
     }
     
     /// 加载数据
     @objc private func loadCategoryData() {
         
-        print("====== 加载分类数居 ======")
         
         guard let sat = self.mediaSAT else {
             return
@@ -189,12 +170,14 @@ extension SHZoneControlSATChannel {
         self.collectionView(categoryListView,
                             didSelectItemAt: indexPath
         )
+        
     }
 }
 
 
 // MARK: - UICollectionViewDelegate
 extension SHZoneControlSATChannel: UICollectionViewDelegate {
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -213,7 +196,6 @@ extension SHZoneControlSATChannel: UICollectionViewDelegate {
                 
             }
             
-            
             channelListView.reloadData()
         }
     }
@@ -231,7 +213,7 @@ extension SHZoneControlSATChannel: UICollectionViewDataSource {
         } else if collectionView == categoryListView {
         
             return categories.count
-        }
+        } 
         
         return 0
     }
@@ -253,6 +235,7 @@ extension SHZoneControlSATChannel: UICollectionViewDataSource {
                 mediaSATCategoryCollectionCellReuseIdentifier, for: indexPath) as! SHMediaSATCategoryCollectionCell
             
             cell.category = categories[indexPath.item];
+            
             
             return cell
         }
