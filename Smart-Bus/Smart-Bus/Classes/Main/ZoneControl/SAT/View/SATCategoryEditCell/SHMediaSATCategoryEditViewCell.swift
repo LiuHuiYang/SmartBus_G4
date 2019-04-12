@@ -17,7 +17,7 @@ let mediaSatCategoryEditCellReuseIdentifier =  "SHMediaSATCategoryEditViewCell"
     var channel: SHMediaSATChannel? {
         
         didSet {
-            
+             
             textLabel?.text =
                 "\(channel!.categoryID) - " +
                 "\(channel!.channelID) - " +

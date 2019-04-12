@@ -1,6 +1,0 @@
-framework module XKConsoleBoard {
-  umbrella header "XKConsoleBoard-umbrella.h"
-
-  export *
-  module * { export * }
-}

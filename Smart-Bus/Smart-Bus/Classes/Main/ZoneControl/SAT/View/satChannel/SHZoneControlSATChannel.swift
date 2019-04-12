@@ -196,8 +196,6 @@ extension SHZoneControlSATChannel: UICollectionViewDelegate {
                 
             }
             
-            
-            
             channelListView.reloadData()
         }
     }
@@ -244,6 +242,4 @@ extension SHZoneControlSATChannel: UICollectionViewDataSource {
         
         return UICollectionViewCell()
     }
-    
-    
 }
