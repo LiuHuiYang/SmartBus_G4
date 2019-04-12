@@ -178,10 +178,10 @@ extension SHZoneControlSATChannel {
 // MARK: - UICollectionViewDelegate
 extension SHZoneControlSATChannel: UICollectionViewDelegate {
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == categoryListView {
+            
             
             SVProgressHUD.dismiss()
             
@@ -195,6 +195,8 @@ extension SHZoneControlSATChannel: UICollectionViewDelegate {
                 SVProgressHUD.showInfo(withStatus: SHLanguageText.noData)
                 
             }
+            
+            
             
             channelListView.reloadData()
         }

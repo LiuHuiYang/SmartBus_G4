@@ -23,14 +23,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="219" height="127"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GzT-O1-ikS" userLabel="holdView">
-                                <rect key="frame" x="22" y="12.5" width="175" height="102"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="219" height="127"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pPS-xx-wQQ">
-                                <rect key="frame" x="22" y="12.5" width="175" height="102"/>
+                                <rect key="frame" x="0.0" y="0.0" width="219" height="127"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMw-q8-lHV">
-                                <rect key="frame" x="22" y="12.5" width="175" height="102"/>
+                                <rect key="frame" x="0.0" y="0.0" width="219" height="127"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.97647058819999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -44,9 +44,9 @@
                             <constraint firstItem="bMw-q8-lHV" firstAttribute="centerX" secondItem="GzT-O1-ikS" secondAttribute="centerX" id="TXP-e6-GdF"/>
                             <constraint firstItem="bMw-q8-lHV" firstAttribute="height" secondItem="GzT-O1-ikS" secondAttribute="height" id="Tz8-uF-foW"/>
                             <constraint firstItem="bMw-q8-lHV" firstAttribute="width" secondItem="GzT-O1-ikS" secondAttribute="width" id="WWa-ol-hhK"/>
-                            <constraint firstItem="GzT-O1-ikS" firstAttribute="height" secondItem="BW8-Ba-4H4" secondAttribute="height" multiplier="0.8" id="bNr-hi-PH2"/>
+                            <constraint firstItem="GzT-O1-ikS" firstAttribute="height" secondItem="BW8-Ba-4H4" secondAttribute="height" id="bNr-hi-PH2"/>
                             <constraint firstItem="pPS-xx-wQQ" firstAttribute="centerX" secondItem="GzT-O1-ikS" secondAttribute="centerX" id="djh-MS-w5t"/>
-                            <constraint firstItem="GzT-O1-ikS" firstAttribute="width" secondItem="BW8-Ba-4H4" secondAttribute="width" multiplier="0.8" id="fgl-sc-Qy0"/>
+                            <constraint firstItem="GzT-O1-ikS" firstAttribute="width" secondItem="BW8-Ba-4H4" secondAttribute="width" id="fgl-sc-Qy0"/>
                             <constraint firstItem="pPS-xx-wQQ" firstAttribute="width" secondItem="GzT-O1-ikS" secondAttribute="width" id="hTd-U6-sja"/>
                             <constraint firstItem="GzT-O1-ikS" firstAttribute="centerY" secondItem="BW8-Ba-4H4" secondAttribute="centerY" id="hvz-SK-1Tf"/>
                             <constraint firstItem="pPS-xx-wQQ" firstAttribute="height" secondItem="GzT-O1-ikS" secondAttribute="height" id="sdC-iG-9eo"/>
@@ -54,7 +54,7 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.031372549020000001" green="0.74117647060000003" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="BW8-Ba-4H4" secondAttribute="bottom" id="VZN-2I-QmR"/>
                 <constraint firstAttribute="trailing" secondItem="BW8-Ba-4H4" secondAttribute="trailing" id="alg-2Q-dja"/>

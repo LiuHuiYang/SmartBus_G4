@@ -274,7 +274,7 @@ extension SHDataMigrationViewController {
                 "CategoryID INTEGER NOT NULL DEFAULT 0, "             +
                 "ChannelID INTEGER NOT NULL DEFAULT 0, "              +
                 "ChannelNo INTEGER NOT NULL DEFAULT 0, "              +
-                "ChannelName  TEXT NOT NULL DEFAULT 'channelName',"   +
+                "ChannelName  TEXT NOT NULL DEFAULT 'channel Name',"   +
                 "iconName TEXT NOT NULL DEFAULT 'iconName',"          +
                 "SequenceNo  INTEGER NOT NULL DEFAULT 0, "            +
         "ZoneID INTEGER NOT NULL DEFAULT 0);"

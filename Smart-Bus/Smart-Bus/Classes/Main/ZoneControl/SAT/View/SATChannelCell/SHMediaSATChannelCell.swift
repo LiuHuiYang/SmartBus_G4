@@ -38,6 +38,8 @@ class SHMediaSATChannelCell: UICollectionViewCell {
         
         backgroundColor = UIColor.clear
         
+        channelButton.titleLabel?.numberOfLines = 0
+        
         if UIDevice.is_iPad() {
             
             channelButton.titleLabel?.font =

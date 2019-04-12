@@ -19,6 +19,19 @@ class SHMediaSATCategoryCollectionCell: UICollectionViewCell {
         }
     }
     
+    /// 当前cell的选择状态
+    var selectedStatus: Bool = false {
+        
+        didSet {
+            
+            print("当前的状态: \(selectedStatus)")
+            
+            nameLabel.textColor = selectedStatus ? UIView.highlightedTextColor() :
+                UIView.textWhiteColor()
+         
+            setNeedsDisplay()
+        }
+    }
     
     /// 背景图片
     @IBOutlet weak var iconView: UIImageView!
@@ -29,21 +42,12 @@ class SHMediaSATCategoryCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        iconView.image = UIImage.resize("mediaMenubuttonbackground")
+        iconView.image = UIImage.resize("mediabackground")
         
         if UIDevice.is_iPad() {
             
             nameLabel.font = UIView.suitFontForPad()
         }
     }
-     
-//    override func select(_ sender: Any?) {
-//
-//        super.select(sender)
-//
-//        print("这里会有吗")
-//        nameLabel.textColor = isSelected ? UIView.highlightedTextColor() :
-//            UIView.textWhiteColor()
-//    }
- 
+    
 }
