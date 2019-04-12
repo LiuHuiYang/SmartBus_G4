@@ -23,10 +23,7 @@ class SHZoneControlSATChannel: UIView, loadNibView {
         
         didSet {
             
-            if mediaSAT != nil {
-             
-                loadCategoryData()
-            }
+            loadCategoryData()
         }
     }
     
@@ -47,16 +44,24 @@ class SHZoneControlSATChannel: UIView, loadNibView {
     
     /// 频道视图
     @IBOutlet weak var channelListView: UICollectionView!
-
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
+ 
 }
 
 // MARK: - UI初始始化
 extension SHZoneControlSATChannel {
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        
+        if newWindow == nil {
+            
+            return
+        }
+        
+        print("移动了 \(newWindow)")
+        
+        loadCategoryData()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -76,15 +81,6 @@ extension SHZoneControlSATChannel {
             forCellWithReuseIdentifier:
                 mediaSATChannelCellReuseIdentifier
         )
-
-        // 注册通知处理分类编辑完成
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(loadCategoryData),
-            name: NSNotification.Name.SHMediaSATCategoryEditCategoryFinished,
-            object: nil
-        )
-         
     }
     
     override func layoutSubviews() {
@@ -161,6 +157,8 @@ extension SHZoneControlSATChannel {
     
     /// 加载数据
     @objc private func loadCategoryData() {
+        
+        print("====== 加载分类数居 ======")
         
         guard let sat = self.mediaSAT else {
             return

@@ -75,10 +75,6 @@ NSString * const authorChangeDevicePasswordKey =
 NSString * const SHSchedualPrepareExecuteNotification =
     @"SHSchedualPrepareExecuteNotification";
 
-/// 编辑卫星电视分类名称的结束通知
-NSString * const SHMediaSATCategoryEditCategoryFinishedNotification =
-    @"SHMediaSATCategoryEditCategoryFinishedNotification";
-
 
 /// 后台任务标示
 NSString * const UIAPPLICATION_BACKGROUND_TASK_KEY =  @"UIApplicationBackgroundTaskKey";

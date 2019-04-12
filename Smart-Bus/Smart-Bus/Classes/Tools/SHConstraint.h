@@ -68,10 +68,7 @@ UIKIT_EXTERN NSString * const authorChangeDevicePasswordKey;
 
 /// 计划执行的通知
 UIKIT_EXTERN NSString * const SHSchedualPrepareExecuteNotification;
-
-/// 编辑卫星电视分类名称的结束通知
-UIKIT_EXTERN NSString * const SHMediaSATCategoryEditCategoryFinishedNotification;
-
+ 
 
 /// 后台任务标示
 UIKIT_EXTERN NSString * const UIAPPLICATION_BACKGROUND_TASK_KEY;

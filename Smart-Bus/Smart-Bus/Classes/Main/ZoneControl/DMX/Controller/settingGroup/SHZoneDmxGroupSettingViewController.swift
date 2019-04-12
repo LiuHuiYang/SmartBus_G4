@@ -132,15 +132,14 @@ extension SHZoneDmxGroupSettingViewController: UITableViewDelegate {
         let editAction = UITableViewRowAction(style: .normal, title: "\t\(SHLanguageText.edit)\t") { (action, indexPath) in
             
             tableView.setEditing(false, animated: true)
+             
+            let detailViewController = SHDeviceArgsViewController()
             
-            let editChannelController =
-                SHDmxChannelSettingViewController()
-            
-            editChannelController.dmxGroup =
+            detailViewController.dmxGroup =
                 self.dmxGroups[indexPath.row]
             
             self.navigationController?.pushViewController(
-                editChannelController,
+                detailViewController,
                 animated: true
             )
         }

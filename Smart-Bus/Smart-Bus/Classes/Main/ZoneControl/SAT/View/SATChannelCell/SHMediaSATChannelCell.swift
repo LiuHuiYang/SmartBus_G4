@@ -56,6 +56,8 @@ class SHMediaSATChannelCell: UICollectionViewCell {
                 return
         }
         
+        SoundTools.share().playSound(withName: "click.wav")
+        
         // 获得延时
         let time = UserDefaults.standard.integer(
             forKey: delayIRTimekey
@@ -67,7 +69,6 @@ class SHMediaSATChannelCell: UICollectionViewCell {
             "\(controlChannel.channelNo)" as NSString
         
         let count = string.length
-        
         
         for i in 0 ..< count {
             
@@ -84,8 +85,6 @@ class SHMediaSATChannelCell: UICollectionViewCell {
                 let controlType =
                     (sat.value(forKey: text) as? UInt8) ?? 0
                 
-                print("准备发送的指令是 \(Thread.current) - \(controlType)")
-                 
                 SHSocketTools.sendData(
                     operatorCode: 0xE01C,
                     subNetID: sat.subnetID,
