@@ -502,11 +502,17 @@ extension SHSQLiteManager {
             ) == false {
             
             // 清除 satcategory中的所有数据
-            _ = executeSql("delete from SATCategory;")
-            
-            _ = executeSql("delete from SATChannels;");
-            
-            _ = executeSql("delete form SATChannelIconList;");
+            _ = executeSql(
+                "delete from SATCategory;"
+            )
+
+            _ = executeSql(
+                "delete from SATChannels;"
+            )
+
+            _ = executeSql(
+                "delete from SATChannelIconList;"
+            )
             
             // 清除 satchannel中所有数据
                 

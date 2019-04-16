@@ -434,7 +434,7 @@ CREATE TABLE IF NOT EXISTS  SATChannels (
 
 -- 2.创建一个通道图标表格 (备用，方便将来需要实现这个功能时，直接参照区域按钮进行设置)
 CREATE TABLE IF NOT EXISTS  SATChannelIconList (
-    iconID INTEGER PRIMARY KEY,
+    iconID INTEGER PRIMARY KEY AUTOINCREMENT,
     iconName TEXT DEFAULT 'mediaSATChannelDefault'
 );
 
