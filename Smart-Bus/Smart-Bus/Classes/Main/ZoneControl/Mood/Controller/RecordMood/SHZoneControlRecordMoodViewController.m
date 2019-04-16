@@ -84,9 +84,6 @@
 /// 当前区域中的所有空调设备
 @property (strong, nonatomic) NSMutableArray *allHVACs;
 
-/// 空调的基本配置信息
-@property (nonatomic, strong) SHHVACSetUpInfo *havcSetUpInfo;
-
 /// 当前区域所有的窗帘
 @property (nonatomic, strong) NSMutableArray *allShades;
 
@@ -210,12 +207,16 @@
             
             // 获得温度单位
         case 0xE121: {
-            
-            BOOL isCelsiusFlag = (recivedData[0] == 0);
-            
-            self.havcSetUpInfo.isCelsius = isCelsiusFlag;
-  
-            [SHSQLiteManager.shared updateHvacSetUpInfo:self.havcSetUpInfo.isCelsius];
+             
+            for (SHHVAC *hvac in self.allHVACs) {
+                
+                // 找到对应的空调
+                if (hvac.subnetID == socketData.subNetID && hvac.deviceID == socketData.deviceID) {
+                    
+                    hvac.isCelsius =
+                        (recivedData[0] == 0);
+                }
+            }
             
         }
             break;
