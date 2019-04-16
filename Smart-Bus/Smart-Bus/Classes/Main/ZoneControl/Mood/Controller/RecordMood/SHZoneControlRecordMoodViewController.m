@@ -8,7 +8,6 @@
 
 
 #import "SHZoneControlRecordMoodViewController.h"
-#import "SHEditRecordShadeCell.h"
 
 @interface SHZoneControlRecordMoodViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, SHEditRecordShadeStatusDelegate>
 

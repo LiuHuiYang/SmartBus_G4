@@ -144,28 +144,32 @@ extension SHScheduleShadeViewController {
 extension SHScheduleShadeViewController: SHEditRecordShadeStatusDelegate {
     
     /// 窗帘的代理
-    func edit(shade: SHShade, status: String) {
+    func edit(_ shade: SHShade?, currentStatus status: String?) {
+        
+        if shade == nil {
+            return
+        }
         
         /// 遍历所有的区域
         for sectionShades in scheduleShades {
             
             for curtain in sectionShades {
                 
-                if (curtain.shadeID == shade.shadeID) &&
-                    (curtain.subnetID == shade.subnetID) &&
-                    (curtain.deviceID == shade.deviceID)  {
+                if (curtain.shadeID == shade!.shadeID) &&
+                    (curtain.subnetID == shade!.subnetID) &&
+                    (curtain.deviceID == shade!.deviceID)  {
                     
                     if status == SHLanguageText.shadeOpen {
                         
-                        shade.currentStatus = .open
+                        shade!.currentStatus = .open
                         
                     } else if status == SHLanguageText.shadeClose {
                         
-                        shade.currentStatus = .close
+                        shade!.currentStatus = .close
                         
                     } else {
                         
-                        shade.currentStatus = .unKnow
+                        shade!.currentStatus = .unKnow
                     }
                 }
             }

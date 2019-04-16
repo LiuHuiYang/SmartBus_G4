@@ -365,6 +365,7 @@
 		04D86CDD22250BF60036B45A /* SHScheduleFloorHeatingDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D86CDB22250BF60036B45A /* SHScheduleFloorHeatingDetailController.swift */; };
 		04D86CDE22250BF60036B45A /* SHScheduleFloorHeatingDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D86CDC22250BF60036B45A /* SHScheduleFloorHeatingDetailController.xib */; };
 		04D86CE322250C080036B45A /* SHScheduleHVACViewDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D86CE022250C080036B45A /* SHScheduleHVACViewDetailController.xib */; };
+		04D9A8162265705B007531EB /* SHEditRecordShadeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9A8152265705B007531EB /* SHEditRecordShadeCell.swift */; };
 		04DF642121AD21110033A083 /* SHLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF642021AD21110033A083 /* SHLight.swift */; };
 		04E074612186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E074602186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift */; };
 		04E074652186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E074642186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift */; };
@@ -483,7 +484,6 @@
 		8B8298D7204E31F300F3AD41 /* SHZoneControlRecordMoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B82982A204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.xib */; };
 		8B8298D8204E31F300F3AD41 /* SHZoneControlRecordMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B82982C204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.m */; };
 		8B8298DA204E31F300F3AD41 /* SHZoneMoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829830204E31F200F3AD41 /* SHZoneMoodViewController.xib */; };
-		8B8298E1204E31F300F3AD41 /* SHEditRecordShadeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B829842204E31F200F3AD41 /* SHEditRecordShadeCell.m */; };
 		8B8298E2204E31F300F3AD41 /* SHEditRecordShadeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829844204E31F200F3AD41 /* SHEditRecordShadeCell.xib */; };
 		8B8298E7204E31F300F3AD41 /* SHMoodShadeStatusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B829850204E31F200F3AD41 /* SHMoodShadeStatusButton.m */; };
 		8B8298EC204E31F300F3AD41 /* SHZoneSelectDeviceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B829863204E31F200F3AD41 /* SHZoneSelectDeviceButton.m */; };
@@ -924,6 +924,7 @@
 		04D86CDB22250BF60036B45A /* SHScheduleFloorHeatingDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHScheduleFloorHeatingDetailController.swift; sourceTree = "<group>"; };
 		04D86CDC22250BF60036B45A /* SHScheduleFloorHeatingDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHScheduleFloorHeatingDetailController.xib; sourceTree = "<group>"; };
 		04D86CE022250C080036B45A /* SHScheduleHVACViewDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHScheduleHVACViewDetailController.xib; sourceTree = "<group>"; };
+		04D9A8152265705B007531EB /* SHEditRecordShadeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHEditRecordShadeCell.swift; sourceTree = "<group>"; };
 		04DF642021AD21110033A083 /* SHLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHLight.swift; sourceTree = "<group>"; };
 		04E074602186A63E00E0E2E8 /* SHZoneDryContactViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneDryContactViewCell.swift; sourceTree = "<group>"; };
 		04E074642186DAC000E0E2E8 /* SHZoneDmxGroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneDmxGroupSettingViewController.swift; sourceTree = "<group>"; };
@@ -1093,8 +1094,6 @@
 		8B82982B204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHZoneControlRecordMoodViewController.h; sourceTree = "<group>"; };
 		8B82982C204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHZoneControlRecordMoodViewController.m; sourceTree = "<group>"; };
 		8B829830204E31F200F3AD41 /* SHZoneMoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneMoodViewController.xib; sourceTree = "<group>"; };
-		8B829842204E31F200F3AD41 /* SHEditRecordShadeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEditRecordShadeCell.m; sourceTree = "<group>"; };
-		8B829843204E31F200F3AD41 /* SHEditRecordShadeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEditRecordShadeCell.h; sourceTree = "<group>"; };
 		8B829844204E31F200F3AD41 /* SHEditRecordShadeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditRecordShadeCell.xib; sourceTree = "<group>"; };
 		8B829850204E31F200F3AD41 /* SHMoodShadeStatusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMoodShadeStatusButton.m; sourceTree = "<group>"; };
 		8B829851204E31F200F3AD41 /* SHMoodShadeStatusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMoodShadeStatusButton.h; sourceTree = "<group>"; };
@@ -3774,8 +3773,7 @@
 		8B829841204E31F200F3AD41 /* EditRecordShade */ = {
 			isa = PBXGroup;
 			children = (
-				8B829842204E31F200F3AD41 /* SHEditRecordShadeCell.m */,
-				8B829843204E31F200F3AD41 /* SHEditRecordShadeCell.h */,
+				04D9A8152265705B007531EB /* SHEditRecordShadeCell.swift */,
 				8B829844204E31F200F3AD41 /* SHEditRecordShadeCell.xib */,
 			);
 			path = EditRecordShade;
@@ -4995,7 +4993,6 @@
 				04184E0321F183A00002E491 /* SHDmxVoiceViewController.m in Sources */,
 				049A9C5821D7653500F79EE5 /* SHAudioOperatorTools + radio.swift in Sources */,
 				8B687D171EEA2E1400B58314 /* UIImage+SaveAndGet.m in Sources */,
-				8B8298E1204E31F300F3AD41 /* SHEditRecordShadeCell.m in Sources */,
 				0421B68421F83D5900C42F65 /* SHSQLiteManager + Sat.swift in Sources */,
 				04A177E2215F61A000BD9744 /* SHPhotosViewController.swift in Sources */,
 				04C583102192B5580017701A /* SHMediaDVD.swift in Sources */,
@@ -5073,6 +5070,7 @@
 				044270CF21ED902A00275398 /* SHRegion.swift in Sources */,
 				04A177DE215F610500BD9744 /* SHCommunityViewController.swift in Sources */,
 				04E739AF21FB0E380032550D /* SHAreaSettingViewController.swift in Sources */,
+				04D9A8162265705B007531EB /* SHEditRecordShadeCell.swift in Sources */,
 				04F5B1CD217989450077BDAF /* SHChangeMoodImageViewController.swift in Sources */,
 				0429AC8E21C22F410051263A /* SHSocketTools + additional.swift in Sources */,
 				04F3C8BB21B65E1500BF5608 /* SHZoneShadeViewController.swift in Sources */,

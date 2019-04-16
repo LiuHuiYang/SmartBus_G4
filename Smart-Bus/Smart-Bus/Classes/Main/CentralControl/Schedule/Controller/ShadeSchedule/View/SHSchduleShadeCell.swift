@@ -8,11 +8,6 @@
 
 import UIKit
 
-/// 窗帘代理
-protocol SHEditRecordShadeStatusDelegate {
-    
-    func edit(shade: SHShade, status: String)
-}
 
 class SHSchduleShadeCell: UITableViewCell {
     
@@ -130,8 +125,8 @@ class SHSchduleShadeCell: UITableViewCell {
                     )
                     
                     self.delegate?.edit(
-                        shade: curtain,
-                        status: SHLanguageText.shadeOpen
+                        curtain,
+                        currentStatus: SHLanguageText.shadeOpen
                     )
                     
         }
@@ -146,15 +141,15 @@ class SHSchduleShadeCell: UITableViewCell {
                     (action) in
                     
                     
-                    self.homeButton.setTitle(
-                        SHLanguageText.shadeClose,
-                        for: .normal
-                    )
-                    
-                    self.delegate?.edit(
-                        shade: curtain,
-                        status: SHLanguageText.shadeClose
-                    )
+            self.homeButton.setTitle(
+                SHLanguageText.shadeClose,
+                for: .normal
+            )
+            
+            self.delegate?.edit(
+                curtain,
+                currentStatus: SHLanguageText.shadeClose
+            )
                     
         }
         
@@ -168,15 +163,15 @@ class SHSchduleShadeCell: UITableViewCell {
                     (action) in
                     
                     
-                    self.homeButton.setTitle(
-                        SHLanguageText.shadeIgnore,
-                        for: .normal
-                    )
-                    
-                    self.delegate?.edit(
-                        shade: curtain,
-                        status: SHLanguageText.shadeIgnore
-                    )
+            self.homeButton.setTitle(
+                SHLanguageText.shadeIgnore,
+                for: .normal
+            )
+            
+            self.delegate?.edit(
+                curtain,
+                currentStatus: SHLanguageText.shadeIgnore
+            )
                     
         }
         

@@ -42,6 +42,7 @@
 #import "TYCustomAlertView.h"
 #import "UIView+CustomSetting.h"
 #import <TYAlertController/TYAlertController.h>
+#import "SHMoodShadeStatusButton.h"
 
 // 导入 "项目名称-Swift.h" 就可以在OC代码中访问所有的Swift内容
 #import "Smart_Bus-Swift.h"
