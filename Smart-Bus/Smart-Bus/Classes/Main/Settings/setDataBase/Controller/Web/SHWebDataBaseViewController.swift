@@ -117,95 +117,13 @@ class SHWebDataBaseViewController: SHViewController {
             openSwitch.isOn = false
             webServer.stop()
         }
-        
-        // 找到当前文件夹下所有的数据库文件
-        getNewDataBaseFile()
     }
 }
 
 
 // MARK: - 文件的上传下载
 extension SHWebDataBaseViewController {
-    
-    /// 获取新的数据库文件
-    private func getNewDataBaseFile() {
-        
-        var allSqlites = [String]()
-        
-        guard let destSqlites = try? FileManager.default.contentsOfDirectory(atPath: FileTools.documentPath()) else {
-            return
-        }
-        
-        for sqliteName in destSqlites {
-            
-            if sqliteName.hasSuffix(".sqlite") {
-                
-                allSqlites.append(sqliteName)
-            }
-        }
-        
-        // 用户手动删除了旧数据库
-        if allSqlites.count == 1 && (allSqlites.last == dataBaseName) {
-            return // 不需要处理
-        }
-        
-        // 2.找到最新的数据库
-        var baseIndex: Int = 0
-        
-        for fileName in allSqlites {
-            
-            guard var sqliteName = fileName as NSString? else {
-                continue
-            }
-            
-            let start = sqliteName.range(of: "(")
-            
-            if start.location != NSNotFound {
-                
-                sqliteName = sqliteName.substring(from: (start.location + start.length)) as NSString
-                
-                let end = sqliteName.range(of: ")")
-                
-                if end.location != NSNotFound {
-                    
-                    sqliteName = sqliteName.substring(to: end.location) as NSString
-                }
-            }
-            
-            // 获得副本序号
-            baseIndex = Int(sqliteName.intValue) > baseIndex ? Int(sqliteName.intValue) : baseIndex
-
-        }
-        
-        // 获取最后的数据库文件
-        var newDataBase = ""
-        
-        for fileName in allSqlites {
-            
-            if fileName.contains("\(baseIndex)") {
-                
-                newDataBase = fileName
-            
-            } else {
-            
-                let path = FileTools.documentPath() + "/" + fileName
-                
-                _ = try? FileManager.default.removeItem(atPath: path)
-            }
-        }
-        
-        // 3.新数据库换名
-        if !newDataBase.isEmpty && newDataBase != dataBaseName {
-            
-            let oldPath = FileTools.documentPath() + "/" + dataBaseName
-            
-            let newPath = FileTools.documentPath() + "/" + newDataBase
-            
-            _ = try? FileManager.default.moveItem(atPath: newPath,
-                                                  toPath: oldPath)
-        }
-    }
-    
+     
     /// 加载所有的文件列表
     private func loadFileList() {
         

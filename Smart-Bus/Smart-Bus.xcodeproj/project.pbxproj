@@ -170,7 +170,6 @@
 		044269AA21CA153C00A7A88B /* SHDmxFunctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044269A821CA153C00A7A88B /* SHDmxFunctionViewController.xib */; };
 		044270CF21ED902A00275398 /* SHRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044270CB21ED902A00275398 /* SHRegion.swift */; };
 		0448850F21E5D55100BA806C /* SHSchedualEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448850E21E5D55100BA806C /* SHSchedualEditViewController.swift */; };
-		0449DB5522674E5800A60EB5 /* UIApplication + Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449DB5422674E5800A60EB5 /* UIApplication + Version.swift */; };
 		044C545121DD9B6D00749526 /* SHAudioOperatorTools + path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C545021DD9B6D00749526 /* SHAudioOperatorTools + path.swift */; };
 		044C545321DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C545221DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift */; };
 		044E435021DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E434F21DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift */; };
@@ -709,7 +708,6 @@
 		044269A821CA153C00A7A88B /* SHDmxFunctionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDmxFunctionViewController.xib; sourceTree = "<group>"; };
 		044270CB21ED902A00275398 /* SHRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHRegion.swift; sourceTree = "<group>"; };
 		0448850E21E5D55100BA806C /* SHSchedualEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHSchedualEditViewController.swift; sourceTree = "<group>"; };
-		0449DB5422674E5800A60EB5 /* UIApplication + Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Version.swift"; sourceTree = "<group>"; };
 		044C545021DD9B6D00749526 /* SHAudioOperatorTools + path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + path.swift"; sourceTree = "<group>"; };
 		044C545221DDA8B700749526 /* SHAudioOperatorTools + queueSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + queueSongs.swift"; sourceTree = "<group>"; };
 		044E434F21DCBF2600B6EC53 /* SHAudioOperatorTools + asc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SHAudioOperatorTools + asc.swift"; sourceTree = "<group>"; };
@@ -2191,7 +2189,6 @@
 				8B0DED64205A1BEC0062BDC7 /* SHConstraint.m */,
 				8B42190E2061031700F1F16F /* UIView+CustomSetting.h */,
 				8B42190F2061031700F1F16F /* UIView+CustomSetting.m */,
-				0449DB5422674E5800A60EB5 /* UIApplication + Version.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -4941,7 +4938,6 @@
 				042450B821F00E4900C99512 /* SHScene.swift in Sources */,
 				0401BC752191935C0046BF18 /* SHCentralLight.swift in Sources */,
 				04E739A721FADFFC0032550D /* SHZoneDmxGroupViewController.swift in Sources */,
-				0449DB5522674E5800A60EB5 /* UIApplication + Version.swift in Sources */,
 				0426735521C8E72E00FA597B /* SHSchedualWeekView.swift in Sources */,
 				045464C821FC0B4C00FACDD5 /* SHSecurityControlViewController.swift in Sources */,
 				0412E32F21F54F290084F3DB /* SHSQLiteManager + Light.swift in Sources */,

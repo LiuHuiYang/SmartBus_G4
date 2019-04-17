@@ -12,6 +12,9 @@ import FMDB
 
 /// 数据库名称
 let dataBaseName = "SMART-BUS.sqlite";
+
+/// 沙盒记录版本标示
+let sandboxVersionKey = "sandboxVersionKey"
   
 // 在数据库中可以iconList直接查询到
 let maxIconIDForDataBase = 10
@@ -104,16 +107,16 @@ let maxIconIDForDataBase = 10
         }
     }
     
-    
-    
     /// 增加字段操作
     func alertTablesOrColumnName() {
         
         /**** 1. 版本匹配记录 *****/
-        if UIApplication.isLatestVersion() {
+        if SHSQLiteManager.isLatestVersion() {
             
             return // 最新版本
         }
+        
+        SHSQLiteManager.updateLatestVersion()
         
         /**** 2. 删除区域中的旧数据 *****/
         deleteResidualData()
@@ -176,6 +179,118 @@ let maxIconIDForDataBase = 10
         
         // 增加卫星电视的参数
         _ = addMediaSATCategoryParameter()
+    }
+    
+    /// 是否为最新版本
+    static func isLatestVersion() -> Bool {
+        
+        // 获得记录版本
+        let sandboxVersion =
+            UserDefaults.standard.object(
+                forKey: sandboxVersionKey
+                ) as? String
+        
+        // 当前应用版本
+        let currentVersion =
+            Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        
+        return currentVersion == sandboxVersion
+    }
+    
+    /// 新最新记录版本
+    static func updateLatestVersion() {
+    
+        // 当前应用版本
+        let currentVersion =
+            Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        
+        // 设置最新版本
+        UserDefaults.standard.set(
+            currentVersion,
+            forKey: sandboxVersionKey
+        )
+        
+        UserDefaults.standard.synchronize()
+    }
+    
+    /// 获取新的数据库文件
+    static func getLatestDateBaseFile() {
+        
+        
+        var allSqlites = [String]()
+        
+        guard let destSqlites = try? FileManager.default.contentsOfDirectory(atPath: FileTools.documentPath()) else {
+            return
+        }
+        
+        for sqliteName in destSqlites {
+            
+            if sqliteName.hasSuffix(".sqlite") {
+                
+                allSqlites.append(sqliteName)
+            }
+        }
+        
+        // 用户手动删除了旧数据库
+        if allSqlites.count == 1 && (allSqlites.last == dataBaseName) {
+            return // 不需要处理
+        }
+        
+        // 2.找到最新的数据库
+        var baseIndex: Int = 0
+        
+        for fileName in allSqlites {
+            
+            guard var sqliteName = fileName as NSString? else {
+                continue
+            }
+            
+            let start = sqliteName.range(of: "(")
+            
+            if start.location != NSNotFound {
+                
+                sqliteName = sqliteName.substring(from: (start.location + start.length)) as NSString
+                
+                let end = sqliteName.range(of: ")")
+                
+                if end.location != NSNotFound {
+                    
+                    sqliteName = sqliteName.substring(to: end.location) as NSString
+                }
+            }
+            
+            // 获得副本序号
+            baseIndex = Int(sqliteName.intValue) > baseIndex ? Int(sqliteName.intValue) : baseIndex
+            
+        }
+        
+        // 获取最后的数据库文件
+        var newDataBase = ""
+        
+        for fileName in allSqlites {
+            
+            if fileName.contains("\(baseIndex)") {
+                
+                newDataBase = fileName
+                
+            } else {
+                
+                let path = FileTools.documentPath() + "/" + fileName
+                
+                _ = try? FileManager.default.removeItem(atPath: path)
+            }
+        }
+        
+        // 3.新数据库换名
+        if !newDataBase.isEmpty && newDataBase != dataBaseName {
+            
+            let oldPath = FileTools.documentPath() + "/" + dataBaseName
+            
+            let newPath = FileTools.documentPath() + "/" + newDataBase
+            
+            _ = try? FileManager.default.moveItem(atPath: newPath,
+                                                  toPath: oldPath)
+        }
     }
 }
 
