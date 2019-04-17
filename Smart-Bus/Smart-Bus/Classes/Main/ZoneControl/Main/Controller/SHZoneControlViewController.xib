@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -71,18 +71,14 @@
                     </subviews>
                     <color key="backgroundColor" red="0.44705882352941173" green="0.41960784313725491" blue="0.43137254901960786" alpha="0.90378852739726023" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="YUm-Is-xpB" secondAttribute="bottom" constant="20" id="6K4-ch-IPU"/>
-                        <constraint firstAttribute="trailing" secondItem="l5S-53-lw3" secondAttribute="trailing" id="ALi-lc-9Gh"/>
-                        <constraint firstItem="l5S-53-lw3" firstAttribute="top" secondItem="Hs6-7X-xKb" secondAttribute="top" id="ATL-21-rRx"/>
-                        <constraint firstItem="l5S-53-lw3" firstAttribute="top" secondItem="Hs6-7X-xKb" secondAttribute="top" id="AsP-zv-35G"/>
-                        <constraint firstItem="l5S-53-lw3" firstAttribute="leading" secondItem="Hs6-7X-xKb" secondAttribute="leading" id="E2u-cg-qr9"/>
+                        <constraint firstItem="YUm-Is-xpB" firstAttribute="top" secondItem="l5S-53-lw3" secondAttribute="bottom" constant="20" id="2fj-cF-Y2T"/>
+                        <constraint firstAttribute="bottom" secondItem="YUm-Is-xpB" secondAttribute="bottom" constant="20" id="DRa-hS-74B"/>
                         <constraint firstItem="YUm-Is-xpB" firstAttribute="centerX" secondItem="Hs6-7X-xKb" secondAttribute="centerX" id="R1n-rV-4cm"/>
-                        <constraint firstItem="YUm-Is-xpB" firstAttribute="top" secondItem="l5S-53-lw3" secondAttribute="bottom" constant="20" id="TdI-dl-Npt"/>
-                        <constraint firstItem="YUm-Is-xpB" firstAttribute="top" secondItem="l5S-53-lw3" secondAttribute="bottom" constant="20" id="W9Y-f9-AeK"/>
-                        <constraint firstAttribute="trailing" secondItem="l5S-53-lw3" secondAttribute="trailing" id="bNT-k0-j5m"/>
-                        <constraint firstItem="l5S-53-lw3" firstAttribute="leading" secondItem="Hs6-7X-xKb" secondAttribute="leading" id="muD-kH-txw"/>
+                        <constraint firstItem="l5S-53-lw3" firstAttribute="top" secondItem="Hs6-7X-xKb" secondAttribute="top" id="l68-6b-Sjr"/>
                         <constraint firstItem="YUm-Is-xpB" firstAttribute="centerX" secondItem="Hs6-7X-xKb" secondAttribute="centerX" id="qRU-hj-q7R"/>
+                        <constraint firstItem="l5S-53-lw3" firstAttribute="leading" secondItem="Hs6-7X-xKb" secondAttribute="leading" id="sV0-Jv-YbQ"/>
                         <constraint firstItem="YUm-Is-xpB" firstAttribute="width" secondItem="Hs6-7X-xKb" secondAttribute="width" multiplier="0.6" id="wFA-WT-DvY"/>
+                        <constraint firstAttribute="trailing" secondItem="l5S-53-lw3" secondAttribute="trailing" id="xcA-Eg-sin"/>
                     </constraints>
                 </view>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2nT-gf-xcM">

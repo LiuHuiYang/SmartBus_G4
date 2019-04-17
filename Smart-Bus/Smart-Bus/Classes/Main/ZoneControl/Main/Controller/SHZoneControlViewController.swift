@@ -10,7 +10,7 @@ import UIKit
 
 /// cell重用标示符
 private let zoneControlCellReuseIdentifier =
-"SHZoneControlViewCell"
+    "SHZoneControlViewCell"
 
 /// deviceCell重用标标
 private let deviceCellReuseIdentifier = "SHDeviceViewCell"
