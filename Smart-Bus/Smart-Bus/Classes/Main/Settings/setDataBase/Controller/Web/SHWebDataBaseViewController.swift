@@ -49,7 +49,7 @@ class SHWebDataBaseViewController: SHViewController {
         // 所以清空沙盒中的版本记录, App重新启动时会重新执行一次
         UserDefaults.standard.set("", forKey: sandboxVersionKey)
         UserDefaults.standard.synchronize()
-        
+         
         // 检查网络环境
         AFNetworkReachabilityManager.shared().startMonitoring()
         
@@ -146,7 +146,11 @@ extension SHWebDataBaseViewController {
         
         var allSqlites = [String]()
         
-        guard let destSqlites = try? FileManager.default.contentsOfDirectory(atPath: FileTools.documentPath()) else {
+        guard let destSqlites =
+            try? FileManager.default.contentsOfDirectory(
+                atPath: FileTools.documentPath()
+            ) else {
+                
             return
         }
         
@@ -159,7 +163,9 @@ extension SHWebDataBaseViewController {
         }
         
         // 用户手动删除了旧数据库
-        if allSqlites.count == 1 && (allSqlites.last == dataBaseName) {
+        if allSqlites.count == 1 &&
+            (allSqlites.last == dataBaseName) {
+            
             return // 不需要处理
         }
         

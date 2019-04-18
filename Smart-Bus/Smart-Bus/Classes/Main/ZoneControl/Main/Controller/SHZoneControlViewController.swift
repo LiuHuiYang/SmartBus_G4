@@ -378,7 +378,8 @@ extension SHZoneControlViewController: UITableViewDelegate {
     /// 选择指定的区域
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if tableView == regionListView {
+        if tableView == regionListView &&
+            !groups.isEmpty {
             
             let area = groups[indexPath.row]
             
@@ -390,7 +391,7 @@ extension SHZoneControlViewController: UITableViewDelegate {
                 (SHLanguageTools.share()?.getTextFromPlist(
                     "MAIN_PAGE",
                     withSubTitle: "MAIN_LABEL"
-                    ) as! [String]).first ?? ""
+                ) as! [String]).first ?? ""
             
             let isSingleRegion = groups.count == 1
             
