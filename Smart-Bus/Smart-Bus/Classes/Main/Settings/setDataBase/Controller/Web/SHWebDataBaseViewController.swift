@@ -191,7 +191,7 @@ extension SHWebDataBaseViewController {
             
         }
         
-        print("最新的文件 baseIndex = \(baseIndex)")
+//        print("最新的文件 baseIndex = \(baseIndex)")
         
         // 获取最后的数据库文件
         var newDataBase = ""
@@ -256,6 +256,18 @@ extension SHWebDataBaseViewController: GCDWebUploaderDelegate {
         
         let fileName =
             (path as NSString).lastPathComponent
+        
+        if fileName.contains(".sqlite") {
+            
+            SVProgressHUD.showSuccess(
+                withStatus: "Delete \n \(dataBaseName)"
+            )
+            
+            // 重启数据库
+            SHSQLiteManager.shared.restart()
+            
+            return
+        }
         
         SVProgressHUD.showSuccess(
             withStatus: "Delete \n \(fileName)"

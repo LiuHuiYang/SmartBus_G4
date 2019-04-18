@@ -34,9 +34,8 @@ let maxIconIDForDataBase = 10
         setupDataBase()
     }
     
+    /// 初始化数据库
     private func setupDataBase() {
-        
-        print("=== 执行代码 ==== ")
         
         let filePath =
             FileTools.documentPath() + "/" + dataBaseName
