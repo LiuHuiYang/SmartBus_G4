@@ -30,10 +30,17 @@ let maxIconIDForDataBase = 10
     /// 初始化
     override init() {
         super.init()
-      
+       
+        setupDataBase()
+    }
+    
+    private func setupDataBase() {
+        
+        print("=== 执行代码 ==== ")
+        
         let filePath =
             FileTools.documentPath() + "/" + dataBaseName
-         
+        
         if let resourcePath = Bundle.main.resourcePath {
             
             let sourcePath =
@@ -56,7 +63,6 @@ let maxIconIDForDataBase = 10
         // 增加字段操作
         alertTablesOrColumnName()
     }
-    
     
     /// 创建表格
     func createSqlTables() {
@@ -115,8 +121,6 @@ let maxIconIDForDataBase = 10
             
             return // 最新版本
         }
-        
-        SHSQLiteManager.updateLatestVersion()
         
         /**** 2. 删除区域中的旧数据 *****/
         deleteResidualData()
@@ -194,16 +198,6 @@ let maxIconIDForDataBase = 10
         let currentVersion =
             Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
-        return currentVersion == sandboxVersion
-    }
-    
-    /// 新最新记录版本
-    static func updateLatestVersion() {
-    
-        // 当前应用版本
-        let currentVersion =
-            Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        
         // 设置最新版本
         UserDefaults.standard.set(
             currentVersion,
@@ -211,92 +205,25 @@ let maxIconIDForDataBase = 10
         )
         
         UserDefaults.standard.synchronize()
+        
+        return currentVersion == sandboxVersion
     }
     
-    /// 获取新的数据库文件
-    static func getLatestDateBaseFile() {
-        
-        
-        var allSqlites = [String]()
-        
-        guard let destSqlites = try? FileManager.default.contentsOfDirectory(atPath: FileTools.documentPath()) else {
-            return
-        }
-        
-        for sqliteName in destSqlites {
-            
-            if sqliteName.hasSuffix(".sqlite") {
-                
-                allSqlites.append(sqliteName)
-            }
-        }
-        
-        // 用户手动删除了旧数据库
-        if allSqlites.count == 1 && (allSqlites.last == dataBaseName) {
-            return // 不需要处理
-        }
-        
-        // 2.找到最新的数据库
-        var baseIndex: Int = 0
-        
-        for fileName in allSqlites {
-            
-            guard var sqliteName = fileName as NSString? else {
-                continue
-            }
-            
-            let start = sqliteName.range(of: "(")
-            
-            if start.location != NSNotFound {
-                
-                sqliteName = sqliteName.substring(from: (start.location + start.length)) as NSString
-                
-                let end = sqliteName.range(of: ")")
-                
-                if end.location != NSNotFound {
-                    
-                    sqliteName = sqliteName.substring(to: end.location) as NSString
-                }
-            }
-            
-            // 获得副本序号
-            baseIndex = Int(sqliteName.intValue) > baseIndex ? Int(sqliteName.intValue) : baseIndex
-            
-        }
-        
-        // 获取最后的数据库文件
-        var newDataBase = ""
-        
-        for fileName in allSqlites {
-            
-            if fileName.contains("\(baseIndex)") {
-                
-                newDataBase = fileName
-                
-            } else {
-                
-                let path = FileTools.documentPath() + "/" + fileName
-                
-                _ = try? FileManager.default.removeItem(atPath: path)
-            }
-        }
-        
-        // 3.新数据库换名
-        if !newDataBase.isEmpty && newDataBase != dataBaseName {
-            
-            let oldPath = FileTools.documentPath() + "/" + dataBaseName
-            
-            let newPath = FileTools.documentPath() + "/" + newDataBase
-            
-            _ = try? FileManager.default.moveItem(atPath: newPath,
-                                                  toPath: oldPath)
-        }
-    }
 }
 
 
 // MARK: - 常用操作
 extension SHSQLiteManager {
+    
+    /// 数据库关闭
+    func restart() {
+        
+        queue?.close()
+        
+        queue = nil
+        
+        setupDataBase()
+    }
     
     /// 执行SQL语句
     ///

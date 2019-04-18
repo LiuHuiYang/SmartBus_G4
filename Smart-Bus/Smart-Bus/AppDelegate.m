@@ -100,16 +100,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-  
-     printLog(@"程序要死了 %d", [SHSQLiteManager isLatestVersion]);
-    
-    if (![SHSQLiteManager isLatestVersion]) {
-        
-        printLog(@"数据库要更改");
-        
-        // 切换数据库
-        [SHSQLiteManager getLatestDateBaseFile];
-    }
+   
 }
 
 @end
