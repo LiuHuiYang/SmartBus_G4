@@ -78,7 +78,10 @@ class SHDataMigrationViewController: SHViewController {
         // 修改数据库的名称
         if chaneOldDataBaseFileToDefaultDataBaseFile() == false {
             
-            SVProgressHUD.showError(withStatus: "Update the database failure")
+            SVProgressHUD.showError(
+                withStatus: "Update the database failure"
+            )
+            
             return
         }
         
@@ -111,6 +114,9 @@ extension SHDataMigrationViewController {
             return false
         }
         
+        // 重启数据库
+        SHSQLiteManager.shared.restart()
+        
         return true
     }
     
@@ -125,9 +131,11 @@ extension SHDataMigrationViewController {
     /// 迁移数据
     func migrationData() -> Bool {
         
-        let sourceDataBasePath = FileTools.documentPath() + "/" + oldDataBase
+        let sourceDataBasePath =
+            FileTools.documentPath() + "/" + oldDataBase
         
-        SHSQLiteManager.shared.queue = FMDatabaseQueue(path: sourceDataBasePath)
+        SHSQLiteManager.shared.queue =
+            FMDatabaseQueue(path: sourceDataBasePath)
         
         if changeSystemDefnition() == false {
             return false

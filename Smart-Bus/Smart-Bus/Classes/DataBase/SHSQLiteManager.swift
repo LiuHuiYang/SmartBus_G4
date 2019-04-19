@@ -221,6 +221,14 @@ extension SHSQLiteManager {
         
         queue = nil
         
+        // 清空版本记录
+        UserDefaults.standard.set(
+            "",
+            forKey: sandboxVersionKey
+        )
+        
+        UserDefaults.standard.synchronize()
+        
         setupDataBase()
     }
     
