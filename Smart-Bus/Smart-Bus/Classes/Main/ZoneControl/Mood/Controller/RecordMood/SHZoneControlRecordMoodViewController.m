@@ -9,6 +9,9 @@
 
 #import "SHZoneControlRecordMoodViewController.h"
 
+/// 窗帘重用标示
+static NSString * editRecordShadeCellReIdentifier = @"SHEditRecordShadeCell";
+
 @interface SHZoneControlRecordMoodViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, SHEditRecordShadeStatusDelegate>
 
 
@@ -1060,8 +1063,8 @@
 
 // MARK: - 设置窗帘的状态代理
 
-- (void)editShade:(SHShade *)shade currentStatus:(NSString *)status {
-    
+- (void)edit:(SHShade *)shade currentStatus:(NSString *)status {
+     
     for (SHShade *currentShade in self.allShades) {
         
         if (currentShade.shadeID == shade.shadeID &&
@@ -1095,7 +1098,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHEditRecordShadeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHEditRecordShadeCell class]) forIndexPath:indexPath];
+    SHEditRecordShadeCell *cell = [tableView dequeueReusableCellWithIdentifier:editRecordShadeCellReIdentifier forIndexPath:indexPath];
 
     cell.delegate = self;
     
@@ -1277,7 +1280,7 @@
     self.shadeListView.rowHeight =
         [SHEditRecordShadeCell rowHeight];
     
-    [self.shadeListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHEditRecordShadeCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHEditRecordShadeCell class])];
+    [self.shadeListView registerNib:[UINib nibWithNibName:editRecordShadeCellReIdentifier  bundle:nil] forCellReuseIdentifier: editRecordShadeCellReIdentifier];
 }
 
 /// 适配文字

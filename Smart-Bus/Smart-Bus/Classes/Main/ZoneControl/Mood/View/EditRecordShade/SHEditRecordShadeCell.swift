@@ -8,14 +8,14 @@
 
 import UIKit
 
-@objc protocol SHEditRecordShadeStatusDelegate {
+ @objc protocol SHEditRecordShadeStatusDelegate {
     
     /// 设置当前窗帘的目标状态
     ///
     /// - Parameters:
     ///   - shade: 窗帘
     ///   - status: 状态
-    func edit(_ shade: SHShade?, currentStatus status: String?)
+    @objc func edit(_ shade: SHShade?, currentStatus status: String?)
 }
 
 @objcMembers class SHEditRecordShadeCell: UITableViewCell {

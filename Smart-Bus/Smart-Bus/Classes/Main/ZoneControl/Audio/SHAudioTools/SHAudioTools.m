@@ -31,7 +31,7 @@
    currentAlbumNumber:(NSUInteger) currentAlbumNumber {
     
     if (nameList.length == 0) {
-        return ;
+        return;
     }
     
     // 1.获得文件夹
@@ -51,7 +51,8 @@
     }
     
     // 初始化数组
-    NSMutableArray *writeFileArray = [[NSMutableArray alloc] init];
+    NSMutableArray *writeFileArray =
+        [[NSMutableArray alloc] init];
     
     if (isAlbum) { // 专辑
         

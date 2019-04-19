@@ -10,6 +10,7 @@
 
 /// 声音的最大值
 #define SHAUDIO_MAX_VOLUME (79)
+//const Byte SHAUDIO_MAX_VOLUME = 79;
 
 // MARK: - ================= 控制方式 =================
 
