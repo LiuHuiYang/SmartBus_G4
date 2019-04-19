@@ -4,7 +4,6 @@
 //
 //  Created by Mark Liu on 2017/8/11.
 //  Copyright © 2017年 Mark Liu. All rights reserved.
-//
 
 
 #import "SHZoneControlRecordMoodViewController.h"
@@ -542,7 +541,12 @@ static NSString * editRecordShadeCellReIdentifier = @"SHEditRecordShadeCell";
     BOOL recoredShade =
         (self.shadeButton.selected ? self.shadeButton.recordSuccess : YES);
     
-    BOOL status = recoredLight && recoredHVAC && recoredAudio && recoredShade && recoredFloorHeating;
+    BOOL status =
+        recoredLight &&
+        recoredHVAC &&
+        recoredAudio &&
+        recoredShade &&
+        recoredFloorHeating;
     
     printLog(@"灯光状态: %d\n空调状态: %d\n音乐状态: %d\n窗帘状态: %d\n窗帘状态: %d\n最终的录制结果: %d",
           self.lightButton.recordSuccess,
