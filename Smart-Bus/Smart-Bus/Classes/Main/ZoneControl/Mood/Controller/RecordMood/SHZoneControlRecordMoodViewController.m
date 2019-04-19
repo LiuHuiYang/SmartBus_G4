@@ -1064,7 +1064,7 @@ static NSString * editRecordShadeCellReIdentifier = @"SHEditRecordShadeCell";
 // MARK: - 设置窗帘的状态代理
 
 - (void)edit:(SHShade *)shade currentStatus:(NSString *)status {
-     
+    
     for (SHShade *currentShade in self.allShades) {
         
         if (currentShade.shadeID == shade.shadeID &&
