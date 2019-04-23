@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHZoneControlRecordMoodViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHZoneControlRecordMoodViewController" customModule="Smart_Bus" customModuleProvider="target">
             <connections>
                 <outlet property="audioButton" destination="mZo-hf-cKH" id="hql-8b-W2K"/>
                 <outlet property="buttonsView" destination="yY8-82-e0K" id="S2Q-aN-hqz"/>
@@ -27,7 +27,7 @@
                 <outlet property="shadeHolderView" destination="eOB-VJ-zsH" id="Tho-Bi-xaI"/>
                 <outlet property="shadeListView" destination="nM3-hA-YcW" id="w0G-6s-3Ra"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="zoneLabel" destination="ey7-Ee-5an" id="Tdo-jG-qmQ"/>
+                <outlet property="zoneLabel" destination="ey7-Ee-5an" id="BYn-u1-jCb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -186,7 +186,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIY-ep-5Yb" customClass="SHCommandButton">
                             <rect key="frame" x="0.0" y="106.5" width="115" height="49"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <state key="normal" title="选择图片" image="mood_romantic_highlighted">
+                            <state key="normal" title="选择图片" image="mood_romantic_normal">
                                 <color key="titleColor" red="0.94901960784313721" green="0.59607843137254901" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             </state>
                             <connections>
@@ -273,7 +273,7 @@
     <resources>
         <image name="background" width="320" height="480"/>
         <image name="mood_record" width="22" height="22"/>
-        <image name="mood_romantic_highlighted" width="64" height="60"/>
+        <image name="mood_romantic_normal" width="64" height="58"/>
         <image name="recordSelected_highlighted" width="64" height="64"/>
         <image name="recordSelected_normal" width="64" height="64"/>
     </resources>

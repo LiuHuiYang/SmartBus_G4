@@ -76,7 +76,7 @@ class SHDataMigrationViewController: SHViewController {
         }
         
         // 修改数据库的名称
-        if chaneOldDataBaseFileToDefaultDataBaseFile() == false {
+        if changeOldDataBaseFileToDefaultDataBaseFile() == false {
             
             SVProgressHUD.showError(
                 withStatus: "Update the database failure"
@@ -97,7 +97,7 @@ class SHDataMigrationViewController: SHViewController {
 extension SHDataMigrationViewController {
     
     /// 修改旧的数据库名称为默认的数据库名称
-    func chaneOldDataBaseFileToDefaultDataBaseFile() -> Bool {
+    func changeOldDataBaseFileToDefaultDataBaseFile() -> Bool {
         
         let sourceDataBasePath =
             FileTools.documentPath() + "/" + oldDataBase

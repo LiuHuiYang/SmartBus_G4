@@ -405,6 +405,7 @@
 		04E782C4218FDCEF00330AB5 /* SHZoneControlViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E782C3218FDCEF00330AB5 /* SHZoneControlViewCell.swift */; };
 		04EE15BC2178640500B92449 /* SHZoneTemperatureViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE15BA2178640400B92449 /* SHZoneTemperatureViewCell.swift */; };
 		04EE15BD2178640500B92449 /* SHZoneTemperatureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EE15BB2178640400B92449 /* SHZoneTemperatureViewCell.xib */; };
+		04EE4C6A226D8D450080DB5F /* SHZoneControlRecordMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE4C69226D8D450080DB5F /* SHZoneControlRecordMoodViewController.swift */; };
 		04F3C8A721B627DC00BF5608 /* SHAudioAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8A621B627DC00BF5608 /* SHAudioAlbumCell.swift */; };
 		04F3C8AB21B62E8600BF5608 /* SHAudioAlbumSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8AA21B62E8600BF5608 /* SHAudioAlbumSongCell.swift */; };
 		04F3C8B721B652E700BF5608 /* SHPlayingSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3C8B621B652E600BF5608 /* SHPlayingSong.swift */; };
@@ -482,7 +483,6 @@
 		8B8298CD204E31F300F3AD41 /* SHEditMoodCommandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B82981A204E31F200F3AD41 /* SHEditMoodCommandViewController.xib */; };
 		8B8298D6204E31F300F3AD41 /* SHChangeMoodImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829827204E31F200F3AD41 /* SHChangeMoodImageViewController.xib */; };
 		8B8298D7204E31F300F3AD41 /* SHZoneControlRecordMoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B82982A204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.xib */; };
-		8B8298D8204E31F300F3AD41 /* SHZoneControlRecordMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B82982C204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.m */; };
 		8B8298DA204E31F300F3AD41 /* SHZoneMoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829830204E31F200F3AD41 /* SHZoneMoodViewController.xib */; };
 		8B8298E2204E31F300F3AD41 /* SHEditRecordShadeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B829844204E31F200F3AD41 /* SHEditRecordShadeCell.xib */; };
 		8B8298E7204E31F300F3AD41 /* SHMoodShadeStatusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B829850204E31F200F3AD41 /* SHMoodShadeStatusButton.m */; };
@@ -964,6 +964,7 @@
 		04E782C3218FDCEF00330AB5 /* SHZoneControlViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneControlViewCell.swift; sourceTree = "<group>"; };
 		04EE15BA2178640400B92449 /* SHZoneTemperatureViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneTemperatureViewCell.swift; sourceTree = "<group>"; };
 		04EE15BB2178640400B92449 /* SHZoneTemperatureViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneTemperatureViewCell.xib; sourceTree = "<group>"; };
+		04EE4C69226D8D450080DB5F /* SHZoneControlRecordMoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHZoneControlRecordMoodViewController.swift; sourceTree = "<group>"; };
 		04F3C8A621B627DC00BF5608 /* SHAudioAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAudioAlbumCell.swift; sourceTree = "<group>"; };
 		04F3C8AA21B62E8600BF5608 /* SHAudioAlbumSongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAudioAlbumSongCell.swift; sourceTree = "<group>"; };
 		04F3C8B621B652E600BF5608 /* SHPlayingSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHPlayingSong.swift; sourceTree = "<group>"; };
@@ -1091,8 +1092,6 @@
 		8B82981A204E31F200F3AD41 /* SHEditMoodCommandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditMoodCommandViewController.xib; sourceTree = "<group>"; };
 		8B829827204E31F200F3AD41 /* SHChangeMoodImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHChangeMoodImageViewController.xib; sourceTree = "<group>"; };
 		8B82982A204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneControlRecordMoodViewController.xib; sourceTree = "<group>"; };
-		8B82982B204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHZoneControlRecordMoodViewController.h; sourceTree = "<group>"; };
-		8B82982C204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHZoneControlRecordMoodViewController.m; sourceTree = "<group>"; };
 		8B829830204E31F200F3AD41 /* SHZoneMoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneMoodViewController.xib; sourceTree = "<group>"; };
 		8B829844204E31F200F3AD41 /* SHEditRecordShadeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditRecordShadeCell.xib; sourceTree = "<group>"; };
 		8B829850204E31F200F3AD41 /* SHMoodShadeStatusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMoodShadeStatusButton.m; sourceTree = "<group>"; };
@@ -3720,8 +3719,7 @@
 			isa = PBXGroup;
 			children = (
 				8B82982A204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.xib */,
-				8B82982B204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.h */,
-				8B82982C204E31F200F3AD41 /* SHZoneControlRecordMoodViewController.m */,
+				04EE4C69226D8D450080DB5F /* SHZoneControlRecordMoodViewController.swift */,
 			);
 			path = RecordMood;
 			sourceTree = "<group>";
@@ -5082,7 +5080,6 @@
 				0453EA4321A67C8400F666EF /* JHLineChart.m in Sources */,
 				8BA6B4671FE11F4700C3156F /* UIDevice+DeviceType.m in Sources */,
 				04A177EA215F73D300BD9744 /* SHCommunalServicesViewController.swift in Sources */,
-				8B8298D8204E31F300F3AD41 /* SHZoneControlRecordMoodViewController.m in Sources */,
 				0401BC69219168080046BF18 /* SHMacroCommand.swift in Sources */,
 				042450D221F0174100C99512 /* SHDeviceArgsViewController + TV.swift in Sources */,
 				0412E34721F5C86B0084F3DB /* SHSQLiteManager + Dmx.swift in Sources */,
@@ -5243,6 +5240,7 @@
 				041EA61F21F71D9F004FFEAF /* SHSQLiteManager + TV.swift in Sources */,
 				04CF6F4E2193E3D80052A8A9 /* SHCentralHVACCommand.swift in Sources */,
 				042450D421F0178A00C99512 /* SHDeviceArgsViewController + NineInOne.swift in Sources */,
+				04EE4C6A226D8D450080DB5F /* SHZoneControlRecordMoodViewController.swift in Sources */,
 				04CD3E38216B361D007010C6 /* SHCentralControlViewController.swift in Sources */,
 				0453EA4921A67C8400F666EF /* JHScatterChart.m in Sources */,
 				042450E221F0197D00C99512 /* SHDeviceArgsViewController +  Scene.swift in Sources */,

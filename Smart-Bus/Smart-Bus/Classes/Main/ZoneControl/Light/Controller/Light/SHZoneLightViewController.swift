@@ -170,6 +170,7 @@ extension SHZoneLightViewController {
     /// 获得LED的状态
     private func getLEDstatus(_ socketData: SHSocketData) {
         
+        // 获得每个通道的值
         let red   = socketData.additionalData[1]
         let green = socketData.additionalData[2]
         let blue  = socketData.additionalData[3]

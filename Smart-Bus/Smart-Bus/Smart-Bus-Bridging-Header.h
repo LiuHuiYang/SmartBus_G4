@@ -25,7 +25,6 @@
 #import "SHZoneControlButton.h"
 #import "SHZoneAudioPlayControlViewController.h"
 #import "SHAudioRecordControlButton.h"
-#import "SHZoneControlRecordMoodViewController.h"
 #import "SoundTools.h"
 #import "SHZoneControlSATChannelButton.h"
 #import "SHMoodShadeStatusButton.h"
