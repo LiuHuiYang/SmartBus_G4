@@ -140,7 +140,6 @@ static NSString *songCellReusableIdentifier =
     /// 声音选择
 - (IBAction)volumeSliderChange {
     
-    // 获得值
     Byte volum = self.volumeSlider.value;
     
     self.volumeLabel.text = [NSString stringWithFormat:@"%d%%", volum];
@@ -149,7 +148,7 @@ static NSString *songCellReusableIdentifier =
     
     self.schedualAudio.schedualVolumeRatio = volum;
     
-    [self testSchedul];
+//    [self testSchedul];
 }
 
     
@@ -163,18 +162,18 @@ static NSString *songCellReusableIdentifier =
 }
 
 
-/**
- 测试验证
- */
-- (void)testSchedul {
-    
-    printLog("配置的音乐选项: src: %d - P/S:%d - vol: %d\n album: %d - No: %zd",
-             self.schedualAudio.schedualSourceType,
-             self.schedualAudio.schedualPlayStatus,
-             self.schedualAudio.schedualVolumeRatio,
-             self.schedualAudio.schedualPlayAlbumNumber,
-             self.schedualAudio.schedualPlaySongNumber);
-}
+///**
+// 测试验证
+// */
+//- (void)testSchedul {
+//
+//    printLog("配置的音乐选项: src: %d - P/S:%d - vol: %d\n album: %d - No: %zd",
+//             self.schedualAudio.schedualSourceType,
+//             self.schedualAudio.schedualPlayStatus,
+//             self.schedualAudio.schedualVolumeRatio,
+//             self.schedualAudio.schedualPlayAlbumNumber,
+//             self.schedualAudio.schedualPlaySongNumber);
+//}
 
 /// 退出界面时 不要再请求音乐数据
 - (void)viewWillDisappear:(BOOL)animated {
@@ -189,7 +188,7 @@ static NSString *songCellReusableIdentifier =
     self.schedualAudio.schedualPlaySongNumber = self.schedualAudio.currentSelectAlbum.currentSelectSong.songNumber;
     
     
-    [self testSchedul];
+//    [self testSchedul];
 }
 
 
@@ -197,7 +196,7 @@ static NSString *songCellReusableIdentifier =
     
     [super viewWillAppear:animated];
     
-    [self testSchedul];
+//    [self testSchedul];
     
     self.schedualAudio.isUpdateSchedualCommand = false;
     

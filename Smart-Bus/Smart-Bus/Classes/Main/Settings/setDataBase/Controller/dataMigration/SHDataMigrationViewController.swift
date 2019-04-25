@@ -1,5 +1,5 @@
 //
-//  SHDataMigrationViewController.m
+//  SHDataMigrationViewController.swift
 //  Smart-Bus
 //
 //  Created by Mark Liu on 2018/1/20.

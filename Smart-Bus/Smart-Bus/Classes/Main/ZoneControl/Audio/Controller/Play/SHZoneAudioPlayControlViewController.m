@@ -741,8 +741,8 @@ UITableViewDelegate, UITableViewDataSource>
                  ];
                 
                 [self.showPlayStatusView
-                 setPlaySong:SHPlayingSong.shared
-                 ];
+                    setPlaySong:SHPlayingSong.shared
+                ];
             }
             
             /********** 获得当前的模式 ***********/
