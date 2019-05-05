@@ -772,6 +772,7 @@ extension SHZoneControlRecordMoodViewController {
         
         count += 1
         
+        
         let recoredLight =
             lightButton.isSelected ?
                 lightButton.recordSuccess : true
@@ -1108,6 +1109,12 @@ extension SHZoneControlRecordMoodViewController {
             )
             
         }
+        
+        // 如果选择了类型, 但没有任何对应的设备则默认为真
+        if allFloorHeatings.isEmpty {
+            
+            floorHeatingButton.recordSuccess = true
+        }
     }
     
     /// 读取窗帘的状态，本身存在问题，只是为了保证当前设备在线
@@ -1135,6 +1142,12 @@ extension SHZoneControlRecordMoodViewController {
                 needReSend:false
             )
         }
+        
+        // 如果选择了类型, 但没有任何对应的设备则默认为真
+        if allShades.isEmpty {
+            
+            shadeButton.recordSuccess = true
+        }
     }
     
     /// 读取音乐的状态
@@ -1148,6 +1161,12 @@ extension SHZoneControlRecordMoodViewController {
                 subNetID: audio.subnetID,
                 deviceID: audio.deviceID
             )
+        }
+        
+        // 如果选择了类型, 但没有任何对应的设备则默认为真
+        if allAudios.isEmpty {
+            
+            audioButton.recordSuccess = true
         }
     }
     
@@ -1172,6 +1191,12 @@ extension SHZoneControlRecordMoodViewController {
                 deviceID: hvac.deviceID,
                 additionalData: [hvac.channelNo]
             )
+        }
+        
+        // 如果选择了类型, 但没有任何对应的设备则默认为真
+        if allHVACs.isEmpty {
+            
+            hvacButton.recordSuccess = true
         }
     }
     
@@ -1198,6 +1223,12 @@ extension SHZoneControlRecordMoodViewController {
                 deviceID: deviceID,
                 additionalData: []
             )
+        }
+        
+        // 如果选择了类型, 但没有任何对应的设备则默认为真
+        if allLights.isEmpty {
+            
+            lightButton.recordSuccess = true
         }
     }
 }
