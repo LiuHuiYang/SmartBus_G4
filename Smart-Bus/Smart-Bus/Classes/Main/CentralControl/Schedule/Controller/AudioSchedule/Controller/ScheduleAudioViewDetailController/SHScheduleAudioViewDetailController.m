@@ -142,7 +142,8 @@ static NSString *songCellReusableIdentifier =
     
     Byte volum = self.volumeSlider.value;
     
-    self.volumeLabel.text = [NSString stringWithFormat:@"%d%%", volum];
+    self.volumeLabel.text =
+        [NSString stringWithFormat:@"%d%%", volum];
     
     self.volumeButton.selected = volum != 0;
     
