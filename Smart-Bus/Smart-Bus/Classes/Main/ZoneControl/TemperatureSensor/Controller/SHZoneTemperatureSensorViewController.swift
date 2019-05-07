@@ -100,33 +100,39 @@ extension SHZoneTemperatureSensorViewController {
     /// 接收到广播
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
         
-        if socketData.operatorCode != 0xE3E8 {
-            return
-        }
-        
-        if socketData.additionalData[0] != unitFlag {
-            return
-        }
-        
-        for sensor in allTemperatureSensors {
+        DispatchQueue.global().async {
             
-            if sensor.subnetID == socketData.subNetID &&
-                sensor.deviceID == socketData.deviceID &&
-                sensor.channelNo >= 1       &&
-                sensor.channelNo <= 8  {
+            if socketData.operatorCode != 0xE3E8 {
+                return
+            }
+            
+            if socketData.additionalData[0] != unitFlag {
+                return
+            }
+            
+            for sensor in self.allTemperatureSensors {
                 
-                let index = Int(sensor.channelNo)
+                if sensor.subnetID == socketData.subNetID &&
+                    sensor.deviceID == socketData.deviceID &&
+                    sensor.channelNo >= 1       &&
+                    sensor.channelNo <= 8  {
+                    
+                    let index = Int(sensor.channelNo)
+                    
+                    let temperature = Int(socketData.additionalData[index])
+                    
+                    let realTemperature =
+                        (socketData.additionalData[index + 8] == 0) ? temperature : (0 - temperature)
+                    
+                    sensor.currentValue = realTemperature
+                }
+            }
+            
+            DispatchQueue.main.async {
                 
-                let temperature = Int(socketData.additionalData[index])
-                
-                let realTemperature =
-                    (socketData.additionalData[index + 8] == 0) ? temperature : (0 - temperature)
-                
-                sensor.currentValue = realTemperature
+                self.temperatureListView.reloadData()
             }
         }
-        
-        temperatureListView.reloadData()
     }
     
     /// 读取温度

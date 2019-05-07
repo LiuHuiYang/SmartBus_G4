@@ -80,50 +80,55 @@ extension SHZoneDryContactViewController {
     /// 接收到广播
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
         
-        // 0x012D 主动读取
-        // 0xDC22 广播状态
-        if  (socketData.operatorCode != 0x012D &&
-            socketData.operatorCode != 0xDC22) ||
+        DispatchQueue.global().async {
             
-            (socketData.operatorCode == 0x012D &&
-                socketData.additionalData[0] != 0xF8){
-            
-            return
-        }
-        
-        let flagIndex =
-            (socketData.operatorCode == 0x012D) ? 1 : 0
-        
-        let dryContactsCount =
-            Int(socketData.additionalData[flagIndex])
-        
-        for i in 1 ... dryContactsCount {
-            
-            for drynode in allDryContacts {
+            // 0x012D 主动读取
+            // 0xDC22 广播状态
+            if  (socketData.operatorCode != 0x012D &&
+                socketData.operatorCode != 0xDC22) ||
                 
-                if drynode.subnetID == socketData.subNetID &&
-                    drynode.deviceID == socketData.deviceID &&
-                    i == drynode.channelNo {
+                (socketData.operatorCode == 0x012D &&
+                    socketData.additionalData[0] != 0xF8){
+                
+                return
+            }
+            
+            let flagIndex =
+                (socketData.operatorCode == 0x012D) ? 1 : 0
+            
+            let dryContactsCount =
+                Int(socketData.additionalData[flagIndex])
+            
+            for i in 1 ... dryContactsCount {
+                
+                for drynode in self.allDryContacts {
                     
-                    // 获得类型
-                    let type =
-                        socketData.additionalData[i + flagIndex]
-                    
-                    drynode.type =
-                        SHDryContactType(rawValue: type) ?? .invalid
-                    
-                    // 获得状态
-                    let status =
-                        socketData.additionalData[i + flagIndex + dryContactsCount]
-                    
-                    drynode.status =
-                        SHDryContactStatus(rawValue: status) ?? .close
-                    
+                    if drynode.subnetID == socketData.subNetID &&
+                        drynode.deviceID == socketData.deviceID &&
+                        i == drynode.channelNo {
+                        
+                        // 获得类型
+                        let type =
+                            socketData.additionalData[i + flagIndex]
+                        
+                        drynode.type =
+                            SHDryContactType(rawValue: type) ?? .invalid
+                        
+                        // 获得状态
+                        let status =
+                            socketData.additionalData[i + flagIndex + dryContactsCount]
+                        
+                        drynode.status =
+                            SHDryContactStatus(rawValue: status) ?? .close
+                    }
                 }
             }
+            
+            DispatchQueue.main.async {
+                
+                self.dryContactListView.reloadData()
+            }
         }
-        
-        dryContactListView.reloadData()
     }
     
     
