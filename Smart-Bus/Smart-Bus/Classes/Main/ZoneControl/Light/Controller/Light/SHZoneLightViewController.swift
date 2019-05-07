@@ -220,7 +220,7 @@ extension SHZoneLightViewController {
     
     
     /// 读取状态
-    private func readDevicesStatus() {
+    @objc private func readDevicesStatus() {
         
         var subNetID: UInt8 = 0
         var deviceID: UInt8 = 0
@@ -285,7 +285,10 @@ extension SHZoneLightViewController {
         
         lightListView.reloadData()
         
-        readDevicesStatus()
+        self.performSelector(
+            inBackground: #selector(readDevicesStatus),
+            with: nil
+        )
     }
     
     override func viewDidLayoutSubviews() {

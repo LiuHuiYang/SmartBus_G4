@@ -332,7 +332,7 @@ extension SHZoneControlFloorHeatingControlViewController {
     }
     
     /// 读取状态
-    private func readDevicesStatus() {
+    @objc private func readDevicesStatus() {
         
         guard let floorHeating = currentFloorHeating else {
             return
@@ -899,7 +899,12 @@ extension SHZoneControlFloorHeatingControlViewController {
         super.viewWillAppear(animated)
         
         setFloorHeatingStatus()
-        readDevicesStatus()
+        
+        self.performSelector(
+            inBackground: #selector(readDevicesStatus),
+            with: nil
+        )
+
     }
     
     override func viewDidLoad() {

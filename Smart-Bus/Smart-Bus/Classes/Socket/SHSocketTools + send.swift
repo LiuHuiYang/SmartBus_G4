@@ -105,6 +105,16 @@ extension SHSocketTools {
         Thread.sleep(forTimeInterval: 0.12)
     }
     
+    
+    /// 具体发送每一条指令的函数
+    ///
+    /// - Parameters:
+    ///   - operatorCode: 操作码
+    ///   - subNetID: 子网ID
+    ///   - deviceID: 设备ID
+    ///   - additionalData: 可变参数
+    ///   - remoteMacAddress: RSIP的网卡地址
+    ///   - isDMX: 是否为DMX设备
     private static func sendData(
         operatorCode: UInt16,
         subNetID: UInt8,

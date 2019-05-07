@@ -1118,14 +1118,10 @@ extension SHZoneHVACControlViewController {
         coolFastControlButton.isEnabled =
             acModelList.contains(.cool)
     }
-}
-
-// MARK: - UI初始化
-extension SHZoneHVACControlViewController {
     
-  
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    /// 读取设备的状态
+    @objc private func readDeviceStatus() {
         
         guard let hvac = currentHVAC else {
             return
@@ -1159,9 +1155,23 @@ extension SHZoneHVACControlViewController {
         
         readHVACTemperatureRange()
         
-//        Thread.sleep(forTimeInterval: 0.3)
+        //        Thread.sleep(forTimeInterval: 0.3)
         
-//        readHVACStatus() // 暂时不读取状态，观察9in1的问题
+        //        readHVACStatus() // 暂时不读取状态，观察9in1的问题
+    }
+}
+
+// MARK: - UI初始化
+extension SHZoneHVACControlViewController {
+    
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.performSelector(
+            inBackground: #selector(readDeviceStatus),
+            with: nil
+        )
     }
     
     override func viewDidLoad() {

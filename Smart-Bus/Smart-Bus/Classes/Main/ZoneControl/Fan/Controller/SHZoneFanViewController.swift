@@ -53,7 +53,10 @@ class SHZoneFanViewController: SHViewController {
         
         fansListView.reloadData()
         
-        readDevicesStatus()
+        self.performSelector(
+            inBackground: #selector(readDevicesStatus),
+            with: nil
+        )
     }
 
     override func viewDidLayoutSubviews() {
@@ -130,7 +133,7 @@ extension SHZoneFanViewController {
     }
     
     /// 读取状态
-    private func readDevicesStatus() {
+    @objc private func readDevicesStatus() {
         
         var subNetID: UInt8 = 0
         var deviceID: UInt8 = 0
