@@ -9,7 +9,7 @@
 import UIKit
 
 class SHZoneControlFloorHeatingControlViewController: SHViewController {
-
+    
     /// 选择的地热
     var currentFloorHeating: SHFloorHeating?
     
@@ -18,7 +18,7 @@ class SHZoneControlFloorHeatingControlViewController: SHViewController {
     
     /// 设置过传感器温度
     var isSetSensorTemperature = false
-
+    
     // MARK: - 约束条件
     
     /// 顶部的距离
@@ -35,7 +35,7 @@ class SHZoneControlFloorHeatingControlViewController: SHViewController {
     
     /// 控制按钮的宽度
     @IBOutlet weak var controlButtonWidthConstraint: NSLayoutConstraint!
-
+    
     // MARK: - UI属性
     
     /// 显示显示View
@@ -91,7 +91,7 @@ class SHZoneControlFloorHeatingControlViewController: SHViewController {
     
     /// 日期选择
     @IBOutlet weak var datePicker: UIDatePicker!
-
+    
 }
 
 
@@ -106,221 +106,228 @@ extension SHZoneControlFloorHeatingControlViewController {
             return
         }
         
-        switch socketData.operatorCode {
-        
-        case 0xEFFF:
-            break
+        DispatchQueue.global().async {
             
+            switch socketData.operatorCode {
+                
+            case 0xEFFF:
+                break
+                
             // 地热操作
-        case 0xE3D9:
-            
-            if socketData.subNetID != floorHeating.subnetID ||
+            case 0xE3D9:
                 
-                socketData.deviceID != floorHeating.deviceID ||
+                if socketData.subNetID != floorHeating.subnetID ||
+                    
+                    socketData.deviceID != floorHeating.deviceID ||
+                    
+                    socketData.additionalData[2] != floorHeating.channelNo {
+                    
+                    return
+                }
                 
-                socketData.additionalData[2] != floorHeating.channelNo {
+                let operatorKind =
+                    socketData.additionalData[0]
                 
-                return
-            }
-            
-            let operatorKind =
-                socketData.additionalData[0]
-            
-            let operatorResult =
-                socketData.additionalData[1]
-            
-            switch operatorKind {
+                let operatorResult =
+                    socketData.additionalData[1]
                 
-            case SHFloorHeatingControlType.onAndOff.rawValue:
+                switch operatorKind {
+                    
+                case SHFloorHeatingControlType.onAndOff.rawValue:
+                    
+                    floorHeating.isTurnOn =
+                        operatorResult != 0
+                    
+                case SHFloorHeatingControlType.modelSet.rawValue:
+                    
+                    floorHeating.floorHeatingModeType =
+                        SHFloorHeatingModeType(
+                            rawValue: operatorResult
+                        ) ?? .manual
+                    
+                case SHFloorHeatingControlType.temperatureSet.rawValue:
+                    
+                    floorHeating.manualTemperature =
+                        Int(operatorResult)
+                    
+                default:
+                    break
+                }
                 
-                 floorHeating.isTurnOn =
-                    operatorResult != 0
+            // 获得开关状态
+            case 0xE3DB:
                 
-            case SHFloorHeatingControlType.modelSet.rawValue:
+                if socketData.subNetID != floorHeating.subnetID ||
+                    
+                    socketData.deviceID != floorHeating.deviceID ||
+                    
+                    socketData.additionalData[2] != floorHeating.channelNo {
+                    
+                    return
+                }
                 
-                floorHeating.floorHeatingModeType =
-                    SHFloorHeatingModeType(
-                        rawValue: operatorResult
-                    ) ?? .manual
+                let operatorKind =
+                    socketData.additionalData[0]
                 
-            case SHFloorHeatingControlType.temperatureSet.rawValue:
+                let operatorResult =
+                    socketData.additionalData[1]
                 
+                if operatorKind == SHFloorHeatingControlType.onAndOff.rawValue {
+                    
+                    floorHeating.isTurnOn =
+                        operatorResult != 0
+                    
+                } else if operatorKind == SHFloorHeatingControlType.modelSet.rawValue {
+                    
+                    floorHeating.floorHeatingModeType =
+                        SHFloorHeatingModeType(
+                            rawValue: operatorResult
+                        ) ?? .manual
+                }
+                
+            // 模式温度
+            case 0x03C8:
+                
+                if socketData.subNetID != floorHeating.subnetID ||
+                    
+                    socketData.deviceID != floorHeating.deviceID ||
+                    
+                    socketData.additionalData[0] != floorHeating.channelNo {
+                    
+                    return
+                }
+                
+                // 获得每个模式下的温度
                 floorHeating.manualTemperature =
-                    Int(operatorResult)
+                    Int(socketData.additionalData[1])
+                
+                floorHeating.dayTemperature =
+                    Int(socketData.additionalData[3])
+                
+                floorHeating.nightTemperature =
+                    Int(socketData.additionalData[5])
+                
+                floorHeating.awayTemperature =
+                    Int(socketData.additionalData[7])
+                
+                
+                // 传感器的地址
+                floorHeating.insideSensorSubNetID =
+                    socketData.additionalData[9]
+                
+                floorHeating.insideSensorDeviceID =
+                    socketData.additionalData[10]
+                
+                floorHeating.insideSensorChannelNo =
+                    socketData.additionalData[11]
+                
+                // 读取温度
+                SHSocketTools.sendData(
+                    operatorCode: 0xE3E7,
+                    subNetID: floorHeating.insideSensorSubNetID,
+                    deviceID: floorHeating.insideSensorDeviceID,
+                    additionalData: [1]
+                )
+                
+                
+                // 0x03CA 设置定时器的时间
+            // 0x03CC获得定时器模式下的开始与结束时间
+            case 0x03CA, 0x03CC:
+                
+                if socketData.subNetID != floorHeating.subnetID ||
+                    
+                    socketData.deviceID != floorHeating.deviceID ||
+                    
+                    socketData.additionalData[0] != floorHeating.channelNo {
+                    
+                    return
+                }
+                
+                if socketData.operatorCode == 0x03CA {
+                    
+                    // 读取定时器模式下的开始与结束时间
+                    SHSocketTools.sendData(
+                        operatorCode: 0x03CB,
+                        subNetID: floorHeating.subnetID,
+                        deviceID: floorHeating.deviceID,
+                        additionalData: [floorHeating.channelNo]
+                    )
+                    
+                } else {
+                    
+                    
+                    floorHeating.dayTimeHour =
+                        socketData.additionalData[1]
+                    
+                    floorHeating.dayTimeMinute =
+                        socketData.additionalData[2]
+                    
+                    floorHeating.nightTimeHour =
+                        socketData.additionalData[3]
+                    
+                    floorHeating.nightTimeMinute =
+                        socketData.additionalData[4]
+                    
+                    floorHeating.timerEnable =
+                        socketData.additionalData[5] != 0
+                }
+                
+            // 温度传感器 与 地热本身没有什么关系
+            case 0xE3E8:
+                
+                if socketData.additionalData[0] == 0 {
+                    return
+                }
+                
+                // 室内温度  0:+ / 1:-
+                if socketData.subNetID == floorHeating.insideSensorSubNetID &&
+                    socketData.deviceID ==
+                    floorHeating.insideSensorDeviceID {
+                    
+                    let index = Int(
+                        floorHeating.insideSensorChannelNo
+                    )
+                    
+                    let temperature = Int(socketData.additionalData[index])
+                    
+                    floorHeating.insideTemperature =
+                        (socketData.additionalData[index + 8] == 0) ? temperature : (0 - temperature)
+                }
+                
+                // 室外温度  0:+ / 1:-
+                if socketData.subNetID == floorHeating.outsideSensorSubNetID &&
+                    socketData.deviceID ==
+                    floorHeating.outsideSensorDeviceID {
+                    
+                    let index = Int(
+                        floorHeating.outsideSensorChannelNo
+                    )
+                    
+                    let temperature = Int(socketData.additionalData[index])
+                    
+                    floorHeating.outsideTemperature =
+                        (socketData.additionalData[index + 8] == 0) ? temperature : (0 - temperature)
+                }
+                
+                self.isSetSensorTemperature = true
                 
             default:
                 break
             }
             
-            // 获得开关状态
-        case 0xE3DB:
             
-            if socketData.subNetID != floorHeating.subnetID ||
+            if  socketData.operatorCode == 0xE3D9 ||
+                socketData.operatorCode == 0xE3DB ||
+                socketData.operatorCode == 0x03CC ||
+                socketData.operatorCode == 0x03C8 ||
+                socketData.operatorCode == 0xE3E8 {
                 
-                socketData.deviceID != floorHeating.deviceID ||
-                
-                socketData.additionalData[2] != floorHeating.channelNo {
-                
-                return
+                DispatchQueue.main.async {
+                    
+                    self.setFloorHeatingStatus()
+                }
             }
             
-            let operatorKind =
-                socketData.additionalData[0]
-            
-            let operatorResult =
-                socketData.additionalData[1]
-            
-            if operatorKind == SHFloorHeatingControlType.onAndOff.rawValue {
-                
-                floorHeating.isTurnOn =
-                    operatorResult != 0
-            
-            } else if operatorKind == SHFloorHeatingControlType.modelSet.rawValue {
-                
-                floorHeating.floorHeatingModeType =
-                    SHFloorHeatingModeType(
-                        rawValue: operatorResult
-                ) ?? .manual
-            }
-            
-            // 模式温度
-        case 0x03C8:
-            
-            if socketData.subNetID != floorHeating.subnetID ||
-                
-                socketData.deviceID != floorHeating.deviceID ||
-                
-                socketData.additionalData[0] != floorHeating.channelNo {
-                
-                return
-            }
-            
-            // 获得每个模式下的温度
-            floorHeating.manualTemperature =
-                Int(socketData.additionalData[1])
-            
-            floorHeating.dayTemperature =
-                Int(socketData.additionalData[3])
-            
-            floorHeating.nightTemperature =
-                Int(socketData.additionalData[5])
-            
-            floorHeating.awayTemperature =
-                Int(socketData.additionalData[7])
-            
-            
-            // 传感器的地址
-            floorHeating.insideSensorSubNetID =
-                socketData.additionalData[9]
-            
-            floorHeating.insideSensorDeviceID =
-                socketData.additionalData[10]
-            
-            floorHeating.insideSensorChannelNo =
-                socketData.additionalData[11]
-            
-            // 读取温度
-            SHSocketTools.sendData(
-                operatorCode: 0xE3E7,
-                subNetID: floorHeating.insideSensorSubNetID,
-                deviceID: floorHeating.insideSensorDeviceID,
-                additionalData: [1]
-            )
-            
-            
-            // 0x03CA 设置定时器的时间
-            // 0x03CC获得定时器模式下的开始与结束时间
-        case 0x03CA, 0x03CC:
-            
-            if socketData.subNetID != floorHeating.subnetID ||
-                
-                socketData.deviceID != floorHeating.deviceID ||
-                
-                socketData.additionalData[0] != floorHeating.channelNo {
-                
-                return
-            }
-            
-            if socketData.operatorCode == 0x03CA {
-                
-                // 读取定时器模式下的开始与结束时间
-                SHSocketTools.sendData(
-                    operatorCode: 0x03CB,
-                    subNetID: floorHeating.subnetID,
-                    deviceID: floorHeating.deviceID,
-                    additionalData: [floorHeating.channelNo]
-                )
-            
-            } else {
-                
-                
-                floorHeating.dayTimeHour =
-                    socketData.additionalData[1]
-                
-                floorHeating.dayTimeMinute =
-                    socketData.additionalData[2]
-                
-                floorHeating.nightTimeHour =
-                    socketData.additionalData[3]
-               
-                floorHeating.nightTimeMinute =
-                    socketData.additionalData[4]
-                
-                floorHeating.timerEnable =
-                    socketData.additionalData[5] != 0
-            }
-            
-            // 温度传感器 与 地热本身没有什么关系
-        case 0xE3E8:
-            
-            if socketData.additionalData[0] == 0 {
-                return
-            }
-            
-            // 室内温度  0:+ / 1:-
-            if socketData.subNetID == floorHeating.insideSensorSubNetID &&
-            socketData.deviceID ==
-                floorHeating.insideSensorDeviceID {
-                
-                let index = Int(
-                    floorHeating.insideSensorChannelNo
-                )
-                
-                let temperature = Int(socketData.additionalData[index])
-                
-                floorHeating.insideTemperature =
-                    (socketData.additionalData[index + 8] == 0) ? temperature : (0 - temperature)
-            }
-            
-            // 室外温度  0:+ / 1:-
-            if socketData.subNetID == floorHeating.outsideSensorSubNetID &&
-                socketData.deviceID ==
-                floorHeating.outsideSensorDeviceID {
-                
-                let index = Int(
-                    floorHeating.outsideSensorChannelNo
-                )
-                
-                let temperature = Int(socketData.additionalData[index])
-                
-                floorHeating.outsideTemperature =
-                    (socketData.additionalData[index + 8] == 0) ? temperature : (0 - temperature)
-            }
-
-            isSetSensorTemperature = true
-            
-        default:
-            break
-        }
-        
-        
-        if  socketData.operatorCode == 0xE3D9 ||
-            socketData.operatorCode == 0xE3DB ||
-            socketData.operatorCode == 0x03CC ||
-            socketData.operatorCode == 0x03C8 ||
-            socketData.operatorCode == 0xE3E8 {
-            
-            setFloorHeatingStatus()
         }
     }
     
@@ -425,7 +432,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         
         changeFloorHeatingModel(model: .day)
     }
- 
+    
     /// 夜间模式
     @IBAction func nightButtonClick() {
         
@@ -443,7 +450,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         
         changeFloorHeatingModel(model: .timer)
     }
-
+    
     
     /// 切换地热的模式
     ///
@@ -467,7 +474,7 @@ extension SHZoneControlFloorHeatingControlViewController {
             additionalData: modelData
         )
     }
-
+    
     
     // MARK: - 温度控制
     
@@ -482,13 +489,13 @@ extension SHZoneControlFloorHeatingControlViewController {
         
         manualTemperatureChange(isAdd: true)
     }
-
+    
     /// 手动温度变化
     private func manualTemperatureChange(isAdd: Bool) {
         
         guard let floorHeating = currentFloorHeating,
-        floorHeating.floorHeatingModeType == .manual else {
-            return
+            floorHeating.floorHeatingModeType == .manual else {
+                return
         }
         
         let temperature = isAdd ? (floorHeating.manualTemperature + 1) :
@@ -530,8 +537,8 @@ extension SHZoneControlFloorHeatingControlViewController {
             NSDate.getCurrentDateComponents(
                 from: datePicker.date
             ) else {
-            
-            return
+                
+                return
         }
         
         let timeString =
@@ -539,7 +546,7 @@ extension SHZoneControlFloorHeatingControlViewController {
                    time.hour ?? 0,
                    time.minute ?? 0
         )
-
+        
         selecTimeButton?.setTitle(timeString,
                                   for: .normal
         )
@@ -669,23 +676,23 @@ extension SHZoneControlFloorHeatingControlViewController {
         let sureAction = TYAlertAction(title: SHLanguageText.yes, style: .default) { (action) in
             
             guard let dayTimes = self.dayTimeButton.currentTitle?.components(separatedBy: ":"),
-            
-            let nightTimes = self.nightTimeButton.currentTitle?.components(separatedBy: ":"),
-            
-            let dayHour = UInt8(dayTimes.first ?? "0"),
                 
-            let dayMinute = UInt8(dayTimes.last ?? "0"),
-            
-            let nightHour = UInt8(nightTimes.first ?? "0"),
+                let nightTimes = self.nightTimeButton.currentTitle?.components(separatedBy: ":"),
                 
-            let nightMinute = UInt8(nightTimes.last ?? "0")
-            
-            else {
+                let dayHour = UInt8(dayTimes.first ?? "0"),
+                
+                let dayMinute = UInt8(dayTimes.last ?? "0"),
+                
+                let nightHour = UInt8(nightTimes.first ?? "0"),
+                
+                let nightMinute = UInt8(nightTimes.last ?? "0")
+                
+                else {
                     
                     return
             }
             
-          
+            
             let updateTime = [
                 floorHeating.channelNo,
                 dayHour,
@@ -696,7 +703,7 @@ extension SHZoneControlFloorHeatingControlViewController {
                 
                 floorHeating.timerEnable ? 1 : 0
             ]
-           
+            
             SHSocketTools.sendData(
                 operatorCode: 0x03C9,
                 subNetID: floorHeating.subnetID,
@@ -737,7 +744,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         // 1.设置显示开关
         controlView?.isHidden =
             !floorHeating.isTurnOn
-
+        
         turnFloorHeatingButton.isSelected =
             floorHeating.isTurnOn
         
@@ -755,7 +762,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         
         // 2.不同的模式温度
         switch floorHeating.floorHeatingModeType {
-        
+            
         case .manual:
             
             modelTemperatureLabel.text =
@@ -763,7 +770,7 @@ extension SHZoneControlFloorHeatingControlViewController {
                     celsiusTemperature:
                     floorHeating.manualTemperature
             )
-        
+            
         case .day:
             
             modelTemperatureLabel.text =
@@ -812,35 +819,35 @@ extension SHZoneControlFloorHeatingControlViewController {
                 )
             }
         }
- 
+        
         // 显示控制温度按钮
         reduceTemperatureButton.isHidden =
             floorHeating.floorHeatingModeType
-                != .manual
-
+            != .manual
+        
         addTemperatureButton.isHidden = floorHeating.floorHeatingModeType
-                != .manual
-
+            != .manual
+        
         // 显示当前模式
         manualButton.isSelected =
             floorHeating.floorHeatingModeType
-                == .manual
+            == .manual
         
         dayButton.isSelected =
             floorHeating.floorHeatingModeType
-                == .day
+            == .day
         
         nightButton.isSelected =
             floorHeating.floorHeatingModeType
-                == .night
+            == .night
         
         awayButton.isSelected =
             floorHeating.floorHeatingModeType
-                == .away
+            == .away
         
         timerButton.isSelected =
             floorHeating.floorHeatingModeType
-                == .timer
+            == .timer
         
         // 4.设置定时器时间
         dayTimeButton.setTitle(dayTime,
@@ -884,8 +891,8 @@ extension SHZoneControlFloorHeatingControlViewController {
                 toFahrenheit: celsiusTemperature
         )
         
-       return
-        "\(celsiusTemperature) °C\n\(fahrenheit) °F"
+        return
+            "\(celsiusTemperature) °C\n\(fahrenheit) °F"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -897,20 +904,20 @@ extension SHZoneControlFloorHeatingControlViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title =
             currentFloorHeating?.floorHeatingRemark
         
         controlView?.isHidden = true
-
+        
         datePicker.setValue(
             UIView.textWhiteColor(),
             forKey: "textColor"
         )
         
-    addTemperatureButton.setRoundedRectangleBorder()
+        addTemperatureButton.setRoundedRectangleBorder()
         
-     reduceTemperatureButton.setRoundedRectangleBorder()
+        reduceTemperatureButton.setRoundedRectangleBorder()
         manualButton.setRoundedRectangleBorder()
         dayButton.setRoundedRectangleBorder()
         nightButton.setRoundedRectangleBorder()
@@ -918,7 +925,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         timerButton.setRoundedRectangleBorder()
         dayTimeButton.setRoundedRectangleBorder()
         nightTimeButton.setRoundedRectangleBorder()
-
+        
         if UIDevice.is_iPad() {
             
             let font = UIView.suitFontForPad()
@@ -928,13 +935,13 @@ extension SHZoneControlFloorHeatingControlViewController {
             modelTemperatureLabel.font = font
         }
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         if UIDevice.is3_5inch() ||
             UIDevice.is4_0inch() {
-
+            
             groupViewHeightConstraint.constant = navigationBarHeight
             
             controlButtonWidthConstraint.constant = tabBarHeight
@@ -942,12 +949,12 @@ extension SHZoneControlFloorHeatingControlViewController {
             controlButtonHeightConstraint.constant = tabBarHeight
             
         } else if UIDevice.is_iPad() {
-
+            
             groupViewHeightConstraint.constant =
                 isPortrait ?
                     (navigationBarHeight + navigationBarHeight) :
                 (tabBarHeight + tabBarHeight)
-
+            
             controlButtonHeightConstraint.constant =
                 isPortrait ?
                     (navigationBarHeight + statusBarHeight) :

@@ -73,6 +73,8 @@ extension SHZoneShadeViewController {
     
     /// 接收广播数据
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
+        
+        //....
     }
     
     /// 读取状态

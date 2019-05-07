@@ -72,53 +72,60 @@ extension SHZoneFanViewController {
     /// 接收到广播
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
         
-        switch socketData.operatorCode {
+        DispatchQueue.global().async {
             
-        case 0x0032:
-            
-            let channelNumber = socketData.additionalData[0]
-            
-            if 0xF8 == socketData.additionalData[1] {
+            switch socketData.operatorCode {
                 
-                for fan in allFans {
+            case 0x0032:
+                
+                let channelNumber = socketData.additionalData[0]
+                
+                if 0xF8 == socketData.additionalData[1] {
+                    
+                    for fan in self.allFans {
+                        
+                        if fan.subnetID == socketData.subNetID &&
+                            fan.deviceID == socketData.deviceID &&
+                            fan.channelNO == channelNumber {
+                            
+                            let fanSpeed = socketData.additionalData[2]
+                            fan.fanSpeed =
+                                SHFanSpeed(rawValue:fanSpeed) ?? .off
+                        }
+                    }
+                }
+                
+            case 0x0034:
+                
+                let totalChannels = socketData.additionalData[0]
+                
+                for fan in self.allFans {
                     
                     if fan.subnetID == socketData.subNetID &&
                         fan.deviceID == socketData.deviceID &&
-                        fan.channelNO == channelNumber {
+                        fan.channelNO <= totalChannels {
                         
-                        let fanSpeed = socketData.additionalData[2]
-                        fan.fanSpeed =
-                            SHFanSpeed(rawValue:fanSpeed) ?? .off
+                        let index = Int(fan.channelNO)
+                        let fanSpeed = SHFanSpeed(rawValue: socketData.additionalData[index]) ?? .off
+                        
+                        fan.fanSpeed = fanSpeed
                     }
                 }
-            }
-            
-        case 0x0034:
-            
-            let totalChannels = socketData.additionalData[0]
-            
-            for fan in allFans {
                 
-                if fan.subnetID == socketData.subNetID &&
-                    fan.deviceID == socketData.deviceID &&
-                    fan.channelNO <= totalChannels {
-                    
-                    let index = Int(fan.channelNO)
-                    let fanSpeed = SHFanSpeed(rawValue: socketData.additionalData[index]) ?? .off
-                    
-                    fan.fanSpeed = fanSpeed
-                }
+            default:
+                break
             }
             
-        default:
-            break
-        }
-        
-        
-        if socketData.operatorCode == 0x0034 ||
-            socketData.operatorCode == 0x0032 {
             
-            fansListView.reloadData()
+            if socketData.operatorCode == 0x0034 ||
+                socketData.operatorCode == 0x0032 {
+                
+                DispatchQueue.main.async {
+                    
+                    self.fansListView.reloadData()
+                }
+                
+            }
         }
     }
     

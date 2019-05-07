@@ -33,137 +33,141 @@ extension SHZoneLightViewController {
     /// 接收到广播数据
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
         
-        switch socketData.operatorCode {
+        DispatchQueue.global().async {
             
-        case 0xEFFF:
-            
-            // 1.获得区域总数
-            let zoneCount = Int(socketData.additionalData[0])
-            
-            // 2.获得模块的总通道数量
-            let channelCount = Int(socketData.additionalData[zoneCount + 1])
-            
-            let bytes =
-                channelCount / 8 + (channelCount % 8 == 0 ? 0 : 1)
-            
-            // 3.获得每个通道的具体状态
-            // 所有通道的状态，通道状态的字节数(每个通道的状态用一个bit来表示)
-            var statusForChannel =
-                [UInt8](repeating: 0, count: Int(channelCount))
-            
-            var channelIndex = 0; // 所有通道的状态索引
-            
-            for section in 0 ..< bytes {
+            switch socketData.operatorCode {
                 
-                // 获得具体的值 -- 代表一个字节
-                var channelStatus =
-                    socketData.additionalData[zoneCount + 2 + section];
+            case 0xEFFF:
                 
-                for bit in 0 ..< 8 {
-                    
-                    let lightBress =
-                        ((channelStatus & 0x01) != 0) ? lightMaxBrightness : 0;
-                    
-                    channelIndex = bit + 8 * section
-                    
-                    // 超出范围不要赋值
-                    if channelIndex >= channelCount {
-                        break
-                    }
-                   
-                    statusForChannel[channelIndex] = lightBress;
-                    channelStatus >>= 1
-                }
-            }
-            
-            // 设置具体的亮度
-            for light in allLights {
+                // 1.获得区域总数
+                let zoneCount = Int(socketData.additionalData[0])
                 
-                if !light.isUnwantedEFFF &&
-                    light.subnetID == socketData.subNetID &&
-                    light.deviceID == socketData.deviceID &&
-                    light.channelNo <= channelCount {
+                // 2.获得模块的总通道数量
+                let channelCount = Int(socketData.additionalData[zoneCount + 1])
+                
+                let bytes =
+                    channelCount / 8 + (channelCount % 8 == 0 ? 0 : 1)
+                
+                // 3.获得每个通道的具体状态
+                // 所有通道的状态，通道状态的字节数(每个通道的状态用一个bit来表示)
+                var statusForChannel =
+                    [UInt8](repeating: 0, count: Int(channelCount))
+                
+                var channelIndex = 0; // 所有通道的状态索引
+                
+                for section in 0 ..< bytes {
                     
-                    let brightness =
-                        statusForChannel[Int(light.channelNo) - 1]
+                    // 获得具体的值 -- 代表一个字节
+                    var channelStatus =
+                        socketData.additionalData[zoneCount + 2 + section];
                     
-                    if light.brightness != brightness &&
-                        light.brightness == 0 {
+                    for bit in 0 ..< 8 {
                         
-                        light.brightness = brightness
+                        let lightBress =
+                            ((channelStatus & 0x01) != 0) ? lightMaxBrightness : 0;
+                        
+                        channelIndex = bit + 8 * section
+                        
+                        // 超出范围不要赋值
+                        if channelIndex >= channelCount {
+                            break
+                        }
+                        
+                        statusForChannel[channelIndex] = lightBress;
+                        channelStatus >>= 1
                     }
                 }
-            }
-            
-        case 0x0032:
-            
-            let brightness = socketData.additionalData[2];
-            let channelNumber = socketData.additionalData[0];
-            
-            if (socketData.additionalData[1] == 0xF8) {
                 
-                for light in allLights {
+                // 设置具体的亮度
+                for light in self.allLights {
                     
-                    if light.subnetID == socketData.subNetID &&
+                    if !light.isUnwantedEFFF &&
+                        light.subnetID == socketData.subNetID &&
                         light.deviceID == socketData.deviceID &&
-                        light.channelNo == channelNumber {
+                        light.channelNo <= channelCount {
                         
-                        light.brightness = brightness
-                        light.isUnwantedEFFF = true
-                    }
-                }
-            }
-            
-        case 0xF081:
-            
-            if 0xF8 != socketData.additionalData[0] {
-                break
-            }
-            
-            getLEDstatus(socketData)
-            
-        case 0x0034:
-            
-            // LED
-            if socketData.deviceType == 0x0382 &&
-                socketData.additionalData.count == 5 {
-                
-                getLEDstatus(socketData)
-                
-            } else {  // 普通灯泡
-                
-                let totalChannels = socketData.additionalData[0]
-                
-                for light in allLights {
-                    
-                    if light.subnetID == socketData.subNetID &&
-                        light.deviceID == socketData.deviceID &&
-                        light.channelNo <= totalChannels {
+                        let brightness =
+                            statusForChannel[Int(light.channelNo) - 1]
                         
-                        light.brightness = socketData.additionalData[Int(light.channelNo)]
-                        
-                        if light.canDim == .notDimmable {
+                        if light.brightness != brightness &&
+                            light.brightness == 0 {
                             
-                            light.brightness =
-                                (light.brightness == lightMaxBrightness) ? lightMaxBrightness : 0
+                            light.brightness = brightness
                         }
                     }
                 }
                 
+            case 0x0032:
+                
+                let brightness = socketData.additionalData[2];
+                let channelNumber = socketData.additionalData[0];
+                
+                if (socketData.additionalData[1] == 0xF8) {
+                    
+                    for light in self.allLights {
+                        
+                        if light.subnetID == socketData.subNetID &&
+                            light.deviceID == socketData.deviceID &&
+                            light.channelNo == channelNumber {
+                            
+                            light.brightness = brightness
+                            light.isUnwantedEFFF = true
+                        }
+                    }
+                }
+                
+            case 0xF081:
+                
+                if 0xF8 != socketData.additionalData[0] {
+                    break
+                }
+                
+                self.getLEDstatus(socketData)
+                
+            case 0x0034:
+                
+                // LED
+                if socketData.deviceType == 0x0382 &&
+                    socketData.additionalData.count == 5 {
+                    
+                    self.getLEDstatus(socketData)
+                    
+                } else {  // 普通灯泡
+                    
+                    let totalChannels = socketData.additionalData[0]
+                    
+                    for light in self.allLights {
+                        
+                        if light.subnetID == socketData.subNetID &&
+                            light.deviceID == socketData.deviceID &&
+                            light.channelNo <= totalChannels {
+                            
+                            light.brightness = socketData.additionalData[Int(light.channelNo)]
+                            
+                            if light.canDim == .notDimmable {
+                                
+                                light.brightness =
+                                    (light.brightness == lightMaxBrightness) ? lightMaxBrightness : 0
+                            }
+                        }
+                    }
+                    
+                }
+                
+            default:
+                break
             }
             
-        default:
-            break
-        }
-        
-        
-        
-        if (socketData.operatorCode == 0x0034 ||
-            socketData.operatorCode == 0x0032 ||
-            socketData.operatorCode == 0xF081 ||
-            socketData.operatorCode == 0xEFFF) {
-            
-            lightListView.reloadData()
+            if (socketData.operatorCode == 0x0034 ||
+                socketData.operatorCode == 0x0032 ||
+                socketData.operatorCode == 0xF081 ||
+                socketData.operatorCode == 0xEFFF) {
+                
+                DispatchQueue.main.async {
+                    
+                    self.lightListView.reloadData()
+                }
+            }
         }
     }
     

@@ -145,348 +145,374 @@ extension SHZoneHVACControlViewController {
             return
         }
         
-        // 温度传感器部分
-        if socketData.operatorCode == 0xE3E8 &&
-           socketData.subNetID == hvac.temperatureSensorSubNetID &&
-           socketData.deviceID == hvac.temperatureSensorDeviceID {
+        DispatchQueue.global().async {
             
-            // 返回摄氏温度有效
-            if socketData.additionalData[0] == 0 {
-                return
-            }
-            
-            let channel = Int(hvac.temperatureSensorChannelNo)
-            
-            let temperature = socketData.additionalData[channel]
-            let flag = socketData.additionalData[channel + 8]
-            
-            hvac.sensorTemperature =
-                Int((flag == 0) ? temperature : (0 - temperature))
-            
-            // 获得温度 设置空调相关的内容
-            setAirConditionerStatus()
-        
-            // 空调部分 (coolmaster固件修改以后再将注释恢复)
-        } else /*if ((subNetID == hvac.subnetID)  &&
-             (deviceID == hvac.deviceID)) */ {
-         
-            switch socketData.operatorCode {
+            // 温度传感器部分
+            if socketData.operatorCode == 0xE3E8 &&
+                socketData.subNetID == hvac.temperatureSensorSubNetID &&
+                socketData.deviceID == hvac.temperatureSensorDeviceID {
                 
-                // 配合 9in1 控制空调增加
-            case 0xE01D:
-                if socketData.subNetID != hvac.subnetID  ||
-                    socketData.deviceID != hvac.deviceID {
-                    break
-                }
-                
-                let isPowerOn =
-                    SHAirConditioningSwitchType.on.rawValue
-                
-                // 设置成功为1，否则是0
-                if socketData.additionalData[1] != isPowerOn {
+                // 返回摄氏温度有效
+                if socketData.additionalData[0] == 0 {
                     return
                 }
                 
-                hvac.isTurnOn =
-                    socketData.additionalData[0] == isPowerOn
-
-                setAirConditionerStatus()
+                let channel = Int(hvac.temperatureSensorChannelNo)
                 
-                // 返回状态
-            case 0xE0ED:
+                let temperature = socketData.additionalData[channel]
+                let flag = socketData.additionalData[channel + 8]
                 
-                // FIXME: - coolmaster修改固件后需要修正
-                if hvac.acTypeID == .coolMaster {
+                hvac.sensorTemperature =
+                    Int((flag == 0) ? temperature : (0 - temperature))
+                
+                // 获得温度 设置空调相关的内容
+                DispatchQueue.main.async {
                     
-                    if socketData.subNetID != hvac.temperatureSensorSubNetID ||
-                        socketData.deviceType != hvac.temperatureSensorDeviceID {
+                    self.setAirConditionerStatus()
+                }
+                
+                // 空调部分 (coolmaster固件修改以后再将注释恢复)
+            } else /*if ((subNetID == hvac.subnetID)  &&
+                 (deviceID == hvac.deviceID)) */ {
+                    
+                    switch socketData.operatorCode {
                         
+                    // 配合 9in1 控制空调增加
+                    case 0xE01D:
+                        if socketData.subNetID != hvac.subnetID  ||
+                            socketData.deviceID != hvac.deviceID {
+                            break
+                        }
+                        
+                        let isPowerOn =
+                            SHAirConditioningSwitchType.on.rawValue
+                        
+                        // 设置成功为1，否则是0
+                        if socketData.additionalData[1] != isPowerOn {
+                            return
+                        }
+                        
+                        hvac.isTurnOn =
+                            socketData.additionalData[0] == isPowerOn
+                        
+                        // 获得温度 设置空调相关的内容
+                        DispatchQueue.main.async {
+                            
+                            self.setAirConditionerStatus()
+                        }
+                        
+                    // 返回状态
+                    case 0xE0ED:
+                        
+                        // FIXME: - coolmaster修改固件后需要修正
+                        if hvac.acTypeID == .coolMaster {
+                            
+                            if socketData.subNetID != hvac.temperatureSensorSubNetID ||
+                                socketData.deviceType != hvac.temperatureSensorDeviceID {
+                                
+                                break
+                            }
+                            
+                        } else {
+                            
+                            if socketData.subNetID != hvac.subnetID ||
+                                socketData.deviceID != hvac.deviceID {
+                                
+                                break
+                            }
+                        }
+                        
+                        // HVAC的E0ED返回 只有8 个字节
+                        // 如果用户配置的是HVAC 直接执行
+                        // 如果是DDP或者是Relay要判断 可变参数的最后一个是通道号
+                        
+                        let whichOne =
+                            hvac.acTypeID == .coolMaster ?
+                                UInt8(hvac.acNumber - 1) : hvac.channelNo
+                        
+                        if socketData.additionalData.count != 8 &&
+                            socketData.additionalData[socketData.additionalData.count - 1] != whichOne {
+                            
+                            break
+                        }
+                        
+                        hvac.isTurnOn =
+                            socketData.additionalData[0] != 0
+                        
+                        hvac.coolTemperture = SHHVAC.realTemperature(
+                            Int(socketData.additionalData[1])
+                        )
+                        
+                        let fanIndex =
+                            Int(socketData.additionalData[2] & 0x0F)
+                        
+                        if fanIndex < self.fanSpeedList.count {
+                            hvac.fanSpeed = self.fanSpeedList[fanIndex]
+                        }
+                        
+                        let modelIndex =
+                            Int((socketData.additionalData[2] & 0xF0) >> 4)
+                        
+                        if modelIndex < self.acModelList.count {
+                            hvac.acMode = self.acModelList[modelIndex]
+                        }
+                        
+                        
+                        hvac.indoorTemperature =
+                            SHHVAC.realTemperature(
+                                Int(socketData.additionalData[4])
+                        )
+                        
+                        hvac.heatTemperture =
+                            SHHVAC.realTemperature(
+                                Int(socketData.additionalData[5])
+                        )
+                        
+                        hvac.autoTemperture =
+                            SHHVAC.realTemperature(
+                                Int(socketData.additionalData[7])
+                        )
+                        
+                        // 获得温度 设置空调相关的内容
+                        DispatchQueue.main.async {
+                            
+                            self.setAirConditionerStatus()
+                        }
+                        
+                    // DDP控制面板发出的数据 而HVAC/IR/Relay得到的响应
+                    case 0x193B :
+                        
+                        if socketData.subNetID != hvac.subnetID ||
+                            socketData.deviceID != hvac.deviceID {
+                            
+                            break
+                        }
+                        
+                        // 在增加单个继电器控制空调的功能前,
+                        // HVAC中,0X193B的返回长度是13
+                        // IR 中 0X193B的返回长度是14 且顺序与HVAC保持一致,后面多出来的参数暂时没用上
+                        // 增加单个继电器控制控制空调的0X193B的返回长度有变化是15。
+                        
+                        // 普通HAVC 不需要执行 if 语句
+                        // 继电器控制空调 需要依据最后一个参数的通道号 && 可变参数的度是15 来判断
+                        
+                        if socketData.additionalData.count == 15 &&
+                            hvac.channelNo != socketData.additionalData[14] {
+                            break
+                        }
+                        
+                        // coolmaster 需要判断是哪个AcNumber && 可变参数
+                        if hvac.acTypeID == .coolMaster &&
+                            socketData.additionalData[0] != hvac.acNumber {
+                            
+                            break
+                        }
+                        
+                        // 获得温度单位 是否为摄氏温度
+                        hvac.isCelsius = socketData.additionalData[1] == 0
+                        
+                        hvac.indoorTemperature =
+                            SHHVAC.realTemperature(
+                                Int(socketData.additionalData[2])
+                        )
+                        
+                        hvac.coolTemperture =
+                            SHHVAC.realTemperature(
+                                Int(socketData.additionalData[3])
+                        )
+                        
+                        hvac.heatTemperture =
+                            SHHVAC.realTemperature(
+                                Int(socketData.additionalData[4])
+                        )
+                        
+                        hvac.autoTemperture =
+                            SHHVAC.realTemperature(
+                                Int(socketData.additionalData[5])
+                        )
+                        
+                        hvac.isTurnOn = socketData.additionalData[8] != 0
+                        
+                        hvac.acMode =
+                            SHAirConditioningModeType(
+                                rawValue: socketData.additionalData[9]
+                            ) ?? .cool
+                        
+                        hvac.fanSpeed =
+                            SHAirConditioningFanSpeedType(
+                                rawValue: socketData.additionalData[10]
+                            ) ?? .auto
+                        
+                        // 获得温度 设置空调相关的内容
+                        DispatchQueue.main.async {
+                            
+                            self.setAirConditionerStatus()
+                        }
+                        
+                    case 0xE3D9:
+                        
+                        if socketData.subNetID != hvac.subnetID ||
+                            socketData.deviceID != hvac.deviceID {
+                            
+                            break
+                        }
+                        
+                        switch socketData.additionalData[0] {
+                            
+                        case SHAirConditioningControlType.onAndOff.rawValue:
+                            
+                            hvac.isTurnOn =
+                                socketData.additionalData[1] != 0
+                            
+                        case SHAirConditioningControlType.fanSpeedSet.rawValue:
+                            
+                            hvac.fanSpeed =
+                                SHAirConditioningFanSpeedType(
+                                    rawValue: socketData.additionalData[1]
+                                ) ?? .auto
+                            
+                        case SHAirConditioningControlType.acModeSet.rawValue:
+                            
+                            hvac.acMode =
+                                SHAirConditioningModeType(
+                                    rawValue: socketData.additionalData[1]
+                                ) ?? .cool
+                        case SHAirConditioningControlType.coolTemperatureSet.rawValue:
+                            
+                            hvac.coolTemperture =
+                                SHHVAC.realTemperature(
+                                    Int(socketData.additionalData[1])
+                            )
+                            
+                        case SHAirConditioningControlType.heatTemperatureSet.rawValue:
+                            
+                            hvac.heatTemperture =
+                                SHHVAC.realTemperature(
+                                    Int(socketData.additionalData[1])
+                            )
+                            
+                        case SHAirConditioningControlType.autoTemperatureSet.rawValue:
+                            
+                            hvac.autoTemperture =
+                                SHHVAC.realTemperature(
+                                    Int(socketData.additionalData[1])
+                            )
+                            
+                        default:
+                            break
+                        }
+                        
+                        // 获得温度 设置空调相关的内容
+                        DispatchQueue.main.async {
+                            
+                            self.setAirConditionerStatus()
+                        }
+                        
+                    // 模式
+                    case 0xE125:
+                        if socketData.subNetID != hvac.subnetID ||
+                            socketData.deviceID != hvac.deviceID {
+                            
+                            break
+                        }
+                        
+                        // 风速模式的有效长度
+                        let fanSpeedLength =
+                            Int(socketData.additionalData[0])
+                        
+                        var fanList =
+                            [SHAirConditioningFanSpeedType]()
+                        
+                        for fanIndex in 1 ... fanSpeedLength {
+                            
+                            if let speed = SHAirConditioningFanSpeedType(rawValue: socketData.additionalData[fanIndex]
+                                ) {
+                                
+                                fanList.append(speed)
+                            }
+                        }
+                        
+                        self.fanSpeedList = fanList
+                        
+                        // 模式部分
+                        let modelLength = Int(socketData.additionalData[5])
+                        
+                        var modelList = [SHAirConditioningModeType]()
+                        
+                        for modelIndex in 1 ... modelLength {
+                            
+                            if let model =
+                                SHAirConditioningModeType(rawValue:
+                                    socketData.additionalData[modelIndex + 5]
+                                ) {
+                                
+                                modelList.append(model)
+                            }
+                        }
+                        
+                        self.acModelList = modelList
+                        
+                        // 读取状态
+                        self.readHVACStatus()
+                        
+                    // 获得不同模式的温度范围
+                    case 0x1901:
+                        
+                        if socketData.subNetID != hvac.subnetID ||
+                            socketData.deviceID != hvac.deviceID {
+                            
+                            break
+                        }
+                        
+                        // 说明：由于协议中没有与温度传感器正负，而是使用了补码的方式来表示
+                        
+                        // 制冷温度范围
+                        hvac.startCoolTemperatureRange = SHHVAC.realTemperature(
+                            Int(socketData.additionalData[0])
+                        )
+                        
+                        hvac.endCoolTemperatureRange = SHHVAC.realTemperature(
+                            Int(socketData.additionalData[1])
+                        )
+                        
+                        // 制热温度范
+                        hvac.startHeatTemperatureRange = SHHVAC.realTemperature(
+                            Int(socketData.additionalData[2])
+                        )
+                        
+                        hvac.endHeatTemperatureRange = SHHVAC.realTemperature(
+                            Int(socketData.additionalData[3])
+                        )
+                        
+                        // 自动模式温度范围
+                        hvac.startAutoTemperatureRange = SHHVAC.realTemperature(
+                            Int(socketData.additionalData[4])
+                        )
+                        
+                        hvac.endAutoTemperatureRange = SHHVAC.realTemperature(
+                            Int(socketData.additionalData[5])
+                        )
+                        
+                    // 获得温度单位
+                    case 0xE121:
+                        if socketData.subNetID != hvac.subnetID ||
+                            socketData.deviceID != hvac.deviceID {
+                            
+                            break
+                        }
+                        
+                        hvac.isCelsius =
+                            socketData.additionalData[0] == 0
+                        
+                        // 获得温度 设置空调相关的内容
+                        DispatchQueue.main.async {
+                            
+                            self.setAirConditionerStatus()
+                        }
+                        
+                    default:
                         break
                     }
-                    
-                } else {
-                    
-                    if socketData.subNetID != hvac.subnetID ||
-                        socketData.deviceID != hvac.deviceID {
-                        
-                        break
-                    }
-                }
-                
-                // HVAC的E0ED返回 只有8 个字节
-                // 如果用户配置的是HVAC 直接执行
-                // 如果是DDP或者是Relay要判断 可变参数的最后一个是通道号
-                
-                let whichOne =
-                    hvac.acTypeID == .coolMaster ?
-                        UInt8(hvac.acNumber - 1) : hvac.channelNo
-                
-                if socketData.additionalData.count != 8 &&
-                    socketData.additionalData[socketData.additionalData.count - 1] != whichOne {
-                    
-                    break
-                }
-                
-                hvac.isTurnOn =
-                    socketData.additionalData[0] != 0
-                
-                hvac.coolTemperture = SHHVAC.realTemperature(
-                    Int(socketData.additionalData[1])
-                )
-                
-                let fanIndex =
-                    Int(socketData.additionalData[2] & 0x0F)
-                
-                if fanIndex < fanSpeedList.count {
-                    hvac.fanSpeed = fanSpeedList[fanIndex]
-                }
-                
-                let modelIndex =
-                    Int((socketData.additionalData[2] & 0xF0) >> 4)
-                
-                if modelIndex < acModelList.count {
-                    hvac.acMode = acModelList[modelIndex]
-                }
-                
-                
-                hvac.indoorTemperature =
-                    SHHVAC.realTemperature(
-                        Int(socketData.additionalData[4])
-                )
-                
-                hvac.heatTemperture =
-                    SHHVAC.realTemperature(
-                        Int(socketData.additionalData[5])
-                )
-                
-                hvac.autoTemperture =
-                    SHHVAC.realTemperature(
-                        Int(socketData.additionalData[7])
-                )
-                
-                setAirConditionerStatus()
-                
-            // DDP控制面板发出的数据 而HVAC/IR/Relay得到的响应
-            case 0x193B :
-                
-                if socketData.subNetID != hvac.subnetID ||
-                    socketData.deviceID != hvac.deviceID {
-                    
-                    break
-                }
-                
-                // 在增加单个继电器控制空调的功能前,
-                // HVAC中,0X193B的返回长度是13
-                // IR 中 0X193B的返回长度是14 且顺序与HVAC保持一致,后面多出来的参数暂时没用上
-                // 增加单个继电器控制控制空调的0X193B的返回长度有变化是15。
-                
-                // 普通HAVC 不需要执行 if 语句
-                // 继电器控制空调 需要依据最后一个参数的通道号 && 可变参数的度是15 来判断
-                
-                if socketData.additionalData.count == 15 &&
-                    hvac.channelNo != socketData.additionalData[14] {
-                    break
-                }
-                
-                // coolmaster 需要判断是哪个AcNumber && 可变参数
-                if hvac.acTypeID == .coolMaster &&
-                    socketData.additionalData[0] != hvac.acNumber {
-                    
-                    break
-                }
-                
-                // 获得温度单位 是否为摄氏温度
-                hvac.isCelsius = socketData.additionalData[1] == 0
-                  
-                hvac.indoorTemperature =
-                    SHHVAC.realTemperature(
-                        Int(socketData.additionalData[2])
-                )
-                
-                hvac.coolTemperture =
-                    SHHVAC.realTemperature(
-                        Int(socketData.additionalData[3])
-                )
-                
-                hvac.heatTemperture =
-                    SHHVAC.realTemperature(
-                        Int(socketData.additionalData[4])
-                )
-                
-                hvac.autoTemperture =
-                    SHHVAC.realTemperature(
-                        Int(socketData.additionalData[5])
-                )
-                
-                hvac.isTurnOn = socketData.additionalData[8] != 0
-                
-                hvac.acMode =
-                    SHAirConditioningModeType(
-                        rawValue: socketData.additionalData[9]
-                    ) ?? .cool
-                
-                hvac.fanSpeed =
-                    SHAirConditioningFanSpeedType(
-                        rawValue: socketData.additionalData[10]
-                    ) ?? .auto
-                
-                setAirConditionerStatus()
-                
-            case 0xE3D9:
-                
-                if socketData.subNetID != hvac.subnetID ||
-                    socketData.deviceID != hvac.deviceID {
-                    
-                    break
-                }
-                
-                switch socketData.additionalData[0] {
-                    
-                case SHAirConditioningControlType.onAndOff.rawValue:
-                    
-                    hvac.isTurnOn =
-                        socketData.additionalData[1] != 0
-                    
-                case SHAirConditioningControlType.fanSpeedSet.rawValue:
-                    
-                    hvac.fanSpeed =
-                        SHAirConditioningFanSpeedType(
-                            rawValue: socketData.additionalData[1]
-                    ) ?? .auto
-                    
-                case SHAirConditioningControlType.acModeSet.rawValue:
-                    
-                    hvac.acMode =
-                        SHAirConditioningModeType(
-                            rawValue: socketData.additionalData[1]
-                        ) ?? .cool
-                case SHAirConditioningControlType.coolTemperatureSet.rawValue:
-                    
-                    hvac.coolTemperture =
-                        SHHVAC.realTemperature(
-                            Int(socketData.additionalData[1])
-                    )
-                    
-                case SHAirConditioningControlType.heatTemperatureSet.rawValue:
-                    
-                    hvac.heatTemperture =
-                        SHHVAC.realTemperature(
-                            Int(socketData.additionalData[1])
-                    )
-                    
-                case SHAirConditioningControlType.autoTemperatureSet.rawValue:
-                    
-                    hvac.autoTemperture =
-                        SHHVAC.realTemperature(
-                            Int(socketData.additionalData[1])
-                    )
-                    
-                default:
-                    break
-                }
-                
-                setAirConditionerStatus()
-                
-                // 模式
-            case 0xE125:
-                if socketData.subNetID != hvac.subnetID ||
-                    socketData.deviceID != hvac.deviceID {
-                    
-                    break
-                }
-                
-                // 风速模式的有效长度
-                let fanSpeedLength =
-                    Int(socketData.additionalData[0])
-                
-                var fanList =
-                    [SHAirConditioningFanSpeedType]()
-                
-                for fanIndex in 1 ... fanSpeedLength {
-                    
-                    if let speed = SHAirConditioningFanSpeedType(rawValue: socketData.additionalData[fanIndex]
-                        ) {
-                        
-                        fanList.append(speed)
-                    }
-                }
-                
-                fanSpeedList = fanList
-                
-                // 模式部分
-                let modelLength = Int(socketData.additionalData[5])
-                
-                var modelList = [SHAirConditioningModeType]()
-                
-                for modelIndex in 1 ... modelLength {
-                    
-                    if let model =
-                        SHAirConditioningModeType(rawValue:
-                            socketData.additionalData[modelIndex + 5]
-                        ) {
-                        
-                        modelList.append(model)
-                    }
-                }
-                
-                acModelList = modelList
-                
-                // 读取状态
-                readHVACStatus()
-                
-                // 获得不同模式的温度范围
-            case 0x1901:
-                
-                if socketData.subNetID != hvac.subnetID ||
-                   socketData.deviceID != hvac.deviceID {
-                    
-                    break
-                }
-                
-                // 说明：由于协议中没有与温度传感器正负，而是使用了补码的方式来表示
-                
-                // 制冷温度范围
-                hvac.startCoolTemperatureRange = SHHVAC.realTemperature(
-                        Int(socketData.additionalData[0])
-                )
-                
-                hvac.endCoolTemperatureRange = SHHVAC.realTemperature(
-                    Int(socketData.additionalData[1])
-                )
-                
-                // 制热温度范
-                hvac.startHeatTemperatureRange = SHHVAC.realTemperature(
-                    Int(socketData.additionalData[2])
-                )
-                
-                hvac.endHeatTemperatureRange = SHHVAC.realTemperature(
-                    Int(socketData.additionalData[3])
-                )
-                
-                // 自动模式温度范围
-                hvac.startAutoTemperatureRange = SHHVAC.realTemperature(
-                    Int(socketData.additionalData[4])
-                )
-                
-                hvac.endAutoTemperatureRange = SHHVAC.realTemperature(
-                    Int(socketData.additionalData[5])
-                )
-                
-                // 获得温度单位
-            case 0xE121:
-                if socketData.subNetID != hvac.subnetID ||
-                    socketData.deviceID != hvac.deviceID {
-                    
-                    break
-                }
-                
-                hvac.isCelsius =
-                        socketData.additionalData[0] == 0
-                
-                setAirConditionerStatus()
-                
-            default:
-                break
             }
         }
     }
