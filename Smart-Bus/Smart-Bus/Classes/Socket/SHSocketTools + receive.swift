@@ -29,13 +29,13 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         
         // FIXME: 暂时不进行接收校验
         // 16 是0xAAAA后的位置 SN2
-        guard check_crc(position: &(recivedData[16]),
-                        length: recivedData.count - 16 - 2
-
-            ) else {
-
-                return
-        }
+//        guard check_crc(position: &(recivedData[16]),
+//                        length: recivedData.count - 16 - 2
+//
+//            ) else {
+//
+//                return
+//        }
 
         let subNetID = recivedData[17]
         let deviceID = recivedData[18]

@@ -135,7 +135,7 @@ extension SHSocketTools {
             isDMX: isDMX
         )
         
-       print("发送控制包: \(data)")
+//       print("发送控制包: \(data)")
         
         _ = try? SHSocketTools.shared.socket.bind(toPort: data.port)
         
