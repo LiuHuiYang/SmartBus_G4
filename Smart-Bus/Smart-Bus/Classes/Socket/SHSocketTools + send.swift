@@ -46,10 +46,11 @@ extension SHSocketTools {
         additionalData:[UInt8],
         remoteMacAddress: String =
             SHSocketTools.remoteControlMacAddress(),
-        needReSend: Bool = true,
+        needReSend: Bool = false,  // 临时测试使用
         isDMX: Bool = false ) {
         
         DispatchQueue.global().async {
+ 
             
             var count = needReSend ? 3 : 1
             
@@ -102,7 +103,7 @@ extension SHSocketTools {
         // 所有的指令都要延时 100 ms执行
         // 100ms 是依据产品固件计算出来的平均值 
         // 实际给定 120ms
-//        Thread.sleep(forTimeInterval: 0.12)
+        Thread.sleep(forTimeInterval: 0.12)
     }
     
     
@@ -134,7 +135,7 @@ extension SHSocketTools {
             isDMX: isDMX
         )
         
-//       print("发送控制包: \(data)")
+       print("发送控制包: \(data)")
         
         _ = try? SHSocketTools.shared.socket.bind(toPort: data.port)
         
