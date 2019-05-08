@@ -83,12 +83,17 @@
 /// 程序已经回到前台
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
+    // App 成为活跃状态 创建socket
+    [[SHSocketTools shared] setupSokcet];
+    
     if ([[NSUserDefaults standardUserDefaults]
          integerForKey:UIAPPLICATION_BACKGROUND_TASK_KEY] ==
         SHApplicationBackgroundTaskOpen) {
         
         [[UIApplication sharedApplication] endBackgroundTask:self.task];
     }
+
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

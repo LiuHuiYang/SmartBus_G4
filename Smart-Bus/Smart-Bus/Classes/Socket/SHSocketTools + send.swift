@@ -135,14 +135,15 @@ extension SHSocketTools {
             isDMX: isDMX
         )
          
-        _ = try? SHSocketTools.shared.socket.bind(toPort: data.port)
+        
+        _ = try? SHSocketTools.shared.socket?.bind(toPort: data.port)
          
         let sendData =
             NSMutableData(bytes: data.datas,
                           length: data.datas.count
             ) as Data
         
-        SHSocketTools.shared.socket.send(
+        SHSocketTools.shared.socket?.send(
             sendData, toHost: data.destAddress,
             port: data.port,
             withTimeout: -1,
@@ -151,11 +152,11 @@ extension SHSocketTools {
 
         //       print("发送控制包: \(data)")
 
-        // 开启接收
-        SHSocketTools.shared.socket.beginReceiving()
+        // // 开启接收
+        // SHSocketTools.shared.socket.beginReceiving()
 
-        // 开启广播
-        SHSocketTools.shared.socket.udpSocket.enableBroadcast(true)
+        // // 开启广播
+        // SHSocketTools.shared.socket.udpSocket.enableBroadcast(true)
 
     }
     

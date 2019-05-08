@@ -90,7 +90,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     /// socket 关闭
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
         
-        socket.close()
-        _ = try? socket.enableBroadcast(true)
+         // ... socket关闭
+         SHSocketTools.shared.setupSokcet()
     }
 }
