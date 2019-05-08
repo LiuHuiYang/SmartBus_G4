@@ -46,7 +46,7 @@ extension SHSocketTools {
         additionalData:[UInt8],
         remoteMacAddress: String =
             SHSocketTools.remoteControlMacAddress(),
-        needReSend: Bool = false,  // 临时测试使用
+        needReSend: Bool = true,  
         isDMX: Bool = false ) {
         
         DispatchQueue.global().async {
