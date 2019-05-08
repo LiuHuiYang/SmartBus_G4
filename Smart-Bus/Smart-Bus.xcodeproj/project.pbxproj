@@ -4628,7 +4628,7 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = TMD6A3D429;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
 								enabled = 1;
@@ -5398,9 +5398,9 @@
 				CODE_SIGN_ENTITLEMENTS = "Smart-Bus/Smart-Bus.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = TMD6A3D429;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Smart-Bus/SmartBus.pch";
 				INFOPLIST_FILE = "Smart-Bus/Info.plist";
@@ -5415,7 +5415,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "89305ce0-8982-404a-9a81-2f2a02c025c8";
-				PROVISIONING_PROFILE_SPECIFIER = Smart_Bus_Development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Smart-Bus/Smart-Bus-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -5434,9 +5434,9 @@
 				CODE_SIGN_ENTITLEMENTS = "Smart-Bus/Smart-Bus.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = TMD6A3D429;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Smart-Bus/SmartBus.pch";
 				INFOPLIST_FILE = "Smart-Bus/Info.plist";
@@ -5451,7 +5451,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "01765ce1-a27e-45e6-bac9-ced94437e321";
-				PROVISIONING_PROFILE_SPECIFIER = SmartBus_Distribution;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Smart-Bus/Smart-Bus-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
