@@ -79,3 +79,7 @@ NSString * const SHSchedualPrepareExecuteNotification =
 /// 后台任务标示
 NSString * const UIAPPLICATION_BACKGROUND_TASK_KEY =  @"UIApplicationBackgroundTaskKey";
 
+
+/// App成为焦点的通知
+NSString * const
+    SHBecomeFocusNotification = @"SHBecomeFocusNotification";

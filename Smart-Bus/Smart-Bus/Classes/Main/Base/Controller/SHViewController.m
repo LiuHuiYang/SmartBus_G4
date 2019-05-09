@@ -15,6 +15,16 @@
 @implementation SHViewController
 
 
+/**
+ 当前控制器正在显示
+
+ @return YES 正在显示
+ */
+- (BOOL)isVisible {
+    
+    return (self.isViewLoaded && self.view.window);
+}
+
 // MARK: - UI相关的的设置
 
 - (void)viewWillLayoutSubviews {
@@ -22,7 +32,8 @@
     [super viewWillLayoutSubviews];
     
     // 记录当前是否横竖屏
-    self.isPortrait = (self.view.frame_height > self.view.frame_width);
+    self.isPortrait =
+        (self.view.frame_height > self.view.frame_width);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -68,9 +79,26 @@
                name:SHSocketTools.broadcastNotificationName
              object:nil
     ];
+    
+    // 接收实时的数据
+    [NSNotificationCenter.defaultCenter
+     addObserver:self
+     selector:@selector(becomeFocus)
+     name:SHBecomeFocusNotification
+     object:nil
+    ];
 }
 
 
+/// 当前控制器成为焦点
+- (void)becomeFocus {
+    
+    if (![self isVisible]) {
+     
+        return;
+    }
+    
+}
 
 /// 接收到了数据
 - (void)receiveBroadcastMessages:(NSNotification *)notification {

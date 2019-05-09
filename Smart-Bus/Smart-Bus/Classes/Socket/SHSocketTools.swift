@@ -34,12 +34,10 @@ import CocoaAsyncSocket
         // 没有关闭
         if socket?.isClosed() == false {
             
-//            print("socket 没有关闭 不再重新创建 ")
+//            printMessage("socket 没有关闭 不再重新创建 ")
             return
         }
- 
-//        print("socket :\(socket?.isClosed() == true ) - \(socket == nil) 需要重新创建")
-        
+  
         let udpSocket =
             GCDAsyncUdpSocket(
                 delegate: self,
@@ -55,7 +53,7 @@ import CocoaAsyncSocket
         
         socket = udpSocket
         
-//        print("1111全部创建设置创建完成")
+//        printMessage("1111全部创建设置创建完成")
     }
     
     /// CRC tab 校验码查询数据的数组表格

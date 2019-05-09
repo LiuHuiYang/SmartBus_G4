@@ -158,6 +158,13 @@ extension SHZoneFanViewController {
         }
         
     }
+    
+    /// 成为焦点主动读取状态
+    override func becomeFocus() {
+        super.becomeFocus()
+        
+        readDevicesStatus()
+    }
 }
 
 // MARK: - UITableViewDataSource

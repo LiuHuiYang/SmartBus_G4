@@ -87,6 +87,8 @@
     // App 成为活跃状态 创建socket
     [[SHSocketTools shared] setupSokcet];
     
+    [NSNotificationCenter.defaultCenter postNotificationName:SHBecomeFocusNotification object:nil];
+    
     if ([[NSUserDefaults standardUserDefaults]
          integerForKey:UIAPPLICATION_BACKGROUND_TASK_KEY] ==
         SHApplicationBackgroundTaskOpen) {

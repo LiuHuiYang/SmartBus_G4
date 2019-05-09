@@ -99,11 +99,6 @@ extension SHSocketTools {
                 )
             }
         }
-    
-        // 所有的指令都要延时 100 ms执行
-        // 100ms 是依据产品固件计算出来的平均值 
-        // 实际给定 120ms
-        Thread.sleep(forTimeInterval: 0.12)
     }
     
     
@@ -149,8 +144,8 @@ extension SHSocketTools {
             withTimeout: -1,
             tag: 0
         )
-
-        //       print("发送控制包: \(data)")
+        
+//        SHSocketTools.shared.socket?.beginReceiving()
     }
     
     /// 打包数据

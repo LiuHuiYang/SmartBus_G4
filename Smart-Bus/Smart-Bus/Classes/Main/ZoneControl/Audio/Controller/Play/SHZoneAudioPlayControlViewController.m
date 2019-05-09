@@ -1792,6 +1792,13 @@ UITableViewDelegate, UITableViewDataSource>
      ];
 }
 
+- (void)becomeFocus {
+    
+    [super becomeFocus];
+    
+    [self readAudioStatus];
+}
+
 
 // MARK: ====== - UIScrollView代理  ======
 

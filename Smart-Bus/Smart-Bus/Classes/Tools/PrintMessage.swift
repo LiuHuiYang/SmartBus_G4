@@ -9,7 +9,7 @@ import Foundation
 /// - parameter file:     文件名
 /// - parameter method:   方法名
 /// - parameter line:     代码行数
-func printMsg<T>(message: T,
+func printMessage<T>(message: T,
                  logError: Bool = false,
                  file: String = #file,
                  method: String = #function,
@@ -28,3 +28,4 @@ func printMsg<T>(message: T,
         #endif
     }
 }
+ 

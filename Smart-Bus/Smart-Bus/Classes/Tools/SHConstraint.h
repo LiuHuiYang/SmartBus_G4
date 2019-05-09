@@ -73,6 +73,10 @@ UIKIT_EXTERN NSString * const SHSchedualPrepareExecuteNotification;
 /// 后台任务标示
 UIKIT_EXTERN NSString * const UIAPPLICATION_BACKGROUND_TASK_KEY;
 
+/// App成为焦点的通知
+UIKIT_EXTERN NSString * const
+    SHBecomeFocusNotification;
+
 #endif /* SHConstraint_h */
 
 

@@ -326,6 +326,7 @@
 		04C583222192C7190017701A /* SHMediaSAT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C583212192C7190017701A /* SHMediaSAT.swift */; };
 		04C583242192CA3A0017701A /* SHMediaTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C583232192CA390017701A /* SHMediaTV.swift */; };
 		04C583262192CC090017701A /* SHMediaProjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C583252192CC090017701A /* SHMediaProjector.swift */; };
+		04C65B952283CB7300DB056B /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C65B942283CB7300DB056B /* PrintMessage.swift */; };
 		04C94DFC216D9BF400EF069E /* SHAuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C94DFA216D9BF400EF069E /* SHAuthorizationViewController.swift */; };
 		04C94DFD216D9BF400EF069E /* SHAuthorizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C94DFB216D9BF400EF069E /* SHAuthorizationViewController.xib */; };
 		04C94E05216DD08D00EF069E /* SHModifyRSIPNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C94E04216DD08D00EF069E /* SHModifyRSIPNameViewController.swift */; };
@@ -884,6 +885,7 @@
 		04C583212192C7190017701A /* SHMediaSAT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMediaSAT.swift; sourceTree = "<group>"; };
 		04C583232192CA390017701A /* SHMediaTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMediaTV.swift; sourceTree = "<group>"; };
 		04C583252192CC090017701A /* SHMediaProjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMediaProjector.swift; sourceTree = "<group>"; };
+		04C65B942283CB7300DB056B /* PrintMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintMessage.swift; sourceTree = "<group>"; };
 		04C94DFA216D9BF400EF069E /* SHAuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAuthorizationViewController.swift; sourceTree = "<group>"; };
 		04C94DFB216D9BF400EF069E /* SHAuthorizationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHAuthorizationViewController.xib; sourceTree = "<group>"; };
 		04C94E04216DD08D00EF069E /* SHModifyRSIPNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHModifyRSIPNameViewController.swift; sourceTree = "<group>"; };
@@ -2170,6 +2172,7 @@
 		8B2461531EE4EB1D009574E3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				04C65B942283CB7300DB056B /* PrintMessage.swift */,
 				0453EA1B21A67C8400F666EF /* JHChart */,
 				8B4058CD2047D5C300DA03FB /* CustomAlertViewController */,
 				8B2581E51FD7972A0000CD73 /* Additional */,
@@ -5180,6 +5183,7 @@
 				046ACA7A221E7F36006EFD5E /* SHScheduleSectionHeader.swift in Sources */,
 				04184E2E21F1CBCD0002E491 /* SHSQLiteManager + Zone.swift in Sources */,
 				0480399921B7B965009D9A32 /* SHZoneControlTVView.swift in Sources */,
+				04C65B952283CB7300DB056B /* PrintMessage.swift in Sources */,
 				04A177DA215F608500BD9744 /* SHHomeStatusViewController.swift in Sources */,
 				0455FEBE2216BD80001046D2 /* SHSchduleMoodCell.swift in Sources */,
 				04F3C8A721B627DC00BF5608 /* SHAudioAlbumCell.swift in Sources */,
