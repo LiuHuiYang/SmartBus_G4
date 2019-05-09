@@ -5396,7 +5396,7 @@
 				ASSETCATALOG_OTHER_FLAGS = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Smart-Bus/Smart-Bus.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
@@ -5411,6 +5411,7 @@
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BDSClientLib",
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BauduSpeechResources/BDSClientLib",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5432,7 +5433,7 @@
 				ASSETCATALOG_OTHER_FLAGS = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Smart-Bus/Smart-Bus.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
@@ -5447,6 +5448,7 @@
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BDSClientLib",
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BauduSpeechResources/BDSClientLib",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";

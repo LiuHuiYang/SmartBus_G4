@@ -151,13 +151,6 @@ extension SHSocketTools {
         )
 
         //       print("发送控制包: \(data)")
-
-        // // 开启接收
-        // SHSocketTools.shared.socket.beginReceiving()
-
-        // // 开启广播
-        // SHSocketTools.shared.socket.udpSocket.enableBroadcast(true)
-
     }
     
     /// 打包数据

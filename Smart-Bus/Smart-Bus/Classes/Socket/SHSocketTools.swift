@@ -6,25 +6,8 @@
 //  Copyright © 2017 SmartHome. All rights reserved.
 /*
     GCDAsyncUdpSocket使用单例，
-    但是每次锁屏后socket会close，
+    但是每次锁屏后socket会自行执行close，
     所以只能每次进入活跃状态后重新创建一个socket。
-
-测试流程: 
-    1> 
-        每次从后台进入到前台
-        从熄屏状态恢复到亮屏状态 都会出现这句话
-
-    2.打印每次socket的地址
-
-    3.检查语法错误
-
-    4.比较socket启动到重新回到焦点 是否会死在 socket上
-
-    5.注意打印语句的出现顺序
-        NSLog(@"
-        print("
-
-    打包上传的总题
 */
 
 import UIKit
@@ -39,7 +22,7 @@ import CocoaAsyncSocket
     /// 发送数据包缓存
     static let caches = NSCache<AnyObject, AnyObject>()
     
-    ///// UDP 广播通知
+    /// UDP 广播通知
     static let broadcastNotificationName = "socketBroadcastNotification"
  
     /// socket对象
@@ -48,13 +31,15 @@ import CocoaAsyncSocket
     /// 创建socket
     func setupSokcet() {
  
-        // 没有关闭先关闭
+        // 没有关闭
         if socket?.isClosed() == false {
             
-            socket?.close()
-            socket = nil
+//            print("socket 没有关闭 不再重新创建 ")
+            return
         }
  
+//        print("socket :\(socket?.isClosed() == true ) - \(socket == nil) 需要重新创建")
+        
         let udpSocket =
             GCDAsyncUdpSocket(
                 delegate: self,
@@ -69,6 +54,8 @@ import CocoaAsyncSocket
         _ = try? udpSocket.beginReceiving()
         
         socket = udpSocket
+        
+//        print("1111全部创建设置创建完成")
     }
     
     /// CRC tab 校验码查询数据的数组表格
