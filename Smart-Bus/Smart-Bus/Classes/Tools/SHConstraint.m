@@ -83,3 +83,4 @@ NSString * const UIAPPLICATION_BACKGROUND_TASK_KEY =  @"UIApplicationBackgroundT
 /// App成为焦点的通知
 NSString * const
     SHBecomeFocusNotification = @"SHBecomeFocusNotification";
+

@@ -17,6 +17,13 @@
 /// 当前控制器成为焦点
 - (void)becomeFocus;
 
+/**
+ 当前控制器正在显示
+ 
+ @return YES 正在显示
+ */
+- (BOOL)isVisible;
+
 /// 解析数据
 - (void)analyzeReceivedSocketData:(SHSocketData *)socketData;
 

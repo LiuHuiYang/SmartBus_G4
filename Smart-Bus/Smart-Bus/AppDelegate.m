@@ -37,7 +37,7 @@
     [self.window makeKeyAndVisible];
 
     [self setupSVProgressHUD];
-  
+    
 //     用于测试重发机制的测试代码
 //    SHMacroCommand *command = [[SHMacroCommand alloc] init];
 //    command.subnetID = 1;
@@ -67,41 +67,6 @@
     return YES;
 }
 
-
-/// 程序进入后台
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-
-    // 手动关闭socket
-    
-    
-    // 开启后台任务
-    if ([[NSUserDefaults standardUserDefaults]
-         integerForKey:UIAPPLICATION_BACKGROUND_TASK_KEY] ==
-        SHApplicationBackgroundTaskOpen) {
-        
-        self.task = [[UIApplication sharedApplication]
-                     beginBackgroundTaskWithExpirationHandler:nil];
-    }
-}
-
-/// 程序已经回到前台
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    
-    // App 成为活跃状态 创建socket
-    [[SHSocketTools shared] setupSokcet];
-    
-    [NSNotificationCenter.defaultCenter postNotificationName:SHBecomeFocusNotification object:nil];
-    
-    if ([[NSUserDefaults standardUserDefaults]
-         integerForKey:UIAPPLICATION_BACKGROUND_TASK_KEY] ==
-        SHApplicationBackgroundTaskOpen) {
-        
-        [[UIApplication sharedApplication] endBackgroundTask:self.task];
-    }
-
-    
-}
-
 //// 设置指示器
 - (void)setupSVProgressHUD {
     
@@ -123,16 +88,16 @@
     CGFloat scale = isIPAD ? 0.4 : 0.25;
     
     UIFont *font =
-        isIPAD ?
-            [UIView suitFontForPad] :
-            [UIFont preferredFontForTextStyle:
-                UIFontTextStyleTitle3
-            ];
+    isIPAD ?
+    [UIView suitFontForPad] :
+    [UIFont preferredFontForTextStyle:
+     UIFontTextStyleTitle3
+     ];
     
     CGFloat imageSize =
-        isIPAD ?
-            (navigationBarHeight + statusBarHeight) :
-            defaultHeight;
+    isIPAD ?
+    (navigationBarHeight + statusBarHeight) :
+    defaultHeight;
     
     CGFloat width = UIView.frame_screenWidth * scale;
     CGFloat height = UIView.frame_screenHeight * scale;
@@ -142,8 +107,39 @@
     [SVProgressHUD setFont: font];
     
     [SVProgressHUD setImageViewSize:
-        CGSizeMake(imageSize, imageSize)
-    ];
+     CGSizeMake(imageSize, imageSize)
+     ];
+}
+
+/// 程序进入后台
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+    
+    // 开启后台任务
+    if ([[NSUserDefaults standardUserDefaults]
+         integerForKey:UIAPPLICATION_BACKGROUND_TASK_KEY] ==
+        SHApplicationBackgroundTaskOpen) {
+        
+        self.task = [[UIApplication sharedApplication]
+                     beginBackgroundTaskWithExpirationHandler:nil];
+    }
+}
+
+/// 程序已经回到前台
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    // App 成为活跃状态 创建socket
+    [[SHSocketTools shared] setupSocket];
+    
+    // 发出通知 主动读取状态
+     [NSNotificationCenter.defaultCenter postNotificationName:SHBecomeFocusNotification object:nil];
+    
+    if ([[NSUserDefaults standardUserDefaults]
+         integerForKey:UIAPPLICATION_BACKGROUND_TASK_KEY] ==
+        SHApplicationBackgroundTaskOpen) {
+        
+        [[UIApplication sharedApplication] endBackgroundTask:self.task];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -152,7 +148,6 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     
-    printLog(@"回到前台");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

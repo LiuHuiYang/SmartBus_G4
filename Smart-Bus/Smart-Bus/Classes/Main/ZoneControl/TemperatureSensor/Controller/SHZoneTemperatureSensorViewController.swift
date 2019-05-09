@@ -100,39 +100,33 @@ extension SHZoneTemperatureSensorViewController {
     /// 接收到广播
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
         
-        DispatchQueue.global().async {
+        if socketData.operatorCode != 0xE3E8 {
+            return
+        }
+        
+        if socketData.additionalData[0] != unitFlag {
+            return
+        }
+        
+        for sensor in allTemperatureSensors {
             
-            if socketData.operatorCode != 0xE3E8 {
-                return
-            }
-            
-            if socketData.additionalData[0] != unitFlag {
-                return
-            }
-            
-            for sensor in self.allTemperatureSensors {
+            if sensor.subnetID == socketData.subNetID &&
+                sensor.deviceID == socketData.deviceID &&
+                sensor.channelNo >= 1       &&
+                sensor.channelNo <= 8  {
                 
-                if sensor.subnetID == socketData.subNetID &&
-                    sensor.deviceID == socketData.deviceID &&
-                    sensor.channelNo >= 1       &&
-                    sensor.channelNo <= 8  {
-                    
-                    let index = Int(sensor.channelNo)
-                    
-                    let temperature = Int(socketData.additionalData[index])
-                    
-                    let realTemperature =
-                        (socketData.additionalData[index + 8] == 0) ? temperature : (0 - temperature)
-                    
-                    sensor.currentValue = realTemperature
-                }
-            }
-            
-            DispatchQueue.main.async {
+                let index = Int(sensor.channelNo)
                 
-                self.temperatureListView.reloadData()
+                let temperature = Int(socketData.additionalData[index])
+                
+                let realTemperature =
+                    (socketData.additionalData[index + 8] == 0) ? temperature : (0 - temperature)
+                
+                sensor.currentValue = realTemperature
             }
         }
+        
+        temperatureListView.reloadData()
     }
     
     /// 读取温度
@@ -163,11 +157,12 @@ extension SHZoneTemperatureSensorViewController {
         }
     }
     
-    /// 成为焦点主动读取状态
     override func becomeFocus() {
-        super.becomeFocus()
         
-        readTemperature()
+        if isVisible() {
+        
+            readTemperature()
+        }
     }
 }
 

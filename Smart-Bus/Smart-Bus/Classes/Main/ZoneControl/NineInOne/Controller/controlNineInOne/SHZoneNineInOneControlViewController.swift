@@ -307,9 +307,11 @@ extension SHZoneNineInOneControlViewController {
     }
     
     override func becomeFocus() {
-        super.becomeFocus()
         
-        readDevicesStatus()
+        if isVisible() {
+        
+            readDevicesStatus()
+        }
     }
 }
 

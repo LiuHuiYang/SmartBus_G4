@@ -80,55 +80,50 @@ extension SHZoneDryContactViewController {
     /// 接收到广播
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
         
-        DispatchQueue.global().async {
+        // 0x012D 主动读取
+        // 0xDC22 广播状态
+        if  (socketData.operatorCode != 0x012D &&
+            socketData.operatorCode != 0xDC22) ||
             
-            // 0x012D 主动读取
-            // 0xDC22 广播状态
-            if  (socketData.operatorCode != 0x012D &&
-                socketData.operatorCode != 0xDC22) ||
+            (socketData.operatorCode == 0x012D &&
+                socketData.additionalData[0] != 0xF8){
+            
+            return
+        }
+        
+        let flagIndex =
+            (socketData.operatorCode == 0x012D) ? 1 : 0
+        
+        let dryContactsCount =
+            Int(socketData.additionalData[flagIndex])
+        
+        for i in 1 ... dryContactsCount {
+            
+            for drynode in allDryContacts {
                 
-                (socketData.operatorCode == 0x012D &&
-                    socketData.additionalData[0] != 0xF8){
-                
-                return
-            }
-            
-            let flagIndex =
-                (socketData.operatorCode == 0x012D) ? 1 : 0
-            
-            let dryContactsCount =
-                Int(socketData.additionalData[flagIndex])
-            
-            for i in 1 ... dryContactsCount {
-                
-                for drynode in self.allDryContacts {
+                if drynode.subnetID == socketData.subNetID &&
+                    drynode.deviceID == socketData.deviceID &&
+                    i == drynode.channelNo {
                     
-                    if drynode.subnetID == socketData.subNetID &&
-                        drynode.deviceID == socketData.deviceID &&
-                        i == drynode.channelNo {
-                        
-                        // 获得类型
-                        let type =
-                            socketData.additionalData[i + flagIndex]
-                        
-                        drynode.type =
-                            SHDryContactType(rawValue: type) ?? .invalid
-                        
-                        // 获得状态
-                        let status =
-                            socketData.additionalData[i + flagIndex + dryContactsCount]
-                        
-                        drynode.status =
-                            SHDryContactStatus(rawValue: status) ?? .close
-                    }
+                    // 获得类型
+                    let type =
+                        socketData.additionalData[i + flagIndex]
+                    
+                    drynode.type =
+                        SHDryContactType(rawValue: type) ?? .invalid
+                    
+                    // 获得状态
+                    let status =
+                        socketData.additionalData[i + flagIndex + dryContactsCount]
+                    
+                    drynode.status =
+                        SHDryContactStatus(rawValue: status) ?? .close
+                    
                 }
             }
-            
-            DispatchQueue.main.async {
-                
-                self.dryContactListView.reloadData()
-            }
         }
+        
+        dryContactListView.reloadData()
     }
     
     
@@ -157,11 +152,11 @@ extension SHZoneDryContactViewController {
         }
     }
     
-    /// 成为焦点主动读取状态
     override func becomeFocus() {
-        super.becomeFocus()
-        
-        readDevicesStatus()
+         
+        if isVisible() {
+            readDevicesStatus()
+        }
     }
 }
 

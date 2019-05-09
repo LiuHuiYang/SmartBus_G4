@@ -14,10 +14,15 @@
 
 @implementation SHViewController
 
+/// 当前控制器成为焦点
+- (void)becomeFocus {
+     
+   
+}
 
 /**
  当前控制器正在显示
-
+ 
  @return YES 正在显示
  */
 - (BOOL)isVisible {
@@ -32,8 +37,7 @@
     [super viewWillLayoutSubviews];
     
     // 记录当前是否横竖屏
-    self.isPortrait =
-        (self.view.frame_height > self.view.frame_width);
+    self.isPortrait = (self.view.frame_height > self.view.frame_width);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -71,7 +75,7 @@
    
     // 1.屏幕旋转
     [self viewWillTransitionToSize:self.view.bounds.size withTransitionCoordinator:self.transitionCoordinator];
-     
+    
     // 接收数据广播
     [[NSNotificationCenter defaultCenter]
         addObserver:self
@@ -86,19 +90,9 @@
      selector:@selector(becomeFocus)
      name:SHBecomeFocusNotification
      object:nil
-    ];
+     ];
 }
 
-
-/// 当前控制器成为焦点
-- (void)becomeFocus {
-    
-    if (![self isVisible]) {
-     
-        return;
-    }
-    
-}
 
 /// 接收到了数据
 - (void)receiveBroadcastMessages:(NSNotification *)notification {

@@ -46,11 +46,10 @@ extension SHSocketTools {
         additionalData:[UInt8],
         remoteMacAddress: String =
             SHSocketTools.remoteControlMacAddress(),
-        needReSend: Bool = true,  
+        needReSend: Bool = true,
         isDMX: Bool = false ) {
         
         DispatchQueue.global().async {
- 
             
             var count = needReSend ? 3 : 1
             
@@ -99,18 +98,13 @@ extension SHSocketTools {
                 )
             }
         }
+    
+        // 所有的指令都要延时 100 ms执行
+        // 100ms 是依据产品固件计算出来的平均值 
+        // 实际给定 120ms
+        Thread.sleep(forTimeInterval: 0.12)
     }
     
-    
-    /// 具体发送每一条指令的函数
-    ///
-    /// - Parameters:
-    ///   - operatorCode: 操作码
-    ///   - subNetID: 子网ID
-    ///   - deviceID: 设备ID
-    ///   - additionalData: 可变参数
-    ///   - remoteMacAddress: RSIP的网卡地址
-    ///   - isDMX: 是否为DMX设备
     private static func sendData(
         operatorCode: UInt16,
         subNetID: UInt8,
@@ -129,23 +123,31 @@ extension SHSocketTools {
             remoteMacAddress: remoteMacAddress,
             isDMX: isDMX
         )
-         
         
-        _ = try? SHSocketTools.shared.socket?.bind(toPort: data.port)
-         
         let sendData =
             NSMutableData(bytes: data.datas,
                           length: data.datas.count
             ) as Data
+    
         
-        SHSocketTools.shared.socket?.send(
+        guard let socket = SHSocketTools.shared.socket else {
+           
+            SVProgressHUD.showError(
+                withStatus: "socket没有值!!!"
+            )
+
+            return
+        }
+        
+        _ = try? socket.bind(toPort: data.port)
+        _ = try? socket.beginReceiving()
+        
+        socket.send(
             sendData, toHost: data.destAddress,
             port: data.port,
             withTimeout: -1,
             tag: 0
         )
-        
-//        SHSocketTools.shared.socket?.beginReceiving()
     }
     
     /// 打包数据

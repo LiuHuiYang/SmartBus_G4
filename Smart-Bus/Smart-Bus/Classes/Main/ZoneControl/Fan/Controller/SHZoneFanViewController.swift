@@ -53,10 +53,7 @@ class SHZoneFanViewController: SHViewController {
         
         fansListView.reloadData()
         
-        self.performSelector(
-            inBackground: #selector(readDevicesStatus),
-            with: nil
-        )
+        readDevicesStatus()
     }
 
     override func viewDidLayoutSubviews() {
@@ -75,65 +72,58 @@ extension SHZoneFanViewController {
     /// 接收到广播
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
         
-        DispatchQueue.global().async {
+        switch socketData.operatorCode {
             
-            switch socketData.operatorCode {
+        case 0x0032:
+            
+            let channelNumber = socketData.additionalData[0]
+            
+            if 0xF8 == socketData.additionalData[1] {
                 
-            case 0x0032:
-                
-                let channelNumber = socketData.additionalData[0]
-                
-                if 0xF8 == socketData.additionalData[1] {
-                    
-                    for fan in self.allFans {
-                        
-                        if fan.subnetID == socketData.subNetID &&
-                            fan.deviceID == socketData.deviceID &&
-                            fan.channelNO == channelNumber {
-                            
-                            let fanSpeed = socketData.additionalData[2]
-                            fan.fanSpeed =
-                                SHFanSpeed(rawValue:fanSpeed) ?? .off
-                        }
-                    }
-                }
-                
-            case 0x0034:
-                
-                let totalChannels = socketData.additionalData[0]
-                
-                for fan in self.allFans {
+                for fan in allFans {
                     
                     if fan.subnetID == socketData.subNetID &&
                         fan.deviceID == socketData.deviceID &&
-                        fan.channelNO <= totalChannels {
+                        fan.channelNO == channelNumber {
                         
-                        let index = Int(fan.channelNO)
-                        let fanSpeed = SHFanSpeed(rawValue: socketData.additionalData[index]) ?? .off
-                        
-                        fan.fanSpeed = fanSpeed
+                        let fanSpeed = socketData.additionalData[2]
+                        fan.fanSpeed =
+                            SHFanSpeed(rawValue:fanSpeed) ?? .off
                     }
                 }
-                
-            default:
-                break
             }
             
+        case 0x0034:
             
-            if socketData.operatorCode == 0x0034 ||
-                socketData.operatorCode == 0x0032 {
+            let totalChannels = socketData.additionalData[0]
+            
+            for fan in allFans {
                 
-                DispatchQueue.main.async {
+                if fan.subnetID == socketData.subNetID &&
+                    fan.deviceID == socketData.deviceID &&
+                    fan.channelNO <= totalChannels {
                     
-                    self.fansListView.reloadData()
+                    let index = Int(fan.channelNO)
+                    let fanSpeed = SHFanSpeed(rawValue: socketData.additionalData[index]) ?? .off
+                    
+                    fan.fanSpeed = fanSpeed
                 }
-                
             }
+            
+        default:
+            break
+        }
+        
+        
+        if socketData.operatorCode == 0x0034 ||
+            socketData.operatorCode == 0x0032 {
+            
+            fansListView.reloadData()
         }
     }
     
     /// 读取状态
-    @objc private func readDevicesStatus() {
+    private func readDevicesStatus() {
         
         var subNetID: UInt8 = 0
         var deviceID: UInt8 = 0
@@ -159,11 +149,12 @@ extension SHZoneFanViewController {
         
     }
     
-    /// 成为焦点主动读取状态
     override func becomeFocus() {
-        super.becomeFocus()
+       
+        if isVisible() {
         
-        readDevicesStatus()
+            readDevicesStatus()
+        }
     }
 }
 

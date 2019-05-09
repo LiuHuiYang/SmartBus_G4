@@ -73,8 +73,6 @@ extension SHZoneShadeViewController {
     
     /// 接收广播数据
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
-        
-        //....
     }
     
     /// 读取状态
@@ -105,11 +103,11 @@ extension SHZoneShadeViewController {
         
     }
     
-    /// 成为焦点主动读取状态
     override func becomeFocus() {
-        super.becomeFocus()
-        
-        readDevicesStatus()
+         
+        if isVisible() {
+            readDevicesStatus()
+        }
     }
 }
 

@@ -4,11 +4,7 @@
 //
 //  Created by Mark Liu on 2017/6/28.
 //  Copyright © 2017 SmartHome. All rights reserved.
-/*
-    GCDAsyncUdpSocket使用单例，
-    但是每次锁屏后socket会自行执行close，
-    所以只能每次进入活跃状态后重新创建一个socket。
-*/
+//
 
 import UIKit
 import CocoaAsyncSocket
@@ -23,23 +19,21 @@ import SVProgressHUD
     /// 发送数据包缓存
     static let caches = NSCache<AnyObject, AnyObject>()
     
-    /// UDP 广播通知
+    ///// UDP 广播通知
     static let broadcastNotificationName = "socketBroadcastNotification"
  
     /// socket对象
     var socket: GCDAsyncUdpSocket?
     
-
-    /// 创建socket
-    func setupSokcet() {
- 
+    func setupSocket() {
+        
         // 没有关闭
-       if socket?.isClosed() == false {
-
-           print( "socket 没有关闭 不再重新创建 ")
-           return
-       }
-  
+        if socket?.isClosed() == false {
+            
+            print( "socket 没有关闭 不再重新创建 ")
+            return
+        }
+        
         let udpSocket =
             GCDAsyncUdpSocket(
                 delegate: self,
@@ -55,7 +49,7 @@ import SVProgressHUD
         
         socket = udpSocket
         
-        SVProgressHUD.showSuccess(withStatus: "重新创建socket")
+        SVProgressHUD.showSuccess(withStatus: "创建socket")
     }
     
     /// CRC tab 校验码查询数据的数组表格

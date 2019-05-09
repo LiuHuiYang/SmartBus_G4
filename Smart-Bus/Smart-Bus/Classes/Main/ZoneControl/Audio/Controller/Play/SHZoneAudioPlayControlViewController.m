@@ -1794,9 +1794,10 @@ UITableViewDelegate, UITableViewDataSource>
 
 - (void)becomeFocus {
     
-    [super becomeFocus];
-    
-    [self readAudioStatus];
+    if ([self isVisible]) {
+        
+        [self readAudioStatus];
+    }
 }
 
 
