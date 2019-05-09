@@ -70,6 +70,9 @@
 
 /// 程序进入后台
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+
+    // 手动关闭socket
+    
     
     // 开启后台任务
     if ([[NSUserDefaults standardUserDefaults]
@@ -149,6 +152,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     
+    printLog(@"回到前台");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

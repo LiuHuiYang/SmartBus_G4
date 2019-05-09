@@ -100,6 +100,19 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
         
         // ...
-        printMessage(message: "socket 怎么了")
+        print("socket 关闭了")
+        
+        // 如果关闭马上创建
+        SHSocketTools.shared.setupSokcet()
+    }
+    
+    func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
+    
+        print("成功发送信息")
+    }
+    
+    func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {
+    
+        print("发送失败: \(error)")
     }
 }

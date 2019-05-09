@@ -12,6 +12,7 @@
 
 import UIKit
 import CocoaAsyncSocket
+import SVProgressHUD
 
 /// SHSocketTools
 @objcMembers class SHSocketTools: NSObject {
@@ -27,16 +28,17 @@ import CocoaAsyncSocket
  
     /// socket对象
     var socket: GCDAsyncUdpSocket?
+    
 
     /// 创建socket
     func setupSokcet() {
  
         // 没有关闭
-        if socket?.isClosed() == false {
-            
-//            printMessage("socket 没有关闭 不再重新创建 ")
-            return
-        }
+       if socket?.isClosed() == false {
+
+           print( "socket 没有关闭 不再重新创建 ")
+           return
+       }
   
         let udpSocket =
             GCDAsyncUdpSocket(
@@ -53,7 +55,7 @@ import CocoaAsyncSocket
         
         socket = udpSocket
         
-//        printMessage("1111全部创建设置创建完成")
+        SVProgressHUD.showSuccess(withStatus: "重新创建socket")
     }
     
     /// CRC tab 校验码查询数据的数组表格
