@@ -135,7 +135,7 @@
     [SVProgressHUD setMinimumSize:CGSizeMake(width, height)];
     
     [SVProgressHUD setFont: font];
-      
+    
     [SVProgressHUD setImageViewSize:
         CGSizeMake(imageSize, imageSize)
     ];
