@@ -60,9 +60,7 @@
    
     // 1.屏幕旋转
     [self viewWillTransitionToSize:self.view.bounds.size withTransitionCoordinator:self.transitionCoordinator];
-    
-    [self setupSVProgressHUD];
-    
+     
     // 接收数据广播
     [[NSNotificationCenter defaultCenter]
         addObserver:self
@@ -72,37 +70,7 @@
     ];
 }
 
-//// 设置指示器
-- (void)setupSVProgressHUD {
-    
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
-    [SVProgressHUD setBackgroundColor:[UIColor colorWithHex:0x726B6E alpha:1.0]];
-    
-    [SVProgressHUD setMinimumDismissTimeInterval:2.0];
-    
-    [SVProgressHUD setSuccessImage:[UIImage imageNamed:@"showSuccess"]];
-    [SVProgressHUD setErrorImage:[UIImage imageNamed:@"showError"]];
-    [SVProgressHUD setInfoImage:[UIImage imageNamed:@"showInfo"]];
-    
-    [SVProgressHUD setForegroundColor:[UIView textWhiteColor]];
-    [SVProgressHUD setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleTitle3]];
-    
-    [SVProgressHUD setCornerRadius:statusBarHeight];
-    
-    [SVProgressHUD setImageViewSize:CGSizeMake(defaultHeight, defaultHeight)];
-    
-    [SVProgressHUD setMinimumSize:CGSizeMake(self.view.frame_width * 0.25, self.view.frame_height * 0.25)];
-    
-    
-    if ([UIDevice is_iPad]) {
-        
-        [SVProgressHUD setFont:[UIView suitFontForPad]];
-        
-        [SVProgressHUD setImageViewSize:CGSizeMake(navigationBarHeight + statusBarHeight, navigationBarHeight + statusBarHeight)];
-        
-        [SVProgressHUD setMinimumSize:CGSizeMake(self.view.frame_width * 0.4, self.view.frame_height * 0.4)];
-    }
-}
+
 
 /// 接收到了数据
 - (void)receiveBroadcastMessages:(NSNotification *)notification {

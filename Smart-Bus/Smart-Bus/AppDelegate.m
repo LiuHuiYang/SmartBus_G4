@@ -36,6 +36,7 @@
     
     [self.window makeKeyAndVisible];
 
+    [self setupSVProgressHUD];
   
 //     用于测试重发机制的测试代码
 //    SHMacroCommand *command = [[SHMacroCommand alloc] init];
@@ -94,6 +95,50 @@
     }
 
     
+}
+
+//// 设置指示器
+- (void)setupSVProgressHUD {
+    
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithHex:0x726B6E alpha:1.0]];
+    
+    [SVProgressHUD setMinimumDismissTimeInterval:2.0];
+    
+    [SVProgressHUD setSuccessImage:[UIImage imageNamed:@"showSuccess"]];
+    [SVProgressHUD setErrorImage:[UIImage imageNamed:@"showError"]];
+    [SVProgressHUD setInfoImage:[UIImage imageNamed:@"showInfo"]];
+    
+    [SVProgressHUD setForegroundColor:[UIView textWhiteColor]];
+    
+    [SVProgressHUD setCornerRadius:statusBarHeight];
+    
+    BOOL isIPAD = [UIDevice is_iPad];
+    
+    CGFloat scale = isIPAD ? 0.4 : 0.25;
+    
+    UIFont *font =
+        isIPAD ?
+            [UIView suitFontForPad] :
+            [UIFont preferredFontForTextStyle:
+                UIFontTextStyleTitle3
+            ];
+    
+    CGFloat imageSize =
+        isIPAD ?
+            (navigationBarHeight + statusBarHeight) :
+            defaultHeight;
+    
+    CGFloat width = UIView.frame_screenWidth * scale;
+    CGFloat height = UIView.frame_screenHeight * scale;
+    
+    [SVProgressHUD setMinimumSize:CGSizeMake(width, height)];
+    
+    [SVProgressHUD setFont: font];
+      
+    [SVProgressHUD setImageViewSize:
+        CGSizeMake(imageSize, imageSize)
+    ];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
