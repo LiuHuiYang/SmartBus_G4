@@ -133,7 +133,7 @@ extension SHSocketTools {
         guard let socket = SHSocketTools.shared.socket else {
            
             SVProgressHUD.showError(
-                withStatus: "socket没有值!!!"
+                withStatus: "socket is nil !"
             )
 
             return

@@ -114,6 +114,8 @@
 /// 程序进入后台
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     
+    [SHSocketTools.shared.socket close];
+    SHSocketTools.shared.socket = nil;
     
     // 开启后台任务
     if ([[NSUserDefaults standardUserDefaults]
