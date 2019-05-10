@@ -78,7 +78,7 @@ extension SHSocketTools {
                          isDMX: isDMX
                 )
                 
-                Thread.sleep(forTimeInterval: 0.7)
+                Thread.sleep(forTimeInterval: 1.5)
                 
                 // 查询缓存
                 if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
@@ -98,8 +98,9 @@ extension SHSocketTools {
             }
         }
         
-        // 所有的指令都要延时 0.1秒执行 (0.1是依据产品固件计算出来的平均值)
-        Thread.sleep(forTimeInterval: 0.12) // 实际给定 120ms
+        // 所有的指令都要延时 0.1秒执行
+        // (0.1是依据产品固件计算出来的平均值)
+        Thread.sleep(forTimeInterval: 0.1)
     }
     
     private static func sendData(
@@ -123,6 +124,9 @@ extension SHSocketTools {
 //        print("发送控制包: \(data)")
         
 //        _ = try? SHSocketTools.shared.socket .bind(toPort: data.port)
+        
+        // 加入组播
+        _ = try? SHSocketTools.shared.socket.joinMulticastGroup(data.destAddress)
         
         _ = try? SHSocketTools.shared.socket.bind(
             toPort: data.port,
