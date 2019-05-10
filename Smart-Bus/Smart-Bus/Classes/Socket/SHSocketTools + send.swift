@@ -52,7 +52,7 @@ extension SHSocketTools {
         DispatchQueue.global().async {
             
             var count = needReSend ? 3 : 1
-            
+
             let socketData =
                 SHSocketData(operatorCode: operatorCode,
                              subNetID: subNetID,
@@ -62,14 +62,14 @@ extension SHSocketTools {
             )
             
             if needReSend {
-                
+             
                 SHSocketTools.addSocketData(
                     socketData: socketData
                 )
             }
             
             while count > 0 {
-                
+               
                 sendData(operatorCode: operatorCode,
                          subNetID: subNetID,
                          deviceID: deviceID,
@@ -78,31 +78,28 @@ extension SHSocketTools {
                          isDMX: isDMX
                 )
                 
-                // 保证固件红外码操作完成响应时间足够
-                Thread.sleep(forTimeInterval: 1.5)
+                Thread.sleep(forTimeInterval: 0.7)
                 
                 // 查询缓存
                 if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
                     
                     return
                 }
-                
+ 
                 count -= 1
             }
             
             // 重发超过三次
             if (count == 0) {
-                
+              
                 SHSocketTools.removeSocketData(
                     socketData: socketData
                 )
             }
         }
-    
-        // 所有的指令都要延时 100 ms执行
-        // 100ms 是依据产品固件计算出来的平均值 
-        // 实际给定 120ms
-        Thread.sleep(forTimeInterval: 0.12)
+        
+        // 所有的指令都要延时 0.1秒执行 (0.1是依据产品固件计算出来的平均值)
+        Thread.sleep(forTimeInterval: 0.12) // 实际给定 120ms
     }
     
     private static func sendData(
@@ -111,9 +108,8 @@ extension SHSocketTools {
         deviceID: UInt8,
         additionalData:[UInt8],
         remoteMacAddress: String =
-            SHSocketTools.remoteControlMacAddress(),
+        SHSocketTools.remoteControlMacAddress(),
         isDMX: Bool = false ) {
-         
      
         let data = packingData(
             operatorCode: operatorCode,
@@ -124,25 +120,24 @@ extension SHSocketTools {
             isDMX: isDMX
         )
         
+//        print("发送控制包: \(data)")
+        
+//        _ = try? SHSocketTools.shared.socket .bind(toPort: data.port)
+        
+        _ = try? SHSocketTools.shared.socket.bind(
+            toPort: data.port,
+            interface: nil
+        )
+        
+        _ = try?
+            SHSocketTools.shared.socket.beginReceiving()
+        
         let sendData =
             NSMutableData(bytes: data.datas,
                           length: data.datas.count
-            ) as Data
-    
+                ) as Data
         
-        guard let socket = SHSocketTools.shared.socket else {
-           
-            SVProgressHUD.showError(
-                withStatus: "socket is nil !"
-            )
-
-            return
-        }
-        
-        _ = try? socket.bind(toPort: data.port)
-        _ = try? socket.beginReceiving()
-        
-        socket.send(
+        SHSocketTools.shared.socket.send(
             sendData, toHost: data.destAddress,
             port: data.port,
             withTimeout: -1,
@@ -304,7 +299,9 @@ extension SHSocketTools {
                     
                     Scanner(string: macAddress[i]
                         ).scanHexInt32(&mac)
-                   
+                    
+                    print("\(mac)")
+                    
                     index += 1
                     socketData[index] = UInt8(mac)
                 }
@@ -390,7 +387,7 @@ extension SHSocketTools {
     ///
     /// - Returns: MAC地址
     static func remoteControlMacAddress() -> String {
-     
+        
         let path =
             FileTools.documentPath() + "/" + selectMacAddress
         
@@ -421,6 +418,6 @@ extension SHSocketTools {
         return
             (UserDefaults.standard.object(
                 forKey: localWifiKey
-            ) as? String) ?? ""
+                ) as? String) ?? ""
     }
 }

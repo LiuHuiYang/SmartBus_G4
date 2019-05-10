@@ -18,17 +18,10 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         // 解析成数组
         var recivedData = [UInt8](data)
         
-        if recivedData.count < 27 ||
-            recivedData[14] != 0xAA ||
-            recivedData[15] != 0xAA {
-            
-            return
-        }
-        
         // 数据包的前16个固定字节数(源IP + 协议头 + 开始的操作码 --> 不影响解析，所以去除)
         
         // FIXME: 暂时不进行接收校验
-        // 16 是0xAAAA后的位置 SN2
+        // 16的是0xAAAA后的位置 SN2
         guard check_crc(position: &(recivedData[16]),
                         length: recivedData.count - 16 - 2
 
@@ -76,7 +69,6 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
             socketData
         ]
         
-        
         DispatchQueue.main.async {
         
             NotificationCenter.default.post(
@@ -90,17 +82,15 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     /// socket 关闭
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
         
-        print("socket 已经关闭")
-        
+        sock.setDelegateQueue(DispatchQueue.global())
+        sock.setDelegate(self)
+        _ = try? sock.enableBroadcast(true)
+        _ = try? sock.beginReceiving()
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
-    
-        print("socket 成功发送消息 ")
-    }
-    
-    func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {
+
         
-        print("socket 发送消息失败!!!")
+        _ = try? sock.beginReceiving()
     }
 }

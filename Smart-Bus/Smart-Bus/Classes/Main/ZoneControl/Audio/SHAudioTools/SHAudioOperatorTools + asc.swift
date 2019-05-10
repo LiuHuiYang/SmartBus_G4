@@ -9,6 +9,10 @@
 import Foundation
 
 
+extension SHAudioOperatorTools {
+    
+}
+
 // MARK: - ASCII码的转换
 extension SHAudioOperatorTools {
     

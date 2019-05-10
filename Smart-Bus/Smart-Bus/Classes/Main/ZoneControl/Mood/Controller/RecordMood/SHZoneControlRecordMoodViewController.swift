@@ -453,75 +453,74 @@ extension SHZoneControlRecordMoodViewController {
                     ) {
                     
                     
-                    
-                    guard let string =
-                        NSString(
-                            bytes: &socketData.additionalData[14],
-                            length: count - 14 - 3 - 0,
-                            encoding: String.Encoding.unicode.rawValue
-                        ) else {
-                            
-                            return
-                    }
-                    
                     // 获得音乐来源
                     audio.recordSource =
                         SHAudioOperatorTools.asciiToDecimal(
                             data: socketData.additionalData[2]
                     )
                     
+                    guard let string = String(
+                        bytes: socketData.additionalData[14 ..< count - 3],
+                        encoding: String.Encoding.unicode) as NSString?
+                        else {
+                        
+                        return
+                    }
+                    
+                        // 列表号与列表总数
                     switch socketData.additionalData[11] {
                         
-                        // 列表号与列表总数
-                    case 0x31:
                         // 获得专辑分类 辑字符串:List:1/8
-                        let range1 = string.range(of: "List:")
-                        let range2 = string.range(of: "/")
+                    case 0x31:
                         
-                        if range1.location == NSNotFound ||
-                            range2.location == NSNotFound {
+                        let start =
+                            string.range(of: ":")
+
+                        let end =
+                            string.range(of: "/")
+                        
+                        if start.location == NSNotFound ||
+                            end.location == NSNotFound {
                             
                             break
                         }
                         
                         let range =
                             NSRange(
-                                location: range1.location + range1.length,
+                                location: start.location + start.length,
                                 
                                 length:
-                                    range2.location -
-                                    range1.location -
-                                    range1.length
+                                    end.location -
+                                    start.location -
+                                    start.length
                         )
                         
                         let alubmNumberString =
                             string.substring(with: range)
+                  
+                        audio.recordAlubmNumber =  UInt8(alubmNumberString) ?? 1
                         
-                        audio.recordAlubmNumber =
-                            UInt8(alubmNumberString) ?? 1
                         
-                    // 列表号与列表总数
+                    // 获得歌曲号 歌曲字符串:Track:1/5
                     case 0x33:
                         
-                        // 获得歌曲号 歌曲字符串:Track:1/5
+                        let start = string.range(of: ":")
+                        let end = string.range(of: "/")
                         
-                        let range1 = string.range(of: "Track:")
-                        let range2 = string.range(of: "/")
-                        
-                        if range1.location == NSNotFound ||
-                            range2.location == NSNotFound {
+                        if start.location == NSNotFound ||
+                            end.location == NSNotFound {
                             
                             break
                         }
                         
                         let range =
                             NSRange(
-                                location: range1.location + range1.length,
+                                location: start.location + start.length,
                                 
                                 length:
-                                range2.location -
-                                    range1.location -
-                                    range1.length
+                                end.location -
+                                    start.location -
+                                    start.length
                         )
                         
                         let songNumberString =
@@ -530,9 +529,9 @@ extension SHZoneControlRecordMoodViewController {
                         audio.recordSongNumber =
                             UInt8(songNumberString) ?? 1
                         
+                       
                     default:
                         break
-                        
                         
                     }
                 }

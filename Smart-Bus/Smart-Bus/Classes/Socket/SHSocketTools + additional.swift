@@ -482,7 +482,7 @@ extension SHSocketTools {
                     UInt8(command.firstParameter),
                     UInt8(command.secondParameter)
                 ]
-                  
+                
             } else { // 地热
                 
                 controlData = [

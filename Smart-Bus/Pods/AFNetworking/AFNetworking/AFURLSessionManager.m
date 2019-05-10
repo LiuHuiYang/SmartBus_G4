@@ -148,17 +148,15 @@ typedef void (^AFURLSessionTaskCompletionHandler)(NSURLResponse *response, id re
         progress.pausingHandler = ^{
             [weakTask suspend];
         };
-#if AF_CAN_USE_AT_AVAILABLE
-        if (@available(iOS 9, macOS 10.11, *))
+#if __has_warning("-Wunguarded-availability-new")
+        if (@available(iOS 9, macOS 10.11, *)) {
 #else
-        if ([progress respondsToSelector:@selector(setResumingHandler:)])
+        if ([progress respondsToSelector:@selector(setResumingHandler:)]) {
 #endif
-        {
             progress.resumingHandler = ^{
                 [weakTask resume];
             };
         }
-        
         [progress addObserver:self
                    forKeyPath:NSStringFromSelector(@selector(fractionCompleted))
                       options:NSKeyValueObservingOptionNew
@@ -454,7 +452,7 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 @property (readwrite, nonatomic, strong) NSLock *lock;
 @property (readwrite, nonatomic, copy) AFURLSessionDidBecomeInvalidBlock sessionDidBecomeInvalid;
 @property (readwrite, nonatomic, copy) AFURLSessionDidReceiveAuthenticationChallengeBlock sessionDidReceiveAuthenticationChallenge;
-@property (readwrite, nonatomic, copy) AFURLSessionDidFinishEventsForBackgroundURLSessionBlock didFinishEventsForBackgroundURLSession AF_API_UNAVAILABLE(macos);
+@property (readwrite, nonatomic, copy) AFURLSessionDidFinishEventsForBackgroundURLSessionBlock didFinishEventsForBackgroundURLSession;
 @property (readwrite, nonatomic, copy) AFURLSessionTaskWillPerformHTTPRedirectionBlock taskWillPerformHTTPRedirection;
 @property (readwrite, nonatomic, copy) AFURLSessionTaskDidReceiveAuthenticationChallengeBlock taskDidReceiveAuthenticationChallenge;
 @property (readwrite, nonatomic, copy) AFURLSessionTaskNeedNewBodyStreamBlock taskNeedNewBodyStream;
@@ -841,11 +839,9 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
     self.sessionDidReceiveAuthenticationChallenge = block;
 }
 
-#if !TARGET_OS_OSX
 - (void)setDidFinishEventsForBackgroundURLSessionBlock:(void (^)(NSURLSession *session))block {
     self.didFinishEventsForBackgroundURLSession = block;
 }
-#endif
 
 #pragma mark -
 
@@ -914,12 +910,9 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
         return self.dataTaskDidReceiveResponse != nil;
     } else if (selector == @selector(URLSession:dataTask:willCacheResponse:completionHandler:)) {
         return self.dataTaskWillCacheResponse != nil;
-    }
-#if !TARGET_OS_OSX
-    else if (selector == @selector(URLSessionDidFinishEventsForBackgroundURLSession:)) {
+    } else if (selector == @selector(URLSessionDidFinishEventsForBackgroundURLSession:)) {
         return self.didFinishEventsForBackgroundURLSession != nil;
     }
-#endif
 
     return [[self class] instancesRespondToSelector:selector];
 }
@@ -1137,7 +1130,6 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
     }
 }
 
-#if !TARGET_OS_OSX
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
     if (self.didFinishEventsForBackgroundURLSession) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -1145,7 +1137,6 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
         });
     }
 }
-#endif
 
 #pragma mark - NSURLSessionDownloadDelegate
 

@@ -8,7 +8,6 @@
 
 import UIKit
 import CocoaAsyncSocket
-import SVProgressHUD
 
 /// SHSocketTools
 @objcMembers class SHSocketTools: NSObject {
@@ -23,22 +22,9 @@ import SVProgressHUD
     static let broadcastNotificationName = "socketBroadcastNotification"
  
     /// socket对象
-    var socket: GCDAsyncUdpSocket?
-    
-    func setupSocket() {
+    lazy var socket: GCDAsyncUdpSocket = {
         
-        // 没有关闭
-        if socket?.isClosed() == false {
-            
-            print( "socket 没有关闭 不再重新创建 ")
-            return
-        }
-        
-        let udpSocket =
-            GCDAsyncUdpSocket(
-                delegate: self,
-                delegateQueue: DispatchQueue.global()
-        )
+        let udpSocket = GCDAsyncUdpSocket(delegate: self, delegateQueue: DispatchQueue.global())
         
         udpSocket.setIPv4Enabled(true)
         udpSocket.setIPv6Enabled(true)
@@ -47,10 +33,8 @@ import SVProgressHUD
         
         _ = try? udpSocket.beginReceiving()
         
-        socket = udpSocket
-        
-        SVProgressHUD.showSuccess(withStatus: "创建socket")
-    }
+        return udpSocket
+    }()
     
     /// CRC tab 校验码查询数据的数组表格
     let CRC_TAB: [UInt16]  = [

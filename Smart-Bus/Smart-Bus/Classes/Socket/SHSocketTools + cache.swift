@@ -4,8 +4,10 @@
 //
 //  Created by Mark Liu on 2017/6/28.
 //  Copyright © 2017 SmartHome. All rights reserved.
+//
 
 import Foundation
+
 
 // MARK: - 缓存问题
 extension SHSocketTools {
