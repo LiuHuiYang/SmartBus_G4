@@ -46,10 +46,15 @@ extension SHSocketTools {
         additionalData:[UInt8],
         remoteMacAddress: String =
             SHSocketTools.remoteControlMacAddress(),
-        needReSend: Bool = true,
+        needReSend: Bool = false,
         isDMX: Bool = false ) {
         
-        DispatchQueue.global().async {
+        SHSocketTools.shared.socketQueue.sync {
+            
+//            print("进行发送 ")
+//        }
+//
+//        DispatchQueue.global().async {
             
             var count = needReSend ? 3 : 1
 
@@ -96,11 +101,13 @@ extension SHSocketTools {
                     socketData: socketData
                 )
             }
+            
+            Thread.sleep(forTimeInterval: 0.1)
         }
         
         // 所有的指令都要延时 0.1秒执行
         // (0.1是依据产品固件计算出来的平均值)
-        Thread.sleep(forTimeInterval: 0.1)
+//        Thread.sleep(forTimeInterval: 0.1)
     }
     
     private static func sendData(
@@ -120,18 +127,23 @@ extension SHSocketTools {
             remoteMacAddress: remoteMacAddress,
             isDMX: isDMX
         )
-        
-//        print("发送控制包: \(data)")
-        
-//        _ = try? SHSocketTools.shared.socket .bind(toPort: data.port)
+         
+
+        if SHSocketTools.shared.socket.localPort() != data.port {
+            
+            //        _ = try? SHSocketTools.shared.socket .bind(toPort: data.port)
+            
+            print("需要重新绑定")
+            _ = try? SHSocketTools.shared.socket.bind(
+                toPort: data.port,
+                interface: nil
+            )
+        }
         
         // 加入组播
         _ = try? SHSocketTools.shared.socket.joinMulticastGroup(data.destAddress)
         
-        _ = try? SHSocketTools.shared.socket.bind(
-            toPort: data.port,
-            interface: nil
-        )
+        
         
         _ = try?
             SHSocketTools.shared.socket.beginReceiving()
@@ -147,6 +159,8 @@ extension SHSocketTools {
             withTimeout: -1,
             tag: 0
         )
+        
+//        print("发送控制包: \(data)")
     }
     
     /// 打包数据

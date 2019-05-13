@@ -18,16 +18,24 @@ import CocoaAsyncSocket
     /// 发送数据包缓存
     static let caches = NSCache<AnyObject, AnyObject>()
     
+    
+    lazy var socketQueue =
+        DispatchQueue(label: "socketTools")
+    
     ///// UDP 广播通知
     static let broadcastNotificationName = "socketBroadcastNotification"
  
     /// socket对象
     lazy var socket: GCDAsyncUdpSocket = {
         
-        let udpSocket = GCDAsyncUdpSocket(delegate: self, delegateQueue: DispatchQueue.global())
+        let udpSocket =
+            GCDAsyncUdpSocket(
+                delegate: self,
+                delegateQueue: socketQueue
+        )
         
-        udpSocket.setIPv4Enabled(true)
-        udpSocket.setIPv6Enabled(true)
+//        udpSocket.setIPv4Enabled(true)
+//        udpSocket.setIPv6Enabled(true)
         
         _ = try? udpSocket.enableBroadcast(true)
         

@@ -130,9 +130,6 @@
 /// 程序已经回到前台
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
-    // App 成为活跃状态 创建socket
-//    [[SHSocketTools shared] setupSocket];
-    
     // 发出通知 主动读取状态
     [NSNotificationCenter.defaultCenter postNotificationName:SHBecomeFocusNotification object:nil];
     
