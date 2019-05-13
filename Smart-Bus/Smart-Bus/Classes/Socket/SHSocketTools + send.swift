@@ -46,15 +46,10 @@ extension SHSocketTools {
         additionalData:[UInt8],
         remoteMacAddress: String =
             SHSocketTools.remoteControlMacAddress(),
-        needReSend: Bool = false,
+        needReSend: Bool = true,
         isDMX: Bool = false ) {
-        
-        SHSocketTools.shared.socketQueue.sync {
-            
-//            print("进行发送 ")
-//        }
-//
-//        DispatchQueue.global().async {
+ 
+        DispatchQueue.global().async {
             
             var count = needReSend ? 3 : 1
 
@@ -102,12 +97,12 @@ extension SHSocketTools {
                 )
             }
             
-            Thread.sleep(forTimeInterval: 0.1)
+//            Thread.sleep(forTimeInterval: 0.1)
         }
         
         // 所有的指令都要延时 0.1秒执行
         // (0.1是依据产品固件计算出来的平均值)
-//        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.1)
     }
     
     private static func sendData(
@@ -318,7 +313,7 @@ extension SHSocketTools {
                     Scanner(string: macAddress[i]
                         ).scanHexInt32(&mac)
                     
-                    print("\(mac)")
+//                    print("\(mac)")
                     
                     index += 1
                     socketData[index] = UInt8(mac)

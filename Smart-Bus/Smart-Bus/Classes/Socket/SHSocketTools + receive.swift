@@ -16,14 +16,14 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         
 //        // 本机的IP
-        let localIP =
-            UIDevice.getIPAddress(UIDevice.isIPV6()) ?? ""
-
-        // 接收目标的ip
-        let formIP =
-            GCDAsyncUdpSocket.host(fromAddress: address) ?? ""
-        
-        print("本机: \(localIP) - 来源IP: \(formIP)")
+//        let localIP =
+//            UIDevice.getIPAddress(UIDevice.isIPV6()) ?? ""
+//
+//        // 接收目标的ip
+//        let formIP =
+//            GCDAsyncUdpSocket.host(fromAddress: address) ?? ""
+//
+//        print("本机: \(localIP) - 来源IP: \(formIP)")
 
 //        if formIP.contains(localIP) {
 //            
@@ -58,12 +58,9 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
                 (UInt16(recivedData[22]))
         
         let str = String(format: "%#04X", operatorCode)
-        print("为什么收不到广播1111 - \(str)")
-        
-        if operatorCode == 0x000F {
-            
-            print("为什么收不到广播2222")
-        }
+         
+        print("接收线程: \(Thread.current)")
+        print("为什么收不到广播2222 \(str)")
         
         var additionalData = [UInt8]()
     
@@ -107,7 +104,9 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
         
         print("socket已经关闭了")
-        sock.setDelegateQueue(DispatchQueue.global())
+        sock.setDelegateQueue(
+            SHSocketTools.shared.socketQueue
+        )
         sock.setDelegate(self)
         _ = try? sock.enableBroadcast(true)
         _ = try? sock.beginReceiving()
@@ -115,7 +114,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
 
-        print("socket成功发送信息")
+//        print("socket成功发送信息")
         _ = try? sock.beginReceiving()
     }
 }
