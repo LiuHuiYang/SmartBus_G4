@@ -65,7 +65,7 @@ extension SHSocketTools {
         socketData: SHSocketData,
         isReceived: Bool = false
         ) {
-        
+          
         let cacheKey =
             SHSocketTools.cacheKeyforSocketData(
                 socketData: socketData,

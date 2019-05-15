@@ -15,22 +15,6 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     /// 接收到数据
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         
-//        // 本机的IP
-//        let localIP =
-//            UIDevice.getIPAddress(UIDevice.isIPV6()) ?? ""
-//
-//        // 接收目标的ip
-//        let formIP =
-//            GCDAsyncUdpSocket.host(fromAddress: address) ?? ""
-//
-//        print("本机: \(localIP) - 来源IP: \(formIP)")
-
-//        if formIP.contains(localIP) {
-//            
-//            print("信息中的内容包含有相同的地址:")
-//            return
-//        }
-        
         // 解析成数组
         var recivedData = [UInt8](data)
         
@@ -38,7 +22,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         
         // FIXME: 暂时不进行接收校验
         // 16的是0xAAAA后的位置 SN2
-        guard check_crc(position: &(recivedData[16]),
+        guard SHSocketTools.check_crc(position: &(recivedData[16]),
                         length: recivedData.count - 16 - 2
 
             ) else {
@@ -56,11 +40,6 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         let operatorCode: UInt16 =
             (UInt16(recivedData[21]) << 8) |
                 (UInt16(recivedData[22]))
-        
-        let str = String(format: "%#04X", operatorCode)
-         
-        print("接收线程: \(Thread.current)")
-        print("为什么收不到广播2222 \(str)")
         
         var additionalData = [UInt8]()
     
@@ -102,19 +81,14 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     
     /// socket 关闭
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
-        
-        print("socket已经关闭了")
-        sock.setDelegateQueue(
-            SHSocketTools.shared.socketQueue
-        )
-        sock.setDelegate(self)
-        _ = try? sock.enableBroadcast(true)
-        _ = try? sock.beginReceiving()
+
+        print("socket 关闭")
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
 
-//        print("socket成功发送信息")
-        _ = try? sock.beginReceiving()
+//        print("成功发送信息")
+      
+//        _ = try? sock.beginReceiving()
     }
 }

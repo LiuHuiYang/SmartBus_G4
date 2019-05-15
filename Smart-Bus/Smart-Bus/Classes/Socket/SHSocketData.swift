@@ -42,11 +42,11 @@ import Foundation
          additionalData: [UInt8],
          deviceType: UInt16 = 0) {
         
+        super.init()
         self.operatorCode = operatorCode
         self.subNetID = subNetID
         self.deviceID = deviceID
         self.additionalData = additionalData
         self.deviceType = deviceType
     }
-
 }

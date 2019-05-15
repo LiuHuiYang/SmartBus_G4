@@ -50,8 +50,11 @@ extension SHSocketTools {
         isDMX: Bool = false ) {
  
         DispatchQueue.global().async {
-            
-            var count = needReSend ? 3 : 1
+        
+//            print("顺序执行 \(Date()) - \(subNetID) - \(deviceID) \(Thread.current)")
+
+            /// 最多补发一次
+            var count = needReSend ? 2 : 1
 
             let socketData =
                 SHSocketData(operatorCode: operatorCode,
@@ -78,18 +81,19 @@ extension SHSocketTools {
                          isDMX: isDMX
                 )
                 
-                Thread.sleep(forTimeInterval: 1.5)
+//                Thread.sleep(forTimeInterval: 1.8)
+                Thread.sleep(forTimeInterval: 0.8)
                 
                 // 查询缓存
                 if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
                     
-                    return
+                    break
                 }
  
                 count -= 1
             }
             
-            // 重发超过三次
+            // 重发超过规定次数
             if (count == 0) {
               
                 SHSocketTools.removeSocketData(
@@ -97,12 +101,10 @@ extension SHSocketTools {
                 )
             }
             
-//            Thread.sleep(forTimeInterval: 0.1)
+            // 所有的指令都要延时 0.1秒执行
+            // (0.1是依据产品固件计算出来的平均值)
+            Thread.sleep(forTimeInterval: 0.1)
         }
-        
-        // 所有的指令都要延时 0.1秒执行
-        // (0.1是依据产品固件计算出来的平均值)
-        Thread.sleep(forTimeInterval: 0.1)
     }
     
     private static func sendData(
@@ -122,40 +124,34 @@ extension SHSocketTools {
             remoteMacAddress: remoteMacAddress,
             isDMX: isDMX
         )
-         
-
-        if SHSocketTools.shared.socket.localPort() != data.port {
-            
-            //        _ = try? SHSocketTools.shared.socket .bind(toPort: data.port)
-            
-            print("需要重新绑定")
-            _ = try? SHSocketTools.shared.socket.bind(
-                toPort: data.port,
-                interface: nil
-            )
-        }
-        
-        // 加入组播
-        _ = try? SHSocketTools.shared.socket.joinMulticastGroup(data.destAddress)
-        
-        
-        
-        _ = try?
-            SHSocketTools.shared.socket.beginReceiving()
         
         let sendData =
             NSMutableData(bytes: data.datas,
                           length: data.datas.count
-                ) as Data
+        ) as Data
         
-        SHSocketTools.shared.socket.send(
+        
+//        _ = try? SHSocketTools.shared.socket .bind(toPort: data.port)
+        
+        // 加入组播
+        _ = try? SHSocketTools.shared().socket?.joinMulticastGroup(data.destAddress)
+        
+        _ = try? SHSocketTools.shared().socket?.bind(
+            toPort: data.port,
+            interface: nil
+        )
+        
+        _ = try?
+            SHSocketTools.shared().socket?.beginReceiving()
+        
+        SHSocketTools.shared().socket?.send(
             sendData, toHost: data.destAddress,
             port: data.port,
             withTimeout: -1,
             tag: 0
         )
         
-//        print("发送控制包: \(data)")
+        // print("发送控制包: \(data)")
     }
     
     /// 打包数据
@@ -313,8 +309,6 @@ extension SHSocketTools {
                     Scanner(string: macAddress[i]
                         ).scanHexInt32(&mac)
                     
-//                    print("\(mac)")
-                    
                     index += 1
                     socketData[index] = UInt8(mac)
                 }
@@ -327,7 +321,7 @@ extension SHSocketTools {
                 
             } else {
                 
-                SHSocketTools.shared.pack_crc(
+                SHSocketTools.pack_crc(
                     position: &socketData[sourceIP.count + headerCount + 2],
                     length: (protocolBaseStructureLength - 2 - 2)
                 )

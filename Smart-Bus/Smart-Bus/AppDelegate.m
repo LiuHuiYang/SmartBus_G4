@@ -28,8 +28,6 @@
     // 3. 初始化计划执行的定时器
     [[SHSchedualExecuteTools shared] initSchedualTimer];
     
-    [SHSocketTools shared];
-    
     // 启动界面
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -115,7 +113,8 @@
 
 /// 程序进入后台
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    
+     
+    [SHSocketTools destroy];
     
     // 开启后台任务
     if ([[NSUserDefaults standardUserDefaults]
@@ -129,6 +128,9 @@
 
 /// 程序已经回到前台
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    // App 成为活跃状态 创建socket
+    [SHSocketTools shared];
     
     // 发出通知 主动读取状态
     [NSNotificationCenter.defaultCenter postNotificationName:SHBecomeFocusNotification object:nil];
