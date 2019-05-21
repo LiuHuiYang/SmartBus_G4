@@ -113,9 +113,7 @@
 
 /// 程序进入后台
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-     
-    [SHSocketTools destroy];
-    
+      
     // 开启后台任务
     if ([[NSUserDefaults standardUserDefaults]
          integerForKey:UIAPPLICATION_BACKGROUND_TASK_KEY] ==

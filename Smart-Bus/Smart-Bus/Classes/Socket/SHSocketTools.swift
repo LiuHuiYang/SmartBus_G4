@@ -55,7 +55,7 @@ import CocoaAsyncSocket
     /// 发送数据包缓存
     static let caches = NSCache<AnyObject, AnyObject>()
     
-    ///// UDP 广播通知
+    /// UDP 广播通知
     static let broadcastNotificationName = "socketBroadcastNotification"
      
     /// socket对象
@@ -77,6 +77,9 @@ import CocoaAsyncSocket
             
         } catch {
             
+            SVProgressHUD.showError(withStatus:
+                "socket init error"
+            )
             print("收到错误信息: \(error)")
         }
         

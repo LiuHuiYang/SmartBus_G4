@@ -10,7 +10,7 @@ import UIKit
 
 /// cell 重用标示
 private let systemCellReusableIdentifier =
-"SHSetSystemViewCell"
+    "SHSetSystemViewCell"
 
 class SHAreaSettingViewController: SHViewController {
     

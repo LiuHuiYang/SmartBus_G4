@@ -47,7 +47,7 @@ extension SHSocketTools {
         remoteMacAddress: String =
             SHSocketTools.remoteControlMacAddress(),
         needReSend: Bool = true,
-        isDMX: Bool = false ) {
+        isDMX: Bool = false) {
  
         DispatchQueue.global().async {
         
@@ -81,7 +81,7 @@ extension SHSocketTools {
                          isDMX: isDMX
                 )
                 
-//                Thread.sleep(forTimeInterval: 1.8)
+//                Thread.sleep(forTimeInterval: 1.5)
                 Thread.sleep(forTimeInterval: 0.8)
                 
                 // 查询缓存
