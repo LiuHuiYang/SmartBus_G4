@@ -134,24 +134,24 @@ extension SHSocketTools {
 //        _ = try? SHSocketTools.shared.socket .bind(toPort: data.port)
         
         // 加入组播
-        _ = try? SHSocketTools.shared().socket?.joinMulticastGroup(data.destAddress)
+        _ = try? SHSocketTools.shared.socket?.joinMulticastGroup(data.destAddress)
         
-        _ = try? SHSocketTools.shared().socket?.bind(
+        _ = try? SHSocketTools.shared.socket?.bind(
             toPort: data.port,
             interface: nil
         )
         
         _ = try?
-            SHSocketTools.shared().socket?.beginReceiving()
+            SHSocketTools.shared.socket?.beginReceiving()
         
-        SHSocketTools.shared().socket?.send(
+        SHSocketTools.shared.socket?.send(
             sendData, toHost: data.destAddress,
             port: data.port,
             withTimeout: -1,
             tag: 0
         )
         
-        // print("发送控制包: \(data)")
+//         print("发送控制包: \(data)")
     }
     
     /// 打包数据

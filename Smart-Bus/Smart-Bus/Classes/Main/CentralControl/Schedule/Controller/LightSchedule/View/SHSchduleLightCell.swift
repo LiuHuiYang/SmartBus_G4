@@ -200,7 +200,7 @@ class SHSchduleLightCell: UITableViewCell {
         
         case .notDimmable, .dimmable:
             
-            iconButton.isSelected = isTurnOn
+            iconButton.isSelected = !isTurnOn
             zoneLight.schedualBrightness =
                 isTurnOn ? 0 : lightMaxBrightness
             

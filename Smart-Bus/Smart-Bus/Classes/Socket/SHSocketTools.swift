@@ -15,42 +15,42 @@ import CocoaAsyncSocket
     
     // MARK: - 单例
     
+//    /// 单例对象
+//    private static var shareInstance: SHSocketTools?
+//    
+//    /// 创建单例对象
+//    ///
+//    /// - Returns: 单例
+//    static func shared() -> SHSocketTools {
+//        
+//        guard let instance = shareInstance else {
+//            
+//            shareInstance = SHSocketTools()
+//            
+//            return shareInstance!
+//        }
+//        
+//        return instance
+//    }
+//    
+//    /// 销毁单例对象
+//    static func destroy() {
+//        
+//        shareInstance = nil
+//    }
+//    
+//    private override init() {
+//        
+//    }
+//    
+//    deinit {
+//       
+//        socket?.close()
+//        socket = nil
+//    }
+    
     /// 单例对象
-    private static var shareInstance: SHSocketTools?
-    
-    /// 创建单例对象
-    ///
-    /// - Returns: 单例
-    static func shared() -> SHSocketTools {
-        
-        guard let instance = shareInstance else {
-            
-            shareInstance = SHSocketTools()
-            
-            return shareInstance!
-        }
-        
-        return instance
-    }
-    
-    /// 销毁单例对象
-    static func destroy() {
-        
-        shareInstance = nil
-    }
-    
-    private override init() {
-        
-    }
-    
-    deinit {
-       
-        socket?.close()
-        socket = nil
-    }
-    
-    /// 单例对象
-//    static let shared = SHSocketTools()
+    static let shared = SHSocketTools()
     
     /// 发送数据包缓存
     static let caches = NSCache<AnyObject, AnyObject>()
