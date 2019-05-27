@@ -40,6 +40,7 @@ import UIKit
     /// - Parameter schdule: 需要被执行的计划
     static func executeSchdule(_ schdule: SHSchedule) {
         
+        
         /// 子线程中执行
         DispatchQueue.global().async {
             
@@ -138,6 +139,15 @@ extension SHSchedualExecuteTools {
             return
         }
         
+        print("发送执行 schedule \(Date())")
+        if SHSocketTools.shared.socket?.isClosed() ?? true {
+            print("socket 已经关闭了")
+            SHSocketTools.shared.socket = nil
+            SHSocketTools.shared.socket =
+                SHSocketTools.shared.setupSocket()
+        }
+        
+         
         for schedule in schedulesActivate {
             
             switch schedule.frequencyID {
@@ -154,6 +164,7 @@ extension SHSchedualExecuteTools {
                         return
                 }
                 
+                
                 if executeComponents.month ==
                     currentComponents.month &&
                     executeComponents.day ==
@@ -162,8 +173,7 @@ extension SHSchedualExecuteTools {
                     currentComponents.hour &&
                     executeComponents.minute ==
                     currentComponents.minute {
-                    
-                    SHSchedualExecuteTools.executeSchdule(schedule)
+                        SHSchedualExecuteTools.executeSchdule(schedule)
                 }
                 
             case .dayily:
@@ -257,6 +267,7 @@ extension SHSchedualExecuteTools {
                 name: NSNotification.Name.SHSchedualPrepareExecute,
                 object: nil
             )
+            
         }
     }
     

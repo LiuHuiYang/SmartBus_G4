@@ -3511,12 +3511,12 @@
 		045C315A2285014200EE2D5D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				045C31782285014200EE2D5D /* schedual */,
+				045C31702285014200EE2D5D /* setSchedual */,
+				045C31752285014200EE2D5D /* schedualAdd */,
+				045C31732285014200EE2D5D /* schedualExectute */,
 				045C315B2285014200EE2D5D /* FloorheatingSchedule */,
 				045C31652285014200EE2D5D /* AudioSchedule */,
-				045C31702285014200EE2D5D /* setSchedual */,
-				045C31732285014200EE2D5D /* schedualExectute */,
-				045C31752285014200EE2D5D /* schedualAdd */,
-				045C31782285014200EE2D5D /* schedual */,
 				045C317B2285014200EE2D5D /* HVACSchedule */,
 				045C31852285014200EE2D5D /* LightSchedule */,
 				045C318C2285014200EE2D5D /* ShadeSchedule */,

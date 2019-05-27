@@ -11,56 +11,55 @@ import UIKit
 class SHZoneNineInOneControlPadView: UIView, loadNibView {
     
     /// 9in1模型
-    var nineInOne: SHNineInOne?
-    //    {
-    //
-    //        didSet {
-    //
-    //            guard let currentNineInOne  = nineInOne else {
-    //                return
-    //            }
-    //
-    //            control1Button.setTitle(
-    //                currentNineInOne.switchNameforControl1,
-    //                for: .normal
-    //            )
-    //
-    //            control2Button.setTitle(
-    //                currentNineInOne.switchNameforControl2,
-    //                for: .normal
-    //            )
-    //
-    //            control3Button.setTitle(
-    //                currentNineInOne.switchNameforControl3,
-    //                for: .normal
-    //            )
-    //
-    //            control4Button.setTitle(
-    //                currentNineInOne.switchNameforControl4,
-    //                for: .normal
-    //            )
-    //
-    //            control5Button.setTitle(
-    //                currentNineInOne.switchNameforControl5,
-    //                for: .normal
-    //            )
-    //
-    //            control6Button.setTitle(
-    //                currentNineInOne.switchNameforControl6,
-    //                for: .normal
-    //            )
-    //
-    //            control7Button.setTitle(
-    //                currentNineInOne.switchNameforControl7,
-    //                for: .normal
-    //            )
-    //
-    //            control8Button.setTitle(
-    //                currentNineInOne.switchNameforControl8,
-    //                for: .normal
-    //            )
-    //        }
-    //    }
+    var nineInOne: SHNineInOne? {
+        
+        didSet {
+            
+            guard let currentNineInOne  = nineInOne else {
+                return
+            }
+            
+            control1Button.setTitle(
+                currentNineInOne.switchNameforControl1,
+                for: .normal
+            )
+            
+            control2Button.setTitle(
+                currentNineInOne.switchNameforControl2,
+                for: .normal
+            )
+            
+            control3Button.setTitle(
+                currentNineInOne.switchNameforControl3,
+                for: .normal
+            )
+            
+            control4Button.setTitle(
+                currentNineInOne.switchNameforControl4,
+                for: .normal
+            )
+            
+            control5Button.setTitle(
+                currentNineInOne.switchNameforControl5,
+                for: .normal
+            )
+            
+            control6Button.setTitle(
+                currentNineInOne.switchNameforControl6,
+                for: .normal
+            )
+            
+            control7Button.setTitle(
+                currentNineInOne.switchNameforControl7,
+                for: .normal
+            )
+            
+            control8Button.setTitle(
+                currentNineInOne.switchNameforControl8,
+                for: .normal
+            )
+        }
+    }
     
     /// 确定按钮
     @IBOutlet weak var sureButton: UIButton!

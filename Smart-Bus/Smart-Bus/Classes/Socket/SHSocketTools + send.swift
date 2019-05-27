@@ -52,7 +52,8 @@ extension SHSocketTools {
         DispatchQueue.global().async {
         
 //            print("顺序执行 \(Date()) - \(subNetID) - \(deviceID) \(Thread.current)")
-
+            
+            
             /// 最多补发一次
             var count = needReSend ? 2 : 1
 
@@ -130,17 +131,18 @@ extension SHSocketTools {
                           length: data.datas.count
         ) as Data
         
-        
-//        _ = try? SHSocketTools.shared.socket .bind(toPort: data.port)
+ 
         
         // 加入组播
         _ = try? SHSocketTools.shared.socket?.joinMulticastGroup(data.destAddress)
         
+        // 绑定端口
         _ = try? SHSocketTools.shared.socket?.bind(
             toPort: data.port,
             interface: nil
         )
         
+        // 开启接收
         _ = try?
             SHSocketTools.shared.socket?.beginReceiving()
         

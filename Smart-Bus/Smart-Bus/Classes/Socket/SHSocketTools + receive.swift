@@ -82,13 +82,16 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     /// socket 关闭
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
 
-//        print("socket 关闭")
+//        print("1111 socket 关闭")
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
 
-//        print("成功发送信息")
-      
-//        _ = try? sock.beginReceiving()
+//        print("成功发送信息 \(sock.isClosed())")
+    }
+    
+    func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {
+        
+//        print("发送失败 \(error)")
     }
 }

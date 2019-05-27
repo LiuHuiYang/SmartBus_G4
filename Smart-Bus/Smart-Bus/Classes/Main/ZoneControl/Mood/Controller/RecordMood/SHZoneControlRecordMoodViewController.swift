@@ -4,7 +4,12 @@
 //
 //  Created by Mark Liu on 2017/8/11.
 //  Copyright © 2017年 Mark Liu. All rights reserved
-//
+/*
+ 录制过程中会出现失败的情况
+    1> 读取状态时间不够
+    2> 数据丢包
+ 
+ */
 
 import UIKit
 
@@ -23,7 +28,7 @@ class SHZoneControlRecordMoodViewController: SHViewController {
                 return
             }
             
-            // 所有系统尖
+            /// 所有系统ID
             systemIDs =
                 SHSQLiteManager.shared.getSystemIDs(zone.zoneID)
         }
@@ -45,10 +50,12 @@ class SHZoneControlRecordMoodViewController: SHViewController {
     private var moodIconsView: UIScrollView = {
         
         let listView = UIScrollView()
-        listView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        listView.backgroundColor =
+            UIColor(white: 0, alpha: 0.5)
         listView.showsVerticalScrollIndicator = false
         listView.showsHorizontalScrollIndicator = false
-        listView.layer.cornerRadius = statusBarHeight * 0.5
+        listView.layer.cornerRadius =
+            statusBarHeight * 0.5
         listView.clipsToBounds = true
         
         return listView
@@ -77,8 +84,9 @@ class SHZoneControlRecordMoodViewController: SHViewController {
     
     /// mood图片名称
     private var moodImageNames = [
-        "mood_romantic", "mood_bye", "mood_dining",
-        "mood_meeting", "mood_night", "mood_party",
+        "mood_romantic", "mood_bye",
+        "mood_dining", "mood_meeting",
+        "mood_night", "mood_party",
         "mood_study", "mood_tv"
     ]
     
