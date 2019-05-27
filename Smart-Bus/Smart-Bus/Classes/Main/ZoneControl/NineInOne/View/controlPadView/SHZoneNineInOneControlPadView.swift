@@ -206,7 +206,42 @@ extension SHZoneNineInOneControlPadView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        sureButton.setTitle(SHLanguageText.ok, for: .normal)
+        sureButton.setTitle(SHLanguageText.ok,
+                            for: .normal
+        )
+        
+        control1Button.titleLabel?.numberOfLines = 0
+        control1Button.titleLabel?.textAlignment =
+            .center
+        
+        control2Button.titleLabel?.numberOfLines = 0
+        control2Button.titleLabel?.textAlignment =
+            .center
+        
+        control3Button.titleLabel?.numberOfLines = 0
+        control3Button.titleLabel?.textAlignment =
+            .center
+        
+        control4Button.titleLabel?.numberOfLines = 0
+        control4Button.titleLabel?.textAlignment =
+            .center
+        
+        control5Button.titleLabel?.numberOfLines = 0
+        control5Button.titleLabel?.textAlignment =
+            .center
+        
+        control6Button.titleLabel?.numberOfLines = 0
+        control6Button.titleLabel?.textAlignment =
+            .center
+        
+        control7Button.titleLabel?.numberOfLines = 0
+        control7Button.titleLabel?.textAlignment =
+            .center
+        
+        control8Button.titleLabel?.numberOfLines = 0
+        control8Button.titleLabel?.textAlignment =
+            .center
+        
         
         if UIDevice.is_iPad() {
             
