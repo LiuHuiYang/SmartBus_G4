@@ -139,9 +139,9 @@ extension SHSchedualExecuteTools {
             return
         }
         
-        print("发送执行 schedule \(Date())")
+//        print("发送执行 schedule \(Date())")
         if SHSocketTools.shared.socket?.isClosed() ?? true {
-            print("socket 已经关闭了")
+//            print("socket 已经关闭了")
             SHSocketTools.shared.socket = nil
             SHSocketTools.shared.socket =
                 SHSocketTools.shared.setupSocket()

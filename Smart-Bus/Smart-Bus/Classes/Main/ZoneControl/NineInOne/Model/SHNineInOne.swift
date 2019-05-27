@@ -99,13 +99,7 @@ import UIKit
     var switchIDforControlRight: UInt = 0
     
     /// 控制键1 的名称
-    var switchNameforControl1: String? {
-        
-        didSet {
-            // SwitchNameforControl1
-            print("设置名称: \(switchNameforControl1)")
-        }
-    }
+    var switchNameforControl1: String?
     
     /// 控制键1 的 指令号码
     var switchIDforControl1: UInt = 0
@@ -271,8 +265,7 @@ import UIKit
     init(dict: [String: Any]) {
         
         super.init()
-        
-        print("正在设置 \(dict)")
+         
         setValuesForKeys(dict)
     }
     
