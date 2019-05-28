@@ -69,6 +69,12 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
             socketData
         ]
         
+        if operatorCode == 0x000F {
+            
+            print("收到了 0x000F \(Thread.current)" )
+        }
+        
+        
         DispatchQueue.main.async {
         
             NotificationCenter.default.post(
@@ -82,16 +88,18 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     /// socket 关闭
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
 
-//        print("1111 socket 关闭")
+        print("1111 socket 关闭")
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
 
-//        print("成功发送信息 \(sock.isClosed())")
+        print("成功发送信息 是否关闭 \(sock.isClosed())")
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {
         
-//        print("发送失败 \(error)")
+        if error != nil {
+            print("发送失败代理回调 \(error!)")
+        }
     }
 }

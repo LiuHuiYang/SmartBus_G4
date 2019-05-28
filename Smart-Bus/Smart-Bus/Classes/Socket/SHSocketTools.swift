@@ -56,7 +56,7 @@ import CocoaAsyncSocket
     
     /// UDP 广播通知
     static let broadcastNotificationName = "socketBroadcastNotification"
-     
+    
     /// socket对象
     lazy var socket: GCDAsyncUdpSocket? = setupSocket()
     
@@ -68,7 +68,7 @@ import CocoaAsyncSocket
                 delegate: self,
                 delegateQueue: DispatchQueue.global()
         )
-        
+         
         udpSocket.setIPv4Enabled(true)
         udpSocket.setIPv6Enabled(true)
         

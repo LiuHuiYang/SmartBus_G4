@@ -53,9 +53,7 @@ extension SHSocketTools {
         
 //            print("顺序执行 \(Date()) - \(subNetID) - \(deviceID) \(Thread.current)")
             
-            
-            /// 最多补发一次
-            var count = needReSend ? 2 : 1
+            var count = needReSend ? 3 : 1
 
             let socketData =
                 SHSocketData(operatorCode: operatorCode,
