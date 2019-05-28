@@ -610,7 +610,6 @@ extension SHZoneControlRecordMoodViewController {
             return
         }
         
-        
         // 处理键盘
         if keyboradHeight != 0 {
             
@@ -849,7 +848,7 @@ extension SHZoneControlRecordMoodViewController {
             allShades.count + allFloorHeatings.count +
             allAudios.count * 3) {
             
-            print("失败结果: \(recoredHVAC) - \(recoredAudio) - \(recoredLight)")
+//            print("失败结果: \(recoredHVAC) - \(recoredAudio) - \(recoredLight)")
             
             timer?.invalidate()
             timer = nil

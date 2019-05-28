@@ -85,8 +85,8 @@ import CocoaAsyncSocket
             print("收到错误信息: \(error)")
         }
         
-        //        _ = try? udpSocket.enableBroadcast(true)
-        //        _ = try? udpSocket.beginReceiving()
+//        _ = try? udpSocket.enableBroadcast(true)
+//        _ = try? udpSocket.beginReceiving()
         
         return udpSocket
     }

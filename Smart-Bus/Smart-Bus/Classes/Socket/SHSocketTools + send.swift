@@ -83,7 +83,7 @@ extension SHSocketTools {
                 )
                 
 //                Thread.sleep(forTimeInterval: 1.5)
-                Thread.sleep(forTimeInterval: 0.8)
+                Thread.sleep(forTimeInterval: 0.7)
                 
                 // 查询缓存
                 if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
