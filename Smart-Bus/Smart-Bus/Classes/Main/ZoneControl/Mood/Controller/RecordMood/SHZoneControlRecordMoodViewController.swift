@@ -15,7 +15,7 @@ import UIKit
 
 /// 窗帘重用标示
 private let editRecordShadeCellReIdentifier =
-"SHEditRecordShadeCell"
+    "SHEditRecordShadeCell"
 
 class SHZoneControlRecordMoodViewController: SHViewController {
     
@@ -779,7 +779,6 @@ extension SHZoneControlRecordMoodViewController {
         
         count += 1
         
-        
         let recoredLight =
             lightButton.isSelected ?
                 lightButton.recordSuccess : true
@@ -847,9 +846,10 @@ extension SHZoneControlRecordMoodViewController {
         // 音乐比较复杂，需要解析的内容比较多 * 3 多延时一下
         if count > (
             allLights.count + allHVACs.count +
-                allShades.count +
-                allFloorHeatings.count +
-                allAudios.count * 3) {
+            allShades.count + allFloorHeatings.count +
+            allAudios.count * 3) {
+            
+            print("失败结果: \(recoredHVAC) - \(recoredAudio) - \(recoredLight)")
             
             timer?.invalidate()
             timer = nil
@@ -1381,8 +1381,8 @@ extension SHZoneControlRecordMoodViewController {
             SHSQLiteManager.shared.getMoods(currentMood.zoneID)
         
         for mood in moods {
-            
-            if mood.moodName == currentMood.moodName {
+        
+            if mood.moodName == name {
                 
                 SVProgressHUD.showError(
                     withStatus: "The name has been saved!"
@@ -1393,7 +1393,6 @@ extension SHZoneControlRecordMoodViewController {
         }
         
         currentMood.moodName = name
-        
         
         return true
     }
