@@ -15,6 +15,17 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     /// 接收到数据
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         
+        //        guard let host = GCDAsyncUdpSocket.host(fromAddress: address),
+        //            let localIP = UIDevice.getIPAddress(UIDevice.isIPV6()),
+        //            host.contains(localIP) == false else {
+        //
+        //            print("包含了 不要接收 ")
+        //            return
+        //        }
+        //
+        //        // 当前地址local:
+        //        print("host: \(host), local: \(localIP)")
+        
         // 解析成数组
         var recivedData = [UInt8](data)
         
