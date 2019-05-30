@@ -69,6 +69,30 @@
     return YES;
 }
 
+- (void) startMonitoringNetWorkStatus {
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        
+        // 网络状态发生变化, 都关闭socket
+        [SHSocketTools.shared.socket close];
+        SHSocketTools.shared.socket = nil;
+       
+        if (status == AFNetworkReachabilityStatusNotReachable ||
+            status == AFNetworkReachabilityStatusUnknown) {
+            
+            printLog(@"网络不可用");
+            
+            return ;
+        }
+        
+        // 重新初始化soket
+        SHSocketTools.shared.socket =
+            [SHSocketTools.shared setupSocket];
+    }];
+}
+
 //// 设置指示器
 - (void)setupSVProgressHUD {
     
@@ -125,14 +149,20 @@
                      beginBackgroundTaskWithExpirationHandler:nil];
     }
     
-//    [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
+    
+    [SHSocketTools.shared.socket close];
+    SHSocketTools.shared.socket = nil;
 }
 
 /// 程序已经回到前台
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
+    // 开启网络临近状态
+    [self startMonitoringNetWorkStatus];
+    
     // App 成为活跃状态 创建 socket
-    [SHSocketTools shared];
+//    [SHSocketTools shared];
     
     // 发出通知 主动读取状态
     [NSNotificationCenter.defaultCenter postNotificationName:SHBecomeFocusNotification object:nil];
