@@ -89,8 +89,14 @@ extension SHSocketTools {
         socketData: SHSocketData,
         isReceived: Bool = false) -> AnyObject {
         
+        // 存储缓存: 0x0e : 255 - 255
+        if isReceived && socketData.operatorCode == 0x000F {
+            
+            return ("0x0e : 255 - 255") as AnyObject
+        }
+        
         let cacheKey =
-            String(format: "%#04X : %d - %d",
+            String(format: "%#04x : %d - %d",
                    (isReceived ? socketData.operatorCode - 1 : socketData.operatorCode),
                    socketData.subNetID,
                    socketData.deviceID

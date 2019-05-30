@@ -69,8 +69,8 @@ import CocoaAsyncSocket
                 delegateQueue: DispatchQueue.global()
         )
          
-        udpSocket.setIPv4Enabled(true)
-        udpSocket.setIPv6Enabled(true)
+//        udpSocket.setIPv4Enabled(true)
+//        udpSocket.setIPv6Enabled(true)
         
         do {
             

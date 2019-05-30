@@ -29,7 +29,8 @@
     [[SHSchedualExecuteTools shared] initSchedualTimer];
     
     // 启动界面
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window =
+        [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     self.window.rootViewController =
     [[SHMainViewController alloc] init];
@@ -63,6 +64,7 @@
     //
     //       [SHSQLiteManager.shared insertMacroCommand:command];
     //    }
+    
     
     return YES;
 }
@@ -108,7 +110,7 @@
     
     [SVProgressHUD setImageViewSize:
      CGSizeMake(imageSize, imageSize)
-     ];
+    ];
 }
 
 /// 程序进入后台
@@ -122,12 +124,14 @@
         self.task = [[UIApplication sharedApplication]
                      beginBackgroundTaskWithExpirationHandler:nil];
     }
+    
+//    [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
 }
 
 /// 程序已经回到前台
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
-    // App 成为活跃状态 创建socket
+    // App 成为活跃状态 创建 socket
     [SHSocketTools shared];
     
     // 发出通知 主动读取状态

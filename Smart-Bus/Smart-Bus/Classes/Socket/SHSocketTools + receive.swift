@@ -11,7 +11,7 @@ import CocoaAsyncSocket
 
 // MARK: - GCDAsyncUdpSocketDelegate
 extension SHSocketTools: GCDAsyncUdpSocketDelegate {
-    
+      
     /// 接收到数据
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         
@@ -29,18 +29,20 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         // 解析成数组
         var recivedData = [UInt8](data)
         
+        //        print("收到的广播: \(recivedData)")
+        
         // 数据包的前16个固定字节数(源IP + 协议头 + 开始的操作码 --> 不影响解析，所以去除)
         
         // FIXME: 暂时不进行接收校验
         // 16的是0xAAAA后的位置 SN2
         guard SHSocketTools.check_crc(position: &(recivedData[16]),
-                        length: recivedData.count - 16 - 2
-
+                                      length: recivedData.count - 16 - 2
+            
             ) else {
-
+                
                 return
         }
-
+        
         let subNetID = recivedData[17]
         let deviceID = recivedData[18]
         
@@ -53,7 +55,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
                 (UInt16(recivedData[22]))
         
         var additionalData = [UInt8]()
-    
+        
         // 27是去除可变参数剩余的所有的长度
         let additionalLength = recivedData.count - 27
         
@@ -74,20 +76,20 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
             socketData: socketData,
             isReceived: true
         )
-
+        
         let broadcastMessage = [
             SHSocketTools.broadcastNotificationName:
             socketData
         ]
         
-        if operatorCode == 0x000F {
+        if operatorCode == 0x0034 {
             
-            print("收到了 0x000F \(Thread.current)" )
+            print("收到了 0x0034 \(Thread.current)" )
         }
         
         
         DispatchQueue.main.async {
-        
+            
             NotificationCenter.default.post(
                 name:NSNotification.Name(rawValue: SHSocketTools.broadcastNotificationName),
                 object: nil,
@@ -98,19 +100,19 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     
     /// socket 关闭
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
-
-        print("1111 socket 关闭")
+        
+        //        print("1111 socket 关闭")
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
-
-        print("成功发送信息 是否关闭 \(sock.isClosed())")
+        
+//        print("成功发送信息 是否关闭 \(sock.isClosed())")
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {
         
-        if error != nil {
-            print("发送失败代理回调 \(error!)")
-        }
+        //        if error != nil {
+        //            print("发送失败代理回调 \(error!)")
+        //        }
     }
 }

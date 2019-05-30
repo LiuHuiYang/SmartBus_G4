@@ -46,14 +46,12 @@ extension SHSocketTools {
         additionalData:[UInt8],
         remoteMacAddress: String =
             SHSocketTools.remoteControlMacAddress(),
-        needReSend: Bool = true,
+        needReSend: Bool = false,
         isDMX: Bool = false) {
- 
-        DispatchQueue.global().async {
         
-//            print("顺序执行 \(Date()) - \(subNetID) - \(deviceID) \(Thread.current)")
+        DispatchQueue.global().async {
             
-            var count = needReSend ? 3 : 1
+            var count = needReSend ? 2 : 1
 
             let socketData =
                 SHSocketData(operatorCode: operatorCode,
@@ -80,15 +78,14 @@ extension SHSocketTools {
                          isDMX: isDMX
                 )
                 
-//                Thread.sleep(forTimeInterval: 1.5)
-                Thread.sleep(forTimeInterval: 0.7)
+                Thread.sleep(forTimeInterval: 0.75)
                 
                 // 查询缓存
                 if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
-                    
+          
                     break
                 }
- 
+                
                 count -= 1
             }
             
@@ -128,30 +125,34 @@ extension SHSocketTools {
             NSMutableData(bytes: data.datas,
                           length: data.datas.count
         ) as Data
-        
- 
-        
-        // 加入组播
-        _ = try? SHSocketTools.shared.socket?.joinMulticastGroup(data.destAddress)
-        
-        // 绑定端口
-        _ = try? SHSocketTools.shared.socket?.bind(
-            toPort: data.port,
-            interface: nil
-        )
-        
-        // 开启接收
-        _ = try?
-            SHSocketTools.shared.socket?.beginReceiving()
+         
+        if SHSocketTools.shared.socket?.localPort() != data.port {
+  
+            do {
+                
+                // 绑定端口
+                try SHSocketTools.shared.socket?.bind(
+                    toPort: data.port,
+                    interface: nil
+                )
+                
+                // 开启接收
+                try SHSocketTools.shared.socket?.beginReceiving()
+                
+            } catch {
+                
+                print("绑定端口出错!!! \(error)")
+            }
+        }
         
         SHSocketTools.shared.socket?.send(
             sendData, toHost: data.destAddress,
             port: data.port,
-            withTimeout: -1,
-            tag: 0
+            withTimeout: 2,
+            tag: 0 
         )
         
-//         print("发送控制包: \(data)")
+//      print("发送控制包: \(data)")
     }
     
     /// 打包数据

@@ -29,7 +29,7 @@
 #import <sys/types.h>
 
 
-#if 0
+#if 0  // 默认是0 , 调试状态改为1
 
 // Logging Enabled - See log level below
 
@@ -37,7 +37,9 @@
 // http://code.google.com/p/cocoalumberjack/
 // 
 // It allows us to do a lot of logging without significantly slowing down the code.
+ 
 #import "DDLog.h"
+
 
 #define LogAsync   NO
 #define LogContext 65535
