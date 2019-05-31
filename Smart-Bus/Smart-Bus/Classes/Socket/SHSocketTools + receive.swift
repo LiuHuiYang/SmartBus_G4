@@ -11,7 +11,7 @@ import CocoaAsyncSocket
 
 // MARK: - GCDAsyncUdpSocketDelegate
 extension SHSocketTools: GCDAsyncUdpSocketDelegate {
-      
+    
     /// 接收到数据
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         
@@ -26,10 +26,12 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         //        // 当前地址local:
         //        print("host: \(host), local: \(localIP)")
         
+        
+//        print("收到的广播: \(data) \(Thread.current)")
+        
         // 解析成数组
         var recivedData = [UInt8](data)
         
-        //        print("收到的广播: \(recivedData)")
         
         // 数据包的前16个固定字节数(源IP + 协议头 + 开始的操作码 --> 不影响解析，所以去除)
         
@@ -81,12 +83,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
             SHSocketTools.broadcastNotificationName:
             socketData
         ]
-        
-        if operatorCode == 0x0034 {
-            
-            print("收到了 0x0034 \(Thread.current)" )
-        }
-        
+         
         
         DispatchQueue.main.async {
             

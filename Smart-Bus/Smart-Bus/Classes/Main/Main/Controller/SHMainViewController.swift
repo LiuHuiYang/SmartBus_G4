@@ -95,7 +95,7 @@ extension SHMainViewController {
         let childNaviationViewController =
             SHNavigationController(rootViewController: viewController)
         
-        viewController.tabBarItem.imageInsets = UIEdgeInsets.init(top: 3, left: 0, bottom: -3, right: 0)
+        viewController.tabBarItem.imageInsets = UIEdgeInsets.init(top: 5, left: 0, bottom: -5, right: 0)
         
         addChild(childNaviationViewController)
     }
