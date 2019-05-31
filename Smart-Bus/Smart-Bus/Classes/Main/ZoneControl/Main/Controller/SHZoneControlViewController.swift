@@ -20,6 +20,7 @@ private let regionCellReuseIdentifier = "SHRegionViewCell"
 
 class SHZoneControlViewController: SHViewController {
     
+   
     /// 地区
     var region: SHRegion?
     
@@ -53,6 +54,9 @@ class SHZoneControlViewController: SHViewController {
     /// listView的底部约束
     @IBOutlet weak var listViewBottomConstraint: NSLayoutConstraint!
     
+    /// 搜索设备的高度约束
+    @IBOutlet weak var searchViewHeightConstraint: NSLayoutConstraint!
+    
     /// 按钮的高度约束
     @IBOutlet weak var sureButtonHeghtConstraint: NSLayoutConstraint!
     
@@ -70,7 +74,7 @@ class SHZoneControlViewController: SHViewController {
     
     /// 点击确定
     @IBAction func sureButtonClick() {
-          
+        
         serchView.isHidden = true
     }
 }
@@ -604,6 +608,11 @@ extension SHZoneControlViewController {
     /// 布局
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        if UIDevice.is_iPhone() {
+            
+            searchViewHeightConstraint.constant = 0
+        }
         
         navigationItem.titleView?.bounds =
             CGRect(x: 0,

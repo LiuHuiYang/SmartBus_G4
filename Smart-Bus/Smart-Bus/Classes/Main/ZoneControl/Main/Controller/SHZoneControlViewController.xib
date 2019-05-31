@@ -16,6 +16,7 @@
                 <outlet property="listView" destination="BNT-Ap-uy9" id="mWc-K4-7uZ"/>
                 <outlet property="listViewBottomConstraint" destination="DE7-Yb-6IM" id="yNg-Cr-33m"/>
                 <outlet property="regionListView" destination="2nT-gf-xcM" id="mE9-Hg-Goi"/>
+                <outlet property="searchViewHeightConstraint" destination="g6K-Zu-yvi" id="fZf-XE-qEK"/>
                 <outlet property="serchView" destination="Hs6-7X-xKb" id="Wth-cD-5dm"/>
                 <outlet property="sureButton" destination="YUm-Is-xpB" id="ibn-Vh-VDW"/>
                 <outlet property="sureButtonHeghtConstraint" destination="95S-rN-7wQ" id="rQ2-ms-Gj9"/>
