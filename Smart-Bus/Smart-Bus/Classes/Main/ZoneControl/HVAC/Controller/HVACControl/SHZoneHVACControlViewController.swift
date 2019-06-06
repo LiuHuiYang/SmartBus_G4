@@ -244,6 +244,8 @@ extension SHZoneHVACControlViewController {
                 
                 if fanIndex < fanSpeedList.count {
                     hvac.fanSpeed = fanSpeedList[fanIndex]
+                    
+                    print("风速: \(hvac.fanSpeed.rawValue)")
                 }
                 
                 let modelIndex =
@@ -763,6 +765,7 @@ extension SHZoneHVACControlViewController {
             SHAirConditioningControlType.fanSpeedSet.rawValue,
             value: fanSpeed.rawValue
         )
+        
     }
 
     // MARK: - 模式变化
@@ -1034,6 +1037,8 @@ extension SHZoneHVACControlViewController {
         
         // 3.设置风速等级
         let fanIndex = Int(hvac.fanSpeed.rawValue)
+        
+        print("\(hvac.fanSpeed.rawValue) - \(fanSpeedButtons.count)")
      
         fanImageView.image = UIImage(named:
             fanSpeedImageName[fanIndex]
@@ -1146,9 +1151,9 @@ extension SHZoneHVACControlViewController {
         
         readHVACTemperatureRange()
         
-        Thread.sleep(forTimeInterval: 0.3)
+//        Thread.sleep(forTimeInterval: 0.3)
         
-        readHVACStatus() // 暂时不读取状态，观察9in1的问题
+//        readHVACStatus() // 暂时不读取状态，观察9in1的问题
     }
     
     override func viewDidLoad() {
