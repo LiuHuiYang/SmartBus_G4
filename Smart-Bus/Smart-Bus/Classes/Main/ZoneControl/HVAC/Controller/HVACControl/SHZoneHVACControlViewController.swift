@@ -174,21 +174,37 @@ extension SHZoneHVACControlViewController {
                 
                 // 配合 9in1 控制空调增加
             case 0xE01D:
+                
                 if socketData.subNetID != hvac.subnetID  ||
                     socketData.deviceID != hvac.deviceID {
                     break
                 }
                 
-                let isPowerOn =
-                    SHAirConditioningSwitchType.on.rawValue
+//                let isPowerOn =
+//                    SHAirConditioningSwitchType.on.rawValue
+//
+//                // 设置成功为1，否则是0
+//                if socketData.additionalData[1] != isPowerOn {
+//                    return
+//                }
+//
+//                hvac.isTurnOn =
+//                    socketData.additionalData[0] == isPowerOn
                 
                 // 设置成功为1，否则是0
-                if socketData.additionalData[1] != isPowerOn {
+                if socketData.additionalData[1] != 1 {
                     return
                 }
                 
-                hvac.isTurnOn =
-                    socketData.additionalData[0] == isPowerOn
+                // 1 表示开, 2 表示关
+                if socketData.additionalData[0] == 1 {
+                    
+                    hvac.isTurnOn = true
+                    
+                } else if socketData.additionalData[0] == 2 {
+                    
+                    hvac.isTurnOn = false
+                }
 
                 setAirConditionerStatus()
                 
