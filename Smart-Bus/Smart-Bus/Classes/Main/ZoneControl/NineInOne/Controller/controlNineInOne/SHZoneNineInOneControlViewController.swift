@@ -224,7 +224,7 @@ extension SHZoneNineInOneControlViewController {
         case 0xD993:
             
             if socketData.subNetID == nineInOne.subnetID &&
-                socketData.deviceID == nineInOne.deviceID {
+                socketData.deviceID == nineInOne.deviceID { 
                 
                 nineInOne.luxValue =
                     UInt(socketData.additionalData[0]) << 8 +
@@ -235,11 +235,11 @@ extension SHZoneNineInOneControlViewController {
         case 0xE3E8:
            
             // 返回摄氏温度有效
-            if socketData.additionalData[0] == 0 {
+            if socketData.additionalData[0] == 0 ||
+               socketData.additionalData.count != 17
+                {
                 return;
             }
-            
-            
             
             // 4T Temperature
             if (socketData.subNetID == nineInOne.sensor4TSubNetID &&
@@ -255,8 +255,10 @@ extension SHZoneNineInOneControlViewController {
                 
                 nineInOne.sensor4TTemperature =
                     isNonNegative ? temperature : (0 - temperature)
+                
  
             } else {
+                
                 
                 let isNonNegative =
                     socketData.additionalData[1 + 8] == 0
@@ -276,8 +278,8 @@ extension SHZoneNineInOneControlViewController {
                 //  DDP Temperature
                 if (socketData.subNetID == nineInOne.ddpSubNetID &&
                     socketData.deviceID == nineInOne.ddpDeviceID) {
-                    
-                    nineInOne.externalTemperature = realTemperature
+               
+                    nineInOne.ddpTemperature = realTemperature
                 }
             }
             
