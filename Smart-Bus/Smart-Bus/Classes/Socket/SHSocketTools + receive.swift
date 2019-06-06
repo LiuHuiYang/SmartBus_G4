@@ -98,7 +98,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     /// socket 关闭
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
         
-        //        print("1111 socket 关闭")
+//        print("1111 socket 关闭")
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didSendDataWithTag tag: Int) {
@@ -108,8 +108,8 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didNotSendDataWithTag tag: Int, dueToError error: Error?) {
         
-        //        if error != nil {
-        //            print("发送失败代理回调 \(error!)")
-        //        }
+//        if error != nil {
+//            print("发送失败代理回调 \(error!)")
+//        }
     }
 }

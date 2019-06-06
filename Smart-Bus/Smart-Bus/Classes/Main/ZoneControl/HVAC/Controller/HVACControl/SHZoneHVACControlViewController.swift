@@ -180,17 +180,6 @@ extension SHZoneHVACControlViewController {
                     break
                 }
                 
-//                let isPowerOn =
-//                    SHAirConditioningSwitchType.on.rawValue
-//
-//                // 设置成功为1，否则是0
-//                if socketData.additionalData[1] != isPowerOn {
-//                    return
-//                }
-//
-//                hvac.isTurnOn =
-//                    socketData.additionalData[0] == isPowerOn
-                
                 // 设置成功为1，否则是0
                 if socketData.additionalData[1] != 1 {
                     return
@@ -1153,13 +1142,13 @@ extension SHZoneHVACControlViewController {
             additionalData: []
         )
         
-        Thread.sleep(forTimeInterval: 0.5)
+        Thread.sleep(forTimeInterval: 0.3)
         
         readHVACTemperatureRange()
         
-//        Thread.sleep(forTimeInterval: 0.3)
+        Thread.sleep(forTimeInterval: 0.3)
         
-//        readHVACStatus() // 暂时不读取状态，观察9in1的问题
+        readHVACStatus() // 暂时不读取状态，观察9in1的问题
     }
     
     override func viewDidLoad() {

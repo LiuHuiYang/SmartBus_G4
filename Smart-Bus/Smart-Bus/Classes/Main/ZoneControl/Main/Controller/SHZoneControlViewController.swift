@@ -137,7 +137,7 @@ extension SHZoneControlViewController {
         )
          
         Thread.sleep(forTimeInterval: 1.0)
-        
+
         // 同时搜索DMX
         SHSocketTools.sendData(
             operatorCode: 0x000E,
