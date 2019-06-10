@@ -244,8 +244,6 @@ extension SHZoneHVACControlViewController {
                 
                 if fanIndex < fanSpeedList.count {
                     hvac.fanSpeed = fanSpeedList[fanIndex]
-                    
-                    print("风速: \(hvac.fanSpeed.rawValue)")
                 }
                 
                 let modelIndex =
@@ -285,7 +283,7 @@ extension SHZoneHVACControlViewController {
                 // 在增加单个继电器控制空调的功能前,
                 // HVAC中,0X193B的返回长度是13
                 // IR 中 0X193B的返回长度是14 且顺序与HVAC保持一致,后面多出来的参数暂时没用上
-                // 增加单个继电器控制控制空调的0X193B的返回长度有变化是15。
+                // 增加单个继电器控制控制空调的0x193B的返回长度有变化是15。
                 
                 // 普通HAVC 不需要执行 if 语句
                 // 继电器控制空调 需要依据最后一个参数的通道号 && 可变参数的度是15 来判断
