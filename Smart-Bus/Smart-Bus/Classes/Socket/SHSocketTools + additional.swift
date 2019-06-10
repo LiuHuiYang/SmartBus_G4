@@ -249,6 +249,7 @@ extension SHSocketTools {
                     additionalData: controlData
                 )
                 
+                
             default:
                 break
             }
@@ -372,12 +373,12 @@ extension SHSocketTools {
                     deviceID: command.deviceID,
                     additionalData: controlData
                 )
-                
-                Thread.sleep(forTimeInterval:
-                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
-                )
             }
         }
+        
+        Thread.sleep(forTimeInterval:
+            TimeInterval(command.delayMillisecondAfterSend) * 0.001
+        )
     }
 }
 
