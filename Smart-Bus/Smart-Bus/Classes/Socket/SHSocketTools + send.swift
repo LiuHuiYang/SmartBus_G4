@@ -148,7 +148,7 @@ extension SHSocketTools {
         SHSocketTools.shared.socket?.send(
             sendData, toHost: data.destAddress,
             port: data.port,
-            withTimeout: 2,
+            withTimeout: 1,
             tag: 0 
         )
         
@@ -206,7 +206,6 @@ extension SHSocketTools {
             
             let headerCount =
                 isDMX ? dmxHeader.count : generalHeader.count
-            
             
             // 1.3 控制数据包部分
             
