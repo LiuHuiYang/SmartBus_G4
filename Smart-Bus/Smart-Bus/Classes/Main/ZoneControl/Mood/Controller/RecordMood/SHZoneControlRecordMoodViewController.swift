@@ -800,11 +800,7 @@ extension SHZoneControlRecordMoodViewController {
             shadeButton.isSelected ?
                 shadeButton.recordSuccess : true
         
-        // 由于音乐数据比较多, 容易失败, 所以启动多次重发
-        if recoredAudio == false {
-            
-            readAudioStatus()
-        }
+//        print("录制数据: \(recoredHVAC) \(recoredLight) - \(recoredAudio)")
         
         let status =
             recoredLight && recoredHVAC &&

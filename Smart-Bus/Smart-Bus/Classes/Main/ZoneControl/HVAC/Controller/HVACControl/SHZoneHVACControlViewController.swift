@@ -1035,8 +1035,6 @@ extension SHZoneHVACControlViewController {
         
         // 3.设置风速等级
         let fanIndex = Int(hvac.fanSpeed.rawValue)
-        
-        print("\(hvac.fanSpeed.rawValue) - \(fanSpeedButtons.count)")
      
         fanImageView.image = UIImage(named:
             fanSpeedImageName[fanIndex]

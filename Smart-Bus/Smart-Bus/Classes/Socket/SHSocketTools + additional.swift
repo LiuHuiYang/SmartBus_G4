@@ -75,6 +75,10 @@ extension SHSocketTools {
                     additionalData: controlData
                 )
                 
+                Thread.sleep(forTimeInterval:
+                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
+                )
+                
                 // 2.设置风速
                 controlData = [
                     UInt8(Float(SHAirConditioningControlType.fanSpeedSet.rawValue)),
@@ -88,6 +92,10 @@ extension SHSocketTools {
                     additionalData: controlData
                 )
                 
+                Thread.sleep(forTimeInterval:
+                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
+                )
+                
                 // 设置工作模式
                 controlData = [
                     UInt8(Float(SHAirConditioningControlType.acModeSet.rawValue)),
@@ -99,6 +107,10 @@ extension SHSocketTools {
                     subNetID: command.subnetID,
                     deviceID: command.deviceID,
                     additionalData: controlData
+                )
+                
+                Thread.sleep(forTimeInterval:
+                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
                 )
                 
                 // 设置模式温度
@@ -144,6 +156,10 @@ extension SHSocketTools {
                     additionalData: controlData
                 )
                 
+                Thread.sleep(forTimeInterval:
+                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
+                )
+                
                 // 兼容3代
                 controlData = [
                     UInt8(channel),
@@ -166,6 +182,10 @@ extension SHSocketTools {
                     volume: UInt8(UInt(SHAUDIO_MAX_VOLUME) - command.parameter1),
                     zoneFlag: 1
                    )
+                   
+                   Thread.sleep(forTimeInterval:
+                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
+                   )
                 
                 // 切换来源
                    SHAudioOperatorTools.changeAudioSource(
@@ -173,6 +193,10 @@ extension SHSocketTools {
                     deviceID: command.deviceID,
                     musicSoureNumber: UInt8(command.parameter2),
                     zoneFlag: 1
+                   )
+                   
+                   Thread.sleep(forTimeInterval:
+                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
                    )
                 
                 // 选择专辑
@@ -184,7 +208,10 @@ extension SHSocketTools {
                 songNumber: command.parameter4,
                 zoneFlag: 1
               )
-                
+                   Thread.sleep(forTimeInterval:
+                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
+                   )
+                   
                 // 设置播放状态
                 if command.parameter5 == SHAudioPlayControlType.play.rawValue {
                       SHAudioOperatorTools.playAudioAnySong(
@@ -221,6 +248,10 @@ extension SHSocketTools {
                     additionalData: controlData
                 )
                 
+                Thread.sleep(forTimeInterval:
+                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
+                )
+                
                 // 设置模式
                 controlData = [
                     SHFloorHeatingControlType.modelSet.rawValue,
@@ -233,6 +264,10 @@ extension SHSocketTools {
                     subNetID: command.subnetID,
                     deviceID: command.deviceID,
                     additionalData: controlData
+                )
+                
+                Thread.sleep(forTimeInterval:
+                    TimeInterval(command.delayMillisecondAfterSend) * 0.001
                 )
                 
                 // 设置手动模式温度
