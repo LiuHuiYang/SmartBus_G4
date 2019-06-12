@@ -20,19 +20,20 @@ class SHSchedualSettingViewController: SHViewController {
     @IBOutlet weak var operatorLabel: UILabel!
     
     /// 开关的点击
-    @IBAction func openSwitchClick() {
-        
-        let isOn = openSwitch.isOn ?  SHApplicationBackgroundTask.open :
-        SHApplicationBackgroundTask.close
-        
-        UserDefaults.standard.set(
-            isOn.rawValue,
-            forKey: UIAPPLICATION_BACKGROUND_TASK_KEY
-        )
-        
-        UserDefaults.standard.synchronize()
-    }
-
+//    @IBAction func openSwitchClick() {
+//        
+//        let isOn = openSwitch.isOn ?  SHApplicationBackgroundTask.open :
+//        SHApplicationBackgroundTask.close
+//        
+//        UserDefaults.standard.set(
+//            isOn.rawValue,
+//            forKey: UIAPPLICATION_BACKGROUND_TASK_KEY
+//        )
+//        
+//        UserDefaults.standard.synchronize()
+//    }
+    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
 

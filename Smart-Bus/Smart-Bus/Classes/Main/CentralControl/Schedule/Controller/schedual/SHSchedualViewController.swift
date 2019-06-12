@@ -72,14 +72,14 @@ class SHSchedualViewController: SHViewController {
                 withSubTitle: "TITLE_NAME")
             ) as? String
         
-        
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(imageName: "setting",
-                            hightlightedImageName: "setting",
-                            addTarget: self,
-                            action: #selector(navigationrightItemClick),
-                            isLeft: false
-        )
+        // 有任务自动开启后台
+//        navigationItem.rightBarButtonItem =
+//            UIBarButtonItem(imageName: "setting",
+//                            hightlightedImageName: "setting",
+//                            addTarget: self,
+//                            action: #selector(navigationrightItemClick),
+//                            isLeft: false
+//        )
         
         // 其它语言适配
         scheduleNameLabel.text =

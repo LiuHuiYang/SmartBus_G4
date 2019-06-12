@@ -22,6 +22,8 @@ class SHScheduleHVACViewDetailController: SHViewController {
     /// 按钮的宽度
     @IBOutlet weak var controlButtonWidthConstraint: NSLayoutConstraint!
 
+    /// 中间控制部分
+    @IBOutlet weak var functionView: UIView!
     
     /// 空高开关的按钮
     @IBOutlet weak var turnAcButton: UIButton!
@@ -82,8 +84,9 @@ extension SHScheduleHVACViewDetailController {
         turnAcButton.isSelected = !turnAcButton.isSelected
 
         schedualHVAC?.schedualIsTurnOn = turnAcButton.isSelected
+        
+        functionView.isHidden = !turnAcButton.isSelected
     }
-
 }
 
 
@@ -465,6 +468,8 @@ extension SHScheduleHVACViewDetailController {
         super.viewDidLoad()
         
         navigationItem.title = schedualHVAC?.acRemark
+        
+        functionView.isHidden = true
         
         // 设置默认的温度范围 (统一使用 摄氏) 临时指定范围 0 ~ 36
         schedualHVAC?.startHeatTemperatureRange = 0

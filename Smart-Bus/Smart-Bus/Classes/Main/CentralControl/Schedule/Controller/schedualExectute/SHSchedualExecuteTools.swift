@@ -40,7 +40,6 @@ import UIKit
     /// - Parameter schdule: 需要被执行的计划
     static func executeSchdule(_ schdule: SHSchedule) {
         
-        
         /// 子线程中执行
         DispatchQueue.global().async {
             
@@ -138,16 +137,16 @@ extension SHSchedualExecuteTools {
                 
             return
         }
-        
-//        print("发送执行 schedule \(Date())")
+         
         if SHSocketTools.shared.socket?.isClosed() ?? true {
 //            print("socket 已经关闭了")
             SHSocketTools.shared.socket = nil
             SHSocketTools.shared.socket =
                 SHSocketTools.shared.setupSocket()
         }
+ 
+//        print("发送执行 schedule \(Date()) scheule \(SHSocketTools.shared.socket?.isClosed() ?? true)")
         
-         
         for schedule in schedulesActivate {
             
             switch schedule.frequencyID {
@@ -291,6 +290,26 @@ extension SHSchedualExecuteTools {
             }
         }
         
+        openBackgroundTasks(
+            schedulesActivate.isEmpty == false
+        )
+    }
+    
+    
+    /// 开启后台任务
+    ///
+    /// - Parameter flag: 开启 true, 结束 false.
+    func openBackgroundTasks(_ flag: Bool = true) {
+        
+        let isOn = flag ?  SHApplicationBackgroundTask.open :
+            SHApplicationBackgroundTask.close
+        
+        UserDefaults.standard.set(
+            isOn.rawValue,
+            forKey: UIAPPLICATION_BACKGROUND_TASK_KEY
+        )
+        
+        UserDefaults.standard.synchronize()
     }
 }
 
@@ -564,7 +583,7 @@ extension SHSchedualExecuteTools {
     ///
     /// - Parameter command: light命令
     static func exectuSchedualLight(_ command: SHSchedualCommand) {
-        
+         
         guard let light =
             SHSQLiteManager.shared.getLight(
                 command.parameter2,
