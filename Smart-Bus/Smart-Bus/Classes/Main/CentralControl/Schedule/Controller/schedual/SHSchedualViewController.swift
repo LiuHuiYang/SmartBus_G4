@@ -16,11 +16,14 @@ class SHSchedualViewController: SHViewController {
     ///所有的计划列表
     private lazy var allSchedules = [SHSchedule]()
     
+    
     /// 高度约束
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     
     /// 编辑按钮的高度
     @IBOutlet weak var editButtonHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var titleView: UIView!
     
     /// 计划名称
     @IBOutlet weak var scheduleNameLabel: UILabel!
@@ -140,6 +143,7 @@ class SHSchedualViewController: SHViewController {
             validityLabel.font = font
             editScheduleButton.titleLabel?.font = font
         }
+        
     }
     
  
@@ -172,8 +176,15 @@ class SHSchedualViewController: SHViewController {
         
         allSchedules =
             SHSQLiteManager.shared.getSchedules()
-        
+
         scheduleTableView.reloadData()
+        
+        // FIXME: - 新用户, 不再提供这个功能
+        if allSchedules.isEmpty {
+            
+            titleView.isHidden = true
+            editScheduleButton.isHidden = true
+        }
     }
 }
 
@@ -181,7 +192,8 @@ class SHSchedualViewController: SHViewController {
 // MARK: - UITableViewDelegate
 extension SHSchedualViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
         
         let editViewController = SHSchedualEditViewController()
         
