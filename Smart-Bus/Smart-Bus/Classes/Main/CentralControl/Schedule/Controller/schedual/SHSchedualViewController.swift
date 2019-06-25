@@ -179,7 +179,7 @@ class SHSchedualViewController: SHViewController {
 
         scheduleTableView.reloadData()
         
-        // FIXME: - 新用户, 不再提供这个功能
+        // FIXME: - 新用户, 不再提供Schedule这个功能
         if allSchedules.isEmpty {
             
             titleView.isHidden = true
