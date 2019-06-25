@@ -152,32 +152,29 @@ extension SHCentralControlViewController: UICollectionViewDelegate {
             )
             
         case 5:
-//            navigationController?.pushViewController(
-//                SHSchedualViewController(),
-//                animated: true
-//            )
-            break
+            navigationController?.pushViewController(
+                SHSchedualViewController(),
+                animated: true
+            )
+            
             
         case 6:
-//            navigationController?.pushViewController(
-//                SHCameraViewController(),
-//                animated: true
-//            )
-            break
+            navigationController?.pushViewController(
+                SHCameraViewController(),
+                animated: true
+            )
             
         case 7:
-//            navigationController?.pushViewController(
-//                SHApplianceViewController(),
-//                animated: true
-//            )
-            break
+            navigationController?.pushViewController(
+                SHApplianceViewController(),
+                animated: true
+            )
             
         case 8:
-//            navigationController?.pushViewController(
-//                SHIntercomViewController(),
-//                animated: true
-//            )
-            break
+            navigationController?.pushViewController(
+                SHIntercomViewController(),
+                animated: true
+            ) 
             
         case 9:
             navigationController?.pushViewController(
