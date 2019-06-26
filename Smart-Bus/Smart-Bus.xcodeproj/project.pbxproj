@@ -4252,6 +4252,7 @@
 				045C32392285014300EE2D5D /* UIBarButtonItem+init.m */,
 				045C323A2285014300EE2D5D /* loadNibView + protocol.swift */,
 				045C323B2285014300EE2D5D /* SHConstraint.h */,
+				045C32712285014300EE2D5D /* SHConstraint.m */,
 				045C323C2285014300EE2D5D /* UIImage+SaveAndGet.m */,
 				045C323D2285014300EE2D5D /* UIButton+init.m */,
 				045C323E2285014300EE2D5D /* UIView+CustomSetting.h */,
@@ -4259,7 +4260,6 @@
 				045C32422285014300EE2D5D /* SHNetWorkTools.h */,
 				045C32432285014300EE2D5D /* SoundTools.h */,
 				045C32442285014300EE2D5D /* Additional */,
-				045C32712285014300EE2D5D /* SHConstraint.m */,
 				045C32722285014300EE2D5D /* UIBarButtonItem+init.h */,
 				045C32732285014300EE2D5D /* UIImage+SaveAndGet.h */,
 			);

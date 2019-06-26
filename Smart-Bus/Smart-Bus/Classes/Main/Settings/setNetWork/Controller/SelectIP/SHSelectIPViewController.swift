@@ -90,13 +90,15 @@ class SHSelectIPViewController: UITableViewController {
         // 保存选择的地址
         let filePath = FileTools.documentPath() + "/" + selectMacAddress
         
-        let isScuess =
+        print("目标设备信息: \(device.serverName) - \(device.macAddress)")
+        
+        let isSuccess =
             NSKeyedArchiver.archiveRootObject(
                 device,
                 toFile: filePath
         )
         
-        if isScuess {
+        if isSuccess {
             
             let msg =
                 SHLanguageTools.share()?.getTextFromPlist(

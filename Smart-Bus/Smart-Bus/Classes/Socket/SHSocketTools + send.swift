@@ -14,11 +14,8 @@ private let iOS_flag: UInt8 = 0x02
 /// 记录的wifi(Server时有效)
 private let localWifiKey = "SHUdpSocketSendDataLocalWifi"
 
-/// 公司服务器远程域名
-private let remoteServerDoMainName = "smartbuscloud.com"
-
 /// 默认公司服务器域名
-private let defaultServerDoMainName = "www.smartbuscloud.com"
+private let defaultRemoteServerDoMainName = "www.smartbuscloud.com"
 
 /// 伊朗服务器域名
 private let iranServerDoMainName = "www.g4cloud.ir"
@@ -52,12 +49,12 @@ extension SHSocketTools {
         additionalData:[UInt8],
         remoteMacAddress: String =
             SHSocketTools.remoteControlMacAddress(),
-        needReSend: Bool = false,
+        needReSend: Bool = true,
         isDMX: Bool = false) {
         
         DispatchQueue.global().async {
             
-            var count = needReSend ? 2 : 1
+            var count = needReSend ? 3 : 1
 
             let socketData =
                 SHSocketData(operatorCode: operatorCode,
@@ -158,7 +155,7 @@ extension SHSocketTools {
             tag: 0 
         )
         
-//      print("发送控制包: \(data)")
+      print("发送控制包: \(data)")
     }
     
     /// 打包数据
@@ -184,7 +181,7 @@ extension SHSocketTools {
             guard let ipAddress =
                 isRemote ?
                     UIDevice.getIPAddress(
-                        byHostName: remoteServerDoMainName
+                        byHostName: SHSocketTools.remoteServerDomainName()
                     ) :
                     
                     UIDevice.getIPAddress(UIDevice.isIPV6()
@@ -410,6 +407,22 @@ extension SHSocketTools {
         return (rsip?.macAddress ?? "")
     }
     
+    
+    /// 获得服务器远程域名
+    ///
+    /// - Returns: 远程服务器域名
+    static func remoteServerDomainName() -> String {
+        
+        let path =
+            FileTools.documentPath() + "/" + selectMacAddress
+        
+        let rsip =
+            NSKeyedUnarchiver.unarchiveObject(withFile: path) as? SHDeviceList
+        
+        print("\(rsip?.serverName ?? "使用默认域名" )")
+        
+        return rsip?.serverName ?? defaultRemoteServerDoMainName
+    }
     
     /// 设置本地发送指令使用的wifi
     ///

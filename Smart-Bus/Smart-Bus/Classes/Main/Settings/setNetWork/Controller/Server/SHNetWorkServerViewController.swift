@@ -334,7 +334,6 @@ class SHNetWorkServerViewController: SHViewController {
     
     /// 退出
     @IBAction func logoutButtonClick() {
-        
         SHNetWorkTools.shareInstacne()?.operationQueue.cancelAllOperations()
         
         UserDefaults.standard.removeObject(forKey: loginAccout)
@@ -369,10 +368,16 @@ class SHNetWorkServerViewController: SHViewController {
                 return
         }
         
+        let url = "http://www.smartbuscloud.com:8888/DDNSServerService.asmx/GetDeviceList"
+        
         let param: [String: String] =
             ["userName": userName, "password": password]
         
-        SHNetWorkTools.shareInstacne()?.request(.POST, urlstring: "http://smartbuscloud.com:8888/DDNSServerService.asmx/GetDeviceList", parameters: param, finished: { (res, error) in
+        SHNetWorkTools.shareInstacne()?.request(
+            .POST,
+            urlstring: url,
+            parameters: param,
+            finished: { (res, error) in
             
             if error != nil {
                 
@@ -388,7 +393,6 @@ class SHNetWorkServerViewController: SHViewController {
             )
         })
     }
-    
     
     /// 记住wifi
     @IBAction func rememberWifiButtonClick() {
@@ -416,19 +420,24 @@ extension SHNetWorkServerViewController: XMLParserDelegate {
     /// 请求数据
     func loadAllDeviceList(_ name: String, _ passWord: String) {
         
-        // 注意: 公司的服务器返回的是 XML 百度语音返回的是 Json
+        // 注意: 公司的服务器返回的是 XML
         SHNetWorkTools.shareInstacne()?.responseSerializer =
             AFXMLParserResponseSerializer()
-        
         
         //    http://smartbuscloud.com:8888/DDNSServerService.asmx/GetDeviceList?userName=Jasminko&password=123456
         
         SVProgressHUD.show(withStatus: "Requesting data")
         
+        let url = "http://www.smartbuscloud.com:8888/DDNSServerService.asmx/GetDeviceList"
+        
         let param: [String: String] =
             ["userName": name, "password": passWord]
         
-        SHNetWorkTools.shareInstacne()?.request(.POST, urlstring: "http://smartbuscloud.com:8888/DDNSServerService.asmx/GetDeviceList", parameters: param, finished: { (res, error) in
+        SHNetWorkTools.shareInstacne()?.request(
+            .POST,
+            urlstring: url,
+            parameters: param,
+            finished: { (res, error) in
             
             if error != nil {
                 

@@ -12,6 +12,9 @@ import UIKit
 @objc (SHDeviceList)
 
 @objcMembers class SHDeviceList: NSObject, NSCoding {
+    
+    /// 服务器名称
+    var serverName: String?
    
     /// rsip mac地址
     var macAddress: String?
@@ -25,6 +28,7 @@ import UIKit
     
     func encode(with aCoder: NSCoder) {
         
+        aCoder.encode(serverName, forKey: "serverName")
         aCoder.encode(macAddress, forKey: "macAddress")
         aCoder.encode(alias, forKey: "alias")
     }
@@ -33,7 +37,10 @@ import UIKit
         
         super.init()
         
+        serverName = aDecoder.decodeObject(forKey: "serverName") as? String
+        
         macAddress = aDecoder.decodeObject(forKey: "macAddress") as? String
+        
         alias = aDecoder.decodeObject(forKey: "alias") as? String
     }
 }
