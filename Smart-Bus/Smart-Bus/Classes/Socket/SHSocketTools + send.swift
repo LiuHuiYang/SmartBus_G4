@@ -14,8 +14,14 @@ private let iOS_flag: UInt8 = 0x02
 /// 记录的wifi(Server时有效)
 private let localWifiKey = "SHUdpSocketSendDataLocalWifi"
 
-/// 远程域名
+/// 公司服务器远程域名
 private let remoteServerDoMainName = "smartbuscloud.com"
+
+/// 默认公司服务器域名
+private let defaultServerDoMainName = "www.smartbuscloud.com"
+
+/// 伊朗服务器域名
+private let iranServerDoMainName = "www.g4cloud.ir"
 
 /// 本地wifi广播地址
 private let localBroadcastAddress = "255.255.255.255"
