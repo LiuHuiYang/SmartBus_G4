@@ -58,7 +58,10 @@
         
         if ([languagePlistName hasSuffix:@".plist"] &&
             ![languagePlistName isEqualToString:allDeviceMacAddressListPath]) {
-            [allPlistNames addObject:[languagePlistName stringByDeletingPathExtension]];
+            
+            [allPlistNames addObject:
+                [languagePlistName stringByDeletingPathExtension]
+            ];
         }
     }
    

@@ -389,27 +389,14 @@ extension SHSocketTools {
         
         return !(saveLocalWifi == currentWifi)
     }
-    
-    /// 获得RSIP的信息
-    ///
-    /// - Returns: rsip信息
-    static func rsip() -> SHDeviceList? {
-        
-        let path =
-            FileTools.documentPath() + "/" + selectMacAddress
-        
-        let rsip =
-            NSKeyedUnarchiver.unarchiveObject(withFile: path) as? SHDeviceList
-        
-        return rsip
-    }
+     
     
     /// 获得远程发送的MAC地址
     ///
     /// - Returns: MAC地址
     static func remoteControlMacAddress() -> String {
         
-        return (rsip()?.macAddress ?? "")
+        return (SHDeviceList.selectedRemoteDevice()?.macAddress ?? "")
     }
     
     
@@ -418,7 +405,7 @@ extension SHSocketTools {
     /// - Returns: 远程服务器域名
     static func remoteServerDomainName() -> String {
         
-        return rsip()?.serverName ?? defaultRemoteServerDoMainName
+        return SHDeviceList.selectedRemoteDevice()?.serverName ?? defaultRemoteServerDoMainName
     }
     
     /// 设置本地发送指令使用的wifi

@@ -29,10 +29,7 @@ let loginAccout: String = "SHRemoteTelnetAccount"
 
 /// 远程登录服务名
 let loginServices: String = "SHRemoteTelnetServices"
-
-/// 选择的设备网卡地址
-let selectMacAddress: String = "SHSelectDeviceMacAddress.data"
-
+ 
 
 // MARK: - 安防
 

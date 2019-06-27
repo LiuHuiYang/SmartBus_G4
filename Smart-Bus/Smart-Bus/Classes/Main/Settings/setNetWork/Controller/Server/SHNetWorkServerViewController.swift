@@ -201,7 +201,7 @@ class SHNetWorkServerViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        selectedRSIP = SHSocketTools.rsip()
+        selectedRSIP = SHDeviceList.selectedRemoteDevice()
         
         serverName =
             selectedRSIP?.serverName ??
@@ -505,21 +505,13 @@ extension SHNetWorkServerViewController {
                 rsip.serverName = newServerName
                 
                 // 更新选择中的RSIP
-                let filePath =
-                    FileTools.documentPath() + "/" + selectMacAddress
-                
-                NSKeyedArchiver.archiveRootObject(
-                    rsip,
-                    toFile: filePath
-                )
+                _ = SHDeviceList.saveSelectedRemoteDevice(rsip)
                 
                 // 更新所有存储的RSIP
                 
-                let rsipArrayPath =
-                    FileTools.documentPath() + "/" +
-                    allDeviceMacAddressListPath
+                let rsips = SHDeviceList.allRemoteDevices()
                 
-                guard let rsips = NSKeyedUnarchiver.unarchiveObject(withFile: rsipArrayPath) as? [SHDeviceList] else {
+                if rsips.isEmpty {
                     
                     return
                 }
@@ -529,11 +521,8 @@ extension SHNetWorkServerViewController {
                     let device = rsips[index]
                     device.serverName = newServerName
                 }
-                 
-                NSKeyedArchiver.archiveRootObject(
-                    rsips,
-                    toFile: rsipArrayPath
-                )
+                
+                _ = SHDeviceList.saveAllRemoteDevices(rsips)
         }
         
         alertView?.add(sureAction)
@@ -663,22 +652,21 @@ extension SHNetWorkServerViewController: XMLParserDelegate {
         
         if deviceLists?.count == 0 {
             
-            SVProgressHUD.showError(withStatus: "Request failed")
+            SVProgressHUD.showError(
+                withStatus: "Request failed"
+            )
+            
             return;
         }
         
-        let filePath =
-            FileTools.documentPath() + "/" +
-            allDeviceMacAddressListPath
+        if SHDeviceList.saveAllRemoteDevices(deviceLists!) {
         
-        NSKeyedArchiver.archiveRootObject(
-            deviceLists!,
-            toFile: filePath
-        )
+            SVProgressHUD.showSuccess(
+                withStatus: "Request success"
+            )
         
-        SVProgressHUD.showSuccess(withStatus: "Request success")
-        
-        selectIPButtonClick()
+            selectIPButtonClick()
+        }
     }
 }
 

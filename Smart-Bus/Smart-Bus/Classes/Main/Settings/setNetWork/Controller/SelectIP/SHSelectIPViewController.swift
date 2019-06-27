@@ -30,14 +30,7 @@ class SHSelectIPViewController: UITableViewController {
         tableView.backgroundView =
             UIImageView(image: UIImage(named: "background"))
         
-        let filePath =
-            FileTools.documentPath() + "/" +
-            allDeviceMacAddressListPath
-        
-        deviceLists =
-            NSKeyedUnarchiver.unarchiveObject(
-                withFile: filePath
-            ) as? [SHDeviceList] ?? [SHDeviceList]()
+        deviceLists = SHDeviceList.allRemoteDevices()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,13 +52,8 @@ class SHSelectIPViewController: UITableViewController {
         }
         
         // 获取哪一行
-        let filePath =
-            FileTools.documentPath() + "/" + selectMacAddress
-        
         guard let selectedRSIP =
-            NSKeyedUnarchiver.unarchiveObject(
-                withFile: filePath
-                ) as? SHDeviceList else {
+            SHDeviceList.selectedRemoteDevice() else {
                     
             return
         }
@@ -101,17 +89,7 @@ class SHSelectIPViewController: UITableViewController {
             device.serverName = defaultRemoteServerDoMainName
         }
         
-        // 保存选择的地址
-        let filePath =
-            FileTools.documentPath() + "/" + selectMacAddress
-          
-        let isSuccess =
-            NSKeyedArchiver.archiveRootObject(
-                device,
-                toFile: filePath
-        )
-        
-        if isSuccess {
+        if SHDeviceList.saveSelectedRemoteDevice(device) {
             
             SVProgressHUD.showSuccess(
                 withStatus: SHLanguageText.saved
