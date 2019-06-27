@@ -192,7 +192,10 @@ extension SHDeviceArgsViewController: UITableViewDelegate {
             
             if value.isEmpty {
                 
-                SVProgressHUD.showInfo(withStatus: "The value should not be empty!")
+                SVProgressHUD.showInfo(
+                    withStatus: "The value should not be empty!"
+                )
+                
                 return
             }
             
@@ -207,11 +210,18 @@ extension SHDeviceArgsViewController: UITableViewDelegate {
                               preferredStyle: .alert,
                               transitionAnimation: .scaleFade
         )
-        
-        if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
+ 
+        if UIDevice.is_iPhoneX_More() {
             
             alertController?.alertViewOriginY =
-                navigationBarHeight + statusBarHeight
+                navigationBarHeight +
+                statusBarHeight +
+                statusBarHeight
+        } else {
+            
+            alertController?.alertViewOriginY =
+                navigationBarHeight +
+                statusBarHeight
         }
         
         UIApplication.shared.keyWindow?.rootViewController?.present(

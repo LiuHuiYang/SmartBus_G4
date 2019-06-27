@@ -70,17 +70,23 @@
     
     alertView.buttonSpace = statusBarHeight;
     
-    alertView.buttonHeight = [UIDevice is_iPad] ? navigationBarHeight : tabBarHeight;
-    
     alertView.buttonCornerRadius = statusBarHeight * 0.5;
     
-    alertView.buttonFont = [UIDevice is_iPad] ? [UIFont boldSystemFontOfSize:28] : [UIFont boldSystemFontOfSize:16];
+    CGFloat height =
+        [UIDevice is_iPad] ? navigationBarHeight : defaultHeight;
+    
+    UIFont *font =
+        [UIDevice is_iPad] ?
+        [UIFont boldSystemFontOfSize:28] :
+        [UIFont boldSystemFontOfSize:16];
+    
+    alertView.buttonFont = font;
+    alertView.buttonHeight = height;
     
     // =============  textField ======================
     
-    alertView.textFieldFont = [UIDevice is_iPad] ? [UIFont boldSystemFontOfSize:28] : [UIFont boldSystemFontOfSize:16];
-    
-    alertView.textFieldHeight = [UIDevice is_iPad] ? navigationBarHeight : defaultHeight;
+    alertView.textFieldFont = font;
+    alertView.textFieldHeight = height;
     
     return alertView;
 }

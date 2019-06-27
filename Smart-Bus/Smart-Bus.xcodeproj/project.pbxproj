@@ -4247,6 +4247,7 @@
 			isa = PBXGroup;
 			children = (
 				045C32152285014200EE2D5D /* SoundTools.m */,
+				045C32422285014300EE2D5D /* SHNetWorkTools.h */,
 				045C32162285014200EE2D5D /* SHNetWorkTools.m */,
 				045C32172285014200EE2D5D /* UIView+CustomSetting.m */,
 				045C32182285014200EE2D5D /* UIButton+init.h */,
@@ -4260,7 +4261,6 @@
 				045C323D2285014300EE2D5D /* UIButton+init.m */,
 				045C323E2285014300EE2D5D /* UIView+CustomSetting.h */,
 				045C323F2285014300EE2D5D /* CustomAlertViewController */,
-				045C32422285014300EE2D5D /* SHNetWorkTools.h */,
 				045C32432285014300EE2D5D /* SoundTools.h */,
 				045C32442285014300EE2D5D /* Additional */,
 				045C32722285014300EE2D5D /* UIBarButtonItem+init.h */,
@@ -4310,8 +4310,8 @@
 		045C323F2285014300EE2D5D /* CustomAlertViewController */ = {
 			isa = PBXGroup;
 			children = (
-				045C32402285014300EE2D5D /* TYCustomAlertView.m */,
 				045C32412285014300EE2D5D /* TYCustomAlertView.h */,
+				045C32402285014300EE2D5D /* TYCustomAlertView.m */,
 			);
 			path = CustomAlertViewController;
 			sourceTree = "<group>";
