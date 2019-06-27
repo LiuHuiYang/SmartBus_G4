@@ -12,8 +12,14 @@ import SAMKeychain
 
 class SHNetWorkServerViewController: SHViewController {
     
+    /// 选择的设备列表
+    private var selectedRSIP: SHDeviceList?
+    
     /// 选择服务器的名称
-    private var serverName = defaultRemoteServerDoMainName
+    private var serverName: String = defaultRemoteServerDoMainName
+    
+    /// 服务器域名输入框
+    private var serverTextField: UITextField?
     
     // MARK: - 解析 XML 用的属性
     
@@ -123,7 +129,17 @@ class SHNetWorkServerViewController: SHViewController {
         
         navigationItem.title = title
         
-        locallabel.text = "Direct Fast Link Mode: \nThis App will operate only in Local Area environmet."
+        locallabel.text =
+            "Direct Fast Link Mode: \nThis App will operate only in Local Area environmet."
+        
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(
+                imageName: "setting",
+                hightlightedImageName: "setting",
+                addTarget: self,
+                action: #selector(changeServerDomainName),
+                isLeft: false
+        )
         
         
         isLocalOrNetSwitch .setOn(
@@ -185,11 +201,16 @@ class SHNetWorkServerViewController: SHViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let filePath = FileTools.documentPath() + "/" + selectMacAddress
-
-        let selectDevice = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? SHDeviceList
+        selectedRSIP = SHSocketTools.rsip()
         
-        selectIPButton .setTitle(selectDevice?.macAddress, for: .normal)
+        serverName =
+            selectedRSIP?.serverName ??
+            defaultRemoteServerDoMainName
+        
+        selectIPButton .setTitle(
+            selectedRSIP?.macAddress,
+            for: .normal
+        )
 
         isLocalOrNetSwitchClick()
 
@@ -322,12 +343,14 @@ class SHNetWorkServerViewController: SHViewController {
     /// 选择IP
     @IBAction func selectIPButtonClick() {
         
-        let selectIPViewController = UIStoryboard(
-            name: "SHSelectIPViewController",
-            bundle: nil).instantiateViewController(
+        let selectIPViewController =
+            UIStoryboard(
+                name: "SHSelectIPViewController",
+                bundle: nil
+            ).instantiateViewController(
                 withIdentifier: "SHSelectIPViewController"
         )
-        
+         
         navigationController?.pushViewController(
             selectIPViewController,
             animated: true
@@ -337,7 +360,7 @@ class SHNetWorkServerViewController: SHViewController {
     
     /// 退出
     @IBAction func logoutButtonClick() {
-        SHNetWorkTools.shareInstacne()?.operationQueue.cancelAllOperations()
+    SHNetWorkTools.shareInstacne()?.operationQueue.cancelAllOperations()
         
         UserDefaults.standard.removeObject(forKey: loginAccout)
         UserDefaults.standard.synchronize()
@@ -419,6 +442,123 @@ class SHNetWorkServerViewController: SHViewController {
     }
 }
 
+
+// MARK: - 指定专用的服务器名称
+extension SHNetWorkServerViewController {
+    
+    /// 修改服务器名称
+    @objc func changeServerDomainName() {
+        
+        let alertView =
+            TYCustomAlertView(
+                title: "Server domain name",
+                message: "",
+                isCustom: true
+        )
+        
+        alertView?.addTextField(configurationHandler: { (textField) in
+            
+            textField?.borderStyle = .none
+            textField?.clearButtonMode = .whileEditing
+            textField?.keyboardType = .URL
+            textField?.autocapitalizationType = .none
+            textField?.textAlignment = .center
+            textField?.font =
+                UIDevice.is_iPad() ?
+                UIView.suitFontForPad() :
+                UIFont.systemFont(ofSize: 16)
+                
+            textField?.placeholder = self.serverName
+            
+            self.serverTextField = textField
+        })
+        
+        let cancelAction =
+            TYAlertAction(
+                title: SHLanguageText.cancel,
+                style: .cancel,
+                handler: nil
+        )
+        
+        alertView?.add(cancelAction)
+        
+        let sureAction =
+            TYAlertAction(
+            title: SHLanguageText.save,
+            style: .destructive) { (action) in
+                
+                guard let newServerName = self.serverTextField?.text?.lowercased(),
+                    
+                    let rsip = self.selectedRSIP,
+                  UIDevice.isIllegalDomainNameOrIPAddress(newServerName) == false else {
+                    
+                    SVProgressHUD.showError(
+                        withStatus: "Illegal domain name"
+                    )
+                    
+                    return
+                }
+                
+                self.serverName = newServerName
+                
+                // FIXME: - 更新服务器记号
+                rsip.serverName = newServerName
+                
+                // 更新选择中的RSIP
+                let filePath =
+                    FileTools.documentPath() + "/" + selectMacAddress
+                
+                NSKeyedArchiver.archiveRootObject(
+                    rsip,
+                    toFile: filePath
+                )
+                
+                // 更新所有存储的RSIP
+                
+                let rsipArrayPath =
+                    FileTools.documentPath() + "/" +
+                    allDeviceMacAddressListPath
+                
+                guard let rsips = NSKeyedUnarchiver.unarchiveObject(withFile: rsipArrayPath) as? [SHDeviceList] else {
+                    
+                    return
+                }
+                
+                for index in 0 ..< rsips.count {
+                    
+                    let device = rsips[index]
+                    device.serverName = newServerName
+                }
+                 
+                NSKeyedArchiver.archiveRootObject(
+                    rsips,
+                    toFile: rsipArrayPath
+                )
+        }
+        
+        alertView?.add(sureAction)
+        
+        
+        let alertController =
+            TYAlertController(
+                alert: alertView!,
+                preferredStyle: .alert,
+                transitionAnimation: .scaleFade
+        )
+        
+        alertController?.alertViewOriginY =
+            navigationBarHeight + (
+                UIDevice.is_iPhoneX_More() ?
+                    defaultHeight :
+                    statusBarHeight
+        )
+        
+        alertController?.backgoundTapDismissEnable = true
+        
+        present(alertController!, animated: true, completion: nil)
+    }
+}
+
 // MARK: - 网络请求与解析
 extension SHNetWorkServerViewController: XMLParserDelegate {
     
@@ -429,7 +569,8 @@ extension SHNetWorkServerViewController: XMLParserDelegate {
         SHNetWorkTools.shareInstacne()?.responseSerializer =
             AFXMLParserResponseSerializer()
         
-        //    http://smartbuscloud.com:8888/DDNSServerService.asmx/GetDeviceList?userName=Jasminko&password=123456
+        //    http://www.smartbuscloud.com:8888/DDNSServerService.asmx/GetDeviceList?userName=Jasminko&password=123456
+        
         
         SVProgressHUD.show(withStatus: "Requesting data")
         
@@ -448,11 +589,18 @@ extension SHNetWorkServerViewController: XMLParserDelegate {
             
             if error != nil {
                 
-                SVProgressHUD.showError(withStatus: "request was aborted")
+                SVProgressHUD.showError(
+                    withStatus: "request was aborted"
+                )
+                
                 return
             }
             
-            UserDefaults.standard.set(name, forKey: loginAccout)
+            UserDefaults.standard.set(
+                name,
+                forKey: loginAccout
+            )
+                
             UserDefaults.standard.synchronize()
             
             SAMKeychain.setPassword(passWord,
@@ -505,6 +653,7 @@ extension SHNetWorkServerViewController: XMLParserDelegate {
         } else if elementName.isEqual("Alias") {
             
             currentDeviceList?.alias = elementString
+            currentDeviceList?.serverName = serverName
         }
     }
     
@@ -518,11 +667,16 @@ extension SHNetWorkServerViewController: XMLParserDelegate {
             return;
         }
         
-        let filePath = FileTools.documentPath() + "/" + allDeviceMacAddressListPath
+        let filePath =
+            FileTools.documentPath() + "/" +
+            allDeviceMacAddressListPath
         
-        NSKeyedArchiver.archiveRootObject(deviceLists!, toFile: filePath)
+        NSKeyedArchiver.archiveRootObject(
+            deviceLists!,
+            toFile: filePath
+        )
         
-        SVProgressHUD.showSuccess(withStatus: "Request Success")
+        SVProgressHUD.showSuccess(withStatus: "Request success")
         
         selectIPButtonClick()
     }

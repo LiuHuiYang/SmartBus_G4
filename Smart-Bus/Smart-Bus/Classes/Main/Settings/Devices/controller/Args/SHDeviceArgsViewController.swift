@@ -210,19 +210,13 @@ extension SHDeviceArgsViewController: UITableViewDelegate {
                               preferredStyle: .alert,
                               transitionAnimation: .scaleFade
         )
- 
-        if UIDevice.is_iPhoneX_More() {
-            
-            alertController?.alertViewOriginY =
-                navigationBarHeight +
-                statusBarHeight +
+  
+        alertController?.alertViewOriginY =
+            navigationBarHeight + (
+                UIDevice.is_iPhoneX_More() ?
+                    defaultHeight :
                 statusBarHeight
-        } else {
-            
-            alertController?.alertViewOriginY =
-                navigationBarHeight +
-                statusBarHeight
-        }
+        )
         
         UIApplication.shared.keyWindow?.rootViewController?.present(
             alertController!,

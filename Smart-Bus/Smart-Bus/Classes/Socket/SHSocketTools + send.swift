@@ -14,10 +14,6 @@ private let iOS_flag: UInt8 = 0x02
 /// 记录的wifi(Server时有效)
 private let localWifiKey = "SHUdpSocketSendDataLocalWifi"
 
-
-/// 伊朗服务器域名
-private let iranServerDoMainName = "www.g4cloud.ir"
-
 /// 本地wifi广播地址
 private let localBroadcastAddress = "255.255.255.255"
 
@@ -357,7 +353,10 @@ extension SHSocketTools {
     /// - Returns: true 使用远程 false 使用本地Wifi
     static func isRemoteControl(_ macAddress: String) -> Bool {
         
-        let specifyIP = (UserDefaults.standard.object(forKey: socketRealIP) as? String) ?? ""
+        let specifyIP =
+            (UserDefaults.standard.object(
+                forKey: socketRealIP
+            ) as? String) ?? ""
         
         guard specifyIP.isEmpty else {
                 
@@ -391,7 +390,6 @@ extension SHSocketTools {
         return !(saveLocalWifi == currentWifi)
     }
     
-    
     /// 获得RSIP的信息
     ///
     /// - Returns: rsip信息
@@ -419,8 +417,6 @@ extension SHSocketTools {
     ///
     /// - Returns: 远程服务器域名
     static func remoteServerDomainName() -> String {
-        
-        print("\(rsip()?.serverName ?? "使用默认域名" )")
         
         return rsip()?.serverName ?? defaultRemoteServerDoMainName
     }

@@ -34,7 +34,7 @@
 /// iPad的适配字体(加大)
 + (UIFont *)suitLargerFontForPad {
     
-    return [UIFont boldSystemFontOfSize:38];
+    return [UIFont boldSystemFontOfSize:36];
 }
 
 /// iPad的适配字体(普通)

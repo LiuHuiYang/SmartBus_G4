@@ -9,7 +9,7 @@
 import UIKit
 
 /// cell重用标示符
-fileprivate let deviceListCellReusableIdentifier =
+private let deviceListCellReusableIdentifier =
     "SHDeviceListCell"
 
 class SHSelectIPViewController: UITableViewController {
@@ -23,15 +23,21 @@ class SHSelectIPViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "RS/IP"
+        navigationItem.title = "RSIP"
         
         tableView.rowHeight = SHDeviceListCell.rowHeight
         
-        tableView.backgroundView = UIImageView(image: UIImage(named: "background"))
+        tableView.backgroundView =
+            UIImageView(image: UIImage(named: "background"))
         
-        let filePath = FileTools.documentPath() + "/" + allDeviceMacAddressListPath
+        let filePath =
+            FileTools.documentPath() + "/" +
+            allDeviceMacAddressListPath
         
-        deviceLists = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [SHDeviceList] ?? [SHDeviceList]()
+        deviceLists =
+            NSKeyedUnarchiver.unarchiveObject(
+                withFile: filePath
+            ) as? [SHDeviceList] ?? [SHDeviceList]()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +49,9 @@ class SHSelectIPViewController: UITableViewController {
         
         if list.isEmpty{
             
-            SVProgressHUD.showError(withStatus: SHLanguageText.noData)
+            SVProgressHUD.showError(
+                withStatus: SHLanguageText.noData
+            )
             
             navigationController?.popViewController(animated: true)
             
@@ -51,24 +59,26 @@ class SHSelectIPViewController: UITableViewController {
         }
         
         // 获取哪一行
-        let filePath = FileTools.documentPath() + "/" + selectMacAddress
+        let filePath =
+            FileTools.documentPath() + "/" + selectMacAddress
         
-        let selectDevice = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? SHDeviceList
-        
-        guard let selectRSIP = selectDevice,
-              let mac = selectRSIP.macAddress else {
+        guard let selectedRSIP =
+            NSKeyedUnarchiver.unarchiveObject(
+                withFile: filePath
+                ) as? SHDeviceList else {
+                    
             return
         }
         
-        for i in 0 ..< list.count {
+        // 查询所有存储的RSIP
+        for index in 0 ..< list.count {
             
-            guard let selecMacAddr = list[i].macAddress else {
-                continue
-            }
+            let device = list[index]
             
-            if selecMacAddr.isEqual(mac) {
+            if selectedRSIP.macAddress != nil &&
+                device.macAddress == selectedRSIP.macAddress {
                 
-                currentRow = i
+                currentRow = index
                 break
             }
         }
@@ -87,15 +97,14 @@ class SHSelectIPViewController: UITableViewController {
             return
         }
         
-        // 保存选择的地址
-        let filePath = FileTools.documentPath() + "/" + selectMacAddress
-        
         if device.serverName == nil {
             device.serverName = defaultRemoteServerDoMainName
         }
         
-        print("目标设备信息: \(device.serverName) - \(device.macAddress)")
-        
+        // 保存选择的地址
+        let filePath =
+            FileTools.documentPath() + "/" + selectMacAddress
+          
         let isSuccess =
             NSKeyedArchiver.archiveRootObject(
                 device,
@@ -104,13 +113,9 @@ class SHSelectIPViewController: UITableViewController {
         
         if isSuccess {
             
-            let msg =
-                SHLanguageTools.share()?.getTextFromPlist(
-                    "PUBLIC",
-                    withSubTitle: "SAVED"
-                ) as! String
-            
-            SVProgressHUD.showSuccess(withStatus: msg)
+            SVProgressHUD.showSuccess(
+                withStatus: SHLanguageText.saved
+            )
         }
     }
     
@@ -137,7 +142,8 @@ class SHSelectIPViewController: UITableViewController {
 
         cell.deviceList = deviceLists?[indexPath.row]
         
-        cell.accessoryView = UIImageView(image: UIImage(named: "check"))
+        cell.accessoryView =
+            UIImageView(image: UIImage(named: "check"))
         
         cell.accessoryView?.isHidden = (indexPath.row != self.currentRow)
 
