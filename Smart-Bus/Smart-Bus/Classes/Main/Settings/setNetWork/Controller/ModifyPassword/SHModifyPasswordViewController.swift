@@ -11,6 +11,9 @@ import SAMKeychain
 
 class SHModifyPasswordViewController: SHViewController {
     
+    /// 选择服务器的名称
+    private var serverName = defaultRemoteServerDoMainName
+    
     /// 用来拼接的可变字符串
     var elementString: String = ""
     
@@ -182,13 +185,19 @@ extension SHModifyPasswordViewController: XMLParserDelegate {
         
         SVProgressHUD.show(withStatus: "Requesting data")
         
+        let urlString = "http://\(serverName):8888/DDNSServerService.asmx/ModifyPassword"
+        
         let param: [String: String] = [
             "userName": userName,
             "oldPassword": oldPassword,
             "newPassword": newPassword
         ]
         
-        SHNetWorkTools.shareInstacne()?.request(.POST, urlstring: "http://smartbuscloud.com:8888/DDNSServerService.asmx/ModifyPassword", parameters: param, finished: { (res, error) in
+        SHNetWorkTools.shareInstacne()?.request(
+            .POST,
+            urlstring: urlString,
+            parameters: param,
+            finished: { (res, error) in
             
             if error != nil {
                 

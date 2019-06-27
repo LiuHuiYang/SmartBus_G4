@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+/// 计划执行的通知
+let SHSchedualPrepareExecuteNotification: String =
+    "SHSchedualPrepareExecuteNotification"
+
 /// 后台任务标示
 @objc enum SHApplicationBackgroundTask: UInt8 {
     
@@ -122,7 +127,7 @@ extension SHSchedualExecuteTools {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(recvieTimeForSchedualNotification),
-            name: NSNotification.Name.SHSchedualPrepareExecute,
+            name: NSNotification.Name(rawValue: SHSchedualPrepareExecuteNotification),
             object: nil
         )
     }
@@ -263,7 +268,7 @@ extension SHSchedualExecuteTools {
         if NSDate.getCurrentDateComponents()?.second == 0 {
            
             NotificationCenter.default.post(
-                name: NSNotification.Name.SHSchedualPrepareExecute,
+                name: Notification.Name(rawValue: SHSchedualPrepareExecuteNotification),
                 object: nil
             )
             

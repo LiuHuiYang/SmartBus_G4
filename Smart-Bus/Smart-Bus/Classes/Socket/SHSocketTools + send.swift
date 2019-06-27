@@ -14,8 +14,6 @@ private let iOS_flag: UInt8 = 0x02
 /// 记录的wifi(Server时有效)
 private let localWifiKey = "SHUdpSocketSendDataLocalWifi"
 
-/// 默认公司服务器域名
-private let defaultRemoteServerDoMainName = "www.smartbuscloud.com"
 
 /// 伊朗服务器域名
 private let iranServerDoMainName = "www.g4cloud.ir"
@@ -393,10 +391,11 @@ extension SHSocketTools {
         return !(saveLocalWifi == currentWifi)
     }
     
-    /// 获得远程发送的MAC地址
+    
+    /// 获得RSIP的信息
     ///
-    /// - Returns: MAC地址
-    static func remoteControlMacAddress() -> String {
+    /// - Returns: rsip信息
+    static func rsip() -> SHDeviceList? {
         
         let path =
             FileTools.documentPath() + "/" + selectMacAddress
@@ -404,7 +403,15 @@ extension SHSocketTools {
         let rsip =
             NSKeyedUnarchiver.unarchiveObject(withFile: path) as? SHDeviceList
         
-        return (rsip?.macAddress ?? "")
+        return rsip
+    }
+    
+    /// 获得远程发送的MAC地址
+    ///
+    /// - Returns: MAC地址
+    static func remoteControlMacAddress() -> String {
+        
+        return (rsip()?.macAddress ?? "")
     }
     
     
@@ -413,15 +420,9 @@ extension SHSocketTools {
     /// - Returns: 远程服务器域名
     static func remoteServerDomainName() -> String {
         
-        let path =
-            FileTools.documentPath() + "/" + selectMacAddress
+        print("\(rsip()?.serverName ?? "使用默认域名" )")
         
-        let rsip =
-            NSKeyedUnarchiver.unarchiveObject(withFile: path) as? SHDeviceList
-        
-        print("\(rsip?.serverName ?? "使用默认域名" )")
-        
-        return rsip?.serverName ?? defaultRemoteServerDoMainName
+        return rsip()?.serverName ?? defaultRemoteServerDoMainName
     }
     
     /// 设置本地发送指令使用的wifi

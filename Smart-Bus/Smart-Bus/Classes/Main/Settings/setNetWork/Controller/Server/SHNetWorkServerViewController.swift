@@ -12,6 +12,9 @@ import SAMKeychain
 
 class SHNetWorkServerViewController: SHViewController {
     
+    /// 选择服务器的名称
+    private var serverName = defaultRemoteServerDoMainName
+    
     // MARK: - 解析 XML 用的属性
     
     /// 所有的设备列表
@@ -368,14 +371,16 @@ class SHNetWorkServerViewController: SHViewController {
                 return
         }
         
-        let url = "http://www.smartbuscloud.com:8888/DDNSServerService.asmx/GetDeviceList"
+        let urlString = "http://\(serverName):8888/DDNSServerService.asmx/GetDeviceList"
         
-        let param: [String: String] =
-            ["userName": userName, "password": password]
+        let param: [String: String] = [
+            "userName": userName,
+            "password": password
+        ]
         
         SHNetWorkTools.shareInstacne()?.request(
             .POST,
-            urlstring: url,
+            urlstring: urlString,
             parameters: param,
             finished: { (res, error) in
             
@@ -428,14 +433,16 @@ extension SHNetWorkServerViewController: XMLParserDelegate {
         
         SVProgressHUD.show(withStatus: "Requesting data")
         
-        let url = "http://www.smartbuscloud.com:8888/DDNSServerService.asmx/GetDeviceList"
+        let urlString = "http:\(serverName):8888/DDNSServerService.asmx/GetDeviceList"
         
-        let param: [String: String] =
-            ["userName": name, "password": passWord]
+        let param: [String: String] = [
+            "userName": name,
+            "password": passWord
+        ]
         
         SHNetWorkTools.shareInstacne()?.request(
             .POST,
-            urlstring: url,
+            urlstring: urlString,
             parameters: param,
             finished: { (res, error) in
             

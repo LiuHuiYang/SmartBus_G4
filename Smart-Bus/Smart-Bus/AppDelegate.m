@@ -38,6 +38,7 @@
     [self.window makeKeyAndVisible];
     
     [self setupSVProgressHUD];
+     
     
     //     用于测试重发机制的测试代码
     //    SHMacroCommand *command = [[SHMacroCommand alloc] init];

@@ -507,6 +507,7 @@
 		045C34642285014500EE2D5D /* Regular.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C326C2285014300EE2D5D /* Regular.m */; };
 		045C34652285014500EE2D5D /* NSDate+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C326F2285014300EE2D5D /* NSDate+Date.m */; };
 		045C34662285014500EE2D5D /* SHConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C32712285014300EE2D5D /* SHConstraint.m */; };
+		04F29BA322C44F8C00529C78 /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F29BA222C44F8C00529C78 /* CommonConstants.swift */; };
 		8B0A0E561F3AECCE00055ECB /* Sounds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0A0E551F3AECCE00055ECB /* Sounds.bundle */; };
 		8B2461391EE4EA8B009574E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2461381EE4EA8B009574E3 /* main.m */; };
 		8B24613C1EE4EA8B009574E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B24613B1EE4EA8B009574E3 /* AppDelegate.m */; };
@@ -1100,6 +1101,7 @@
 		045C32732285014300EE2D5D /* UIImage+SaveAndGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SaveAndGet.h"; sourceTree = "<group>"; };
 		0471C68D211BE39C0067D731 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
 		04A177BB215F2D9C00BD9744 /* Smart-Bus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bus-Bridging-Header.h"; sourceTree = "<group>"; };
+		04F29BA222C44F8C00529C78 /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 		8B0A0E551F3AECCE00055ECB /* Sounds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Sounds.bundle; sourceTree = "<group>"; };
 		8B2461341EE4EA8B009574E3 /* Smart-Bus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart-Bus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2461381EE4EA8B009574E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -4233,10 +4235,10 @@
 		045C320F2285014200EE2D5D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				045C32132285014200EE2D5D /* SHViewController.h */,
 				045C32102285014200EE2D5D /* SHViewController.m */,
 				045C32112285014200EE2D5D /* SHNavigationController.swift */,
 				045C32122285014200EE2D5D /* SHTabBarController.swift */,
-				045C32132285014200EE2D5D /* SHViewController.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4251,6 +4253,7 @@
 				045C32192285014200EE2D5D /* JHChart */,
 				045C32392285014300EE2D5D /* UIBarButtonItem+init.m */,
 				045C323A2285014300EE2D5D /* loadNibView + protocol.swift */,
+				04F29BA222C44F8C00529C78 /* CommonConstants.swift */,
 				045C323B2285014300EE2D5D /* SHConstraint.h */,
 				045C32712285014300EE2D5D /* SHConstraint.m */,
 				045C323C2285014300EE2D5D /* UIImage+SaveAndGet.m */,
@@ -5089,6 +5092,7 @@
 				045C333A2285014400EE2D5D /* SHAudioRadioView.swift in Sources */,
 				045C32932285014300EE2D5D /* SHSQLiteManager + Icon.swift in Sources */,
 				045C32B92285014300EE2D5D /* SHModifyPasswordViewController.swift in Sources */,
+				04F29BA322C44F8C00529C78 /* CommonConstants.swift in Sources */,
 				045C33492285014400EE2D5D /* SHAudioOperatorTools + vol.swift in Sources */,
 				045C33E62285014400EE2D5D /* SHSchedualSettingViewController.swift in Sources */,
 				045C32DA2285014300EE2D5D /* SHZoneNineInOneControlViewController.swift in Sources */,

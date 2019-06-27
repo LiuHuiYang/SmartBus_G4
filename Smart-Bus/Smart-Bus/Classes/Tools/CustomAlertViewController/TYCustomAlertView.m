@@ -18,14 +18,24 @@
         return [super alertViewWithTitle:title message:message];
     }
     
-    TYCustomAlertView *alertView = [super alertViewWithTitle:nil message:nil];
+    TYCustomAlertView *alertView =
+        [super alertViewWithTitle:nil
+                          message:nil
+        ];
     
     // =============  整体显示背景 ======================
     
-    alertView.layer.cornerRadius = [UIDevice is_iPad] ? statusBarHeight : statusBarHeight * 0.5;
+    alertView.layer.cornerRadius =
+        [UIDevice is_iPad] ?
+        statusBarHeight :
+        statusBarHeight * 0.5;
+    
     alertView.clipsToBounds = YES;
     
-    alertView.backgroundColor = [UIColor colorWithHex:0xddFbFb alpha:0.9];
+    alertView.backgroundColor =
+        [UIColor colorWithHex:0xddFbFb
+                        alpha:0.9
+        ];
     
     CGFloat alertWidth = MIN([UIView frame_screenWidth], [UIView frame_screenHeight]) * 0.65;
     
@@ -70,7 +80,7 @@
     
     alertView.textFieldFont = [UIDevice is_iPad] ? [UIFont boldSystemFontOfSize:28] : [UIFont boldSystemFontOfSize:16];
     
-    alertView.textFieldHeight = [UIDevice is_iPad] ? navigationBarHeight + statusBarHeight : tabBarHeight;
+    alertView.textFieldHeight = [UIDevice is_iPad] ? navigationBarHeight : defaultHeight;
     
     return alertView;
 }

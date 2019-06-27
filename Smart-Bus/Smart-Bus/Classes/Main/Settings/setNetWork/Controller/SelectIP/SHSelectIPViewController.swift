@@ -90,6 +90,10 @@ class SHSelectIPViewController: UITableViewController {
         // 保存选择的地址
         let filePath = FileTools.documentPath() + "/" + selectMacAddress
         
+        if device.serverName == nil {
+            device.serverName = defaultRemoteServerDoMainName
+        }
+        
         print("目标设备信息: \(device.serverName) - \(device.macAddress)")
         
         let isSuccess =

@@ -8,6 +8,12 @@
 
 import UIKit
 
+/// 允许修改区域设备是否允许的key
+private let authorChangeDeviceisAllow: String = "SHAuthorChangeDeviceisAllow"
+
+/// 启与关闭修改设备配置的密码的key
+private let authorChangeDevicePasswordKey: String = "SHAuthorChangeDevicePasswordKey"
+
 class SHAuthorizationViewController: SHViewController {
     
     /// 显示文字
