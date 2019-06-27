@@ -50,7 +50,7 @@
         
         alertView.textLabelSpace = statusBarHeight;
         
-        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:title attributes: @{NSFontAttributeName:([UIDevice is_iPad] ? [UIFont fontWithName:@"HelveticaNeue-Bold" size:32] : [UIFont fontWithName:@"HelveticaNeue-Bold" size:22]), NSForegroundColorAttributeName: [UIView highlightedTextColor]} ];
+        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:title attributes: @{NSFontAttributeName:([UIDevice is_iPad] ? [UIFont fontWithName:@"HelveticaNeue-Bold" size:30] : [UIFont fontWithName:@"HelveticaNeue-Bold" size:20]), NSForegroundColorAttributeName: [UIView highlightedTextColor]} ];
         
         alertView.titleLable.attributedText = attributedText;
         alertView.titleLable.numberOfLines = 0;
