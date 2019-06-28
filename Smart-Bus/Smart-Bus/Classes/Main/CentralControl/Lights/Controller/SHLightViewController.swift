@@ -231,7 +231,9 @@ extension SHLightViewController {
             
             let foorName = selectCentrallightArea?.floorName ?? ""
             
-            SVProgressHUD.showInfo(withStatus: "\(foorName) \(SHLanguageText.noData)")
+            SVProgressHUD.showInfo(
+                withStatus: "\(foorName) \(SHLanguageText.noData)"
+            )
             
             return
         }
@@ -244,6 +246,10 @@ extension SHLightViewController {
             
             SHLoadProgressView.showIn(progressHoldView)
         }
+        
+        SVProgressHUD.showSuccess(
+            withStatus: "Executing \(selectCentrallightArea?.floorName ?? "light")"
+        )
         
         performSelector(inBackground: #selector(execute(commands:)), with: allLightCommands)
     }

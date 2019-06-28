@@ -103,6 +103,10 @@ import UIKit
             return
         }
         
+        SVProgressHUD.showSuccess(
+            withStatus: "Executing \(macro!.macroName ?? "macro")"
+        )
+        
         commandButton.isSelected = true
         
         SHLoadProgressView.showIn(holdProgressView)

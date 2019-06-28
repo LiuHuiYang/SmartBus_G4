@@ -266,6 +266,10 @@ extension SHClimateViewController {
             SHLoadProgressView.showIn(progressHoldView)
         }
         
+        SVProgressHUD.showSuccess(
+            withStatus: "Executing \(selectCentralHVAC?.floorName ?? "climate")"
+        )
+        
         performSelector(inBackground: #selector(execute(commands:)), with: hvacCommands)
     }
     

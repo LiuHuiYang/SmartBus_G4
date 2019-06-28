@@ -479,13 +479,13 @@ extension SHSecurityControlViewController {
                               preferredStyle: .alert,
                               transitionAnimation: .dropDown
         )
-        
-        if UIDevice.is4_0inch() ||
-            UIDevice.is3_5inch() {
-            
-            alertController?.alertViewOriginY =
-                navigationBarHeight + statusBarHeight
-        }
+      
+        alertController?.alertViewOriginY =
+            navigationBarHeight +
+            (UIDevice.is_iPhoneX_More() ?
+                defaultHeight :
+                statusBarHeight
+            )
         
         alertController?.backgoundTapDismissEnable = true
         

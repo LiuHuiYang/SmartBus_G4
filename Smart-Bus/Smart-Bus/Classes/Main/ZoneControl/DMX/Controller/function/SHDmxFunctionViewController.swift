@@ -113,11 +113,12 @@ extension SHDmxFunctionViewController {
                 transitionAnimation: .scaleFade
         )
         
-        if UIDevice.is3_5inch() || UIDevice.is4_0inch() {
-            
-            alertController?.alertViewOriginY =
-                navigationBarHeight + statusBarHeight
-        }
+        alertController?.alertViewOriginY =
+            navigationBarHeight +
+            (UIDevice.is_iPhoneX_More() ?
+                defaultHeight :
+                statusBarHeight
+        )
         
         let rootViewController =
         UIApplication.shared.keyWindow?.rootViewController

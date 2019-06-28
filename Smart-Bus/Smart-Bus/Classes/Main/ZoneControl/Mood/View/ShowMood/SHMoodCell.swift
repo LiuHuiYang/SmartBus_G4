@@ -80,7 +80,7 @@ import UIKit
     }
     
     
-    /// 宏点击
+    /// mood点击
     @IBAction func commandButtonClick() {
         
         if mood == nil {
@@ -98,6 +98,10 @@ import UIKit
         commandButton.isSelected = true
         
         SHLoadProgressView.showIn(holdProgressView)
+        
+        SVProgressHUD.showSuccess(
+            withStatus: "Executing \(mood?.moodName ?? "mood")"
+        )
          
         performSelector(
             inBackground: #selector(executeCommands(_:)),
