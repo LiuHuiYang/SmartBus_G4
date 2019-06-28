@@ -213,7 +213,6 @@
 		045C333E2285014400EE2D5D /* SHAuioPlayTypeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C303B2285014100EE2D5D /* SHAuioPlayTypeButton.m */; };
 		045C333F2285014400EE2D5D /* SHAudioInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C303D2285014100EE2D5D /* SHAudioInView.xib */; };
 		045C33402285014400EE2D5D /* SHAudioInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C303E2285014100EE2D5D /* SHAudioInView.swift */; };
-		045C33412285014400EE2D5D /* SHAudioRecordControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C30402285014100EE2D5D /* SHAudioRecordControlButton.m */; };
 		045C33422285014400EE2D5D /* SHAudioAlbumSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C30432285014100EE2D5D /* SHAudioAlbumSongCell.swift */; };
 		045C33432285014400EE2D5D /* SHAudioAlbumSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C30442285014100EE2D5D /* SHAudioAlbumSongCell.xib */; };
 		045C33442285014400EE2D5D /* SHAudioAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C30462285014100EE2D5D /* SHAudioAlbumCell.xib */; };
@@ -247,7 +246,6 @@
 		045C33602285014400EE2D5D /* SHMediaSATChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C30732285014100EE2D5D /* SHMediaSATChannelCell.xib */; };
 		045C33612285014400EE2D5D /* SHMediaSATCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C30752285014100EE2D5D /* SHMediaSATCategoryCollectionCell.swift */; };
 		045C33622285014400EE2D5D /* SHMediaSATCategoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C30762285014100EE2D5D /* SHMediaSATCategoryCollectionCell.xib */; };
-		045C33632285014400EE2D5D /* SHZoneControlSATChannelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C30792285014100EE2D5D /* SHZoneControlSATChannelButton.m */; };
 		045C33642285014400EE2D5D /* SHZoneControlSATNumberPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C307B2285014100EE2D5D /* SHZoneControlSATNumberPad.xib */; };
 		045C33652285014400EE2D5D /* SHZoneControlSATNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C307C2285014100EE2D5D /* SHZoneControlSATNumberPad.swift */; };
 		045C33662285014400EE2D5D /* SHZoneControlSATView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C307E2285014100EE2D5D /* SHZoneControlSATView.xib */; };
@@ -319,7 +317,6 @@
 		045C33A82285014400EE2D5D /* SHEditRecordShadeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C30F82285014100EE2D5D /* SHEditRecordShadeCell.xib */; };
 		045C33A92285014400EE2D5D /* SHMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C30FA2285014100EE2D5D /* SHMoodCell.swift */; };
 		045C33AA2285014400EE2D5D /* SHMoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C30FB2285014100EE2D5D /* SHMoodCell.xib */; };
-		045C33AB2285014400EE2D5D /* SHMoodShadeStatusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C30FD2285014100EE2D5D /* SHMoodShadeStatusButton.m */; };
 		045C33AC2285014400EE2D5D /* SHZoneControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C31012285014100EE2D5D /* SHZoneControlViewController.swift */; };
 		045C33AD2285014400EE2D5D /* SHZoneControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C31022285014100EE2D5D /* SHZoneControlViewController.xib */; };
 		045C33AE2285014400EE2D5D /* SHDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C31042285014100EE2D5D /* SHDevice.swift */; };
@@ -471,7 +468,6 @@
 		045C34402285014500EE2D5D /* SHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C32122285014200EE2D5D /* SHTabBarController.swift */; };
 		045C34412285014500EE2D5D /* SoundTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C32152285014200EE2D5D /* SoundTools.m */; };
 		045C34422285014500EE2D5D /* SHNetWorkTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C32162285014200EE2D5D /* SHNetWorkTools.m */; };
-		045C34432285014500EE2D5D /* UIView+CustomSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C32172285014200EE2D5D /* UIView+CustomSetting.m */; };
 		045C34442285014500EE2D5D /* JHRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C321C2285014200EE2D5D /* JHRadarChart.m */; };
 		045C34452285014500EE2D5D /* JHPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C321F2285014200EE2D5D /* JHPieChart.m */; };
 		045C34462285014500EE2D5D /* JHWaveChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C32212285014200EE2D5D /* JHWaveChart.m */; };
@@ -507,6 +503,9 @@
 		045C34642285014500EE2D5D /* Regular.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C326C2285014300EE2D5D /* Regular.m */; };
 		045C34652285014500EE2D5D /* NSDate+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C326F2285014300EE2D5D /* NSDate+Date.m */; };
 		045C34662285014500EE2D5D /* SHConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C32712285014300EE2D5D /* SHConstraint.m */; };
+		046F379C22C5B9AE000296D7 /* UIViewCustomSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F379B22C5B9AE000296D7 /* UIViewCustomSetting.swift */; };
+		046F379E22C5BFB0000296D7 /* SHMoodShadeStatusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F379D22C5BFB0000296D7 /* SHMoodShadeStatusButton.swift */; };
+		046F37A022C5C6CE000296D7 /* SHAudioRecordControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F379F22C5C6CE000296D7 /* SHAudioRecordControlButton.swift */; };
 		04F29BA322C44F8C00529C78 /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F29BA222C44F8C00529C78 /* CommonConstants.swift */; };
 		8B0A0E561F3AECCE00055ECB /* Sounds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0A0E551F3AECCE00055ECB /* Sounds.bundle */; };
 		8B2461391EE4EA8B009574E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2461381EE4EA8B009574E3 /* main.m */; };
@@ -756,8 +755,6 @@
 		045C303B2285014100EE2D5D /* SHAuioPlayTypeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAuioPlayTypeButton.m; sourceTree = "<group>"; };
 		045C303D2285014100EE2D5D /* SHAudioInView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHAudioInView.xib; sourceTree = "<group>"; };
 		045C303E2285014100EE2D5D /* SHAudioInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHAudioInView.swift; sourceTree = "<group>"; };
-		045C30402285014100EE2D5D /* SHAudioRecordControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAudioRecordControlButton.m; sourceTree = "<group>"; };
-		045C30412285014100EE2D5D /* SHAudioRecordControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAudioRecordControlButton.h; sourceTree = "<group>"; };
 		045C30432285014100EE2D5D /* SHAudioAlbumSongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHAudioAlbumSongCell.swift; sourceTree = "<group>"; };
 		045C30442285014100EE2D5D /* SHAudioAlbumSongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHAudioAlbumSongCell.xib; sourceTree = "<group>"; };
 		045C30462285014100EE2D5D /* SHAudioAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHAudioAlbumCell.xib; sourceTree = "<group>"; };
@@ -793,8 +790,6 @@
 		045C30732285014100EE2D5D /* SHMediaSATChannelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMediaSATChannelCell.xib; sourceTree = "<group>"; };
 		045C30752285014100EE2D5D /* SHMediaSATCategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHMediaSATCategoryCollectionCell.swift; sourceTree = "<group>"; };
 		045C30762285014100EE2D5D /* SHMediaSATCategoryCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMediaSATCategoryCollectionCell.xib; sourceTree = "<group>"; };
-		045C30782285014100EE2D5D /* SHZoneControlSATChannelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHZoneControlSATChannelButton.h; sourceTree = "<group>"; };
-		045C30792285014100EE2D5D /* SHZoneControlSATChannelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHZoneControlSATChannelButton.m; sourceTree = "<group>"; };
 		045C307B2285014100EE2D5D /* SHZoneControlSATNumberPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneControlSATNumberPad.xib; sourceTree = "<group>"; };
 		045C307C2285014100EE2D5D /* SHZoneControlSATNumberPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneControlSATNumberPad.swift; sourceTree = "<group>"; };
 		045C307E2285014100EE2D5D /* SHZoneControlSATView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneControlSATView.xib; sourceTree = "<group>"; };
@@ -866,8 +861,6 @@
 		045C30F82285014100EE2D5D /* SHEditRecordShadeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHEditRecordShadeCell.xib; sourceTree = "<group>"; };
 		045C30FA2285014100EE2D5D /* SHMoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHMoodCell.swift; sourceTree = "<group>"; };
 		045C30FB2285014100EE2D5D /* SHMoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMoodCell.xib; sourceTree = "<group>"; };
-		045C30FD2285014100EE2D5D /* SHMoodShadeStatusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMoodShadeStatusButton.m; sourceTree = "<group>"; };
-		045C30FE2285014100EE2D5D /* SHMoodShadeStatusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMoodShadeStatusButton.h; sourceTree = "<group>"; };
 		045C31012285014100EE2D5D /* SHZoneControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneControlViewController.swift; sourceTree = "<group>"; };
 		045C31022285014100EE2D5D /* SHZoneControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneControlViewController.xib; sourceTree = "<group>"; };
 		045C31042285014100EE2D5D /* SHDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHDevice.swift; sourceTree = "<group>"; };
@@ -1022,7 +1015,6 @@
 		045C32132285014200EE2D5D /* SHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewController.h; sourceTree = "<group>"; };
 		045C32152285014200EE2D5D /* SoundTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundTools.m; sourceTree = "<group>"; };
 		045C32162285014200EE2D5D /* SHNetWorkTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHNetWorkTools.m; sourceTree = "<group>"; };
-		045C32172285014200EE2D5D /* UIView+CustomSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomSetting.m"; sourceTree = "<group>"; };
 		045C32182285014200EE2D5D /* UIButton+init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+init.h"; sourceTree = "<group>"; };
 		045C321A2285014200EE2D5D /* JHLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLineChart.h; sourceTree = "<group>"; };
 		045C321B2285014200EE2D5D /* JHRingChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRingChart.h; sourceTree = "<group>"; };
@@ -1060,7 +1052,6 @@
 		045C323B2285014300EE2D5D /* SHConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHConstraint.h; sourceTree = "<group>"; };
 		045C323C2285014300EE2D5D /* UIImage+SaveAndGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SaveAndGet.m"; sourceTree = "<group>"; };
 		045C323D2285014300EE2D5D /* UIButton+init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+init.m"; sourceTree = "<group>"; };
-		045C323E2285014300EE2D5D /* UIView+CustomSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomSetting.h"; sourceTree = "<group>"; };
 		045C32402285014300EE2D5D /* TYCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCustomAlertView.m; sourceTree = "<group>"; };
 		045C32412285014300EE2D5D /* TYCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCustomAlertView.h; sourceTree = "<group>"; };
 		045C32422285014300EE2D5D /* SHNetWorkTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNetWorkTools.h; sourceTree = "<group>"; };
@@ -1099,6 +1090,9 @@
 		045C32712285014300EE2D5D /* SHConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHConstraint.m; sourceTree = "<group>"; };
 		045C32722285014300EE2D5D /* UIBarButtonItem+init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+init.h"; sourceTree = "<group>"; };
 		045C32732285014300EE2D5D /* UIImage+SaveAndGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SaveAndGet.h"; sourceTree = "<group>"; };
+		046F379B22C5B9AE000296D7 /* UIViewCustomSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewCustomSetting.swift; sourceTree = "<group>"; };
+		046F379D22C5BFB0000296D7 /* SHMoodShadeStatusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMoodShadeStatusButton.swift; sourceTree = "<group>"; };
+		046F379F22C5C6CE000296D7 /* SHAudioRecordControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAudioRecordControlButton.swift; sourceTree = "<group>"; };
 		0471C68D211BE39C0067D731 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
 		04A177BB215F2D9C00BD9744 /* Smart-Bus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bus-Bridging-Header.h"; sourceTree = "<group>"; };
 		04F29BA222C44F8C00529C78 /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
@@ -2364,8 +2358,7 @@
 		045C303F2285014100EE2D5D /* AudioRecordControlButton */ = {
 			isa = PBXGroup;
 			children = (
-				045C30402285014100EE2D5D /* SHAudioRecordControlButton.m */,
-				045C30412285014100EE2D5D /* SHAudioRecordControlButton.h */,
+				046F379F22C5C6CE000296D7 /* SHAudioRecordControlButton.swift */,
 			);
 			path = AudioRecordControlButton;
 			sourceTree = "<group>";
@@ -2521,7 +2514,6 @@
 			children = (
 				045C30712285014100EE2D5D /* SATChannelCell */,
 				045C30742285014100EE2D5D /* SATCategoryCell */,
-				045C30772285014100EE2D5D /* ChannelSetButton */,
 				045C307A2285014100EE2D5D /* satNumberPad */,
 				045C307D2285014100EE2D5D /* satControlView */,
 				045C30802285014100EE2D5D /* SATCategoryEditCell */,
@@ -2546,15 +2538,6 @@
 				045C30762285014100EE2D5D /* SHMediaSATCategoryCollectionCell.xib */,
 			);
 			path = SATCategoryCell;
-			sourceTree = "<group>";
-		};
-		045C30772285014100EE2D5D /* ChannelSetButton */ = {
-			isa = PBXGroup;
-			children = (
-				045C30782285014100EE2D5D /* SHZoneControlSATChannelButton.h */,
-				045C30792285014100EE2D5D /* SHZoneControlSATChannelButton.m */,
-			);
-			path = ChannelSetButton;
 			sourceTree = "<group>";
 		};
 		045C307A2285014100EE2D5D /* satNumberPad */ = {
@@ -3091,8 +3074,7 @@
 		045C30FC2285014100EE2D5D /* ShadeStatusButton */ = {
 			isa = PBXGroup;
 			children = (
-				045C30FD2285014100EE2D5D /* SHMoodShadeStatusButton.m */,
-				045C30FE2285014100EE2D5D /* SHMoodShadeStatusButton.h */,
+				046F379D22C5BFB0000296D7 /* SHMoodShadeStatusButton.swift */,
 			);
 			path = ShadeStatusButton;
 			sourceTree = "<group>";
@@ -4246,24 +4228,23 @@
 		045C32142285014200EE2D5D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				045C32432285014300EE2D5D /* SoundTools.h */,
 				045C32152285014200EE2D5D /* SoundTools.m */,
 				045C32422285014300EE2D5D /* SHNetWorkTools.h */,
 				045C32162285014200EE2D5D /* SHNetWorkTools.m */,
-				045C32172285014200EE2D5D /* UIView+CustomSetting.m */,
 				045C32182285014200EE2D5D /* UIButton+init.h */,
 				045C32192285014200EE2D5D /* JHChart */,
-				045C32392285014300EE2D5D /* UIBarButtonItem+init.m */,
 				045C323A2285014300EE2D5D /* loadNibView + protocol.swift */,
 				04F29BA222C44F8C00529C78 /* CommonConstants.swift */,
+				046F379B22C5B9AE000296D7 /* UIViewCustomSetting.swift */,
 				045C323B2285014300EE2D5D /* SHConstraint.h */,
 				045C32712285014300EE2D5D /* SHConstraint.m */,
 				045C323C2285014300EE2D5D /* UIImage+SaveAndGet.m */,
 				045C323D2285014300EE2D5D /* UIButton+init.m */,
-				045C323E2285014300EE2D5D /* UIView+CustomSetting.h */,
 				045C323F2285014300EE2D5D /* CustomAlertViewController */,
-				045C32432285014300EE2D5D /* SoundTools.h */,
 				045C32442285014300EE2D5D /* Additional */,
 				045C32722285014300EE2D5D /* UIBarButtonItem+init.h */,
+				045C32392285014300EE2D5D /* UIBarButtonItem+init.m */,
 				045C32732285014300EE2D5D /* UIImage+SaveAndGet.h */,
 			);
 			path = Tools;
@@ -4900,7 +4881,9 @@
 				045C33892285014400EE2D5D /* SHSetSystemViewCell.swift in Sources */,
 				045C334F2285014400EE2D5D /* SHAudioOperatorTools + playControl.swift in Sources */,
 				045C32D12285014300EE2D5D /* SHDeviceArgsViewController + CT24.swift in Sources */,
+				046F37A022C5C6CE000296D7 /* SHAudioRecordControlButton.swift in Sources */,
 				045C33E72285014400EE2D5D /* SHSchedualExecuteTools.swift in Sources */,
+				046F379C22C5B9AE000296D7 /* UIViewCustomSetting.swift in Sources */,
 				045C32EE2285014300EE2D5D /* SHIcon.swift in Sources */,
 				045C344C2285014500EE2D5D /* JHLineChart.m in Sources */,
 				045C32BC2285014300EE2D5D /* SHDeviceList.swift in Sources */,
@@ -4923,7 +4906,6 @@
 				045C32912285014300EE2D5D /* SHSQLiteManager + Scene.swift in Sources */,
 				045C33612285014400EE2D5D /* SHMediaSATCategoryCollectionCell.swift in Sources */,
 				045C330E2285014300EE2D5D /* SHDmxFunctionViewController.swift in Sources */,
-				045C34432285014500EE2D5D /* UIView+CustomSetting.m in Sources */,
 				045C339A2285014400EE2D5D /* SHZoneDryContactViewCell.swift in Sources */,
 				045C33062285014300EE2D5D /* EZAudioPlotGL.m in Sources */,
 				045C33672285014400EE2D5D /* SHZoneControlSATView.swift in Sources */,
@@ -4964,7 +4946,6 @@
 				045C338F2285014400EE2D5D /* SHSystemDetailViewController.swift in Sources */,
 				045C33BB2285014400EE2D5D /* SHHomeStatusViewController.swift in Sources */,
 				045C33F32285014400EE2D5D /* SHScheduleLightViewController.swift in Sources */,
-				045C33632285014400EE2D5D /* SHZoneControlSATChannelButton.m in Sources */,
 				045C33B72285014400EE2D5D /* SHSceneControlViewCell.swift in Sources */,
 				045C34202285014400EE2D5D /* SHCurrentTransformerShowDataViewController.swift in Sources */,
 				045C343C2285014500EE2D5D /* SHCentralLightCell.swift in Sources */,
@@ -4972,6 +4953,7 @@
 				045C33012285014300EE2D5D /* EZOutput.m in Sources */,
 				045C34072285014400EE2D5D /* SHScheduleViewCell.swift in Sources */,
 				045C32FE2285014300EE2D5D /* EZAudio.m in Sources */,
+				046F379E22C5BFB0000296D7 /* SHMoodShadeStatusButton.swift in Sources */,
 				045C328E2285014300EE2D5D /* SHSQLiteManager + TemperatureSensor.swift in Sources */,
 				045C332C2285014400EE2D5D /* SHOtherControlViewController.swift in Sources */,
 				04090D302285756A00E44C87 /* SHSocketData.swift in Sources */,
@@ -5033,7 +5015,6 @@
 				04090D2E2285756A00E44C87 /* SHSocketTools + cache.swift in Sources */,
 				045C344F2285014500EE2D5D /* JHPieItemsView.m in Sources */,
 				045C34152285014400EE2D5D /* SHSecurityControlViewController.swift in Sources */,
-				045C33AB2285014400EE2D5D /* SHMoodShadeStatusButton.m in Sources */,
 				045C33272285014400EE2D5D /* SHZoneControlTVNumberPad.swift in Sources */,
 				045C32B22285014300EE2D5D /* SHNetWorkServerViewController.swift in Sources */,
 				045C33EC2285014400EE2D5D /* SHScheduleHVACViewDetailController.swift in Sources */,
@@ -5116,7 +5097,6 @@
 				045C33872285014400EE2D5D /* SHAreaSettingViewController.swift in Sources */,
 				045C34652285014500EE2D5D /* NSDate+Date.m in Sources */,
 				045C33C92285014400EE2D5D /* SHMusicViewController.swift in Sources */,
-				045C33412285014400EE2D5D /* SHAudioRecordControlButton.m in Sources */,
 				045C33A22285014400EE2D5D /* SHZoneControlRecordMoodViewController.swift in Sources */,
 				045C345D2285014500EE2D5D /* UIView+frame.m in Sources */,
 				045C32FD2285014300EE2D5D /* TPCircularBuffer.c in Sources */,

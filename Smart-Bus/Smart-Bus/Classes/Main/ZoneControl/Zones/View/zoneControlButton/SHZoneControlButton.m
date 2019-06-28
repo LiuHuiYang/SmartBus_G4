@@ -56,7 +56,10 @@
         
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         
-        self.titleLabel.font = [UIDevice is_iPad] ? [UIFont systemFontOfSize:22] : [UIFont systemFontOfSize:14];
+        self.titleLabel.font =
+        [UIDevice is_iPad] ?
+            [UIFont systemFontOfSize:22] :
+            [UIFont systemFontOfSize:14];
 
     }
    

@@ -4,7 +4,6 @@
 
 #import "Additional.h"
 
-#import "UIView+CustomSetting.h"
 #import "SHLanguageTools.h"
 #import "UIButton+init.h"
 #import "SHViewController.h"
@@ -20,13 +19,8 @@
 #import "SHMacroButton.h"
 #import "SHAudioTools.h"
 #import "JHColumnChart.h"
-#import "SHAudioRecordControlButton.h"
 #import "UIImageView+ReSizeImage.h"
 #import "SHZoneControlButton.h"
 #import "SHZoneAudioPlayControlViewController.h"
-#import "SHAudioRecordControlButton.h"
 #import "SoundTools.h"
-#import "SHZoneControlSATChannelButton.h"
-#import "SHMoodShadeStatusButton.h"
 #import "SHScheduleAudioViewDetailController.h"
-
