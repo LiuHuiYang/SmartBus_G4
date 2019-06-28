@@ -131,5 +131,4 @@ extension SHZoneShadeViewController: UITableViewDataSource {
         
         return cell
     }
-     
 }

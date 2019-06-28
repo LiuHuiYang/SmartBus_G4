@@ -112,29 +112,28 @@
     
     BOOL isIPAD = [UIDevice is_iPad];
     
-    CGFloat scale = isIPAD ? 0.4 : 0.25;
+    CGFloat scale = isIPAD ? 0.35 : 0.25;
     
     UIFont *font =
-    isIPAD ?
-    [UIView suitFontForPad] :
-    [UIFont preferredFontForTextStyle:
-     UIFontTextStyleTitle3
-     ];
+        isIPAD ?
+            [UIView suitFontForPad] :
+            [UIFont preferredFontForTextStyle: UIFontTextStyleTitle3
+        ];
     
     CGFloat imageSize =
-    isIPAD ?
-    (navigationBarHeight + statusBarHeight) :
-    defaultHeight;
+        isIPAD ? navigationBarHeight : defaultHeight;
     
-    CGFloat width = UIView.frame_screenWidth * scale;
+    CGFloat width =  UIView.frame_screenWidth * scale;
     CGFloat height = UIView.frame_screenHeight * scale;
     
-    [SVProgressHUD setMinimumSize:CGSizeMake(width, height)];
+    CGFloat size = width > height ? width : height;
+    
+    [SVProgressHUD setMinimumSize: CGSizeMake(size, size)];
     
     [SVProgressHUD setFont: font];
     
     [SVProgressHUD setImageViewSize:
-     CGSizeMake(imageSize, imageSize)
+        CGSizeMake(imageSize, imageSize)
     ];
 }
 
@@ -146,8 +145,10 @@
          integerForKey:UIAPPLICATION_BACKGROUND_TASK_KEY] ==
         SHApplicationBackgroundTaskOpen) {
         
-        self.task = [[UIApplication sharedApplication]
-                     beginBackgroundTaskWithExpirationHandler:nil];
+        self.task =
+            [[UIApplication sharedApplication]
+                beginBackgroundTaskWithExpirationHandler:nil
+            ];
     }
     
     [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
