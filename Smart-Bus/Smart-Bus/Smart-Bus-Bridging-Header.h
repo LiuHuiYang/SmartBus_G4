@@ -3,7 +3,6 @@
 //
 
 #import "Additional.h"
-
 #import "SHLanguageTools.h"
 #import "UIButton+init.h"
 #import "SHViewController.h"
@@ -14,7 +13,6 @@
 #import <AFNetworking/AFNetworking.h>
 #import "UIImage+SaveAndGet.h"
 #import "SHNetWorkTools.h"
-#import "SHLoadProgressView.h"
 #import "SHCommandButton.h"
 #import "SHMacroButton.h"
 #import "SHAudioTools.h"

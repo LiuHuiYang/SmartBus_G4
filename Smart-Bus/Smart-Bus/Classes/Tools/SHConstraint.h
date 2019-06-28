@@ -29,12 +29,8 @@ UIKIT_EXTERN const CGFloat defaultHeight;
 /// 状态栏的高度
 UIKIT_EXTERN const CGFloat statusBarHeight;
 
-   
 /// 所有设备网卡地址路径
 UIKIT_EXTERN NSString * const allDeviceMacAddressListPath;
-
-/// 命令执行完成
-UIKIT_EXTERN NSString * const commandExecutionComplete;
 
 /// 后台任务标示
 UIKIT_EXTERN NSString * const UIAPPLICATION_BACKGROUND_TASK_KEY;

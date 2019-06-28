@@ -30,13 +30,9 @@ const CGFloat statusBarHeight = 20;
 NSString * const allDeviceMacAddressListPath =
     @"AllDeviceList.plist";
 
-/// 命令执行完成
-NSString * const commandExecutionComplete =
-    @"SHCommandExecutionComplete";
 
 /// 后台任务标示
 NSString * const UIAPPLICATION_BACKGROUND_TASK_KEY =  @"UIApplicationBackgroundTaskKey";
-
 
 /// App成为焦点的通知
 NSString * const

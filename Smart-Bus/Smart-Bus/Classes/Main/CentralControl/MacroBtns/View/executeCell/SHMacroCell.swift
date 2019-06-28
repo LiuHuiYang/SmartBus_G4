@@ -78,7 +78,7 @@ import UIKit
         
         commandButton.isSelected = false
         
-        SHLoadProgressView.share()?.removeFromSuperview()
+        SHLoadProgressView.shared.removeFromSuperview()
     }
     
     /// 宏点击
@@ -96,14 +96,16 @@ import UIKit
         
             let title = macro!.macroName
             
-            SVProgressHUD.showInfo(withStatus: "\(title ?? "") \(SHLanguageText.noData)")
+            SVProgressHUD.showInfo(
+                withStatus: "\(title ?? "") \(SHLanguageText.noData)"
+            )
             
             return
         }
         
         commandButton.isSelected = true
         
-        SHLoadProgressView.show(in: holdProgressView)
+        SHLoadProgressView.showIn(holdProgressView)
         
         performSelector(
             inBackground: #selector(executeCommands(_:)),

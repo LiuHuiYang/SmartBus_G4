@@ -349,7 +349,7 @@ extension SHSecurityControlViewController {
             currentSelectCommandButton = commandButton
             commandButton.isSelected = true
         
-            SHLoadProgressView.show(in: progressHoldView)
+            SHLoadProgressView.showIn(progressHoldView)
         }
         
         // 送对应的指令

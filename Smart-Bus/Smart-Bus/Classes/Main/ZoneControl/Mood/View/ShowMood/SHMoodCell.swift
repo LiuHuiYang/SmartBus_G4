@@ -72,7 +72,7 @@ import UIKit
         
         commandButton.isSelected = false
         
-        SHLoadProgressView.share()?.removeFromSuperview()
+        SHLoadProgressView.shared.removeFromSuperview()
     }
     
     deinit {
@@ -97,7 +97,7 @@ import UIKit
         
         commandButton.isSelected = true
         
-        SHLoadProgressView.show(in: holdProgressView)
+        SHLoadProgressView.showIn(holdProgressView)
          
         performSelector(
             inBackground: #selector(executeCommands(_:)),

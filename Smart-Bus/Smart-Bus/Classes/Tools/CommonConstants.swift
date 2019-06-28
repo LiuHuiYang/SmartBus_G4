@@ -36,4 +36,8 @@ let loginServices: String = "SHRemoteTelnetServices"
 /// 安防密码的key
 let securityPasswordKey: String =
     "SHSecurityPasswordKey"
- 
+
+
+// MARK: - 命令执行完成的通知名称
+/// 命令执行完成
+let commandExecutionComplete = "SHCommandExecutionComplete"

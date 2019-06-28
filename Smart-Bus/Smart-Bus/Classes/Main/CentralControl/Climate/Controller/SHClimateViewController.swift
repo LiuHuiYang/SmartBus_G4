@@ -263,7 +263,7 @@ extension SHClimateViewController {
             currentSelectCommandButton = commandButton
             commandButton.isSelected = true
             
-            SHLoadProgressView.show(in: progressHoldView)
+            SHLoadProgressView.showIn(progressHoldView)
         }
         
         performSelector(inBackground: #selector(execute(commands:)), with: hvacCommands)

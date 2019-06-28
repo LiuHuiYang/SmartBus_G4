@@ -137,7 +137,6 @@
 		045C32F22285014300EE2D5D /* SHZoneDevicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2FA32285014000EE2D5D /* SHZoneDevicesCell.swift */; };
 		045C32F32285014300EE2D5D /* SHZoneDevicesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C2FA42285014000EE2D5D /* SHZoneDevicesCell.xib */; };
 		045C32F42285014300EE2D5D /* SHLoadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045C2FA62285014000EE2D5D /* SHLoadProgressView.xib */; };
-		045C32F52285014300EE2D5D /* SHLoadProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C2FA72285014000EE2D5D /* SHLoadProgressView.m */; };
 		045C32F62285014300EE2D5D /* EZMicrophone.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C2FAF2285014100EE2D5D /* EZMicrophone.m */; };
 		045C32F72285014300EE2D5D /* EZAudioFloatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C2FB02285014100EE2D5D /* EZAudioFloatData.m */; };
 		045C32F82285014300EE2D5D /* TPCircularBuffer+AudioBufferList.c in Sources */ = {isa = PBXBuildFile; fileRef = 045C2FB62285014100EE2D5D /* TPCircularBuffer+AudioBufferList.c */; };
@@ -506,6 +505,7 @@
 		046F379C22C5B9AE000296D7 /* UIViewCustomSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F379B22C5B9AE000296D7 /* UIViewCustomSetting.swift */; };
 		046F379E22C5BFB0000296D7 /* SHMoodShadeStatusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F379D22C5BFB0000296D7 /* SHMoodShadeStatusButton.swift */; };
 		046F37A022C5C6CE000296D7 /* SHAudioRecordControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F379F22C5C6CE000296D7 /* SHAudioRecordControlButton.swift */; };
+		046F37A822C5F46E000296D7 /* SHLoadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F37A722C5F46E000296D7 /* SHLoadProgressView.swift */; };
 		04F29BA322C44F8C00529C78 /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F29BA222C44F8C00529C78 /* CommonConstants.swift */; };
 		8B0A0E561F3AECCE00055ECB /* Sounds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B0A0E551F3AECCE00055ECB /* Sounds.bundle */; };
 		8B2461391EE4EA8B009574E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2461381EE4EA8B009574E3 /* main.m */; };
@@ -655,8 +655,6 @@
 		045C2FA32285014000EE2D5D /* SHZoneDevicesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHZoneDevicesCell.swift; sourceTree = "<group>"; };
 		045C2FA42285014000EE2D5D /* SHZoneDevicesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHZoneDevicesCell.xib; sourceTree = "<group>"; };
 		045C2FA62285014000EE2D5D /* SHLoadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHLoadProgressView.xib; sourceTree = "<group>"; };
-		045C2FA72285014000EE2D5D /* SHLoadProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLoadProgressView.m; sourceTree = "<group>"; };
-		045C2FA82285014000EE2D5D /* SHLoadProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLoadProgressView.h; sourceTree = "<group>"; };
 		045C2FAB2285014000EE2D5D /* EZPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZPlot.h; sourceTree = "<group>"; };
 		045C2FAC2285014000EE2D5D /* EZAudioOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioOSX.h; sourceTree = "<group>"; };
 		045C2FAD2285014100EE2D5D /* EZAudioUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZAudioUtilities.h; sourceTree = "<group>"; };
@@ -1093,6 +1091,7 @@
 		046F379B22C5B9AE000296D7 /* UIViewCustomSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewCustomSetting.swift; sourceTree = "<group>"; };
 		046F379D22C5BFB0000296D7 /* SHMoodShadeStatusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMoodShadeStatusButton.swift; sourceTree = "<group>"; };
 		046F379F22C5C6CE000296D7 /* SHAudioRecordControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAudioRecordControlButton.swift; sourceTree = "<group>"; };
+		046F37A722C5F46E000296D7 /* SHLoadProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHLoadProgressView.swift; sourceTree = "<group>"; };
 		0471C68D211BE39C0067D731 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
 		04A177BB215F2D9C00BD9744 /* Smart-Bus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bus-Bridging-Header.h"; sourceTree = "<group>"; };
 		04F29BA222C44F8C00529C78 /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
@@ -1835,9 +1834,8 @@
 		045C2FA52285014000EE2D5D /* progressView */ = {
 			isa = PBXGroup;
 			children = (
+				046F37A722C5F46E000296D7 /* SHLoadProgressView.swift */,
 				045C2FA62285014000EE2D5D /* SHLoadProgressView.xib */,
-				045C2FA72285014000EE2D5D /* SHLoadProgressView.m */,
-				045C2FA82285014000EE2D5D /* SHLoadProgressView.h */,
 			);
 			path = progressView;
 			sourceTree = "<group>";
@@ -4905,6 +4903,7 @@
 				045C33C22285014400EE2D5D /* SHCommunityViewController.swift in Sources */,
 				045C32912285014300EE2D5D /* SHSQLiteManager + Scene.swift in Sources */,
 				045C33612285014400EE2D5D /* SHMediaSATCategoryCollectionCell.swift in Sources */,
+				046F37A822C5F46E000296D7 /* SHLoadProgressView.swift in Sources */,
 				045C330E2285014300EE2D5D /* SHDmxFunctionViewController.swift in Sources */,
 				045C339A2285014400EE2D5D /* SHZoneDryContactViewCell.swift in Sources */,
 				045C33062285014300EE2D5D /* EZAudioPlotGL.m in Sources */,
@@ -4917,7 +4916,6 @@
 				045C33962285014400EE2D5D /* SHZoneDryContactViewController.swift in Sources */,
 				045C32922285014300EE2D5D /* SHSQLiteManager + Projector.swift in Sources */,
 				045C332A2285014400EE2D5D /* SHZoneControlTVView.swift in Sources */,
-				045C32F52285014300EE2D5D /* SHLoadProgressView.m in Sources */,
 				045C32C22285014300EE2D5D /* SHDeviceArgsViewController + Macro.swift in Sources */,
 				045C32BF2285014300EE2D5D /* SHDeviceArgsViewController + SAT.swift in Sources */,
 				045C32822285014300EE2D5D /* SHSQLiteManager + Shade.swift in Sources */,
