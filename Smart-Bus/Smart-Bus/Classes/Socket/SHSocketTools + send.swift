@@ -46,6 +46,9 @@ extension SHSocketTools {
         needReSend: Bool = true,
         isDMX: Bool = false) {
         
+        print("1.执行开始")
+        let start = CFAbsoluteTimeGetCurrent()
+        
         DispatchQueue.global().async {
             
             var count = needReSend ? 3 : 1
@@ -93,11 +96,11 @@ extension SHSocketTools {
                     socketData: socketData
                 )
             }
-            
-            // 所有的指令都要延时 0.1秒执行
-            // (0.1是依据产品固件计算出来的平均值)
-            Thread.sleep(forTimeInterval: 0.1)
         }
+        
+        // 所有的指令都要延时 0.1秒执行
+        // (0.1是依据产品固件计算出来的平均值)
+        Thread.sleep(forTimeInterval: 0.1)
     }
     
     private static func sendData(

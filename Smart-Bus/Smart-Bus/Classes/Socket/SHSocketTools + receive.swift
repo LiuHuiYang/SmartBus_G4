@@ -83,8 +83,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
             SHSocketTools.broadcastNotificationName:
             socketData
         ]
-         
-        
+     
         DispatchQueue.main.async {
             
             NotificationCenter.default.post(
