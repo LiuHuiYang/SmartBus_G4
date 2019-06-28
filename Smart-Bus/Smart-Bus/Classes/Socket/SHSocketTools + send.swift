@@ -45,10 +45,7 @@ extension SHSocketTools {
             SHSocketTools.remoteControlMacAddress(),
         needReSend: Bool = true,
         isDMX: Bool = false) {
-        
-        print("1.执行开始")
-        let start = CFAbsoluteTimeGetCurrent()
-        
+         
         DispatchQueue.global().async {
             
             var count = needReSend ? 3 : 1
