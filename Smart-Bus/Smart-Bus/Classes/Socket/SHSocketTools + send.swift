@@ -45,7 +45,7 @@ extension SHSocketTools {
             SHSocketTools.remoteControlMacAddress(),
         needReSend: Bool = true,
         isDMX: Bool = false) {
-         
+        
         DispatchQueue.global().async {
             
             var count = needReSend ? 3 : 1
@@ -127,6 +127,13 @@ extension SHSocketTools {
   
             do {
                 
+                // 端口不同，先关闭socket 释放端口 再重新绑定
+                SHSocketTools.shared.socket?.close()
+                SHSocketTools.shared.socket = nil
+                
+                SHSocketTools.shared.socket =
+                    SHSocketTools.shared.setupSocket()
+                
                 // 绑定端口
                 try SHSocketTools.shared.socket?.bind(
                     toPort: data.port,
@@ -149,7 +156,7 @@ extension SHSocketTools {
             tag: 0 
         )
         
-//        print("发送控制包: \(data)")
+        print("发送控制包: \(data)")
     }
     
     /// 打包数据
