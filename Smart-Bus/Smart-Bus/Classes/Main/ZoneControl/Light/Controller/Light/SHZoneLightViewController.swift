@@ -97,6 +97,12 @@ extension SHZoneLightViewController {
             
         case 0x0032:
             
+            // 有时固件会返回一个 不合法的  格式
+            // 有时失败会返回 只有一个参数 的数据
+            if socketData.additionalData.count < 3 {
+                return
+            }
+            
             if (socketData.additionalData[1] == 0xF8) {
                 
                 let brightness = socketData.additionalData[2];

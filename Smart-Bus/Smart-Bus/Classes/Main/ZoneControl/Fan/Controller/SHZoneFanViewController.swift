@@ -76,6 +76,12 @@ extension SHZoneFanViewController {
             
         case 0x0032:
             
+            // 有时固件会返回一个 不合法的  格式
+            // 有时失败会返回 只有一个参数 的数据
+            if socketData.additionalData.count < 3 {
+                return
+            }
+            
             let channelNumber = socketData.additionalData[0]
             
             if 0xF8 == socketData.additionalData[1] {
