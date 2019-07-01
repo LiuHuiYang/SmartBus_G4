@@ -31,6 +31,18 @@ class SHZoneControlTVView: UIView, loadNibView {
     /// 静音
     @IBOutlet weak var stopVoiceButton: UIButton!
     
+    /// 声音+ 按钮
+    @IBOutlet weak var voiceUpButton: UIButton!
+    
+    /// 声音- 按钮
+    @IBOutlet weak var voiceDownButton: UIButton!
+    
+    /// 频道 + 按钮
+    @IBOutlet weak var addChannelButton: UIButton!
+    
+    /// 频道 - 按钮
+    @IBOutlet weak var minusChannelButton: UIButton!
+    
     // MARK: - 约束
     
     ///  View高度约束
@@ -275,6 +287,11 @@ extension SHZoneControlTVView {
             sureButton.titleLabel?.font = font
             sourceButton.titleLabel?.font = font
             stopVoiceButton.titleLabel?.font = font
+            
+            voiceUpButton.titleLabel?.font = font
+            voiceDownButton.titleLabel?.font = font
+            addChannelButton.titleLabel?.font = font
+            minusChannelButton.titleLabel?.font = font
         }
     }
    

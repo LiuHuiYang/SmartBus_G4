@@ -299,9 +299,11 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="addChannelButton" destination="B5q-c8-oUQ" id="J5T-sb-mL4"/>
                 <outlet property="buttonHeightConstraint" destination="l4s-eB-bU5" id="4KJ-Zf-2Ld"/>
                 <outlet property="buttonWidthConstraint" destination="YxA-zW-eMB" id="dEZ-Cc-6oK"/>
                 <outlet property="menuButton" destination="I1J-XJ-Z4Q" id="NSz-kF-cLv"/>
+                <outlet property="minusChannelButton" destination="lv2-VS-vt8" id="k4D-Mt-7rr"/>
                 <outlet property="sourceButton" destination="lsu-cB-lOC" id="hX9-Wj-iFi"/>
                 <outlet property="stopVoiceButton" destination="q1H-eY-MT3" id="RCS-wm-UGH"/>
                 <outlet property="sureButton" destination="IxA-hl-NdL" id="CFe-5N-Bi4"/>
@@ -309,6 +311,8 @@
                 <outlet property="turnOnButton" destination="1jr-iq-3PR" id="aPv-KR-bQ6"/>
                 <outlet property="viewHeightConstraint" destination="UXz-CC-Tsu" id="3V5-jt-OBd"/>
                 <outlet property="viewWidthConstraint" destination="8DD-DW-Pcx" id="aSU-NF-m3a"/>
+                <outlet property="voiceDownButton" destination="xWi-xc-HjA" id="ePS-CX-ARP"/>
+                <outlet property="voiceUpButton" destination="sGn-wg-y8l" id="8yC-ZX-WoD"/>
             </connections>
             <point key="canvasLocation" x="293" y="-228"/>
         </view>
