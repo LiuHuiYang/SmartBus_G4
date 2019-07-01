@@ -149,8 +149,8 @@ extension SHZoneControlViewController {
         
         SVProgressHUD.show(withStatus: "searching...")
         
+        serchView.isHidden = true
         devices.removeAll()
-        
         deviceListView.reloadData()
         
         SHSocketTools.sendData(
