@@ -14,30 +14,53 @@ import UIKit
         
         didSet {
             
-            modelLabel.text = device?.deviceTypeName
-            descLabel.text = device?.remark
+            modelLabel.text =
+                "Model: " + (device?.deviceTypeName ?? "N/A")
+            
+            deviceTypeLabel.text =
+                "DeviceType: \(device?.deviceType ?? 0)"
+            
             addressLabel.text =
-                "subNetID: \(device?.subNetID ?? 0)\tdeviceID:\( device?.deviceID ?? 0)"
+                "SubNetID: \(device?.subNetID ?? 0)" +
+                " \t\t " +
+                "DeviceID:\( device?.deviceID ?? 0)"
+            
+            firmwareVersionLabel.text =
+                "Version:" + (device?.firmWareVersion ?? "N/A")
+            
+            descLabel.text =
+                "Remark:" + (device?.remark ?? "N/A")
         }
     }
     
-    /// 设备种类
+    
+    /// 设备模型
     @IBOutlet weak var modelLabel: UILabel!
     
-    /// 描述信息
-    @IBOutlet weak var descLabel: UILabel!
+    /// 设备种类
+    @IBOutlet weak var deviceTypeLabel: UILabel!
     
     /// 地址信息
     @IBOutlet weak var addressLabel: UILabel!
     
+    /// 固件版本信息
+    @IBOutlet weak var firmwareVersionLabel: UILabel!
+    
+    /// 描述信息
+    @IBOutlet weak var descLabel: UILabel!
+    
+     
     static var rowHeight: CGFloat {
         
         if UIDevice.is_iPad() {
             
-            return (navigationBarHeight + navigationBarHeight)
+            return (navigationBarHeight +
+                    navigationBarHeight +
+                    tabBarHeight
+            )
         }
         
-        return (navigationBarHeight + statusBarHeight)
+        return (navigationBarHeight + navigationBarHeight)
     }
 
     override func awakeFromNib() {
@@ -48,16 +71,20 @@ import UIKit
         
         let color = UIView.textWhiteColor()
         
-        addressLabel.textColor = color
-        descLabel.textColor = color
         modelLabel.textColor = color
+        deviceTypeLabel.textColor = color
+        addressLabel.textColor = color
+        firmwareVersionLabel.textColor = color
+        descLabel.textColor = color
         
         if UIDevice.is_iPad() {
             
             let font = UIView.suitFontForPad()
-            addressLabel.font = font
-            descLabel.font = font
             modelLabel.font = font
+            deviceTypeLabel.font = font
+            addressLabel.font = font
+            firmwareVersionLabel.font = font
+            descLabel.font = font
         }
     }
 

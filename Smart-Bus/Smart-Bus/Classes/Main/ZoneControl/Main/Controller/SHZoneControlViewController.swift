@@ -85,38 +85,62 @@ extension SHZoneControlViewController {
     /// 解析数据
     override func analyzeReceivedSocketData(_ socketData: SHSocketData!) {
         
-        if socketData.operatorCode != 0x000F {
+        // 搜索设备在线
+        if socketData.operatorCode == 0x000F {
             
-            return
-        }
-        
-        let device = SHDevice()
-        device.subNetID = socketData.subNetID
-        device.deviceID = socketData.deviceID
-        device.deviceType = UInt(socketData.deviceType)
-        
-        device.remark =
-            String(bytes: socketData.additionalData,
-                   encoding: String.Encoding.utf8
-            ) ?? ""
-        
-        var index: Int = 0
-        while index < devices.count {
-            let dev = devices[index]
+            let device = SHDevice()
+            device.subNetID = socketData.subNetID
+            device.deviceID = socketData.deviceID
+            device.deviceType = UInt(socketData.deviceType)
             
-            if dev.subNetID == device.subNetID &&
-                dev.deviceID == device.deviceID {
+            device.remark =
+                String(bytes: socketData.additionalData,
+                       encoding: String.Encoding.utf8
+                ) ?? ""
+            
+            var index: Int = 0
+            while index < devices.count {
+                let dev = devices[index]
                 
-                break
+                if dev.subNetID == device.subNetID &&
+                   dev.deviceID == device.deviceID {
+                    
+                    break
+                }
+                
+                index += 1
             }
             
-            index += 1
+            if index >= devices.count {
+                
+                devices.append(device)
+                readFirmWareVersion(device)
+            }
         }
         
-        if index >= devices.count {
+        // 获得设备的版本信息
+        else if socketData.operatorCode == 0x0EFFE {
             
-            devices.append(device)
-            deviceListView.reloadData()
+            let version =
+                String(bytes: socketData.additionalData,
+                       encoding: String.Encoding.utf8
+                    ) ?? ""
+            
+            for device in devices  {
+                
+                if socketData.subNetID == device.subNetID &&
+                    socketData.deviceID == device.deviceID &&
+                    UInt(socketData.deviceType) == device.deviceType {
+                    
+                    if version == device.firmWareVersion {
+                        continue
+                    }
+                    
+                    device.firmWareVersion = version
+                     
+                    deviceListView.reloadData()
+                }
+            }
         }
     }
     
@@ -145,6 +169,20 @@ extension SHZoneControlViewController {
             deviceID: 0xFF,
             additionalData: [],
             isDMX: true
+        )
+    }
+    
+    
+    /// 读取指定设备的设备信息
+    ///
+    /// - Parameter device: 选择的设备
+    private func readFirmWareVersion(_ device: SHDevice) {
+        
+        SHSocketTools.sendData(
+            operatorCode: 0x0EFFD,
+            subNetID: device.subNetID,
+            deviceID: device.deviceID,
+            additionalData: []
         )
     }
 }

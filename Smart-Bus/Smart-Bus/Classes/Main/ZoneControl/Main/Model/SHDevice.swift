@@ -29,6 +29,9 @@ import UIKit
     /// 备注说明
     var remark: String = ""
     
+    /// 固件版本信息
+    var firmWareVersion: String = ""
+    
     override init() {
         super.init()
     }
