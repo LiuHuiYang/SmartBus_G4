@@ -97,10 +97,11 @@ extension SHZoneLightViewController {
             
         case 0x0032:
             
-            let brightness = socketData.additionalData[2];
-            let channelNumber = socketData.additionalData[0];
-            
             if (socketData.additionalData[1] == 0xF8) {
+                
+                let brightness = socketData.additionalData[2];
+                
+                let channelNumber = socketData.additionalData[0];
                 
                 for light in allLights {
                     

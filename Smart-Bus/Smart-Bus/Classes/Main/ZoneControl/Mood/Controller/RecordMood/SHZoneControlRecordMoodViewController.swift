@@ -98,6 +98,9 @@ class SHZoneControlRecordMoodViewController: SHViewController {
     /// 竖直方向上的距离
     @IBOutlet weak var recordViewBottomHeightConstraint: NSLayoutConstraint!
     
+    /// 窗帘确定按钮的高度约束
+    @IBOutlet weak var closeShadeHolderViewButtonHeightConstraint: NSLayoutConstraint!
+    
     /// 区域标签
     @IBOutlet weak var zoneLabel: UILabel!
     
@@ -1422,8 +1425,8 @@ extension SHZoneControlRecordMoodViewController {
         shadeHolderView.isHidden = true
         shadeHolderView.setRoundedRectangleBorder()
         
-        //        shadeHolderView.layer.cornerRadius = 15
-        //        shadeHolderView.clipsToBounds = true
+        // shadeHolderView.layer.cornerRadius = 15
+        // shadeHolderView.clipsToBounds = true
         
         shadeListView.rowHeight = SHEditRecordShadeCell.rowHeight
         shadeListView.register(
@@ -1609,7 +1612,6 @@ extension SHZoneControlRecordMoodViewController {
         
         moodNameTextField.attributedPlaceholder = holderString
         
-        
         recordButton.setRoundedRectangleBorder()
         selectImageButton.setRoundedRectangleBorder()
         moodNameTextField.setRoundedRectangleBorder()
@@ -1620,6 +1622,7 @@ extension SHZoneControlRecordMoodViewController {
             
             zoneLabel.font = font
             moodNameTextField.font = font
+            closeShadeHolderViewButton.titleLabel?.font = font
         }
     }
     
@@ -1682,6 +1685,9 @@ extension SHZoneControlRecordMoodViewController {
             
             moodNameTextFieldHeightConstraint.constant =
                 navigationBarHeight + statusBarHeight
+            
+            closeShadeHolderViewButtonHeightConstraint.constant =
+                navigationBarHeight
         }
     }
 }

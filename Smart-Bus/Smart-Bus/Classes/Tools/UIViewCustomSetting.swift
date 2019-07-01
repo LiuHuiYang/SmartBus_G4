@@ -54,7 +54,7 @@ extension UIView {
     /// - Returns: UIFont
     @objc static func suitFontForPad() -> UIFont {
         
-        return UIFont.boldSystemFont(ofSize: 26)
+        return UIFont.boldSystemFont(ofSize: 24)
     }
 }
  

@@ -13,7 +13,8 @@
             <connections>
                 <outlet property="audioButton" destination="mZo-hf-cKH" id="hql-8b-W2K"/>
                 <outlet property="buttonsView" destination="yY8-82-e0K" id="S2Q-aN-hqz"/>
-                <outlet property="closeShadeHolderViewButton" destination="GDD-J9-l4B" id="Gsw-Jg-uzH"/>
+                <outlet property="closeShadeHolderViewButton" destination="GDD-J9-l4B" id="B5j-Oj-UEQ"/>
+                <outlet property="closeShadeHolderViewButtonHeightConstraint" destination="XXF-jD-AwN" id="RLx-9x-cLY"/>
                 <outlet property="floorHeatingButton" destination="ueK-IA-KsR" id="tp3-ab-rOJ"/>
                 <outlet property="hvacButton" destination="Btb-zI-8qL" id="gEw-Gt-J5I"/>
                 <outlet property="lightButton" destination="MJS-iH-eGy" id="xMD-fY-V9G"/>
@@ -38,10 +39,9 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="QEz-S1-HBN">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-Ee-5an">
-                    <rect key="frame" x="20" y="0.0" width="180" height="49"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-Ee-5an">
+                    <rect key="frame" x="20" y="0.0" width="280" height="49"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="180" id="G5d-a0-f5p"/>
                         <constraint firstAttribute="height" constant="49" id="wMr-ei-1Vh"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -213,14 +213,14 @@
                     <rect key="frame" x="32" y="59" width="256" height="255.5"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nM3-hA-YcW">
-                            <rect key="frame" x="0.0" y="0.0" width="256" height="204.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="256" height="181.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="M6q-k7-bcl"/>
                             </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDD-J9-l4B">
-                            <rect key="frame" x="70.5" y="206.5" width="115" height="44"/>
+                            <rect key="frame" x="70.5" y="196.5" width="115" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="XXF-jD-AwN"/>
@@ -238,10 +238,10 @@
                     <constraints>
                         <constraint firstItem="GDD-J9-l4B" firstAttribute="centerX" secondItem="eOB-VJ-zsH" secondAttribute="centerX" id="9XR-zc-JY3"/>
                         <constraint firstItem="nM3-hA-YcW" firstAttribute="leading" secondItem="eOB-VJ-zsH" secondAttribute="leading" id="AoZ-AN-s5P"/>
-                        <constraint firstItem="nM3-hA-YcW" firstAttribute="height" secondItem="eOB-VJ-zsH" secondAttribute="height" multiplier="0.8" id="FEE-pl-pfq"/>
-                        <constraint firstAttribute="bottom" secondItem="GDD-J9-l4B" secondAttribute="bottom" constant="5" id="YKt-e2-O6X"/>
+                        <constraint firstAttribute="bottom" secondItem="GDD-J9-l4B" secondAttribute="bottom" constant="15" id="YKt-e2-O6X"/>
                         <constraint firstItem="GDD-J9-l4B" firstAttribute="width" secondItem="eOB-VJ-zsH" secondAttribute="width" multiplier="0.45" id="ZCI-3Y-vFF"/>
                         <constraint firstItem="nM3-hA-YcW" firstAttribute="top" secondItem="eOB-VJ-zsH" secondAttribute="top" id="f3h-gk-udF"/>
+                        <constraint firstItem="GDD-J9-l4B" firstAttribute="top" secondItem="nM3-hA-YcW" secondAttribute="bottom" constant="15" id="jAu-Yj-n2B"/>
                         <constraint firstAttribute="trailing" secondItem="nM3-hA-YcW" secondAttribute="trailing" id="pn3-5l-qed"/>
                     </constraints>
                 </view>
@@ -257,6 +257,7 @@
                 <constraint firstItem="yY8-82-e0K" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="QBY-qc-xQh"/>
                 <constraint firstItem="yY8-82-e0K" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="QwO-RP-Gin"/>
                 <constraint firstItem="yY8-82-e0K" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Zfs-aP-Mok"/>
+                <constraint firstAttribute="trailing" secondItem="ey7-Ee-5an" secondAttribute="trailing" constant="20" id="bcA-KD-63d"/>
                 <constraint firstItem="A1E-Oy-n3W" firstAttribute="centerX" secondItem="yY8-82-e0K" secondAttribute="centerX" id="fDj-C7-S5z"/>
                 <constraint firstItem="ey7-Ee-5an" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="fkW-6F-NdC"/>
                 <constraint firstItem="eOB-VJ-zsH" firstAttribute="width" secondItem="yY8-82-e0K" secondAttribute="width" id="hYL-tq-Jhf"/>
