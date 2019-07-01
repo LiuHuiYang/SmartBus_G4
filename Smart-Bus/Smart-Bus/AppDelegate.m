@@ -100,7 +100,7 @@
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
     [SVProgressHUD setBackgroundColor:[UIColor colorWithHex:0x726B6E alpha:1.0]];
     
-    [SVProgressHUD setMinimumDismissTimeInterval:2.0];
+    [SVProgressHUD setMinimumDismissTimeInterval:1.5];
     
     [SVProgressHUD setSuccessImage:[UIImage imageNamed:@"showSuccess"]];
     [SVProgressHUD setErrorImage:[UIImage imageNamed:@"showError"]];

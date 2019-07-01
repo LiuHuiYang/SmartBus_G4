@@ -433,6 +433,7 @@ extension SHZoneShadeViewCell {
             
             let font = UIView.suitFontForPad()
             
+            nameLabel.font = font
             openButton.titleLabel?.font = font
             closeButton.titleLabel?.font = font
             stopButton.titleLabel?.font = font
