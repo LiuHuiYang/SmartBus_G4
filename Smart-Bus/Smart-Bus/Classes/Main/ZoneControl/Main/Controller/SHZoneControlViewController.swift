@@ -137,8 +137,8 @@ extension SHZoneControlViewController {
                     }
                     
                     device.firmWareVersion = version
-                     
-                    deviceListView.reloadData()
+                    
+                    finishedSearchDevice() //
                 }
             }
         }
@@ -147,7 +147,7 @@ extension SHZoneControlViewController {
     /// 搜索设备
     @objc private func searchDevices() {
         
-        serchView.isHidden = false
+        SVProgressHUD.show(withStatus: "searching...")
         
         devices.removeAll()
         
@@ -170,6 +170,11 @@ extension SHZoneControlViewController {
             additionalData: [],
             isDMX: true
         )
+        
+        perform(#selector(finishedSearchDevice),
+                with: nil,
+                afterDelay: 3.0
+        )
     }
     
     
@@ -184,6 +189,25 @@ extension SHZoneControlViewController {
             deviceID: device.deviceID,
             additionalData: []
         )
+    }
+    
+    
+    /// 结束搜索设备
+    @objc private func finishedSearchDevice() {
+        
+        if devices.isEmpty {
+            
+            SVProgressHUD.showError(
+                withStatus: "search failed"
+            )
+        
+        } else {
+            
+            serchView.isHidden = false
+            SVProgressHUD.dismiss()
+            deviceListView.reloadData()
+        }
+        
     }
 }
 
