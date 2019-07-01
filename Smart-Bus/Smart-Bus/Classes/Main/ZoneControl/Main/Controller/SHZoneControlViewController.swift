@@ -138,7 +138,7 @@ extension SHZoneControlViewController {
                     
                     device.firmWareVersion = version
                     
-                    finishedSearchDevice() //
+//                    finishedSearchDevice() //
                 }
             }
         }
@@ -202,6 +202,10 @@ extension SHZoneControlViewController {
             )
         
         } else {
+            
+            if serchView.isHidden == false {
+                return
+            }
             
             serchView.isHidden = false
             SVProgressHUD.dismiss()
