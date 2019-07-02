@@ -77,34 +77,30 @@ import UIKit
     @objc private func commandButtonChangeStatus() {
         
         commandButton.isSelected = false
-        
         SHLoadProgressView.shared.removeFromSuperview()
     }
     
     /// 宏点击
     @IBAction func commandButtonClick() {
         
-        if macro == nil {
-            
+        guard let selectedMacro = macro else {
             return
         }
         
         let commands =
-            SHSQLiteManager.shared.getMacroCommands(macro!)
+            SHSQLiteManager.shared.getMacroCommands(selectedMacro)
          
         if commands.isEmpty {
-        
-            let title = macro!.macroName
-            
+         
             SVProgressHUD.showInfo(
-                withStatus: "\(title ?? "") \(SHLanguageText.noData)"
+                withStatus: "\(selectedMacro.macroName ?? "") \n \(SHLanguageText.noData)"
             )
             
             return
         }
         
         SVProgressHUD.showSuccess(
-            withStatus: "Executing \(macro!.macroName ?? "macro")"
+            withStatus: "Executing \(selectedMacro.macroName ?? "macro")"
         )
         
         commandButton.isSelected = true
@@ -120,7 +116,7 @@ import UIKit
     /// 执行命令
     ///
     /// - Parameter commands: 指令集合
-    @objc func executeCommands(_ commands: [SHMacroCommand]) {
+    @objc private func executeCommands(_ commands: [SHMacroCommand]) {
         
         for command in commands {
             

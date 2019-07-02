@@ -221,6 +221,25 @@ import UIKit
         )
     }
     
+    
+    /// 暖和
+    @IBAction func warmClick() {
+        
+        if selectCentralHVAC?.isHaveHot == false {
+            
+            SVProgressHUD.showInfo(withStatus: "No heating function")
+            
+            return
+        }
+    
+        hvacMode = SHAirConditioningControlType.acModeSet.rawValue
+        hvacValue = SHAirConditioningModeType.heat.rawValue
+        
+        changeProgressStatus(commandButton: warmButton,
+                             progressHoldView: warmProgressbackView
+        )
+    }
+    
     /// 制热
     @IBAction func hotClick() {
         
@@ -260,6 +279,7 @@ extension SHClimateViewController {
         if currentSelectCommandButton == nil ||
            currentSelectCommandButton != commandButton {
             
+            currentSelectCommandButton?.isSelected = false
             currentSelectCommandButton = commandButton
             commandButton.isSelected = true
             

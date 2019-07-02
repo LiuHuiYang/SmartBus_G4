@@ -241,6 +241,7 @@ extension SHLightViewController {
         if currentSelectCommandButton == nil ||
            currentSelectCommandButton != commandButton {
             
+            currentSelectCommandButton?.isSelected = false
             currentSelectCommandButton = commandButton
             commandButton.isSelected = true
             
