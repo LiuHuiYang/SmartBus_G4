@@ -49,29 +49,29 @@ import UIKit
     /// 全关 背景视图
     @IBOutlet weak var allOffProgressbackView: UIView!
     
-    /// 凉快 按钮
-    @IBOutlet weak var coolButton: SHCommandButton!
+    /// 通风 按钮
+    @IBOutlet weak var fanButton: SHCommandButton!
     
-    /// 凉快 背景视图
-    @IBOutlet weak var coolProgressbackView: UIView!
+    /// 通风 背景视图
+    @IBOutlet weak var fanProgressbackView: UIView!
     
     /// 制冷 按钮
-    @IBOutlet weak var coldButton: SHCommandButton!
+    @IBOutlet weak var coolButton: SHCommandButton!
     
     /// 制冷 背景视图
-    @IBOutlet weak var coldProgressbackView: UIView!
+    @IBOutlet weak var coolProgressbackView: UIView!
     
     /// 暖和 按钮
-    @IBOutlet weak var warmButton: SHCommandButton!
+    @IBOutlet weak var autoButton: SHCommandButton!
     
     /// 暖和 背景视图
-    @IBOutlet weak var warmProgressbackView: UIView!
+    @IBOutlet weak var autoProgressbackView: UIView!
     
     /// 制热 按钮
-    @IBOutlet weak var hotButton: SHCommandButton!
+    @IBOutlet weak var heatButton: SHCommandButton!
     
     /// 制热 背景视图
-    @IBOutlet weak var hotProgressbackView: UIView!
+    @IBOutlet weak var heatProgressbackView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,24 +100,29 @@ import UIKit
         
         allOffButton.setTitle(off, for: .normal)
         
-       
-        let modes =
-            SHLanguageTools.share()?.getTextFromPlist(
-                "CLIMATE",
-                withSubTitle: "ALL_AC_MODE"
-            ) as! [String]
-    
-        coldButton.setTitle(modes[0], for: .normal)
-        coolButton.setTitle(modes[1], for: .normal)
-        hotButton.setTitle( modes[2], for: .normal)
-        warmButton.setTitle(modes[3], for: .normal)
+   
+        coolButton.setTitle(SHHVAC.getModeName(.cool),
+                            for: .normal
+        )
+        
+        fanButton.setTitle(SHHVAC.getModeName(.fan),
+                           for: .normal
+        )
+        
+        heatButton.setTitle( SHHVAC.getModeName(.heat),
+                             for: .normal
+        )
+        
+        autoButton.setTitle(SHHVAC.getModeName(.auto),
+                            for: .normal
+        )
         
         allOnButton.setRoundedRectangleBorder()
         allOffButton.setRoundedRectangleBorder()
+        fanButton.setRoundedRectangleBorder()
         coolButton.setRoundedRectangleBorder()
-        coldButton.setRoundedRectangleBorder()
-        warmButton.setRoundedRectangleBorder()
-        hotButton.setRoundedRectangleBorder()
+        autoButton.setRoundedRectangleBorder()
+        heatButton.setRoundedRectangleBorder()
         
         NotificationCenter.default.addObserver(
             self,
@@ -132,10 +137,10 @@ import UIKit
             
             allOnButton.titleLabel?.font = font
             allOffButton.titleLabel!.font = font
-            coldButton.titleLabel?.font = font
-            coolButton.titleLabel!.font = font
-            warmButton.titleLabel!.font = font
-            hotButton.titleLabel!.font = font
+            coolButton.titleLabel?.font = font
+            fanButton.titleLabel!.font = font
+            autoButton.titleLabel!.font = font
+            heatButton.titleLabel!.font = font
         }
     }
     
@@ -251,7 +256,7 @@ extension SHClimateViewController {
     
     // MARK: - 点击事件
     
-    /// 全开
+    /// on
     @IBAction func allOnClick() {
         
         hvacMode = SHAirConditioningControlType.onAndOff.rawValue
@@ -262,7 +267,7 @@ extension SHClimateViewController {
         )
     }
     
-    /// 全开
+    /// off
     @IBAction func allOffClick() {
         
         hvacMode = SHAirConditioningControlType.onAndOff.rawValue
@@ -273,61 +278,54 @@ extension SHClimateViewController {
         )
     }
     
-    /// 凉快
-    @IBAction func coolClick() {
+    /// fan
+    @IBAction func fanClick() {
         
         hvacMode = SHAirConditioningControlType.acModeSet.rawValue
         hvacValue = SHAirConditioningModeType.fan.rawValue
+        
+        changeProgressStatus(commandButton: fanButton,
+                             progressHoldView: fanProgressbackView
+        )
+    }
+    
+    /// cool
+    @IBAction func coolClick() {
+        
+        hvacMode = SHAirConditioningControlType.acModeSet.rawValue
+        hvacValue = SHAirConditioningModeType.cool.rawValue
         
         changeProgressStatus(commandButton: coolButton,
                              progressHoldView: coolProgressbackView
         )
     }
     
-    /// 制冷
-    @IBAction func coldClick() {
+    /// auto
+    @IBAction func autoClick() {
         
         hvacMode = SHAirConditioningControlType.acModeSet.rawValue
-        hvacValue = SHAirConditioningModeType.cool.rawValue
+        hvacValue = SHAirConditioningModeType.auto.rawValue
         
-        changeProgressStatus(commandButton: coldButton,
-                             progressHoldView: coldProgressbackView
+        changeProgressStatus(commandButton: autoButton,
+                             progressHoldView: autoProgressbackView
         )
     }
     
-    /// 暖和
-    @IBAction func warmClick() {
+    /// heat
+    @IBAction func heatClick() {
         
-        if selectCentralHVAC?.isHaveHot == false {
-            
-            SVProgressHUD.showInfo(withStatus: "No heating function")
-            
-            return
-        }
+//        if selectCentralHVAC?.isHaveHot == false {
+//            
+//            SVProgressHUD.showInfo(withStatus: "No heating function")
+//            
+//            return
+//        }
         
         hvacMode = SHAirConditioningControlType.acModeSet.rawValue
         hvacValue = SHAirConditioningModeType.heat.rawValue
         
-        changeProgressStatus(commandButton: warmButton,
-                             progressHoldView: warmProgressbackView
-        )
-    }
-    
-    /// 制热
-    @IBAction func hotClick() {
-        
-        if selectCentralHVAC?.isHaveHot == false {
-            
-            SVProgressHUD.showInfo(withStatus: "No heating function")
-            
-            return
-        }
-        
-        hvacMode = SHAirConditioningControlType.acModeSet.rawValue
-        hvacValue = SHAirConditioningModeType.heat.rawValue
-        
-        changeProgressStatus(commandButton: hotButton,
-                             progressHoldView: hotProgressbackView
+        changeProgressStatus(commandButton: heatButton,
+                             progressHoldView: heatProgressbackView
         )
     }
 }

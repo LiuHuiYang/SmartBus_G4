@@ -15,17 +15,17 @@
                 <outlet property="allOffProgressbackView" destination="MtS-oS-kVt" id="4UZ-sn-V3a"/>
                 <outlet property="allOnButton" destination="yoU-Nq-FZE" id="HBJ-OA-dFs"/>
                 <outlet property="allOnProgressbackView" destination="v40-al-0dA" id="erY-BI-cJM"/>
-                <outlet property="coldButton" destination="Hin-lD-vK5" id="3p2-WL-K5R"/>
-                <outlet property="coldProgressbackView" destination="ES4-aT-fu4" id="mls-qA-4os"/>
+                <outlet property="autoButton" destination="Y2F-Ij-M10" id="ROg-BQ-HBJ"/>
+                <outlet property="autoProgressbackView" destination="zTI-O8-nfh" id="fUR-1N-U8u"/>
                 <outlet property="commandButtonHeightConstraint" destination="Pgr-Cw-crR" id="n1g-Bu-ya4"/>
-                <outlet property="coolButton" destination="ncV-FO-n57" id="OsK-4m-r38"/>
-                <outlet property="coolProgressbackView" destination="CyZ-6M-Xj0" id="QYu-Zm-Nhe"/>
-                <outlet property="hotButton" destination="BDr-wZ-5aV" id="1a1-bp-yxs"/>
-                <outlet property="hotProgressbackView" destination="l8q-GT-KPs" id="NRL-xL-FFb"/>
+                <outlet property="coolButton" destination="Hin-lD-vK5" id="tSd-hN-AxL"/>
+                <outlet property="coolProgressbackView" destination="ES4-aT-fu4" id="ji3-ql-UMn"/>
+                <outlet property="fanButton" destination="ncV-FO-n57" id="efz-UY-Gag"/>
+                <outlet property="fanProgressbackView" destination="CyZ-6M-Xj0" id="D8w-Fp-VLw"/>
+                <outlet property="heatButton" destination="BDr-wZ-5aV" id="blg-Gy-SdW"/>
+                <outlet property="heatProgressbackView" destination="l8q-GT-KPs" id="b6P-St-raU"/>
                 <outlet property="pickerViewHeight" destination="YMr-q8-i88" id="IFV-b3-eKV"/>
                 <outlet property="view" destination="oS3-26-OLz" id="9Ny-xL-tQV"/>
-                <outlet property="warmButton" destination="Y2F-Ij-M10" id="Bbr-W1-TwC"/>
-                <outlet property="warmProgressbackView" destination="zTI-O8-nfh" id="D8z-Va-UMt"/>
                 <outlet property="zonePickerView" destination="zqr-Jg-2Jc" id="K4V-Fv-iSt"/>
             </connections>
         </placeholder>
@@ -92,29 +92,29 @@
                             </state>
                             <state key="selected" image="centralClimateCold_highlighted"/>
                             <connections>
-                                <action selector="coldClick" destination="-1" eventType="touchUpInside" id="eMU-dH-fag"/>
+                                <action selector="coolClick" destination="-1" eventType="touchUpInside" id="NiN-LK-Rf0"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2F-Ij-M10" customClass="SHCommandButton">
                             <rect key="frame" x="20" y="238.5" width="130" height="64"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                            <state key="normal" title="暖和" image="centralClimateWarm_normal">
+                            <state key="normal" title="自动" image="centralClimateWarm_normal">
                                 <color key="titleColor" red="0.97647058819999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="selected" image="centralClimateWarm_highlighted"/>
                             <connections>
-                                <action selector="warmClick" destination="-1" eventType="touchUpInside" id="QeK-MK-4UV"/>
+                                <action selector="autoClick" destination="-1" eventType="touchUpInside" id="bum-Ml-fZy"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncV-FO-n57" customClass="SHCommandButton">
                             <rect key="frame" x="170" y="132" width="130" height="64"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                            <state key="normal" title="凉快" image="centralClimateCool_normal">
+                            <state key="normal" title="通风" image="centralClimateCool_normal">
                                 <color key="titleColor" red="0.97647058819999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="selected" image="centralClimateCool_highlighted"/>
                             <connections>
-                                <action selector="coolClick" destination="-1" eventType="touchUpInside" id="gkp-fc-nk5"/>
+                                <action selector="fanClick" destination="-1" eventType="touchUpInside" id="tu4-oZ-srg"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDr-wZ-5aV" customClass="SHCommandButton">
@@ -125,7 +125,7 @@
                             </state>
                             <state key="selected" image="centralClimateHot_highlighted"/>
                             <connections>
-                                <action selector="hotClick" destination="-1" eventType="touchUpInside" id="b6l-eX-hVE"/>
+                                <action selector="heatClick" destination="-1" eventType="touchUpInside" id="LpG-1G-NXr"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v40-al-0dA">
