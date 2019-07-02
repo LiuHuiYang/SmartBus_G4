@@ -23,13 +23,13 @@ import UIKit
             addressLabel.text =
                 "SubNetID: \(device?.subNetID ?? 0)" +
                 " \t\t " +
-                "DeviceID:\( device?.deviceID ?? 0)"
+                "DeviceID: \( device?.deviceID ?? 0)"
             
             firmwareVersionLabel.text =
-                "Version:" + (device?.firmWareVersion ?? "N/A")
+                "Version: " + (device?.firmWareVersion ?? "N/A")
             
             descLabel.text =
-                "Remark:" + (device?.remark ?? "N/A")
+                "Remark: " + (device?.remark ?? "N/A")
         }
     }
     
