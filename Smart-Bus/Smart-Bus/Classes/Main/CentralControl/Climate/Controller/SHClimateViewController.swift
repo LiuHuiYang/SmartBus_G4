@@ -175,6 +175,80 @@ import UIKit
         NotificationCenter.default.removeObserver(self)
     }
     
+}
+
+// MARK: - 点击事件 && 执行命令
+extension SHClimateViewController {
+    
+    /// 更新进度信息
+    private func changeProgressStatus(commandButton: SHCommandButton, progressHoldView: UIView) {
+        
+        if hvacCommands.count == 0 {
+      
+            let foorName = selectCentralHVAC?.floorName ?? ""
+            
+            SVProgressHUD.showInfo(withStatus: "\(foorName) \(SHLanguageText.noData)")
+            
+            return
+        }
+        
+        if currentSelectCommandButton == nil ||
+           currentSelectCommandButton != commandButton {
+            
+            currentSelectCommandButton?.isSelected = false
+            currentSelectCommandButton = commandButton
+            commandButton.isSelected = true
+            
+            SHLoadProgressView.showIn(progressHoldView)
+        }
+        
+        SVProgressHUD.showSuccess(
+            withStatus: "Executing \(selectCentralHVAC?.floorName ?? "climate")"
+        )
+        
+        performSelector(inBackground: #selector(executeClimateCommands(commands:)), with: hvacCommands)
+    }
+    
+    /// 执行指令
+    @objc private func executeClimateCommands(commands: [SHCentralHVACCommand]) {
+        
+        
+        for command in commands {
+            
+            let operatorCode =
+                SHSocketTools.getOperatorCode(
+                    command.commandTypeID
+            )
+            
+            let sendData:[UInt8] = [
+               hvacMode,
+               hvacValue
+            ]
+            
+            SHSocketTools.sendData(
+                operatorCode: operatorCode,
+                subNetID: command.subnetID,
+                deviceID: command.deviceID,
+                additionalData: sendData
+            )
+            
+            // 如果是开关
+            if hvacMode == SHAirConditioningControlType.onAndOff.rawValue {
+                
+                // 因9in1增加 - 发送 0xE01C 1 - 开 2 - 关
+                let switchNo: UInt8 = (hvacValue != 0) ? 1 : 2
+                SHSocketTools.sendData(
+                    operatorCode: 0xE01C,
+                    subNetID: command.subnetID,
+                    deviceID: command.deviceID,
+                    additionalData: [switchNo, 0xFF]
+                )
+            }
+            
+            Thread.sleep(forTimeInterval: (TimeInterval(command.delayMillisecondAfterSend)/1000))
+        }
+    }
+    
     // MARK: - 点击事件
     
     /// 全开
@@ -221,7 +295,6 @@ import UIKit
         )
     }
     
-    
     /// 暖和
     @IBAction func warmClick() {
         
@@ -231,7 +304,7 @@ import UIKit
             
             return
         }
-    
+        
         hvacMode = SHAirConditioningControlType.acModeSet.rawValue
         hvacValue = SHAirConditioningModeType.heat.rawValue
         
@@ -242,7 +315,6 @@ import UIKit
     
     /// 制热
     @IBAction func hotClick() {
-        
         
         if selectCentralHVAC?.isHaveHot == false {
             
@@ -257,63 +329,6 @@ import UIKit
         changeProgressStatus(commandButton: hotButton,
                              progressHoldView: hotProgressbackView
         )
-    }
-
-}
-
-// MARK: - 执行命令
-extension SHClimateViewController {
-    
-    /// 更新进度信息
-    private func changeProgressStatus(commandButton: SHCommandButton, progressHoldView: UIView) {
-        
-        if hvacCommands.count == 0 {
-      
-            let foorName = selectCentralHVAC?.floorName ?? ""
-            
-            SVProgressHUD.showInfo(withStatus: "\(foorName) \(SHLanguageText.noData)")
-            
-            return
-        }
-        
-        if currentSelectCommandButton == nil ||
-           currentSelectCommandButton != commandButton {
-            
-            currentSelectCommandButton?.isSelected = false
-            currentSelectCommandButton = commandButton
-            commandButton.isSelected = true
-            
-            SHLoadProgressView.showIn(progressHoldView)
-        }
-        
-        SVProgressHUD.showSuccess(
-            withStatus: "Executing \(selectCentralHVAC?.floorName ?? "climate")"
-        )
-        
-        performSelector(inBackground: #selector(execute(commands:)), with: hvacCommands)
-    }
-    
-    /// 执行指令
-    @objc private func execute(commands: [SHCentralHVACCommand]) {
-        
-        for command in commands {
-            
-            let operatorCode: UInt16 = 0xE3D8
-            
-            let sendData:[UInt8] = [
-               hvacMode,
-               hvacValue
-            ]
-            
-            SHSocketTools.sendData(
-                operatorCode: operatorCode,
-                subNetID: command.subnetID,
-                deviceID: command.deviceID,
-                additionalData: sendData
-            )
-            
-            Thread.sleep(forTimeInterval: (TimeInterval(command.delayMillisecondAfterSend)/1000))
-        }
     }
 }
 

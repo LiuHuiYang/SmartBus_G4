@@ -47,6 +47,8 @@ import UIKit
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        backgroundColor = UIColor.clear
+        
         if UIDevice.is_iPad() {
             zoneLabel.font = UIView.suitLargerFontForPad()
         }
