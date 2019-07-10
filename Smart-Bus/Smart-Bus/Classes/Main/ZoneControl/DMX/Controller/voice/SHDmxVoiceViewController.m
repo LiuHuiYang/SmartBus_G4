@@ -138,7 +138,7 @@
                                    subNetID:dmxChannel.subnetID
                                    deviceID:dmxChannel.deviceID
                              additionalData:channelData
-                           remoteMacAddress:SHSocketTools.remoteControlMacAddress
+                           remoteDevice:SHDeviceList.selectedRemoteDevice
                                  needReSend:YES
                                       isDMX:YES
     ];

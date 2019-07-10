@@ -208,7 +208,6 @@ extension SHZoneControlFloorHeatingControlViewController {
             floorHeating.awayTemperature =
                 Int(socketData.additionalData[7])
             
-            
             // 传感器的地址
             floorHeating.insideSensorSubNetID =
                 socketData.additionalData[9]

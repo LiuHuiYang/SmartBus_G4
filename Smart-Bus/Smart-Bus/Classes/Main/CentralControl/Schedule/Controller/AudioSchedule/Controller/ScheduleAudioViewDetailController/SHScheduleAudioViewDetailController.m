@@ -772,7 +772,7 @@ static NSString *songCellReusableIdentifier =
                                    subNetID:sendData.subNetID
                                    deviceID:sendData.deviceID
                              additionalData:sendData.additionalData
-                           remoteMacAddress:SHSocketTools.remoteControlMacAddress
+                           remoteDevice:SHDeviceList.selectedRemoteDevice
                                  needReSend:false
                                       isDMX:false
      ];

@@ -13,7 +13,7 @@
 		04090D302285756A00E44C87 /* SHSocketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04090D292285756900E44C87 /* SHSocketData.swift */; };
 		04090D312285756A00E44C87 /* SHSocketTools + crc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04090D2A2285756900E44C87 /* SHSocketTools + crc.swift */; };
 		04090D322285756A00E44C87 /* SHSocketTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04090D2B2285756900E44C87 /* SHSocketTools.swift */; };
-		04090D332285756A00E44C87 /* SHSocketTools + send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04090D2C2285756A00E44C87 /* SHSocketTools + send.swift */; };
+		041E0A8722D5CA7700B591F9 /* SHSocketTools + send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E0A8622D5CA7700B591F9 /* SHSocketTools + send.swift */; };
 		0436AA012118305A00292877 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B34A64D1F5962DB008AAC2E /* libsqlite3.tbd */; };
 		043B4C9A210726C60075E5EA /* Languages in Resources */ = {isa = PBXBuildFile; fileRef = 043B4C99210726C50075E5EA /* Languages */; };
 		045C32742285014300EE2D5D /* SHSQLiteManager + TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2EDB2285013F00EE2D5D /* SHSQLiteManager + TV.swift */; };
@@ -523,8 +523,8 @@
 		04090D292285756900E44C87 /* SHSocketData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSocketData.swift; sourceTree = "<group>"; };
 		04090D2A2285756900E44C87 /* SHSocketTools + crc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SHSocketTools + crc.swift"; sourceTree = "<group>"; };
 		04090D2B2285756900E44C87 /* SHSocketTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSocketTools.swift; sourceTree = "<group>"; };
-		04090D2C2285756A00E44C87 /* SHSocketTools + send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SHSocketTools + send.swift"; sourceTree = "<group>"; };
 		041BFFA521533BA700D13A99 /* Smart-Bus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Smart-Bus.entitlements"; sourceTree = "<group>"; };
+		041E0A8622D5CA7700B591F9 /* SHSocketTools + send.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SHSocketTools + send.swift"; sourceTree = "<group>"; };
 		0436A9C021182AF900292877 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		0436A9C521182B2400292877 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0436A9C721182B2E00292877 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -1189,8 +1189,8 @@
 				04090D262285756800E44C87 /* SHSocketTools + additional.swift */,
 				04090D272285756800E44C87 /* SHSocketTools + cache.swift */,
 				04090D2A2285756900E44C87 /* SHSocketTools + crc.swift */,
+				041E0A8622D5CA7700B591F9 /* SHSocketTools + send.swift */,
 				04090D282285756900E44C87 /* SHSocketTools + receive.swift */,
-				04090D2C2285756A00E44C87 /* SHSocketTools + send.swift */,
 				04090D2B2285756900E44C87 /* SHSocketTools.swift */,
 			);
 			path = Socket;
@@ -4885,9 +4885,9 @@
 				045C32EE2285014300EE2D5D /* SHIcon.swift in Sources */,
 				045C344C2285014500EE2D5D /* JHLineChart.m in Sources */,
 				045C32BC2285014300EE2D5D /* SHDeviceList.swift in Sources */,
+				041E0A8722D5CA7700B591F9 /* SHSocketTools + send.swift in Sources */,
 				045C33132285014300EE2D5D /* SHZoneDmxGroupSettingViewController.swift in Sources */,
 				045C342C2285014400EE2D5D /* SHIntercomViewController.swift in Sources */,
-				04090D332285756A00E44C87 /* SHSocketTools + send.swift in Sources */,
 				045C33AE2285014400EE2D5D /* SHDevice.swift in Sources */,
 				045C334D2285014400EE2D5D /* SHAudioOperatorTools + asc.swift in Sources */,
 				045C32F22285014300EE2D5D /* SHZoneDevicesCell.swift in Sources */,

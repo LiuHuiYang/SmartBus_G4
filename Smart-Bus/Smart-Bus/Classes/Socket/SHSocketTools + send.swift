@@ -41,8 +41,8 @@ extension SHSocketTools {
         subNetID: UInt8,
         deviceID: UInt8,
         additionalData:[UInt8],
-        remoteMacAddress: String =
-            SHSocketTools.remoteControlMacAddress(),
+        remoteDevice: SHDeviceList =
+            SHDeviceList.selectedRemoteDevice() ?? SHDeviceList(),
         needReSend: Bool = true,
         isDMX: Bool = false) {
         
@@ -71,7 +71,7 @@ extension SHSocketTools {
                          subNetID: subNetID,
                          deviceID: deviceID,
                          additionalData: additionalData,
-                         remoteMacAddress: remoteMacAddress,
+                         remoteDevice: remoteDevice,
                          isDMX: isDMX
                 )
                 
@@ -105,8 +105,7 @@ extension SHSocketTools {
         subNetID: UInt8,
         deviceID: UInt8,
         additionalData:[UInt8],
-        remoteMacAddress: String =
-        SHSocketTools.remoteControlMacAddress(),
+        remoteDevice: SHDeviceList,
         isDMX: Bool = false ) {
      
         let data = packingData(
@@ -114,7 +113,7 @@ extension SHSocketTools {
             subNetID: subNetID,
             deviceID: deviceID,
             additionalData: additionalData,
-            remoteMacAddress: remoteMacAddress,
+            remoteDevice: remoteDevice,
             isDMX: isDMX
         )
         
@@ -164,7 +163,7 @@ extension SHSocketTools {
                             subNetID: UInt8,
                             deviceID: UInt8,
                             additionalData:[UInt8],
-                            remoteMacAddress: String,
+                            remoteDevice: SHDeviceList,
                             isDMX: Bool)  ->
         (   datas: [UInt8],
             destAddress: String,
@@ -173,8 +172,16 @@ extension SHSocketTools {
             
             // 发送的数据包: 目标ip + 固定协议头 + protocolBaseStructure
             
+            let remoteMacAddress =
+                remoteDevice.macAddress ?? ""
+            
+             let remoteServerDomainName =
+                remoteDevice.serverName ?? defaultRemoteServerDoMainName
+            
+            
             let isRemote =
                 SHSocketTools.isRemoteControl(remoteMacAddress)
+            
             
             // 1. 计算整个包的大小
             
@@ -182,7 +189,7 @@ extension SHSocketTools {
             guard let ipAddress =
                 isRemote ?
                     UIDevice.getIPAddress(
-                        byHostName: SHSocketTools.remoteServerDomainName()
+                        byHostName: remoteServerDomainName
                     ) :
                     
                     UIDevice.getIPAddress(UIDevice.isIPV6()
@@ -395,24 +402,6 @@ extension SHSocketTools {
         }
         
         return !(saveLocalWifi == currentWifi)
-    }
-     
-    
-    /// 获得远程发送的MAC地址
-    ///
-    /// - Returns: MAC地址
-    static func remoteControlMacAddress() -> String {
-        
-        return (SHDeviceList.selectedRemoteDevice()?.macAddress ?? "")
-    }
-    
-    
-    /// 获得服务器远程域名
-    ///
-    /// - Returns: 远程服务器域名
-    static func remoteServerDomainName() -> String {
-        
-        return SHDeviceList.selectedRemoteDevice()?.serverName ?? defaultRemoteServerDoMainName
     }
     
     /// 设置本地发送指令使用的wifi
