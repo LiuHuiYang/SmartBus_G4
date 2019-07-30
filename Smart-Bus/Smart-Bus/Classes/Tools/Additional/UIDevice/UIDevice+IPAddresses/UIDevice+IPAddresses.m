@@ -170,7 +170,7 @@ NSString *IP_ADDR_IPV6 = @"ipv6";
  @param address 地址字符串
  @return YES - 非法 / NO 合法
  */
-+ (BOOL)isIllegalDomainNameOrIPAddress:(NSString*)address {
++ (BOOL)isIllegalDomainNameOrIPAddress:(NSString *)address {
     
     // 1.判断是否有点
     NSRegularExpression *pointRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"[.]" options:NSRegularExpressionCaseInsensitive error:nil];
@@ -194,7 +194,6 @@ NSString *IP_ADDR_IPV6 = @"ipv6";
     if (!pointMatchCount) {
         return YES;  // 没有点肯定是非法地址
     }
-    
     
     // 非法数据
     struct hostent* phot ;

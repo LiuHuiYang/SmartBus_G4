@@ -114,19 +114,19 @@ import UIKit
     /// 自动模式的温度
     var autoTemperture: Int = 0
 
-    // ====== 温度范围 有正负
+    // ====== 温度范围 有正负 (统一给定与smartcloud一样的默认值)
     
     // 制冷模式
-    var startCoolTemperatureRange: Int = 0
-    var endCoolTemperatureRange: Int = 0
+    var startCoolTemperatureRange: Int = -9
+    var endCoolTemperatureRange: Int = 99
     
     // 制热温度范围
-    var startHeatTemperatureRange: Int = 0
-    var endHeatTemperatureRange: Int = 0
+    var startHeatTemperatureRange: Int = -9
+    var endHeatTemperatureRange: Int = 99
     
     // 自动模式温度范围
-    var startAutoTemperatureRange: Int = 0
-    var endAutoTemperatureRange: Int = 0
+    var startAutoTemperatureRange: Int = -9
+    var endAutoTemperatureRange: Int = 99
 
     // ============模型中的存储数据库的部分 ========
     

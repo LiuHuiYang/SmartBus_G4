@@ -477,6 +477,8 @@ extension SHZoneHVACControlViewController {
                     Int(socketData.additionalData[5])
                 )
                 
+                setAirConditionerStatus()
+                
                 // 获得温度单位
             case 0xE121:
                 if socketData.subNetID != hvac.subnetID ||
