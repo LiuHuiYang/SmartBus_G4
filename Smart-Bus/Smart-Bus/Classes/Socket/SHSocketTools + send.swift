@@ -178,10 +178,8 @@ extension SHSocketTools {
              let remoteServerDomainName =
                 remoteDevice.serverName ?? defaultRemoteServerDoMainName
             
-            
             let isRemote =
                 SHSocketTools.isRemoteControl(remoteMacAddress)
-            
             
             // 1. 计算整个包的大小
             
