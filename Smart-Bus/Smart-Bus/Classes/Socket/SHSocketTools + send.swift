@@ -151,7 +151,7 @@ extension SHSocketTools {
         SHSocketTools.shared.socket?.send(
             sendData, toHost: data.destAddress,
             port: data.port,
-            withTimeout: 1,
+            withTimeout: -1,
             tag: 0 
         )
         

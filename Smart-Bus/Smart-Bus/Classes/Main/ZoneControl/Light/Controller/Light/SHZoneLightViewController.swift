@@ -37,6 +37,9 @@ extension SHZoneLightViewController {
             
         case 0xEFFF:
             
+            readDevicesStatus()
+//            return;
+            
             // 1.获得区域总数
             let zoneCount = Int(socketData.additionalData[0])
             
@@ -84,6 +87,8 @@ extension SHZoneLightViewController {
                     light.deviceID == socketData.deviceID &&
                     light.channelNo <= channelCount {
                     
+                    print("收到 0xEFFF")
+                    
                     let brightness =
                         statusForChannel[Int(light.channelNo) - 1]
                     
@@ -97,6 +102,7 @@ extension SHZoneLightViewController {
             
         case 0x0032:
             
+            
             // 有时固件会返回一个 不合法的  格式
             // 有时失败会返回 只有一个参数 的数据
             if socketData.additionalData.count < 3 {
@@ -104,6 +110,8 @@ extension SHZoneLightViewController {
             }
             
             if (socketData.additionalData[1] == 0xF8) {
+                
+                print("收到 0032")
                 
                 let brightness = socketData.additionalData[2];
                 
