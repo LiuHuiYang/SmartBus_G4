@@ -9,6 +9,7 @@
 import UIKit
 import CocoaAsyncSocket
 
+
 /// SHSocketTools
 @objcMembers class SHSocketTools: NSObject {
     
@@ -57,25 +58,23 @@ import CocoaAsyncSocket
     /// UDP 广播通知
     static let broadcastNotificationName = "socketBroadcastNotification"
     
+    
     /// socket对象
     lazy var socket: GCDAsyncUdpSocket? = setupSocket()
     
     /// 创建socket
     func setupSocket() -> GCDAsyncUdpSocket? {
-        
+     
         let udpSocket =
             GCDAsyncUdpSocket(
                 delegate: self,
                 delegateQueue: DispatchQueue.global()
         )
-         
-//        udpSocket.setIPv4Enabled(true)
-//        udpSocket.setIPv6Enabled(true)
         
         do {
             
             try udpSocket.enableBroadcast(true)
-            try udpSocket.beginReceiving()
+//            try udpSocket.beginReceiving()
             
         } catch {
             
@@ -83,6 +82,7 @@ import CocoaAsyncSocket
                 "socket init error"
             )
             print("收到错误信息: \(error)")
+            udpSocket.close()
         }
         
         return udpSocket

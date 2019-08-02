@@ -1008,7 +1008,10 @@ enum GCDAsyncUdpSocketConfig
 	{
 		dispatch_async(delegateQueue, ^{ @autoreleasepool {
 			
+        
+            
 			[theDelegate udpSocket:self didReceiveData:data fromAddress:address withFilterContext:context];
+            
 		}});
 	}
 }

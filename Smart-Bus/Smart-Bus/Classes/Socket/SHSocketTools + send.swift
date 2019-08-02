@@ -23,6 +23,8 @@ private let localServerPort: UInt16 = 6000
 // 远程端口
 private let remoteServerPort: UInt16 = 8888
 
+
+
 // MARK: - 发送数据包
 extension SHSocketTools {
    
@@ -45,6 +47,7 @@ extension SHSocketTools {
             SHDeviceList.selectedRemoteDevice() ?? SHDeviceList(),
         needReSend: Bool = true,
         isDMX: Bool = false) {
+        
         
         DispatchQueue.global().async {
             
@@ -75,7 +78,7 @@ extension SHSocketTools {
                          isDMX: isDMX
                 )
                 
-                Thread.sleep(forTimeInterval: 0.75)
+                Thread.sleep(forTimeInterval: 0.7)
                 
                 // 查询缓存
                 if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
@@ -97,7 +100,7 @@ extension SHSocketTools {
         
         // 所有的指令都要延时 0.1秒执行
         // (0.1是依据产品固件计算出来的平均值)
-        Thread.sleep(forTimeInterval: 0.1)
+//        Thread.sleep(forTimeInterval: 0.1)
     }
     
     private static func sendData(
@@ -123,36 +126,47 @@ extension SHSocketTools {
         ) as Data
          
         if SHSocketTools.shared.socket?.localPort() != data.port {
-  
+
             do {
-                
+
                 // 端口不同，先关闭socket 释放端口 再重新绑定
                 SHSocketTools.shared.socket?.close()
                 SHSocketTools.shared.socket = nil
-                
+
                 SHSocketTools.shared.socket =
                     SHSocketTools.shared.setupSocket()
-                
+
                 // 绑定端口
                 try SHSocketTools.shared.socket?.bind(
                     toPort: data.port,
                     interface: nil
                 )
-                
+
                 // 开启接收
                 try SHSocketTools.shared.socket?.beginReceiving()
-                
+
             } catch {
-                
+
                 print("绑定端口出错!!! \(error)")
+//                SVProgressHUD.showError(
+//                    withStatus: "Address already in use"
+//                )
+
+                SHSocketTools.shared.socket?.close()
+                SHSocketTools.shared.socket = nil
+                
+                SHSocketTools.shared.socket =
+                    SHSocketTools.shared.setupSocket()
             }
         }
+        
+        
         
         SHSocketTools.shared.socket?.send(
             sendData, toHost: data.destAddress,
             port: data.port,
             withTimeout: -1,
-            tag: 0 
+            tag: 0
         )
         
 //        print("发送控制包: \(data)")
@@ -201,16 +215,14 @@ extension SHSocketTools {
                 ipAddress.components(separatedBy: ".")
             
             // 1.2 固定协议头
-            let generalHeader: [UInt8] =
-                [
-                    0x53, 0x4D, 0x41, 0x52, 0x54,
-                    0x43, 0x4C, 0x4F, 0x55, 0x44
+            let generalHeader: [UInt8] = [
+                0x53, 0x4D, 0x41, 0x52, 0x54,
+                0x43, 0x4C, 0x4F, 0x55, 0x44
             ]
             
-            let dmxHeader: [UInt8] =
-                [
-                    0x48, 0x44, 0x4C, 0x4D, 0x49,
-                    0x52, 0x41, 0x43, 0x4C, 0x45
+            let dmxHeader: [UInt8] = [
+                0x48, 0x44, 0x4C, 0x4D, 0x49,
+                0x52, 0x41, 0x43, 0x4C, 0x45
             ]
             
             let headerCount =

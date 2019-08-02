@@ -15,6 +15,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
     /// 接收到数据
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         
+         
         //        guard let host = GCDAsyncUdpSocket.host(fromAddress: address),
         //            let localIP = UIDevice.getIPAddress(UIDevice.isIPV6()),
         //            host.contains(localIP) == false else {
@@ -26,24 +27,24 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         //        // 当前地址local:
         //        print("host: \(host), local: \(localIP)")
         
-        
-//        print("收到的广播: \(data) \(Thread.current)")
-        
         // 解析成数组
         var recivedData = [UInt8](data)
         
-        
         // 数据包的前16个固定字节数(源IP + 协议头 + 开始的操作码 --> 不影响解析，所以去除)
         
-        // FIXME: 暂时不进行接收校验
         // 16的是0xAAAA后的位置 SN2
         guard SHSocketTools.check_crc(position: &(recivedData[16]),
                                       length: recivedData.count - 16 - 2
-            
+
             ) else {
-                
-                return
+
+            return
         }
+        
+//        if recivedData[22] == 0x32{
+//            print("收到的广播: \(recivedData) \(Thread.current) \n 亮度: \(recivedData[27])")
+//        }
+        
         
         let subNetID = recivedData[17]
         let deviceID = recivedData[18]
@@ -83,7 +84,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
             SHSocketTools.broadcastNotificationName:
             socketData
         ]
-     
+      
         DispatchQueue.main.async {
             
             NotificationCenter.default.post(
@@ -92,7 +93,11 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
                 userInfo: broadcastMessage
             )
         }
+        
+        
     }
+    
+    
     
     /// socket 关闭
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
