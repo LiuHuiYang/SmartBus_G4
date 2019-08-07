@@ -17,25 +17,27 @@ private let localWifiKey = "SHUdpSocketSendDataLocalWifi"
 /// 本地wifi广播地址
 private let localBroadcastAddress = "255.255.255.255"
 
-// 本地端口
+/// 本地端口
 private let localServerPort: UInt16 = 6000
 
-// 远程端口
+/// 远程端口
 private let remoteServerPort: UInt16 = 8888
 
 
+/// 缓存数据
+private var cacheData = [SHSocketData]()
 
 // MARK: - 发送数据包
 extension SHSocketTools {
-   
+    
     /// socket发送的通用数据包(外界调用)
     ///
     /// - Parameters:
     ///   - operatorCode: 操作码
     ///   - subNetID: 子网ID
     ///   - deviceID: 设备ID
-    ///   - additionalData: 可变参数数组
-    ///   - remoteMacAddress: RSIP的mac地址(有默认值)
+    ///   - additionalData: 额外参数数组
+    ///   - remoteDevice: 远程设备RSIP
     ///   - needReSend: 是否需要重发(默认重发)
     ///   - isDMX: 是否为DMX设备(默认不是)
     static func sendData(
@@ -50,32 +52,32 @@ extension SHSocketTools {
         
         DispatchQueue.global().async {
             
-            var count = needReSend ? 3 : 1
-
             let socketData =
                 SHSocketData(operatorCode: operatorCode,
                              subNetID: subNetID,
                              deviceID: deviceID,
                              additionalData: additionalData,
-                             deviceType: 0
+                             deviceType: 0,
+                             remoteDevice: remoteDevice,
+                             isDMX: isDMX
             )
             
-            if needReSend {
-             
-                SHSocketTools.addSocketData(
-                    socketData: socketData
-                )
+            sendDeviceControlData(socketData)
+            
+            if needReSend == false {
+                return
             }
+            
+            // 进入重发机制
+            var count = needReSend ? 1 : 1
+            
+            SHSocketTools.addSocketData(
+                socketData: socketData
+            )
             
             while count > 0 {
                
-                sendData(operatorCode: operatorCode,
-                         subNetID: subNetID,
-                         deviceID: deviceID,
-                         additionalData: additionalData,
-                         remoteDevice: remoteDevice,
-                         isDMX: isDMX
-                )
+                sendDeviceControlData(socketData)
                 
                 Thread.sleep(forTimeInterval: 0.7)
                 
@@ -102,55 +104,56 @@ extension SHSocketTools {
         Thread.sleep(forTimeInterval: 0.1)
     }
     
-    private static func sendData(
-        operatorCode: UInt16,
-        subNetID: UInt8,
-        deviceID: UInt8,
-        additionalData:[UInt8],
-        remoteDevice: SHDeviceList,
-        isDMX: Bool = false ) {
-     
+}
+   
+
+// MARK: - 发送数据
+extension SHSocketTools {
+    
+    /// 发送数据包
+    ///
+    /// - Parameter data: 控制数据
+    private static func sendDeviceControlData(
+        _ data: SHSocketData) {
+        
         let data = packingData(
-            operatorCode: operatorCode,
-            subNetID: subNetID,
-            deviceID: deviceID,
-            additionalData: additionalData,
-            remoteDevice: remoteDevice,
-            isDMX: isDMX
+            operatorCode: data.operatorCode,
+            subNetID: data.subNetID,
+            deviceID: data.deviceID,
+            additionalData: data.additionalData,
+            remoteDevice: data.remoteDevice,
+            isDMX: data.isDMX
         )
         
         let sendData =
             NSMutableData(bytes: data.datas,
                           length: data.datas.count
-        ) as Data
-         
+                ) as Data
+        
         if SHSocketTools.shared.socket?.localPort() != data.port {
-
+            
             do {
-
+                
                 // 端口不同，先关闭socket 释放端口 再重新绑定
                 SHSocketTools.shared.socket?.close()
                 SHSocketTools.shared.socket = nil
-
+                
                 SHSocketTools.shared.socket =
                     SHSocketTools.shared.setupSocket()
-
+                
                 // 绑定端口
                 try SHSocketTools.shared.socket?.bind(
                     toPort: data.port,
                     interface: nil
                 )
-
+                
                 // 开启接收
                 try SHSocketTools.shared.socket?.beginReceiving()
-
+                
             } catch {
-
+                
                 print("绑定端口出错!!! \(error)")
-//                SVProgressHUD.showError(
-//                    withStatus: "Address already in use"
-//                )
-
+                
                 SHSocketTools.shared.socket?.close()
                 SHSocketTools.shared.socket = nil
                 
@@ -167,8 +170,12 @@ extension SHSocketTools {
             tag: 0
         )
         
-//        print("发送控制包: \(data)")
+        // print("发送控制包: \(data)")
     }
+}
+
+// MARK: - 打包发送数据
+extension SHSocketTools {
     
     /// 打包数据
     static func packingData(operatorCode: UInt16,
@@ -178,8 +185,8 @@ extension SHSocketTools {
                             remoteDevice: SHDeviceList,
                             isDMX: Bool)  ->
         (   datas: [UInt8],
-            destAddress: String,
-            port: UInt16
+        destAddress: String,
+        port: UInt16
         ) {
             
             // 发送的数据包: 目标ip + 固定协议头 + protocolBaseStructure
@@ -187,7 +194,7 @@ extension SHSocketTools {
             let remoteMacAddress =
                 remoteDevice.macAddress ?? ""
             
-             let remoteServerDomainName =
+            let remoteServerDomainName =
                 remoteDevice.serverName ?? defaultRemoteServerDoMainName
             
             let isRemote =

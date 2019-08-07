@@ -55,6 +55,10 @@ import CocoaAsyncSocket
     /// 发送数据包缓存
     static let caches = NSCache<AnyObject, AnyObject>()
     
+    
+    /// 发送缓存数据
+    static let cacheData = [SHSocketData]()
+    
     /// UDP 广播通知
     static let broadcastNotificationName = "socketBroadcastNotification"
     
