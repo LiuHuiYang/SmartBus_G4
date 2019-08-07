@@ -48,7 +48,6 @@ extension SHSocketTools {
         needReSend: Bool = true,
         isDMX: Bool = false) {
         
-        
         DispatchQueue.global().async {
             
             var count = needReSend ? 3 : 1
@@ -100,7 +99,7 @@ extension SHSocketTools {
         
         // 所有的指令都要延时 0.1秒执行
         // (0.1是依据产品固件计算出来的平均值)
-//        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.1)
     }
     
     private static func sendData(
@@ -159,7 +158,6 @@ extension SHSocketTools {
                     SHSocketTools.shared.setupSocket()
             }
         }
-        
         
         
         SHSocketTools.shared.socket?.send(
