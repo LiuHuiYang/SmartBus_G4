@@ -80,13 +80,13 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         
         
         delegate?.receiveData?(socketData)
-         
-       
-//        SHSocketTools.removeSocketData(
-//            socketData: socketData,
-//            isReceived: true
-//        )
         
+        SHSocketTools.removeSocketData(
+            socketData: socketData,
+            isReceived: true
+        )
+        
+        // 旧方式
 //        let broadcastMessage = [
 //            SHSocketTools.broadcastNotificationName:
 //            socketData

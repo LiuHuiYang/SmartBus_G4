@@ -51,12 +51,7 @@ extension SHSocketTools {
         needReSend: Bool = true,
         isDMX: Bool = false) {
         
-//        let start = CFAbsoluteTimeGetCurrent()
-//        count += 1
-//        print("==== 1. 发送数据开始 \(Thread.isMainThread) - \(count)")
-   
-        
-        SHSocketTools.shared.repeatQueue.async {
+        DispatchQueue.global().async {
             
             let socketData =
                 SHSocketData(operatorCode: operatorCode,
@@ -70,32 +65,51 @@ extension SHSocketTools {
             
             sendDeviceControlData(socketData)
             
-            if needReSend &&
-                socketData.reSendCount == 0 {
+            if needReSend {
                 
+                SHSocketTools.addSocketData(
+                    socketData: socketData
+                )
                 
-                SHSocketTools.cacheData.append(socketData)
+                var count = 2
+                
+                while count > 0 {
+                    
+                    sendDeviceControlData(socketData)
+                    
+                    Thread.sleep(forTimeInterval: 0.75)
+                    
+                    // 查询缓存
+                    if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
+                        
+                        break
+                    }
+                    
+                    count -= 1
+                }
+                
+                // 重发超过规定次数
+                if (count <= 0) {
+                    
+                    SHSocketTools.removeSocketData(
+                        socketData: socketData
+                    )
+                }
             }
-
+            
         }
-    
-        
+     
         // 所有的指令都要延时 0.1秒执行
         // (0.1是依据产品固件计算出来的平均值)
         Thread.sleep(forTimeInterval: 0.12)
-
-//        print("==== 2. 发送数据结束 \(CFAbsoluteTimeGetCurrent() - start) ")
+  
+//        if SHSocketTools.startToReSend {
+//           return
+//        }
+//
+//        SHSocketTools.startToReSend = true
+//        repeatSendDeviceData()
         
-        
-        return // 暂时不实现重发
-        
-        if SHSocketTools.startToReSend {
-           return
-        }
-        
-        print("开始重发 ==== ")
-        SHSocketTools.startToReSend = true
-        repeatSendDeviceData()
     }
     
 }
@@ -110,7 +124,7 @@ extension SHSocketTools {
         
         SHSocketTools.shared.repeatQueue.async {
             
-            print("子线程发送数据 \(Thread.current)")
+            print("开始重发  \(Thread.current)")
             
             while let socketData = SHSocketTools.cacheData.first {
                 
