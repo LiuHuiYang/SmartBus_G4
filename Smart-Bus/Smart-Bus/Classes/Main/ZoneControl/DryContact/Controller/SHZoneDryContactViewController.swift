@@ -123,7 +123,10 @@ extension SHZoneDryContactViewController {
             }
         }
         
-        dryContactListView.reloadData()
+        DispatchQueue.main.async {
+            
+            self.dryContactListView.reloadData()
+        }
     }
     
     
@@ -153,8 +156,11 @@ extension SHZoneDryContactViewController {
     }
     
     override func becomeFocus() {
-         
-        if isVisible() {
+        super.becomeFocus()
+        
+        if isViewLoaded &&
+            view.window != nil {
+            
             readDevicesStatus()
         }
     }

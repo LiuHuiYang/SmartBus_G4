@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MachO
 
 /// 远程设备类型标示
 private let iOS_flag: UInt8 = 0x02
@@ -23,9 +24,9 @@ private let localServerPort: UInt16 = 6000
 /// 远程端口
 private let remoteServerPort: UInt16 = 8888
 
-
-/// 缓存数据
-private var cacheData = [SHSocketData]()
+/// 计数
+private var count = 0
+ 
 
 // MARK: - 发送数据包
 extension SHSocketTools {
@@ -46,11 +47,16 @@ extension SHSocketTools {
         deviceID: UInt8,
         additionalData:[UInt8],
         remoteDevice: SHDeviceList =
-            SHDeviceList.selectedRemoteDevice() ?? SHDeviceList(),
+        SHDeviceList.selectedRemoteDevice() ?? SHDeviceList(),
         needReSend: Bool = true,
         isDMX: Bool = false) {
         
-        DispatchQueue.global().async {
+//        let start = CFAbsoluteTimeGetCurrent()
+//        count += 1
+//        print("==== 1. 发送数据开始 \(Thread.isMainThread) - \(count)")
+   
+        
+        SHSocketTools.shared.repeatQueue.async {
             
             let socketData =
                 SHSocketData(operatorCode: operatorCode,
@@ -64,48 +70,75 @@ extension SHSocketTools {
             
             sendDeviceControlData(socketData)
             
-            if needReSend == false {
-                return
-            }
-            
-            // 进入重发机制
-            var count = needReSend ? 1 : 1
-            
-            SHSocketTools.addSocketData(
-                socketData: socketData
-            )
-            
-            while count > 0 {
-               
-                sendDeviceControlData(socketData)
+            if needReSend &&
+                socketData.reSendCount == 0 {
                 
-                Thread.sleep(forTimeInterval: 0.7)
                 
-                // 查询缓存
-                if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
-          
-                    break
-                }
-                
-                count -= 1
+                SHSocketTools.cacheData.append(socketData)
             }
-            
-            // 重发超过规定次数
-            if (count == 0) {
-              
-                SHSocketTools.removeSocketData(
-                    socketData: socketData
-                )
-            }
+
         }
+    
         
         // 所有的指令都要延时 0.1秒执行
         // (0.1是依据产品固件计算出来的平均值)
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.12)
+
+//        print("==== 2. 发送数据结束 \(CFAbsoluteTimeGetCurrent() - start) ")
+        
+        
+        return // 暂时不实现重发
+        
+        if SHSocketTools.startToReSend {
+           return
+        }
+        
+        print("开始重发 ==== ")
+        SHSocketTools.startToReSend = true
+        repeatSendDeviceData()
     }
     
 }
-   
+
+
+// MARK: - 重发数据
+extension SHSocketTools {
+    
+    
+    /// 重发数据
+    @objc private static func repeatSendDeviceData() {
+        
+        SHSocketTools.shared.repeatQueue.async {
+            
+            print("子线程发送数据 \(Thread.current)")
+            
+            while let socketData = SHSocketTools.cacheData.first {
+                
+                
+                if socketData.reSendCount < 2 {
+                    
+                    socketData.reSendCount += 1
+                    SHSocketTools.sendDeviceControlData(
+                        socketData
+                    )
+                    
+                     print("重发数据 \(SHSocketTools.cacheData.count) \(Thread.current) \(socketData)")
+                }
+                
+                if SHSocketTools.cacheData.count != 0 {
+                    SHSocketTools.cacheData.removeFirst()
+                }
+                
+                Thread.sleep(forTimeInterval: 0.7)
+            }
+            
+            print("全部结束 \(SHSocketTools.cacheData.count)")
+            SHSocketTools.startToReSend = false
+        }
+        
+    }
+}
+
 
 // MARK: - 发送数据
 extension SHSocketTools {
@@ -385,11 +418,11 @@ extension SHSocketTools {
         let specifyIP =
             (UserDefaults.standard.object(
                 forKey: socketRealIP
-            ) as? String) ?? ""
+                ) as? String) ?? ""
         
         guard specifyIP.isEmpty else {
-                
-           return false
+            
+            return false
         }
         
         // 2.判断是否开启了远程

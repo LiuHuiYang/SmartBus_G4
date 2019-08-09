@@ -168,6 +168,12 @@ UITableViewDelegate, UITableViewDataSource>
 /// 收到广播
 - (void)analyzeReceivedSocketData:(SHSocketData *)socketData {
     
+    [self performSelectorOnMainThread:@selector(analyzeAudioData:) withObject:socketData waitUntilDone:false];
+    
+}
+
+/// 解析音乐数据
+- (void)analyzeAudioData:(SHSocketData *)socketData {
     
     if (socketData.subNetID != self.currentAudio.subnetID ||
         socketData.deviceID != self.currentAudio.deviceID) {
@@ -227,7 +233,7 @@ UITableViewDelegate, UITableViewDataSource>
                 
                 if (recivedData[3] == self.currentAudio.totalPackages) {
                     
-                     printLog(@"最终的专辑名称: %@", self.currentAudio.recivedStringList);
+                    printLog(@"最终的专辑名称: %@", self.currentAudio.recivedStringList);
                     
                     [SHAudioTools parseNameList:socketData.subNetID
                                        deviceID:socketData.deviceID
@@ -295,7 +301,7 @@ UITableViewDelegate, UITableViewDataSource>
                     
                     [self.currentAudio.recivedStringList appendFormat:@"%@",songName];
                     
-//                     printLog(@"当前音乐名称: %@", self.currentAudio.recivedStringList);
+                    //                     printLog(@"当前音乐名称: %@", self.currentAudio.recivedStringList);
                     
                     /// 拼接完成
                     if (recivedData[4] == self.currentAudio.totalPackages) {
@@ -583,21 +589,21 @@ UITableViewDelegate, UITableViewDataSource>
                     
                     if ((SHPlayingSong.shared.albumNumber != queueSong.albumNumber) ||
                         (SHPlayingSong.shared.songNumber != queueSong.songNumber)) {
-                    
+                        
                         ++self.queueCount;
                         
                         if (self.queueCount == 2) { // 固件在短时间内会有两次相同的广播
-                           
+                            
                             self.queueCount = 0;
                             ++self.indexQueue;
                             
                             self.indexQueue %= self.selectQueueSongs.count;
                             
-                              printLog(@"做准备发送 == %@", @(self.indexQueue));
+                            printLog(@"做准备发送 == %@", @(self.indexQueue));
                             
                             SHSong *song =
                             self.selectQueueSongs[self.indexQueue];
-                              
+                            
                             [self playQueueSong:song];
                         }
                         
@@ -651,14 +657,14 @@ UITableViewDelegate, UITableViewDataSource>
                         
                     case 0x31: {  // 列表号与列表总数
                         
-//                        printLog(@"1. 列表号与列表总数: %@", string);
+                        //                        printLog(@"1. 列表号与列表总数: %@", string);
                         
                         [SHPlayingSong.shared
                          setAlbumSerialNumber:string];
                         
                         // List:XX/XXX
                         NSRange range =
-                            [string rangeOfString:@"/"];
+                        [string rangeOfString:@"/"];
                         
                         if (range.location == NSNotFound) {
                             return;
@@ -666,19 +672,19 @@ UITableViewDelegate, UITableViewDataSource>
                         
                         NSString *albumNumber = [string substringToIndex:range.location];
                         
-                       
+                        
                         // 确定 : 的位置
                         range =
-                            [albumNumber rangeOfString:@":"];
+                        [albumNumber rangeOfString:@":"];
                         
                         if (range.location == NSNotFound) {
                             return;
                         }
-                       
+                        
                         // L:1
-                       albumNumber =
-                            [albumNumber substringFromIndex: range.location + 1];
-                  
+                        albumNumber =
+                        [albumNumber substringFromIndex: range.location + 1];
+                        
                         SHPlayingSong.shared.albumNumber = albumNumber.integerValue;
                     }
                         break;
@@ -710,7 +716,7 @@ UITableViewDelegate, UITableViewDataSource>
                         
                         // 确定 : 的位置
                         range =
-                            [songNumber rangeOfString:@":"];
+                        [songNumber rangeOfString:@":"];
                         
                         if (range.location == NSNotFound) {
                             return;
@@ -721,7 +727,7 @@ UITableViewDelegate, UITableViewDataSource>
                         [songNumber substringFromIndex: range.location + 1];
                         
                         SHPlayingSong.shared.songNumber =
-                            songNumber.integerValue;
+                        songNumber.integerValue;
                     }
                         break;
                         
@@ -741,8 +747,8 @@ UITableViewDelegate, UITableViewDataSource>
                  ];
                 
                 [self.showPlayStatusView
-                    setPlaySong:SHPlayingSong.shared
-                ];
+                 setPlaySong:SHPlayingSong.shared
+                 ];
             }
             
             /********** 获得当前的模式 ***********/
@@ -795,6 +801,7 @@ UITableViewDelegate, UITableViewDataSource>
         default:
             break;
     }
+
 }
 
 // MARK: ====== - 重发机制 ======
@@ -806,11 +813,18 @@ UITableViewDelegate, UITableViewDataSource>
         return;     // 取消发送消息
     }
     
+    SHDeviceList *remoteDevice = SHDeviceList.selectedRemoteDevice;
+    
+    //FIXME: - 写上这个是为了与Swift调用时兼容
+    if (remoteDevice == nil) {
+        remoteDevice = [[SHDeviceList alloc] init];
+    }
+    
     [SHSocketTools sendDataWithOperatorCode:sendData.operatorCode
                                    subNetID:sendData.subNetID
                                    deviceID:sendData.deviceID
                              additionalData:sendData.additionalData
-                               remoteDevice:SHDeviceList.selectedRemoteDevice
+                               remoteDevice:remoteDevice
                                  needReSend:false
                                       isDMX:false
      ];
@@ -1794,7 +1808,8 @@ UITableViewDelegate, UITableViewDataSource>
 
 - (void)becomeFocus {
     
-    if ([self isVisible]) {
+    if (self.isViewLoaded &&
+        self.view.window) {
         
         [self readAudioStatus];
     }

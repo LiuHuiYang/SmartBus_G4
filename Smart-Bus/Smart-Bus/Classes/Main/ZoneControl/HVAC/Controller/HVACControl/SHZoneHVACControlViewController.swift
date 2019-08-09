@@ -133,8 +133,11 @@ class SHZoneHVACControlViewController: SHViewController {
 }
 
 
+
 // MARK: - 读取状态与解析
 extension SHZoneHVACControlViewController {
+    
+    
     
     // MARK: - 解析状态
     
@@ -164,7 +167,7 @@ extension SHZoneHVACControlViewController {
                 Int((flag == 0) ? temperature : (0 - temperature))
             
             // 获得温度 设置空调相关的内容
-            setAirConditionerStatus()
+//            setAirConditionerStatus()
         
             // 空调部分 (coolmaster固件修改以后再将注释恢复)
         } else /*if ((subNetID == hvac.subnetID)  &&
@@ -195,7 +198,7 @@ extension SHZoneHVACControlViewController {
                     hvac.isTurnOn = false
                 }
 
-                setAirConditionerStatus()
+//                setAirConditionerStatus()
                 
                 // 返回状态
             case 0xE0ED:
@@ -269,7 +272,7 @@ extension SHZoneHVACControlViewController {
                         Int(socketData.additionalData[7])
                 )
                 
-                setAirConditionerStatus()
+//                setAirConditionerStatus()
                 
             // DDP控制面板发出的数据 而HVAC/IR/Relay得到的响应
             case 0x193B :
@@ -335,7 +338,7 @@ extension SHZoneHVACControlViewController {
                         rawValue: socketData.additionalData[10]
                     ) ?? .auto
                 
-                setAirConditionerStatus()
+//                setAirConditionerStatus()
                 
             case 0xE3D9:
                 
@@ -390,7 +393,7 @@ extension SHZoneHVACControlViewController {
                     break
                 }
                 
-                setAirConditionerStatus()
+//                setAirConditionerStatus()
                 
                 // 模式
             case 0xE125:
@@ -488,10 +491,27 @@ extension SHZoneHVACControlViewController {
                 hvac.isCelsius =
                         socketData.additionalData[0] == 0
                 
-                setAirConditionerStatus()
+//                setAirConditionerStatus()
                 
             default:
                 break
+            }
+        }
+        
+        if ((socketData.operatorCode == 0xE121 ||
+            socketData.operatorCode == 0xE01D ||
+            socketData.operatorCode == 0xE3D9 ||
+            socketData.operatorCode == 0x193B ) && (
+                socketData.subNetID == hvac.subnetID  &&
+                socketData.deviceID == hvac.deviceID
+            )) ||
+            (
+                socketData.operatorCode == 0xE3E8 ||
+                socketData.operatorCode == 0xE0ED
+            ){
+            
+            DispatchQueue.main.async {
+                self.setAirConditionerStatus(hvac)
             }
         }
     }
@@ -542,9 +562,11 @@ extension SHZoneHVACControlViewController {
     }
     
     override func becomeFocus() {
-       
-        if isVisible() {
+        super.becomeFocus()
         
+        if isViewLoaded &&
+            view.window != nil {
+            
             readHVACStatus()
         }
     }
@@ -978,11 +1000,7 @@ extension SHZoneHVACControlViewController {
     // MARK: - 设置空调的状态
     
     /// 设置空调的状态
-    private func setAirConditionerStatus() {
-        
-        guard let hvac = currentHVAC else {
-            return
-        }
+    private func setAirConditionerStatus(_ hvac: SHHVAC) {
         
         // 温度单位
         let unit = hvac.isCelsius ? "°C" : "°F"

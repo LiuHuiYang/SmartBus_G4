@@ -124,7 +124,9 @@ extension SHZoneFanViewController {
         if socketData.operatorCode == 0x0034 ||
             socketData.operatorCode == 0x0032 {
             
-            fansListView.reloadData()
+            DispatchQueue.main.async {
+                self.fansListView.reloadData()
+            }
         }
     }
     
@@ -156,9 +158,11 @@ extension SHZoneFanViewController {
     }
     
     override func becomeFocus() {
-       
-        if isVisible() {
+        super.becomeFocus()
         
+        if isViewLoaded &&
+            view.window != nil {
+            
             readDevicesStatus()
         }
     }

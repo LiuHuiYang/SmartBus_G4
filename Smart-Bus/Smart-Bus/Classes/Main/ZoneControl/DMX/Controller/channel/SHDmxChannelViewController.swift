@@ -68,8 +68,9 @@ extension SHDmxChannelViewController {
             return
         }
     
-        
-        channelListView.reloadData()
+        DispatchQueue.main.async {
+            self.channelListView.reloadData()
+        }
     }
     
     /// 读取状态

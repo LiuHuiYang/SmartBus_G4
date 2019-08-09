@@ -290,7 +290,9 @@ extension SHZoneNineInOneControlViewController {
         if socketData.operatorCode == 0xD993 ||
            socketData.operatorCode == 0xE3E8 {
            
-            setNineInOneStatus()
+            DispatchQueue.main.async {
+                 self.setNineInOneStatus(nineInOne)
+            }
         }
     }
     
@@ -309,9 +311,11 @@ extension SHZoneNineInOneControlViewController {
     }
     
     override func becomeFocus() {
+        super.becomeFocus()
         
-        if isVisible() {
-        
+        if isViewLoaded &&
+            view.window != nil {
+            
             readDevicesStatus()
         }
     }
@@ -322,11 +326,7 @@ extension SHZoneNineInOneControlViewController {
 extension SHZoneNineInOneControlViewController {
     
     /// 设置状态
-    private func setNineInOneStatus() {
-        
-        guard let nineInOne = currentNineInOne else {
-            return
-        }
+    private func setNineInOneStatus(_ nineInOne: SHNineInOne) {
         
         luxSensorValueLabel.text = "\(nineInOne.luxValue)"
         
@@ -389,12 +389,10 @@ extension SHZoneNineInOneControlViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNineInOneStatus()
-        
-        readDevicesStatus()
-        
         // 默认选择控制面板
         controlButtonClick()
+    
+        readDevicesStatus()
     }
     
     override func viewDidLayoutSubviews() {

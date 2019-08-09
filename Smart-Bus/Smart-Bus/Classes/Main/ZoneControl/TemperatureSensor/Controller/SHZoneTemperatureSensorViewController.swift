@@ -126,7 +126,10 @@ extension SHZoneTemperatureSensorViewController {
             }
         }
         
-        temperatureListView.reloadData()
+        DispatchQueue.main.async {
+            
+            self.temperatureListView.reloadData()
+        }
     }
     
     /// 读取温度
@@ -158,9 +161,11 @@ extension SHZoneTemperatureSensorViewController {
     }
     
     override func becomeFocus() {
+        super.becomeFocus()
         
-        if isVisible() {
-        
+        if isViewLoaded &&
+            view.window != nil {
+            
             readTemperature()
         }
     }

@@ -102,13 +102,7 @@ extension SHZoneShadeViewController {
         }
         
     }
-    
-    override func becomeFocus() {
-         
-        if isVisible() {
-            readDevicesStatus()
-        }
-    }
+     
 }
 
 // MARK: - UITableViewDataSource

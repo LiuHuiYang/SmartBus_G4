@@ -27,10 +27,18 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         //        // 当前地址local:
         //        print("host: \(host), local: \(localIP)")
         
+        
+        
         // 解析成数组
         var recivedData = [UInt8](data)
         
         // 数据包的前16个固定字节数(源IP + 协议头 + 开始的操作码 --> 不影响解析，所以去除)
+        
+        if recivedData[14] != 0xaa ||
+            recivedData[15] != 0xaa {
+            
+            return
+        }
         
         // 16的是0xAAAA后的位置 SN2
         guard SHSocketTools.check_crc(position: &(recivedData[16]),
@@ -40,11 +48,6 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
 
             return
         }
-        
-//        if recivedData[22] == 0x32{
-//            print("收到的广播: \(recivedData) \(Thread.current) \n 亮度: \(recivedData[27])")
-//        }
-        
         
         let subNetID = recivedData[17]
         let deviceID = recivedData[18]
@@ -75,26 +78,28 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
                          deviceType: deviceType
         )
         
-        SHSocketTools.removeSocketData(
-            socketData: socketData,
-            isReceived: true
-        )
         
-        let broadcastMessage = [
-            SHSocketTools.broadcastNotificationName:
-            socketData
-        ]
-      
-        DispatchQueue.main.async {
-            
-            NotificationCenter.default.post(
-                name:NSNotification.Name(rawValue: SHSocketTools.broadcastNotificationName),
-                object: nil,
-                userInfo: broadcastMessage
-            )
-        }
+        delegate?.receiveData?(socketData)
+         
+       
+//        SHSocketTools.removeSocketData(
+//            socketData: socketData,
+//            isReceived: true
+//        )
         
-        
+//        let broadcastMessage = [
+//            SHSocketTools.broadcastNotificationName:
+//            socketData
+//        ]
+//
+//        DispatchQueue.main.async {
+//
+//            NotificationCenter.default.post(
+//                name:NSNotification.Name(rawValue: SHSocketTools.broadcastNotificationName),
+//                object: nil,
+//                userInfo: broadcastMessage
+//            )
+//        }
     }
     
     

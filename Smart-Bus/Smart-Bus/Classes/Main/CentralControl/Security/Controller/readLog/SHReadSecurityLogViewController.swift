@@ -126,7 +126,10 @@ extension SHReadSecurityLogViewController {
             if log.areaNumber == zone.zoneID {
                 
                 securityLogs.append(log)
-                logListView.reloadData()
+                
+                DispatchQueue.main.sync {
+                    self.logListView.reloadData()
+                }
             }
             
         case 0x014B:
@@ -134,13 +137,17 @@ extension SHReadSecurityLogViewController {
             if socketData.additionalData[0] == 0xF8 &&
                 socketData.additionalData[1] == 0 {
                 
-                securityLogs.removeAll()
+                DispatchQueue.main.sync {
+                    
+                    securityLogs.removeAll()
+                    
+                    logListView.reloadData()
+                    
+                    SVProgressHUD.showSuccess(
+                        withStatus: "Clear history success"
+                    )
+                }
                 
-                logListView.reloadData()
-                
-                SVProgressHUD.showSuccess(
-                    withStatus: "Clear history success"
-                )
             }
             
         default:

@@ -145,10 +145,13 @@ extension SHCurrentTransformerShowDataViewController {
                 
                 allChannels[index].power = CGFloat(power) * 0.001
                 
-                listView.reloadRows(
-                    at: [IndexPath(row: index, section: 0)],
-                    with: .fade
-                )
+                DispatchQueue.main.async {
+                    
+                    self.listView.reloadRows(
+                        at: [IndexPath(row: index, section: 0)],
+                        with: .fade
+                    )
+                }
             }
         }
     }

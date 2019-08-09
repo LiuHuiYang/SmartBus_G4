@@ -556,8 +556,14 @@ static NSString *songCellReusableIdentifier =
     
 // MARK: - 请求数据后的解析(只是显示歌曲， 不需要状态)
 
-/// 收到广播
 - (void)analyzeReceivedSocketData:(SHSocketData *)socketData {
+    
+    [self performSelectorOnMainThread:@selector(analyzeAudioData:) withObject:socketData waitUntilDone:false];
+    
+}
+
+/// 收到广播
+- (void)analyzeAudioData:(SHSocketData *)socketData {
     
     if (socketData.subNetID != self.schedualAudio.subnetID ||
         socketData.deviceID != self.schedualAudio.deviceID) {
@@ -759,6 +765,8 @@ static NSString *songCellReusableIdentifier =
     }
 }
 
+
+
 // MARK: - 请求数据的重发机制
     
 /// 发送数据
@@ -768,11 +776,18 @@ static NSString *songCellReusableIdentifier =
         return;     // 取消发送消息
     }
     
+    SHDeviceList *remoteDevice = SHDeviceList.selectedRemoteDevice;
+    
+    //FIXME: - 写上这个是为了与Swift调用时兼容
+    if (remoteDevice == nil) {
+        remoteDevice = [[SHDeviceList alloc] init];
+    }
+    
     [SHSocketTools sendDataWithOperatorCode:sendData.operatorCode
                                    subNetID:sendData.subNetID
                                    deviceID:sendData.deviceID
                              additionalData:sendData.additionalData
-                           remoteDevice:SHDeviceList.selectedRemoteDevice
+                           remoteDevice:remoteDevice
                                  needReSend:false
                                       isDMX:false
      ];

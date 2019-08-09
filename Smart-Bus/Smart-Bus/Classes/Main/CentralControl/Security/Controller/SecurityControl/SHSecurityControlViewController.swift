@@ -192,15 +192,19 @@ extension SHSecurityControlViewController {
             if socketData.additionalData[0] == 0xF8 &&
                socketData.additionalData[1] == zone.zoneID {
                
-                watchDogSwitch.isOn =
-                    (socketData.additionalData[3] == 0)
+                DispatchQueue.main.sync {
+                    watchDogSwitch.isOn =
+                        (socketData.additionalData[3] == 0)
+                }
             }
             
         case 0x0135 :
             if socketData.additionalData[0] == 0xF8 &&
                 socketData.additionalData[1] == zone.zoneID {
-                
-                watchDogSwitch.isOn = !watchDogSwitch.isOn
+                DispatchQueue.main.sync {
+                    watchDogSwitch.isOn =
+                        !watchDogSwitch.isOn
+                }
             }
             
         case 0x012F:
@@ -208,15 +212,20 @@ extension SHSecurityControlViewController {
                socketData.additionalData[1] == zone.zoneID &&
                socketData.additionalData[2] == 0 {
                 
-                scanStatusSwitch.isOn =
-                    (socketData.additionalData[3] != 0)
+                DispatchQueue.main.sync {
+                    scanStatusSwitch.isOn =
+                        (socketData.additionalData[3] != 0)
+                }
             }
             
         case 0x0131 :
             if socketData.additionalData[1] == zone.zoneID &&
                socketData.additionalData[2] == 0 {
                 
-                scanStatusSwitch.isOn = !scanStatusSwitch.isOn
+                DispatchQueue.main.sync {
+                    scanStatusSwitch.isOn =
+                        !scanStatusSwitch.isOn
+                }
             }
             
         default:
@@ -225,7 +234,10 @@ extension SHSecurityControlViewController {
         
         if !showStauts.isEmpty {
             
-            SVProgressHUD.showSuccess(withStatus: showStauts)
+            DispatchQueue.main.sync {
+                
+                SVProgressHUD.showSuccess(withStatus: showStauts)
+            }
         }
     }
 }

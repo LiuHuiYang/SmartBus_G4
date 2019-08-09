@@ -79,9 +79,7 @@ extension SHZoneLightViewController {
             }
             
             // 设置具体的亮度
-            for light in allLights {
-                
-//                print("收到 0xEFFF")
+            for light in allLights { 
                 
                 if !light.isUnwantedEFFF &&
                     light.subnetID == socketData.subNetID &&
@@ -167,14 +165,15 @@ extension SHZoneLightViewController {
             break
         }
         
-        
-        
         if (socketData.operatorCode == 0x0034 ||
             socketData.operatorCode == 0x0032 ||
             socketData.operatorCode == 0xF081 ||
             socketData.operatorCode == 0xEFFF) {
             
-            lightListView.reloadData()
+            DispatchQueue.main.async {
+                
+                self.lightListView.reloadData()
+            }
         }
     }
     
@@ -254,10 +253,13 @@ extension SHZoneLightViewController {
     }
     
     override func becomeFocus() {
+        super.becomeFocus()
         
-        if isVisible() {
-        
+        if isViewLoaded &&
+            view.window != nil {
+            
             readDevicesStatus()
+            
         }
     }
 }

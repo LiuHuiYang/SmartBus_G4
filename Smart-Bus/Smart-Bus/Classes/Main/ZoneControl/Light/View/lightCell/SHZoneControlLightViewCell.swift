@@ -337,7 +337,7 @@ class SHZoneControlLightViewCell: UITableViewCell {
             
             let statusTitle = iconButton.isSelected ? SHLanguageText.on : SHLanguageText.off
             
-            iconButton.setTitle(statusTitle, for: .normal)
+            statusButton.setTitle(statusTitle, for: .normal)
             
             let selectController = SHSelectColorViewController()
             

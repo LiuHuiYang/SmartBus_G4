@@ -10,6 +10,13 @@ import UIKit
 import CocoaAsyncSocket
 
 
+/// 广播接收数据代理
+@objc protocol SHSocketToolsReceiveDataProtocol {
+  
+    @objc optional func receiveData(_ socketData: SHSocketData)
+}
+
+
 /// SHSocketTools
 @objcMembers class SHSocketTools: NSObject {
     
@@ -49,22 +56,34 @@ import CocoaAsyncSocket
 //        socket = nil
 //    }
     
+    
+    /// 代理
+    weak var delegate: SHSocketToolsReceiveDataProtocol?
+    
     /// 单例对象
     static let shared = SHSocketTools()
     
     /// 发送数据包缓存
     static let caches = NSCache<AnyObject, AnyObject>()
     
+    /// 开始重发
+    static var startToReSend = false
     
-    /// 发送缓存数据
-    static let cacheData = [SHSocketData]()
+    /// 重发缓存数据
+    static var cacheData = [SHSocketData]()
     
     /// UDP 广播通知
     static let broadcastNotificationName = "socketBroadcastNotification"
     
-    
     /// socket对象
     lazy var socket: GCDAsyncUdpSocket? = setupSocket()
+    
+    /// 接收线程的queue
+    static let reciveQueue = DispatchQueue.init(label: "recive")
+    
+    /// 重发线程的queue
+    let repeatQueue =
+        DispatchQueue.init(label: "repeat")
     
     /// 创建socket
     func setupSocket() -> GCDAsyncUdpSocket? {
@@ -72,7 +91,7 @@ import CocoaAsyncSocket
         let udpSocket =
             GCDAsyncUdpSocket(
                 delegate: self,
-                delegateQueue: DispatchQueue.global()
+                delegateQueue: DispatchQueue.global() //SHSocketTools.reciveQueue
         )
         
         do {

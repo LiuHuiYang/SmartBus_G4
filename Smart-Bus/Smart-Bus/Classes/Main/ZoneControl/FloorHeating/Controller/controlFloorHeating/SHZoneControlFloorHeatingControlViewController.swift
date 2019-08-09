@@ -108,8 +108,8 @@ extension SHZoneControlFloorHeatingControlViewController {
         
         switch socketData.operatorCode {
         
-        case 0xEFFF:
-            break
+//        case 0xEFFF:
+//            break
             
             // 地热操作
         case 0xE3D9:
@@ -313,14 +313,28 @@ extension SHZoneControlFloorHeatingControlViewController {
         }
         
         
-        if  socketData.operatorCode == 0xE3D9 ||
+        if ((socketData.operatorCode == 0xE3D9 ||
             socketData.operatorCode == 0xE3DB ||
             socketData.operatorCode == 0x03CC ||
-            socketData.operatorCode == 0x03C8 ||
-            socketData.operatorCode == 0xE3E8 {
+            socketData.operatorCode == 0x03C8) && (
+                socketData.subNetID ==
+                    floorHeating.subnetID &&
+                socketData.deviceID == floorHeating.deviceID)) || (
             
-            setFloorHeatingStatus()
+                socketData.operatorCode == 0xE3E8 &&
+                    socketData.subNetID ==
+                        floorHeating.insideSensorSubNetID &&
+                    socketData.deviceID ==
+                        floorHeating.insideSensorDeviceID
+            ) {
+            
+            DispatchQueue.main.async {
+                
+                self.setFloorHeatingStatus(floorHeating)
+            }
         }
+        
+        
     }
     
     /// 读取状态
@@ -382,9 +396,11 @@ extension SHZoneControlFloorHeatingControlViewController {
     }
     
     override func becomeFocus() {
+        super.becomeFocus()
         
-        if isVisible() {
-        
+        if isViewLoaded &&
+            view.window != nil {
+            
             readDevicesStatus()
         }
     }
@@ -550,6 +566,7 @@ extension SHZoneControlFloorHeatingControlViewController {
         selecTimeButton?.setTitle(timeString,
                                   for: .normal
         )
+
     }
     
     /// 选择日期
@@ -735,11 +752,7 @@ extension SHZoneControlFloorHeatingControlViewController {
 extension SHZoneControlFloorHeatingControlViewController {
     
     /// 设置状态显示
-    private func setFloorHeatingStatus() {
-        
-        guard let floorHeating = currentFloorHeating else {
-            return
-        }
+    private func setFloorHeatingStatus(_ floorHeating: SHFloorHeating) {
         
         // 1.设置显示开关
         controlView?.isHidden =
@@ -850,13 +863,23 @@ extension SHZoneControlFloorHeatingControlViewController {
                 == .timer
         
         // 4.设置定时器时间
-        dayTimeButton.setTitle(dayTime,
-                               for: .normal
-        )
+        // 限制判断条件是为了防止子线程的收到状态时
+        // 干扰更新定时时间的设置
+        if dayTimeButton.isSelected == false {
+            
+            dayTimeButton.setTitle(
+                dayTime,
+                for: .normal
+            )
+        }
         
-        nightTimeButton.setTitle(nightTime,
-                                 for: .normal
-        )
+        if nightTimeButton.isSelected == false {
+            
+            nightTimeButton.setTitle(
+                nightTime,
+                for: .normal
+            )
+        }
         
         // 5.设置温度
         indoorTemperatureLabel.text =
@@ -898,7 +921,7 @@ extension SHZoneControlFloorHeatingControlViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setFloorHeatingStatus()
+//        setFloorHeatingStatus(currentFloorHeating)
         readDevicesStatus()
     }
     

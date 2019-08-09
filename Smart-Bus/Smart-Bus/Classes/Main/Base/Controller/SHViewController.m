@@ -8,7 +8,7 @@
 
 #import "SHViewController.h"
 
-@interface SHViewController ()
+@interface SHViewController () <SHSocketToolsReceiveDataProtocol>
 
 @end
 
@@ -16,19 +16,12 @@
 
 /// 当前控制器成为焦点
 - (void)becomeFocus {
-     
    
+//    SHSocketTools.shared.delegate = self;
+    
 }
 
-/**
- 当前控制器正在显示
  
- @return YES 正在显示
- */
-- (BOOL)isVisible {
-    
-    return (self.isViewLoaded && self.view.window);
-}
 
 // MARK: - UI相关的的设置
 
@@ -50,6 +43,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
+    
+    SHSocketTools.shared.delegate = self;
     
     // 解决导航栏比较难按的问题 (设置导航item的大小, 固定大小，直接加载时写上)
     
@@ -93,18 +88,22 @@
      ];
 }
 
+- (void)receiveData:(SHSocketData *)socketData {
+    
+    [self analyzeReceivedSocketData:socketData];
+}
 
 /// 接收到了数据
 - (void)receiveBroadcastMessages:(NSNotification *)notification {
     
-    SHSocketData *socketData = notification.userInfo[SHSocketTools.broadcastNotificationName];
-    
-    if (!socketData) {
-        return;
-    }
-    
+//    SHSocketData *socketData = notification.userInfo[SHSocketTools.broadcastNotificationName];
+//    
+//    if (!socketData) {
+//        return;
+//    }
+//    
     // 通知子类调用
-    [self analyzeReceivedSocketData:socketData];
+//    [self analyzeReceivedSocketData:socketData];
 }
 
 /// 解析数据
