@@ -72,12 +72,12 @@
     [self viewWillTransitionToSize:self.view.bounds.size withTransitionCoordinator:self.transitionCoordinator];
     
     // 接收数据广播
-    [[NSNotificationCenter defaultCenter]
-        addObserver:self
-           selector:@selector(receiveBroadcastMessages:)
-               name:SHSocketTools.broadcastNotificationName
-             object:nil
-    ];
+//    [[NSNotificationCenter defaultCenter]
+//        addObserver:self
+//           selector:@selector(receiveBroadcastMessages:)
+//               name:SHSocketTools.broadcastNotificationName
+//             object:nil
+//    ];
     
     // 接收实时的数据
     [NSNotificationCenter.defaultCenter
