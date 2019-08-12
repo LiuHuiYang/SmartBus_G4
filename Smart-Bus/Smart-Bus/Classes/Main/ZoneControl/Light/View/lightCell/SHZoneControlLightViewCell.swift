@@ -117,6 +117,11 @@ class SHZoneControlLightViewCell: UITableViewCell {
                                           for: .normal
                     )
                 }
+            
+            case .universalSwitch:
+                brightnessLabel.isHidden = true
+                brightnessSlider.isHidden = true
+                statusButton.isHidden = false
             }
         }
     }
@@ -248,6 +253,24 @@ class SHZoneControlLightViewCell: UITableViewCell {
                 controlLED()
             }
             
+        case .universalSwitch: // 无法读取状态
+             
+            iconButton.isSelected = !iconButton.isSelected
+            
+            let statusTitle = iconButton.isSelected ? SHLanguageText.on : SHLanguageText.off
+            
+            statusButton.setTitle(statusTitle, for: .normal)
+            
+            zoneLight.brightness =
+                iconButton.isSelected ?
+                    lightMaxBrightness : 0
+            
+            let swichID =
+                iconButton.isSelected ?
+                    light?.switchOn : light?.switchOff
+            
+            controlUniversalSwitch(switchID: swichID ?? 0)
+            
         default:
             break
         }
@@ -356,7 +379,43 @@ class SHZoneControlLightViewCell: UITableViewCell {
                 
                  controlLED()
             }
+            
+        case .universalSwitch: // 不能读取状态
+            
+            iconButton.isSelected = !iconButton.isSelected
+            
+            let statusTitle = iconButton.isSelected ? SHLanguageText.on : SHLanguageText.off
+            
+            statusButton.setTitle(statusTitle, for: .normal)
+            
+            zoneLight.brightness =
+                iconButton.isSelected ?
+                    lightMaxBrightness : 0
+            
+            let swichID =
+                iconButton.isSelected ?
+                    light?.switchOn : light?.switchOff
+            
+            controlUniversalSwitch(switchID: swichID ?? 0)
         }
+    }
+    
+    /// 控制红外码
+    private func controlUniversalSwitch(switchID: UInt8) {
+        
+        guard let zoneLight = light else {
+            return
+        }
+        
+        SHSocketTools.sendData(
+            operatorCode: 0xE01C,
+            subNetID: zoneLight.subnetID,
+            deviceID: zoneLight.deviceID,
+            additionalData: [
+                switchID,
+                0xFF
+            ]
+        )
     }
     
     /// 控制普通灯泡

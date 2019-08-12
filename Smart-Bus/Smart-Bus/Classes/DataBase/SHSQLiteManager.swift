@@ -182,6 +182,9 @@ let maxIconIDForDataBase = 10
         
         // 增加卫星电视的参数
         _ = addMediaSATCategoryParameter()
+        
+        // 增加light的参数
+        _ = addLightParameter()
     }
     
     /// 是否为最新版本

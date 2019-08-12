@@ -20,7 +20,9 @@ extension SHDeviceArgsViewController {
             "Device ID",
             "Channel No.",
             "Can Dim",
-            "LightType"
+            "LightType",
+            "Switch On",
+            "Switch Off"
         ]
         
         argsValues = [
@@ -30,7 +32,10 @@ extension SHDeviceArgsViewController {
             "\(light?.deviceID ?? 0)",
             "\(light?.channelNo ?? 0)",
             "\((light?.canDim ?? .notDimmable).rawValue)",
-            "\((light?.lightTypeID ?? .incandescent).rawValue)"
+            "\((light?.lightTypeID ?? .incandescent).rawValue)",
+            
+            "\(light?.switchOn ?? 0)",
+            "\(light?.switchOff ?? 0)"
         ]
     }
     
@@ -59,6 +64,12 @@ extension SHDeviceArgsViewController {
             
         case 5:
             light.lightTypeID = SHZoneControlLightType(rawValue: (UInt8(value) ?? 1)) ?? .incandescent
+            
+        case 6:
+            light.switchOn = UInt8(value) ?? 0
+            
+        case 7:
+            light.switchOff = UInt8(value) ?? 0
             
         default:
             break;

@@ -17,15 +17,14 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.12.1</string>
+	<string>3.12.3</string>
 	<key>CFBundleVersion</key>
 	<string>2019</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	
-    <key>NSAppTransportSecurity</key>
+	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
@@ -42,7 +41,6 @@
 			</dict>
 		</dict>
 	</dict>
-    
 	<key>NSCameraUsageDescription</key>
 	<string>When you modify the scene to display the picture, you need to access the camera and save the pictures and pictures you take in the album.</string>
 	<key>NSMicrophoneUsageDescription</key>

@@ -95,6 +95,11 @@ import Foundation
                 left.subNetID == right.subNetID &&
                 left.deviceID == right.deviceID {
                 return true
+            
+            } else if left.operatorCode + 1 == right.operatorCode &&
+                right.operatorCode == 0x000F {
+                
+                return true
             }
     
             return false

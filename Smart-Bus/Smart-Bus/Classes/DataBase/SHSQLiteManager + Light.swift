@@ -36,8 +36,9 @@ extension SHSQLiteManager {
         let sql =
             "select id, ZoneID, LightID, LightRemark, " +
             "SubnetID, DeviceID, ChannelNo, CanDim, "   +
-            "LightTypeID from LightInZone "             +
-            "where ZoneID = \(zoneID) order by LightID;"
+            "LightTypeID, SwitchOn, SwitchOff from "    +
+            "LightInZone where ZoneID = \(zoneID) "     +
+            "order by LightID;"
         
         let array = selectProprty(sql)
         
@@ -65,9 +66,9 @@ extension SHSQLiteManager {
     func deleteLight(_ light: SHLight) -> Bool {
         
         let sql =
-            "delete from LightInZone "                  +
-            "Where zoneID = \(light.zoneID) "           +
-            "and SubnetID = \(light.subnetID) and "     +
+            "delete from LightInZone Where "            +
+            "zoneID = \(light.zoneID) and "             +
+            "SubnetID = \(light.subnetID) and "         +
             "DeviceID = \(light.deviceID) and "         +
             "ChannelNo = \(light.channelNo) and "       +
             "CanDim = \(light.canDim.rawValue) and "    +
@@ -81,13 +82,15 @@ extension SHSQLiteManager {
         
         let sql =
             "insert into LightInZone (ZoneID, "           +
-            "LightID, LightRemark, SubnetID, DeviceID, "  +
-            "ChannelNo, CanDim, LightTypeID) "            +
+            "LightID, LightRemark, SubnetID, "            +
+            "DeviceID, ChannelNo, CanDim, "               +
+            "LightTypeID, SwitchOn, SwitchOff) "          +
             "values(\(light.zoneID), \(light.lightID), "  +
             "'\(light.lightRemark)', \(light.subnetID), " +
             "\(light.deviceID), \(light.channelNo), "     +
             "\(light.canDim.rawValue), "                  +
-            "\(light.lightTypeID.rawValue));"
+            "\(light.lightTypeID.rawValue), "             +
+            "\(light.switchOn), \(light.switchOff));"
         
         return executeSql(sql)
     }
@@ -96,16 +99,18 @@ extension SHSQLiteManager {
     func updateLight(_ light: SHLight) -> Bool {
         
         let sql =
-            "update LightInZone set " +
-            "ZoneID = \(light.zoneID), " +
-            "LightID = \(light.lightID), " +
-            "LightRemark = '\(light.lightRemark)', " +
-            "SubnetID = \(light.subnetID), " +
-            "DeviceID = \(light.deviceID), " +
-            "ChannelNo = \(light.channelNo), " +
-            "CanDim = \(light.canDim.rawValue), " +
-            "LightTypeID = \(light.lightTypeID.rawValue) " +
-            "Where zoneID = \(light.zoneID) and " +
+            "update LightInZone set "                       +
+            "ZoneID = \(light.zoneID), "                    +
+            "LightID = \(light.lightID), "                  +
+            "LightRemark = '\(light.lightRemark)', "        +
+            "SubnetID = \(light.subnetID), "                +
+            "DeviceID = \(light.deviceID), "                +
+            "ChannelNo = \(light.channelNo), "              +
+            "CanDim = \(light.canDim.rawValue), "           +
+            "LightTypeID = \(light.lightTypeID.rawValue), " +
+            "SwitchOn = \(light.switchOn), "                +
+            "SwitchOff = \(light.switchOff) "               +
+            "Where zoneID = \(light.zoneID) and "           +
             "LightID = \(light.lightID);"
         
         return executeSql(sql)
@@ -115,11 +120,11 @@ extension SHSQLiteManager {
     func getLight(_ zoneID: UInt, lightID: UInt) -> SHLight? {
         
         let sql =
-            "select id, ZoneID, LightID, LightRemark, " +
-            "SubnetID, DeviceID, ChannelNo, CanDim,   " +
-            "LightTypeID from LightInZone "             +
-            "where ZoneID = \(zoneID) and "             +
-            "LightID = \(lightID);"
+            "select id, ZoneID, LightID, LightRemark, "  +
+            "SubnetID, DeviceID, ChannelNo, CanDim,   "  +
+            "LightTypeID, SwitchOn, SwitchOff "          +
+            "from LightInZone where ZoneID = \(zoneID) " +
+            "and LightID = \(lightID);"
         
         guard let dict = selectProprty(sql).last else {
             
@@ -127,5 +132,31 @@ extension SHSQLiteManager {
         }
 
         return SHLight(dictionary: dict)
+    }
+    
+    
+    /// 增加ligth的参数
+    ///
+    /// - Returns: Bool
+    func addLightParameter() -> Bool {
+        
+        if isColumnName(
+            "SwitchOn",
+            consistinTable: "LightInZone"
+            ) == false {
+            
+            let onSQL =
+                "ALTER TABLE LightInZone ADD SwitchOn " +
+                "INTEGER DEFAULT 0;"
+            
+            let offSQL =
+                "ALTER TABLE LightInZone ADD SwitchOff " +
+                "INTEGER DEFAULT 0;"
+            
+            return executeSql(onSQL) &&
+                   executeSql(offSQL)
+        }
+        
+        return true
     }
 }

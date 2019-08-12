@@ -68,9 +68,10 @@ import CocoaAsyncSocket
     
     /// 开始重发
     static var startToReSend = false
+     
     
     /// 重发缓存数据
-    static var cacheData = [SHSocketData]()
+    var cacheData = [SHSocketData]()
     
     /// UDP 广播通知
     static let broadcastNotificationName = "socketBroadcastNotification"

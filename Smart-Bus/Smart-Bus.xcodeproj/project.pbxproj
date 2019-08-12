@@ -1146,6 +1146,8 @@
 		045C2EDA2285013F00EE2D5D /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				045C2EE82285013F00EE2D5D /* SHSQLiteManager.swift */,
+				045C2EE62285013F00EE2D5D /* SHSQLiteManager + Light.swift */,
 				045C2EDB2285013F00EE2D5D /* SHSQLiteManager + TV.swift */,
 				045C2EDC2285013F00EE2D5D /* SHSQLiteManager + Audio.swift */,
 				045C2EDD2285013F00EE2D5D /* SHSQLiteManager + Mood.swift */,
@@ -1157,9 +1159,7 @@
 				045C2EE32285013F00EE2D5D /* SHSQLiteManager + Security.swift */,
 				045C2EE42285013F00EE2D5D /* SHSQLiteManager + CT24.swift */,
 				045C2EE52285013F00EE2D5D /* SHSQLiteManager + Macro.swift */,
-				045C2EE62285013F00EE2D5D /* SHSQLiteManager + Light.swift */,
 				045C2EE72285013F00EE2D5D /* SHSQLiteManager + Zone.swift */,
-				045C2EE82285013F00EE2D5D /* SHSQLiteManager.swift */,
 				045C2EE92285013F00EE2D5D /* SHSQLiteManager + Shade.swift */,
 				045C2EEA2285013F00EE2D5D /* SMART-BUS.sqlite */,
 				045C2EEB2285013F00EE2D5D /* SHSQLiteManager + DVD.swift */,

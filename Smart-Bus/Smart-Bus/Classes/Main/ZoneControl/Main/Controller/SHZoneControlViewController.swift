@@ -94,7 +94,7 @@ extension SHZoneControlViewController {
             device.deviceType = UInt(socketData.deviceType)
             
             device.remark =
-                String(bytes: socketData.additionalData,
+                 String(bytes: socketData.additionalData,
                        encoding: String.Encoding.utf8
                 ) ?? ""
             

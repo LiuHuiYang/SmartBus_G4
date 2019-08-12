@@ -13,7 +13,8 @@ import UIKit
     case notDimmable        //  不可以调光 - 继电器模块
     case dimmable           // 可以调光
     case led                // LED 类型
-    case pushOnReleaseOff   // 其它类型，按住开，松开关。
+    case pushOnReleaseOff   // 按住开，松开关。
+    case universalSwitch    // 通用开关类型。
 }
 
 /// 区域控制的灯类型
@@ -120,6 +121,12 @@ import UIKit
             }
         }
     }
+    
+    /// 红外码 开
+    var switchOn: UInt8 = 0
+    
+    /// 红外码 关
+    var switchOff: UInt8 = 0
     
     /// 不同类型ID的图片名称
     class func lightImageName(lightTypeID: SHZoneControlLightType) -> String {

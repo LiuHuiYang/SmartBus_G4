@@ -50,7 +50,9 @@ CREATE TABLE IF NOT EXISTS LightInZone (
     DeviceID    INTEGER DEFAULT 0,
     ChannelNo   INTEGER DEFAULT 0,
     CanDim      INTEGER NOT NULL DEFAULT 0 ,
-    LightTypeID INTEGER DEFAULT 0
+    LightTypeID INTEGER DEFAULT 0,
+    SwitchOn INTEGER DEFAULT 0,
+    SwitchOff INTEGER DEFAULT 0
 );
 
 -- 5.创建HVACInZone表格

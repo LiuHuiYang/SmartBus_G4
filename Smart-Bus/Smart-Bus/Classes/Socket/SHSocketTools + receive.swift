@@ -81,12 +81,27 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         
         delegate?.receiveData?(socketData)
         
-        SHSocketTools.removeSocketData(
-            socketData: socketData,
-            isReceived: true
-        )
+        
+        
+        if operatorCode == 0x0032 {
+            
+            for item in SHSocketTools.shared.cacheData.enumerated() {
+                
+                if item.element == socketData && SHSocketTools.shared.cacheData.contains(item.element){
+                    
+                    print("找到了 删除")
+                    SHSocketTools.shared.cacheData.remove(at: item.offset)
+                }
+            }
+        }
         
         // 旧方式
+        
+//        SHSocketTools.removeSocketData(
+//            socketData: socketData,
+//            isReceived: true
+//        )
+        
 //        let broadcastMessage = [
 //            SHSocketTools.broadcastNotificationName:
 //            socketData

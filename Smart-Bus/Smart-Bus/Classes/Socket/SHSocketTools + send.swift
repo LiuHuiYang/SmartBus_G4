@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import MachO
+//import MachO
 
 /// 远程设备类型标示
 private let iOS_flag: UInt8 = 0x02
@@ -65,43 +65,53 @@ extension SHSocketTools {
             
             sendDeviceControlData(socketData)
             
-            if needReSend {
-                
-                SHSocketTools.addSocketData(
-                    socketData: socketData
-                )
-                
-                var count = 2
-                
-                while count > 0 {
-                    
-                    sendDeviceControlData(socketData)
-                    
-                    Thread.sleep(forTimeInterval: 0.75)
-                    
-                    // 查询缓存
-                    if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
-                        
-                        break
-                    }
-                    
-                    count -= 1
-                }
-                
-                // 重发超过规定次数
-                if (count <= 0) {
-                    
-                    SHSocketTools.removeSocketData(
-                        socketData: socketData
-                    )
-                }
-            }
+//            if needReSend {
+
+//                Thread.sleep(forTimeInterval: 0.75)
+//                sendDeviceControlData(socketData)
+//
+//                if SHSocketTools.shared.cacheData.contains(socketData) == false {
+//
+//                    SHSocketTools.shared.cacheData.insert(socketData, at: 0)
+//                }
+//            }
             
+//            if needReSend == false {
+//
+//                SHSocketTools.addSocketData(
+//                    socketData: socketData
+//                )
+//
+//                var count = 1
+//
+//                while count > 0 {
+//
+//                    sendDeviceControlData(socketData)
+//
+//                    Thread.sleep(forTimeInterval: 0.75)
+//
+//                    // 查询缓存
+//                    if SHSocketTools.isSocketDataExist(socketData: socketData) == false {
+//
+//                        break
+//                    }
+//
+//                    count -= 1
+//                }
+//
+//                // 重发超过规定次数
+//                if (count <= 0) {
+//
+//                    SHSocketTools.removeSocketData(
+//                        socketData: socketData
+//                    )
+//                }
+//            }
         }
      
         // 所有的指令都要延时 0.1秒执行
         // (0.1是依据产品固件计算出来的平均值)
-        Thread.sleep(forTimeInterval: 0.12)
+        Thread.sleep(forTimeInterval: 0.10)
   
 //        if SHSocketTools.startToReSend {
 //           return
@@ -111,23 +121,20 @@ extension SHSocketTools {
 //        repeatSendDeviceData()
         
     }
-    
 }
 
 
 // MARK: - 重发数据
 extension SHSocketTools {
     
-    
     /// 重发数据
     @objc private static func repeatSendDeviceData() {
         
         SHSocketTools.shared.repeatQueue.async {
             
-            print("开始重发  \(Thread.current)")
+            print("开始重发  \(Thread.current) - \(SHSocketTools.shared.cacheData.count)")
             
-            while let socketData = SHSocketTools.cacheData.first {
-                
+            while let socketData = SHSocketTools.shared.cacheData.first {
                 
                 if socketData.reSendCount < 2 {
                     
@@ -136,17 +143,17 @@ extension SHSocketTools {
                         socketData
                     )
                     
-                     print("重发数据 \(SHSocketTools.cacheData.count) \(Thread.current) \(socketData)")
+                     print("重发数据 \(SHSocketTools.shared.cacheData.count) \(Thread.current) \(socketData)")
                 }
                 
-                if SHSocketTools.cacheData.count != 0 {
-                    SHSocketTools.cacheData.removeFirst()
+                if SHSocketTools.shared.cacheData.count != 0 {
+                    SHSocketTools.shared.cacheData.removeFirst()
                 }
                 
                 Thread.sleep(forTimeInterval: 0.7)
             }
             
-            print("全部结束 \(SHSocketTools.cacheData.count)")
+            print("全部结束 \(SHSocketTools.shared.cacheData.count)")
             SHSocketTools.startToReSend = false
         }
         
@@ -217,7 +224,7 @@ extension SHSocketTools {
             tag: 0
         )
         
-        // print("发送控制包: \(data)")
+//         print("发送控制包: \(data)")
     }
 }
 
