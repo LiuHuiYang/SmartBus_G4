@@ -81,21 +81,19 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         
         delegate?.receiveData?(socketData)
         
-        
-        
-        if operatorCode == 0x0032 {
+        // 设置接收到响应
+        for item in SHSocketTools.shared.cacheData {
             
-            for item in SHSocketTools.shared.cacheData.enumerated() {
+            if item == socketData && SHSocketTools.shared.cacheData.contains(item){
                 
-                if item.element == socketData && SHSocketTools.shared.cacheData.contains(item.element){
-                    
-                    print("找到了 删除")
-                    SHSocketTools.shared.cacheData.remove(at: item.offset)
-                }
+                // 设置重发为最大值，不需要重发
+                // 在此设置而不删除，避免加锁操作。
+                item.reSendCount = UInt8.max
+//                print("目标响应 删除")
             }
         }
         
-        // 旧方式
+//  === === 旧方式 === ===
         
 //        SHSocketTools.removeSocketData(
 //            socketData: socketData,
@@ -117,8 +115,7 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
 //        }
     }
     
-    
-    
+     
     /// socket 关闭
     func udpSocketDidClose(_ sock: GCDAsyncUdpSocket, withError error: Error?) {
         

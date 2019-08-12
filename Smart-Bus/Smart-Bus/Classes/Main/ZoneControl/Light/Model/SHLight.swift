@@ -22,7 +22,7 @@ import UIKit
     
     case incandescent = 1 // 白织炮，像灯泡哪样的
     case spotlight    = 2 // 聚光灯
-    case fluorescent  = 3 //  灯管样式的灯泡，只能开和关的哪一种
+    case fluorescent  = 3 // 灯管样式的灯泡，只能开和关的哪一种
     case chandelier   = 4 // 吊灯
     case deskLight    = 5 // 台灯
     case led          = 6 // LED

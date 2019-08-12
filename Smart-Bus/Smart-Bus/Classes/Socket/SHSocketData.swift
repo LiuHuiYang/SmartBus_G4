@@ -89,19 +89,19 @@ import Foundation
     }
     
     // MARK: - 相等的方法重载
-        static func == (_ left: SHSocketData, _ right: SHSocketData) -> Bool {
-    
-            if  left.operatorCode + 1 == right.operatorCode &&
-                left.subNetID == right.subNetID &&
-                left.deviceID == right.deviceID {
-                return true
-            
-            } else if left.operatorCode + 1 == right.operatorCode &&
-                right.operatorCode == 0x000F {
-                
-                return true
-            }
-    
-            return false
+    static func == (_ left: SHSocketData, _ right: SHSocketData) -> Bool {
+
+        if  left.operatorCode + 1 == right.operatorCode &&
+            left.subNetID == right.subNetID &&
+            left.deviceID == right.deviceID {
+            return true
+
+        } else if left.operatorCode + 1 == right.operatorCode &&
+            right.operatorCode == 0x000F {
+
+            return true
         }
+
+        return false
+    }
 }

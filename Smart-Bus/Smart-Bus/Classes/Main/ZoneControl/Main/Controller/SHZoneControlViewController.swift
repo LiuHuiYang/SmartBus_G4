@@ -20,6 +20,9 @@ private let regionCellReuseIdentifier = "SHRegionViewCell"
 
 class SHZoneControlViewController: SHViewController {
     
+    /// 递归锁
+    private lazy var lock = NSRecursiveLock()
+    
     /// 地区
     var region: SHRegion?
     
@@ -111,11 +114,16 @@ extension SHZoneControlViewController {
                 index += 1
             }
             
+            
+            lock.lock()
+            
             if index >= devices.count {
                 
                 devices.append(device)
                 readFirmWareVersion(device)
             }
+            
+            lock.unlock()
         }
         
         // 获得设备的版本信息
@@ -211,7 +219,6 @@ extension SHZoneControlViewController {
             SVProgressHUD.dismiss()
             deviceListView.reloadData()
         }
-        
     }
 }
 
@@ -219,7 +226,6 @@ extension SHZoneControlViewController {
 
 // MARK: - 设置增加与删除
 extension SHZoneControlViewController {
-    
     
     /// 分组按钮点击
     @objc private func sectionButtonClick() {

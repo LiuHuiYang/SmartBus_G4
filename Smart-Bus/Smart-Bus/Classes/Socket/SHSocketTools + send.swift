@@ -65,18 +65,30 @@ extension SHSocketTools {
             
             sendDeviceControlData(socketData)
             
-//            if needReSend {
-
-//                Thread.sleep(forTimeInterval: 0.75)
-//                sendDeviceControlData(socketData)
-//
-//                if SHSocketTools.shared.cacheData.contains(socketData) == false {
-//
-//                    SHSocketTools.shared.cacheData.insert(socketData, at: 0)
-//                }
-//            }
+            if needReSend {
+                
+                for item in SHSocketTools.shared.cacheData  {
+                    
+                    if item.operatorCode == operatorCode &&
+                        item.subNetID == subNetID &&
+                        item.deviceID == deviceID &&
+                        item.additionalData == item.additionalData  {
+                        
+//                        print("找到了 \(SHSocketTools.shared.cacheData)")
+                        
+                        return
+                    }
+                }
+                
+//                print("不存在 \(Thread.current)")
+                SHSocketTools.shared.lock.lock()
+                SHSocketTools.shared.cacheData.append(
+                    socketData
+                )
+                SHSocketTools.shared.lock.unlock()
+            }
             
-//            if needReSend == false {
+//            if needReSend {
 //
 //                SHSocketTools.addSocketData(
 //                    socketData: socketData
@@ -113,13 +125,13 @@ extension SHSocketTools {
         // (0.1是依据产品固件计算出来的平均值)
         Thread.sleep(forTimeInterval: 0.10)
   
-//        if SHSocketTools.startToReSend {
-//           return
-//        }
-//
-//        SHSocketTools.startToReSend = true
-//        repeatSendDeviceData()
-        
+        // 如果没有启动重发线程 就启动，如果已经启动不需要重新启动。
+        if SHSocketTools.startToReSend {
+           return
+        }
+
+        SHSocketTools.startToReSend = true
+        repeatSendDeviceData()
     }
 }
 
@@ -127,33 +139,36 @@ extension SHSocketTools {
 // MARK: - 重发数据
 extension SHSocketTools {
     
+    func addCacheData(_ socketData: SHSocketData) {
+        
+        
+    }
+    
     /// 重发数据
     @objc private static func repeatSendDeviceData() {
         
+        // 独立的重发线程执行
         SHSocketTools.shared.repeatQueue.async {
             
-            print("开始重发  \(Thread.current) - \(SHSocketTools.shared.cacheData.count)")
-            
+//            print(" 重发 \(Thread.current) - \(SHSocketTools.shared.cacheData.count)")
+
             while let socketData = SHSocketTools.shared.cacheData.first {
                 
-                if socketData.reSendCount < 2 {
+                if socketData.reSendCount > 2 {
                     
-                    socketData.reSendCount += 1
-                    SHSocketTools.sendDeviceControlData(
-                        socketData
-                    )
+//                    print("收到了状态响应")
+                    SHSocketTools.shared.cacheData.remove(at: 0)
                     
-                     print("重发数据 \(SHSocketTools.shared.cacheData.count) \(Thread.current) \(socketData)")
+                    continue
                 }
                 
-                if SHSocketTools.shared.cacheData.count != 0 {
-                    SHSocketTools.shared.cacheData.removeFirst()
-                }
+                socketData.reSendCount += 1
+                sendDeviceControlData(socketData)
                 
                 Thread.sleep(forTimeInterval: 0.7)
             }
-            
-            print("全部结束 \(SHSocketTools.shared.cacheData.count)")
+ 
+//            print("重发 结束 \(SHSocketTools.shared.cacheData.count)")
             SHSocketTools.startToReSend = false
         }
         

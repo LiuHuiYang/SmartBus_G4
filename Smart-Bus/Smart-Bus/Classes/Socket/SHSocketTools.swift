@@ -63,13 +63,15 @@ import CocoaAsyncSocket
     /// 单例对象
     static let shared = SHSocketTools()
     
+    /// 递归锁
+    lazy var lock = NSRecursiveLock()
+    
     /// 发送数据包缓存
     static let caches = NSCache<AnyObject, AnyObject>()
     
     /// 开始重发
     static var startToReSend = false
-     
-    
+      
     /// 重发缓存数据
     var cacheData = [SHSocketData]()
     
@@ -78,9 +80,6 @@ import CocoaAsyncSocket
     
     /// socket对象
     lazy var socket: GCDAsyncUdpSocket? = setupSocket()
-    
-    /// 接收线程的queue
-    static let reciveQueue = DispatchQueue.init(label: "recive")
     
     /// 重发线程的queue
     let repeatQueue =
@@ -92,7 +91,7 @@ import CocoaAsyncSocket
         let udpSocket =
             GCDAsyncUdpSocket(
                 delegate: self,
-                delegateQueue: DispatchQueue.global() //SHSocketTools.reciveQueue
+                delegateQueue: DispatchQueue.global()
         )
         
         do {

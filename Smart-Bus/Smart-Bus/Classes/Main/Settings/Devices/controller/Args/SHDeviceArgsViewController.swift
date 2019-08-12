@@ -174,6 +174,7 @@ extension SHDeviceArgsViewController: UITableViewDelegate {
             self.valueTextField = textField
         })
         
+        
         let cancelAction =
             TYAlertAction(title: SHLanguageText.cancel,
                                          style: .cancel,
