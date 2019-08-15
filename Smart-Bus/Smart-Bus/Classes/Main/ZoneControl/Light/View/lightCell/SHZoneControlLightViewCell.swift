@@ -254,7 +254,7 @@ class SHZoneControlLightViewCell: UITableViewCell {
             }
             
         case .universalSwitch: // 无法读取状态
-             
+            
             iconButton.isSelected = !iconButton.isSelected
             
             let statusTitle = iconButton.isSelected ? SHLanguageText.on : SHLanguageText.off
@@ -267,9 +267,9 @@ class SHZoneControlLightViewCell: UITableViewCell {
             
             let swichID =
                 iconButton.isSelected ?
-                    light?.switchOn : light?.switchOff
+                    zoneLight.switchOn : zoneLight.switchOff
             
-            controlUniversalSwitch(switchID: swichID ?? 0)
+            controlUniversalSwitch(switchID: swichID)
             
         default:
             break
@@ -394,9 +394,9 @@ class SHZoneControlLightViewCell: UITableViewCell {
             
             let swichID =
                 iconButton.isSelected ?
-                    light?.switchOn : light?.switchOff
+                    zoneLight.switchOn : zoneLight.switchOff
             
-            controlUniversalSwitch(switchID: swichID ?? 0)
+            controlUniversalSwitch(switchID: swichID)
         }
     }
     
