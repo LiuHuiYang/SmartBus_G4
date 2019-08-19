@@ -34,8 +34,8 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
         
         // 数据包的前16个固定字节数(源IP + 协议头 + 开始的操作码 --> 不影响解析，所以去除)
         
-        if recivedData[14] != 0xaa ||
-            recivedData[15] != 0xaa {
+        if recivedData[14] != 0xAA ||
+            recivedData[15] != 0xAA {
             
             return
         }
@@ -88,8 +88,9 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
                 
                 // 设置重发为最大值，不需要重发
                 // 在此设置而不删除，避免加锁操作。
-                item.reSendCount = UInt8.max
 //                print("目标响应 删除")
+                item.reSendCount = UInt8.max
+                break
             }
         }
         

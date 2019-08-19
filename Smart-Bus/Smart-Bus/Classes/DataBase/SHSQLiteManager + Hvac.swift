@@ -11,8 +11,7 @@ import Foundation
 
 // MARK: - HVAC操作
 extension SHSQLiteManager {
-    
-    
+     
     /// 增加空调
     func insertHVAC(_ hvac: SHHVAC) -> UInt {
         

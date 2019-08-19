@@ -298,7 +298,7 @@ import UIKit
                 (0xFF - temperature + 1)
     }
     
-    /// 摄像温度转换为华氏温度
+    /// 摄氏温度转换为华氏温度
     class func centigradeConvert(toFahrenheit temperature: Int) -> Int {
         
         return  Int(Double(temperature) * 1.8 + 32)

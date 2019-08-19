@@ -67,25 +67,7 @@ extension SHSocketTools {
             
             if needReSend {
                 
-                for item in SHSocketTools.shared.cacheData  {
-                    
-                    if item.operatorCode == operatorCode &&
-                        item.subNetID == subNetID &&
-                        item.deviceID == deviceID &&
-                        item.additionalData == item.additionalData  {
-                        
-//                        print("找到了 \(SHSocketTools.shared.cacheData)")
-                        
-                        return
-                    }
-                }
-                
-//                print("不存在 \(Thread.current)")
-                SHSocketTools.shared.lock.lock()
-                SHSocketTools.shared.cacheData.append(
-                    socketData
-                )
-                SHSocketTools.shared.lock.unlock()
+                SHSocketTools.appendCaCheData(socketData)
             }
             
 //            if needReSend {
@@ -126,12 +108,12 @@ extension SHSocketTools {
         Thread.sleep(forTimeInterval: 0.10)
   
         // 如果没有启动重发线程 就启动，如果已经启动不需要重新启动。
-        if SHSocketTools.startToReSend {
-           return
+        if SHSocketTools.startToReSend == false {
+            
+            SHSocketTools.startToReSend = true
+            repeatSendDeviceData()
         }
-
-        SHSocketTools.startToReSend = true
-        repeatSendDeviceData()
+ 
     }
 }
 
@@ -139,9 +121,33 @@ extension SHSocketTools {
 // MARK: - 重发数据
 extension SHSocketTools {
     
-    func addCacheData(_ socketData: SHSocketData) {
+    /// 添加缓存数据
+    ///
+    /// - Parameter socketData: 缓存数据
+    private static func appendCaCheData(_ socketData: SHSocketData) {
         
+        let cacheData = SHSocketTools.shared.cacheData
+ 
+        for item in cacheData {
+            
+            if item.operatorCode == socketData.operatorCode &&
+                item.subNetID == socketData.subNetID &&
+                item.deviceID == socketData.deviceID &&
+                item.additionalData == socketData.additionalData  {
+                
+         
+                
+                return
+            }
+        }
         
+        SHSocketTools.shared.lock.lock()
+        
+        SHSocketTools.shared.cacheData.append(
+            socketData
+        )
+        
+        SHSocketTools.shared.lock.unlock()
     }
     
     /// 重发数据
@@ -151,13 +157,17 @@ extension SHSocketTools {
         SHSocketTools.shared.repeatQueue.async {
             
 //            print(" 重发 \(Thread.current) - \(SHSocketTools.shared.cacheData.count)")
-
+            
             while let socketData = SHSocketTools.shared.cacheData.first {
                 
                 if socketData.reSendCount > 2 {
                     
-//                    print("收到了状态响应")
+//                    print("收到了状态响应 \(socketData.reSendCount)")
+                   
+                    SHSocketTools.shared.lock.lock()
                     SHSocketTools.shared.cacheData.remove(at: 0)
+                    
+                    SHSocketTools.shared.lock.unlock()
                     
                     continue
                 }
@@ -168,8 +178,10 @@ extension SHSocketTools {
                 Thread.sleep(forTimeInterval: 0.7)
             }
  
-//            print("重发 结束 \(SHSocketTools.shared.cacheData.count)")
             SHSocketTools.startToReSend = false
+            
+//            print("重发 结束 \(SHSocketTools.shared.cacheData.count)")
+            
         }
         
     }
