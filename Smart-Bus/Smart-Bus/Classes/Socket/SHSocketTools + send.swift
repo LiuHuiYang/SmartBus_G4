@@ -47,7 +47,7 @@ extension SHSocketTools {
         deviceID: UInt8,
         additionalData:[UInt8],
         remoteDevice: SHDeviceList =
-        SHDeviceList.selectedRemoteDevice() ?? SHDeviceList(),
+        (SHDeviceList.selectedRemoteDevice() ?? SHDeviceList()),
         needReSend: Bool = true,
         isDMX: Bool = false) {
         

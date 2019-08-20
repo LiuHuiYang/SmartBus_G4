@@ -125,7 +125,6 @@
 /// 发送控制颜色通道的的值
 - (void)sendDmxChannleData:(SHDmxChannel *)dmxChannel value:(Byte)value {
     
-   
     NSArray *channelData =
         @[
           @(dmxChannel.channelNo),
@@ -134,11 +133,18 @@
           @(0)
         ];
     
+    SHDeviceList *remoteDevice = SHDeviceList.selectedRemoteDevice;
+    
+    //FIXME: - 写上这个是为了与Swift调用时兼容
+    if (remoteDevice == nil) {
+        remoteDevice = [[SHDeviceList alloc] init];
+    }
+    
     [SHSocketTools sendDataWithOperatorCode:0x0031
                                    subNetID:dmxChannel.subnetID
                                    deviceID:dmxChannel.deviceID
                              additionalData:channelData
-                           remoteDevice:SHDeviceList.selectedRemoteDevice
+                           remoteDevice:remoteDevice
                                  needReSend:YES
                                       isDMX:YES
     ];

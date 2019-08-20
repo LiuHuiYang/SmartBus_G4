@@ -853,11 +853,33 @@ extension SHZoneControlRecordMoodViewController {
             timer = nil
             count = 0
             
+            var failedDevice = ""
+            
+            if recoredLight == false {
+                
+                failedDevice = "light"
+                
+            } else if recoredHVAC == false {
+                
+                failedDevice = "hvac"
+                
+            } else if recoredAudio == false {
+                
+                failedDevice = "audio"
+                
+            } else if recoredFloorHeating == false {
+                
+                failedDevice = "floorHeating"
+            }
+            
+//            let errorTitle =
+//                SHLanguageTools.share()?.getTextFromPlist(
+//                    "MOOD_IN_ZONE",
+//                    withSubTitle: "PROMPT_MESSAGE_2"
+//            ) as! String
+            
             let errorTitle =
-                SHLanguageTools.share()?.getTextFromPlist(
-                    "MOOD_IN_ZONE",
-                    withSubTitle: "PROMPT_MESSAGE_2"
-            ) as! String
+                "Recording \(failedDevice) failed"
             
             let errorMsg1 =
                 SHLanguageTools.share()?.getTextFromPlist(
@@ -876,7 +898,6 @@ extension SHZoneControlRecordMoodViewController {
             
             SVProgressHUD.showError(withStatus: error)
         }
-        
     }
     
     /// 保存音乐数据

@@ -13,7 +13,6 @@ import Foundation
 // MARK: - 队列音乐操作
 extension SHAudioOperatorTools {
     
-    
     /// 获得当前的队列音乐
     ///
     /// - Parameters:
