@@ -135,7 +135,6 @@ extension SHSocketTools {
                 item.deviceID == socketData.deviceID &&
                 item.additionalData == socketData.additionalData  {
                 
-         
                 
                 return
             }

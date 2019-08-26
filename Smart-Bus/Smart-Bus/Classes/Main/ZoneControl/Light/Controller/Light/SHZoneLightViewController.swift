@@ -37,7 +37,7 @@ extension SHZoneLightViewController {
             
         case 0xEFFF:
             
-            readDevicesStatus()
+//            readDevicesStatus()
             
             // 1.获得区域总数
             let zoneCount = Int(socketData.additionalData[0])
