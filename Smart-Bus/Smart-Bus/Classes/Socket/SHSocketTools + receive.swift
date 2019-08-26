@@ -77,15 +77,14 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
                          additionalData: additionalData,
                          deviceType: deviceType
         )
-        
-        
+         
         delegate?.receiveData?(socketData)
         
         // 设置接收到响应
         for item in SHSocketTools.shared.cacheData {
-            
+
             if item == socketData && SHSocketTools.shared.cacheData.contains(item){
-                
+
                 // 设置重发为最大值，不需要重发
                 // 在此设置而不删除，避免加锁操作。
 //                print("目标响应 删除")
@@ -93,6 +92,8 @@ extension SHSocketTools: GCDAsyncUdpSocketDelegate {
                 break
             }
         }
+        
+        _ = try? sock.beginReceiving()
         
 //  === === 旧方式 === ===
         

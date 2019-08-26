@@ -105,12 +105,12 @@ extension SHSocketTools {
      
         // 所有的指令都要延时 0.1秒执行
         // (0.1是依据产品固件计算出来的平均值)
-        Thread.sleep(forTimeInterval: 0.10)
+        Thread.sleep(forTimeInterval: 0.15)
   
         // 如果没有启动重发线程 就启动，如果已经启动不需要重新启动。
         if SHSocketTools.startToReSend == false {
-            
             SHSocketTools.startToReSend = true
+            
             repeatSendDeviceData()
         }
  
@@ -155,17 +155,18 @@ extension SHSocketTools {
         // 独立的重发线程执行
         SHSocketTools.shared.repeatQueue.async {
             
-//            print(" 重发 \(Thread.current) - \(SHSocketTools.shared.cacheData.count)")
+            Thread.sleep(forTimeInterval: 0.5)
             
+//            print(" 重发 \(Thread.current) - \(SHSocketTools.shared.cacheData.count)")
+        
             while let socketData = SHSocketTools.shared.cacheData.first {
                 
-                if socketData.reSendCount > 2 {
-                    
-//                    print("收到了状态响应 \(socketData.reSendCount)")
-                   
+                if socketData.reSendCount >= 1 {
+ 
                     SHSocketTools.shared.lock.lock()
-                    SHSocketTools.shared.cacheData.remove(at: 0)
-                    
+                    SHSocketTools.shared.cacheData.remove(
+                        at: 0
+                    )
                     SHSocketTools.shared.lock.unlock()
                     
                     continue
@@ -182,7 +183,6 @@ extension SHSocketTools {
 //            print("重发 结束 \(SHSocketTools.shared.cacheData.count)")
             
         }
-        
     }
 }
 
