@@ -571,7 +571,7 @@ extension SHNetWorkServerViewController: XMLParserDelegate {
         ]
         
         SHNetWorkTools.shareInstacne()?.request(
-            .POST,
+            .GET,
             urlstring: urlString,
             parameters: param,
             finished: { (res, error) in
