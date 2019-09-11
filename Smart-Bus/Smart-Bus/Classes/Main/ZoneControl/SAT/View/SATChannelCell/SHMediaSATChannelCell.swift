@@ -74,27 +74,26 @@ class SHMediaSATChannelCell: UICollectionViewCell {
         
         for i in 0 ..< count {
             
-            DispatchQueue.global().asyncAfter(deadline: .now() + dalayIrTime) {
-                
-                let single = string.substring(
-                    with: NSRange(location: i, length: 1)
-                )
-                
-                // 取出对应的操作码
-                let text =
-                    "universalSwitchIDfor" + single
-                
-                let controlType =
-                    (sat.value(forKey: text) as? UInt8) ?? 0
-                
-                SHSocketTools.sendData(
-                    operatorCode: 0xE01C,
-                    subNetID: sat.subnetID,
-                    deviceID: sat.deviceID,
-                    additionalData: [controlType, 0xFF],
-                    needReSend: false
-                )
-            }
+            let single = string.substring(
+                with: NSRange(location: i, length: 1)
+            )
+            
+            // 取出对应的操作码
+            let text =
+                "universalSwitchIDfor" + single
+            
+            let controlType =
+                (sat.value(forKey: text) as? UInt8) ?? 0
+            
+            SHSocketTools.sendData(
+                operatorCode: 0xE01C,
+                subNetID: sat.subnetID,
+                deviceID: sat.deviceID,
+                additionalData: [controlType, 0xFF],
+                needReSend: false
+            )
+            
+            Thread.sleep(forTimeInterval: dalayIrTime)
         }
     }
 }

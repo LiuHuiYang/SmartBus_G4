@@ -5374,7 +5374,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "01765ce1-a27e-45e6-bac9-ced94437e321";
-				PROVISIONING_PROFILE_SPECIFIER = SmartBus_Distribution;
+				PROVISIONING_PROFILE_SPECIFIER = SmartBus_AppStore;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Smart-Bus/Smart-Bus-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
