@@ -250,7 +250,7 @@ extension SHSocketTools {
             tag: 0
         )
         
-//         print("发送控制包: \(data)")
+         print("发送控制包: \(data)")
     }
 }
 

@@ -91,7 +91,8 @@ class SHMediaSATChannelCell: UICollectionViewCell {
                     operatorCode: 0xE01C,
                     subNetID: sat.subnetID,
                     deviceID: sat.deviceID,
-                    additionalData: [controlType, 0xFF]
+                    additionalData: [controlType, 0xFF],
+                    needReSend: false
                 )
             }
         }

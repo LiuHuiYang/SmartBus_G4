@@ -4,18 +4,12 @@ use_frameworks!
 target 'Smart-Bus' do
 
 pod 'CocoaAsyncSocket'   # UDP 通讯 框架
-
 pod 'FMDB'               # sqlite数据库框架
-
 pod 'AFNetworking'      # 网络数据请求
-
 pod 'SAMKeychain'       # 钥匙串框架
-
 pod 'SVProgressHUD'     # 指示器
-
 pod 'TYAlertController'  # 类似 UIAerController 框架
-
-pod 'GCDWebServer/WebUploader' 
+pod 'GCDWebServer/WebUploader'  # wifi环境下导入导出数据库文件
 pod "GCDWebServer"
 
 # pod 'JHChart','~>1.2.2'
