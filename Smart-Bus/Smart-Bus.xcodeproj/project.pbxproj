@@ -5322,6 +5322,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2019;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = TMD6A3D429;
 				ENABLE_BITCODE = YES;
@@ -5334,6 +5335,7 @@
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BDSClientLib",
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BauduSpeechResources/BDSClientLib",
 				);
+				MARKETING_VERSION = 3.12.7;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5358,6 +5360,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2019;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = TMD6A3D429;
 				ENABLE_BITCODE = YES;
@@ -5370,6 +5373,7 @@
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BDSClientLib",
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BauduSpeechResources/BDSClientLib",
 				);
+				MARKETING_VERSION = 3.12.7;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";

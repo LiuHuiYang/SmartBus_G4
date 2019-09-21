@@ -146,25 +146,6 @@ class SHZoneDeviceGroupSettingCell: UITableViewCell {
                 (0 - iconViewWidthConstraint.constant)
         }
 
-        for subView: UIView in subviews {
-            
-            if subView.isKind(of: NSClassFromString("UITableViewCellDeleteConfirmationView")!) {
-                
-                for actionButton in subView.subviews {
-                    
-                    guard let button = actionButton as? UIButton else {
-                        
-                        return
-                    }
-                    
-                    if button.isKind(of: UIButton.self) {
-                        
-                        button.titleLabel?.font =
-                            UIDevice.is_iPad() ? UIView.suitFontForPad() : UIFont.systemFont(ofSize: 18)
-                    }
-                }
-            }
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
