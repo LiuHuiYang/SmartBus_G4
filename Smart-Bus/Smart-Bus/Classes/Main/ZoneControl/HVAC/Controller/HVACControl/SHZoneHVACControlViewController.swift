@@ -188,15 +188,16 @@ extension SHZoneHVACControlViewController {
                     return
                 }
                 
+                // FIXME: - 固件修正，匹配
                 // 1 表示开, 2 表示关
-                if socketData.additionalData[0] == 1 {
-                    
-                    hvac.isTurnOn = true
-                    
-                } else if socketData.additionalData[0] == 2 {
-                    
-                    hvac.isTurnOn = false
-                }
+//                if socketData.additionalData[0] == 1 {
+//
+//                    hvac.isTurnOn = true
+//
+//                } else if socketData.additionalData[0] == 2 {
+//
+//                    hvac.isTurnOn = false
+//                }
 
 //                setAirConditionerStatus()
                 

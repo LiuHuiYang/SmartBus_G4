@@ -2,12 +2,12 @@
 //  UIDevice+IPAddresses.m
 
 #import "UIDevice+IPAddresses.h"
-
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import <net/if.h>
 #include <netdb.h>
+ 
 
 // ip字典信息中出现的的key
 NSString *iOS_CELLULAR = @"pdp_ip0";
@@ -271,6 +271,7 @@ NSString *IP_ADDR_IPV6 = @"ipv6";
     return [addresses count] ? addresses : nil;
 }
 
+ 
 
 /**
  获得当前wifi的名称
@@ -278,6 +279,33 @@ NSString *IP_ADDR_IPV6 = @"ipv6";
  @return 当前手机连接的wifi名称
  */
 + (NSString *)getWifiName {
+    
+    // iOS 13以上的版本
+    if (@available(iOS 13.0, *)) {
+        
+        usleep(50);
+        
+        NSString *wifiName = @"";
+        CFArrayRef wifiInterfaces = CNCopySupportedInterfaces();
+        if (!wifiInterfaces) {
+            return @"";
+        }
+        NSArray *interfaces = (__bridge NSArray *)wifiInterfaces;
+        for (NSString *interfaceName in interfaces) {
+            CFDictionaryRef dictRef = CNCopyCurrentNetworkInfo((__bridge CFStringRef)(interfaceName));
+            
+            if (dictRef) {
+                NSDictionary *networkInfo = (__bridge NSDictionary *)dictRef;
+//                NSLog(@"network info -> %@", networkInfo);
+                wifiName = [networkInfo objectForKey:(__bridge NSString *)kCNNetworkInfoKeySSID];
+                CFRelease(dictRef);
+            }
+        }
+        
+        CFRelease(wifiInterfaces);
+        
+        return wifiName;
+    }
     
     NSString *wifiName = nil;
     

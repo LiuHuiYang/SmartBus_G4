@@ -4385,8 +4385,8 @@
 		045C325D2285014300EE2D5D /* UIDevice+IPAddresses */ = {
 			isa = PBXGroup;
 			children = (
-				045C325E2285014300EE2D5D /* UIDevice+IPAddresses.m */,
 				045C325F2285014300EE2D5D /* UIDevice+IPAddresses.h */,
+				045C325E2285014300EE2D5D /* UIDevice+IPAddresses.m */,
 			);
 			path = "UIDevice+IPAddresses";
 			sourceTree = "<group>";
@@ -5335,7 +5335,7 @@
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BDSClientLib",
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BauduSpeechResources/BDSClientLib",
 				);
-				MARKETING_VERSION = 3.12.7;
+				MARKETING_VERSION = 3.12.8;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5373,7 +5373,7 @@
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BDSClientLib",
 					"$(PROJECT_DIR)/Smart-Bus/Classes/Main/BaiDuSpeech/BauduSpeechResources/BDSClientLib",
 				);
-				MARKETING_VERSION = 3.12.7;
+				MARKETING_VERSION = 3.12.8;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oursmart.audiocontroller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
