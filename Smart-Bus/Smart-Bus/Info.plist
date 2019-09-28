@@ -43,6 +43,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>When you modify the scene to display the picture, you need to access the camera and save the pictures and pictures you take in the album.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Is it allowed to get the current SSID？</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Are you allowed to use a microphone to control the scene through voice?</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
@@ -74,7 +76,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Is it allowed to get the current SSID？</string>
 </dict>
 </plist>

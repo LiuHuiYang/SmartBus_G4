@@ -7,11 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface AppDelegate ()
 
 /// 后台任务标记
 @property (nonatomic, assign) UIBackgroundTaskIdentifier task;
+
+
+/// 定位管理器
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -38,6 +43,18 @@
     [self.window makeKeyAndVisible];
     
     [self setupSVProgressHUD];
+
+    // 从 iOS 13 开始 获取wifi需要定位授权
+    if (@available(iOS 13.0, *)) {
+    
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        
+            self.locationManager =
+                [[CLLocationManager alloc] init];
+            
+            [self.locationManager requestWhenInUseAuthorization];
+    }
+}
      
     
     //     用于测试重发机制的测试代码

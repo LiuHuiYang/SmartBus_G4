@@ -7,14 +7,10 @@
 //
 
 import UIKit
-import CoreLocation
 import SAMKeychain
 
 
 class SHNetWorkServerViewController: SHViewController {
-    
-    /// 定位管理器
-    private  let locationManager: CLLocationManager = CLLocationManager()
     
     /// 选择的设备列表
     private var selectedRSIP: SHDeviceList?
@@ -124,14 +120,7 @@ class SHNetWorkServerViewController: SHViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if #available(iOS 13.0, *) {
-            
-            if CLLocationManager.authorizationStatus() == .notDetermined {
-                
-                self.locationManager .requestWhenInUseAuthorization();
-            }
-        }
+         
 
         let title =
             SHLanguageTools.share()?.getTextFromPlist(

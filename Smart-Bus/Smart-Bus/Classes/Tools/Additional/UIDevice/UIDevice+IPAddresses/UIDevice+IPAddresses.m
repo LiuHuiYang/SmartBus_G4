@@ -280,32 +280,7 @@ NSString *IP_ADDR_IPV6 = @"ipv6";
  */
 + (NSString *)getWifiName {
     
-    // iOS 13以上的版本
-    if (@available(iOS 13.0, *)) {
-        
-        usleep(50);
-        
-        NSString *wifiName = @"";
-        CFArrayRef wifiInterfaces = CNCopySupportedInterfaces();
-        if (!wifiInterfaces) {
-            return @"";
-        }
-        NSArray *interfaces = (__bridge NSArray *)wifiInterfaces;
-        for (NSString *interfaceName in interfaces) {
-            CFDictionaryRef dictRef = CNCopyCurrentNetworkInfo((__bridge CFStringRef)(interfaceName));
-            
-            if (dictRef) {
-                NSDictionary *networkInfo = (__bridge NSDictionary *)dictRef;
-//                NSLog(@"network info -> %@", networkInfo);
-                wifiName = [networkInfo objectForKey:(__bridge NSString *)kCNNetworkInfoKeySSID];
-                CFRelease(dictRef);
-            }
-        }
-        
-        CFRelease(wifiInterfaces);
-        
-        return wifiName;
-    }
+    usleep(50);
     
     NSString *wifiName = nil;
     
